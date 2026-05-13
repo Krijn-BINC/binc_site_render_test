@@ -154,7 +154,10 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 }
 
 /* Now 4 panels: 0=intro, 1=kpis, 2=results, 3=quote */
-.product-scroll-wrapper{position:relative;height:400vh}
+.product-scroll-wrapper{
+  position:relative;
+  height:500vh;
+}
 .product-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .product-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 62% 44%,var(--brand-soft),transparent 32%),radial-gradient(circle at 38% 70%,rgba(255,255,255,.04),transparent 28%),#000}
 .product-showcase.feelsogood .product-bg{background:radial-gradient(circle at 34% 53%,rgba(0,190,255,.17),transparent 30%),radial-gradient(circle at 69% 42%,rgba(21,60,255,.12),transparent 28%),linear-gradient(180deg,#000 0%,#020711 44%,#000 100%)}
@@ -1015,9 +1018,12 @@ const statesReverse = [
     };
   }
 
-  function panelForT(t) {
-    return Math.min(Math.round(t * (PANELS - 1)), PANELS - 1);
-  }
+function panelForT(t) {
+  if (t < 0.22) return 0;
+  if (t < 0.48) return 1;
+  if (t < 0.72) return 2;
+  return 3;
+}
 
   function setPanel(idx) {
     if (idx === activePanel) return;
