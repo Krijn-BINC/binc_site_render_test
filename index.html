@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -119,42 +119,21 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px);}
 #gd-showcase{position:relative;background:#000;}
 #gd-scroll-wrapper{position:relative;height:500vh;}
 #gd-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-
-.gd-bg{
-  position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(circle at 62% 44%,rgba(201,168,76,.10),transparent 32%),
-    radial-gradient(circle at 38% 70%,rgba(201,168,76,.06),transparent 28%),#000;
-}
+.gd-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 62% 44%,rgba(201,168,76,.10),transparent 32%),radial-gradient(circle at 38% 70%,rgba(201,168,76,.06),transparent 28%),#000;}
 .gd-bg::before,.gd-bg::after{content:"";position:absolute;border:1px solid rgba(201,168,76,.07);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
 .gd-bg::before{width:440px;height:440px;}
 .gd-bg::after{width:700px;height:700px;opacity:.35;}
-
 #gd-progress{position:absolute;top:0;left:0;width:0%;height:2px;z-index:10;background:linear-gradient(90deg,var(--gold),#e8c46a);}
-
-.gd-can-wrap{
-  position:absolute;top:50%;left:50%;
-  width:min(20vw,220px);
-  transform:translate(-50%,-50%);
-  z-index:20;pointer-events:none;will-change:transform;
-}
+.gd-can-wrap{position:absolute;top:50%;left:50%;width:min(20vw,220px);transform:translate(-50%,-50%);z-index:20;pointer-events:none;will-change:transform;}
 .gd-can-wrap img{width:100%;height:auto;display:block;filter:drop-shadow(0 40px 70px rgba(0,0,0,.95)) drop-shadow(0 0 50px rgba(201,168,76,.25));}
 .gd-can-glow{position:absolute;inset:10% 0;background:radial-gradient(circle,rgba(201,168,76,.22),transparent 68%);filter:blur(32px);z-index:-1;}
-
 .gd-panels{position:absolute;inset:0;pointer-events:none;}
-.gd-panel{
-  position:absolute;inset:0;
-  display:flex;align-items:center;padding:0 6vw;
-  opacity:0;transform:translateY(18px);
-  transition:opacity .55s ease,transform .55s ease;
-  pointer-events:none;
-}
+.gd-panel{position:absolute;inset:0;display:flex;align-items:center;padding:0 6vw;opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;pointer-events:none;}
 .gd-panel.gd-active{opacity:1;transform:translateY(0);pointer-events:auto;}
 .gd-panel.gd-left{justify-content:flex-start;}
 .gd-panel.gd-right{justify-content:flex-end;}
 .gd-panel.gd-center{justify-content:center;text-align:center;}
-
 .gd-content{max-width:400px;position:relative;z-index:30;}
-
 .gd-eyebrow{display:block;color:var(--gold);font-family:var(--font-gd-mono);font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;opacity:.75;margin-bottom:18px;}
 .gd-title{font-family:var(--font-gd-display);font-size:clamp(60px,7vw,100px);line-height:.88;letter-spacing:.03em;color:#fff;margin-bottom:24px;}
 .gd-title .gd-gold{color:var(--gold);}
@@ -168,11 +147,9 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px);}
 .gd-kpi-l{font-family:var(--font-gd-mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:4px;}
 .gd-statement{font-family:var(--font-gd-display);font-size:clamp(46px,6.5vw,88px);line-height:.98;color:#fff;max-width:840px;}
 .gd-statement em{color:var(--gold);font-style:normal;}
-
 .gd-marquee{position:absolute;bottom:0;left:0;right:0;z-index:35;border-top:1px solid rgba(201,168,76,.12);padding:10px 0;overflow:hidden;background:rgba(0,0,0,.6);pointer-events:none;}
 .gd-track{display:flex;width:max-content;animation:marquee 22s linear infinite;}
 .gd-track span{padding:0 32px;color:var(--gold);font-family:var(--font-gd-display);font-size:13px;letter-spacing:.15em;opacity:.45;white-space:nowrap;}
-
 .gd-dots{position:absolute;right:44px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:40;}
 .gd-dot{width:6px;height:6px;border-radius:50%;background:rgba(168,149,82,.2);border:1px solid rgba(168,149,82,.35);transition:.3s;}
 .gd-dot.active{background:var(--gold);box-shadow:0 0 8px rgba(168,149,82,.65);}
@@ -357,7 +334,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
 <section id="gd-showcase">
   <div id="gd-scroll-wrapper">
     <div id="gd-sticky">
-
       <div class="gd-bg"></div>
       <div id="gd-progress"></div>
 
@@ -372,7 +348,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
 
       <!-- PANELS -->
       <div class="gd-panels">
-
         <div class="gd-panel gd-left gd-active" data-gd="0">
           <div class="gd-content">
             <span class="gd-eyebrow">— Premium Spritze · 250ml · Alc. 5.5% Vol</span>
@@ -380,7 +355,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
             <p class="gd-text">Geen suiker. Geen compromissen.<br>Alleen de pure, droge smaak die je de hele nacht bijhoudt.</p>
           </div>
         </div>
-
         <div class="gd-panel gd-right" data-gd="1">
           <div class="gd-content">
             <span class="gd-num">01</span>
@@ -390,7 +364,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
             <p class="gd-text">Geen suikerachtige nasmaak. Een scherpe, droge afdronk die vraagt om meer — maar nooit te veel geeft.</p>
           </div>
         </div>
-
         <div class="gd-panel gd-left" data-gd="2">
           <div class="gd-content">
             <span class="gd-num">02</span>
@@ -400,13 +373,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
             <p class="gd-text">Volledig suikervrij, zonder in te leveren op smaak of karakter. Original &amp; Vodka — perfect uitgebalanceerd in 250ml.</p>
           </div>
         </div>
-
         <div class="gd-panel gd-center" data-gd="3">
           <div class="gd-content" style="max-width:860px;">
             <p class="gd-statement">Niet voor iedereen.<br><em>Voor degenen</em><br>die weten wat ze willen.</p>
           </div>
         </div>
-
         <div class="gd-panel gd-right" data-gd="4">
           <div class="gd-content">
             <span class="gd-num">03</span>
@@ -422,13 +393,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
             </div>
           </div>
         </div>
-
       </div><!-- /gd-panels -->
 
       <div class="gd-marquee">
         <div class="gd-track" id="gdTrack"></div>
       </div>
-
     </div>
   </div>
 </section>
@@ -532,16 +501,26 @@ const STORES=[
   {name:'de Tuinen',sub:'Health · Landelijk',count:'120+',lat:52.354,lon:4.869},
   {name:'Bol.com / Online',sub:'E-commerce · Landelijk',count:'Online',lat:52.155,lon:5.387}
 ];
-function createGoldIcon(){
-  return L.divIcon({className:'',html:`<div style="position:relative;width:14px;height:14px;border-radius:50% 50% 50% 0;background:linear-gradient(135deg,#f5e8a8 0%,#a89552 48%,#564821 100%);transform:rotate(-45deg);border:1px solid rgba(255,255,255,.58);box-shadow:0 0 11px rgba(168,149,82,.34),inset 0 1px 2px rgba(255,255,255,.62);"><span style="position:absolute;width:5px;height:5px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#050505;"></span></div>`,iconSize:[18,18],iconAnchor:[9,18],popupAnchor:[0,-16]});
+
+function initMap(){
+  if(typeof L==='undefined'){console.warn('Leaflet niet beschikbaar');return;}
+  function createGoldIcon(){
+    return L.divIcon({className:'',html:`<div style="position:relative;width:14px;height:14px;border-radius:50% 50% 50% 0;background:linear-gradient(135deg,#f5e8a8 0%,#a89552 48%,#564821 100%);transform:rotate(-45deg);border:1px solid rgba(255,255,255,.58);box-shadow:0 0 11px rgba(168,149,82,.34),inset 0 1px 2px rgba(255,255,255,.62);"><span style="position:absolute;width:5px;height:5px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#050505;"></span></div>`,iconSize:[18,18],iconAnchor:[9,18],popupAnchor:[0,-16]});
+  }
+  const map=L.map('storeMap',{center:[52.18,5.30],zoom:6.35,zoomSnap:.25,scrollWheelZoom:true,zoomControl:true});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map);
+  STORES.forEach(pin=>{
+    L.marker([pin.lat,pin.lon],{icon:createGoldIcon()})
+      .bindPopup(`<div class="pop-name">${pin.name}</div><div class="pop-sub">${pin.sub}</div><div class="pop-count">${pin.count}</div><div class="pop-label">aangesloten locaties</div>`)
+      .addTo(map);
+  });
 }
-const map=L.map('storeMap',{center:[52.18,5.30],zoom:6.35,zoomSnap:.25,scrollWheelZoom:true,zoomControl:true});
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map);
-STORES.forEach(pin=>{
-  L.marker([pin.lat,pin.lon],{icon:createGoldIcon()})
-    .bindPopup(`<div class="pop-name">${pin.name}</div><div class="pop-sub">${pin.sub}</div><div class="pop-count">${pin.count}</div><div class="pop-label">aangesloten locaties</div>`)
-    .addTo(map);
-});
+
+if(document.readyState==='complete'){
+  initMap();
+}else{
+  window.addEventListener('load',initMap);
+}
 
 /* REVEAL */
 const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
@@ -570,14 +549,12 @@ window.addEventListener('mousemove',e=>{const x=(e.clientX/window.innerWidth-.5)
   const progBar=document.getElementById('gd-progress');
   const dotsWrap=document.getElementById('gdDots');
 
-  /* marquee */
   const gdTrack=document.getElementById('gdTrack');
   ['GOLD DRY ✦','STAY GOLD ✦','250ML PREMIX ✦','ZERO SUGAR ✦','ORIGINAL & VODKA ✦','ALC. 5.5% ✦'].forEach(w=>{
     const s=document.createElement('span');s.textContent=w;gdTrack.appendChild(s);
   });
   [...gdTrack.children].forEach(s=>{const c=s.cloneNode(true);gdTrack.appendChild(c);});
 
-  /* dots */
   for(let i=0;i<GD_PANELS;i++){const d=document.createElement('div');d.className='gd-dot'+(i===0?' active':'');dotsWrap.appendChild(d);}
   const dots=[...dotsWrap.querySelectorAll('.gd-dot')];
 
@@ -590,7 +567,7 @@ window.addEventListener('mousemove',e=>{const x=(e.clientX/window.innerWidth-.5)
   ];
 
   let mouseX=0,mouseY=0;
-  let cur={x:0,y:0,r:0,s:1};
+  let cs={x:0,y:0,r:0,s:1};
   let activePanel=0;
 
   document.addEventListener('mousemove',e=>{mouseX=(e.clientX/innerWidth-.5)*2;mouseY=(e.clientY/innerHeight-.5)*2;});
@@ -623,12 +600,12 @@ window.addEventListener('mousemove',e=>{const x=(e.clientX/window.innerWidth-.5)
     requestAnimationFrame(tick);
     const t=getT();
     const target=interpState(t);
-    cur.x=lerp(cur.x,target.x,.06);
-    cur.y=lerp(cur.y,target.y,.06);
-    cur.r=lerp(cur.r,target.r,.06);
-    cur.s=lerp(cur.s,target.s,.06);
+    cs.x=lerp(cs.x,target.x,.06);
+    cs.y=lerp(cs.y,target.y,.06);
+    cs.r=lerp(cs.r,target.r,.06);
+    cs.s=lerp(cs.s,target.s,.06);
     const mx2=mouseX*1.5,my2=mouseY*1.2;
-    can.style.transform=`translate(calc(-50% + ${cur.x+mx2}vw),calc(-50% + ${cur.y+my2}vh)) rotate(${cur.r+mouseX*2}deg) scale(${cur.s})`;
+    can.style.transform=`translate(calc(-50% + ${cs.x+mx2}vw),calc(-50% + ${cs.y+my2}vh)) rotate(${cs.r+mouseX*2}deg) scale(${cs.s})`;
     progBar.style.width=(t*100)+'%';
     setPanel(Math.min(Math.floor(t*GD_PANELS),GD_PANELS-1));
   }
