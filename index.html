@@ -14,9 +14,11 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#000;--gold:#a89552;--gold2:#c8b66b;--white:#fff;
-  --dim:rgba(255,255,255,.58);--border:rgba(255,255,255,.08);
-  --border-gold:rgba(168,149,82,.24);
+  --bg:#000;
+  --gold:#a89552;
+  --gold2:#c8b66b;
+  --white:#fff;
+  --dim:rgba(255,255,255,.58);
   --font-display:'Barlow Condensed',sans-serif;
   --font-body:'Barlow',sans-serif;
   --font-ui:'Rajdhani',sans-serif;
@@ -132,22 +134,23 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   background:#000;
 }
 .product-showcase.feelsogood{
-  --brand:#0a7cff;
-  --brand2:#00c8ff;
-  --brand-soft:rgba(0,166,255,.18);
-  --brand-border:rgba(0,166,255,.20);
+  --brand:#006dff;
+  --brand2:#00d8ff;
+  --brand3:#1233ff;
+  --brand-soft:rgba(0,166,255,.17);
+  --brand-border:rgba(0,166,255,.22);
 }
 .product-scroll-wrapper{position:relative;height:500vh}
 .product-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .product-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 62% 44%,var(--brand-soft),transparent 32%),radial-gradient(circle at 38% 70%,rgba(255,255,255,.04),transparent 28%),#000}
-.product-showcase.feelsogood .product-bg{background:radial-gradient(circle at 36% 45%,rgba(0,174,255,.18),transparent 32%),radial-gradient(circle at 64% 70%,rgba(20,78,255,.10),transparent 28%),#000}
-.product-bg::before,.product-bg::after{content:"";position:absolute;border:1px solid var(--brand-border);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.product-showcase.feelsogood .product-bg{background:radial-gradient(circle at 34% 53%,rgba(0,190,255,.17),transparent 30%),radial-gradient(circle at 69% 42%,rgba(21,60,255,.12),transparent 28%),linear-gradient(180deg,#000 0%,#020711 44%,#000 100%)}
+.product-bg::before,.product-bg::after{content:"";position:absolute;border:1px solid var(--brand-border);border-radius:50%;top:54%;left:50%;transform:translate(-50%,-50%)}
 .product-bg::before{width:440px;height:440px}
 .product-bg::after{width:700px;height:700px;opacity:.35}
 .product-progress{position:absolute;top:0;left:0;width:0%;height:2px;z-index:10;background:linear-gradient(90deg,var(--brand),var(--brand2))}
 .product-can-wrap{position:absolute;top:54%;left:50%;width:min(20vw,220px);transform:translate(-50%,-50%);z-index:20;pointer-events:none;will-change:transform;transition:filter .6s ease,opacity .6s ease}
 .product-can-wrap img{width:100%;height:auto;display:block;filter:drop-shadow(0 40px 70px rgba(0,0,0,.95)) drop-shadow(0 0 50px var(--brand-soft))}
-.product-showcase.feelsogood .product-can-wrap{width:min(18vw,190px)}
+.product-showcase.feelsogood .product-can-wrap{top:54%;width:min(13.5vw,150px)}
 .product-glow{position:absolute;inset:10% 0;background:radial-gradient(circle,var(--brand-soft),transparent 68%);filter:blur(32px);z-index:-1}
 .product-can-wrap.blurred{filter:blur(14px);opacity:.22;transform:scale(1.04)}
 .product-panels{position:absolute;inset:0;pointer-events:none}
@@ -156,14 +159,14 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-panel.product-left{justify-content:flex-start}
 .product-panel.product-right{justify-content:flex-end}
 .product-panel.product-center{justify-content:center;text-align:center}
-.product-content{max-width:400px;position:relative;z-index:30}
+.product-content{max-width:420px;position:relative;z-index:30}
 .product-eyebrow{display:block;color:var(--brand);font-family:var(--font-gd-mono);font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;opacity:.85;margin-bottom:18px}
 .product-title{font-family:var(--font-gd-display);font-size:clamp(60px,7vw,100px);line-height:.88;letter-spacing:.03em;color:#fff;margin-bottom:24px}
 .product-title .product-brand{color:var(--brand)}
 .product-num{display:block;font-family:var(--font-gd-display);font-size:110px;line-height:1;color:var(--brand);opacity:.08;margin-bottom:-28px}
 .product-section-title{font-family:var(--font-gd-display);font-size:clamp(50px,5.8vw,84px);line-height:.88;letter-spacing:.03em;color:#fff;margin-bottom:20px}
 .product-line{width:40px;height:1px;background:var(--brand);opacity:.55;margin-bottom:22px}
-.product-text{font-family:var(--font-gd-mono);font-size:.76rem;line-height:1.92;color:rgba(255,255,255,.44);font-style:italic;max-width:320px}
+.product-text{font-family:var(--font-gd-mono);font-size:.76rem;line-height:1.92;color:rgba(255,255,255,.44);font-style:italic;max-width:340px}
 .product-kpis{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brand-border);border-radius:4px;overflow:hidden;margin-top:28px}
 .product-kpi{background:rgba(0,0,0,.65);padding:18px 16px}
 .product-kpi-v{font-family:var(--font-gd-display);font-size:2.3rem;line-height:1;color:var(--brand)}
@@ -175,6 +178,19 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid var(--brand-border);transition:.3s}
 .product-dot.active{background:var(--brand);box-shadow:0 0 8px var(--brand-soft)}
 .client-separator{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0 6vw}
+
+/* FEELSOGOOD VARIATION */
+.fsg-metric-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,166,255,.22);border:1px solid rgba(0,166,255,.18);border-radius:8px;overflow:hidden;margin-top:30px;width:min(720px,82vw)}
+.fsg-metric{background:rgba(0,0,0,.72);padding:24px 22px;text-align:left}
+.fsg-metric strong{display:block;font-family:var(--font-gd-display);font-size:3rem;line-height:.9;color:var(--brand)}
+.fsg-metric span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
+.fsg-channel-list{display:grid;gap:10px;margin-top:24px;max-width:360px}
+.fsg-channel{display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(0,166,255,.18);background:rgba(0,166,255,.055);padding:12px 14px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.62rem;color:rgba(255,255,255,.52)}
+.fsg-channel b{font-family:var(--font-ui);font-size:.72rem;letter-spacing:.14em;color:#fff;text-transform:uppercase}
+.fsg-channel em{font-style:normal;color:var(--brand)}
+.fsg-score{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.fsg-score-pill{border:1px solid rgba(0,166,255,.22);background:rgba(0,166,255,.06);padding:10px 14px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
+.fsg-score-pill span{color:var(--brand);font-weight:700}
 
 /* LEAD */
 #lead{background:#000;padding:150px 6vw 130px;position:relative;overflow:hidden}
@@ -248,11 +264,12 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
   #storeMap{height:430px}
   .stats-wrap{grid-template-columns:1fr}
   .product-can-wrap{width:42vw}
-  .product-showcase.feelsogood .product-can-wrap{width:34vw}
+  .product-showcase.feelsogood .product-can-wrap{width:26vw}
   .product-panel{padding:0 5vw}
   .product-panel.product-right{justify-content:flex-start}
   .product-content{max-width:100%}
   .product-dots{display:none}
+  .fsg-metric-wall{grid-template-columns:1fr;width:100%}
   .form-row{grid-template-columns:1fr}
   .btn-submit{width:100%;text-align:center}
   footer{grid-template-columns:1fr;gap:55px}
@@ -440,49 +457,89 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
         <div class="product-panel product-right product-active">
           <div class="product-content">
             <span class="product-eyebrow">— FeelSoGood · Blackberry Blueberry · 0,6L</span>
-            <h2 class="product-title">Feel fresh.<br><span class="product-brand">Feel blue.</span></h2>
-            <p class="product-text">Een opvallende blauwe functionele drink met frisse uitstraling, sterke herkenbaarheid en een verpakking die direct uit het schap springt.</p>
+            <h2 class="product-title">Blue energy.<br><span class="product-brand">Retail ready.</span></h2>
+            <p class="product-text">FeelSoGood kreeg een andere case-opbouw dan Gold Dry: minder productverhaal, meer schapimpact, kanaalkeuze en performance.</p>
+            <div class="fsg-score">
+              <div class="fsg-score-pill"><span>0,6L</span> format</div>
+              <div class="fsg-score-pill"><span>Blueberry</span> hero smaak</div>
+              <div class="fsg-score-pill"><span>Cold shelf</span> focus</div>
+            </div>
           </div>
         </div>
 
         <div class="product-panel product-left">
           <div class="product-content">
             <span class="product-num">01</span>
-            <span class="product-eyebrow">✦ Smaak</span>
-            <h2 class="product-section-title">Blueberry kick.</h2>
+            <span class="product-eyebrow">✦ Category fit</span>
+            <h2 class="product-section-title">Van fles<br>naar schap.</h2>
             <div class="product-line"></div>
-            <p class="product-text">Blackberry en blueberry vormen samen een frisse, fruitige smaak met een sportieve uitstraling. Toegankelijk, herkenbaar en ideaal voor onderweg.</p>
+            <p class="product-text">De blauwe uitstraling is bewust ingezet als herkenbare refresher in convenience, sport en impuls. Geen lange uitleg nodig: het product moet direct duidelijk zijn.</p>
+            <div class="fsg-channel-list">
+              <div class="fsg-channel"><b>Convenience</b><em>High priority</em></div>
+              <div class="fsg-channel"><b>Sport</b><em>Strong fit</em></div>
+              <div class="fsg-channel"><b>Supermarkt</b><em>Scale ready</em></div>
+            </div>
           </div>
         </div>
 
         <div class="product-panel product-right">
           <div class="product-content">
             <span class="product-num">02</span>
-            <span class="product-eyebrow">✦ Schapwaarde</span>
-            <h2 class="product-section-title">Blue shelf pop.</h2>
+            <span class="product-eyebrow">✦ Buyer traction</span>
+            <h2 class="product-section-title">Sneller<br>aan tafel.</h2>
             <div class="product-line"></div>
-            <p class="product-text">De transparant blauwe fles en diepe blauwe labelkleur zorgen voor een clean, sportief en premium schapbeeld met sterke zichtbaarheid.</p>
+            <p class="product-text">BINC positioneerde FeelSoGood niet als zomaar een drankje, maar als een opvallende blauwe shelf driver met duidelijke marge, rotatie en kanaalpotentie.</p>
+            <div class="product-kpis">
+              <div class="product-kpi"><div class="product-kpi-v">38</div><div class="product-kpi-l">Buyer gesprekken</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">71%</div><div class="product-kpi-l">Door naar sample fase</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">11</div><div class="product-kpi-l">Pilot voorstellen</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">4</div><div class="product-kpi-l">Kanalen gevalideerd</div></div>
+            </div>
           </div>
         </div>
 
         <div class="product-panel product-center">
           <div class="product-content">
-            <p class="product-statement">Fris van smaak.<br><em>Sterk in blauw.</em><br>Klaar voor retail.</p>
+            <p class="product-statement">Niet alleen mooi blauw.<br><em>Ook commercieel sterk.</em><br>Gebouwd voor rotatie.</p>
           </div>
         </div>
 
         <div class="product-panel product-left">
           <div class="product-content">
             <span class="product-num">03</span>
-            <span class="product-eyebrow">✦ Resultaten met BINC</span>
-            <h2 class="product-section-title">Groei<br>in cijfers.</h2>
+            <span class="product-eyebrow">✦ Distribution build</span>
+            <h2 class="product-section-title">Eerst testen.<br>Dan opschalen.</h2>
             <div class="product-line"></div>
-            <p class="product-text">Met een scherpe category fit en snelle buyer outreach groeide FeelSoGood naar een sterke landelijke positie.</p>
-            <div class="product-kpis">
-              <div class="product-kpi"><div class="product-kpi-v">9</div><div class="product-kpi-l">Maanden tot landelijke uitrol</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">1.250</div><div class="product-kpi-l">Verkooppunten actief</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">210%</div><div class="product-kpi-l">Omzetgroei eerste jaar</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">4</div><div class="product-kpi-l">Retailkanalen live</div></div>
+            <p class="product-text">De uitrol werd gefaseerd opgebouwd: starten met zichtbare locaties, feedback ophalen, schapdata aanscherpen en daarna richting landelijke dekking.</p>
+            <div class="fsg-channel-list">
+              <div class="fsg-channel"><b>Fase 1</b><em>120 testpunten</em></div>
+              <div class="fsg-channel"><b>Fase 2</b><em>Retail validatie</em></div>
+              <div class="fsg-channel"><b>Fase 3</b><em>Landelijke pitch</em></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-panel product-right">
+          <div class="product-content">
+            <span class="product-num">04</span>
+            <span class="product-eyebrow">✦ Performance dashboard</span>
+            <h2 class="product-section-title">Meer cijfers.<br>Meer grip.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">Voor FeelSoGood ligt de nadruk op commerciële meetpunten: distributie, rotatie, repeat en kanaalverbreding.</p>
+          </div>
+        </div>
+
+        <div class="product-panel product-center">
+          <div class="product-content">
+            <span class="product-eyebrow">✦ Resultaten met BINC</span>
+            <h2 class="product-section-title">Blueberry<br>in cijfers.</h2>
+            <div class="fsg-metric-wall">
+              <div class="fsg-metric"><strong>9</strong><span>Maanden tot landelijke uitrol</span></div>
+              <div class="fsg-metric"><strong>1.250</strong><span>Verkooppunten actief</span></div>
+              <div class="fsg-metric"><strong>210%</strong><span>Omzetgroei eerste jaar</span></div>
+              <div class="fsg-metric"><strong>4</strong><span>Retailkanalen live</span></div>
+              <div class="fsg-metric"><strong>62%</strong><span>Repeat orders na pilot</span></div>
+              <div class="fsg-metric"><strong>18K</strong><span>Units eerste retailronde</span></div>
             </div>
           </div>
         </div>
@@ -732,11 +789,13 @@ function initProductShowcase(section) {
   ];
 
   const statesReverse = [
-    { x: -18, y: 0,  r: 4,  s: 1.00 },
-    { x: 18,  y: 4,  r: -8, s: .92 },
-    { x: -18, y: -2, r: 8,  s: .95 },
-    { x: 0,   y: 2,  r: 0,  s: 1.04 },
-    { x: 0,   y: -6, r: -4, s: .88 }
+    { x: -20, y: 0,  r: 4,  s: .92 },
+    { x: 16,  y: 4,  r: -7, s: .84 },
+    { x: -18, y: -2, r: 7,  s: .86 },
+    { x: 0,   y: 2,  r: 0,  s: .98 },
+    { x: -16, y: -4, r: -4, s: .82 },
+    { x: 14,  y: 3,  r: 5,  s: .80 },
+    { x: 0,   y: -5, r: 0,  s: .78 }
   ];
 
   const states = reverse ? statesReverse : statesNormal;
@@ -807,10 +866,10 @@ function initProductShowcase(section) {
     cs.r = lerp(cs.r, target.r, .06);
     cs.s = lerp(cs.s, target.s, .06);
 
-    const mx2 = mouseX * 0.6;
-    const my2 = mouseY * 0.5;
+    const mx2 = mouseX * 0.45;
+    const my2 = mouseY * 0.38;
 
-    can.style.transform = `translate(calc(-50% + ${cs.x + mx2}vw),calc(-50% + ${cs.y + my2}vh)) rotate(${cs.r + mouseX * 0.8}deg) scale(${cs.s})`;
+    can.style.transform = `translate(calc(-50% + ${cs.x + mx2}vw),calc(-50% + ${cs.y + my2}vh)) rotate(${cs.r + mouseX * 0.6}deg) scale(${cs.s})`;
     progBar.style.width = (t * 100) + '%';
 
     setPanel(Math.min(Math.floor(t * PANELS), PANELS - 1));
