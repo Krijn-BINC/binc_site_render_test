@@ -61,9 +61,25 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .orb-b{width:320px;height:320px;background:rgba(168,149,82,.055);bottom:10%;right:30%}
 .hero-content{position:relative;z-index:10;padding:0 6vw;max-width:1500px;width:100%}
 .hero-inner{margin-left:clamp(32px,7vw,140px);max-width:1050px}
-.hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,15rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:11ch;margin-bottom:40px;opacity:0;animation:riseUp .9s .25s forwards}
+
+/* HERO TITLE — zelfde opbouw als "GROW IN RETAIL" maar nu "GROW YOUR BRAND" */
+.hero-title{
+  font-family:var(--font-display);
+  font-size:clamp(5rem,11vw,15rem);
+  font-weight:900;
+  line-height:.84;
+  letter-spacing:-.01em;
+  max-width:11ch;
+  margin-bottom:40px;
+  opacity:0;
+  animation:riseUp .9s .25s forwards
+}
 .hero-title .gold{color:var(--gold)}
-.hero-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
+.hero-title .stroke{
+  -webkit-text-stroke:1.5px rgba(255,255,255,.36);
+  color:transparent
+}
+
 .hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.72);font-weight:300;max-width:520px;margin-bottom:48px;opacity:0;animation:riseUp .9s .45s forwards}
 .hero-btns{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:riseUp .9s .65s forwards}
 .btn-gold,.btn-outline,.btn-submit{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
@@ -128,7 +144,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-showcase{
   --brand:#a89552;
   --brand2:#e8c46a;
-  --brand3:#c8a84b;
   --brand-soft:rgba(201,168,76,.10);
   --brand-border:rgba(201,168,76,.12);
   position:relative;
@@ -141,10 +156,27 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   --brand-soft:rgba(0,166,255,.17);
   --brand-border:rgba(0,166,255,.22);
 }
+/* BeatBox — hot pink / teal */
+.product-showcase.beatbox{
+  --brand:#ff2d78;
+  --brand2:#00e5c8;
+  --brand-soft:rgba(255,45,120,.15);
+  --brand-border:rgba(255,45,120,.22);
+}
+/* Clean Nutrition — gold/amber */
+.product-showcase.cleannutrition{
+  --brand:#e8a820;
+  --brand2:#f5d06a;
+  --brand-soft:rgba(232,168,32,.14);
+  --brand-border:rgba(232,168,32,.22);
+}
+
 .product-scroll-wrapper{position:relative;height:500vh}
 .product-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .product-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 62% 44%,var(--brand-soft),transparent 32%),radial-gradient(circle at 38% 70%,rgba(255,255,255,.04),transparent 28%),#000}
 .product-showcase.feelsogood .product-bg{background:radial-gradient(circle at 34% 53%,rgba(0,190,255,.17),transparent 30%),radial-gradient(circle at 69% 42%,rgba(21,60,255,.12),transparent 28%),linear-gradient(180deg,#000 0%,#020711 44%,#000 100%)}
+.product-showcase.beatbox .product-bg{background:radial-gradient(circle at 60% 50%,rgba(255,45,120,.18),transparent 32%),radial-gradient(circle at 36% 64%,rgba(0,229,200,.10),transparent 28%),linear-gradient(180deg,#000 0%,#07010a 44%,#000 100%)}
+.product-showcase.cleannutrition .product-bg{background:radial-gradient(circle at 52% 46%,rgba(232,168,32,.16),transparent 34%),radial-gradient(circle at 30% 70%,rgba(245,208,106,.07),transparent 26%),linear-gradient(180deg,#000 0%,#080600 44%,#000 100%)}
 .product-bg::before,.product-bg::after{content:"";position:absolute;border:1px solid var(--brand-border);border-radius:50%;top:54%;left:50%;transform:translate(-50%,-50%)}
 .product-bg::before{width:440px;height:440px}
 .product-bg::after{width:700px;height:700px;opacity:.35}
@@ -152,6 +184,8 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-can-wrap{position:absolute;top:54%;left:50%;width:min(20vw,220px);transform:translate(-50%,-50%);z-index:20;pointer-events:none;will-change:transform;transition:filter .6s ease,opacity .6s ease}
 .product-can-wrap img{width:100%;height:auto;display:block;filter:drop-shadow(0 40px 70px rgba(0,0,0,.95)) drop-shadow(0 0 50px var(--brand-soft))}
 .product-showcase.feelsogood .product-can-wrap{top:54%;width:min(16vw,180px)}
+.product-showcase.beatbox .product-can-wrap{top:54%;width:min(16vw,190px)}
+.product-showcase.cleannutrition .product-can-wrap{top:54%;width:min(24vw,280px)}
 .product-glow{position:absolute;inset:10% 0;background:radial-gradient(circle,var(--brand-soft),transparent 68%);filter:blur(32px);z-index:-1}
 .product-can-wrap.blurred{filter:blur(14px);opacity:.22;transform:scale(1.04)}
 .product-panels{position:absolute;inset:0;pointer-events:none}
@@ -193,12 +227,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-dot.active{background:var(--brand);box-shadow:0 0 8px var(--brand-soft)}
 .client-separator{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0 6vw}
 
-/* RESULTS PANEL WITH CAN */
-.product-panel.product-results{justify-content:center}
-.results-inner{display:flex;align-items:center;gap:80px;max-width:1100px;width:100%;z-index:30;position:relative}
-.results-can{width:min(14vw,160px);flex-shrink:0;filter:drop-shadow(0 40px 80px rgba(0,0,0,.95)) drop-shadow(0 0 60px var(--brand-soft))}
-.results-can img{width:100%;height:auto;display:block}
-
 /* FEELSOGOOD VARIATION */
 .fsg-metric-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,166,255,.22);border:1px solid rgba(0,166,255,.18);border-radius:8px;overflow:hidden;margin-top:30px;width:min(720px,82vw)}
 .fsg-metric{background:rgba(0,0,0,.72);padding:24px 22px;text-align:left}
@@ -212,11 +240,28 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .fsg-score-pill{border:1px solid rgba(0,166,255,.22);background:rgba(0,166,255,.06);padding:10px 14px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
 .fsg-score-pill span{color:var(--brand);font-weight:700}
 
-/* GD METRIC WALL — gold variant */
-.gd-metric-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(168,149,82,.22);border:1px solid rgba(168,149,82,.18);border-radius:8px;overflow:hidden;margin-top:0;width:min(600px,80vw)}
-.gd-metric{background:rgba(0,0,0,.72);padding:22px 20px;text-align:left}
-.gd-metric strong{display:block;font-family:var(--font-gd-display);font-size:2.8rem;line-height:.9;color:var(--gold)}
-.gd-metric span{display:block;font-family:var(--font-gd-mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:8px;line-height:1.55}
+/* BEATBOX VARIATION — gebruik brand-border ipv hardcoded blauw */
+.bb-metric-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brand-border);border:1px solid var(--brand-border);border-radius:8px;overflow:hidden;margin-top:30px;width:min(720px,82vw)}
+.bb-metric{background:rgba(0,0,0,.72);padding:24px 22px;text-align:left}
+.bb-metric strong{display:block;font-family:var(--font-gd-display);font-size:3rem;line-height:.9;color:var(--brand)}
+.bb-metric span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
+.bb-channel-list{display:grid;gap:10px;margin-top:24px;max-width:360px}
+.bb-channel{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--brand-border);background:var(--brand-soft);padding:12px 14px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.62rem;color:rgba(255,255,255,.52)}
+.bb-channel b{font-family:var(--font-ui);font-size:.72rem;letter-spacing:.14em;color:#fff;text-transform:uppercase}
+.bb-channel em{font-style:normal;color:var(--brand)}
+.bb-score{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.bb-score-pill{border:1px solid var(--brand-border);background:var(--brand-soft);padding:10px 14px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
+.bb-score-pill span{color:var(--brand);font-weight:700}
+
+/* CLEAN NUTRITION VARIATION */
+.cn-metric-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brand-border);border:1px solid var(--brand-border);border-radius:8px;overflow:hidden;margin-top:30px;width:min(720px,82vw)}
+.cn-metric{background:rgba(0,0,0,.72);padding:24px 22px;text-align:left}
+.cn-metric strong{display:block;font-family:var(--font-gd-display);font-size:3rem;line-height:.9;color:var(--brand)}
+.cn-metric span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
+.cn-channel-list{display:grid;gap:10px;margin-top:24px;max-width:360px}
+.cn-channel{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--brand-border);background:var(--brand-soft);padding:12px 14px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.62rem;color:rgba(255,255,255,.52)}
+.cn-channel b{font-family:var(--font-ui);font-size:.72rem;letter-spacing:.14em;color:#fff;text-transform:uppercase}
+.cn-channel em{font-style:normal;color:var(--brand)}
 
 /* LEAD */
 #lead{background:#000;padding:150px 6vw 130px;position:relative;overflow:hidden}
@@ -250,7 +295,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
 .ft-info{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .ft-item p,.ft-item a{font-size:1.1rem;line-height:1.8;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
 .ft-item a:hover{color:var(--gold)}
-.ft-h{font-family:var(--font-ui);font-size:1rem!important;font-weight:800!important;letter-spacing:.2em;text-transform:uppercase;color:rgba(168,149,82,1)!important;margin-bottom:12px!important}
+.ft-h{font-family:var(--font-ui);font-size:.82rem!important;font-weight:800!important;letter-spacing:.28em;text-transform:uppercase;color:rgba(168,149,82,1)!important;margin-bottom:18px}
 .ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.05);padding:22px 6vw;display:flex;justify-content:space-between;align-items:center}
 .ft-copy{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 
@@ -290,15 +335,14 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
   #storeMap{height:430px}
   .stats-wrap{grid-template-columns:1fr}
   .product-can-wrap{width:42vw}
-  .product-showcase.feelsogood .product-can-wrap{width:26vw}
+  .product-showcase.feelsogood .product-can-wrap,
+  .product-showcase.beatbox .product-can-wrap{width:26vw}
+  .product-showcase.cleannutrition .product-can-wrap{width:52vw}
   .product-panel{padding:0 5vw}
   .product-panel.product-right{justify-content:flex-start}
   .product-content{max-width:100%}
   .product-dots{display:none}
-  .fsg-metric-wall{grid-template-columns:1fr;width:100%}
-  .gd-metric-wall{grid-template-columns:1fr;width:100%}
-  .results-inner{flex-direction:column;gap:40px;align-items:flex-start}
-  .results-can{width:120px}
+  .fsg-metric-wall,.bb-metric-wall,.cn-metric-wall{grid-template-columns:1fr;width:100%}
   .form-row{grid-template-columns:1fr}
   .btn-submit{width:100%;text-align:center}
   footer{grid-template-columns:1fr;gap:55px}
@@ -335,7 +379,8 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
   <div class="g-orb orb-b"></div>
   <div class="hero-content">
     <div class="hero-inner">
-      <h1 class="hero-title">GROW YOUR <span class="gold">BRAND</span></h1>
+      <!-- GROW wit | YOUR goud | BRAND wit met stroke — exact zelfde opbouw als GROW IN RETAIL -->
+      <h1 class="hero-title">GROW <span class="gold">YOUR</span><br><span class="stroke">BRAND</span></h1>
       <p class="hero-sub">Wij ontzorgen de volledige B2B voor ambitieuze merken. Van eerste listing tot landelijk schaalniveau.</p>
       <div class="hero-btns">
         <a href="#lead" class="btn-gold">Start samenwerking</a>
@@ -394,11 +439,13 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
   <div class="ci-wrap">
     <p class="label">Onze merken</p>
     <h2 class="display clients-title">ONZE KLANTEN</h2>
-    <div class="ci-ghost">2</div>
+    <div class="ci-ghost">4</div>
   </div>
 </div>
 
-<!-- GOLD DRY SHOWCASE — 4 panels -->
+<!-- ═══════════════════════════════════════════
+     MERK 1 · GOLD DRY
+════════════════════════════════════════════ -->
 <section id="gd-showcase" class="product-showcase gold-dry">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
@@ -413,71 +460,66 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
       <div class="product-dots"></div>
 
       <div class="product-panels">
-
-        <!-- PANEL 1 — intro, blik rechts, tekst links -->
         <div class="product-panel product-left product-active">
           <div class="product-content">
-            <span class="product-eyebrow">— Gold Dry · Premium Spritze · 250ml · Alc. 5.5% Vol</span>
-            <h2 class="product-title">Zero sugar.<br><span class="product-brand">Pure gold.</span></h2>
-            <p class="product-text">Gold Dry is geen compromis. Een droge, karakter­volle spritze zonder suiker — gemaakt voor mensen die precies weten wat ze willen. Wij brengen dat verhaal naar de schappen van Nederland.</p>
-            <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap">
-              <div style="border:1px solid rgba(168,149,82,.22);background:rgba(168,149,82,.06);padding:9px 13px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.57rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase"><span style="color:var(--gold);font-weight:700">250ml</span> blik</div>
-              <div style="border:1px solid rgba(168,149,82,.22);background:rgba(168,149,82,.06);padding:9px 13px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.57rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase"><span style="color:var(--gold);font-weight:700">Zero</span> suiker</div>
-              <div style="border:1px solid rgba(168,149,82,.22);background:rgba(168,149,82,.06);padding:9px 13px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.57rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase"><span style="color:var(--gold);font-weight:700">Alc.</span> 5.5% vol</div>
-            </div>
+            <span class="product-eyebrow">— Premium Spritze · 250ml · Alc. 5.5% Vol</span>
+            <h2 class="product-title">Stay dry.<br><span class="product-brand">Stay gold.</span></h2>
+            <p class="product-text">Geen suiker. Geen compromissen.<br>Alleen de pure, droge smaak die je de hele nacht bijhoudt.</p>
           </div>
         </div>
 
-        <!-- PANEL 2 — B2B ontzorging, tekst rechts, blik links -->
         <div class="product-panel product-right">
           <div class="product-content">
             <span class="product-num">01</span>
-            <span class="product-eyebrow">✦ Volledige B2B ontzorging</span>
-            <h2 class="product-section-title">Wij doen<br>het geheel.</h2>
+            <span class="product-eyebrow">✦ Smaak</span>
+            <h2 class="product-section-title">Dry finish.</h2>
             <div class="product-line"></div>
-            <p class="product-text">Van de eerste buyer meeting tot de levering op locatie — BINC regelt het allemaal. Accountmanagement, inkoopgesprekken, logistiek, schapplaatsing en opvolging. Gold Dry hoeft zich nergens anders druk om te maken dan het merk zelf.</p>
-            <div style="display:grid;gap:9px;margin-top:22px">
-              <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(168,149,82,.18);background:rgba(168,149,82,.055);padding:11px 13px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.61rem;color:rgba(255,255,255,.52)"><b style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:#fff;text-transform:uppercase">Buyer outreach</b><span style="color:var(--gold)">✓ BINC</span></div>
-              <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(168,149,82,.18);background:rgba(168,149,82,.055);padding:11px 13px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.61rem;color:rgba(255,255,255,.52)"><b style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:#fff;text-transform:uppercase">Levering &amp; logistiek</b><span style="color:var(--gold)">✓ BINC</span></div>
-              <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(168,149,82,.18);background:rgba(168,149,82,.055);padding:11px 13px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.61rem;color:rgba(255,255,255,.52)"><b style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:#fff;text-transform:uppercase">Locatiebezoeken</b><span style="color:var(--gold)">✓ BINC</span></div>
-              <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(168,149,82,.18);background:rgba(168,149,82,.055);padding:11px 13px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.61rem;color:rgba(255,255,255,.52)"><b style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:#fff;text-transform:uppercase">Accountmanagement</b><span style="color:var(--gold)">✓ BINC</span></div>
-            </div>
-            <p style="font-family:var(--font-gd-mono);font-size:.6rem;color:rgba(168,149,82,.65);margin-top:16px;letter-spacing:.1em">Al 3+ jaar de exclusieve B2B-partner van Gold Dry</p>
+            <p class="product-text">Geen suikerachtige nasmaak. Een scherpe, droge afdronk die vraagt om meer — maar nooit te veel geeft.</p>
           </div>
         </div>
 
-        <!-- PANEL 3 — groei in cijfers, tekst links, blik rechts -->
         <div class="product-panel product-left">
           <div class="product-content">
             <span class="product-num">02</span>
-            <span class="product-eyebrow">✦ Groei in cijfers</span>
-            <h2 class="product-section-title">Van nul tot<br>landelijk.</h2>
+            <span class="product-eyebrow">✦ Formule</span>
+            <h2 class="product-section-title">Zero Sugar.</h2>
             <div class="product-line"></div>
-            <p class="product-text">In 14 maanden van eerste listing naar landelijk bereik. Geen toeval — het resultaat van een strak netwerk, de juiste pitches en dagelijkse opvolging op de vloer.</p>
+            <p class="product-text">Volledig suikervrij, zonder in te leveren op smaak of karakter. Original &amp; Vodka — perfect uitgebalanceerd in 250ml.</p>
+          </div>
+        </div>
+
+        <div class="product-panel product-center">
+          <div class="product-content">
+            <p class="product-statement">Niet voor iedereen.<br><em>Voor degenen</em><br>die weten wat ze willen.</p>
+          </div>
+        </div>
+
+        <div class="product-panel product-right">
+          <div class="product-content">
+            <span class="product-num">03</span>
+            <span class="product-eyebrow">✦ Resultaten met BINC</span>
+            <h2 class="product-section-title">Groei<br>in cijfers.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">Van nul tot landelijk bereik in recordtijd — zo doet BINC dat.</p>
             <div class="product-kpis">
               <div class="product-kpi"><div class="product-kpi-v">14</div><div class="product-kpi-l">Maanden tot landelijk bereik</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">1.800</div><div class="product-kpi-l">Actieve verkooppunten</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">1.800</div><div class="product-kpi-l">Verkooppunten</div></div>
               <div class="product-kpi"><div class="product-kpi-v">340%</div><div class="product-kpi-l">Omzetgroei jaar 1→2</div></div>
               <div class="product-kpi"><div class="product-kpi-v">6</div><div class="product-kpi-l">Retailketens actief</div></div>
             </div>
           </div>
         </div>
-
-        <!-- PANEL 4 — quote / CTA, gecentreerd, blik vervaagt -->
-        <div class="product-panel product-center">
-          <div class="product-content">
-            <p class="product-statement">Jouw merk in<br><em>elke schapper.</em><br>Wij regelen de rest.</p>
-          </div>
-        </div>
-
       </div>
+
     </div>
   </div>
 </section>
 
 <div class="client-separator"></div>
 
-<!-- FEELSOGOOD SHOWCASE — 4 panels -->
+<!-- ═══════════════════════════════════════════
+     MERK 2 · FEELSOGOOD
+════════════════════════════════════════════ -->
 <section id="fsg-showcase" class="product-showcase feelsogood" data-reverse="true">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
@@ -492,13 +534,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
       <div class="product-dots"></div>
 
       <div class="product-panels">
-
-        <!-- PANEL 1 — intro, blik links, tekst rechts -->
         <div class="product-panel product-right product-active">
           <div class="product-content">
-            <span class="product-eyebrow">— FeelSoGood · Energy &amp; Refresh · 0,6L</span>
-            <h2 class="product-title">Blue energy.<br><span class="product-brand">Built for retail.</span></h2>
-            <p class="product-text">FeelSoGood is een energiedrank met karakter — opvallend blauw, directe schapimpact en gebouwd voor hoge rotatie. BINC regelt de volledige B2B: van eerste buyer gesprek tot landelijke distributie.</p>
+            <span class="product-eyebrow">— FeelSoGood · Blackberry Blueberry · 0,6L</span>
+            <h2 class="product-title">Blue energy.<br><span class="product-brand">Retail ready.</span></h2>
+            <p class="product-text">FeelSoGood kreeg een andere case-opbouw dan Gold Dry: minder productverhaal, meer schapimpact, kanaalkeuze en performance.</p>
             <div class="fsg-score">
               <div class="fsg-score-pill"><span>0,6L</span> format</div>
               <div class="fsg-score-pill"><span>Blueberry</span> hero smaak</div>
@@ -507,47 +547,304 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
           </div>
         </div>
 
-        <!-- PANEL 2 — volledige B2B, tekst links, blik rechts -->
         <div class="product-panel product-left">
           <div class="product-content">
             <span class="product-num">01</span>
-            <span class="product-eyebrow">✦ Volledige B2B ontzorging</span>
-            <h2 class="product-section-title">Van pitch<br>tot pallet.</h2>
+            <span class="product-eyebrow">✦ Category fit</span>
+            <h2 class="product-section-title">Van fles<br>naar schap.</h2>
             <div class="product-line"></div>
-            <p class="product-text">BINC neemt de gehele commerciële keten uit handen. Buyer acquisitie, contractonderhandeling, levering op locatie en wekelijkse schapcontroles — FeelSoGood focust op het product, wij op de groei.</p>
+            <p class="product-text">De blauwe uitstraling is bewust ingezet als herkenbare refresher in convenience, sport en impuls. Geen lange uitleg nodig: het product moet direct duidelijk zijn.</p>
             <div class="fsg-channel-list">
-              <div class="fsg-channel"><b>Buyer outreach</b><em>✓ BINC</em></div>
-              <div class="fsg-channel"><b>Levering &amp; logistiek</b><em>✓ BINC</em></div>
-              <div class="fsg-channel"><b>Accountmanagement</b><em>✓ BINC</em></div>
+              <div class="fsg-channel"><b>Convenience</b><em>High priority</em></div>
+              <div class="fsg-channel"><b>Sport</b><em>Strong fit</em></div>
+              <div class="fsg-channel"><b>Supermarkt</b><em>Scale ready</em></div>
             </div>
           </div>
         </div>
 
-        <!-- PANEL 3 — groei in cijfers, tekst rechts, blik links -->
         <div class="product-panel product-right">
           <div class="product-content">
             <span class="product-num">02</span>
-            <span class="product-eyebrow">✦ Groei in cijfers</span>
-            <h2 class="product-section-title">Sneller dan<br>verwacht.</h2>
+            <span class="product-eyebrow">✦ Buyer traction</span>
+            <h2 class="product-section-title">Sneller<br>aan tafel.</h2>
             <div class="product-line"></div>
-            <p class="product-text">In 9 maanden van testpunten naar landelijke uitrol. Gefaseerd opgebouwd, datagestuurd opgeschaald — en elke stap bewezen in de praktijk.</p>
+            <p class="product-text">BINC positioneerde FeelSoGood niet als zomaar een drankje, maar als een opvallende blauwe shelf driver met duidelijke marge, rotatie en kanaalpotentie.</p>
             <div class="product-kpis">
-              <div class="product-kpi"><div class="product-kpi-v">9</div><div class="product-kpi-l">Maanden tot landelijke uitrol</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">1.250</div><div class="product-kpi-l">Actieve verkooppunten</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">210%</div><div class="product-kpi-l">Omzetgroei eerste jaar</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">62%</div><div class="product-kpi-l">Repeat orders na pilot</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">38</div><div class="product-kpi-l">Buyer gesprekken</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">71%</div><div class="product-kpi-l">Door naar sample fase</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">11</div><div class="product-kpi-l">Pilot voorstellen</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">4</div><div class="product-kpi-l">Kanalen gevalideerd</div></div>
             </div>
           </div>
         </div>
 
-        <!-- PANEL 4 — quote / CTA, gecentreerd, blik vervaagt -->
         <div class="product-panel product-center">
           <div class="product-content">
-            <p class="product-statement">Jouw merk verdient<br><em>meer dan een pitch.</em><br>Het verdient resultaat.</p>
+            <p class="product-statement">Niet alleen mooi blauw.<br><em>Ook commercieel sterk.</em><br>Gebouwd voor rotatie.</p>
           </div>
         </div>
 
+        <div class="product-panel product-left">
+          <div class="product-content">
+            <span class="product-num">03</span>
+            <span class="product-eyebrow">✦ Distribution build</span>
+            <h2 class="product-section-title">Eerst testen.<br>Dan opschalen.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">De uitrol werd gefaseerd opgebouwd: starten met zichtbare locaties, feedback ophalen, schapdata aanscherpen en daarna richting landelijke dekking.</p>
+            <div class="fsg-channel-list">
+              <div class="fsg-channel"><b>Fase 1</b><em>120 testpunten</em></div>
+              <div class="fsg-channel"><b>Fase 2</b><em>Retail validatie</em></div>
+              <div class="fsg-channel"><b>Fase 3</b><em>Landelijke pitch</em></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-panel product-right">
+          <div class="product-content">
+            <span class="product-num">04</span>
+            <span class="product-eyebrow">✦ Performance dashboard</span>
+            <h2 class="product-section-title">Meer cijfers.<br>Meer grip.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">Voor FeelSoGood ligt de nadruk op commerciële meetpunten: distributie, rotatie, repeat en kanaalverbreding.</p>
+          </div>
+        </div>
+
+        <div class="product-panel product-center">
+          <div class="product-content">
+            <span class="product-eyebrow">✦ Resultaten met BINC</span>
+            <h2 class="product-section-title">Blueberry<br>in cijfers.</h2>
+            <div class="fsg-metric-wall">
+              <div class="fsg-metric"><strong>9</strong><span>Maanden tot landelijke uitrol</span></div>
+              <div class="fsg-metric"><strong>1.250</strong><span>Verkooppunten actief</span></div>
+              <div class="fsg-metric"><strong>210%</strong><span>Omzetgroei eerste jaar</span></div>
+              <div class="fsg-metric"><strong>4</strong><span>Retailkanalen live</span></div>
+              <div class="fsg-metric"><strong>62%</strong><span>Repeat orders na pilot</span></div>
+              <div class="fsg-metric"><strong>18K</strong><span>Units eerste retailronde</span></div>
+            </div>
+          </div>
+        </div>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="client-separator"></div>
+
+<!-- ═══════════════════════════════════════════
+     MERK 3 · BEATBOX
+════════════════════════════════════════════ -->
+<section id="bb-showcase" class="product-showcase beatbox">
+  <div class="product-scroll-wrapper">
+    <div class="product-sticky">
+      <div class="product-bg"></div>
+      <div class="product-progress"></div>
+
+      <div class="product-can-wrap">
+        <div class="product-glow"></div>
+        <img src="images/beatbox_partypunch.png" alt="BeatBox Party Punch"/>
+      </div>
+
+      <div class="product-dots"></div>
+
+      <div class="product-panels">
+        <!-- Panel 0 — intro -->
+        <div class="product-panel product-left product-active">
+          <div class="product-content">
+            <span class="product-eyebrow">— BeatBox · Fruit Punch · 330ml · Alc. 6.1% Vol</span>
+            <h2 class="product-title">Party in<br><span class="product-brand">a box.</span></h2>
+            <p class="product-text">Kleurrijke verpakking, feestelijk karakter.<br>BeatBox is de ready-to-drink die opvalt voor ze de drank proeven.</p>
+            <div class="bb-score">
+              <div class="bb-score-pill"><span>330ml</span> carton</div>
+              <div class="bb-score-pill"><span>Fruit Punch</span> hero</div>
+              <div class="bb-score-pill"><span>Impulse</span> koop</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 1 -->
+        <div class="product-panel product-right">
+          <div class="product-content">
+            <span class="product-num">01</span>
+            <span class="product-eyebrow">✦ Verpakking als marketing</span>
+            <h2 class="product-section-title">Zie me<br>staan.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">Het carton-formaat en het drukke artwork zorgen voor directe herkenbaarheid. Geen uitleg nodig aan het schap — de verpakking verkoopt zichzelf.</p>
+            <div class="bb-channel-list">
+              <div class="bb-channel"><b>Festivals &amp; Events</b><em>Top kanaal</em></div>
+              <div class="bb-channel"><b>Convenience</b><em>High priority</em></div>
+              <div class="bb-channel"><b>Slijterijen</b><em>Strong fit</em></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="product-panel product-left">
+          <div class="product-content">
+            <span class="product-num">02</span>
+            <span class="product-eyebrow">✦ Buyer traction</span>
+            <h2 class="product-section-title">Van pitch<br>naar schap.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">BINC bracht BeatBox als ready-to-drink met feest-DNA bij de juiste buyers: snelle beslissers in convenience, slijterijen en event retail.</p>
+            <div class="product-kpis">
+              <div class="product-kpi"><div class="product-kpi-v">29</div><div class="product-kpi-l">Buyer gesprekken</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">68%</div><div class="product-kpi-l">Door naar sample fase</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">9</div><div class="product-kpi-l">Pilot voorstellen</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">3</div><div class="product-kpi-l">Kanalen gevalideerd</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3 — statement -->
+        <div class="product-panel product-center">
+          <div class="product-content">
+            <p class="product-statement">Niet zomaar<br><em>een RTD.</em><br>Een beweging.</p>
+          </div>
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="product-panel product-right">
+          <div class="product-content">
+            <span class="product-num">03</span>
+            <span class="product-eyebrow">✦ Distribution build</span>
+            <h2 class="product-section-title">Slim<br>opschalen.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">Gefaseerde introductie via high-traffic locaties, gevolgd door retailvalidatie en nationale uitrol op basis van bewezen rotatie.</p>
+            <div class="bb-channel-list">
+              <div class="bb-channel"><b>Fase 1</b><em>90 testpunten</em></div>
+              <div class="bb-channel"><b>Fase 2</b><em>Retail validatie</em></div>
+              <div class="bb-channel"><b>Fase 3</b><em>Landelijke pitch</em></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 5 — resultaten -->
+        <div class="product-panel product-center">
+          <div class="product-content">
+            <span class="product-eyebrow">✦ Resultaten met BINC</span>
+            <h2 class="product-section-title">BeatBox<br>in cijfers.</h2>
+            <div class="bb-metric-wall">
+              <div class="bb-metric"><strong>11</strong><span>Maanden tot landelijke uitrol</span></div>
+              <div class="bb-metric"><strong>980</strong><span>Verkooppunten actief</span></div>
+              <div class="bb-metric"><strong>185%</strong><span>Omzetgroei eerste jaar</span></div>
+              <div class="bb-metric"><strong>3</strong><span>Retailkanalen live</span></div>
+              <div class="bb-metric"><strong>57%</strong><span>Repeat orders na pilot</span></div>
+              <div class="bb-metric"><strong>14K</strong><span>Units eerste retailronde</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="client-separator"></div>
+
+<!-- ═══════════════════════════════════════════
+     MERK 4 · CLEAN NUTRITION
+════════════════════════════════════════════ -->
+<section id="cn-showcase" class="product-showcase cleannutrition" data-reverse="true">
+  <div class="product-scroll-wrapper">
+    <div class="product-sticky">
+      <div class="product-bg"></div>
+      <div class="product-progress"></div>
+
+      <div class="product-can-wrap">
+        <div class="product-glow"></div>
+        <img src="images/cleannutrition_bar.png" alt="Clean Nutrition Golden Bar"/>
+      </div>
+
+      <div class="product-dots"></div>
+
+      <div class="product-panels">
+        <!-- Panel 0 — intro -->
+        <div class="product-panel product-right product-active">
+          <div class="product-content">
+            <span class="product-eyebrow">— Clean Nutrition · Golden Bar · Salty Peanut · 50g</span>
+            <h2 class="product-title">Pure power.<br><span class="product-brand">Pure gold.</span></h2>
+            <p class="product-text">16g eiwit. 197 kcal. Geen compromissen.<br>De Golden Bar is hoog-eiwit snacking op z'n best — gebouwd voor sport en retail.</p>
+            <div class="bb-score">
+              <div class="bb-score-pill"><span>16g</span> proteïne</div>
+              <div class="bb-score-pill"><span>Salty Peanut</span> hero</div>
+              <div class="bb-score-pill"><span>High Protein</span> claim</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 1 -->
+        <div class="product-panel product-left">
+          <div class="product-content">
+            <span class="product-num">01</span>
+            <span class="product-eyebrow">✦ Category fit</span>
+            <h2 class="product-section-title">Van sport<br>naar schap.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">Het gouden formaat met directe eiwitclaim spreekt de health-bewuste consument aan in sportretail, drogisterij en supermarkt. Eén blik = direct duidelijk.</p>
+            <div class="cn-channel-list">
+              <div class="cn-channel"><b>Sport &amp; Fitness</b><em>Top kanaal</em></div>
+              <div class="cn-channel"><b>Drogisterij</b><em>Strong fit</em></div>
+              <div class="cn-channel"><b>Supermarkt</b><em>Scale ready</em></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="product-panel product-right">
+          <div class="product-content">
+            <span class="product-num">02</span>
+            <span class="product-eyebrow">✦ Buyer traction</span>
+            <h2 class="product-section-title">Marge &amp;<br>rotatie.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">BINC positioneerde de Golden Bar als premium high-protein snack met aantrekkelijke marge en bewezen rotatie in de fitnesskanalen. Buyers zagen direct potentie.</p>
+            <div class="product-kpis">
+              <div class="product-kpi"><div class="product-kpi-v">33</div><div class="product-kpi-l">Buyer gesprekken</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">74%</div><div class="product-kpi-l">Door naar sample fase</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">12</div><div class="product-kpi-l">Pilot voorstellen</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">4</div><div class="product-kpi-l">Kanalen gevalideerd</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3 — statement -->
+        <div class="product-panel product-center">
+          <div class="product-content">
+            <p class="product-statement">Niet gewoon<br><em>een reep.</em><br>Een statement.</p>
+          </div>
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="product-panel product-left">
+          <div class="product-content">
+            <span class="product-num">03</span>
+            <span class="product-eyebrow">✦ Distribution build</span>
+            <h2 class="product-section-title">Testen.<br>Valideren.<br>Opschalen.</h2>
+            <div class="product-line"></div>
+            <p class="product-text">Start bij de sportretail-kern, bewijs rotatie, en schaal daarna naar drogisterij en supermarkt — zo bouwen we duurzame distributie.</p>
+            <div class="cn-channel-list">
+              <div class="cn-channel"><b>Fase 1</b><em>100 sportpunten</em></div>
+              <div class="cn-channel"><b>Fase 2</b><em>Drogisterij validatie</em></div>
+              <div class="cn-channel"><b>Fase 3</b><em>Landelijke pitch</em></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 5 — resultaten -->
+        <div class="product-panel product-center">
+          <div class="product-content">
+            <span class="product-eyebrow">✦ Resultaten met BINC</span>
+            <h2 class="product-section-title">Golden Bar<br>in cijfers.</h2>
+            <div class="cn-metric-wall">
+              <div class="cn-metric"><strong>10</strong><span>Maanden tot landelijke uitrol</span></div>
+              <div class="cn-metric"><strong>1.100</strong><span>Verkooppunten actief</span></div>
+              <div class="cn-metric"><strong>230%</strong><span>Omzetgroei eerste jaar</span></div>
+              <div class="cn-metric"><strong>4</strong><span>Retailkanalen live</span></div>
+              <div class="cn-metric"><strong>66%</strong><span>Repeat orders na pilot</span></div>
+              <div class="cn-metric"><strong>22K</strong><span>Units eerste retailronde</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -619,98 +916,90 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
 </div>
 
 <script>
-/* CURSOR */
+/* ─── CURSOR ─── */
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
-
 document.addEventListener('mousemove', e => {
-  mx = e.clientX;
-  my = e.clientY;
+  mx = e.clientX; my = e.clientY;
   cur.style.left = mx + 'px';
-  cur.style.top = my + 'px';
+  cur.style.top  = my + 'px';
 });
-
 (function animRing() {
   rx += (mx - rx) * .11;
   ry += (my - ry) * .11;
   ring.style.left = rx + 'px';
-  ring.style.top = ry + 'px';
+  ring.style.top  = ry + 'px';
   requestAnimationFrame(animRing);
 })();
 
-/* NAV */
+/* ─── NAV ─── */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 70);
 }, { passive: true });
 
-/* TAPE */
-const WORDS = ['Grow Your Brand', 'B2B Sales', 'Accountmanagement', 'Retail Listings', 'Landelijk Netwerk', 'Strategy & Growth', 'BINC International'];
+/* ─── SMOOTH SCROLL voor nav-links ─── */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const navH = document.getElementById('nav').offsetHeight;
+    const top  = target.getBoundingClientRect().top + window.pageYOffset - navH;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
+
+/* ─── TAPE ─── */
+const WORDS = ['Grow In Retail','B2B Sales','Accountmanagement','Retail Listings','Landelijk Netwerk','Strategy & Growth','BINC International'];
 const ti = document.getElementById('tapeInner');
 const chunk = () => WORDS.map(w => `<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
 ti.innerHTML = chunk() + chunk();
 
-/* MAP */
+/* ─── MAP ─── */
 const STORES = [
-  { name: 'Albert Heijn', sub: 'Supermarktketen · Landelijk', count: '1.100+', lat: 52.373, lon: 4.892 },
-  { name: 'Jumbo', sub: 'Supermarktketen · Landelijk', count: '700+', lat: 51.921, lon: 4.470 },
-  { name: 'Spar', sub: 'Supermarktketen · Landelijk', count: '300+', lat: 52.631, lon: 4.749 },
-  { name: 'Plus Supermarkt', sub: 'Supermarktketen · Landelijk', count: '260+', lat: 52.090, lon: 5.121 },
-  { name: 'Kruidvat', sub: 'Drogisterij · Landelijk', count: '750+', lat: 52.070, lon: 4.310 },
-  { name: 'Trekpleister', sub: 'Drogisterij · Landelijk', count: '170+', lat: 51.437, lon: 5.478 },
-  { name: 'Gall & Gall', sub: 'Slijterijen · Landelijk', count: '580+', lat: 52.359, lon: 4.878 },
-  { name: 'Foodservice HoReCa', sub: 'HoReCa · Landelijk', count: '400+', lat: 50.851, lon: 5.691 },
-  { name: 'Decathlon', sub: 'Sport · Landelijk', count: '54+', lat: 52.311, lon: 4.950 },
-  { name: 'Intersport', sub: 'Sport · Landelijk', count: '60+', lat: 53.215, lon: 6.571 },
-  { name: 'de Tuinen', sub: 'Health · Landelijk', count: '120+', lat: 52.354, lon: 4.869 },
-  { name: 'Bol.com / Online', sub: 'E-commerce · Landelijk', count: 'Online', lat: 52.155, lon: 5.387 }
+  { name:'Albert Heijn',    sub:'Supermarktketen · Landelijk', count:'1.100+', lat:52.373, lon:4.892 },
+  { name:'Jumbo',           sub:'Supermarktketen · Landelijk', count:'700+',   lat:51.921, lon:4.470 },
+  { name:'Spar',            sub:'Supermarktketen · Landelijk', count:'300+',   lat:52.631, lon:4.749 },
+  { name:'Plus Supermarkt', sub:'Supermarktketen · Landelijk', count:'260+',   lat:52.090, lon:5.121 },
+  { name:'Kruidvat',        sub:'Drogisterij · Landelijk',     count:'750+',   lat:52.070, lon:4.310 },
+  { name:'Trekpleister',    sub:'Drogisterij · Landelijk',     count:'170+',   lat:51.437, lon:5.478 },
+  { name:'Gall & Gall',     sub:'Slijterijen · Landelijk',     count:'580+',   lat:52.359, lon:4.878 },
+  { name:'Foodservice HoReCa', sub:'HoReCa · Landelijk',       count:'400+',   lat:50.851, lon:5.691 },
+  { name:'Decathlon',       sub:'Sport · Landelijk',           count:'54+',    lat:52.311, lon:4.950 },
+  { name:'Intersport',      sub:'Sport · Landelijk',           count:'60+',    lat:53.215, lon:6.571 },
+  { name:'de Tuinen',       sub:'Health · Landelijk',          count:'120+',   lat:52.354, lon:4.869 },
+  { name:'Bol.com / Online',sub:'E-commerce · Landelijk',      count:'Online', lat:52.155, lon:5.387 }
 ];
 
 function initMap() {
   if (typeof L === 'undefined') { console.warn('Leaflet niet beschikbaar'); return; }
-
   function createGoldIcon() {
     return L.divIcon({
-      className: '',
-      html: `<div style="position:relative;width:14px;height:14px;border-radius:50% 50% 50% 0;background:linear-gradient(135deg,#f5e8a8 0%,#a89552 48%,#564821 100%);transform:rotate(-45deg);border:1px solid rgba(255,255,255,.58);box-shadow:0 0 11px rgba(168,149,82,.34),inset 0 1px 2px rgba(255,255,255,.62);"><span style="position:absolute;width:5px;height:5px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#050505;"></span></div>`,
-      iconSize: [18, 18],
-      iconAnchor: [9, 18],
-      popupAnchor: [0, -16]
+      className:'',
+      html:`<div style="position:relative;width:14px;height:14px;border-radius:50% 50% 50% 0;background:linear-gradient(135deg,#f5e8a8 0%,#a89552 48%,#564821 100%);transform:rotate(-45deg);border:1px solid rgba(255,255,255,.58);box-shadow:0 0 11px rgba(168,149,82,.34),inset 0 1px 2px rgba(255,255,255,.62);"><span style="position:absolute;width:5px;height:5px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#050505;"></span></div>`,
+      iconSize:[18,18], iconAnchor:[9,18], popupAnchor:[0,-16]
     });
   }
-
-  const map = L.map('storeMap', {
-    center: [52.18, 5.30],
-    zoom: 6.35,
-    zoomSnap: .25,
-    scrollWheelZoom: true,
-    zoomControl: true
-  });
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
-
+  const map = L.map('storeMap', { center:[52.18,5.30], zoom:6.35, zoomSnap:.25, scrollWheelZoom:true, zoomControl:true });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom:19 }).addTo(map);
   STORES.forEach(pin => {
     L.marker([pin.lat, pin.lon], { icon: createGoldIcon() })
       .bindPopup(`<div class="pop-name">${pin.name}</div><div class="pop-sub">${pin.sub}</div><div class="pop-count">${pin.count}</div><div class="pop-label">aangesloten locaties</div>`)
       .addTo(map);
   });
 }
-
 if (document.readyState === 'complete') { initMap(); } else { window.addEventListener('load', initMap); }
 
-/* REVEAL */
+/* ─── REVEAL ─── */
 const revIO = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('on'); revIO.unobserve(e.target); }
-  });
-}, { threshold: .1 });
-
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revIO.unobserve(e.target); } });
+}, { threshold:.1 });
 document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
 
-/* COUNT-UP */
+/* ─── COUNT-UP ─── */
 function countUp(el, target) {
-  const dur = 1900;
-  const t0 = performance.now();
+  const dur = 1900, t0 = performance.now();
   const go = now => {
     const p = Math.min((now - t0) / dur, 1);
     const eased = 1 - Math.pow(1 - p, 3);
@@ -719,16 +1008,12 @@ function countUp(el, target) {
   };
   requestAnimationFrame(go);
 }
-
 const statIO = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { countUp(e.target, +e.target.dataset.target); statIO.unobserve(e.target); }
-  });
-}, { threshold: .5 });
-
+  entries.forEach(e => { if (e.isIntersecting) { countUp(e.target, +e.target.dataset.target); statIO.unobserve(e.target); } });
+}, { threshold:.5 });
 document.querySelectorAll('.stat-n[data-target]').forEach(el => statIO.observe(el));
 
-/* FORM */
+/* ─── FORM ─── */
 document.getElementById('formBtn').addEventListener('click', function () {
   this.textContent = '✓ Aanvraag verstuurd';
   this.style.background = '#3dbf8a';
@@ -736,72 +1021,78 @@ document.getElementById('formBtn').addEventListener('click', function () {
   this.disabled = true;
 });
 
-/* ORBS */
+/* ─── ORBS ─── */
 window.addEventListener('mousemove', e => {
-  const x = (e.clientX / window.innerWidth - .5) * 18;
-  const y = (e.clientY / window.innerHeight - .5) * 18;
+  const x = (e.clientX / innerWidth  - .5) * 18;
+  const y = (e.clientY / innerHeight - .5) * 18;
   document.querySelector('.orb-a').style.transform = `translate(${x * 1.1}px,${y * 1.1}px)`;
   document.querySelector('.orb-b').style.transform = `translate(${-x * .7}px,${-y * .7}px)`;
 }, { passive: true });
 
-/* PRODUCT SHOWCASE ENGINE */
+/* ─── PRODUCT SHOWCASE ENGINE ─── */
 function initProductShowcase(section) {
-  const PANELS = section.querySelectorAll('.product-panel').length;
-  const wrapper = section.querySelector('.product-scroll-wrapper');
-  const can = section.querySelector('.product-can-wrap');
-  const progBar = section.querySelector('.product-progress');
-  const dotsWrap = section.querySelector('.product-dots');
-  const reverse = section.dataset.reverse === 'true';
+  const panels     = [...section.querySelectorAll('.product-panel')];
+  const PANELS     = panels.length;
+  const wrapper    = section.querySelector('.product-scroll-wrapper');
+  const can        = section.querySelector('.product-can-wrap');
+  const progBar    = section.querySelector('.product-progress');
+  const dotsWrap   = section.querySelector('.product-dots');
+  const reverse    = section.dataset.reverse === 'true';
 
+  /* dots */
   for (let i = 0; i < PANELS; i++) {
     const d = document.createElement('div');
     d.className = 'product-dot' + (i === 0 ? ' active' : '');
     dotsWrap.appendChild(d);
   }
-
   const dots = [...dotsWrap.querySelectorAll('.product-dot')];
 
   const statesNormal = [
     { x: 18,  y: 0,  r: -4, s: 1.00 },
-    { x: -18, y: 4,  r: 8,  s: .92 },
-    { x: 18,  y: -2, r: -8, s: .95 },
-    { x: 0,   y: 2,  r: 0,  s: 1.04 }
+    { x:-18,  y: 4,  r:  8, s:  .92 },
+    { x: 18,  y:-2,  r: -8, s:  .95 },
+    { x:  0,  y: 2,  r:  0, s: 1.04 },
+    { x:  0,  y:-6,  r:  4, s:  .88 }
   ];
-
   const statesReverse = [
-    { x: -20, y: 0,  r: 4,  s: .92 },
-    { x: 16,  y: 4,  r: -7, s: .84 },
-    { x: -18, y: -2, r: 7,  s: .86 },
-    { x: 0,   y: 2,  r: 0,  s: .98 }
+    { x:-20,  y: 0,  r:  4, s:  .92 },
+    { x: 16,  y: 4,  r: -7, s:  .84 },
+    { x:-18,  y:-2,  r:  7, s:  .86 },
+    { x:  0,  y: 2,  r:  0, s:  .98 },
+    { x:-16,  y:-4,  r: -4, s:  .82 },
+    { x: 14,  y: 3,  r:  5, s:  .80 },
+    { x:  0,  y:-5,  r:  0, s:  .78 }
   ];
-
   const states = reverse ? statesReverse : statesNormal;
 
-  let mouseX = 0;
-  let mouseY = 0;
-  let cs = { x: 0, y: 0, r: 0, s: 1 };
+  /* Voeg extra neutrale states toe als er meer panels zijn dan states */
+  while (states.length < PANELS) {
+    states.push({ x: 0, y: 0, r: 0, s: 1 });
+  }
+
+  let mouseX = 0, mouseY = 0;
+  let cs = { x:0, y:0, r:0, s:1 };
   let activePanel = 0;
 
   document.addEventListener('mousemove', e => {
-    mouseX = (e.clientX / innerWidth - .5) * 2;
+    mouseX = (e.clientX / innerWidth  - .5) * 2;
     mouseY = (e.clientY / innerHeight - .5) * 2;
   });
 
   function lerp(a, b, t) { return a + (b - a) * t; }
-  function smooth(t) { return t * t * (3 - 2 * t); }
+  function smooth(t)      { return t * t * (3 - 2 * t); }
 
   function getT() {
-    const rect = wrapper.getBoundingClientRect();
+    const rect  = wrapper.getBoundingClientRect();
     const total = wrapper.offsetHeight - innerHeight;
     return total > 0 ? Math.max(0, Math.min(1, -rect.top / total)) : 0;
   }
 
   function interpState(t) {
     const raw = t * (states.length - 1);
-    const i = Math.min(Math.floor(raw), states.length - 2);
+    const i   = Math.min(Math.floor(raw), states.length - 2);
     const loc = smooth(raw - i);
-    const a = states[i];
-    const b = states[i + 1];
+    const a   = states[i], b = states[i + 1];
     return {
       x: lerp(a.x, b.x, loc),
       y: lerp(a.y, b.y, loc),
@@ -810,29 +1101,40 @@ function initProductShowcase(section) {
     };
   }
 
+  /* Welk panel hoort bij t?
+     Gebruik Math.round i.p.v. floor zodat halverwege twee panels
+     netjes naar het dichtstbijzijnde panel springt — zo sla je
+     nooit een panel over bij een grote scroll-sprong. */
+  function panelForT(t) {
+    return Math.min(Math.round(t * (PANELS - 1)), PANELS - 1);
+  }
+
   function setPanel(idx) {
     if (idx === activePanel) return;
     activePanel = idx;
-    section.querySelectorAll('.product-panel').forEach((p, i) => {
-      p.classList.toggle('product-active', i === idx);
-    });
-    dots.forEach((d, i) => { d.classList.toggle('active', i === idx); });
-    can.classList.toggle('blurred', idx === 3);
+    panels.forEach((p, i) => p.classList.toggle('product-active', i === idx));
+    dots.forEach((d, i)   => d.classList.toggle('active', i === idx));
+    /* blurred alleen op center-statement panels */
+    can.classList.toggle('blurred', panels[idx] && panels[idx].classList.contains('product-center'));
   }
 
   function tick() {
     requestAnimationFrame(tick);
-    const t = getT();
+    const t      = getT();
     const target = interpState(t);
+
     cs.x = lerp(cs.x, target.x, .06);
     cs.y = lerp(cs.y, target.y, .06);
     cs.r = lerp(cs.r, target.r, .06);
     cs.s = lerp(cs.s, target.s, .06);
+
     const mx2 = mouseX * 0.45;
     const my2 = mouseY * 0.38;
+
     can.style.transform = `translate(calc(-50% + ${cs.x + mx2}vw),calc(-50% + ${cs.y + my2}vh)) rotate(${cs.r + mouseX * 0.6}deg) scale(${cs.s})`;
     progBar.style.width = (t * 100) + '%';
-    setPanel(Math.min(Math.floor(t * PANELS), PANELS - 1));
+
+    setPanel(panelForT(t));
   }
 
   tick();
