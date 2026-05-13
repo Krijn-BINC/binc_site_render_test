@@ -175,17 +175,20 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 
 /* Results panel: can is blurred but text is NOT */
 .product-can-wrap.results-bg{
-  opacity:.22;
-  filter:blur(18px) drop-shadow(0 0 80px var(--brand-soft));
-  width:min(40vw,460px)!important;
-  z-index:5; /* behind the text panel which is z-index:30 */
+  opacity:.28;
+  filter:blur(6px) drop-shadow(0 0 60px var(--brand-soft));
+  width:min(28vw,320px)!important;
+  z-index:25;
 }
 .product-showcase.feelsogood .product-can-wrap.results-bg{width:min(34vw,390px)!important}
 .product-showcase.cleannutrition .product-can-wrap.results-bg{width:min(46vw,520px)!important}
 .product-showcase.beatbox .product-can-wrap.results-bg{width:min(38vw,440px)!important}
 
 /* Quote panel: can blurred */
-.product-can-wrap.blurred{filter:blur(14px);opacity:.22;transform:scale(1.04)}
+.product-can-wrap.blurred{
+  filter:blur(8px);
+  opacity:.38;
+}
 
 .product-panels{position:absolute;inset:0;pointer-events:none}
 .product-panel{position:absolute;inset:0;display:flex;align-items:center;padding:0 6vw;opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;pointer-events:none}
@@ -964,20 +967,20 @@ function initProductShowcase(section) {
     Normal (data-start="right"): can starts right side
     Reverse: can starts left side
   */
-  const statesNormal = [
-  { x: 22, y: 0, r: -4, s: 1.00 },   // panel 0 — start rechts
-  { x: 12, y: 2, r: 4,  s: .92 },    // panel 1 — klein beetje naar links + kleiner
-  { x: 22, y: 0, r: -5, s: .96 },    // panel 2 — terug naar startpositie rechts
-  { x: 10, y: 0, r: 0,  s: 1.02 },   // panel 3 — begint richting midden + blur
-  { x: 0,  y: 0, r: 0,  s: .55 },    // panel 4 — eindigt midden achter cijfers
+const statesNormal = [
+  { x: 26, y: 0, r: -4, s: 1.00 },   // panel 0 — iets meer rechts
+  { x: 18, y: 2, r: 3,  s: .94 },    // panel 1 — subtiel kleiner + klein beetje naar links
+  { x: 26, y: 0, r: -4, s: .97 },    // panel 2 — terug naar positie 0
+  { x: 14, y: 0, r: 0,  s: .92 },    // panel 3 — niet te groot, alvast richting midden
+  { x: 0,  y: 0, r: 0,  s: .82 },    // panel 4 — midden, maar niet extreem klein
 ];
 
 const statesReverse = [
-  { x: -22, y: 0, r: 4,  s: 1.00 },  // panel 0 — start links
-  { x: -12, y: 2, r: -4, s: .92 },   // panel 1 — klein beetje naar rechts + kleiner
-  { x: -22, y: 0, r: 5,  s: .96 },   // panel 2 — terug naar startpositie links
-  { x: -10, y: 0, r: 0,  s: 1.02 },  // panel 3 — begint richting midden + blur
-  { x: 0,   y: 0, r: 0,  s: .55 },   // panel 4 — eindigt midden achter cijfers
+  { x: -26, y: 0, r: 4,  s: 1.00 },  // panel 0 — iets meer links
+  { x: -18, y: 2, r: -3, s: .94 },   // panel 1 — subtiel kleiner + klein beetje naar rechts
+  { x: -26, y: 0, r: 4,  s: .97 },   // panel 2 — terug naar positie 0
+  { x: -14, y: 0, r: 0,  s: .92 },   // panel 3 — niet te groot, alvast richting midden
+  { x: 0,   y: 0, r: 0,  s: .82 },   // panel 4 — midden, maar niet extreem klein
 ];
   const states = reverse ? statesReverse : statesNormal;
 
@@ -1030,8 +1033,8 @@ const statesReverse = [
       quote (idx 3): can gets blurred class (standard blur)
       others: clean
     */
-    can.classList.toggle('results-bg', isResults);
-    can.classList.toggle('blurred',    isQuote);
+ can.classList.toggle('blurred', idx === 3 || idx === 4);
+can.classList.toggle('results-bg', isResults);
   }
 
   function tick() {
