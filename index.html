@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>GOLD DRY — Stay Dry. Stay Gold.</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
+
 :root{
   --black:#070707;
   --white:#f2f0ea;
   --gold:#c9a84c;
   --gold-light:#e8c46a;
-  --gold-dark:#9a7a2a;
   --display:'Bebas Neue',sans-serif;
   --mono:'DM Mono',monospace;
 }
-html{scroll-behavior:smooth;}
+
+html{scroll-behavior:smooth}
+
 body{
   background:var(--black);
   color:var(--white);
@@ -26,227 +30,377 @@ body{
   cursor:crosshair;
 }
 
-/* ── LOADER ── */
-#loader{
-  position:fixed;inset:0;background:var(--black);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  z-index:999;transition:opacity 0.9s ease;
+/* BACKGROUND */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 65% 45%, rgba(201,168,76,.12), transparent 34%),
+    radial-gradient(circle at 50% 80%, rgba(201,168,76,.08), transparent 30%),
+    #070707;
 }
-#loader .logo{font-family:var(--display);font-size:52px;letter-spacing:0.22em;color:var(--gold);margin-bottom:36px;}
-.loader-bar{width:180px;height:1px;background:rgba(201,168,76,0.18);position:relative;overflow:hidden;}
-.loader-fill{position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:loadbar 1.6s cubic-bezier(.77,0,.18,1) forwards;}
-@keyframes loadbar{to{left:0}}
 
-/* ── PROGRESS ── */
-#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));z-index:200;width:0%;transition:width 0.1s;}
+.bg::before,
+.bg::after{
+  content:"";
+  position:absolute;
+  border:1px solid rgba(201,168,76,.12);
+  border-radius:50%;
+  width:520px;
+  height:520px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
 
-/* ── NAV ── */
+.bg::after{
+  width:760px;
+  height:760px;
+  opacity:.45;
+}
+
+/* PROGRESS */
+#progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:2px;
+  width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  z-index:300;
+}
+
+/* NAV */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:26px 52px;
-  background:linear-gradient(180deg,rgba(7,7,7,0.9) 0%,transparent 100%);
-}
-.nav-logo{font-family:var(--display);font-size:26px;letter-spacing:0.16em;color:var(--white);text-decoration:none;}
-.nav-links{display:flex;gap:40px;list-style:none;}
-.nav-links a{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--white);text-decoration:none;opacity:0.5;transition:opacity 0.2s;}
-.nav-links a:hover{opacity:1;}
-
-/* ── SCROLL HINT ── */
-.scroll-hint{
-  position:fixed;bottom:36px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
-  opacity:0.4;color:var(--white);z-index:50;transition:opacity 0.5s;pointer-events:none;
-}
-.scroll-line{width:1px;height:40px;background:var(--gold);animation:scrollpulse 1.9s ease-in-out infinite;}
-@keyframes scrollpulse{0%,100%{transform:scaleY(1);opacity:0.4}50%{transform:scaleY(0.35);opacity:1}}
-
-/* ── AMBIENT BG GLOW ── */
-.bg-glow{
-  position:fixed;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse 60% 55% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
-  transition:opacity 1s;
-}
-
-/* ── HERO SECTION ── */
-.hero{
-  min-height:100vh;display:grid;
-  grid-template-columns:1fr 1fr;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:200;
+  display:flex;
+  justify-content:space-between;
   align-items:center;
-  padding:0 52px;
-  position:relative;z-index:10;
-  gap:40px;
+  padding:26px 52px;
+  background:linear-gradient(180deg,rgba(7,7,7,.85),transparent);
 }
-.hero-text{max-width:440px;}
-.eyebrow{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);opacity:0.75;margin-bottom:22px;display:block;}
-.hero-title{
+
+.nav-logo{
   font-family:var(--display);
-  font-size:clamp(80px,10vw,140px);
-  line-height:0.88;
-  letter-spacing:0.04em;
+  font-size:28px;
+  letter-spacing:.16em;
   color:var(--white);
-  margin-bottom:30px;
-}
-.hero-title .gold{color:var(--gold);}
-.hero-sub{font-size:13px;line-height:1.95;opacity:0.4;font-style:italic;max-width:300px;margin-bottom:44px;}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:15px 36px;background:var(--gold);color:var(--black);
-  font-family:var(--mono);font-size:10px;font-weight:500;
-  letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;
-  transition:background 0.2s,transform 0.15s;cursor:crosshair;
-}
-.btn-primary:hover{background:var(--gold-light);transform:translate(-3px,-3px);}
-
-/* ── CAN STAGE ── */
-.can-stage{
-  display:flex;justify-content:center;align-items:center;
-  position:relative;height:80vh;
+  text-decoration:none;
 }
 
-/* Halo rings */
-.can-stage::before,
-.can-stage::after{
-  content:'';position:absolute;border-radius:50%;
-  border:1px solid rgba(201,168,76,0.12);
-  animation:ringpulse 4s ease-in-out infinite;
-}
-.can-stage::before{width:340px;height:340px;animation-delay:0s;}
-.can-stage::after{width:520px;height:520px;animation-delay:1.4s;border-color:rgba(201,168,76,0.06);}
-@keyframes ringpulse{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(1.04);opacity:1}}
-
-.can-wrap{
-  position:relative;
-  transform-style:preserve-3d;
-  transition:transform 0.08s ease;
-  /* subtle levitation */
-  animation:levitate 4.5s ease-in-out infinite;
-}
-@keyframes levitate{
-  0%,100%{transform:translateY(0px) rotate3d(0,1,0,0deg);}
-  50%{transform:translateY(-14px) rotate3d(0,1,0,0deg);}
+.nav-links{
+  display:flex;
+  gap:38px;
+  list-style:none;
 }
 
-.can-wrap.mouse-active{animation:none;}
+.nav-links a{
+  color:var(--white);
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing:.24em;
+  opacity:.45;
+}
 
-.can-img{
-  width:auto;
-  height:clamp(380px,50vh,560px);
+.nav-links a:hover{opacity:1}
+
+/* FIXED CAN */
+.can-fixed{
+  position:fixed;
+  top:50%;
+  left:50%;
+  width:min(34vw,380px);
+  max-height:72vh;
+  transform:translate(-50%,-50%);
+  z-index:20;
+  pointer-events:none;
+  will-change:transform,filter,opacity;
+}
+
+.can-fixed img{
+  width:100%;
+  height:auto;
   display:block;
   filter:
-    drop-shadow(0 30px 60px rgba(0,0,0,0.8))
-    drop-shadow(0 0 40px rgba(201,168,76,0.18))
-    drop-shadow(-6px 0 20px rgba(201,168,76,0.08));
-  transition:filter 0.4s ease;
-}
-.can-wrap:hover .can-img{
-  filter:
-    drop-shadow(0 30px 60px rgba(0,0,0,0.9))
-    drop-shadow(0 0 60px rgba(201,168,76,0.32))
-    drop-shadow(-8px 0 28px rgba(201,168,76,0.15));
+    drop-shadow(0 40px 70px rgba(0,0,0,.9))
+    drop-shadow(0 0 44px rgba(201,168,76,.24));
 }
 
-/* Reflection under can */
-.can-reflection{
-  position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);
-  width:70%;height:60px;
-  background:linear-gradient(180deg,rgba(201,168,76,0.12) 0%,transparent 100%);
-  filter:blur(10px);
-  border-radius:50%;
+.can-glow{
+  position:absolute;
+  inset:18% 4%;
+  background:radial-gradient(circle,rgba(201,168,76,.22),transparent 64%);
+  filter:blur(32px);
+  z-index:-1;
+}
+
+/* SECTIONS */
+main{
+  position:relative;
+  z-index:50;
+}
+
+.panel{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:0 52px;
+  position:relative;
+}
+
+.left{justify-content:flex-start}
+.right{justify-content:flex-end}
+.center{justify-content:center;text-align:center}
+
+.content{
+  max-width:470px;
+  position:relative;
+  z-index:60;
+}
+
+.eyebrow,
+.section-tag{
+  display:block;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.29em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+  opacity:.75;
+}
+
+.hero-title,
+.section-title,
+.statement,
+.cta-title{
+  font-family:var(--display);
+  letter-spacing:.055em;
+  line-height:.9;
+}
+
+.hero-title{
+  font-size:clamp(80px,10vw,142px);
+  margin-bottom:30px;
+}
+
+.gold{color:var(--gold)}
+
+.text{
+  font-size:13px;
+  line-height:1.95;
+  opacity:.45;
+  font-style:italic;
+  max-width:340px;
+}
+
+.btn{
+  margin-top:42px;
+  display:inline-flex;
+  padding:16px 38px;
+  background:var(--gold);
+  color:var(--black);
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing:.24em;
+  font-weight:500;
+  transition:.2s;
+}
+
+.btn:hover{
+  background:var(--gold-light);
+  transform:translate(-3px,-3px);
+}
+
+.section-num{
+  display:block;
+  font-family:var(--display);
+  font-size:130px;
+  line-height:1;
+  color:var(--gold);
+  opacity:.07;
+  margin-bottom:-32px;
+}
+
+.section-title{
+  font-size:clamp(56px,7vw,92px);
+  margin-bottom:26px;
+}
+
+.line{
+  width:54px;
+  height:1px;
+  background:var(--gold);
+  opacity:.45;
+  margin:0 0 28px;
+}
+
+.statement{
+  max-width:900px;
+  font-size:clamp(52px,8vw,104px);
+  line-height:1.03;
+}
+
+.statement em{
+  color:var(--gold);
+  font-style:normal;
+}
+
+.cta{
+  flex-direction:column;
+  gap:28px;
+}
+
+.cta-title{
+  font-size:clamp(72px,10vw,128px);
+}
+
+.cta-sub{
+  font-size:12px;
+  opacity:.35;
+  font-style:italic;
+  letter-spacing:.12em;
+}
+
+.btn-outline{
+  display:inline-flex;
+  padding:18px 52px;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing:.24em;
+  transition:.2s;
+}
+
+.btn-outline:hover{
+  background:var(--gold);
+  color:var(--black);
+}
+
+/* MARQUEE */
+.marquee{
+  position:relative;
+  z-index:70;
+  overflow:hidden;
+  border-top:1px solid rgba(201,168,76,.15);
+  border-bottom:1px solid rgba(201,168,76,.15);
+  padding:13px 0;
+}
+
+.track{
+  display:flex;
+  width:max-content;
+  animation:marquee 22s linear infinite;
+}
+
+.track span{
+  font-family:var(--display);
+  color:var(--gold);
+  font-size:16px;
+  letter-spacing:.16em;
+  padding:0 40px;
+  opacity:.6;
+  white-space:nowrap;
+}
+
+@keyframes marquee{
+  to{transform:translateX(-50%)}
+}
+
+/* FOOTER */
+footer{
+  position:relative;
+  z-index:80;
+  display:flex;
+  justify-content:space-between;
+  padding:32px 52px;
+  border-top:1px solid rgba(201,168,76,.12);
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  opacity:.3;
+}
+
+/* SCROLL HINT */
+.scroll-hint{
+  position:fixed;
+  bottom:34px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:100;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  opacity:.4;
   pointer-events:none;
 }
 
-/* ── MARQUEE ── */
-.marquee-band{
-  width:100%;overflow:hidden;
-  border-top:1px solid rgba(201,168,76,0.15);
-  border-bottom:1px solid rgba(201,168,76,0.15);
-  padding:13px 0;position:relative;z-index:10;
-}
-.marquee-track{display:flex;width:max-content;animation:marquee 22s linear infinite;}
-.marquee-item{font-family:var(--display);font-size:15px;letter-spacing:0.16em;color:var(--gold);padding:0 40px;white-space:nowrap;opacity:0.55;}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ── CONTENT SECTIONS ── */
-.section{min-height:100vh;display:flex;align-items:center;position:relative;z-index:10;padding:0 52px;}
-.section-right{justify-content:flex-end;}
-.section-left{justify-content:flex-start;}
-.section-center{justify-content:center;text-align:center;}
-
-.section-content{max-width:500px;}
-.section-num{font-family:var(--display);font-size:130px;color:var(--gold);opacity:0.06;line-height:1;margin-bottom:-28px;display:block;user-select:none;}
-.section-tag{font-size:10px;letter-spacing:0.27em;text-transform:uppercase;color:var(--gold);opacity:0.65;margin-bottom:18px;display:block;}
-.section-title{font-family:var(--display);font-size:clamp(52px,6.5vw,86px);line-height:0.93;letter-spacing:0.05em;margin-bottom:26px;}
-.section-body{font-size:13px;line-height:1.95;opacity:0.42;font-style:italic;}
-
-/* ── STATEMENT ── */
-.statement-big{
-  font-family:var(--display);
-  font-size:clamp(48px,7vw,96px);
-  line-height:1.02;letter-spacing:0.05em;
-  max-width:900px;position:relative;z-index:2;
-}
-.statement-big em{color:var(--gold);font-style:normal;}
-
-/* ── CTA ── */
-.cta-section{
-  min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;gap:28px;
-  position:relative;z-index:10;padding:0 52px;
-}
-.cta-big{font-family:var(--display);font-size:clamp(68px,10vw,128px);line-height:0.88;letter-spacing:0.06em;}
-.cta-big .gold{color:var(--gold);}
-.cta-sub{font-size:12px;opacity:0.3;letter-spacing:0.14em;font-style:italic;}
-.btn-outline{
-  display:inline-flex;align-items:center;gap:12px;
-  padding:18px 52px;border:1px solid var(--gold);color:var(--gold);
-  font-family:var(--mono);font-size:10px;font-weight:500;
-  letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;
-  transition:background 0.2s,color 0.2s;cursor:crosshair;
-}
-.btn-outline:hover{background:var(--gold);color:var(--black);}
-
-/* ── FOOTER ── */
-footer{
-  padding:32px 52px;
-  border-top:1px solid rgba(201,168,76,0.1);
-  display:flex;justify-content:space-between;
-  font-size:10px;letter-spacing:0.16em;text-transform:uppercase;opacity:0.28;
-  position:relative;z-index:10;
+.scroll-line{
+  width:1px;
+  height:40px;
+  background:var(--gold);
+  animation:pulse 1.8s ease-in-out infinite;
 }
 
-/* ── REVEAL ANIMATIONS ── */
-[data-anim]{opacity:0;transform:translateY(32px);transition:opacity 0.9s ease,transform 0.9s ease;}
-[data-anim].visible{opacity:1;transform:translateY(0);}
-[data-anim][data-delay="1"]{transition-delay:0.1s;}
-[data-anim][data-delay="2"]{transition-delay:0.2s;}
-[data-anim][data-delay="3"]{transition-delay:0.3s;}
+@keyframes pulse{
+  0%,100%{transform:scaleY(1);opacity:.35}
+  50%{transform:scaleY(.4);opacity:1}
+}
 
-/* ── DIVIDER LINE ── */
-.gold-line{width:48px;height:1px;background:var(--gold);opacity:0.4;margin:28px 0;}
+/* REVEAL */
+[data-reveal]{
+  opacity:0;
+  transform:translateY(34px);
+  transition:.9s ease;
+}
 
+[data-reveal].visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;padding:100px 24px 60px;text-align:center;}
-  .hero-text{max-width:100%;}
-  .hero-sub{max-width:100%;}
-  .can-stage{height:55vh;}
-  nav{padding:20px 24px;} .nav-links{display:none;}
-  .section{padding:0 24px;}
-  .section-right{justify-content:flex-start;}
-  footer{flex-direction:column;gap:10px;}
+  nav{padding:22px 24px}
+  .nav-links{display:none}
+
+  .panel{
+    padding:0 24px;
+    align-items:flex-start;
+    padding-top:130px;
+  }
+
+  .right{justify-content:flex-start}
+
+  .can-fixed{
+    width:54vw;
+    top:63%;
+    opacity:.55;
+  }
+
+  .hero-title{font-size:82px}
+  footer{flex-direction:column;gap:10px;padding:28px 24px}
 }
 </style>
 </head>
+
 <body>
 
-<div id="loader">
-  <div class="logo">GOLD DRY</div>
-  <div class="loader-bar"><div class="loader-fill"></div></div>
-</div>
-
 <div id="progress"></div>
-<div class="bg-glow" id="bg-glow"></div>
+<div class="bg"></div>
 
 <nav>
   <a href="#" class="nav-logo">GOLD DRY</a>
@@ -257,76 +411,78 @@ footer{
   </ul>
 </nav>
 
-<div class="scroll-hint" id="scroll-hint">
+<div class="scroll-hint" id="scrollHint">
   <span>scroll</span>
   <div class="scroll-line"></div>
 </div>
 
-<!-- ═══ HERO ═══ -->
-<section class="hero">
-  <div class="hero-text" data-anim>
-    <span class="eyebrow">— Premix 250ml · Alc. 5.5% Vol · Est. 2024</span>
-    <h1 class="hero-title">STAY<br><span class="gold">DRY.</span><br>STAY<br>GOLD.</h1>
-    <p class="hero-sub">Geen suiker. Geen compromissen.<br>Alleen de pure, droge smaak die je de hele nacht bijhoudt.</p>
-    <a href="#koop" class="btn-primary">Bestel nu →</a>
-  </div>
-
-  <div class="can-stage" id="can-stage">
-    <div class="can-wrap" id="can-wrap">
-      <img
-        class="can-img"
-        id="can-img"
-        src="images/golddry_pre_original.png"
-        alt="Gold Dry — Original & Vodka Premix Can"
-      />
-      <div class="can-reflection"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ MARQUEE ═══ -->
-<div class="marquee-band">
-  <div class="marquee-track">
-    <span class="marquee-item">GOLD DRY ✦</span><span class="marquee-item">STAY GOLD ✦</span><span class="marquee-item">250ML PREMIX ✦</span><span class="marquee-item">ZERO SUGAR ✦</span><span class="marquee-item">ORIGINAL & VODKA ✦</span><span class="marquee-item">ALC. 5.5% ✦</span><span class="marquee-item">DRY · BOLD · PURE ✦</span>
-    <span class="marquee-item">GOLD DRY ✦</span><span class="marquee-item">STAY GOLD ✦</span><span class="marquee-item">250ML PREMIX ✦</span><span class="marquee-item">ZERO SUGAR ✦</span><span class="marquee-item">ORIGINAL & VODKA ✦</span><span class="marquee-item">ALC. 5.5% ✦</span><span class="marquee-item">DRY · BOLD · PURE ✦</span>
-  </div>
+<div class="can-fixed" id="can">
+  <div class="can-glow"></div>
+  <img src="images/golddry_pre_original.png" alt="Gold Dry Original & Vodka Premix Can">
 </div>
 
-<!-- ═══ SMAAK ═══ -->
-<section class="section section-right" id="smaak">
-  <div class="section-content" data-anim>
-    <span class="section-num">01</span>
-    <span class="section-tag">✦ Smaak</span>
-    <h2 class="section-title">DRY<br>FINISH.</h2>
-    <div class="gold-line"></div>
-    <p class="section-body">Geen suikerachtige nasmaak. Een scherpe, droge afdronk die vraagt om meer — maar nooit te veel geeft. Gold Dry is gemaakt voor mensen die weten wat ze drinken.</p>
-  </div>
-</section>
+<main>
 
-<!-- ═══ FORMULE ═══ -->
-<section class="section section-left" id="formule">
-  <div class="section-content" data-anim>
-    <span class="section-num">02</span>
-    <span class="section-tag">✦ Formule</span>
-    <h2 class="section-title">ZERO<br>SUGAR.</h2>
-    <div class="gold-line"></div>
-    <p class="section-body">Klaar voor de nacht zonder de ochtend te vrezen. Volledig suikervrij, zonder in te leveren op smaak of karakter. Original & Vodka — in een perfect uitgebalanceerde premix van 250ml.</p>
-  </div>
-</section>
+  <section class="panel left">
+    <div class="content" data-reveal>
+      <span class="eyebrow">— Premix 250ml · Alc. 5.5% Vol · Est. 2024</span>
+      <h1 class="hero-title">
+        STAY<br>
+        <span class="gold">DRY.</span><br>
+        STAY<br>
+        GOLD.
+      </h1>
+      <p class="text">Geen suiker. Geen compromissen.<br>Alleen de pure, droge smaak die je de hele nacht bijhoudt.</p>
+      <a href="#koop" class="btn">Bestel nu →</a>
+    </div>
+  </section>
 
-<!-- ═══ STATEMENT ═══ -->
-<section class="section section-center">
-  <div class="statement-big" data-anim>
-    Niet voor iedereen.<br><em>Voor degenen</em><br>die weten wat ze willen.
+  <div class="marquee">
+    <div class="track">
+      <span>GOLD DRY ✦</span><span>STAY GOLD ✦</span><span>250ML PREMIX ✦</span><span>ZERO SUGAR ✦</span><span>ORIGINAL & VODKA ✦</span><span>ALC. 5.5% ✦</span>
+      <span>GOLD DRY ✦</span><span>STAY GOLD ✦</span><span>250ML PREMIX ✦</span><span>ZERO SUGAR ✦</span><span>ORIGINAL & VODKA ✦</span><span>ALC. 5.5% ✦</span>
+    </div>
   </div>
-</section>
 
-<!-- ═══ CTA ═══ -->
-<section class="cta-section" id="koop">
-  <h2 class="cta-big" data-anim>KLAAR<br>VOOR<br><span class="gold">GOUD?</span></h2>
-  <p class="cta-sub" data-anim data-delay="1">Geleverd binnen 2–3 werkdagen · Gratis verzending vanaf 24 blikjes</p>
-  <a href="#" class="btn-outline" data-anim data-delay="2">Bestel Gold Dry →</a>
-</section>
+  <section class="panel right" id="smaak">
+    <div class="content" data-reveal>
+      <span class="section-num">01</span>
+      <span class="section-tag">✦ Smaak</span>
+      <h2 class="section-title">DRY<br>FINISH.</h2>
+      <div class="line"></div>
+      <p class="text">Geen suikerachtige nasmaak. Een scherpe, droge afdronk die vraagt om meer — maar nooit te veel geeft. Gold Dry is gemaakt voor mensen die weten wat ze drinken.</p>
+    </div>
+  </section>
+
+  <section class="panel left" id="formule">
+    <div class="content" data-reveal>
+      <span class="section-num">02</span>
+      <span class="section-tag">✦ Formule</span>
+      <h2 class="section-title">ZERO<br>SUGAR.</h2>
+      <div class="line"></div>
+      <p class="text">Klaar voor de nacht zonder de ochtend te vrezen. Volledig suikervrij, zonder in te leveren op smaak of karakter. Original & Vodka — perfect uitgebalanceerd in 250ml.</p>
+    </div>
+  </section>
+
+  <section class="panel center">
+    <div class="statement" data-reveal>
+      Niet voor iedereen.<br>
+      <em>Voor degenen</em><br>
+      die weten wat ze willen.
+    </div>
+  </section>
+
+  <section class="panel center cta" id="koop">
+    <h2 class="cta-title" data-reveal>
+      KLAAR<br>
+      VOOR<br>
+      <span class="gold">GOUD?</span>
+    </h2>
+    <p class="cta-sub" data-reveal>Geleverd binnen 2–3 werkdagen · Gratis verzending vanaf 24 blikjes</p>
+    <a href="#" class="btn-outline" data-reveal>Bestel Gold Dry →</a>
+  </section>
+
+</main>
 
 <footer>
   <span>© 2024 Gold Dry</span>
@@ -336,83 +492,99 @@ footer{
 
 <script>
 (function(){
-  // ── LOADER ──
-  setTimeout(()=>{
-    const l=document.getElementById('loader');
-    l.style.opacity='0';
-    setTimeout(()=>l.style.display='none',900);
-  },1600);
 
-  // ── PROGRESS BAR ──
-  const pb=document.getElementById('progress');
-  const sh=document.getElementById('scroll-hint');
+const can = document.getElementById("can");
+const progress = document.getElementById("progress");
+const scrollHint = document.getElementById("scrollHint");
 
-  window.addEventListener('scroll',()=>{
-    const m=document.body.scrollHeight-innerHeight;
-    const t=m>0?Math.max(0,Math.min(1,scrollY/m)):0;
-    pb.style.width=(t*100)+'%';
-    sh.style.opacity=t>0.04?'0':'0.4';
-  },{passive:true});
+let current = {
+  x: 0,
+  y: 0,
+  r: 0,
+  s: 1
+};
 
-  // ── CAN 3D MOUSE TILT ──
-  const wrap=document.getElementById('can-wrap');
-  const stage=document.getElementById('can-stage');
-  let mx=0,my=0,cx=0,cy=0,active=false,raf=null;
+let mouseX = 0;
+let mouseY = 0;
 
-  document.addEventListener('mousemove',e=>{
-    const r=stage.getBoundingClientRect();
-    // Only tilt when mouse is in viewport, not just over stage
-    mx=((e.clientX-r.left)/r.width-0.5)*2;
-    my=((e.clientY-r.top)/r.height-0.5)*2;
+const states = [
+  { x: 22,  y: 0,   r: -4,  s: 1.00 },
+  { x: -25, y: 4,   r: 8,   s: .92 },
+  { x: 24,  y: -2,  r: -10, s: .96 },
+  { x: 0,   y: 2,   r: 0,   s: 1.08 },
+  { x: 0,   y: -6,  r: 5,   s: .9 }
+];
 
-    if(!active){
-      active=true;
-      wrap.classList.add('mouse-active');
-    }
+function lerp(a,b,t){
+  return a + (b - a) * t;
+}
+
+function smoothstep(t){
+  return t * t * (3 - 2 * t);
+}
+
+function getProgress(){
+  const max = document.body.scrollHeight - innerHeight;
+  return max > 0 ? scrollY / max : 0;
+}
+
+function getState(t){
+  const sectionCount = states.length;
+  const raw = t * (sectionCount - 1);
+  const i = Math.min(Math.floor(raw), sectionCount - 2);
+  const local = smoothstep(raw - i);
+
+  const a = states[i];
+  const b = states[i + 1];
+
+  return {
+    x: lerp(a.x,b.x,local),
+    y: lerp(a.y,b.y,local),
+    r: lerp(a.r,b.r,local),
+    s: lerp(a.s,b.s,local)
+  };
+}
+
+document.addEventListener("mousemove", e => {
+  mouseX = (e.clientX / innerWidth - .5) * 2;
+  mouseY = (e.clientY / innerHeight - .5) * 2;
+});
+
+function animate(){
+  requestAnimationFrame(animate);
+
+  const p = getProgress();
+  const target = getState(p);
+
+  current.x = lerp(current.x, target.x, .065);
+  current.y = lerp(current.y, target.y, .065);
+  current.r = lerp(current.r, target.r, .065);
+  current.s = lerp(current.s, target.s, .065);
+
+  const mx = mouseX * 2.2;
+  const my = mouseY * 1.8;
+
+  can.style.transform =
+    `translate(calc(-50% + ${current.x + mx}vw), calc(-50% + ${current.y + my}vh))
+     rotate(${current.r + mouseX * 3}deg)
+     scale(${current.s})`;
+
+  progress.style.width = `${p * 100}%`;
+  scrollHint.style.opacity = p > .04 ? "0" : ".4";
+}
+
+animate();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    entry.target.classList.toggle("visible", entry.isIntersecting);
   });
+},{threshold:.25});
 
-  // Smoothed tilt loop
-  (function tiltLoop(){
-    raf=requestAnimationFrame(tiltLoop);
-    if(!active) return;
-    cx+=(mx-cx)*0.07;
-    cy+=(my-cy)*0.07;
-    const rotY=cx*18;
-    const rotX=-cy*10;
-    wrap.style.transform=`perspective(900px) rotateY(${rotY}deg) rotateX(${rotX}deg) translateY(${-cy*8}px)`;
-    // update glow intensity based on tilt
-    document.getElementById('bg-glow').style.background=
-      `radial-gradient(ellipse 60% 55% at ${50+cx*8}% ${50+cy*5}%, rgba(201,168,76,0.07) 0%, transparent 70%)`;
-  })();
-
-  // When mouse leaves window reset slowly
-  document.addEventListener('mouseleave',()=>{
-    mx=0;my=0;
-    setTimeout(()=>{
-      active=false;
-      wrap.classList.remove('mouse-active');
-      wrap.style.transform='';
-    },800);
-  });
-
-  // ── REVEAL ON SCROLL ──
-  const obs=new IntersectionObserver(
-    e=>e.forEach(x=>x.target.classList.toggle('visible',x.isIntersecting)),
-    {threshold:0.2}
-  );
-  document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
-
-  // ── PARALLAX ON CAN DURING SCROLL ──
-  window.addEventListener('scroll',()=>{
-    const stageRect=stage.getBoundingClientRect();
-    if(stageRect.bottom<0||stageRect.top>innerHeight) return;
-    const progress=(innerHeight/2-stageRect.top)/stageRect.height;
-    if(!active){
-      wrap.style.transform=`translateY(${progress*-20}px)`;
-    }
-  },{passive:true});
+document.querySelectorAll("[data-reveal]").forEach(el => observer.observe(el));
 
 })();
 </script>
+
 </body>
 </html>
