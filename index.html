@@ -125,6 +125,11 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .clients-title{font-size:clamp(3rem,5.8vw,6.8rem)!important;line-height:.9}
 
 /* PRODUCT SHOWCASES */
+/* Reverse showcases iets meer naar links */
+.product-showcase[data-reverse="true"] .product-content{
+  transform:translateX(-60px);
+}
+  
 .product-showcase{
   --brand:#a89552;
   --brand2:#c8b66b;
