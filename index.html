@@ -968,19 +968,19 @@ function initProductShowcase(section) {
     Reverse: can starts left side
   */
 const statesNormal = [
-  { x: 26, y: 0, r: -4, s: 1.00 },   // panel 0 — iets meer rechts
-  { x: 18, y: 2, r: 3,  s: .94 },    // panel 1 — subtiel kleiner + klein beetje naar links
-  { x: 26, y: 0, r: -4, s: .97 },    // panel 2 — terug naar positie 0
-  { x: 14, y: 0, r: 0,  s: .92 },    // panel 3 — niet te groot, alvast richting midden
-  { x: 0,  y: 0, r: 0,  s: .82 },    // panel 4 — midden, maar niet extreem klein
+  { x: 26, y: 0, r: -4, s: 1.00 },   // panel 0
+  { x: 18, y: 2, r: 3,  s: .95 },    // panel 1
+  { x: 26, y: 0, r: -4, s: .97 },    // panel 2
+  { x: 20, y: 0, r: -2, s: .95 },    // panel 3 — bijna zelfde scale
+  { x: 0,  y: 0, r: 0,  s: .84 },    // panel 4
 ];
 
 const statesReverse = [
-  { x: -26, y: 0, r: 4,  s: 1.00 },  // panel 0 — iets meer links
-  { x: -18, y: 2, r: -3, s: .94 },   // panel 1 — subtiel kleiner + klein beetje naar rechts
-  { x: -26, y: 0, r: 4,  s: .97 },   // panel 2 — terug naar positie 0
-  { x: -14, y: 0, r: 0,  s: .92 },   // panel 3 — niet te groot, alvast richting midden
-  { x: 0,   y: 0, r: 0,  s: .82 },   // panel 4 — midden, maar niet extreem klein
+  { x: -26, y: 0, r: 4,  s: 1.00 },
+  { x: -18, y: 2, r: -3, s: .95 },
+  { x: -26, y: 0, r: 4,  s: .97 },
+  { x: -20, y: 0, r: 2,  s: .95 },   // smooth overgang
+  { x: 0,   y: 0, r: 0,  s: .84 },
 ];
   const states = reverse ? statesReverse : statesNormal;
 
