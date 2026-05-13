@@ -965,17 +965,20 @@ function initProductShowcase(section) {
     Reverse: can starts left side
   */
   const statesNormal = [
-    { x: 22,  y: 0,  r: -4, s: 1.00 },  // panel 0 — blik rechts
-    { x: 16,  y:-2,  r: -5, s:  .88 },  // panel 1 — kpi (blik iets rechts, kleiner)
-    { x:  0,  y: 0,  r:  2, s:  .55 },  // panel 2 — results (vaag achtergrond)
-    { x:  0,  y: 0,  r:  0, s: 1.05 },  // panel 3 — quote (blik centraal/groot)
-  ];
-  const statesReverse = [
-    { x:-22,  y: 0,  r:  4, s:  .93 },  // panel 0 — blik links
-    { x:-16,  y:-2,  r:  5, s:  .88 },  // panel 1 — kpi (blik iets links, kleiner)
-    { x:  0,  y: 0,  r: -2, s:  .55 },  // panel 2 — results (vaag achtergrond)
-    { x:  0,  y: 0,  r:  0, s: 1.05 },  // panel 3 — quote
-  ];
+  { x: 22, y: 0, r: -4, s: 1.00 },   // panel 0 — start rechts
+  { x: 12, y: 2, r: 4,  s: .92 },    // panel 1 — klein beetje naar links + kleiner
+  { x: 22, y: 0, r: -5, s: .96 },    // panel 2 — terug naar startpositie rechts
+  { x: 10, y: 0, r: 0,  s: 1.02 },   // panel 3 — begint richting midden + blur
+  { x: 0,  y: 0, r: 0,  s: .55 },    // panel 4 — eindigt midden achter cijfers
+];
+
+const statesReverse = [
+  { x: -22, y: 0, r: 4,  s: 1.00 },  // panel 0 — start links
+  { x: -12, y: 2, r: -4, s: .92 },   // panel 1 — klein beetje naar rechts + kleiner
+  { x: -22, y: 0, r: 5,  s: .96 },   // panel 2 — terug naar startpositie links
+  { x: -10, y: 0, r: 0,  s: 1.02 },  // panel 3 — begint richting midden + blur
+  { x: 0,   y: 0, r: 0,  s: .55 },   // panel 4 — eindigt midden achter cijfers
+];
   const states = reverse ? statesReverse : statesNormal;
 
   let mouseX = 0, mouseY = 0;
