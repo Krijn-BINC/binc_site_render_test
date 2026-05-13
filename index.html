@@ -962,18 +962,18 @@ function initProductShowcase(section) {
     Reverse: can starts left side
   */
 const statesNormal = [
-  { x: 26, y: 0, r: -4, s: 1.00 },   // panel 0
-  { x: 22, y: 2, r: 3,  s: .95 },    // panel 1 minder ver naar links
-  { x: 12, y: 0, r: -2, s: .97 },    // panel 2 al richting midden
-  { x: 4,  y: 0, r: -1, s: .95 },    // panel 3 bijna midden
+  { x: 26, y: 0, r: -4, s: 1.00 },   
+  { x: 22, y: 2, r: 3,  s: .95 },    
+  { x: 24, y: 0, r: -2, s: .97 },    // panel 2 blijft rechts, niet over tekst
+  { x: 8,  y: 0, r: -1, s: .95 },    // panel 3 beweegt richting midden
   { x: 0,  y: 0, r: 0,  s: .84 },
 ];
 
 const statesReverse = [
   { x: -26, y: 0, r: 4,  s: 1.00 },
-  { x: -22, y: 2, r: -3, s: .95 },   // panel 1 minder ver naar rechts
-  { x: -12, y: 0, r: 2,  s: .97 },   // panel 2 al richting midden
-  { x: -4,  y: 0, r: 1,  s: .95 },   // panel 3 bijna midden
+  { x: -22, y: 2, r: -3, s: .95 },
+  { x: -24, y: 0, r: 2,  s: .97 },   // panel 2 blijft links, niet over tekst
+  { x: -8,  y: 0, r: 1,  s: .95 },   // panel 3 beweegt richting midden
   { x: 0,   y: 0, r: 0,  s: .84 },
 ];
   const states = reverse ? statesReverse : statesNormal;
