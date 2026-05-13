@@ -128,6 +128,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-showcase{
   --brand:#a89552;
   --brand2:#e8c46a;
+  --brand3:#c8a84b;
   --brand-soft:rgba(201,168,76,.10);
   --brand-border:rgba(201,168,76,.12);
   position:relative;
@@ -166,15 +167,16 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-num{
   display:block;
   font-family:var(--font-gd-display);
-  font-size:140px;
-  line-height:.9;
+  font-size:160px;
+  line-height:.85;
   color:var(--brand);
-  opacity:.16;
-  margin-bottom:-34px;
-  letter-spacing:.02em;
+  opacity:.18;
+  margin-bottom:-42px;
+  letter-spacing:.04em;
+  filter:blur(.2px);
   text-shadow:
-    0 0 18px rgba(255,255,255,.04),
-    0 0 40px var(--brand-soft);
+    0 0 24px rgba(255,255,255,.05),
+    0 0 60px var(--brand-soft);
 }
 .product-section-title{font-family:var(--font-gd-display);font-size:clamp(50px,5.8vw,84px);line-height:.88;letter-spacing:.03em;color:#fff;margin-bottom:20px}
 .product-line{width:40px;height:1px;background:var(--brand);opacity:.55;margin-bottom:22px}
@@ -191,6 +193,12 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-dot.active{background:var(--brand);box-shadow:0 0 8px var(--brand-soft)}
 .client-separator{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0 6vw}
 
+/* RESULTS PANEL WITH CAN */
+.product-panel.product-results{justify-content:center}
+.results-inner{display:flex;align-items:center;gap:80px;max-width:1100px;width:100%;z-index:30;position:relative}
+.results-can{width:min(14vw,160px);flex-shrink:0;filter:drop-shadow(0 40px 80px rgba(0,0,0,.95)) drop-shadow(0 0 60px var(--brand-soft))}
+.results-can img{width:100%;height:auto;display:block}
+
 /* FEELSOGOOD VARIATION */
 .fsg-metric-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,166,255,.22);border:1px solid rgba(0,166,255,.18);border-radius:8px;overflow:hidden;margin-top:30px;width:min(720px,82vw)}
 .fsg-metric{background:rgba(0,0,0,.72);padding:24px 22px;text-align:left}
@@ -203,6 +211,12 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .fsg-score{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
 .fsg-score-pill{border:1px solid rgba(0,166,255,.22);background:rgba(0,166,255,.06);padding:10px 14px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
 .fsg-score-pill span{color:var(--brand);font-weight:700}
+
+/* GD METRIC WALL — gold variant */
+.gd-metric-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(168,149,82,.22);border:1px solid rgba(168,149,82,.18);border-radius:8px;overflow:hidden;margin-top:0;width:min(600px,80vw)}
+.gd-metric{background:rgba(0,0,0,.72);padding:22px 20px;text-align:left}
+.gd-metric strong{display:block;font-family:var(--font-gd-display);font-size:2.8rem;line-height:.9;color:var(--gold)}
+.gd-metric span{display:block;font-family:var(--font-gd-mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:8px;line-height:1.55}
 
 /* LEAD */
 #lead{background:#000;padding:150px 6vw 130px;position:relative;overflow:hidden}
@@ -236,7 +250,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
 .ft-info{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .ft-item p,.ft-item a{font-size:1.1rem;line-height:1.8;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
 .ft-item a:hover{color:var(--gold)}
-.ft-h{font-family:var(--font-ui);font-size:.82rem!important;font-weight:800!important;letter-spacing:.28em;text-transform:uppercase;color:rgba(168,149,82,1)!important;margin-bottom:18px}
+.ft-h{font-family:var(--font-ui);font-size:1rem!important;font-weight:800!important;letter-spacing:.2em;text-transform:uppercase;color:rgba(168,149,82,1)!important;margin-bottom:12px!important}
 .ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.05);padding:22px 6vw;display:flex;justify-content:space-between;align-items:center}
 .ft-copy{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 
@@ -282,6 +296,9 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
   .product-content{max-width:100%}
   .product-dots{display:none}
   .fsg-metric-wall{grid-template-columns:1fr;width:100%}
+  .gd-metric-wall{grid-template-columns:1fr;width:100%}
+  .results-inner{flex-direction:column;gap:40px;align-items:flex-start}
+  .results-can{width:120px}
   .form-row{grid-template-columns:1fr}
   .btn-submit{width:100%;text-align:center}
   footer{grid-template-columns:1fr;gap:55px}
@@ -318,7 +335,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
   <div class="g-orb orb-b"></div>
   <div class="hero-content">
     <div class="hero-inner">
-      <h1 class="hero-title">GROW <span class="gold">IN</span><br><span class="stroke">RETAIL</span></h1>
+      <h1 class="hero-title">GROW YOUR <span class="gold">BRAND</span></h1>
       <p class="hero-sub">Wij ontzorgen de volledige B2B voor ambitieuze merken. Van eerste listing tot landelijk schaalniveau.</p>
       <div class="hero-btns">
         <a href="#lead" class="btn-gold">Start samenwerking</a>
@@ -381,6 +398,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
   </div>
 </div>
 
+<!-- GOLD DRY SHOWCASE — 4 panels -->
 <section id="gd-showcase" class="product-showcase gold-dry">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
@@ -395,63 +413,71 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
       <div class="product-dots"></div>
 
       <div class="product-panels">
+
+        <!-- PANEL 1 — intro, blik rechts, tekst links -->
         <div class="product-panel product-left product-active">
           <div class="product-content">
-            <span class="product-eyebrow">— Premium Spritze · 250ml · Alc. 5.5% Vol</span>
-            <h2 class="product-title">Stay dry.<br><span class="product-brand">Stay gold.</span></h2>
-            <p class="product-text">Geen suiker. Geen compromissen.<br>Alleen de pure, droge smaak die je de hele nacht bijhoudt.</p>
+            <span class="product-eyebrow">— Gold Dry · Premium Spritze · 250ml · Alc. 5.5% Vol</span>
+            <h2 class="product-title">Zero sugar.<br><span class="product-brand">Pure gold.</span></h2>
+            <p class="product-text">Gold Dry is geen compromis. Een droge, karakter­volle spritze zonder suiker — gemaakt voor mensen die precies weten wat ze willen. Wij brengen dat verhaal naar de schappen van Nederland.</p>
+            <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap">
+              <div style="border:1px solid rgba(168,149,82,.22);background:rgba(168,149,82,.06);padding:9px 13px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.57rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase"><span style="color:var(--gold);font-weight:700">250ml</span> blik</div>
+              <div style="border:1px solid rgba(168,149,82,.22);background:rgba(168,149,82,.06);padding:9px 13px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.57rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase"><span style="color:var(--gold);font-weight:700">Zero</span> suiker</div>
+              <div style="border:1px solid rgba(168,149,82,.22);background:rgba(168,149,82,.06);padding:9px 13px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.57rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase"><span style="color:var(--gold);font-weight:700">Alc.</span> 5.5% vol</div>
+            </div>
           </div>
         </div>
 
+        <!-- PANEL 2 — B2B ontzorging, tekst rechts, blik links -->
         <div class="product-panel product-right">
           <div class="product-content">
             <span class="product-num">01</span>
-            <span class="product-eyebrow">✦ Smaak</span>
-            <h2 class="product-section-title">Dry finish.</h2>
+            <span class="product-eyebrow">✦ Volledige B2B ontzorging</span>
+            <h2 class="product-section-title">Wij doen<br>het geheel.</h2>
             <div class="product-line"></div>
-            <p class="product-text">Geen suikerachtige nasmaak. Een scherpe, droge afdronk die vraagt om meer — maar nooit te veel geeft.</p>
+            <p class="product-text">Van de eerste buyer meeting tot de levering op locatie — BINC regelt het allemaal. Accountmanagement, inkoopgesprekken, logistiek, schapplaatsing en opvolging. Gold Dry hoeft zich nergens anders druk om te maken dan het merk zelf.</p>
+            <div style="display:grid;gap:9px;margin-top:22px">
+              <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(168,149,82,.18);background:rgba(168,149,82,.055);padding:11px 13px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.61rem;color:rgba(255,255,255,.52)"><b style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:#fff;text-transform:uppercase">Buyer outreach</b><span style="color:var(--gold)">✓ BINC</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(168,149,82,.18);background:rgba(168,149,82,.055);padding:11px 13px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.61rem;color:rgba(255,255,255,.52)"><b style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:#fff;text-transform:uppercase">Levering &amp; logistiek</b><span style="color:var(--gold)">✓ BINC</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(168,149,82,.18);background:rgba(168,149,82,.055);padding:11px 13px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.61rem;color:rgba(255,255,255,.52)"><b style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:#fff;text-transform:uppercase">Locatiebezoeken</b><span style="color:var(--gold)">✓ BINC</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(168,149,82,.18);background:rgba(168,149,82,.055);padding:11px 13px;border-radius:4px;font-family:var(--font-gd-mono);font-size:.61rem;color:rgba(255,255,255,.52)"><b style="font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:#fff;text-transform:uppercase">Accountmanagement</b><span style="color:var(--gold)">✓ BINC</span></div>
+            </div>
+            <p style="font-family:var(--font-gd-mono);font-size:.6rem;color:rgba(168,149,82,.65);margin-top:16px;letter-spacing:.1em">Al 3+ jaar de exclusieve B2B-partner van Gold Dry</p>
           </div>
         </div>
 
+        <!-- PANEL 3 — groei in cijfers, tekst links, blik rechts -->
         <div class="product-panel product-left">
           <div class="product-content">
             <span class="product-num">02</span>
-            <span class="product-eyebrow">✦ Formule</span>
-            <h2 class="product-section-title">Zero Sugar.</h2>
+            <span class="product-eyebrow">✦ Groei in cijfers</span>
+            <h2 class="product-section-title">Van nul tot<br>landelijk.</h2>
             <div class="product-line"></div>
-            <p class="product-text">Volledig suikervrij, zonder in te leveren op smaak of karakter. Original &amp; Vodka — perfect uitgebalanceerd in 250ml.</p>
-          </div>
-        </div>
-
-        <div class="product-panel product-center">
-          <div class="product-content">
-            <p class="product-statement">Niet voor iedereen.<br><em>Voor degenen</em><br>die weten wat ze willen.</p>
-          </div>
-        </div>
-
-        <div class="product-panel product-right">
-          <div class="product-content">
-            <span class="product-num">03</span>
-            <span class="product-eyebrow">✦ Resultaten met BINC</span>
-            <h2 class="product-section-title">Groei<br>in cijfers.</h2>
-            <div class="product-line"></div>
-            <p class="product-text">Van nul tot landelijk bereik in recordtijd — zo doet BINC dat.</p>
+            <p class="product-text">In 14 maanden van eerste listing naar landelijk bereik. Geen toeval — het resultaat van een strak netwerk, de juiste pitches en dagelijkse opvolging op de vloer.</p>
             <div class="product-kpis">
               <div class="product-kpi"><div class="product-kpi-v">14</div><div class="product-kpi-l">Maanden tot landelijk bereik</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">1.800</div><div class="product-kpi-l">Verkooppunten</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">1.800</div><div class="product-kpi-l">Actieve verkooppunten</div></div>
               <div class="product-kpi"><div class="product-kpi-v">340%</div><div class="product-kpi-l">Omzetgroei jaar 1→2</div></div>
               <div class="product-kpi"><div class="product-kpi-v">6</div><div class="product-kpi-l">Retailketens actief</div></div>
             </div>
           </div>
         </div>
-      </div>
 
+        <!-- PANEL 4 — quote / CTA, gecentreerd, blik vervaagt -->
+        <div class="product-panel product-center">
+          <div class="product-content">
+            <p class="product-statement">Jouw merk in<br><em>elke schapper.</em><br>Wij regelen de rest.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
 <div class="client-separator"></div>
 
+<!-- FEELSOGOOD SHOWCASE — 4 panels -->
 <section id="fsg-showcase" class="product-showcase feelsogood" data-reverse="true">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
@@ -466,11 +492,13 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
       <div class="product-dots"></div>
 
       <div class="product-panels">
+
+        <!-- PANEL 1 — intro, blik links, tekst rechts -->
         <div class="product-panel product-right product-active">
           <div class="product-content">
-            <span class="product-eyebrow">— FeelSoGood · Blackberry Blueberry · 0,6L</span>
-            <h2 class="product-title">Blue energy.<br><span class="product-brand">Retail ready.</span></h2>
-            <p class="product-text">FeelSoGood kreeg een andere case-opbouw dan Gold Dry: minder productverhaal, meer schapimpact, kanaalkeuze en performance.</p>
+            <span class="product-eyebrow">— FeelSoGood · Energy &amp; Refresh · 0,6L</span>
+            <h2 class="product-title">Blue energy.<br><span class="product-brand">Built for retail.</span></h2>
+            <p class="product-text">FeelSoGood is een energiedrank met karakter — opvallend blauw, directe schapimpact en gebouwd voor hoge rotatie. BINC regelt de volledige B2B: van eerste buyer gesprek tot landelijke distributie.</p>
             <div class="fsg-score">
               <div class="fsg-score-pill"><span>0,6L</span> format</div>
               <div class="fsg-score-pill"><span>Blueberry</span> hero smaak</div>
@@ -479,84 +507,47 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:95px 6v
           </div>
         </div>
 
+        <!-- PANEL 2 — volledige B2B, tekst links, blik rechts -->
         <div class="product-panel product-left">
           <div class="product-content">
             <span class="product-num">01</span>
-            <span class="product-eyebrow">✦ Category fit</span>
-            <h2 class="product-section-title">Van fles<br>naar schap.</h2>
+            <span class="product-eyebrow">✦ Volledige B2B ontzorging</span>
+            <h2 class="product-section-title">Van pitch<br>tot pallet.</h2>
             <div class="product-line"></div>
-            <p class="product-text">De blauwe uitstraling is bewust ingezet als herkenbare refresher in convenience, sport en impuls. Geen lange uitleg nodig: het product moet direct duidelijk zijn.</p>
+            <p class="product-text">BINC neemt de gehele commerciële keten uit handen. Buyer acquisitie, contractonderhandeling, levering op locatie en wekelijkse schapcontroles — FeelSoGood focust op het product, wij op de groei.</p>
             <div class="fsg-channel-list">
-              <div class="fsg-channel"><b>Convenience</b><em>High priority</em></div>
-              <div class="fsg-channel"><b>Sport</b><em>Strong fit</em></div>
-              <div class="fsg-channel"><b>Supermarkt</b><em>Scale ready</em></div>
+              <div class="fsg-channel"><b>Buyer outreach</b><em>✓ BINC</em></div>
+              <div class="fsg-channel"><b>Levering &amp; logistiek</b><em>✓ BINC</em></div>
+              <div class="fsg-channel"><b>Accountmanagement</b><em>✓ BINC</em></div>
             </div>
           </div>
         </div>
 
+        <!-- PANEL 3 — groei in cijfers, tekst rechts, blik links -->
         <div class="product-panel product-right">
           <div class="product-content">
             <span class="product-num">02</span>
-            <span class="product-eyebrow">✦ Buyer traction</span>
-            <h2 class="product-section-title">Sneller<br>aan tafel.</h2>
+            <span class="product-eyebrow">✦ Groei in cijfers</span>
+            <h2 class="product-section-title">Sneller dan<br>verwacht.</h2>
             <div class="product-line"></div>
-            <p class="product-text">BINC positioneerde FeelSoGood niet als zomaar een drankje, maar als een opvallende blauwe shelf driver met duidelijke marge, rotatie en kanaalpotentie.</p>
+            <p class="product-text">In 9 maanden van testpunten naar landelijke uitrol. Gefaseerd opgebouwd, datagestuurd opgeschaald — en elke stap bewezen in de praktijk.</p>
             <div class="product-kpis">
-              <div class="product-kpi"><div class="product-kpi-v">38</div><div class="product-kpi-l">Buyer gesprekken</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">71%</div><div class="product-kpi-l">Door naar sample fase</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">11</div><div class="product-kpi-l">Pilot voorstellen</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">4</div><div class="product-kpi-l">Kanalen gevalideerd</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">9</div><div class="product-kpi-l">Maanden tot landelijke uitrol</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">1.250</div><div class="product-kpi-l">Actieve verkooppunten</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">210%</div><div class="product-kpi-l">Omzetgroei eerste jaar</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">62%</div><div class="product-kpi-l">Repeat orders na pilot</div></div>
             </div>
           </div>
         </div>
 
+        <!-- PANEL 4 — quote / CTA, gecentreerd, blik vervaagt -->
         <div class="product-panel product-center">
           <div class="product-content">
-            <p class="product-statement">Niet alleen mooi blauw.<br><em>Ook commercieel sterk.</em><br>Gebouwd voor rotatie.</p>
+            <p class="product-statement">Jouw merk verdient<br><em>meer dan een pitch.</em><br>Het verdient resultaat.</p>
           </div>
         </div>
 
-        <div class="product-panel product-left">
-          <div class="product-content">
-            <span class="product-num">03</span>
-            <span class="product-eyebrow">✦ Distribution build</span>
-            <h2 class="product-section-title">Eerst testen.<br>Dan opschalen.</h2>
-            <div class="product-line"></div>
-            <p class="product-text">De uitrol werd gefaseerd opgebouwd: starten met zichtbare locaties, feedback ophalen, schapdata aanscherpen en daarna richting landelijke dekking.</p>
-            <div class="fsg-channel-list">
-              <div class="fsg-channel"><b>Fase 1</b><em>120 testpunten</em></div>
-              <div class="fsg-channel"><b>Fase 2</b><em>Retail validatie</em></div>
-              <div class="fsg-channel"><b>Fase 3</b><em>Landelijke pitch</em></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-panel product-right">
-          <div class="product-content">
-            <span class="product-num">04</span>
-            <span class="product-eyebrow">✦ Performance dashboard</span>
-            <h2 class="product-section-title">Meer cijfers.<br>Meer grip.</h2>
-            <div class="product-line"></div>
-            <p class="product-text">Voor FeelSoGood ligt de nadruk op commerciële meetpunten: distributie, rotatie, repeat en kanaalverbreding.</p>
-          </div>
-        </div>
-
-        <div class="product-panel product-center">
-          <div class="product-content">
-            <span class="product-eyebrow">✦ Resultaten met BINC</span>
-            <h2 class="product-section-title">Blueberry<br>in cijfers.</h2>
-            <div class="fsg-metric-wall">
-              <div class="fsg-metric"><strong>9</strong><span>Maanden tot landelijke uitrol</span></div>
-              <div class="fsg-metric"><strong>1.250</strong><span>Verkooppunten actief</span></div>
-              <div class="fsg-metric"><strong>210%</strong><span>Omzetgroei eerste jaar</span></div>
-              <div class="fsg-metric"><strong>4</strong><span>Retailkanalen live</span></div>
-              <div class="fsg-metric"><strong>62%</strong><span>Repeat orders na pilot</span></div>
-              <div class="fsg-metric"><strong>18K</strong><span>Units eerste retailronde</span></div>
-            </div>
-          </div>
-        </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -654,7 +645,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* TAPE */
-const WORDS = ['Grow In Retail', 'B2B Sales', 'Accountmanagement', 'Retail Listings', 'Landelijk Netwerk', 'Strategy & Growth', 'BINC International'];
+const WORDS = ['Grow Your Brand', 'B2B Sales', 'Accountmanagement', 'Retail Listings', 'Landelijk Netwerk', 'Strategy & Growth', 'BINC International'];
 const ti = document.getElementById('tapeInner');
 const chunk = () => WORDS.map(w => `<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
 ti.innerHTML = chunk() + chunk();
@@ -676,10 +667,7 @@ const STORES = [
 ];
 
 function initMap() {
-  if (typeof L === 'undefined') {
-    console.warn('Leaflet niet beschikbaar');
-    return;
-  }
+  if (typeof L === 'undefined') { console.warn('Leaflet niet beschikbaar'); return; }
 
   function createGoldIcon() {
     return L.divIcon({
@@ -699,9 +687,7 @@ function initMap() {
     zoomControl: true
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19
-  }).addTo(map);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
 
   STORES.forEach(pin => {
     L.marker([pin.lat, pin.lon], { icon: createGoldIcon() })
@@ -710,19 +696,12 @@ function initMap() {
   });
 }
 
-if (document.readyState === 'complete') {
-  initMap();
-} else {
-  window.addEventListener('load', initMap);
-}
+if (document.readyState === 'complete') { initMap(); } else { window.addEventListener('load', initMap); }
 
 /* REVEAL */
 const revIO = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('on');
-      revIO.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('on'); revIO.unobserve(e.target); }
   });
 }, { threshold: .1 });
 
@@ -732,28 +711,18 @@ document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
 function countUp(el, target) {
   const dur = 1900;
   const t0 = performance.now();
-
   const go = now => {
     const p = Math.min((now - t0) / dur, 1);
     const eased = 1 - Math.pow(1 - p, 3);
     el.querySelector('.count').textContent = Math.round(eased * target).toLocaleString('nl-NL');
-
-    if (p < 1) {
-      requestAnimationFrame(go);
-    } else {
-      el.querySelector('.count').textContent = target.toLocaleString('nl-NL');
-    }
+    if (p < 1) { requestAnimationFrame(go); } else { el.querySelector('.count').textContent = target.toLocaleString('nl-NL'); }
   };
-
   requestAnimationFrame(go);
 }
 
 const statIO = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      countUp(e.target, +e.target.dataset.target);
-      statIO.unobserve(e.target);
-    }
+    if (e.isIntersecting) { countUp(e.target, +e.target.dataset.target); statIO.unobserve(e.target); }
   });
 }, { threshold: .5 });
 
@@ -796,18 +765,14 @@ function initProductShowcase(section) {
     { x: 18,  y: 0,  r: -4, s: 1.00 },
     { x: -18, y: 4,  r: 8,  s: .92 },
     { x: 18,  y: -2, r: -8, s: .95 },
-    { x: 0,   y: 2,  r: 0,  s: 1.04 },
-    { x: 0,   y: -6, r: 4,  s: .88 }
+    { x: 0,   y: 2,  r: 0,  s: 1.04 }
   ];
 
   const statesReverse = [
     { x: -20, y: 0,  r: 4,  s: .92 },
     { x: 16,  y: 4,  r: -7, s: .84 },
     { x: -18, y: -2, r: 7,  s: .86 },
-    { x: 0,   y: 2,  r: 0,  s: .98 },
-    { x: -16, y: -4, r: -4, s: .82 },
-    { x: 14,  y: 3,  r: 5,  s: .80 },
-    { x: 0,   y: -5, r: 0,  s: .78 }
+    { x: 0,   y: 2,  r: 0,  s: .98 }
   ];
 
   const states = reverse ? statesReverse : statesNormal;
@@ -822,13 +787,8 @@ function initProductShowcase(section) {
     mouseY = (e.clientY / innerHeight - .5) * 2;
   });
 
-  function lerp(a, b, t) {
-    return a + (b - a) * t;
-  }
-
-  function smooth(t) {
-    return t * t * (3 - 2 * t);
-  }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function smooth(t) { return t * t * (3 - 2 * t); }
 
   function getT() {
     const rect = wrapper.getBoundingClientRect();
@@ -842,7 +802,6 @@ function initProductShowcase(section) {
     const loc = smooth(raw - i);
     const a = states[i];
     const b = states[i + 1];
-
     return {
       x: lerp(a.x, b.x, loc),
       y: lerp(a.y, b.y, loc),
@@ -853,37 +812,26 @@ function initProductShowcase(section) {
 
   function setPanel(idx) {
     if (idx === activePanel) return;
-
     activePanel = idx;
-
     section.querySelectorAll('.product-panel').forEach((p, i) => {
       p.classList.toggle('product-active', i === idx);
     });
-
-    dots.forEach((d, i) => {
-      d.classList.toggle('active', i === idx);
-    });
-
+    dots.forEach((d, i) => { d.classList.toggle('active', i === idx); });
     can.classList.toggle('blurred', idx === 3);
   }
 
   function tick() {
     requestAnimationFrame(tick);
-
     const t = getT();
     const target = interpState(t);
-
     cs.x = lerp(cs.x, target.x, .06);
     cs.y = lerp(cs.y, target.y, .06);
     cs.r = lerp(cs.r, target.r, .06);
     cs.s = lerp(cs.s, target.s, .06);
-
     const mx2 = mouseX * 0.45;
     const my2 = mouseY * 0.38;
-
     can.style.transform = `translate(calc(-50% + ${cs.x + mx2}vw),calc(-50% + ${cs.y + my2}vh)) rotate(${cs.r + mouseX * 0.6}deg) scale(${cs.s})`;
     progBar.style.width = (t * 100) + '%';
-
     setPanel(Math.min(Math.floor(t * PANELS), PANELS - 1));
   }
 
