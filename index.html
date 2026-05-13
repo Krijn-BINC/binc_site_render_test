@@ -3,24 +3,32 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>GOLD DRY — Stay Dry. Stay Gold.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 :root{
   --black:#070707;
   --white:#f2f0ea;
   --gold:#c9a84c;
   --gold-light:#e8c46a;
+
   --display:'Bebas Neue',sans-serif;
   --mono:'DM Mono',monospace;
 }
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   background:var(--black);
@@ -31,14 +39,16 @@ body{
 }
 
 /* BACKGROUND */
+
 .bg{
   position:fixed;
   inset:0;
   z-index:0;
   pointer-events:none;
+
   background:
-    radial-gradient(circle at 65% 45%, rgba(201,168,76,.12), transparent 34%),
-    radial-gradient(circle at 50% 80%, rgba(201,168,76,.08), transparent 30%),
+    radial-gradient(circle at 60% 45%, rgba(201,168,76,.08), transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(201,168,76,.05), transparent 30%),
     #070707;
 }
 
@@ -46,129 +56,192 @@ body{
 .bg::after{
   content:"";
   position:absolute;
-  border:1px solid rgba(201,168,76,.12);
+  border:1px solid rgba(201,168,76,.08);
   border-radius:50%;
-  width:520px;
-  height:520px;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
 }
 
+.bg::before{
+  width:440px;
+  height:440px;
+}
+
 .bg::after{
-  width:760px;
-  height:760px;
-  opacity:.45;
+  width:680px;
+  height:680px;
+  opacity:.4;
 }
 
 /* PROGRESS */
+
 #progress{
   position:fixed;
   top:0;
   left:0;
-  height:2px;
   width:0%;
-  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  height:2px;
   z-index:300;
+
+  background:linear-gradient(
+    90deg,
+    var(--gold),
+    var(--gold-light)
+  );
 }
 
 /* NAV */
+
 nav{
   position:fixed;
   top:0;
   left:0;
   right:0;
   z-index:200;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:26px 52px;
-  background:linear-gradient(180deg,rgba(7,7,7,.85),transparent);
+
+  background:linear-gradient(
+    180deg,
+    rgba(7,7,7,.92),
+    transparent
+  );
 }
 
 .nav-logo{
-  font-family:var(--display);
-  font-size:28px;
-  letter-spacing:.16em;
   color:var(--white);
   text-decoration:none;
+
+  font-family:var(--display);
+  font-size:26px;
+  letter-spacing:.16em;
 }
 
 .nav-links{
   display:flex;
-  gap:38px;
+  gap:36px;
   list-style:none;
 }
 
 .nav-links a{
   color:var(--white);
   text-decoration:none;
-  text-transform:uppercase;
+
   font-size:10px;
   letter-spacing:.24em;
+  text-transform:uppercase;
+
   opacity:.45;
+  transition:opacity .2s;
 }
 
-.nav-links a:hover{opacity:1}
+.nav-links a:hover{
+  opacity:1;
+}
 
 /* FIXED CAN */
+
 .can-fixed{
   position:fixed;
   top:50%;
   left:50%;
+
   width:min(24vw,260px);
   max-height:58vh;
+
+  transform:translate(-50%,-50%);
+
+  z-index:20;
+  pointer-events:none;
+
+  will-change:transform;
+}
 
 .can-fixed img{
   width:100%;
   height:auto;
   display:block;
+
   filter:
-    drop-shadow(0 40px 70px rgba(0,0,0,.9))
-    drop-shadow(0 0 44px rgba(201,168,76,.24));
+    drop-shadow(0 34px 60px rgba(0,0,0,.9))
+    drop-shadow(0 0 40px rgba(201,168,76,.18));
 }
 
 .can-glow{
   position:absolute;
-  inset:18% 4%;
-  background:radial-gradient(circle,rgba(201,168,76,.22),transparent 64%);
-  filter:blur(32px);
+  inset:16% 2%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201,168,76,.18),
+      transparent 70%
+    );
+
+  filter:blur(28px);
+
   z-index:-1;
 }
 
-/* SECTIONS */
+/* MAIN */
+
 main{
   position:relative;
   z-index:50;
 }
 
+/* PANELS */
+
 .panel{
   min-height:100vh;
+
   display:flex;
   align-items:center;
+
   padding:0 52px;
+
   position:relative;
 }
 
-.left{justify-content:flex-start}
-.right{justify-content:flex-end}
-.center{justify-content:center;text-align:center}
+.left{
+  justify-content:flex-start;
+}
+
+.right{
+  justify-content:flex-end;
+}
+
+.center{
+  justify-content:center;
+  text-align:center;
+}
 
 .content{
-  max-width:470px;
+  max-width:420px;
   position:relative;
   z-index:60;
 }
 
+/* TYPO */
+
 .eyebrow,
 .section-tag{
   display:block;
+
   color:var(--gold);
+
   font-size:10px;
-  letter-spacing:.29em;
+  letter-spacing:.28em;
   text-transform:uppercase;
-  margin-bottom:22px;
+
   opacity:.75;
+
+  margin-bottom:20px;
 }
 
 .hero-title,
@@ -176,36 +249,47 @@ main{
 .statement,
 .cta-title{
   font-family:var(--display);
-  letter-spacing:.055em;
   line-height:.9;
+  letter-spacing:.05em;
 }
 
 .hero-title{
-  font-size:clamp(80px,10vw,142px);
-  margin-bottom:30px;
+  font-size:clamp(74px,8vw,122px);
+  margin-bottom:28px;
 }
 
-.gold{color:var(--gold)}
+.gold{
+  color:var(--gold);
+}
 
 .text{
+  max-width:320px;
+
   font-size:13px;
-  line-height:1.95;
-  opacity:.45;
+  line-height:1.9;
+
+  opacity:.42;
   font-style:italic;
-  max-width:340px;
 }
 
+/* BUTTONS */
+
 .btn{
-  margin-top:42px;
   display:inline-flex;
-  padding:16px 38px;
+
+  margin-top:40px;
+  padding:15px 34px;
+
   background:var(--gold);
   color:var(--black);
+
   text-decoration:none;
   text-transform:uppercase;
+
   font-size:10px;
-  letter-spacing:.24em;
   font-weight:500;
+  letter-spacing:.22em;
+
   transition:.2s;
 }
 
@@ -214,65 +298,20 @@ main{
   transform:translate(-3px,-3px);
 }
 
-.section-num{
-  display:block;
-  font-family:var(--display);
-  font-size:130px;
-  line-height:1;
-  color:var(--gold);
-  opacity:.07;
-  margin-bottom:-32px;
-}
-
-.section-title{
-  font-size:clamp(56px,7vw,92px);
-  margin-bottom:26px;
-}
-
-.line{
-  width:54px;
-  height:1px;
-  background:var(--gold);
-  opacity:.45;
-  margin:0 0 28px;
-}
-
-.statement{
-  max-width:900px;
-  font-size:clamp(52px,8vw,104px);
-  line-height:1.03;
-}
-
-.statement em{
-  color:var(--gold);
-  font-style:normal;
-}
-
-.cta{
-  flex-direction:column;
-  gap:28px;
-}
-
-.cta-title{
-  font-size:clamp(72px,10vw,128px);
-}
-
-.cta-sub{
-  font-size:12px;
-  opacity:.35;
-  font-style:italic;
-  letter-spacing:.12em;
-}
-
 .btn-outline{
   display:inline-flex;
-  padding:18px 52px;
+
+  padding:17px 50px;
+
   border:1px solid var(--gold);
   color:var(--gold);
+
   text-decoration:none;
   text-transform:uppercase;
+
   font-size:10px;
-  letter-spacing:.24em;
+  letter-spacing:.22em;
+
   transition:.2s;
 }
 
@@ -281,85 +320,187 @@ main{
   color:var(--black);
 }
 
+/* SECTIONS */
+
+.section-num{
+  display:block;
+
+  font-family:var(--display);
+  font-size:120px;
+
+  line-height:1;
+
+  color:var(--gold);
+  opacity:.06;
+
+  margin-bottom:-28px;
+}
+
+.section-title{
+  font-size:clamp(52px,6vw,82px);
+  margin-bottom:24px;
+}
+
+.line{
+  width:46px;
+  height:1px;
+
+  background:var(--gold);
+
+  opacity:.45;
+
+  margin-bottom:26px;
+}
+
+/* STATEMENT */
+
+.statement{
+  max-width:860px;
+
+  font-size:clamp(48px,7vw,94px);
+  line-height:1.02;
+}
+
+.statement em{
+  color:var(--gold);
+  font-style:normal;
+}
+
+/* CTA */
+
+.cta{
+  flex-direction:column;
+  gap:26px;
+}
+
+.cta-title{
+  font-size:clamp(66px,9vw,118px);
+}
+
+.cta-sub{
+  font-size:12px;
+  opacity:.34;
+
+  letter-spacing:.12em;
+  font-style:italic;
+}
+
 /* MARQUEE */
+
 .marquee{
   position:relative;
   z-index:70;
+
   overflow:hidden;
-  border-top:1px solid rgba(201,168,76,.15);
-  border-bottom:1px solid rgba(201,168,76,.15);
-  padding:13px 0;
+
+  border-top:1px solid rgba(201,168,76,.14);
+  border-bottom:1px solid rgba(201,168,76,.14);
+
+  padding:12px 0;
 }
 
 .track{
   display:flex;
   width:max-content;
+
   animation:marquee 22s linear infinite;
 }
 
 .track span{
-  font-family:var(--display);
+  padding:0 36px;
+
   color:var(--gold);
-  font-size:16px;
-  letter-spacing:.16em;
-  padding:0 40px;
-  opacity:.6;
+
+  font-family:var(--display);
+  font-size:15px;
+  letter-spacing:.15em;
+
+  opacity:.55;
   white-space:nowrap;
 }
 
 @keyframes marquee{
-  to{transform:translateX(-50%)}
+  to{
+    transform:translateX(-50%);
+  }
 }
 
 /* FOOTER */
+
 footer{
   position:relative;
   z-index:80;
+
   display:flex;
   justify-content:space-between;
-  padding:32px 52px;
-  border-top:1px solid rgba(201,168,76,.12);
+
+  padding:30px 52px;
+
+  border-top:1px solid rgba(201,168,76,.1);
+
   font-size:10px;
   letter-spacing:.16em;
   text-transform:uppercase;
-  opacity:.3;
+
+  opacity:.28;
 }
 
 /* SCROLL HINT */
+
 .scroll-hint{
   position:fixed;
   bottom:34px;
   left:50%;
+
   transform:translateX(-50%);
-  z-index:100;
+
+  z-index:120;
+
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:8px;
+
+  pointer-events:none;
+
   font-size:10px;
   letter-spacing:.22em;
   text-transform:uppercase;
+
   opacity:.4;
-  pointer-events:none;
+
+  transition:opacity .4s;
 }
 
 .scroll-line{
   width:1px;
   height:40px;
+
   background:var(--gold);
+
   animation:pulse 1.8s ease-in-out infinite;
 }
 
 @keyframes pulse{
-  0%,100%{transform:scaleY(1);opacity:.35}
-  50%{transform:scaleY(.4);opacity:1}
+  0%,100%{
+    transform:scaleY(1);
+    opacity:.35;
+  }
+  50%{
+    transform:scaleY(.4);
+    opacity:1;
+  }
 }
 
 /* REVEAL */
+
 [data-reveal]{
   opacity:0;
-  transform:translateY(34px);
-  transition:.9s ease;
+  transform:translateY(30px);
+
+  transition:
+    opacity .9s ease,
+    transform .9s ease;
 }
 
 [data-reveal].visible{
@@ -368,26 +509,44 @@ footer{
 }
 
 /* MOBILE */
+
 @media(max-width:900px){
-  nav{padding:22px 24px}
-  .nav-links{display:none}
+
+  nav{
+    padding:22px 24px;
+  }
+
+  .nav-links{
+    display:none;
+  }
 
   .panel{
     padding:0 24px;
+    padding-top:120px;
+
     align-items:flex-start;
-    padding-top:130px;
   }
 
-  .right{justify-content:flex-start}
+  .right{
+    justify-content:flex-start;
+  }
 
   .can-fixed{
-    width:54vw;
-    top:63%;
+    width:48vw;
     opacity:.55;
+    top:62%;
   }
 
-  .hero-title{font-size:82px}
-  footer{flex-direction:column;gap:10px;padding:28px 24px}
+  .hero-title{
+    font-size:82px;
+  }
+
+  footer{
+    flex-direction:column;
+    gap:10px;
+
+    padding:28px 24px;
+  }
 }
 </style>
 </head>
@@ -397,92 +556,214 @@ footer{
 <div id="progress"></div>
 <div class="bg"></div>
 
+<!-- NAV -->
+
 <nav>
-  <a href="#" class="nav-logo">GOLD DRY</a>
+
+  <a href="#" class="nav-logo">
+    GOLD DRY
+  </a>
+
   <ul class="nav-links">
     <li><a href="#smaak">Smaak</a></li>
     <li><a href="#formule">Formule</a></li>
     <li><a href="#koop">Kopen</a></li>
   </ul>
+
 </nav>
 
+<!-- SCROLL HINT -->
+
 <div class="scroll-hint" id="scrollHint">
+
   <span>scroll</span>
+
   <div class="scroll-line"></div>
+
 </div>
 
+<!-- FIXED CAN -->
+
 <div class="can-fixed" id="can">
+
   <div class="can-glow"></div>
-  <img src="images/golddry_pre_original.png" alt="Gold Dry Original & Vodka Premix Can">
+
+  <img
+    src="images/golddry_pre_original.png"
+    alt="Gold Dry Can"
+  />
+
 </div>
+
+<!-- MAIN -->
 
 <main>
 
+  <!-- HERO -->
+
   <section class="panel left">
+
     <div class="content" data-reveal>
-      <span class="eyebrow">— Premix 250ml · Alc. 5.5% Vol · Est. 2024</span>
+
+      <span class="eyebrow">
+        — Premix 250ml · Alc. 5.5% Vol · Est. 2024
+      </span>
+
       <h1 class="hero-title">
         STAY<br>
         <span class="gold">DRY.</span><br>
         STAY<br>
         GOLD.
       </h1>
-      <p class="text">Geen suiker. Geen compromissen.<br>Alleen de pure, droge smaak die je de hele nacht bijhoudt.</p>
-      <a href="#koop" class="btn">Bestel nu →</a>
+
+      <p class="text">
+        Geen suiker. Geen compromissen.<br>
+        Alleen de pure, droge smaak die je de hele nacht bijhoudt.
+      </p>
+
+      <a href="#koop" class="btn">
+        Bestel nu →
+      </a>
+
     </div>
+
   </section>
+
+  <!-- MARQUEE -->
 
   <div class="marquee">
+
     <div class="track">
-      <span>GOLD DRY ✦</span><span>STAY GOLD ✦</span><span>250ML PREMIX ✦</span><span>ZERO SUGAR ✦</span><span>ORIGINAL & VODKA ✦</span><span>ALC. 5.5% ✦</span>
-      <span>GOLD DRY ✦</span><span>STAY GOLD ✦</span><span>250ML PREMIX ✦</span><span>ZERO SUGAR ✦</span><span>ORIGINAL & VODKA ✦</span><span>ALC. 5.5% ✦</span>
+
+      <span>GOLD DRY ✦</span>
+      <span>STAY GOLD ✦</span>
+      <span>250ML PREMIX ✦</span>
+      <span>ZERO SUGAR ✦</span>
+      <span>ORIGINAL & VODKA ✦</span>
+      <span>ALC. 5.5% ✦</span>
+
+      <span>GOLD DRY ✦</span>
+      <span>STAY GOLD ✦</span>
+      <span>250ML PREMIX ✦</span>
+      <span>ZERO SUGAR ✦</span>
+      <span>ORIGINAL & VODKA ✦</span>
+      <span>ALC. 5.5% ✦</span>
+
     </div>
+
   </div>
 
+  <!-- SMAAK -->
+
   <section class="panel right" id="smaak">
+
     <div class="content" data-reveal>
+
       <span class="section-num">01</span>
-      <span class="section-tag">✦ Smaak</span>
-      <h2 class="section-title">DRY<br>FINISH.</h2>
+
+      <span class="section-tag">
+        ✦ Smaak
+      </span>
+
+      <h2 class="section-title">
+        DRY<br>
+        FINISH.
+      </h2>
+
       <div class="line"></div>
-      <p class="text">Geen suikerachtige nasmaak. Een scherpe, droge afdronk die vraagt om meer — maar nooit te veel geeft. Gold Dry is gemaakt voor mensen die weten wat ze drinken.</p>
+
+      <p class="text">
+        Geen suikerachtige nasmaak.
+        Een scherpe, droge afdronk die vraagt om meer —
+        maar nooit te veel geeft.
+      </p>
+
     </div>
+
   </section>
+
+  <!-- FORMULE -->
 
   <section class="panel left" id="formule">
+
     <div class="content" data-reveal>
+
       <span class="section-num">02</span>
-      <span class="section-tag">✦ Formule</span>
-      <h2 class="section-title">ZERO<br>SUGAR.</h2>
+
+      <span class="section-tag">
+        ✦ Formule
+      </span>
+
+      <h2 class="section-title">
+        ZERO<br>
+        SUGAR.
+      </h2>
+
       <div class="line"></div>
-      <p class="text">Klaar voor de nacht zonder de ochtend te vrezen. Volledig suikervrij, zonder in te leveren op smaak of karakter. Original & Vodka — perfect uitgebalanceerd in 250ml.</p>
+
+      <p class="text">
+        Volledig suikervrij,
+        zonder in te leveren op smaak of karakter.
+        Original & Vodka — perfect uitgebalanceerd in 250ml.
+      </p>
+
     </div>
+
   </section>
+
+  <!-- STATEMENT -->
 
   <section class="panel center">
+
     <div class="statement" data-reveal>
+
       Niet voor iedereen.<br>
+
       <em>Voor degenen</em><br>
+
       die weten wat ze willen.
+
     </div>
+
   </section>
 
+  <!-- CTA -->
+
   <section class="panel center cta" id="koop">
+
     <h2 class="cta-title" data-reveal>
+
       KLAAR<br>
       VOOR<br>
-      <span class="gold">GOUD?</span>
+
+      <span class="gold">
+        GOUD?
+      </span>
+
     </h2>
-    <p class="cta-sub" data-reveal>Geleverd binnen 2–3 werkdagen · Gratis verzending vanaf 24 blikjes</p>
-    <a href="#" class="btn-outline" data-reveal>Bestel Gold Dry →</a>
+
+    <p class="cta-sub" data-reveal>
+      Geleverd binnen 2–3 werkdagen · Gratis verzending vanaf 24 blikjes
+    </p>
+
+    <a href="#" class="btn-outline" data-reveal>
+      Bestel Gold Dry →
+    </a>
+
   </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
+
   <span>© 2024 Gold Dry</span>
+
   <span>Stay Dry. Stay Gold.</span>
+
   <span>NL — 250ml Premix</span>
+
 </footer>
 
 <script>
@@ -492,91 +773,136 @@ const can = document.getElementById("can");
 const progress = document.getElementById("progress");
 const scrollHint = document.getElementById("scrollHint");
 
-let current = {
-  x: 0,
-  y: 0,
-  r: 0,
-  s: 1
-};
-
 let mouseX = 0;
 let mouseY = 0;
 
+let current = {
+  x:0,
+  y:0,
+  r:0,
+  s:1
+};
+
 const states = [
-  { x: 22,  y: 0,   r: -4,  s: 1.00 },
-  { x: -25, y: 4,   r: 8,   s: .92 },
-  { x: 24,  y: -2,  r: -10, s: .96 },
-  { x: 0,   y: 2,   r: 0,   s: 1.08 },
-  { x: 0,   y: -6,  r: 5,   s: .9 }
+
+  { x:18,  y:0,   r:-4,  s:1.00 },
+
+  { x:-18, y:4,   r:8,   s:.92 },
+
+  { x:18,  y:-2,  r:-8,  s:.95 },
+
+  { x:0,   y:2,   r:0,   s:1.04 },
+
+  { x:0,   y:-6,  r:4,   s:.88 }
+
 ];
 
 function lerp(a,b,t){
-  return a + (b - a) * t;
+  return a + (b-a) * t;
 }
 
-function smoothstep(t){
+function smooth(t){
   return t * t * (3 - 2 * t);
 }
 
 function getProgress(){
-  const max = document.body.scrollHeight - innerHeight;
-  return max > 0 ? scrollY / max : 0;
+  const max =
+    document.body.scrollHeight - innerHeight;
+
+  return max > 0
+    ? scrollY / max
+    : 0;
 }
 
 function getState(t){
-  const sectionCount = states.length;
-  const raw = t * (sectionCount - 1);
-  const i = Math.min(Math.floor(raw), sectionCount - 2);
-  const local = smoothstep(raw - i);
+
+  const raw =
+    t * (states.length - 1);
+
+  const i =
+    Math.min(
+      Math.floor(raw),
+      states.length - 2
+    );
+
+  const local =
+    smooth(raw - i);
 
   const a = states[i];
-  const b = states[i + 1];
+  const b = states[i+1];
 
-  return {
-    x: lerp(a.x,b.x,local),
-    y: lerp(a.y,b.y,local),
-    r: lerp(a.r,b.r,local),
-    s: lerp(a.s,b.s,local)
+  return{
+    x:lerp(a.x,b.x,local),
+    y:lerp(a.y,b.y,local),
+    r:lerp(a.r,b.r,local),
+    s:lerp(a.s,b.s,local)
   };
 }
 
-document.addEventListener("mousemove", e => {
-  mouseX = (e.clientX / innerWidth - .5) * 2;
-  mouseY = (e.clientY / innerHeight - .5) * 2;
+document.addEventListener("mousemove",e=>{
+
+  mouseX =
+    (e.clientX / innerWidth - .5) * 2;
+
+  mouseY =
+    (e.clientY / innerHeight - .5) * 2;
+
 });
 
 function animate(){
+
   requestAnimationFrame(animate);
 
   const p = getProgress();
+
+  progress.style.width =
+    `${p * 100}%`;
+
+  scrollHint.style.opacity =
+    p > .04 ? "0" : ".4";
+
   const target = getState(p);
 
-  current.x = lerp(current.x, target.x, .065);
-  current.y = lerp(current.y, target.y, .065);
-  current.r = lerp(current.r, target.r, .065);
-  current.s = lerp(current.s, target.s, .065);
+  current.x = lerp(current.x,target.x,.06);
+  current.y = lerp(current.y,target.y,.06);
+  current.r = lerp(current.r,target.r,.06);
+  current.s = lerp(current.s,target.s,.06);
 
-  const mx = mouseX * 2.2;
-  const my = mouseY * 1.8;
+  const mx = mouseX * 1.5;
+  const my = mouseY * 1.2;
 
-  can.style.transform =
-    `translate(calc(-50% + ${current.x + mx}vw), calc(-50% + ${current.y + my}vh))
-     rotate(${current.r + mouseX * 3}deg)
-     scale(${current.s})`;
-
-  progress.style.width = `${p * 100}%`;
-  scrollHint.style.opacity = p > .04 ? "0" : ".4";
+  can.style.transform = `
+    translate(
+      calc(-50% + ${current.x + mx}vw),
+      calc(-50% + ${current.y + my}vh)
+    )
+    rotate(${current.r + mouseX * 2}deg)
+    scale(${current.s})
+  `;
 }
 
 animate();
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    entry.target.classList.toggle("visible", entry.isIntersecting);
-  });
-},{threshold:.25});
+/* REVEAL */
 
-document.querySelectorAll("[data-reveal]").forEach(el => observer.observe(el));
+const observer = new IntersectionObserver(entries=>{
+
+  entries.forEach(entry=>{
+
+    entry.target.classList.toggle(
+      "visible",
+      entry.isIntersecting
+    );
+
+  });
+
+},{
+  threshold:.25
+});
+
+document
+.querySelectorAll("[data-reveal]")
+.forEach(el=>observer.observe(el));
 
 })();
 </script>
