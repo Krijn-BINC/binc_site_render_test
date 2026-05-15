@@ -249,21 +249,37 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .metric-cell strong{display:block;font-family:var(--font-gd-display);font-size:3.2rem;line-height:.9;color:var(--brand)}
 .metric-cell span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
 
-body::after{
+/* ─── LIGHT SWEEP TRANSITION ─── */
+body::before{
   content:'';
   position:fixed;
-  inset:0;
-  background:#000;
-  opacity:0;
+  inset:-20%;
   pointer-events:none;
   z-index:9998;
-  transition:opacity .18s ease;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(200,182,107,.22) 0%,
+      rgba(200,182,107,.10) 22%,
+      rgba(255,255,255,.04) 38%,
+      transparent 65%
+    );
+
+  opacity:0;
+  transform:scale(.92);
+  transition:
+    opacity .45s ease,
+    transform .6s cubic-bezier(.22,1,.36,1);
+
+  mix-blend-mode:screen;
+  filter:blur(40px);
 }
 
-body.is-jumping::after{
+body.is-jumping::before{
   opacity:1;
+  transform:scale(1.08);
 }
-
   
 /* Score pills */
 .score-pills{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
@@ -884,31 +900,46 @@ window.addEventListener('scroll', () => {
 /* ─── SMOOTH SCROLL ─── */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
+
     const href = link.getAttribute('href');
     const target = document.querySelector(href);
+
     if (!target) return;
 
     e.preventDefault();
 
     const navH = document.getElementById('nav').offsetHeight;
-    const top = target.getBoundingClientRect().top + window.pageYOffset - navH;
 
-    // Lead overslaan zonder door alle product-scroll animaties te scrubben
+    const top =
+      target.getBoundingClientRect().top +
+      window.pageYOffset -
+      navH;
+
+    // Special transition voor lead
     if (href === '#lead') {
+
       document.body.classList.add('is-jumping');
 
       setTimeout(() => {
-        window.scrollTo({ top, behavior: 'auto' });
+        window.scrollTo({
+          top,
+          behavior:'auto'
+        });
 
         setTimeout(() => {
           document.body.classList.remove('is-jumping');
-        }, 180);
-      }, 160);
+        }, 420);
+
+      }, 140);
 
       return;
     }
 
-    window.scrollTo({ top, behavior: 'smooth' });
+    window.scrollTo({
+      top,
+      behavior:'smooth'
+    });
+
   });
 });
 /* ─── TAPE ─── */
