@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vacatures | BINC International</title>
+
+<link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#000;
+  --gold:#a89552;
+  --gold2:#c8b66b;
+  --white:#fff;
+  --dim:rgba(255,255,255,.58);
+  --font-display:'Barlow Condensed',sans-serif;
+  --font-body:'Barlow',sans-serif;
+  --font-ui:'Rajdhani',sans-serif;
+}
+
+html{scroll-behavior:smooth;cursor:none}
+body{
+  background:#000;
+  color:#fff;
+  font-family:var(--font-body);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+#cur,#cur-ring{
+  position:fixed;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  mix-blend-mode:difference;
+}
+
+#cur{
+  width:8px;
+  height:8px;
+  background:#fff;
+  transform:translate(-50%,-50%);
+}
+
+#cur-ring{
+  width:34px;
+  height:34px;
+  border:1.5px solid rgba(255,255,255,.45);
+  transform:translate(-50%,-50%);
+  transition:width .3s,height .3s;
+}
+
+body:has(a:hover) #cur-ring,
+body:has(button:hover) #cur-ring,
+body:has(input:hover) #cur-ring,
+body:has(textarea:hover) #cur-ring,
+body:has(select:hover) #cur-ring,
+body:has(label:hover) #cur-ring{
+  width:52px;
+  height:52px;
+}
+
+::selection{background:var(--gold);color:#000}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:rgba(168,149,82,.72)}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:500;
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6vw;
+  transition:.4s;
+}
+
+nav.scrolled{
+  background:rgba(0,0,0,.88);
+  backdrop-filter:blur(20px);
+}
+
+.nav-logo{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+}
+
+.nav-logo img{
+  height:38px;
+  width:auto;
+  object-fit:contain;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-links a{
+  font-family:var(--font-ui);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--dim);
+  text-decoration:none;
+  padding:8px 16px;
+  position:relative;
+}
+
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  bottom:4px;
+  left:16px;
+  right:16px;
+  height:1px;
+  background:rgba(168,149,82,.85);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:#fff;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+  transform:scaleX(1);
+}
+
+.nav-cta{
+  color:#000!important;
+  background:var(--gold)!important;
+  padding:10px 26px!important;
+  font-weight:700;
+  border-radius:2px;
+}
+
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--gold2)!important;color:#000!important}
+
+/* HERO */
+.jobs-hero{
+  position:relative;
+  min-height:92vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:#000;
+  padding:130px 6vw 90px;
+}
+
+.jobs-hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 68% 42%,rgba(168,149,82,.13),transparent 34%),
+    radial-gradient(circle at 28% 70%,rgba(255,255,255,.045),transparent 28%),
+    linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.92));
+  pointer-events:none;
+}
+
+.jobs-hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(168,149,82,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(168,149,82,.035) 1px,transparent 1px);
+  background-size:90px 90px;
+  opacity:.45;
+  animation:gridScroll 25s linear infinite;
+}
+
+@keyframes gridScroll{
+  from{transform:translateY(0)}
+  to{transform:translateY(90px)}
+}
+
+.hero-orb{
+  position:absolute;
+  width:520px;
+  height:520px;
+  right:4vw;
+  top:12vh;
+  border-radius:50%;
+  background:rgba(168,149,82,.08);
+  filter:blur(100px);
+  pointer-events:none;
+}
+
+.jobs-wrap{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);
+  gap:80px;
+  align-items:center;
+}
+
+.label{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-family:var(--font-ui);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.45em;
+  text-transform:uppercase;
+  color:rgba(168,149,82,.9);
+  margin-bottom:22px;
+}
+
+.label::before{
+  content:'';
+  width:24px;
+  height:1px;
+  background:rgba(168,149,82,.75);
+}
+
+.jobs-title{
+  font-family:var(--font-display);
+  font-size:clamp(4.5rem,10vw,13rem);
+  font-weight:900;
+  line-height:.84;
+  letter-spacing:-.01em;
+  color:#fff;
+  margin-bottom:36px;
+}
+
+.jobs-title .gold{color:var(--gold)}
+.jobs-title .stroke{
+  -webkit-text-stroke:1.5px rgba(255,255,255,.36);
+  color:transparent;
+}
+
+.jobs-copy{
+  max-width:620px;
+  font-size:1.05rem;
+  line-height:1.9;
+  color:rgba(255,255,255,.68);
+  font-weight:300;
+  margin-bottom:34px;
+}
+
+.jobs-actions{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.btn-gold,.btn-outline,.btn-submit{
+  font-family:var(--font-ui);
+  font-weight:700;
+  font-size:.8rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  border-radius:2px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  transition:.2s;
+}
+
+.btn-gold{
+  color:#000;
+  background:var(--gold);
+  border:none;
+  padding:17px 40px;
+}
+
+.btn-gold:hover{
+  background:var(--gold2);
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(168,149,82,.22);
+}
+
+.btn-outline{
+  color:#fff;
+  background:rgba(0,0,0,.2);
+  border:1px solid rgba(255,255,255,.24);
+  padding:16px 40px;
+}
+
+.btn-outline:hover{
+  border-color:rgba(168,149,82,.65);
+  background:rgba(168,149,82,.055);
+}
+
+.jobs-card{
+  position:relative;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012)),
+    rgba(255,255,255,.014);
+  border:1px solid rgba(168,149,82,.18);
+  border-radius:16px;
+  padding:44px;
+  overflow:hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 34px 90px rgba(0,0,0,.55);
+}
+
+.jobs-card::before{
+  content:'';
+  position:absolute;
+  inset:1px;
+  border-radius:15px;
+  background:radial-gradient(circle at 50% 0%,rgba(168,149,82,.08),transparent 48%);
+  pointer-events:none;
+}
+
+.jobs-card::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:50%;
+  width:42%;
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(168,149,82,.75),transparent);
+  opacity:.65;
+}
+
+.card-inner{
+  position:relative;
+  z-index:1;
+}
+
+.status-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(168,149,82,.28);
+  background:rgba(168,149,82,.08);
+  padding:11px 15px;
+  border-radius:999px;
+  font-family:var(--font-ui);
+  font-size:.64rem;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.78);
+  margin-bottom:26px;
+}
+
+.status-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 14px rgba(168,149,82,.7);
+}
+
+.card-title{
+  font-family:var(--font-display);
+  font-size:clamp(2.7rem,4.2vw,5.4rem);
+  font-weight:900;
+  line-height:.9;
+  color:#fff;
+  margin-bottom:24px;
+}
+
+.card-title span{color:var(--gold)}
+
+.card-text{
+  font-size:1rem;
+  line-height:1.85;
+  color:rgba(255,255,255,.6);
+  font-weight:300;
+}
+
+.card-list{
+  margin-top:28px;
+  display:grid;
+  gap:12px;
+}
+
+.card-list div{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  font-family:var(--font-ui);
+  font-size:.75rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.54);
+}
+
+.card-list div::before{
+  content:'';
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--gold);
+  margin-top:7px;
+  flex:0 0 auto;
+}
+
+/* FORM SECTION */
+#open-sollicitatie{
+  position:relative;
+  background:#000;
+  padding:140px 6vw 130px;
+  overflow:hidden;
+}
+
+#open-sollicitatie::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(168,149,82,.05),transparent 60%);
+  pointer-events:none;
+}
+
+.form-wrap{
+  position:relative;
+  z-index:1;
+  max-width:1080px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:70px;
+  align-items:start;
+}
+
+.form-intro{
+  position:sticky;
+  top:120px;
+}
+
+.form-title{
+  font-family:var(--font-display);
+  font-size:clamp(3rem,5.8vw,6.8rem);
+  font-weight:900;
+  line-height:.9;
+  color:#fff;
+  margin-bottom:28px;
+}
+
+.form-title .gold{color:var(--gold)}
+
+.form-copy{
+  font-size:1rem;
+  line-height:1.9;
+  color:rgba(255,255,255,.62);
+  font-weight:300;
+}
+
+.lead-form{
+  width:100%;
+}
+
+.form-block{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:17px;
+}
+
+.f-field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.f-field label{
+  font-family:var(--font-ui);
+  font-size:.62rem;
+  font-weight:600;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.32);
+}
+
+.f-field input,
+.f-field textarea,
+.f-field select{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:2px;
+  color:#fff;
+  font-family:var(--font-body);
+  font-size:.92rem;
+  font-weight:300;
+  padding:14px 16px;
+  outline:none;
+}
+
+.f-field input:focus,
+.f-field textarea:focus,
+.f-field select:focus{
+  border-color:rgba(168,149,82,.7);
+  background:rgba(168,149,82,.075);
+}
+
+.f-field textarea{
+  resize:vertical;
+  min-height:140px;
+}
+
+.f-field select option{
+  background:#000;
+}
+
+.file-box{
+  position:relative;
+  border:1px dashed rgba(168,149,82,.38);
+  background:rgba(168,149,82,.055);
+  border-radius:6px;
+  padding:24px;
+  transition:.2s;
+}
+
+.file-box:hover{
+  background:rgba(168,149,82,.085);
+  border-color:rgba(168,149,82,.62);
+}
+
+.file-box input{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  cursor:pointer;
+}
+
+.file-content{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.file-main strong{
+  display:block;
+  font-family:var(--font-ui);
+  font-size:.85rem;
+  font-weight:800;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:6px;
+}
+
+.file-main span{
+  display:block;
+  font-size:.9rem;
+  color:rgba(255,255,255,.46);
+  line-height:1.5;
+}
+
+.file-icon{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  border:1px solid rgba(168,149,82,.32);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-family:var(--font-display);
+  font-size:1.8rem;
+  font-weight:900;
+  flex:0 0 auto;
+}
+
+.file-name{
+  margin-top:12px;
+  font-size:.86rem;
+  color:rgba(255,255,255,.62);
+}
+
+.btn-submit{
+  color:#000;
+  background:var(--gold);
+  border:none;
+  padding:18px 44px;
+  align-self:flex-start;
+}
+
+.btn-submit:hover{
+  background:var(--gold2);
+  transform:translateY(-2px);
+}
+
+.privacy-note{
+  font-size:.82rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.36);
+  font-weight:300;
+}
+
+/* FOOTER */
+footer{
+  background:#000;
+  border-top:1px solid rgba(168,149,82,.16);
+  padding:80px 6vw 60px;
+  display:grid;
+  grid-template-columns:1.1fr 2fr;
+  gap:60px;
+  align-items:start;
+}
+
+.ft-brand{
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+}
+
+.ft-logo{
+  width:235px;
+  opacity:.98;
+}
+
+.ft-socials{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.ft-socials a{
+  width:24px;
+  height:24px;
+  color:#fff;
+  opacity:.72;
+  transition:.2s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.ft-socials a:hover{
+  color:var(--gold);
+  opacity:1;
+  transform:translateY(-2px);
+}
+
+.ft-socials svg{
+  width:100%;
+  height:100%;
+  fill:currentColor;
+}
+
+.ft-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+}
+
+.ft-item p,
+.ft-item a{
+  font-size:1.15rem;
+  line-height:1.75;
+  color:rgba(255,255,255,.74);
+  text-decoration:none;
+  font-weight:400;
+}
+
+.ft-h{
+  font-family:var(--font-ui);
+  font-size:1rem!important;
+  font-weight:800!important;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(168,149,82,1)!important;
+  margin-bottom:12px!important;
+}
+
+.ft-item a:hover{color:var(--gold)}
+
+.ft-bar{
+  background:#000;
+  border-top:1px solid rgba(255,255,255,.05);
+  padding:22px 6vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.ft-copy{
+  font-family:var(--font-ui);
+  font-size:.6rem;
+  letter-spacing:.12em;
+  color:rgba(255,255,255,.2);
+}
+
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(52px);
+  transition:opacity .9s,transform .9s;
+}
+
+.reveal.on{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.d1{transition-delay:.12s}
+.d2{transition-delay:.24s}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  html,body{cursor:auto}
+  #cur,#cur-ring{display:none}
+
+  nav{height:70px}
+  .nav-logo img{height:32px}
+  nav .nav-links a:not(.nav-cta){display:none}
+
+  .jobs-hero{
+    min-height:auto;
+    padding:120px 6vw 80px;
+  }
+
+  .jobs-wrap{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+
+  .jobs-title{
+    font-size:clamp(4.1rem,16vw,8.8rem);
+  }
+
+  .jobs-card{
+    padding:34px 26px;
+  }
+
+  .form-wrap{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+
+  .form-intro{
+    position:relative;
+    top:auto;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+  .btn-submit{
+    width:100%;
+    text-align:center;
+  }
+
+  .file-content{
+    align-items:flex-start;
+  }
+
+  footer{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .ft-info{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .ft-logo{width:220px}
+
+  .ft-bar{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+  </a>
+
+  <div class="nav-links">
+    <a href="index.html#approach">Aanpak</a>
+    <a href="index.html#clients-intro">Klanten</a>
+    <a href="vacatures.html" class="active">Vacatures</a>
+    <a href="index.html#lead" class="nav-cta">Samenwerken</a>
+  </div>
+</nav>
+
+<section class="jobs-hero">
+  <div class="hero-orb"></div>
+
+  <div class="jobs-wrap">
+    <div class="jobs-copy-wrap reveal">
+      <p class="label">Werken bij BINC</p>
+      <h1 class="jobs-title">BECOME<br><span class="gold">A</span> <span class="stroke">BINC</span></h1>
+      <p class="jobs-copy">
+        Wij bouwen merken groter in retail. Daarvoor zoeken we mensen met energie,
+        ownership en gevoel voor sales, strategie en relaties.
+      </p>
+      <div class="jobs-actions">
+        <a href="#open-sollicitatie" class="btn-gold">Open solliciteren</a>
+        <a href="index.html" class="btn-outline">Terug naar home</a>
+      </div>
+    </div>
+
+    <div class="jobs-card reveal d1">
+      <div class="card-inner">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          Geen vacature online
+        </div>
+
+        <h2 class="card-title">Altijd plek voor<br><span>talent.</span></h2>
+
+        <p class="card-text">
+          Op dit moment staat er geen specifieke vacature online. Wel is het altijd mogelijk
+          om een open sollicitatie achter te laten. Denk jij dat je bij BINC International past?
+          Vertel ons wie je bent, waar je goed in bent en waarom jij ons team sterker maakt.
+        </p>
+
+        <div class="card-list">
+          <div>Sales & accountmanagement</div>
+          <div>Retail, FMCG & brand growth</div>
+          <div>Strategie, discipline en doorpakken</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="open-sollicitatie">
+  <div class="form-wrap">
+    <div class="form-intro reveal">
+      <p class="label">Open sollicitatie</p>
+      <h2 class="form-title">LAAT VAN<br><span class="gold">JE HOREN</span></h2>
+      <p class="form-copy">
+        Vul hieronder je gegevens in en upload je CV. Wij bekijken je profiel en nemen contact op
+        als we mogelijkheden zien die aansluiten bij jouw ervaring, energie en ambitie.
+      </p>
+    </div>
+
+    <div class="lead-form reveal d2">
+      <div class="form-block">
+        <div class="form-row">
+          <div class="f-field">
+            <label>Voornaam</label>
+            <input type="text" placeholder="Jan"/>
+          </div>
+          <div class="f-field">
+            <label>Achternaam</label>
+            <input type="text" placeholder="de Vries"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="f-field">
+            <label>E-mailadres</label>
+            <input type="email" placeholder="jan@email.nl"/>
+          </div>
+          <div class="f-field">
+            <label>Telefoonnummer</label>
+            <input type="tel" placeholder="+31 6 ..."/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="f-field">
+            <label>Woonplaats</label>
+            <input type="text" placeholder="Tilburg"/>
+          </div>
+          <div class="f-field">
+            <label>LinkedIn profiel</label>
+            <input type="url" placeholder="https://linkedin.com/in/..."/>
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label>Interessegebied</label>
+          <select>
+            <option value="" disabled selected>Selecteer richting</option>
+            <option>Sales / Accountmanagement</option>
+            <option>Retail / Buyer contact</option>
+            <option>Marketing / Brand growth</option>
+            <option>Operations / Backoffice</option>
+            <option>Stage / Afstuderen</option>
+            <option>Anders</option>
+          </select>
+        </div>
+
+        <div class="f-field">
+          <label>Motivatie</label>
+          <textarea placeholder="Vertel kort wie je bent, waar je goed in bent en waarom je bij BINC International wilt werken."></textarea>
+        </div>
+
+        <div class="f-field">
+          <label>Upload CV</label>
+          <div class="file-box">
+            <input type="file" id="cvUpload" accept=".pdf,.doc,.docx"/>
+            <div class="file-content">
+              <div class="file-main">
+                <strong>Sleep je CV hier of klik om te uploaden</strong>
+                <span>PDF, DOC of DOCX · maximaal aanbevolen 10MB</span>
+              </div>
+              <div class="file-icon">+</div>
+            </div>
+            <div class="file-name" id="fileName">Nog geen bestand geselecteerd</div>
+          </div>
+        </div>
+
+        <p class="privacy-note">
+          Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen
+          over jouw open sollicitatie.
+        </p>
+
+        <button class="btn-submit" id="applyBtn">Verstuur sollicitatie →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand reveal">
+    <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+
+    <div class="ft-socials">
+      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
+      </a>
+
+      <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg>
+      </a>
+
+      <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="ft-info reveal d1">
+    <div class="ft-item">
+      <p class="ft-h">BINC adres</p>
+      <p>Wim Rötherlaan 25,<br>5051 JS Goirle</p>
+    </div>
+
+    <div class="ft-item">
+      <p class="ft-h">E-mailadres</p>
+      <a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a>
+    </div>
+
+    <div class="ft-item">
+      <p class="ft-h">Telefoonnummer</p>
+      <a href="tel:+31132032643">013 203 2643</a>
+    </div>
+  </div>
+</footer>
+
+<div class="ft-bar">
+  <span class="ft-copy">© 2025 BINC International B.V. — Alle rechten voorbehouden.</span>
+  <span class="ft-copy">KVK: 00000000</span>
+</div>
+
+<script>
+/* CURSOR */
+const cur = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX;
+  my = e.clientY;
+  cur.style.left = mx + 'px';
+  cur.style.top = my + 'px';
+});
+
+(function animRing(){
+  rx += (mx - rx) * .11;
+  ry += (my - ry) * .11;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
+
+/* NAV */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 70);
+}, { passive:true });
+
+/* REVEAL */
+const revIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('on');
+      revIO.unobserve(e.target);
+    }
+  });
+}, { threshold:.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
+
+/* FILE UPLOAD NAME */
+const cvUpload = document.getElementById('cvUpload');
+const fileName = document.getElementById('fileName');
+
+cvUpload.addEventListener('change', function(){
+  if(this.files && this.files.length > 0){
+    fileName.textContent = this.files[0].name;
+  } else {
+    fileName.textContent = 'Nog geen bestand geselecteerd';
+  }
+});
+
+/* FORM BUTTON */
+document.getElementById('applyBtn').addEventListener('click', function(){
+  this.textContent = '✓ Sollicitatie ontvangen';
+  this.style.background = '#3dbf8a';
+  this.style.color = '#fff';
+  this.disabled = true;
+});
+</script>
+
+</body>
+</html>
