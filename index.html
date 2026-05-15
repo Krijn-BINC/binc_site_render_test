@@ -249,60 +249,93 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .metric-cell strong{display:block;font-family:var(--font-gd-display);font-size:3.2rem;line-height:.9;color:var(--brand)}
 .metric-cell span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
 
-/* ─── FULLSCREEN GRANITE GOLD WAAS TRANSITION ─── */
-body::before{
-  content:'';
-  position:fixed;
-  inset:-8%;
-  pointer-events:none;
-  z-index:9998;
-
-  background:
-    radial-gradient(circle at 50% 45%,
-      rgba(255,245,210,.86) 0%,
-      rgba(200,182,107,.68) 22%,
-      rgba(168,149,82,.48) 45%,
-      rgba(20,17,8,.92) 100%
-    );
-
-  opacity:0;
-  backdrop-filter:blur(46px) saturate(1.25) contrast(1.15);
-  -webkit-backdrop-filter:blur(46px) saturate(1.25) contrast(1.15);
-
-  filter:blur(10px);
-  transform:scale(1.12);
-  transition:
-    opacity .34s ease,
-    transform .75s cubic-bezier(.22,1,.36,1);
-
-  mix-blend-mode:normal;
-}
-
-body::after{
-  content:'';
+/* ─── BINC TRANSITION SCREEN ─── */
+.jump-overlay{
   position:fixed;
   inset:0;
+  z-index:10000;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   pointer-events:none;
-  z-index:9999;
+
+  opacity:0;
+  transition:opacity .45s ease;
+
+  background:
+    radial-gradient(circle at center,
+      rgba(32,28,18,.92) 0%,
+      rgba(12,11,10,.96) 55%,
+      rgba(0,0,0,.985) 100%
+    );
+
+  backdrop-filter:blur(42px) saturate(1.15);
+  -webkit-backdrop-filter:blur(42px) saturate(1.15);
+
+  overflow:hidden;
+}
+
+/* granite texture */
+.jump-overlay::before{
+  content:'';
+  position:absolute;
+  inset:0;
 
   background-image:
-    radial-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
-    radial-gradient(rgba(0,0,0,.18) 1px, transparent 1px);
-  background-size:3px 3px, 5px 5px;
-  opacity:0;
-  transition:opacity .34s ease;
+    radial-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,.08) 1px, transparent 1px);
+
+  background-size:4px 4px, 6px 6px;
+
+  opacity:.5;
   mix-blend-mode:overlay;
 }
 
-body.is-jumping::before{
+/* gold glow */
+.jump-overlay::after{
+  content:'';
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+
+  background:
+    radial-gradient(circle,
+      rgba(168,149,82,.28) 0%,
+      rgba(168,149,82,.12) 35%,
+      transparent 72%
+    );
+
+  filter:blur(50px);
+}
+
+/* logo */
+.jump-logo{
+  width:min(260px,42vw);
+  opacity:0;
+  transform:scale(.92);
+  filter:
+    drop-shadow(0 0 30px rgba(168,149,82,.22))
+    drop-shadow(0 0 80px rgba(168,149,82,.14));
+
+  transition:
+    opacity .55s ease,
+    transform .8s cubic-bezier(.22,1,.36,1);
+
+  position:relative;
+  z-index:2;
+}
+
+.jump-overlay.active{
+  opacity:1;
+}
+
+.jump-overlay.active .jump-logo{
   opacity:1;
   transform:scale(1);
 }
-
-body.is-jumping::after{
-  opacity:.38;
-}
-  
 /* Score pills */
 .score-pills{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
 .score-pill{border:1px solid var(--brand-border);background:var(--brand-soft);padding:10px 14px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
@@ -419,7 +452,13 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 </head>
 
 <body>
-
+<div class="jump-overlay" id="jumpOverlay">
+  <img
+    class="jump-logo"
+    src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181"
+    alt="BINC International"
+  />
+</div>
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
@@ -939,19 +978,22 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
  if (href === '#lead') {
 
-  document.body.classList.add('is-jumping');
+  const overlay = document.getElementById('jumpOverlay');
+
+  overlay.classList.add('active');
 
   setTimeout(() => {
+
     window.scrollTo({
       top,
       behavior:'auto'
     });
 
-setTimeout(() => {
-  document.body.classList.remove('is-jumping');
-}, 1150);
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 950);
 
-}, 380);
+  }, 650);
 
   return;
 }
