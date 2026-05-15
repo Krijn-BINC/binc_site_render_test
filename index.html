@@ -249,36 +249,37 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .metric-cell strong{display:block;font-family:var(--font-gd-display);font-size:3.2rem;line-height:.9;color:var(--brand)}
 .metric-cell span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
 
-/* ─── LIGHT SWEEP TRANSITION ─── */
+/* ─── FULLSCREEN GOLDEN WAAS TRANSITION ─── */
 body::before{
   content:'';
   position:fixed;
-  inset:-20%;
+  inset:0;
   pointer-events:none;
   z-index:9998;
 
   background:
-    radial-gradient(
-      circle at center,
-      rgba(200,182,107,.22) 0%,
-      rgba(200,182,107,.10) 22%,
-      rgba(255,255,255,.04) 38%,
-      transparent 65%
+    radial-gradient(circle at 50% 50%,
+      rgba(255,245,205,.72) 0%,
+      rgba(200,182,107,.58) 24%,
+      rgba(168,149,82,.38) 46%,
+      rgba(0,0,0,.72) 100%
     );
 
   opacity:0;
-  transform:scale(.92);
-  transition:
-    opacity .45s ease,
-    transform .6s cubic-bezier(.22,1,.36,1);
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
 
-  mix-blend-mode:screen;
-  filter:blur(40px);
+  transform:scale(1.08);
+  transition:
+    opacity .28s ease,
+    transform .5s cubic-bezier(.22,1,.36,1);
+
+  mix-blend-mode:normal;
 }
 
 body.is-jumping::before{
   opacity:1;
-  transform:scale(1.08);
+  transform:scale(1);
 }
   
 /* Score pills */
@@ -915,25 +916,24 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       window.pageYOffset -
       navH;
 
-    // Special transition voor lead
-    if (href === '#lead') {
+  if (href === '#lead') {
 
-      document.body.classList.add('is-jumping');
+  document.body.classList.add('is-jumping');
 
-      setTimeout(() => {
-        window.scrollTo({
-          top,
-          behavior:'auto'
-        });
+  setTimeout(() => {
+    window.scrollTo({
+      top,
+      behavior:'auto'
+    });
 
-        setTimeout(() => {
-          document.body.classList.remove('is-jumping');
-        }, 420);
+    setTimeout(() => {
+      document.body.classList.remove('is-jumping');
+    }, 360);
 
-      }, 140);
+  }, 280);
 
-      return;
-    }
+  return;
+}
 
     window.scrollTo({
       top,
