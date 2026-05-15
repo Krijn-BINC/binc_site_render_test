@@ -586,6 +586,63 @@ nav.scrolled{
   transition:.3s;
 }
 
+  .jump-overlay{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .45s ease;
+  background:radial-gradient(circle at center,rgba(32,28,18,.92) 0%,rgba(12,11,10,.96) 55%,rgba(0,0,0,.985) 100%);
+  backdrop-filter:blur(42px) saturate(1.15);
+  -webkit-backdrop-filter:blur(42px) saturate(1.15);
+  overflow:hidden;
+}
+
+.jump-overlay::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,.08) 1px, transparent 1px);
+  background-size:4px 4px, 6px 6px;
+  opacity:.5;
+  mix-blend-mode:overlay;
+}
+
+.jump-overlay::after{
+  content:'';
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(168,149,82,.28) 0%,rgba(168,149,82,.12) 35%,transparent 72%);
+  filter:blur(50px);
+}
+
+.jump-logo{
+  width:min(420px,68vw);
+  opacity:0;
+  transform:scale(.92);
+  filter:drop-shadow(0 0 30px rgba(168,149,82,.22)) drop-shadow(0 0 80px rgba(168,149,82,.14));
+  transition:opacity .55s ease, transform .8s cubic-bezier(.22,1,.36,1);
+  position:relative;
+  z-index:2;
+}
+
+.jump-overlay.active{
+  opacity:1;
+}
+
+.jump-overlay.active .jump-logo{
+  opacity:1;
+  transform:scale(1);
+}
+
 .event-card:hover{
   transform:translateY(-4px);
   border-color:rgba(168,149,82,.38);
@@ -866,6 +923,13 @@ footer{
 </head>
 
 <body>
+  <div class="jump-overlay" id="jumpOverlay">
+  <img
+    class="jump-logo"
+    src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181"
+    alt="BINC International"
+  />
+</div>
 
 <div id="cur"></div>
 <div id="cur-ring"></div>
@@ -1304,6 +1368,20 @@ stackDots.forEach((dot,i) => {
 
 renderStack();
 
+/* SAMENWERKEN TRANSITION NAAR INDEX */
+document.querySelectorAll('a[href="index.html#lead"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+
+    const overlay = document.getElementById('jumpOverlay');
+    overlay.classList.add('active');
+
+    setTimeout(() => {
+      window.location.href = 'index.html#lead';
+    }, 900);
+  });
+});
+  
 /* STACK PARALLAX */
 if(stack){
   window.addEventListener('mousemove', e => {
