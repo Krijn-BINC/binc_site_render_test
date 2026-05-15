@@ -314,7 +314,22 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 .d2{transition-delay:.22s}
 .d3{transition-delay:.36s}
 
-/* RESPONSIVE */
+  
+  .product-showcase[data-reverse="true"] .product-panel.product-kpi-panel{
+  align-items:flex-end!important;
+}
+
+.product-showcase[data-reverse="true"] .reverse-kpi-wrap{
+  width:min(720px,42vw)!important;
+  margin-right:6vw;
+  text-align:left;
+}
+
+.product-showcase[data-reverse="true"] .reverse-kpi-wrap .product-kpis{
+  width:100%;
+}
+  
+  /* RESPONSIVE */
 @media(max-width:1000px){
   html,body{cursor:auto}
   #cur,#cur-ring{display:none}
@@ -552,7 +567,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 
         <!-- Panel 1 — KPI GRID -->
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
-         <div style="position:relative;z-index:30;width:min(880px,88vw);margin-left:auto;text-align:left">
+         <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · FeelSoGood</span>
             <h2 class="product-section-title" style="margin-bottom:6px">Sneller<br>dan verwacht.</h2>
             <div class="product-line"></div>
@@ -710,7 +725,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 
         <!-- Panel 1 — KPI GRID -->
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
-          <div style="position:relative;z-index:30;width:min(880px,88vw);margin-left:auto;text-align:left">
+          <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · Clean Nutrition</span>
             <h2 class="product-section-title" style="margin-bottom:6px">Marge &amp;<br>rotatie.</h2>
             <div class="product-line"></div>
