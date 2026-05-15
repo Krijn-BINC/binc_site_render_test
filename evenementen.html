@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
 
 <style>
-
 *,*::before,*::after{
   box-sizing:border-box;
   margin:0;
@@ -88,7 +87,8 @@ body{
 }
 
 body:has(a:hover) #cur-ring,
-body:has(button:hover) #cur-ring{
+body:has(button:hover) #cur-ring,
+body:has(.stack-card:hover) #cur-ring{
   width:52px;
   height:52px;
 }
@@ -368,6 +368,7 @@ nav.scrolled{
 .btn-gold:hover{
   background:var(--gold2);
   transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(168,149,82,.22);
 }
 
 .btn-outline{
@@ -379,6 +380,7 @@ nav.scrolled{
 
 .btn-outline:hover{
   border-color:rgba(168,149,82,.7);
+  background:rgba(168,149,82,.055);
 }
 
 /* SECTION */
@@ -410,82 +412,226 @@ nav.scrolled{
 
 .intro-grid{
   display:grid;
-  grid-template-columns:minmax(0,780px) minmax(360px,620px);
+  grid-template-columns:minmax(0,760px) minmax(360px,640px);
   gap:90px;
   align-items:center;
 }
 
-.quote-panel{
-  background:
-    linear-gradient(
-      180deg,
-      #11100b 0%,
-      #080805 48%,
-      #030303 100%
-    );
+/* CINEMATIC STACK CARDS */
 
-  border:1px solid rgba(168,149,82,.22);
-  border-radius:12px;
-
-  overflow:hidden;
-
-  box-shadow:
-    0 24px 70px rgba(0,0,0,.62),
-    0 0 42px rgba(168,149,82,.07);
-}
-
-.quote-top{
+.stack-visual{
+  position:relative;
+  width:100%;
+  min-height:560px;
+  perspective:1200px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-
-  padding:14px 20px;
-
-  border-bottom:1px solid rgba(168,149,82,.14);
+  justify-content:center;
 }
 
-.quote-head{
+.stack-glow{
+  position:absolute;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:rgba(168,149,82,.12);
+  filter:blur(90px);
+  opacity:.8;
+}
+
+.stack-ring{
+  position:absolute;
+  width:430px;
+  height:430px;
+  border-radius:50%;
+  border:1px solid rgba(168,149,82,.13);
+  box-shadow:
+    0 0 60px rgba(168,149,82,.06),
+    inset 0 0 60px rgba(168,149,82,.025);
+}
+
+.stack-ring::before{
+  content:'';
+  position:absolute;
+  inset:55px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.045);
+}
+
+.stack-card{
+  position:absolute;
+  width:min(380px,72vw);
+  height:500px;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(168,149,82,.2);
+  background:#080808;
+  box-shadow:
+    0 34px 90px rgba(0,0,0,.72),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  transform-style:preserve-3d;
+  transition:
+    transform .7s cubic-bezier(.22,1,.36,1),
+    opacity .4s ease,
+    border-color .3s ease,
+    filter .3s ease;
+}
+
+.stack-card img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.82;
+  transform:scale(1.04);
+  transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .3s ease;
+}
+
+.stack-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.25) 55%,rgba(0,0,0,.08) 100%),
+    radial-gradient(circle at 50% 0%,rgba(168,149,82,.14),transparent 48%);
+  z-index:1;
+}
+
+.stack-card::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:50%;
+  width:44%;
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(168,149,82,.9),transparent);
+  z-index:3;
+}
+
+.stack-card-main{
+  z-index:4;
+  transform:translate3d(0,0,80px) rotate(-2deg);
+}
+
+.stack-card-left{
+  z-index:3;
+  transform:translate3d(-95px,28px,10px) rotate(-10deg) scale(.88);
+  opacity:.72;
+  filter:grayscale(.2) brightness(.82);
+}
+
+.stack-card-right{
+  z-index:2;
+  transform:translate3d(105px,42px,-20px) rotate(9deg) scale(.84);
+  opacity:.55;
+  filter:grayscale(.35) brightness(.72);
+}
+
+.stack-card-back{
+  z-index:1;
+  transform:translate3d(0,70px,-80px) rotate(2deg) scale(.78);
+  opacity:.32;
+  filter:grayscale(.55) brightness(.55);
+}
+
+.stack-visual:hover .stack-card-main{
+  transform:translate3d(0,-8px,110px) rotate(-1deg) scale(1.02);
+  border-color:rgba(168,149,82,.42);
+}
+
+.stack-visual:hover .stack-card-left{
+  transform:translate3d(-130px,38px,15px) rotate(-13deg) scale(.9);
+}
+
+.stack-visual:hover .stack-card-right{
+  transform:translate3d(140px,52px,-15px) rotate(12deg) scale(.86);
+}
+
+.stack-visual:hover .stack-card-back{
+  transform:translate3d(0,88px,-80px) rotate(3deg) scale(.8);
+}
+
+.stack-visual:hover .stack-card-main img{
+  transform:scale(1.1);
+  opacity:.9;
+}
+
+.stack-info{
+  position:absolute;
+  left:28px;
+  right:28px;
+  bottom:28px;
+  z-index:4;
+}
+
+.stack-kicker{
+  display:inline-block;
   font-family:var(--font-ui);
-  font-size:.62rem;
+  font-size:.55rem;
+  font-weight:800;
   letter-spacing:.28em;
   text-transform:uppercase;
+  color:rgba(168,149,82,.95);
+  margin-bottom:12px;
+  padding:6px 10px;
+  border:1px solid rgba(168,149,82,.28);
+  background:rgba(0,0,0,.36);
+  border-radius:2px;
+}
+
+.stack-title{
+  font-family:var(--font-display);
+  font-size:clamp(2.7rem,4vw,4.8rem);
+  font-weight:900;
+  line-height:.88;
   color:#fff;
 }
 
-.quote-live{
-  display:flex;
-  align-items:center;
-  gap:8px;
-
-  font-family:var(--font-ui);
-  font-size:.55rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-
-  color:rgba(255,255,255,.82);
+.stack-title span{
+  color:var(--gold);
 }
 
-.live-dot{
+.stack-meta{
+  position:absolute;
+  top:24px;
+  right:24px;
+  z-index:4;
+  font-family:var(--font-ui);
+  font-size:.58rem;
+  font-weight:800;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+  background:rgba(0,0,0,.36);
+  border:1px solid rgba(255,255,255,.1);
+  padding:8px 10px;
+  border-radius:999px;
+  backdrop-filter:blur(8px);
+}
+
+.stack-mini{
+  position:absolute;
+  left:50%;
+  bottom:8px;
+  transform:translateX(-50%);
+  z-index:8;
+  display:flex;
+  gap:8px;
+}
+
+.stack-mini span{
   width:7px;
   height:7px;
   border-radius:50%;
-  background:#00ff9d;
-  box-shadow:0 0 10px rgba(0,255,157,.6);
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(168,149,82,.25);
 }
 
-.quote-inner{
-  padding:48px 40px;
-}
-
-.quote-text{
-  font-family:var(--font-display);
-  font-size:clamp(2.4rem,4vw,5rem);
-  font-weight:900;
-  line-height:.92;
-}
-
-.quote-text .gold{
-  color:var(--gold);
+.stack-mini span:first-child{
+  background:var(--gold);
+  box-shadow:0 0 12px rgba(168,149,82,.5);
 }
 
 /* EVENTS */
@@ -692,21 +838,24 @@ footer{
 
 .ft-socials{
   display:flex;
+  align-items:center;
   gap:22px;
 }
 
 .ft-socials a{
   width:24px;
   height:24px;
-
   color:#fff;
   opacity:.72;
-
   transition:.2s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .ft-socials a:hover{
   color:var(--gold);
+  opacity:1;
   transform:translateY(-2px);
 }
 
@@ -762,6 +911,22 @@ footer{
   color:rgba(255,255,255,.2);
 }
 
+/* REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(52px);
+  transition:opacity .9s,transform .9s;
+}
+
+.reveal.on{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.d1{transition-delay:.12s}
+.d2{transition-delay:.24s}
+
 /* RESPONSIVE */
 
 @media(max-width:1000px){
@@ -786,33 +951,78 @@ footer{
     display:none;
   }
 
+  #hero{
+    min-height:100vh;
+    padding:110px 6vw 90px;
+  }
+
   .hero-inner{
     margin-left:0;
   }
 
-  .jobs-title{
-    font-size:clamp(4rem,16vw,9rem);
+  .hero-title{
+    font-size:clamp(4.4rem,16vw,9rem);
   }
 
   .intro-grid{
     grid-template-columns:1fr;
-    gap:48px;
+    gap:58px;
+  }
+
+  .stack-visual{
+    min-height:500px;
+  }
+
+  .stack-card{
+    height:430px;
+    width:min(330px,78vw);
+  }
+
+  .stack-card-left{
+    transform:translate3d(-52px,28px,10px) rotate(-9deg) scale(.86);
+  }
+
+  .stack-card-right{
+    transform:translate3d(58px,40px,-20px) rotate(8deg) scale(.82);
+  }
+
+  .stack-visual:hover .stack-card-left{
+    transform:translate3d(-72px,38px,15px) rotate(-11deg) scale(.88);
+  }
+
+  .stack-visual:hover .stack-card-right{
+    transform:translate3d(78px,52px,-15px) rotate(10deg) scale(.84);
   }
 
   .event-grid{
     grid-template-columns:1fr;
   }
 
+  .event-card{
+    min-height:350px;
+  }
+
   footer{
     grid-template-columns:1fr;
+    gap:40px;
   }
 
   .ft-info{
     grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .ft-logo{
+    width:220px;
+  }
+
+  .ft-bar{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
   }
 
 }
-
 </style>
 </head>
 
@@ -878,7 +1088,7 @@ footer{
 
   <div class="intro-grid">
 
-    <div>
+    <div class="reveal">
 
       <p class="label">Live activations</p>
 
@@ -906,23 +1116,42 @@ footer{
 
     </div>
 
-    <div class="quote-panel">
+    <div class="stack-visual reveal d2" id="stackVisual">
 
-      <div class="quote-top">
-        <span class="quote-head">Festival activations</span>
+      <div class="stack-glow"></div>
+      <div class="stack-ring"></div>
 
-        <span class="quote-live">
-          <span class="live-dot"></span>
-          Live in het veld
-        </span>
+      <div class="stack-card stack-card-back">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop" alt="Festival crowd"/>
       </div>
 
-      <div class="quote-inner">
-        <p class="quote-text">
-          NOT JUST<br>
-          <span class="gold">SEEN.</span><br>
-          EXPERIENCED.
-        </p>
+      <div class="stack-card stack-card-right">
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop" alt="Live event"/>
+      </div>
+
+      <div class="stack-card stack-card-left">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1600&auto=format&fit=crop" alt="Concert stage"/>
+      </div>
+
+      <div class="stack-card stack-card-main">
+        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1600&auto=format&fit=crop" alt="Festival activation"/>
+
+        <div class="stack-meta">Live</div>
+
+        <div class="stack-info">
+          <span class="stack-kicker">Activation moments</span>
+          <h3 class="stack-title">
+            Culture<br>
+            <span>in motion</span>
+          </h3>
+        </div>
+      </div>
+
+      <div class="stack-mini">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
     </div>
@@ -933,7 +1162,7 @@ footer{
 
 <section id="events">
 
-  <div class="events-head">
+  <div class="events-head reveal">
 
     <p class="label">Events & ervaringen</p>
 
@@ -946,7 +1175,7 @@ footer{
 
   <div class="event-grid">
 
-    <div class="event-card">
+    <div class="event-card reveal">
 
       <img
         src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1600&auto=format&fit=crop"
@@ -970,7 +1199,7 @@ footer{
 
     </div>
 
-    <div class="event-card">
+    <div class="event-card reveal d1">
 
       <img
         src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1600&auto=format&fit=crop"
@@ -994,7 +1223,7 @@ footer{
 
     </div>
 
-    <div class="event-card">
+    <div class="event-card reveal d2">
 
       <img
         src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop"
@@ -1024,7 +1253,7 @@ footer{
 
 <section id="cta">
 
-  <div class="cta-wrap">
+  <div class="cta-wrap reveal">
 
     <p class="label" style="justify-content:center">
       Samenwerken
@@ -1053,7 +1282,7 @@ footer{
 
 <footer>
 
-  <div class="ft-brand">
+  <div class="ft-brand reveal">
 
     <img
       class="ft-logo"
@@ -1061,9 +1290,23 @@ footer{
       alt="BINC International"
     />
 
+    <div class="ft-socials">
+      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
+      </a>
+
+      <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg>
+      </a>
+
+      <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
+      </a>
+    </div>
+
   </div>
 
-  <div class="ft-info">
+  <div class="ft-info reveal d1">
 
     <div class="ft-item">
       <p class="ft-h">BINC adres</p>
@@ -1144,6 +1387,57 @@ window.addEventListener('scroll', () => {
     .classList.toggle('scrolled', window.scrollY > 70);
 
 }, { passive:true });
+
+/* REVEAL */
+
+const revIO = new IntersectionObserver(entries => {
+
+  entries.forEach(e => {
+
+    if(e.isIntersecting){
+
+      e.target.classList.add('on');
+      revIO.unobserve(e.target);
+
+    }
+
+  });
+
+}, { threshold:.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
+
+/* STACK PARALLAX */
+
+const stack = document.getElementById('stackVisual');
+
+if(stack){
+
+  window.addEventListener('mousemove', e => {
+
+    const rect = stack.getBoundingClientRect();
+
+    const inside =
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom;
+
+    if(!inside) return;
+
+    const x = (e.clientX - rect.left) / rect.width - .5;
+    const y = (e.clientY - rect.top) / rect.height - .5;
+
+    stack.style.transform =
+      `rotateY(${x * 5}deg) rotateX(${-y * 4}deg)`;
+
+  }, { passive:true });
+
+  stack.addEventListener('mouseleave', () => {
+    stack.style.transform = 'rotateY(0deg) rotateX(0deg)';
+  });
+
+}
 
 </script>
 
