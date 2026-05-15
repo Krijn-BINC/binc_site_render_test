@@ -30,7 +30,7 @@ body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-
 #cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
 #cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
 #cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
-body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:52px}
+body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring,body:has(label:hover) #cur-ring{width:52px;height:52px}
 ::selection{background:var(--gold);color:#000}
 ::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-track{background:#000}
@@ -125,13 +125,12 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .clients-title{font-size:clamp(3rem,5.8vw,6.8rem)!important;line-height:.9}
 
 /* PRODUCT SHOWCASES */
-/* Alleen intro panel van reverse showcases verschuiven */
 .product-showcase[data-reverse="true"] 
 .product-panel:first-child 
 .product-content{
   transform:translateX(-90px);
 }
-  
+
 .product-showcase{
   --brand:#a89552;
   --brand2:#c8b66b;
@@ -160,7 +159,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   --brand-border:rgba(168,149,82,.12);
 }
 
-/* Now 4 panels: 0=intro, 1=kpis, 2=results, 3=quote */
 .product-scroll-wrapper{
   position:relative;
   height:500vh;
@@ -175,7 +173,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-bg::after{width:700px;height:700px;opacity:.35}
 .product-progress{position:absolute;top:0;left:0;width:0%;height:2px;z-index:10;background:linear-gradient(90deg,var(--brand),var(--brand2))}
 
-/* Can wrapper */
 .product-can-wrap{position:absolute;top:54%;left:50%;width:min(20vw,220px);transform:translate(-50%,-50%);z-index:20;pointer-events:none;will-change:transform;transition:
   filter .5s ease,
   opacity .5s ease,
@@ -190,14 +187,11 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-showcase.cleannutrition .product-can-wrap{top:54%;width:min(28vw,340px)}
 .product-glow{position:absolute;inset:10% 0;background:radial-gradient(circle,var(--brand-soft),transparent 68%);filter:blur(32px);z-index:-1}
 
-/* Results panel: can is blurred but text is NOT */
 .product-can-wrap.results-bg{
   opacity:.28;
   filter:blur(6px) drop-shadow(0 0 60px var(--brand-soft));
   z-index:25;
 }
-
-/* Quote panel: can blurred */
 .product-can-wrap.blurred{
   filter:blur(8px);
   opacity:.38;
@@ -218,7 +212,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-line{width:40px;height:1px;background:var(--brand);opacity:.55;margin-bottom:22px}
 .product-text{font-family:var(--font-gd-mono);font-size:.76rem;line-height:1.92;color:rgba(255,255,255,.44);font-style:italic;max-width:340px}
 
-/* KPI grid — wider, less tall, more visual */
 .product-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--brand-border);border-radius:6px;overflow:hidden;margin-top:28px;width:min(880px,88vw)}
 .product-kpi{background:rgba(0,0,0,.72);padding:22px 18px;position:relative;overflow:hidden}
 .product-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--brand),transparent);opacity:.45}
@@ -237,8 +230,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-dot.active{background:var(--brand);box-shadow:0 0 8px var(--brand-soft)}
 .client-separator{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0 6vw}
 
-
-/* METRIC WALLS — results panel */
 .metric-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border-radius:8px;overflow:hidden;margin-top:24px;width:min(820px,88vw)}
 .metric-wall.gold-wall{background:rgba(168,149,82,.22);border:1px solid rgba(168,149,82,.18)}
 .metric-wall.fsg-wall{background:rgba(0,166,255,.22);border:1px solid rgba(0,166,255,.18)}
@@ -249,101 +240,213 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .metric-cell strong{display:block;font-family:var(--font-gd-display);font-size:3.2rem;line-height:.9;color:var(--brand)}
 .metric-cell span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
 
-/* ─── BINC TRANSITION SCREEN ─── */
+/* BINC TRANSITION SCREEN */
 .jump-overlay{
   position:fixed;
   inset:0;
   z-index:10000;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   pointer-events:none;
-
   opacity:0;
   transition:opacity .45s ease;
-
   background:
     radial-gradient(circle at center,
       rgba(32,28,18,.92) 0%,
       rgba(12,11,10,.96) 55%,
       rgba(0,0,0,.985) 100%
     );
-
   backdrop-filter:blur(42px) saturate(1.15);
   -webkit-backdrop-filter:blur(42px) saturate(1.15);
-
   overflow:hidden;
 }
-
-/* granite texture */
 .jump-overlay::before{
   content:'';
   position:absolute;
   inset:0;
-
   background-image:
     radial-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
     radial-gradient(rgba(0,0,0,.08) 1px, transparent 1px);
-
   background-size:4px 4px, 6px 6px;
-
   opacity:.5;
   mix-blend-mode:overlay;
 }
-
-/* gold glow */
 .jump-overlay::after{
   content:'';
   position:absolute;
   width:520px;
   height:520px;
   border-radius:50%;
-
   background:
     radial-gradient(circle,
       rgba(168,149,82,.28) 0%,
       rgba(168,149,82,.12) 35%,
       transparent 72%
     );
-
   filter:blur(50px);
 }
-
-/* logo */
 .jump-logo{
-    width:min(420px,68vw);
+  width:min(420px,68vw);
   opacity:0;
   transform:scale(.92);
   filter:
     drop-shadow(0 0 30px rgba(168,149,82,.22))
     drop-shadow(0 0 80px rgba(168,149,82,.14));
-
   transition:
     opacity .55s ease,
     transform .8s cubic-bezier(.22,1,.36,1);
-
   position:relative;
   z-index:2;
 }
+.jump-overlay.active{opacity:1}
+.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
 
-.jump-overlay.active{
-  opacity:1;
-}
-
-.jump-overlay.active .jump-logo{
-  opacity:1;
-  transform:scale(1);
-}
-/* Score pills */
 .score-pills{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
 .score-pill{border:1px solid var(--brand-border);background:var(--brand-soft);padding:10px 14px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
 .score-pill span{color:var(--brand);font-weight:700}
 
-/* Results panel layout — text/table must be z-index ABOVE can */
 .results-panel-inner{position:relative;z-index:30;max-width:860px;text-align:center}
 .results-eyebrow{display:block;color:var(--brand);font-family:var(--font-gd-mono);font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;opacity:.85;margin-bottom:18px}
+
+/* VACATURES */
+#vacatures{
+  background:#000;
+  padding:150px 6vw 130px;
+  position:relative;
+  overflow:hidden;
+  border-top:1px solid rgba(168,149,82,.12);
+}
+#vacatures::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(168,149,82,.07),transparent 58%),
+    radial-gradient(circle at 12% 72%,rgba(255,255,255,.025),transparent 28%);
+  pointer-events:none;
+}
+.vacature-wrap{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:start;
+  position:relative;
+  z-index:1;
+}
+.vacature-copy{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+.vacature-title{
+  font-family:var(--font-display);
+  font-size:clamp(4rem,7vw,8rem);
+  font-weight:900;
+  line-height:.86;
+  color:#fff;
+}
+.vacature-title .gold{color:var(--gold)}
+.vacature-text{
+  max-width:520px;
+  font-size:1rem;
+  line-height:1.9;
+  color:rgba(255,255,255,.62);
+  font-weight:300;
+}
+.vacature-cards{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  margin-top:14px;
+  max-width:520px;
+}
+.vacature-card{
+  border:1px solid rgba(168,149,82,.16);
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+  border-radius:12px;
+  padding:22px 24px;
+  position:relative;
+  overflow:hidden;
+}
+.vacature-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:40%;
+  height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+}
+.vacature-card h3{
+  font-family:var(--font-ui);
+  font-size:.78rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:8px;
+}
+.vacature-card p{
+  font-size:.9rem;
+  line-height:1.65;
+  color:rgba(255,255,255,.52);
+  font-weight:300;
+}
+.vacature-form-panel{
+  border:1px solid rgba(168,149,82,.2);
+  background:linear-gradient(180deg,rgba(17,16,11,.86),rgba(5,5,5,.88));
+  border-radius:14px;
+  padding:34px;
+  box-shadow:0 28px 80px rgba(0,0,0,.52),0 0 42px rgba(168,149,82,.055);
+}
+.upload-box{
+  position:relative;
+  border:1px dashed rgba(168,149,82,.42);
+  background:rgba(168,149,82,.045);
+  border-radius:8px;
+  padding:22px;
+  transition:.2s;
+}
+.upload-box:hover{
+  border-color:rgba(168,149,82,.8);
+  background:rgba(168,149,82,.08);
+}
+.upload-box input{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  cursor:pointer;
+}
+.upload-content{
+  pointer-events:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.upload-title{
+  font-family:var(--font-ui);
+  font-weight:800;
+  font-size:.82rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.upload-sub{
+  font-size:.88rem;
+  line-height:1.6;
+  color:rgba(255,255,255,.54);
+}
+.upload-file-name{
+  margin-top:8px;
+  font-family:var(--font-gd-mono);
+  font-size:.68rem;
+  color:rgba(255,255,255,.72);
+  word-break:break-all;
+}
 
 /* LEAD */
 #lead{background:#000;padding:150px 6vw 130px;position:relative;overflow:hidden}
@@ -382,7 +485,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
   text-decoration:none;
   font-weight:400;
 }
-
 .ft-h{
   font-family:var(--font-ui);
   font-size:1rem!important;
@@ -416,8 +518,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 .d2{transition-delay:.22s}
 .d3{transition-delay:.36s}
 
-  
-  .product-showcase[data-reverse="true"] .product-panel.product-kpi-panel{
+.product-showcase[data-reverse="true"] .product-panel.product-kpi-panel{
   align-items:flex-end!important;
 }
 
@@ -430,8 +531,8 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 .product-showcase[data-reverse="true"] .reverse-kpi-wrap .product-kpis{
   width:100%;
 }
-  
-  /* RESPONSIVE */
+
+/* RESPONSIVE */
 @media(max-width:1000px){
   html,body{cursor:auto}
   #cur,#cur-ring{display:none}
@@ -452,10 +553,13 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
   .product-showcase.cleannutrition .product-can-wrap{width:56vw}
   .product-panel{padding:0 5vw}
   .product-panel.product-right{justify-content:flex-start}
+  .product-showcase[data-reverse="true"] .product-panel:first-child .product-content{transform:none}
   .product-content{max-width:100%}
   .product-dots{display:none}
   .product-kpis{grid-template-columns:repeat(2,1fr);width:100%}
   .metric-wall{grid-template-columns:1fr;width:100%}
+  .vacature-wrap{grid-template-columns:1fr;gap:50px}
+  .vacature-form-panel{padding:24px}
   .form-row{grid-template-columns:1fr}
   .btn-submit{width:100%;text-align:center}
   footer{grid-template-columns:1fr;gap:40px}
@@ -474,6 +578,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
     alt="BINC International"
   />
 </div>
+
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
@@ -484,6 +589,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
   <div class="nav-links">
     <a href="#approach">Aanpak</a>
     <a href="#clients-intro">Klanten</a>
+    <a href="#vacatures">Vacatures</a>
     <a href="#lead" class="nav-cta">Samenwerken</a>
   </div>
 </nav>
@@ -496,6 +602,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
   <div class="hero-grid"></div>
   <div class="g-orb orb-a"></div>
   <div class="g-orb orb-b"></div>
+
   <div class="hero-content">
     <div class="hero-inner">
       <h1 class="hero-title">GROW <span class="gold">YOUR</span><br><span class="stroke">BRAND</span></h1>
@@ -506,6 +613,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
       </div>
     </div>
   </div>
+
   <div class="hero-scroll">
     <div class="scroll-pill"><div class="scroll-ball"></div></div>
     <span class="scroll-label">Scroll</span>
@@ -524,6 +632,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
       <p class="body-text">Retail is een spel van relaties, timing en strategie. BINC International heeft in meer dan 10 jaar een dicht netwerk opgebouwd bij de grootste retailers, groothandels en supermarktketens van Nederland.</p>
       <p class="body-text">Van foodservice tot sport, van drogisterij tot premium slijterijen: ons netwerk reikt verder dan je denkt.</p>
     </div>
+
     <div class="reveal d2">
       <div class="locator-panel">
         <div class="locator-top">
@@ -561,10 +670,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     MERK 1 · GOLD DRY
-     4 panels: 0=intro, 1=kpis, 2=results, 3=quote
-════════════════════════════════════════════ -->
 <section id="gd-showcase" class="product-showcase gold-dry" data-start="right">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
@@ -579,8 +684,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
       <div class="product-dots"></div>
 
       <div class="product-panels">
-
-        <!-- Panel 0 — INTRO: blik rechts, tekst links -->
         <div class="product-panel product-left product-active">
           <div class="product-content">
             <span class="product-eyebrow">— Gold Dry</span>
@@ -594,7 +697,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 1 — KPI GRID: tekst + brede kpi's, blik tegenover -->
         <div class="product-panel product-left product-kpi-panel" style="flex-direction:column;align-items:flex-start;padding-top:0">
           <div style="position:relative;z-index:30;width:min(880px,88vw)">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · Gold Dry</span>
@@ -610,7 +712,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 2 — RESULTATEN: blik vaag achter, tekst scherp voorop -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow">✦ Resultaten · 3 jaar Gold Dry × BINC</span>
@@ -626,13 +727,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 3 — QUOTE (center) -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement">Jouw merk.<br><em>Onze handen.</em><br>Eén resultaat.</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -640,10 +739,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 
 <div class="client-separator"></div>
 
-<!-- ═══════════════════════════════════════════
-     MERK 2 · FEELSOGOOD
-     4 panels: 0=intro, 1=kpis, 2=results, 3=quote
-════════════════════════════════════════════ -->
 <section id="fsg-showcase" class="product-showcase feelsogood" data-reverse="true">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
@@ -658,8 +753,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
       <div class="product-dots"></div>
 
       <div class="product-panels">
-
-        <!-- Panel 0 — INTRO: blik links, tekst rechts -->
         <div class="product-panel product-right product-active">
           <div class="product-content">
             <span class="product-eyebrow">— FeelSoGood · Blackberry Blueberry · 0,6L</span>
@@ -673,9 +766,8 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 1 — KPI GRID -->
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
-         <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
+          <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · FeelSoGood</span>
             <h2 class="product-section-title" style="margin-bottom:6px">Sneller<br>dan verwacht.</h2>
             <div class="product-line"></div>
@@ -689,7 +781,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 2 — RESULTATEN -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow">✦ Resultaten · FeelSoGood × BINC</span>
@@ -705,13 +796,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 3 — QUOTE -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement">Niet alleen<br><em>mooi blauw.</em><br>Gebouwd voor rotatie.</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -719,10 +808,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 
 <div class="client-separator"></div>
 
-<!-- ═══════════════════════════════════════════
-     MERK 3 · BEATBOX
-     4 panels: 0=intro, 1=kpis, 2=results, 3=quote
-════════════════════════════════════════════ -->
 <section id="bb-showcase" class="product-showcase beatbox" data-start="right">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
@@ -737,8 +822,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
       <div class="product-dots"></div>
 
       <div class="product-panels">
-
-        <!-- Panel 0 — INTRO: blik rechts, tekst links -->
         <div class="product-panel product-left product-active">
           <div class="product-content">
             <span class="product-eyebrow">— BeatBox Benelux</span>
@@ -752,7 +835,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 1 — KPI GRID -->
         <div class="product-panel product-left product-kpi-panel" style="flex-direction:column;align-items:flex-start;padding-top:0">
           <div style="position:relative;z-index:30;width:min(880px,88vw)">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · BeatBox</span>
@@ -768,7 +850,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 2 — RESULTATEN -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow">✦ Resultaten · BeatBox × BINC</span>
@@ -784,13 +865,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 3 — QUOTE -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement">Niet zomaar<br><em>een RTD.</em><br>Wij maken het groot.</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -798,10 +877,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 
 <div class="client-separator"></div>
 
-<!-- ═══════════════════════════════════════════
-     MERK 4 · CLEAN NUTRITION
-     4 panels: 0=intro, 1=kpis, 2=results, 3=quote
-════════════════════════════════════════════ -->
 <section id="cn-showcase" class="product-showcase cleannutrition" data-reverse="true">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
@@ -816,8 +891,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
       <div class="product-dots"></div>
 
       <div class="product-panels">
-
-        <!-- Panel 0 — INTRO: blik links, tekst rechts -->
         <div class="product-panel product-right product-active">
           <div class="product-content">
             <span class="product-eyebrow">— Clean Nutrition · Golden Bar · Salty Peanut · 50g</span>
@@ -831,7 +904,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 1 — KPI GRID -->
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
           <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · Clean Nutrition</span>
@@ -847,7 +919,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 2 — RESULTATEN -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow">✦ Resultaten · Clean Nutrition × BINC</span>
@@ -863,13 +934,99 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           </div>
         </div>
 
-        <!-- Panel 3 — QUOTE -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement">Niet gewoon<br><em>een reep.</em><br>Wij maken het schaalbaar.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section id="vacatures">
+  <div class="vacature-wrap">
+    <div class="vacature-copy reveal">
+      <div>
+        <p class="label">Vacatures</p>
+        <h2 class="vacature-title">BECOME<br><span class="gold">A BINC</span></h2>
+      </div>
+
+      <p class="vacature-text">
+        Wil jij meebouwen aan de groei van ambitieuze merken in retail?
+        Bij BINC International werk je aan sales, strategie, accountmanagement en zichtbare groei in de markt.
+      </p>
+
+      <div class="vacature-cards">
+        <div class="vacature-card">
+          <h3>Sales &amp; Accountmanagement</h3>
+          <p>Voor commerciële talenten die energie krijgen van merken, retailers en resultaat.</p>
+        </div>
+        <div class="vacature-card">
+          <h3>Stage &amp; Junior rollen</h3>
+          <p>Voor starters die willen leren hoe je merken opbouwt in retail en B2B.</p>
+        </div>
+        <div class="vacature-card">
+          <h3>Open sollicitatie</h3>
+          <p>Zie jij jezelf bij BINC passen? Stuur je gegevens en CV, dan nemen we contact op.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vacature-form-panel reveal d2">
+      <div class="form-block">
+        <div class="form-row">
+          <div class="f-field">
+            <label>Voornaam</label>
+            <input type="text" placeholder="Jan"/>
+          </div>
+          <div class="f-field">
+            <label>Achternaam</label>
+            <input type="text" placeholder="de Vries"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="f-field">
+            <label>E-mailadres</label>
+            <input type="email" placeholder="jan@email.nl"/>
+          </div>
+          <div class="f-field">
+            <label>Telefoonnummer</label>
+            <input type="tel" placeholder="+31 6 ..."/>
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label>Functie interesse</label>
+          <select>
+            <option value="" disabled selected>Selecteer functie</option>
+            <option>Sales / Accountmanager</option>
+            <option>Stage</option>
+            <option>Marketing</option>
+            <option>Operations</option>
+            <option>Open sollicitatie</option>
+          </select>
+        </div>
+
+        <div class="f-field">
+          <label>CV uploaden</label>
+          <div class="upload-box">
+            <input type="file" id="cvUpload" accept=".pdf,.doc,.docx"/>
+            <div class="upload-content">
+              <span class="upload-title">Upload jouw CV</span>
+              <span class="upload-sub">Sleep of selecteer je CV. Toegestaan: PDF, DOC of DOCX.</span>
+              <span class="upload-file-name" id="cvFileName">Nog geen bestand gekozen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label>Motivatie</label>
+          <textarea placeholder="Vertel kort wie je bent en waarom jij bij BINC past"></textarea>
+        </div>
+
+        <button class="btn-submit" id="vacatureBtn">Verstuur sollicitatie →</button>
       </div>
     </div>
   </div>
@@ -882,17 +1039,24 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
       <h2 class="lead-title">WIL JIJ OOK<br><span class="gold">GROEIEN</span> IN RETAIL</h2>
       <p class="lead-copy">Wij ontzorgen de volledige B2B voor jouw merk. Van strategie en buyer outreach tot listing, inkoop en accountmanagement.</p>
     </div>
+
     <div class="lead-form reveal d2">
       <div class="form-block">
         <div class="form-row">
           <div class="f-field"><label>Voornaam</label><input type="text" placeholder="Jan"/></div>
           <div class="f-field"><label>Achternaam</label><input type="text" placeholder="de Vries"/></div>
         </div>
-        <div class="f-field"><label>Bedrijfsnaam</label><input type="text" placeholder="Jouw Merk BV"/></div>
+
+        <div class="f-field">
+          <label>Bedrijfsnaam</label>
+          <input type="text" placeholder="Jouw Merk BV"/>
+        </div>
+
         <div class="form-row">
           <div class="f-field"><label>E-mailadres</label><input type="email" placeholder="jan@jouwmerk.nl"/></div>
           <div class="f-field"><label>Telefoonnummer</label><input type="tel" placeholder="+31 6 ..."/></div>
         </div>
+
         <div class="f-field">
           <label>Productcategorie</label>
           <select>
@@ -904,10 +1068,12 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             <option>Anders</option>
           </select>
         </div>
+
         <div class="f-field">
           <label>Vertel ons over jouw merk</label>
           <textarea placeholder="Wat is jouw product en wat zijn jouw ambities in retail?"></textarea>
         </div>
+
         <button class="btn-submit" id="formBtn">Verstuur aanvraag →</button>
       </div>
     </div>
@@ -929,6 +1095,7 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
       </a>
     </div>
   </div>
+
   <div class="ft-info reveal d1">
     <div class="ft-item">
       <p class="ft-h">BINC adres</p>
@@ -951,15 +1118,18 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 </div>
 
 <script>
-/* ─── CURSOR ─── */
+/* CURSOR */
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
+
 document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
+  mx = e.clientX;
+  my = e.clientY;
   cur.style.left = mx + 'px';
   cur.style.top  = my + 'px';
 });
+
 (function animRing() {
   rx += (mx - rx) * .11;
   ry += (my - ry) * .11;
@@ -968,15 +1138,14 @@ document.addEventListener('mousemove', e => {
   requestAnimationFrame(animRing);
 })();
 
-/* ─── NAV ─── */
+/* NAV */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 70);
 }, { passive: true });
 
-/* ─── SMOOTH SCROLL ─── */
+/* SMOOTH SCROLL */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
-
     const href = link.getAttribute('href');
     const target = document.querySelector(href);
 
@@ -991,42 +1160,41 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       window.pageYOffset -
       navH;
 
- if (href === '#lead') {
+    if (href === '#lead' || href === '#vacatures') {
+      const overlay = document.getElementById('jumpOverlay');
 
-  const overlay = document.getElementById('jumpOverlay');
+      overlay.classList.add('active');
 
-  overlay.classList.add('active');
+      setTimeout(() => {
+        window.scrollTo({
+          top,
+          behavior:'auto'
+        });
 
-  setTimeout(() => {
+        setTimeout(() => {
+          overlay.classList.remove('active');
+        }, 950);
+      }, 250);
 
-    window.scrollTo({
-      top,
-      behavior:'auto'
-    });
-
-    setTimeout(() => {
-      overlay.classList.remove('active');
-    }, 950);
-
-  }, 250);
-
-  return;
-}
+      return;
+    }
 
     window.scrollTo({
       top,
       behavior:'smooth'
     });
-
   });
 });
-/* ─── TAPE ─── */
-const WORDS = ['Grow Your Brand','B2B Sales','Accountmanagement','Retail Listings','Landelijk Netwerk','Strategy & Growth','BINC International'];
+
+/* TAPE */
+const WORDS = ['Grow Your Brand','B2B Sales','Accountmanagement','Retail Listings','Landelijk Netwerk','Strategy & Growth','BINC International','Become A BINC'];
 const ti = document.getElementById('tapeInner');
+
 const chunk = () => WORDS.map(w => `<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
+
 ti.innerHTML = chunk() + chunk();
 
-/* ─── MAP ─── */
+/* MAP */
 const STORES = [
   { name:'Albert Heijn',    sub:'Supermarktketen · Landelijk', count:'1.100+', lat:52.373, lon:4.892 },
   { name:'Jumbo',           sub:'Supermarktketen · Landelijk', count:'700+',   lat:51.921, lon:4.470 },
@@ -1043,47 +1211,92 @@ const STORES = [
 ];
 
 function initMap() {
-  if (typeof L === 'undefined') { console.warn('Leaflet niet beschikbaar'); return; }
+  if (typeof L === 'undefined') {
+    console.warn('Leaflet niet beschikbaar');
+    return;
+  }
+
   function createGoldIcon() {
     return L.divIcon({
       className:'',
       html:`<div style="position:relative;width:14px;height:14px;border-radius:50% 50% 50% 0;background:linear-gradient(135deg,#f5e8a8 0%,#a89552 48%,#564821 100%);transform:rotate(-45deg);border:1px solid rgba(255,255,255,.58);box-shadow:0 0 11px rgba(168,149,82,.34),inset 0 1px 2px rgba(255,255,255,.62);"><span style="position:absolute;width:5px;height:5px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#050505;"></span></div>`,
-      iconSize:[18,18], iconAnchor:[9,18], popupAnchor:[0,-16]
+      iconSize:[18,18],
+      iconAnchor:[9,18],
+      popupAnchor:[0,-16]
     });
   }
-  const map = L.map('storeMap', { center:[52.18,5.30], zoom:6.35, zoomSnap:.25, scrollWheelZoom:true, zoomControl:true });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom:19 }).addTo(map);
+
+  const map = L.map('storeMap', {
+    center:[52.18,5.30],
+    zoom:6.35,
+    zoomSnap:.25,
+    scrollWheelZoom:true,
+    zoomControl:true
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom:19
+  }).addTo(map);
+
   STORES.forEach(pin => {
     L.marker([pin.lat, pin.lon], { icon: createGoldIcon() })
       .bindPopup(`<div class="pop-name">${pin.name}</div><div class="pop-sub">${pin.sub}</div><div class="pop-count">${pin.count}</div><div class="pop-label">aangesloten locaties</div>`)
       .addTo(map);
   });
 }
-if (document.readyState === 'complete') { initMap(); } else { window.addEventListener('load', initMap); }
 
-/* ─── REVEAL ─── */
+if (document.readyState === 'complete') {
+  initMap();
+} else {
+  window.addEventListener('load', initMap);
+}
+
+/* REVEAL */
 const revIO = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revIO.unobserve(e.target); } });
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      revIO.unobserve(e.target);
+    }
+  });
 }, { threshold:.1 });
+
 document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
 
-/* ─── COUNT-UP ─── */
+/* COUNT-UP */
 function countUp(el, target) {
-  const dur = 1900, t0 = performance.now();
+  const dur = 1900;
+  const t0 = performance.now();
+
   const go = now => {
     const p = Math.min((now - t0) / dur, 1);
     const eased = 1 - Math.pow(1 - p, 3);
-    el.querySelector('.count').textContent = Math.round(eased * target).toLocaleString('nl-NL');
-    if (p < 1) { requestAnimationFrame(go); } else { el.querySelector('.count').textContent = target.toLocaleString('nl-NL'); }
+
+    el.querySelector('.count').textContent =
+      Math.round(eased * target).toLocaleString('nl-NL');
+
+    if (p < 1) {
+      requestAnimationFrame(go);
+    } else {
+      el.querySelector('.count').textContent = target.toLocaleString('nl-NL');
+    }
   };
+
   requestAnimationFrame(go);
 }
+
 const statIO = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { countUp(e.target, +e.target.dataset.target); statIO.unobserve(e.target); } });
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      countUp(e.target, +e.target.dataset.target);
+      statIO.unobserve(e.target);
+    }
+  });
 }, { threshold:.5 });
+
 document.querySelectorAll('.stat-n[data-target]').forEach(el => statIO.observe(el));
 
-/* ─── FORM ─── */
+/* FORM SAMENWERKEN */
 document.getElementById('formBtn').addEventListener('click', function () {
   this.textContent = '✓ Aanvraag verstuurd';
   this.style.background = '#3dbf8a';
@@ -1091,62 +1304,83 @@ document.getElementById('formBtn').addEventListener('click', function () {
   this.disabled = true;
 });
 
-/* ─── ORBS ─── */
+/* VACATURE FORM + CV UPLOAD */
+const cvUpload = document.getElementById('cvUpload');
+const cvFileName = document.getElementById('cvFileName');
+const vacatureBtn = document.getElementById('vacatureBtn');
+
+cvUpload.addEventListener('change', function () {
+  if (this.files && this.files.length > 0) {
+    cvFileName.textContent = 'Gekozen bestand: ' + this.files[0].name;
+  } else {
+    cvFileName.textContent = 'Nog geen bestand gekozen';
+  }
+});
+
+vacatureBtn.addEventListener('click', function () {
+  this.textContent = '✓ Sollicitatie verstuurd';
+  this.style.background = '#3dbf8a';
+  this.style.color = '#fff';
+  this.disabled = true;
+});
+
+/*
+LET OP:
+Deze CV-upload toont en selecteert het bestand in de browser.
+Om het CV écht naar je mailbox, CRM of database te versturen heb je nog een backend,
+Shopify form-handler, Formspree, Netlify Forms of andere formulierverwerking nodig.
+*/
+
+/* ORBS */
 window.addEventListener('mousemove', e => {
   const x = (e.clientX / innerWidth  - .5) * 18;
   const y = (e.clientY / innerHeight - .5) * 18;
-  document.querySelector('.orb-a').style.transform = `translate(${x * 1.1}px,${y * 1.1}px)`;
-  document.querySelector('.orb-b').style.transform = `translate(${-x * .7}px,${-y * .7}px)`;
+
+  document.querySelector('.orb-a').style.transform =
+    `translate(${x * 1.1}px,${y * 1.1}px)`;
+
+  document.querySelector('.orb-b').style.transform =
+    `translate(${-x * .7}px,${-y * .7}px)`;
 }, { passive: true });
 
-/* ─── PRODUCT SHOWCASE ENGINE ─── */
-/*
-  Panel order per showcase (4 panels, index 0–3):
-  0 = intro (links of rechts afhankelijk van reverse)
-  1 = kpi grid (breed, minder hoog)
-  2 = results (blik vaag op achtergrond, tekst scherp)
-  3 = quote (blik vaag)
-*/
+/* PRODUCT SHOWCASE ENGINE */
 function initProductShowcase(section) {
   const panels   = [...section.querySelectorAll('.product-panel')];
-  const PANELS   = panels.length; // 4
+  const PANELS   = panels.length;
   const wrapper  = section.querySelector('.product-scroll-wrapper');
   const can      = section.querySelector('.product-can-wrap');
   const progBar  = section.querySelector('.product-progress');
   const dotsWrap = section.querySelector('.product-dots');
   const reverse  = section.dataset.reverse === 'true';
 
-  /* dots */
   for (let i = 0; i < PANELS; i++) {
     const d = document.createElement('div');
     d.className = 'product-dot' + (i === 0 ? ' active' : '');
     dotsWrap.appendChild(d);
   }
+
   const dots = [...dotsWrap.querySelectorAll('.product-dot')];
 
-  /*
-    Can positions for 4 panels
-    Normal (data-start="right"): can starts right side
-    Reverse: can starts left side
-  */
-const statesNormal = [
-  { x: 26, y: 0, r: -4, s: 1.00 },   
-  { x: 22, y: 2, r: 3,  s: .95 },    
-  { x: 24, y: 0, r: -2, s: .97 },    // panel 2 blijft rechts, niet over tekst
-  { x: 8,  y: 0, r: -1, s: .95 },    // panel 3 beweegt richting midden
-  { x: 0,  y: 0, r: 0,  s: .84 },
-];
+  const statesNormal = [
+    { x: 26, y: 0, r: -4, s: 1.00 },
+    { x: 22, y: 2, r: 3,  s: .95 },
+    { x: 24, y: 0, r: -2, s: .97 },
+    { x: 8,  y: 0, r: -1, s: .95 },
+    { x: 0,  y: 0, r: 0,  s: .84 },
+  ];
 
-const statesReverse = [
-  { x: -26, y: 0, r: 4,  s: 1.00 },
-  { x: -22, y: 2, r: -3, s: .95 },
-  { x: -24, y: 0, r: 2,  s: .97 },   // panel 2 blijft links, niet over tekst
-  { x: -8,  y: 0, r: 1,  s: .95 },   // panel 3 beweegt richting midden
-  { x: 0,   y: 0, r: 0,  s: .84 },
-];
+  const statesReverse = [
+    { x: -26, y: 0, r: 4,  s: 1.00 },
+    { x: -22, y: 2, r: -3, s: .95 },
+    { x: -24, y: 0, r: 2,  s: .97 },
+    { x: -8,  y: 0, r: 1,  s: .95 },
+    { x: 0,   y: 0, r: 0,  s: .84 },
+  ];
+
   const states = reverse ? statesReverse : statesNormal;
 
-  let mouseX = 0, mouseY = 0;
+  let mouseX = 0;
+  let mouseY = 0;
   let cs = { x:0, y:0, r:0, s:1 };
   let activePanel = 0;
 
@@ -1155,8 +1389,13 @@ const statesReverse = [
     mouseY = (e.clientY / innerHeight - .5) * 2;
   });
 
-  function lerp(a,b,t){ return a+(b-a)*t }
-  function smooth(t)  { return t*t*(3-2*t) }
+  function lerp(a,b,t){
+    return a+(b-a)*t;
+  }
+
+  function smooth(t){
+    return t*t*(3-2*t);
+  }
 
   function getT() {
     const rect  = wrapper.getBoundingClientRect();
@@ -1168,7 +1407,9 @@ const statesReverse = [
     const raw = t * (states.length - 1);
     const i   = Math.min(Math.floor(raw), states.length - 2);
     const loc = smooth(raw - i);
-    const a   = states[i], b = states[i+1];
+    const a   = states[i];
+    const b   = states[i+1];
+
     return {
       x: lerp(a.x, b.x, loc),
       y: lerp(a.y, b.y, loc),
@@ -1177,34 +1418,31 @@ const statesReverse = [
     };
   }
 
-function panelForT(t) {
-  if (t < 0.22) return 0;
-  if (t < 0.48) return 1;
-  if (t < 0.72) return 2;
-  return 3;
-}
+  function panelForT(t) {
+    if (t < 0.22) return 0;
+    if (t < 0.48) return 1;
+    if (t < 0.72) return 2;
+    return 3;
+  }
 
   function setPanel(idx) {
     if (idx === activePanel) return;
+
     activePanel = idx;
+
     panels.forEach((p,i) => p.classList.toggle('product-active', i === idx));
     dots.forEach((d,i)   => d.classList.toggle('active', i === idx));
 
     const isResults = panels[idx] && panels[idx].classList.contains('results-panel');
-    const isQuote   = panels[idx] && panels[idx].classList.contains('product-center') && !isResults;
 
-    /*
-      results-panel (idx 2): can gets results-bg (blurred, large, z-index:5 behind text z-index:30)
-      quote (idx 3): can gets blurred class (standard blur)
-      others: clean
-    */
- can.classList.toggle('blurred', idx === 3 || idx === 4);
-can.classList.toggle('results-bg', isResults);
+    can.classList.toggle('blurred', idx === 3 || idx === 4);
+    can.classList.toggle('results-bg', isResults);
   }
 
   function tick() {
     requestAnimationFrame(tick);
-    const t      = getT();
+
+    const t = getT();
     const target = interpState(t);
 
     cs.x = lerp(cs.x, target.x, .06);
@@ -1215,7 +1453,9 @@ can.classList.toggle('results-bg', isResults);
     const mx2 = mouseX * 0.45;
     const my2 = mouseY * 0.38;
 
-    can.style.transform = `translate(calc(-50% + ${cs.x + mx2}vw),calc(-50% + ${cs.y + my2}vh)) rotate(${cs.r + mouseX * 0.6}deg) scale(${cs.s})`;
+    can.style.transform =
+      `translate(calc(-50% + ${cs.x + mx2}vw),calc(-50% + ${cs.y + my2}vh)) rotate(${cs.r + mouseX * 0.6}deg) scale(${cs.s})`;
+
     progBar.style.width = (t * 100) + '%';
 
     setPanel(panelForT(t));
