@@ -1232,6 +1232,32 @@ can.classList.toggle('results-bg', isResults);
 }
 
 document.querySelectorAll('.product-showcase').forEach(initProductShowcase);
+
+  /* OVERLAY ALS JE VAN EVENTS NAAR INDEX#LEAD KOMT */
+window.addEventListener('load', () => {
+  if (window.location.hash !== '#lead') return;
+
+  const overlay = document.getElementById('jumpOverlay');
+  const target = document.querySelector('#lead');
+  const nav = document.getElementById('nav');
+
+  if (!overlay || !target) return;
+
+  overlay.classList.add('active');
+
+  setTimeout(() => {
+    const navH = nav ? nav.offsetHeight : 0;
+
+    window.scrollTo({
+      top: target.getBoundingClientRect().top + window.pageYOffset - navH,
+      behavior: 'auto'
+    });
+
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 950);
+  }, 250);
+});
 </script>
 </body>
 </html>
