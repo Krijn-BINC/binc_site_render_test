@@ -249,6 +249,22 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .metric-cell strong{display:block;font-family:var(--font-gd-display);font-size:3.2rem;line-height:.9;color:var(--brand)}
 .metric-cell span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
 
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:#000;
+  opacity:0;
+  pointer-events:none;
+  z-index:9998;
+  transition:opacity .18s ease;
+}
+
+body.is-jumping::after{
+  opacity:1;
+}
+
+  
 /* Score pills */
 .score-pills{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
 .score-pill{border:1px solid var(--brand-border);background:var(--brand-soft);padding:10px 14px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
@@ -868,15 +884,33 @@ window.addEventListener('scroll', () => {
 /* ─── SMOOTH SCROLL ─── */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
-    const target = document.querySelector(link.getAttribute('href'));
+    const href = link.getAttribute('href');
+    const target = document.querySelector(href);
     if (!target) return;
+
     e.preventDefault();
+
     const navH = document.getElementById('nav').offsetHeight;
-    const top  = target.getBoundingClientRect().top + window.pageYOffset - navH;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - navH;
+
+    // Lead overslaan zonder door alle product-scroll animaties te scrubben
+    if (href === '#lead') {
+      document.body.classList.add('is-jumping');
+
+      setTimeout(() => {
+        window.scrollTo({ top, behavior: 'auto' });
+
+        setTimeout(() => {
+          document.body.classList.remove('is-jumping');
+        }, 180);
+      }, 160);
+
+      return;
+    }
+
     window.scrollTo({ top, behavior: 'smooth' });
   });
 });
-
 /* ─── TAPE ─── */
 const WORDS = ['Grow Your Brand','B2B Sales','Accountmanagement','Retail Listings','Landelijk Netwerk','Strategy & Growth','BINC International'];
 const ti = document.getElementById('tapeInner');
