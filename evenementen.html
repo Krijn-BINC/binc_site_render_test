@@ -12,11 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
 
 <style>
-*,*::before,*::after{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
   --bg:#000;
@@ -24,44 +20,19 @@
   --gold2:#c8b66b;
   --white:#fff;
   --dim:rgba(255,255,255,.58);
-
   --font-display:'Barlow Condensed',sans-serif;
   --font-body:'Barlow',sans-serif;
   --font-ui:'Rajdhani',sans-serif;
   --font-bebas:'Bebas Neue',sans-serif;
 }
 
-html{
-  scroll-behavior:smooth;
-  cursor:none;
-}
+html{scroll-behavior:smooth;cursor:none}
+body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-body{
-  background:#000;
-  color:#fff;
-  font-family:var(--font-body);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-
-::selection{
-  background:var(--gold);
-  color:#000;
-}
-
-::-webkit-scrollbar{
-  width:2px;
-}
-
-::-webkit-scrollbar-track{
-  background:#000;
-}
-
-::-webkit-scrollbar-thumb{
-  background:rgba(168,149,82,.72);
-}
-
-/* CURSOR */
+::selection{background:var(--gold);color:#000}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:rgba(168,149,82,.72)}
 
 #cur,#cur-ring{
   position:fixed;
@@ -94,7 +65,6 @@ body:has(.stack-card:hover) #cur-ring{
 }
 
 /* NAV */
-
 nav{
   position:fixed;
   top:0;
@@ -102,11 +72,9 @@ nav{
   right:0;
   z-index:500;
   height:76px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   padding:0 6vw;
   transition:.4s;
 }
@@ -139,10 +107,8 @@ nav.scrolled{
   font-weight:600;
   letter-spacing:.22em;
   text-transform:uppercase;
-
   color:var(--dim);
   text-decoration:none;
-
   padding:8px 16px;
   position:relative;
 }
@@ -155,21 +121,16 @@ nav.scrolled{
   right:16px;
   height:1px;
   background:rgba(168,149,82,.85);
-
   transform:scaleX(0);
   transform-origin:left;
   transition:.3s;
 }
 
 .nav-links a:hover,
-.nav-links a.active{
-  color:#fff;
-}
+.nav-links a.active{color:#fff}
 
 .nav-links a:hover::after,
-.nav-links a.active::after{
-  transform:scaleX(1);
-}
+.nav-links a.active::after{transform:scaleX(1)}
 
 .nav-cta{
   color:#000!important;
@@ -179,68 +140,45 @@ nav.scrolled{
   border-radius:2px;
 }
 
-.nav-cta::after{
-  display:none!important;
-}
-
-.nav-cta:hover{
-  background:var(--gold2)!important;
-  color:#000!important;
-}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--gold2)!important;color:#000!important}
 
 /* HERO */
-
 #hero{
   position:relative;
   min-height:105vh;
-
   display:flex;
   align-items:center;
-
   overflow:hidden;
   background:#000;
-
   padding:120px 6vw 100px;
 }
 
 .hero-video{
   position:absolute;
   inset:0;
-
   width:100%;
   height:100%;
   object-fit:cover;
-
   opacity:.5;
 }
 
 .hero-overlay{
   position:absolute;
   inset:0;
-
   background:
-    linear-gradient(to right,
-      rgba(0,0,0,.82) 0%,
-      rgba(0,0,0,.48) 48%,
-      rgba(0,0,0,.22) 100%
-    ),
-    linear-gradient(to bottom,
-      rgba(0,0,0,.28),
-      rgba(0,0,0,.92)
-    );
+    linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.48) 48%,rgba(0,0,0,.22) 100%),
+    linear-gradient(to bottom,rgba(0,0,0,.28),rgba(0,0,0,.92));
 }
 
 .hero-grid{
   position:absolute;
   inset:0;
-
   background-image:
     linear-gradient(rgba(168,149,82,.035) 1px,transparent 1px),
     linear-gradient(90deg,rgba(168,149,82,.035) 1px,transparent 1px);
-
   background-size:90px 90px;
   opacity:.55;
-
   animation:gridScroll 25s linear infinite;
 }
 
@@ -259,7 +197,6 @@ nav.scrolled{
   width:520px;
   height:520px;
   background:rgba(168,149,82,.08);
-
   top:-6%;
   right:5%;
 }
@@ -268,7 +205,6 @@ nav.scrolled{
   width:320px;
   height:320px;
   background:rgba(168,149,82,.05);
-
   bottom:8%;
   right:24%;
 }
@@ -289,15 +225,12 @@ nav.scrolled{
   display:flex;
   align-items:center;
   gap:14px;
-
   font-family:var(--font-ui);
   font-size:.68rem;
   font-weight:700;
   letter-spacing:.45em;
   text-transform:uppercase;
-
   color:rgba(168,149,82,.92);
-
   margin-bottom:22px;
 }
 
@@ -314,28 +247,18 @@ nav.scrolled{
   font-weight:900;
   line-height:.84;
   letter-spacing:-.01em;
-
   margin-bottom:36px;
 }
 
-.hero-title .gold{
-  color:var(--gold);
-}
-
-.hero-title .stroke{
-  -webkit-text-stroke:1.5px rgba(255,255,255,.36);
-  color:transparent;
-}
+.hero-title .gold{color:var(--gold)}
+.hero-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
 
 .hero-sub{
   max-width:560px;
-
   font-size:1.05rem;
   line-height:1.9;
-
   color:rgba(255,255,255,.7);
   font-weight:300;
-
   margin-bottom:42px;
 }
 
@@ -352,10 +275,8 @@ nav.scrolled{
   font-size:.8rem;
   letter-spacing:.25em;
   text-transform:uppercase;
-
   border-radius:2px;
   text-decoration:none;
-
   transition:.2s;
 }
 
@@ -384,7 +305,6 @@ nav.scrolled{
 }
 
 /* SECTION */
-
 .section{
   padding:140px 6vw;
   background:#000;
@@ -400,15 +320,11 @@ nav.scrolled{
 
 .body{
   max-width:720px;
-
   font-size:1rem;
   line-height:1.95;
-
   color:rgba(255,255,255,.62);
   font-weight:300;
 }
-
-/* INTRO */
 
 .intro-grid{
   display:grid;
@@ -418,7 +334,6 @@ nav.scrolled{
 }
 
 /* CINEMATIC STACK CARDS */
-
 .stack-visual{
   position:relative;
   width:100%;
@@ -427,6 +342,7 @@ nav.scrolled{
   display:flex;
   align-items:center;
   justify-content:center;
+  transition:transform .25s ease;
 }
 
 .stack-glow{
@@ -445,9 +361,7 @@ nav.scrolled{
   height:430px;
   border-radius:50%;
   border:1px solid rgba(168,149,82,.13);
-  box-shadow:
-    0 0 60px rgba(168,149,82,.06),
-    inset 0 0 60px rgba(168,149,82,.025);
+  box-shadow:0 0 60px rgba(168,149,82,.06),inset 0 0 60px rgba(168,149,82,.025);
 }
 
 .stack-ring::before{
@@ -466,15 +380,14 @@ nav.scrolled{
   overflow:hidden;
   border:1px solid rgba(168,149,82,.2);
   background:#080808;
-  box-shadow:
-    0 34px 90px rgba(0,0,0,.72),
-    inset 0 1px 0 rgba(255,255,255,.08);
+  box-shadow:0 34px 90px rgba(0,0,0,.72),inset 0 1px 0 rgba(255,255,255,.08);
   transform-style:preserve-3d;
   transition:
     transform .7s cubic-bezier(.22,1,.36,1),
     opacity .4s ease,
     border-color .3s ease,
     filter .3s ease;
+  cursor:pointer;
 }
 
 .stack-card img{
@@ -589,9 +502,7 @@ nav.scrolled{
   color:#fff;
 }
 
-.stack-title span{
-  color:var(--gold);
-}
+.stack-title span{color:var(--gold)}
 
 .stack-meta{
   position:absolute;
@@ -627,15 +538,29 @@ nav.scrolled{
   border-radius:50%;
   background:rgba(255,255,255,.18);
   border:1px solid rgba(168,149,82,.25);
+  transition:.25s;
 }
 
-.stack-mini span:first-child{
+.stack-mini span.active{
   background:var(--gold);
   box-shadow:0 0 12px rgba(168,149,82,.5);
 }
 
-/* EVENTS */
+.stack-hint{
+  position:absolute;
+  bottom:-34px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:var(--font-ui);
+  font-size:.58rem;
+  font-weight:700;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.32);
+  white-space:nowrap;
+}
 
+/* EVENTS */
 #events{
   padding:120px 6vw 140px;
 }
@@ -653,18 +578,11 @@ nav.scrolled{
 .event-card{
   position:relative;
   overflow:hidden;
-
   min-height:460px;
-
   border-radius:16px;
   border:1px solid rgba(168,149,82,.14);
-
   background:rgba(255,255,255,.015);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.06),
-    0 28px 80px rgba(0,0,0,.52);
-
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);
   transition:.3s;
 }
 
@@ -676,30 +594,19 @@ nav.scrolled{
 .event-card img{
   position:absolute;
   inset:0;
-
   width:100%;
   height:100%;
   object-fit:cover;
-
   opacity:.42;
   transition:.4s;
 }
 
-.event-card:hover img{
-  opacity:.56;
-}
+.event-card:hover img{opacity:.56}
 
 .event-overlay{
   position:absolute;
   inset:0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.94) 0%,
-      rgba(0,0,0,.32) 54%,
-      rgba(0,0,0,.08) 100%
-    );
+  background:linear-gradient(to top,rgba(0,0,0,.94) 0%,rgba(0,0,0,.32) 54%,rgba(0,0,0,.08) 100%);
 }
 
 .event-content{
@@ -707,29 +614,22 @@ nav.scrolled{
   left:0;
   right:0;
   bottom:0;
-
   padding:36px;
   z-index:3;
 }
 
 .event-tag{
   display:inline-block;
-
   font-family:var(--font-ui);
   font-size:.58rem;
   font-weight:700;
   letter-spacing:.3em;
   text-transform:uppercase;
-
   color:rgba(168,149,82,.9);
-
   margin-bottom:14px;
-
   padding:6px 12px;
-
   border:1px solid rgba(168,149,82,.28);
   border-radius:2px;
-
   background:rgba(168,149,82,.07);
 }
 
@@ -738,7 +638,6 @@ nav.scrolled{
   font-size:clamp(2.2rem,3vw,4rem);
   font-weight:900;
   line-height:.9;
-
   margin-bottom:16px;
 }
 
@@ -749,13 +648,10 @@ nav.scrolled{
 }
 
 /* CTA */
-
 #cta{
   position:relative;
   overflow:hidden;
-
   padding:130px 6vw 140px;
-
   border-top:1px solid rgba(168,149,82,.1);
 }
 
@@ -763,27 +659,18 @@ nav.scrolled{
   content:'';
   position:absolute;
   inset:0;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      rgba(168,149,82,.06),
-      transparent 60%
-    );
+  background:radial-gradient(ellipse at 50% 0%,rgba(168,149,82,.06),transparent 60%);
 }
 
 .cta-wrap{
   position:relative;
   z-index:2;
-
   max-width:1000px;
   margin:0 auto;
-
   display:flex;
   flex-direction:column;
   align-items:center;
   text-align:center;
-
   gap:28px;
 }
 
@@ -794,33 +681,21 @@ nav.scrolled{
   line-height:.86;
 }
 
-.cta-title .gold{
-  color:var(--gold);
-}
-
-.cta-title .stroke{
-  -webkit-text-stroke:1.5px rgba(255,255,255,.36);
-  color:transparent;
-}
+.cta-title .gold{color:var(--gold)}
+.cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
 
 .cta-copy{
   max-width:700px;
-
   font-size:1rem;
   line-height:1.9;
-
   color:rgba(255,255,255,.62);
 }
 
 /* FOOTER */
-
 footer{
   background:#000;
-
   border-top:1px solid rgba(168,149,82,.16);
-
   padding:80px 6vw 60px;
-
   display:grid;
   grid-template-columns:1.1fr 2fr;
   gap:60px;
@@ -832,9 +707,7 @@ footer{
   gap:32px;
 }
 
-.ft-logo{
-  width:235px;
-}
+.ft-logo{width:235px}
 
 .ft-socials{
   display:flex;
@@ -885,21 +758,15 @@ footer{
   font-weight:800!important;
   letter-spacing:.22em;
   text-transform:uppercase;
-
   color:rgba(168,149,82,1)!important;
-
   margin-bottom:12px!important;
 }
 
-.ft-item a:hover{
-  color:var(--gold);
-}
+.ft-item a:hover{color:var(--gold)}
 
 .ft-bar{
   border-top:1px solid rgba(255,255,255,.05);
-
   padding:22px 6vw;
-
   display:flex;
   justify-content:space-between;
 }
@@ -912,7 +779,6 @@ footer{
 }
 
 /* REVEAL */
-
 .reveal{
   opacity:0;
   transform:translateY(52px);
@@ -928,41 +794,22 @@ footer{
 .d2{transition-delay:.24s}
 
 /* RESPONSIVE */
-
 @media(max-width:1000px){
 
-  html,body{
-    cursor:auto;
-  }
+  html,body{cursor:auto}
+  #cur,#cur-ring{display:none}
 
-  #cur,#cur-ring{
-    display:none;
-  }
-
-  nav{
-    height:70px;
-  }
-
-  .nav-logo img{
-    height:32px;
-  }
-
-  nav .nav-links a:not(.nav-cta){
-    display:none;
-  }
+  nav{height:70px}
+  .nav-logo img{height:32px}
+  nav .nav-links a:not(.nav-cta){display:none}
 
   #hero{
     min-height:100vh;
     padding:110px 6vw 90px;
   }
 
-  .hero-inner{
-    margin-left:0;
-  }
-
-  .hero-title{
-    font-size:clamp(4.4rem,16vw,9rem);
-  }
+  .hero-inner{margin-left:0}
+  .hero-title{font-size:clamp(4.4rem,16vw,9rem)}
 
   .intro-grid{
     grid-template-columns:1fr;
@@ -994,13 +841,8 @@ footer{
     transform:translate3d(78px,52px,-15px) rotate(10deg) scale(.84);
   }
 
-  .event-grid{
-    grid-template-columns:1fr;
-  }
-
-  .event-card{
-    min-height:350px;
-  }
+  .event-grid{grid-template-columns:1fr}
+  .event-card{min-height:350px}
 
   footer{
     grid-template-columns:1fr;
@@ -1012,16 +854,13 @@ footer{
     gap:24px;
   }
 
-  .ft-logo{
-    width:220px;
-  }
+  .ft-logo{width:220px}
 
   .ft-bar{
     flex-direction:column;
     align-items:flex-start;
     gap:10px;
   }
-
 }
 </style>
 </head>
@@ -1121,38 +960,40 @@ footer{
       <div class="stack-glow"></div>
       <div class="stack-ring"></div>
 
-      <div class="stack-card stack-card-back">
-        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop" alt="Festival crowd"/>
+      <div class="stack-card stack-card-back" data-card="back">
+        <img id="stackBackImg" src="" alt="Event visual"/>
       </div>
 
-      <div class="stack-card stack-card-right">
-        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop" alt="Live event"/>
+      <div class="stack-card stack-card-right" data-card="next">
+        <img id="stackRightImg" src="" alt="Event visual"/>
       </div>
 
-      <div class="stack-card stack-card-left">
-        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1600&auto=format&fit=crop" alt="Concert stage"/>
+      <div class="stack-card stack-card-left" data-card="prev">
+        <img id="stackLeftImg" src="" alt="Event visual"/>
       </div>
 
-      <div class="stack-card stack-card-main">
-        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1600&auto=format&fit=crop" alt="Festival activation"/>
+      <div class="stack-card stack-card-main" data-card="main">
+        <img id="stackMainImg" src="" alt="Event visual"/>
 
-        <div class="stack-meta">Live</div>
+        <div class="stack-meta" id="stackMeta">Live</div>
 
         <div class="stack-info">
-          <span class="stack-kicker">Activation moments</span>
-          <h3 class="stack-title">
+          <span class="stack-kicker" id="stackKicker">Activation moments</span>
+          <h3 class="stack-title" id="stackTitle">
             Culture<br>
             <span>in motion</span>
           </h3>
         </div>
       </div>
 
-      <div class="stack-mini">
+      <div class="stack-mini" id="stackDots">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
       </div>
+
+      <div class="stack-hint">Klik links of rechts om te swipen</div>
 
     </div>
 
@@ -1185,16 +1026,12 @@ footer{
       <div class="event-overlay"></div>
 
       <div class="event-content">
-
         <span class="event-tag">Festival activatie</span>
-
         <h3>7th Sunday</h3>
-
         <p>
           Brand activations, sampling en directe zichtbaarheid
           op één van de grootste festivals van Nederland.
         </p>
-
       </div>
 
     </div>
@@ -1209,16 +1046,12 @@ footer{
       <div class="event-overlay"></div>
 
       <div class="event-content">
-
         <span class="event-tag">Festival activatie</span>
-
         <h3>Harmony of Hardcore</h3>
-
         <p>
           Hoge energie, hoge traffic en directe merkinteractie
           met duizenden festivalbezoekers.
         </p>
-
       </div>
 
     </div>
@@ -1233,16 +1066,12 @@ footer{
       <div class="event-overlay"></div>
 
       <div class="event-content">
-
         <span class="event-tag">Festival activatie</span>
-
         <h3>Dauwpop</h3>
-
         <p>
           Live activaties en branded experiences waar cultuur,
           muziek en merkbeleving samenkomen.
         </p>
-
       </div>
 
     </div>
@@ -1345,9 +1174,7 @@ footer{
 </div>
 
 <script>
-
 /* CURSOR */
-
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
 
@@ -1358,17 +1185,14 @@ let rx = 0;
 let ry = 0;
 
 document.addEventListener('mousemove', e => {
-
   mx = e.clientX;
   my = e.clientY;
 
   cur.style.left = mx + 'px';
   cur.style.top  = my + 'px';
-
 });
 
 (function animRing(){
-
   rx += (mx - rx) * .11;
   ry += (my - ry) * .11;
 
@@ -1376,45 +1200,118 @@ document.addEventListener('mousemove', e => {
   ring.style.top  = ry + 'px';
 
   requestAnimationFrame(animRing);
-
 })();
 
 /* NAV */
-
 window.addEventListener('scroll', () => {
-
   document.getElementById('nav')
     .classList.toggle('scrolled', window.scrollY > 70);
-
 }, { passive:true });
 
 /* REVEAL */
-
 const revIO = new IntersectionObserver(entries => {
-
   entries.forEach(e => {
-
     if(e.isIntersecting){
-
       e.target.classList.add('on');
       revIO.unobserve(e.target);
-
     }
-
   });
-
 }, { threshold:.1 });
 
 document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
 
-/* STACK PARALLAX */
+/* STACK CAROUSEL */
+const stackItems = [
+  {
+    image:'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1600&auto=format&fit=crop',
+    meta:'Live',
+    kicker:'Activation moments',
+    title:'Culture<br><span>in motion</span>'
+  },
+  {
+    image:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1600&auto=format&fit=crop',
+    meta:'Energy',
+    kicker:'Festival reach',
+    title:'Crowds<br><span>that feel it</span>'
+  },
+  {
+    image:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop',
+    meta:'Impact',
+    kicker:'Brand presence',
+    title:'Moments<br><span>that stick</span>'
+  },
+  {
+    image:'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop',
+    meta:'Culture',
+    kicker:'Live experience',
+    title:'From shelf<br><span>to stage</span>'
+  }
+];
+
+let stackIndex = 0;
 
 const stack = document.getElementById('stackVisual');
+const mainImg = document.getElementById('stackMainImg');
+const leftImg = document.getElementById('stackLeftImg');
+const rightImg = document.getElementById('stackRightImg');
+const backImg = document.getElementById('stackBackImg');
 
+const stackMeta = document.getElementById('stackMeta');
+const stackKicker = document.getElementById('stackKicker');
+const stackTitle = document.getElementById('stackTitle');
+const stackDots = [...document.querySelectorAll('#stackDots span')];
+
+function stackWrap(i){
+  return (i + stackItems.length) % stackItems.length;
+}
+
+function renderStack(){
+  const current = stackItems[stackWrap(stackIndex)];
+  const prev = stackItems[stackWrap(stackIndex - 1)];
+  const next = stackItems[stackWrap(stackIndex + 1)];
+  const back = stackItems[stackWrap(stackIndex + 2)];
+
+  mainImg.src = current.image;
+  leftImg.src = prev.image;
+  rightImg.src = next.image;
+  backImg.src = back.image;
+
+  stackMeta.textContent = current.meta;
+  stackKicker.textContent = current.kicker;
+  stackTitle.innerHTML = current.title;
+
+  stackDots.forEach((dot,i) => {
+    dot.classList.toggle('active', i === stackIndex);
+  });
+}
+
+function nextStack(){
+  stackIndex = stackWrap(stackIndex + 1);
+  renderStack();
+}
+
+function prevStack(){
+  stackIndex = stackWrap(stackIndex - 1);
+  renderStack();
+}
+
+document.querySelector('[data-card="next"]').addEventListener('click', nextStack);
+document.querySelector('[data-card="prev"]').addEventListener('click', prevStack);
+document.querySelector('[data-card="main"]').addEventListener('click', nextStack);
+document.querySelector('[data-card="back"]').addEventListener('click', nextStack);
+
+stackDots.forEach((dot,i) => {
+  dot.addEventListener('click', () => {
+    stackIndex = i;
+    renderStack();
+  });
+});
+
+renderStack();
+
+/* STACK PARALLAX */
 if(stack){
-
   window.addEventListener('mousemove', e => {
-
     const rect = stack.getBoundingClientRect();
 
     const inside =
@@ -1430,15 +1327,12 @@ if(stack){
 
     stack.style.transform =
       `rotateY(${x * 5}deg) rotateX(${-y * 4}deg)`;
-
   }, { passive:true });
 
   stack.addEventListener('mouseleave', () => {
     stack.style.transform = 'rotateY(0deg) rotateX(0deg)';
   });
-
 }
-
 </script>
 
 </body>
