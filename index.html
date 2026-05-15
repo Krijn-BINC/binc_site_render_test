@@ -249,37 +249,58 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .metric-cell strong{display:block;font-family:var(--font-gd-display);font-size:3.2rem;line-height:.9;color:var(--brand)}
 .metric-cell span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
 
-/* ─── FULLSCREEN GOLDEN WAAS TRANSITION ─── */
+/* ─── FULLSCREEN GRANITE GOLD WAAS TRANSITION ─── */
 body::before{
   content:'';
   position:fixed;
-  inset:0;
+  inset:-8%;
   pointer-events:none;
   z-index:9998;
 
   background:
-    radial-gradient(circle at 50% 50%,
-      rgba(255,245,205,.72) 0%,
-      rgba(200,182,107,.58) 24%,
-      rgba(168,149,82,.38) 46%,
-      rgba(0,0,0,.72) 100%
+    radial-gradient(circle at 50% 45%,
+      rgba(255,245,210,.86) 0%,
+      rgba(200,182,107,.68) 22%,
+      rgba(168,149,82,.48) 45%,
+      rgba(20,17,8,.92) 100%
     );
 
   opacity:0;
-  backdrop-filter:blur(28px);
-  -webkit-backdrop-filter:blur(28px);
+  backdrop-filter:blur(46px) saturate(1.25) contrast(1.15);
+  -webkit-backdrop-filter:blur(46px) saturate(1.25) contrast(1.15);
 
-  transform:scale(1.08);
+  filter:blur(10px);
+  transform:scale(1.12);
   transition:
-    opacity .28s ease,
-    transform .5s cubic-bezier(.22,1,.36,1);
+    opacity .34s ease,
+    transform .75s cubic-bezier(.22,1,.36,1);
 
   mix-blend-mode:normal;
+}
+
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+
+  background-image:
+    radial-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,.18) 1px, transparent 1px);
+  background-size:3px 3px, 5px 5px;
+  opacity:0;
+  transition:opacity .34s ease;
+  mix-blend-mode:overlay;
 }
 
 body.is-jumping::before{
   opacity:1;
   transform:scale(1);
+}
+
+body.is-jumping::after{
+  opacity:.38;
 }
   
 /* Score pills */
@@ -916,7 +937,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       window.pageYOffset -
       navH;
 
-  if (href === '#lead') {
+ if (href === '#lead') {
 
   document.body.classList.add('is-jumping');
 
@@ -928,9 +949,9 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
     setTimeout(() => {
       document.body.classList.remove('is-jumping');
-    }, 360);
+    }, 720);
 
-  }, 280);
+  }, 340);
 
   return;
 }
