@@ -98,6 +98,8 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .display{font-family:var(--font-display);font-size:clamp(3.6rem,5.9vw,8.1rem);font-weight:900;line-height:.9;color:#fff;max-width:780px}
 .approach-title-line{display:inline-block;white-space:nowrap}
 .body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:700px}
+
+/* MAP PANEL */
 .locator-panel{width:100%;max-width:620px;justify-self:end;background:linear-gradient(180deg,#11100b 0%,#080805 48%,#030303 100%);border:1px solid rgba(168,149,82,.28);border-radius:10px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.62),0 0 42px rgba(168,149,82,.07)}
 .locator-top{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(168,149,82,.17);background:linear-gradient(90deg,rgba(168,149,82,.09),rgba(255,255,255,.025))}
 .locator-heading{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#fff}
@@ -107,6 +109,9 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 @keyframes liveFlicker{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.65;transform:scale(.92)}}
 @keyframes livePulse{0%{opacity:.5;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
 #storeMap{height:500px;width:100%;background:#0b0b0b}
+
+/* Map touch overlay — mobile only, hidden on desktop */
+.map-touch-overlay{display:none}
 
 /* STATS */
 #stats{background:#000;padding:105px 6vw 115px}
@@ -125,7 +130,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .clients-title{font-size:clamp(3rem,5.8vw,6.8rem)!important;line-height:.9}
 
 /* PRODUCT SHOWCASES */
-/* Alleen intro panel van reverse showcases verschuiven */
 .product-showcase[data-reverse="true"] 
 .product-panel:first-child 
 .product-content{
@@ -160,7 +164,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   --brand-border:rgba(168,149,82,.12);
 }
 
-/* Now 4 panels: 0=intro, 1=kpis, 2=results, 3=quote */
 .product-scroll-wrapper{
   position:relative;
   height:500vh;
@@ -175,33 +178,16 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-bg::after{width:700px;height:700px;opacity:.35}
 .product-progress{position:absolute;top:0;left:0;width:0%;height:2px;z-index:10;background:linear-gradient(90deg,var(--brand),var(--brand2))}
 
-/* Can wrapper */
-.product-can-wrap{position:absolute;top:54%;left:50%;width:min(20vw,220px);transform:translate(-50%,-50%);z-index:20;pointer-events:none;will-change:transform;transition:
-  filter .5s ease,
-  opacity .5s ease,
-  transform .7s cubic-bezier(.22,1,.36,1),
-  width .7s cubic-bezier(.22,1,.36,1);}
+/* Can wrapper — desktop */
+.product-can-wrap{position:absolute;top:54%;left:50%;width:min(20vw,220px);transform:translate(-50%,-50%);z-index:20;pointer-events:none;will-change:transform;transition:filter .5s ease,opacity .5s ease,transform .7s cubic-bezier(.22,1,.36,1),width .7s cubic-bezier(.22,1,.36,1);}
 .product-can-wrap img{width:100%;height:auto;display:block;filter:drop-shadow(0 40px 70px rgba(0,0,0,.95)) drop-shadow(0 0 50px var(--brand-soft))}
-.product-showcase.feelsogood .product-can-wrap{
-  top:54%;
-  width:min(14vw,160px);
-}
+.product-showcase.feelsogood .product-can-wrap{top:54%;width:min(14vw,160px)}
 .product-showcase.beatbox .product-can-wrap{top:54%;width:min(20vw,240px)}
 .product-showcase.cleannutrition .product-can-wrap{top:54%;width:min(28vw,340px)}
 .product-glow{position:absolute;inset:10% 0;background:radial-gradient(circle,var(--brand-soft),transparent 68%);filter:blur(32px);z-index:-1}
 
-/* Results panel: can is blurred but text is NOT */
-.product-can-wrap.results-bg{
-  opacity:.28;
-  filter:blur(6px) drop-shadow(0 0 60px var(--brand-soft));
-  z-index:25;
-}
-
-/* Quote panel: can blurred */
-.product-can-wrap.blurred{
-  filter:blur(8px);
-  opacity:.38;
-}
+.product-can-wrap.results-bg{opacity:.28;filter:blur(6px) drop-shadow(0 0 60px var(--brand-soft));z-index:25}
+.product-can-wrap.blurred{filter:blur(8px);opacity:.38}
 
 .product-panels{position:absolute;inset:0;pointer-events:none}
 .product-panel{position:absolute;inset:0;display:flex;align-items:center;padding:0 6vw;opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;pointer-events:none}
@@ -218,7 +204,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-line{width:40px;height:1px;background:var(--brand);opacity:.55;margin-bottom:22px}
 .product-text{font-family:var(--font-gd-mono);font-size:.76rem;line-height:1.92;color:rgba(255,255,255,.44);font-style:italic;max-width:340px}
 
-/* KPI grid — wider, less tall, more visual */
+/* KPI grid */
 .product-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--brand-border);border-radius:6px;overflow:hidden;margin-top:28px;width:min(880px,88vw)}
 .product-kpi{background:rgba(0,0,0,.72);padding:22px 18px;position:relative;overflow:hidden}
 .product-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--brand),transparent);opacity:.45}
@@ -237,8 +223,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-dot.active{background:var(--brand);box-shadow:0 0 8px var(--brand-soft)}
 .client-separator{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0 6vw}
 
-
-/* METRIC WALLS — results panel */
+/* Metric walls */
 .metric-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border-radius:8px;overflow:hidden;margin-top:24px;width:min(820px,88vw)}
 .metric-wall.gold-wall{background:rgba(168,149,82,.22);border:1px solid rgba(168,149,82,.18)}
 .metric-wall.fsg-wall{background:rgba(0,166,255,.22);border:1px solid rgba(0,166,255,.18)}
@@ -249,101 +234,26 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .metric-cell strong{display:block;font-family:var(--font-gd-display);font-size:3.2rem;line-height:.9;color:var(--brand)}
 .metric-cell span{display:block;font-family:var(--font-gd-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:10px;line-height:1.55}
 
-/* ─── BINC TRANSITION SCREEN ─── */
-.jump-overlay{
-  position:fixed;
-  inset:0;
-  z-index:10000;
+/* BINC OVERLAY */
+.jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(32,28,18,.92) 0%,rgba(12,11,10,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
+.jump-overlay::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px),radial-gradient(rgba(0,0,0,.08) 1px,transparent 1px);background-size:4px 4px,6px 6px;opacity:.5;mix-blend-mode:overlay}
+.jump-overlay::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(168,149,82,.28) 0%,rgba(168,149,82,.12) 35%,transparent 72%);filter:blur(50px)}
+.jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(168,149,82,.22)) drop-shadow(0 0 80px rgba(168,149,82,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
+.jump-overlay.active{opacity:1}
+.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  pointer-events:none;
-
-  opacity:0;
-  transition:opacity .45s ease;
-
-  background:
-    radial-gradient(circle at center,
-      rgba(32,28,18,.92) 0%,
-      rgba(12,11,10,.96) 55%,
-      rgba(0,0,0,.985) 100%
-    );
-
-  backdrop-filter:blur(42px) saturate(1.15);
-  -webkit-backdrop-filter:blur(42px) saturate(1.15);
-
-  overflow:hidden;
-}
-
-/* granite texture */
-.jump-overlay::before{
-  content:'';
-  position:absolute;
-  inset:0;
-
-  background-image:
-    radial-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-    radial-gradient(rgba(0,0,0,.08) 1px, transparent 1px);
-
-  background-size:4px 4px, 6px 6px;
-
-  opacity:.5;
-  mix-blend-mode:overlay;
-}
-
-/* gold glow */
-.jump-overlay::after{
-  content:'';
-  position:absolute;
-  width:520px;
-  height:520px;
-  border-radius:50%;
-
-  background:
-    radial-gradient(circle,
-      rgba(168,149,82,.28) 0%,
-      rgba(168,149,82,.12) 35%,
-      transparent 72%
-    );
-
-  filter:blur(50px);
-}
-
-/* logo */
-.jump-logo{
-    width:min(420px,68vw);
-  opacity:0;
-  transform:scale(.92);
-  filter:
-    drop-shadow(0 0 30px rgba(168,149,82,.22))
-    drop-shadow(0 0 80px rgba(168,149,82,.14));
-
-  transition:
-    opacity .55s ease,
-    transform .8s cubic-bezier(.22,1,.36,1);
-
-  position:relative;
-  z-index:2;
-}
-
-.jump-overlay.active{
-  opacity:1;
-}
-
-.jump-overlay.active .jump-logo{
-  opacity:1;
-  transform:scale(1);
-}
 /* Score pills */
 .score-pills{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
 .score-pill{border:1px solid var(--brand-border);background:var(--brand-soft);padding:10px 14px;border-radius:999px;font-family:var(--font-gd-mono);font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
 .score-pill span{color:var(--brand);font-weight:700}
 
-/* Results panel layout — text/table must be z-index ABOVE can */
 .results-panel-inner{position:relative;z-index:30;max-width:860px;text-align:center}
 .results-eyebrow{display:block;color:var(--brand);font-family:var(--font-gd-mono);font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;opacity:.85;margin-bottom:18px}
+
+/* REVERSE */
+.product-showcase[data-reverse="true"] .product-panel.product-kpi-panel{align-items:flex-end!important}
+.product-showcase[data-reverse="true"] .reverse-kpi-wrap{width:min(720px,42vw)!important;margin-right:6vw;text-align:left}
+.product-showcase[data-reverse="true"] .reverse-kpi-wrap .product-kpis{width:100%}
 
 /* LEAD */
 #lead{background:#000;padding:150px 6vw 130px;position:relative;overflow:hidden}
@@ -366,7 +276,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .btn-submit{color:#000;background:var(--gold);border:none;padding:18px 44px;align-self:flex-start}
 .btn-submit:hover{background:var(--gold2);transform:translateY(-2px)}
 
-/* FOOTER */
+/* FOOTER — desktop */
 footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
 .ft-logo{width:235px;opacity:.98}
@@ -375,23 +285,8 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 .ft-socials a:hover{color:var(--gold);opacity:1;transform:translateY(-2px)}
 .ft-socials svg{width:100%;height:100%;fill:currentColor}
 .ft-info{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
-.ft-item p,.ft-item a{
-  font-size:1.15rem;
-  line-height:1.75;
-  color:rgba(255,255,255,.74);
-  text-decoration:none;
-  font-weight:400;
-}
-
-.ft-h{
-  font-family:var(--font-ui);
-  font-size:1rem!important;
-  font-weight:800!important;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(168,149,82,1)!important;
-  margin-bottom:12px!important;
-}
+.ft-item p,.ft-item a{font-size:1.15rem;line-height:1.75;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
+.ft-h{font-family:var(--font-ui);font-size:1rem!important;font-weight:800!important;letter-spacing:.22em;text-transform:uppercase;color:rgba(168,149,82,1)!important;margin-bottom:12px!important}
 .ft-item a:hover{color:var(--gold)}
 .ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.05);padding:22px 6vw;display:flex;justify-content:space-between;align-items:center}
 .ft-copy{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.2)}
@@ -416,22 +311,9 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 .d2{transition-delay:.22s}
 .d3{transition-delay:.36s}
 
-  
-  .product-showcase[data-reverse="true"] .product-panel.product-kpi-panel{
-  align-items:flex-end!important;
-}
-
-.product-showcase[data-reverse="true"] .reverse-kpi-wrap{
-  width:min(720px,42vw)!important;
-  margin-right:6vw;
-  text-align:left;
-}
-
-.product-showcase[data-reverse="true"] .reverse-kpi-wrap .product-kpis{
-  width:100%;
-}
-  
-  /* RESPONSIVE */
+/* ═══════════════════════════════════
+   MOBILE OVERRIDES  ≤ 1000px
+═══════════════════════════════════ */
 @media(max-width:1000px){
   html,body{cursor:auto}
   #cur,#cur-ring{display:none}
@@ -441,38 +323,305 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
   .hero-inner{margin-left:0}
   .hero-title{font-size:clamp(4.4rem,16vw,9rem);max-width:9ch}
   #hero{min-height:105vh;padding:110px 0 90px}
-  .approach-grid{grid-template-columns:1fr;gap:60px}
+
+  /* Approach */
+  #approach{padding:80px 6vw 60px}
+  .approach-grid{grid-template-columns:1fr;gap:48px}
   .approach-copy{padding-left:0}
   .locator-panel{max-width:100%;justify-self:stretch}
-  #storeMap{height:430px}
-  .stats-wrap{grid-template-columns:1fr}
-  .product-can-wrap{width:42vw}
-  .product-showcase.feelsogood .product-can-wrap{width:26vw}
-  .product-showcase.beatbox .product-can-wrap{width:36vw}
-  .product-showcase.cleannutrition .product-can-wrap{width:56vw}
-  .product-panel{padding:0 5vw}
-  .product-panel.product-right{justify-content:flex-start}
-  .product-content{max-width:100%}
+
+  /* Map: show tap-to-interact overlay */
+  .map-touch-overlay{
+    display:flex;
+    position:absolute;
+    inset:0;
+    align-items:center;
+    justify-content:center;
+    z-index:20;
+    background:rgba(0,0,0,.52);
+    cursor:pointer;
+    flex-direction:column;
+    gap:14px;
+    transition:opacity .4s;
+  }
+  .map-touch-overlay.hidden{
+    opacity:0;
+    pointer-events:none;
+  }
+  .map-touch-icon{
+    width:48px;height:48px;
+    border:1.5px solid rgba(168,149,82,.7);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.6);
+  }
+  .map-touch-icon svg{width:22px;height:22px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .map-touch-label{font-family:var(--font-ui);font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+  .locator-panel{position:relative}
+  #storeMap{height:380px}
+
+  /* Hide stats on mobile */
+  #stats{display:none}
+
+  /* Clients intro */
+  #clients-intro{padding:80px 6vw 0}
+
+  /* ── PRODUCT SHOWCASE MOBILE ─────────────────── */
+
+  /* Remove desktop x-shift on reverse intro */
+  .product-showcase[data-reverse="true"] .product-panel:first-child .product-content{
+    transform:none;
+  }
+
+  .product-scroll-wrapper{height:500vh}
   .product-dots{display:none}
-  .product-kpis{grid-template-columns:repeat(2,1fr);width:100%}
-  .metric-wall{grid-template-columns:1fr;width:100%}
+
+  /* Can: fullscreen background image */
+  .product-can-wrap{
+    position:absolute;
+    top:50% !important;
+    left:50% !important;
+    width:70vw !important;
+    max-width:320px !important;
+    z-index:5;
+    opacity:.38;
+    filter:blur(2px) drop-shadow(0 0 40px var(--brand-soft)) !important;
+    pointer-events:none;
+    transition:opacity .5s,filter .5s,transform .5s;
+  }
+
+  /* States voor canvas — altijd gecentreerd op mobiel */
+  .product-showcase.feelsogood .product-can-wrap,
+  .product-showcase.beatbox .product-can-wrap,
+  .product-showcase.cleannutrition .product-can-wrap{
+    width:70vw !important;
+    top:50% !important;
+  }
+
+  /* Results panel: can iets vager */
+  .product-can-wrap.results-bg{
+    opacity:.18 !important;
+    filter:blur(4px) !important;
+  }
+  .product-can-wrap.blurred{
+    opacity:.18 !important;
+    filter:blur(5px) !important;
+  }
+
+  /* Alle panels: full-width, center-aligned tekst */
+  .product-panel{
+    padding:0 7vw;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:left;
+  }
+
+  /* Panel 0 — INTRO */
+  .product-panel.product-left,
+  .product-panel.product-right{
+    justify-content:center !important;
+  }
+
+  .product-content{
+    max-width:100%;
+    position:relative;
+    z-index:30;
+    /* Tekst card met subtle dark achtergrond zodat hij leesbaar is */
+    background:rgba(0,0,0,.62);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:12px;
+    padding:28px 24px;
+    backdrop-filter:blur(0px);
+  }
+
+  .product-title{
+    font-size:clamp(48px,13vw,72px);
+    margin-bottom:16px;
+  }
+
+  .product-text{
+    font-size:.72rem;
+    max-width:100%;
+    color:rgba(255,255,255,.68);
+  }
+
+  .score-pills{gap:8px;margin-top:18px}
+  .score-pill{padding:8px 12px;font-size:.52rem}
+
+  /* Panel 1 — KPI grid: volledig breed, 2 kolommen */
+  .product-panel.product-kpi-panel{
+    align-items:center !important;
+    flex-direction:column;
+    padding:0 5vw;
+  }
+
+  .product-panel.product-kpi-panel > div,
+  .reverse-kpi-wrap{
+    width:100% !important;
+    margin-right:0 !important;
+    text-align:left;
+    background:rgba(0,0,0,.68);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:12px;
+    padding:24px 18px;
+    position:relative;
+    z-index:30;
+  }
+
+  .product-section-title{
+    font-size:clamp(36px,10vw,52px);
+    margin-bottom:6px;
+  }
+
+  .product-kpis{
+    grid-template-columns:repeat(2,1fr) !important;
+    width:100% !important;
+    margin-top:18px;
+  }
+
+  .product-kpi{padding:16px 14px}
+  .product-kpi-v{font-size:2.1rem}
+  .product-kpi-ghost{font-size:4rem}
+  .product-kpi-l{font-size:.48rem}
+
+  .product-text{margin-bottom:0}
+
+  /* Panel 2 — RESULTS */
+  .product-panel.product-center{
+    padding:0 5vw;
+  }
+
+  .results-panel-inner{
+    width:100%;
+    text-align:center;
+    background:rgba(0,0,0,.68);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:12px;
+    padding:24px 18px;
+  }
+
+  .metric-wall{
+    grid-template-columns:repeat(2,1fr) !important;
+    width:100% !important;
+    margin-top:16px;
+  }
+
+  .metric-cell{padding:18px 14px}
+  .metric-cell strong{font-size:2.4rem}
+  .metric-cell span{font-size:.5rem}
+
+  .product-section-title.results-title{
+    font-size:clamp(32px,9vw,48px);
+  }
+
+  /* Panel 3 — QUOTE */
+  .product-statement{
+    font-size:clamp(38px,10vw,58px);
+    text-align:center;
+    background:rgba(0,0,0,.55);
+    border-radius:12px;
+    padding:28px 20px;
+  }
+
+  /* Lead section */
+  #lead{padding:90px 6vw 80px}
+  .lead-wrap{gap:44px}
   .form-row{grid-template-columns:1fr}
-  .btn-submit{width:100%;text-align:center}
-  footer{grid-template-columns:1fr;gap:40px}
-  .ft-info{grid-template-columns:1fr;gap:24px}
-  .ft-logo{width:220px}
-  .ft-bar{flex-direction:column;align-items:flex-start;gap:10px}
+  .btn-submit{width:100%;text-align:center;align-self:stretch}
+
+  /* ── FOOTER MOBILE ───────────────────────────── */
+  footer{
+    grid-template-columns:1fr;
+    gap:0;
+    padding:56px 6vw 40px;
+  }
+
+  /* Brand block: centered */
+  .ft-brand{
+    align-items:center;
+    text-align:center;
+    gap:20px;
+    padding-bottom:36px;
+    border-bottom:1px solid rgba(168,149,82,.12);
+    margin-bottom:36px;
+  }
+
+  .ft-logo{
+    width:min(200px,55vw);
+    margin:0 auto;
+  }
+
+  .ft-socials{
+    justify-content:center;
+  }
+
+  /* Info grid: stacked maar met adres boven + email/telefoon naast elkaar */
+  .ft-info{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    align-items:center;
+    text-align:center;
+    width:100%;
+  }
+
+  /* Adres — volledig breed gecentreerd */
+  .ft-item.ft-address{
+    width:100%;
+    text-align:center;
+    padding-bottom:24px;
+    margin-bottom:24px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+
+  /* Email + telefoon naast elkaar */
+  .ft-contact-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    width:100%;
+    text-align:center;
+  }
+
+  .ft-item.ft-email,
+  .ft-item.ft-phone{
+    text-align:center;
+  }
+
+  .ft-item p,.ft-item a{
+    font-size:1rem;
+  }
+
+  .ft-h{
+    font-size:.8rem !important;
+    letter-spacing:.18em;
+  }
+
+  /* Footer bar */
+  .ft-bar{
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    padding:18px 6vw;
+    text-align:center;
+  }
+}
+
+/* Extra small screens */
+@media(max-width:420px){
+  .product-title{font-size:42px}
+  .product-section-title{font-size:32px}
+  .product-kpi-v{font-size:1.8rem}
+  .product-statement{font-size:34px}
+  .hero-title{font-size:clamp(3.8rem,14vw,7rem)}
+  .ft-contact-row{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 <div class="jump-overlay" id="jumpOverlay">
-  <img
-    class="jump-logo"
-    src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181"
-    alt="BINC International"
-  />
+  <img class="jump-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
 </div>
 <div id="cur"></div>
 <div id="cur-ring"></div>
@@ -481,11 +630,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
   <a href="#" class="nav-logo">
     <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
   </a>
-<div class="nav-links">
-  <a href="/evenementen">Evenementen</a>
-  <a href="vacatures.html" class="active">Vacatures</a>
-  <a href="#lead" class="nav-cta">Samenwerken</a>
-</div>
+  <div class="nav-links">
+    <a href="/evenementen">Evenementen</a>
+    <a href="vacatures.html" class="active">Vacatures</a>
+    <a href="#lead" class="nav-cta">Samenwerken</a>
+  </div>
 </nav>
 
 <section id="hero">
@@ -530,12 +679,20 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
           <span class="locator-heading">Aangesloten filialen</span>
           <span class="live-badge"><span class="live-dot"></span>Live netwerk</span>
         </div>
+        <!-- Touch overlay — alleen zichtbaar op mobiel -->
+        <div class="map-touch-overlay" id="mapOverlay">
+          <div class="map-touch-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <span class="map-touch-label">Tik om de kaart te activeren</span>
+        </div>
         <div id="storeMap"></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Stats — verborgen op mobiel via CSS display:none -->
 <section id="stats">
   <div class="stats-wrap">
     <div class="stat-cell reveal">
@@ -561,26 +718,18 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     MERK 1 · GOLD DRY
-     4 panels: 0=intro, 1=kpis, 2=results, 3=quote
-════════════════════════════════════════════ -->
+<!-- MERK 1 · GOLD DRY -->
 <section id="gd-showcase" class="product-showcase gold-dry" data-start="right">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
       <div class="product-bg"></div>
       <div class="product-progress"></div>
-
       <div class="product-can-wrap">
         <div class="product-glow"></div>
         <img src="images/golddry_pre_original.png" alt="Gold Dry"/>
       </div>
-
       <div class="product-dots"></div>
-
       <div class="product-panels">
-
-        <!-- Panel 0 — INTRO: blik rechts, tekst links -->
         <div class="product-panel product-left product-active">
           <div class="product-content">
             <span class="product-eyebrow">— Gold Dry</span>
@@ -593,8 +742,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 1 — KPI GRID: tekst + brede kpi's, blik tegenover -->
         <div class="product-panel product-left product-kpi-panel" style="flex-direction:column;align-items:flex-start;padding-top:0">
           <div style="position:relative;z-index:30;width:min(880px,88vw)">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · Gold Dry</span>
@@ -609,12 +756,10 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 2 — RESULTATEN: blik vaag achter, tekst scherp voorop -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow">✦ Resultaten · 3 jaar Gold Dry × BINC</span>
-            <h2 class="product-section-title" style="margin-bottom:8px">Gold Dry<br>in cijfers.</h2>
+            <h2 class="product-section-title results-title" style="margin-bottom:8px">Gold Dry<br>in cijfers.</h2>
             <div class="metric-wall gold-wall">
               <div class="metric-cell"><strong>3+</strong><span>Jaar actieve samenwerking</span></div>
               <div class="metric-cell"><strong>1.800</strong><span>Verkooppunten landelijk</span></div>
@@ -625,14 +770,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 3 — QUOTE (center) -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement">Jouw merk.<br><em>Onze handen.</em><br>Eén resultaat.</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -640,26 +782,18 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 
 <div class="client-separator"></div>
 
-<!-- ═══════════════════════════════════════════
-     MERK 2 · FEELSOGOOD
-     4 panels: 0=intro, 1=kpis, 2=results, 3=quote
-════════════════════════════════════════════ -->
+<!-- MERK 2 · FEELSOGOOD -->
 <section id="fsg-showcase" class="product-showcase feelsogood" data-reverse="true">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
       <div class="product-bg"></div>
       <div class="product-progress"></div>
-
       <div class="product-can-wrap">
         <div class="product-glow"></div>
         <img src="images/FeelSoGood_Blueberry.png" alt="FeelSoGood Blueberry"/>
       </div>
-
       <div class="product-dots"></div>
-
       <div class="product-panels">
-
-        <!-- Panel 0 — INTRO: blik links, tekst rechts -->
         <div class="product-panel product-right product-active">
           <div class="product-content">
             <span class="product-eyebrow">— FeelSoGood · Blackberry Blueberry · 0,6L</span>
@@ -672,10 +806,8 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 1 — KPI GRID -->
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
-         <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
+          <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · FeelSoGood</span>
             <h2 class="product-section-title" style="margin-bottom:6px">Sneller<br>dan verwacht.</h2>
             <div class="product-line"></div>
@@ -688,12 +820,10 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 2 — RESULTATEN -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow">✦ Resultaten · FeelSoGood × BINC</span>
-            <h2 class="product-section-title" style="margin-bottom:8px">FeelSoGood<br>in cijfers.</h2>
+            <h2 class="product-section-title results-title" style="margin-bottom:8px">FeelSoGood<br>in cijfers.</h2>
             <div class="metric-wall fsg-wall">
               <div class="metric-cell"><strong>9</strong><span>Maanden tot landelijke uitrol</span></div>
               <div class="metric-cell"><strong>1.250</strong><span>Verkooppunten actief</span></div>
@@ -704,14 +834,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 3 — QUOTE -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement">Niet alleen<br><em>mooi blauw.</em><br>Gebouwd voor rotatie.</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -719,26 +846,18 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 
 <div class="client-separator"></div>
 
-<!-- ═══════════════════════════════════════════
-     MERK 3 · BEATBOX
-     4 panels: 0=intro, 1=kpis, 2=results, 3=quote
-════════════════════════════════════════════ -->
+<!-- MERK 3 · BEATBOX -->
 <section id="bb-showcase" class="product-showcase beatbox" data-start="right">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
       <div class="product-bg"></div>
       <div class="product-progress"></div>
-
       <div class="product-can-wrap">
         <div class="product-glow"></div>
         <img src="images/beatbox_partypunch.png" alt="BeatBox Party Punch"/>
       </div>
-
       <div class="product-dots"></div>
-
       <div class="product-panels">
-
-        <!-- Panel 0 — INTRO: blik rechts, tekst links -->
         <div class="product-panel product-left product-active">
           <div class="product-content">
             <span class="product-eyebrow">— BeatBox Benelux</span>
@@ -751,8 +870,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 1 — KPI GRID -->
         <div class="product-panel product-left product-kpi-panel" style="flex-direction:column;align-items:flex-start;padding-top:0">
           <div style="position:relative;z-index:30;width:min(880px,88vw)">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · BeatBox</span>
@@ -767,12 +884,10 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 2 — RESULTATEN -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow">✦ Resultaten · BeatBox × BINC</span>
-            <h2 class="product-section-title" style="margin-bottom:8px">BeatBox<br>in cijfers.</h2>
+            <h2 class="product-section-title results-title" style="margin-bottom:8px">BeatBox<br>in cijfers.</h2>
             <div class="metric-wall bb-wall">
               <div class="metric-cell"><strong>11</strong><span>Maanden tot landelijke uitrol</span></div>
               <div class="metric-cell"><strong>980</strong><span>Verkooppunten actief</span></div>
@@ -783,14 +898,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 3 — QUOTE -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement">Niet zomaar<br><em>een RTD.</em><br>Wij maken het groot.</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -798,26 +910,18 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
 
 <div class="client-separator"></div>
 
-<!-- ═══════════════════════════════════════════
-     MERK 4 · CLEAN NUTRITION
-     4 panels: 0=intro, 1=kpis, 2=results, 3=quote
-════════════════════════════════════════════ -->
+<!-- MERK 4 · CLEAN NUTRITION -->
 <section id="cn-showcase" class="product-showcase cleannutrition" data-reverse="true">
   <div class="product-scroll-wrapper">
     <div class="product-sticky">
       <div class="product-bg"></div>
       <div class="product-progress"></div>
-
       <div class="product-can-wrap">
         <div class="product-glow"></div>
         <img src="images/cleannutrition_bar.png" alt="Clean Nutrition Golden Bar"/>
       </div>
-
       <div class="product-dots"></div>
-
       <div class="product-panels">
-
-        <!-- Panel 0 — INTRO: blik links, tekst rechts -->
         <div class="product-panel product-right product-active">
           <div class="product-content">
             <span class="product-eyebrow">— Clean Nutrition · Golden Bar · Salty Peanut · 50g</span>
@@ -830,8 +934,6 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 1 — KPI GRID -->
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
           <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
             <span class="product-eyebrow" style="margin-bottom:14px">✦ Groei met BINC · Clean Nutrition</span>
@@ -846,12 +948,10 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 2 — RESULTATEN -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow">✦ Resultaten · Clean Nutrition × BINC</span>
-            <h2 class="product-section-title" style="margin-bottom:8px">Golden Bar<br>in cijfers.</h2>
+            <h2 class="product-section-title results-title" style="margin-bottom:8px">Golden Bar<br>in cijfers.</h2>
             <div class="metric-wall cn-wall">
               <div class="metric-cell"><strong>10</strong><span>Maanden tot landelijke uitrol</span></div>
               <div class="metric-cell"><strong>1.100</strong><span>Verkooppunten actief</span></div>
@@ -862,14 +962,11 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
             </div>
           </div>
         </div>
-
-        <!-- Panel 3 — QUOTE -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement">Niet gewoon<br><em>een reep.</em><br>Wij maken het schaalbaar.</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -930,22 +1027,22 @@ footer{background:#000;border-top:1px solid rgba(168,149,82,.16);padding:80px 6v
     </div>
   </div>
   <div class="ft-info reveal d1">
-  <div class="ft-item">
-    <p class="ft-h">BINC adres</p>
-    <p>Wim Rötherlaan 25,<br>5051 JS Goirle</p>
+    <div class="ft-item ft-address">
+      <p class="ft-h">BINC adres</p>
+      <p>Wim Rötherlaan 25,<br>5051 JS Goirle</p>
+    </div>
+    <!-- Email + telefoon worden op mobiel naast elkaar in een row gezet -->
+    <div class="ft-contact-row">
+      <div class="ft-item ft-email">
+        <p class="ft-h">E-mailadres</p>
+        <a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a>
+      </div>
+      <div class="ft-item ft-phone">
+        <p class="ft-h">Telefoonnummer</p>
+        <a href="tel:+31132032643">013 203 2643</a>
+      </div>
+    </div>
   </div>
-
-  <div class="ft-item">
-    <p class="ft-h">E-mailadres</p>
-    <a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a>
-  </div>
-
-
-  <div class="ft-item">
-    <p class="ft-h">Telefoonnummer</p>
-    <a href="tel:+31132032643">013 203 2643</a>
-  </div>
-</div>
 </footer>
 
 <div class="ft-bar">
@@ -979,50 +1076,25 @@ window.addEventListener('scroll', () => {
 /* ─── SMOOTH SCROLL ─── */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
-
     const href = link.getAttribute('href');
     const target = document.querySelector(href);
-
     if (!target) return;
-
     e.preventDefault();
-
     const navH = document.getElementById('nav').offsetHeight;
-
-    const top =
-      target.getBoundingClientRect().top +
-      window.pageYOffset -
-      navH;
-
- if (href === '#lead') {
-
-  const overlay = document.getElementById('jumpOverlay');
-
-  overlay.classList.add('active');
-
-  setTimeout(() => {
-
-    window.scrollTo({
-      top,
-      behavior:'auto'
-    });
-
-    setTimeout(() => {
-      overlay.classList.remove('active');
-    }, 1050);
-
-  }, 250);
-
-  return;
-}
-
-    window.scrollTo({
-      top,
-      behavior:'smooth'
-    });
-
+    const top = target.getBoundingClientRect().top + window.pageYOffset - navH;
+    if (href === '#lead') {
+      const overlay = document.getElementById('jumpOverlay');
+      overlay.classList.add('active');
+      setTimeout(() => {
+        window.scrollTo({ top, behavior:'auto' });
+        setTimeout(() => { overlay.classList.remove('active'); }, 1050);
+      }, 250);
+      return;
+    }
+    window.scrollTo({ top, behavior:'smooth' });
   });
 });
+
 /* ─── TAPE ─── */
 const WORDS = ['Grow Your Brand','B2B Sales','Accountmanagement','Retail Listings','Landelijk Netwerk','Strategy & Growth','BINC International'];
 const ti = document.getElementById('tapeInner');
@@ -1045,8 +1117,12 @@ const STORES = [
   { name:'Bol.com / Online',sub:'E-commerce · Landelijk',      count:'Online', lat:52.155, lon:5.387 }
 ];
 
+const isMobile = () => window.innerWidth <= 1000;
+let mapInstance = null;
+
 function initMap() {
   if (typeof L === 'undefined') { console.warn('Leaflet niet beschikbaar'); return; }
+
   function createGoldIcon() {
     return L.divIcon({
       className:'',
@@ -1054,7 +1130,21 @@ function initMap() {
       iconSize:[18,18], iconAnchor:[9,18], popupAnchor:[0,-16]
     });
   }
-  const map = L.map('storeMap', { center:[52.18,5.30], zoom:6.35, zoomSnap:.25, scrollWheelZoom:true, zoomControl:true });
+
+  /* Op mobiel: scrollWheelZoom + dragging geblokkeerd tot na tap */
+  const map = L.map('storeMap', {
+    center:[52.18,5.30],
+    zoom:6.35,
+    zoomSnap:.25,
+    scrollWheelZoom: false,
+    dragging: !isMobile(),
+    touchZoom: false,
+    doubleClickZoom: false,
+    zoomControl: true
+  });
+
+  mapInstance = map;
+
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom:19 }).addTo(map);
   STORES.forEach(pin => {
     L.marker([pin.lat, pin.lon], { icon: createGoldIcon() })
@@ -1062,6 +1152,21 @@ function initMap() {
       .addTo(map);
   });
 }
+
+/* Tap-to-activate voor mobiel */
+const mapOverlay = document.getElementById('mapOverlay');
+if (mapOverlay) {
+  mapOverlay.addEventListener('click', () => {
+    mapOverlay.classList.add('hidden');
+    if (mapInstance) {
+      mapInstance.dragging.enable();
+      mapInstance.touchZoom.enable();
+      mapInstance.doubleClickZoom.enable();
+      mapInstance.scrollWheelZoom.enable();
+    }
+  });
+}
+
 if (document.readyState === 'complete') { initMap(); } else { window.addEventListener('load', initMap); }
 
 /* ─── REVEAL ─── */
@@ -1103,23 +1208,16 @@ window.addEventListener('mousemove', e => {
 }, { passive: true });
 
 /* ─── PRODUCT SHOWCASE ENGINE ─── */
-/*
-  Panel order per showcase (4 panels, index 0–3):
-  0 = intro (links of rechts afhankelijk van reverse)
-  1 = kpi grid (breed, minder hoog)
-  2 = results (blik vaag op achtergrond, tekst scherp)
-  3 = quote (blik vaag)
-*/
 function initProductShowcase(section) {
   const panels   = [...section.querySelectorAll('.product-panel')];
-  const PANELS   = panels.length; // 4
+  const PANELS   = panels.length;
   const wrapper  = section.querySelector('.product-scroll-wrapper');
   const can      = section.querySelector('.product-can-wrap');
   const progBar  = section.querySelector('.product-progress');
   const dotsWrap = section.querySelector('.product-dots');
   const reverse  = section.dataset.reverse === 'true';
+  const mobile   = isMobile();
 
-  /* dots */
   for (let i = 0; i < PANELS; i++) {
     const d = document.createElement('div');
     d.className = 'product-dot' + (i === 0 ? ' active' : '');
@@ -1127,27 +1225,30 @@ function initProductShowcase(section) {
   }
   const dots = [...dotsWrap.querySelectorAll('.product-dot')];
 
-  /*
-    Can positions for 4 panels
-    Normal (data-start="right"): can starts right side
-    Reverse: can starts left side
-  */
-const statesNormal = [
-  { x: 26, y: 0, r: -4, s: 1.00 },   
-  { x: 22, y: 2, r: 3,  s: .95 },    
-  { x: 24, y: 0, r: -2, s: .97 },    // panel 2 blijft rechts, niet over tekst
-  { x: 8,  y: 0, r: -1, s: .95 },    // panel 3 beweegt richting midden
-  { x: 0,  y: 0, r: 0,  s: .84 },
-];
-
-const statesReverse = [
-  { x: -26, y: 0, r: 4,  s: 1.00 },
-  { x: -22, y: 2, r: -3, s: .95 },
-  { x: -24, y: 0, r: 2,  s: .97 },   // panel 2 blijft links, niet over tekst
-  { x: -8,  y: 0, r: 1,  s: .95 },   // panel 3 beweegt richting midden
-  { x: 0,   y: 0, r: 0,  s: .84 },
-];
-  const states = reverse ? statesReverse : statesNormal;
+  /* Desktop: can beweegt links/rechts. Mobiel: gecentreerd, altijd achtergrond */
+  const statesNormal = [
+    { x: 26, y: 0, r: -4, s: 1.00 },
+    { x: 22, y: 2, r:  3, s: .95  },
+    { x: 24, y: 0, r: -2, s: .97  },
+    { x:  8, y: 0, r: -1, s: .95  },
+    { x:  0, y: 0, r:  0, s: .84  },
+  ];
+  const statesReverse = [
+    { x: -26, y: 0, r:  4, s: 1.00 },
+    { x: -22, y: 2, r: -3, s: .95  },
+    { x: -24, y: 0, r:  2, s: .97  },
+    { x:  -8, y: 0, r:  1, s: .95  },
+    { x:   0, y: 0, r:  0, s: .84  },
+  ];
+  /* Mobiel: altijd gecentreerd, alleen subtiele y-beweging */
+  const statesMobile = [
+    { x: 0, y:  0, r: -3, s: 1.00 },
+    { x: 0, y: -2, r:  2, s: .97  },
+    { x: 0, y:  0, r: -1, s: .95  },
+    { x: 0, y:  2, r:  1, s: .92  },
+    { x: 0, y:  0, r:  0, s: .88  },
+  ];
+  const states = mobile ? statesMobile : (reverse ? statesReverse : statesNormal);
 
   let mouseX = 0, mouseY = 0;
   let cs = { x:0, y:0, r:0, s:1 };
@@ -1180,29 +1281,21 @@ const statesReverse = [
     };
   }
 
-function panelForT(t) {
-  if (t < 0.22) return 0;
-  if (t < 0.48) return 1;
-  if (t < 0.72) return 2;
-  return 3;
-}
+  function panelForT(t) {
+    if (t < 0.22) return 0;
+    if (t < 0.48) return 1;
+    if (t < 0.72) return 2;
+    return 3;
+  }
 
   function setPanel(idx) {
     if (idx === activePanel) return;
     activePanel = idx;
     panels.forEach((p,i) => p.classList.toggle('product-active', i === idx));
     dots.forEach((d,i)   => d.classList.toggle('active', i === idx));
-
     const isResults = panels[idx] && panels[idx].classList.contains('results-panel');
-    const isQuote   = panels[idx] && panels[idx].classList.contains('product-center') && !isResults;
-
-    /*
-      results-panel (idx 2): can gets results-bg (blurred, large, z-index:5 behind text z-index:30)
-      quote (idx 3): can gets blurred class (standard blur)
-      others: clean
-    */
- can.classList.toggle('blurred', idx === 3 || idx === 4);
-can.classList.toggle('results-bg', isResults);
+    can.classList.toggle('blurred', idx === 3 || idx === 4);
+    can.classList.toggle('results-bg', isResults);
   }
 
   function tick() {
@@ -1215,12 +1308,11 @@ can.classList.toggle('results-bg', isResults);
     cs.r = lerp(cs.r, target.r, .06);
     cs.s = lerp(cs.s, target.s, .06);
 
-    const mx2 = mouseX * 0.45;
-    const my2 = mouseY * 0.38;
+    const mx2 = mobile ? 0 : mouseX * 0.45;
+    const my2 = mobile ? 0 : mouseY * 0.38;
 
-    can.style.transform = `translate(calc(-50% + ${cs.x + mx2}vw),calc(-50% + ${cs.y + my2}vh)) rotate(${cs.r + mouseX * 0.6}deg) scale(${cs.s})`;
+    can.style.transform = `translate(calc(-50% + ${cs.x + mx2}vw),calc(-50% + ${cs.y + my2}vh)) rotate(${cs.r + (mobile ? 0 : mouseX * 0.6)}deg) scale(${cs.s})`;
     progBar.style.width = (t * 100) + '%';
-
     setPanel(panelForT(t));
   }
 
@@ -1229,29 +1321,18 @@ can.classList.toggle('results-bg', isResults);
 
 document.querySelectorAll('.product-showcase').forEach(initProductShowcase);
 
-  /* OVERLAY ALS JE VAN EVENTS NAAR INDEX#LEAD KOMT */
+/* ─── OVERLAY BIJ HASH #LEAD ─── */
 window.addEventListener('load', () => {
   if (window.location.hash !== '#lead') return;
-
   const overlay = document.getElementById('jumpOverlay');
-  const target = document.querySelector('#lead');
-  const nav = document.getElementById('nav');
-
+  const target  = document.querySelector('#lead');
+  const nav     = document.getElementById('nav');
   if (!overlay || !target) return;
-
   overlay.classList.add('active');
-
   setTimeout(() => {
     const navH = nav ? nav.offsetHeight : 0;
-
-    window.scrollTo({
-      top: target.getBoundingClientRect().top + window.pageYOffset - navH,
-      behavior: 'auto'
-    });
-
-    setTimeout(() => {
-      overlay.classList.remove('active');
-    }, 950);
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - navH, behavior:'auto' });
+    setTimeout(() => { overlay.classList.remove('active'); }, 950);
   }, 250);
 });
 </script>
