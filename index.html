@@ -1324,38 +1324,109 @@ function buildTape() {
 /* ══════════════════════════════════════════════════
    MAP
 ══════════════════════════════════════════════════ */
-const STORES = [
-  { name:'Albert Heijn',    sub:'Supermarktketen · Landelijk', count:'1.100+', lat:52.373, lon:4.892 },
-  { name:'Jumbo',           sub:'Supermarktketen · Landelijk', count:'700+',   lat:51.921, lon:4.470 },
-  { name:'Spar',            sub:'Supermarktketen · Landelijk', count:'300+',   lat:52.631, lon:4.749 },
-  { name:'Plus Supermarkt', sub:'Supermarktketen · Landelijk', count:'260+',   lat:52.090, lon:5.121 },
-  { name:'Kruidvat',        sub:'Drogisterij · Landelijk',     count:'750+',   lat:52.070, lon:4.310 },
-  { name:'Trekpleister',    sub:'Drogisterij · Landelijk',     count:'170+',   lat:51.437, lon:5.478 },
-  { name:'Gall & Gall',     sub:'Slijterijen · Landelijk',     count:'580+',   lat:52.359, lon:4.878 },
-  { name:'Foodservice HoReCa', sub:'HoReCa · Landelijk',       count:'400+',   lat:50.851, lon:5.691 },
-  { name:'Decathlon',       sub:'Sport · Landelijk',           count:'54+',    lat:52.311, lon:4.950 },
-  { name:'Intersport',      sub:'Sport · Landelijk',           count:'60+',    lat:53.215, lon:6.571 },
-  { name:'de Tuinen',       sub:'Health · Landelijk',          count:'120+',   lat:52.354, lon:4.869 },
-  { name:'Bol.com / Online',sub:'E-commerce · Landelijk',      count:'Online', lat:52.155, lon:5.387 }
-];
+const SHEET_URL = 'https://opensheet.elk.sh/1sxoGgMkgbk6pk4h6W9FDpTFyAqvP70kmlmrE0kGh3N8/Blad1';
+
+let STORES = [];
 
 const isMobile = () => window.innerWidth <= 1000;
 let mapInstance = null;
 
-function initMap() {
+async function initMap() {
   if (typeof L === 'undefined') return;
+
   function createRedIcon() {
-    return L.divIcon({ className:'', html:`<div style="position:relative;width:14px;height:14px;border-radius:50% 50% 50% 0;background:linear-gradient(135deg,#e74c3c 0%,#c0392b 48%,#8e2215 100%);transform:rotate(-45deg);border:1px solid rgba(255,255,255,.58);box-shadow:0 0 11px rgba(192,57,43,.5),inset 0 1px 2px rgba(255,255,255,.42);"><span style="position:absolute;width:5px;height:5px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#050505;"></span></div>`, iconSize:[18,18], iconAnchor:[9,18], popupAnchor:[0,-16] });
+    return L.divIcon({
+      className:'',
+      html:`
+        <div style="
+          position:relative;
+          width:12px;
+          height:12px;
+          border-radius:50%;
+          background:linear-gradient(135deg,#e74c3c 0%,#c0392b 52%,#8e2215 100%);
+          border:1px solid rgba(255,255,255,.58);
+          box-shadow:0 0 11px rgba(192,57,43,.55),inset 0 1px 2px rgba(255,255,255,.35);
+        "></div>
+      `,
+      iconSize:[12,12],
+      iconAnchor:[6,6],
+      popupAnchor:[0,-8]
+    });
   }
-  const map = L.map('storeMap', { center:[52.18,5.30], zoom:6.35, zoomSnap:.25, scrollWheelZoom:false, dragging:!isMobile(), touchZoom:false, doubleClickZoom:false, zoomControl:true });
-  mapInstance = map;
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom:19 }).addTo(map);
-  STORES.forEach(pin => {
-    const popLabel = t('map.pop.label');
-    L.marker([pin.lat, pin.lon], { icon: createRedIcon() })
-     .bindPopup(`<div class="pop-name">${pin.name}</div><div class="pop-sub">${pin.sub}</div><div class="pop-count">${pin.count}</div><div class="pop-label">${popLabel}</div>`)
-     .addTo(map);
+
+  function getCell(row, possibleNames, fallbackIndex) {
+    for (const name of possibleNames) {
+      if (row[name] !== undefined && String(row[name]).trim() !== '') return String(row[name]).trim();
+    }
+    const values = Object.values(row);
+    return values[fallbackIndex] !== undefined ? String(values[fallbackIndex]).trim() : '';
+  }
+
+  try {
+    const response = await fetch(SHEET_URL);
+    const data = await response.json();
+
+    STORES = data.map(row => {
+      const name = getCell(row, ['Bedrijfsnaam','bedrijfsnaam','Bedrijf','bedrijf','Naam','naam','A'], 0);
+      const count = getCell(row, ['Aantal merken','aantal merken','Merken','merken','Aantal','aantal','B'], 1);
+      const latlon = getCell(row, ['Latlon','latlon','LatLon','latLon','Lat/Lon','lat/lon','Coordinaten','coordinaten','C'], 2);
+
+      const coords = latlon.split(',').map(v => parseFloat(String(v).trim()));
+
+      return {
+        name,
+        count,
+        lat: coords[0],
+        lon: coords[1]
+      };
+    }).filter(store =>
+      store.name &&
+      !isNaN(store.lat) &&
+      !isNaN(store.lon)
+    );
+
+  } catch (err) {
+    console.error('[map] Kon spreadsheet niet laden:', err);
+    STORES = [];
+  }
+
+  const map = L.map('storeMap', {
+    center:[52.18,5.30],
+    zoom:7,
+    zoomSnap:.25,
+    scrollWheelZoom:false,
+    dragging:!isMobile(),
+    touchZoom:false,
+    doubleClickZoom:false,
+    zoomControl:true
   });
+
+  mapInstance = map;
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom:19
+  }).addTo(map);
+
+  const bounds = [];
+
+  STORES.forEach(pin => {
+    bounds.push([pin.lat, pin.lon]);
+
+    L.marker([pin.lat, pin.lon], { icon: createRedIcon() })
+      .bindPopup(`
+        <div class="pop-name">${pin.name}</div>
+        <div class="pop-count">${pin.count}</div>
+        <div class="pop-label">merken in dit filiaal</div>
+      `)
+      .addTo(map);
+  });
+
+  if (bounds.length) {
+    map.fitBounds(bounds, {
+      padding:[30,30],
+      maxZoom:8
+    });
+  }
 }
 
 const mapOverlay = document.getElementById('mapOverlay');
