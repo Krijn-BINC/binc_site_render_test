@@ -377,21 +377,35 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .product-dots{display:none}
 
   /* Can: fullscreen background */
-  .product-can-wrap{
+ .product-can-wrap{
     position:absolute;
     top:50%!important;
     left:50%!important;
-    width:62vw!important;
-    max-width:280px!important;
+
+    width:48vw!important;
+    max-width:210px!important;
+
     z-index:5;
-    opacity:.22!important;
-    filter:blur(3px) drop-shadow(0 0 40px var(--brand-soft))!important;
+
+    opacity:.18!important;
+
+    filter:blur(3px) drop-shadow(0 0 30px var(--brand-soft))!important;
+
     pointer-events:none;
-    transition:opacity .5s,filter .5s,transform .6s cubic-bezier(.2,.8,.2,1);
-  }
+
+    transition:
+    opacity .5s,
+    filter .5s,
+    transform .6s cubic-bezier(.2,.8,.2,1);
+}
   .product-showcase.feelsogood .product-can-wrap,
-  .product-showcase.beatbox .product-can-wrap,
-  .product-showcase.cleannutrition .product-can-wrap{width:62vw!important;max-width:280px!important;top:50%!important}
+.product-showcase.beatbox .product-can-wrap,
+.product-showcase.cleannutrition .product-can-wrap,
+.product-showcase.gold-dry .product-can-wrap{
+    width:48vw!important;
+    max-width:210px!important;
+    top:50%!important;
+}
   .product-can-wrap.results-bg{opacity:.12!important;filter:blur(5px)!important}
   .product-can-wrap.blurred{opacity:.10!important;filter:blur(6px)!important}
 
