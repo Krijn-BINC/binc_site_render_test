@@ -144,6 +144,48 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .cta-title .red{color:var(--red)}.cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
 .cta-copy{max-width:700px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62)}
 
+/* EVENT TAPE */
+.event-tape{
+  background:var(--red);
+  overflow:hidden;
+  white-space:nowrap;
+  padding:16px 0;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.event-tape-track{
+  display:inline-block;
+  white-space:nowrap;
+  animation:eventTape 24s linear infinite;
+}
+
+.event-tape-track span{
+  display:inline-block;
+  margin:0 34px;
+  font-family:var(--font-display);
+  font-size:.95rem;
+  font-weight:700;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:#fff;
+}
+
+.event-tape-track span::after{
+  content:'•';
+  margin-left:34px;
+  opacity:.7;
+}
+
+@keyframes eventTape{
+  from{
+    transform:translateX(0);
+  }
+  to{
+    transform:translateX(-50%);
+  }
+}
+  
 /* FOOTER */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
@@ -291,6 +333,26 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </section>
 
+<!-- MOVING TAPE -->
+<div class="event-tape">
+  <div class="event-tape-track">
+    <span>FESTIVALS</span>
+    <span>BRAND ACTIVATIONS</span>
+    <span>SAMPLING</span>
+    <span>LIVE EVENTS</span>
+    <span>HIGH TRAFFIC</span>
+    <span>BINC INTERNATIONAL</span>
+
+    <!-- duplicate voor infinite loop -->
+    <span>FESTIVALS</span>
+    <span>BRAND ACTIVATIONS</span>
+    <span>SAMPLING</span>
+    <span>LIVE EVENTS</span>
+    <span>HIGH TRAFFIC</span>
+    <span>BINC INTERNATIONAL</span>
+  </div>
+</div>
+  
 <!-- INTRO -->
 <section class="section">
   <div class="intro-grid">
