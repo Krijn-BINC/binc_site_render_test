@@ -429,20 +429,28 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   }
   .product-showcase[data-reverse="true"] .product-panel.product-kpi-panel{align-items:center!important}
 
-  .product-panel.product-kpi-panel > div,
-  .reverse-kpi-wrap{
-    width:100%!important;
-    max-width:100%!important;
+ .product-panel.product-kpi-panel > div,
+.reverse-kpi-wrap{
+    width:92%!important;
+    max-width:92%!important;
     margin-right:0!important;
+
     text-align:left;
-    background:rgba(0,0,0,.88)!important;
+
+    background:rgba(0,0,0,.92)!important;
     border:1px solid rgba(255,255,255,.10)!important;
     border-radius:14px!important;
-    padding:24px 18px!important;
+
+    padding:18px 20px!important;
+
     position:relative;
     z-index:30;
-    box-shadow:0 0 0 1px rgba(255,255,255,.04),0 16px 40px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06)!important;
-  }
+
+    box-shadow:
+    0 0 0 1px rgba(255,255,255,.04),
+    0 16px 40px rgba(0,0,0,.7),
+    inset 0 1px 0 rgba(255,255,255,.06)!important;
+}
 
   .product-panel.product-kpi-panel .product-eyebrow,
   .product-panel.product-kpi-panel .product-section-title,
@@ -451,18 +459,36 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .product-panel.product-kpi-panel .product-kpi-l{opacity:1!important;filter:none!important}
   .product-panel.product-kpi-panel .product-text{color:rgba(255,255,255,.82)!important}
 
-  .product-section-title{font-size:clamp(36px,10vw,52px);margin-bottom:6px}
+.product-section-title{
+    font-size:clamp(28px,8vw,44px);
+    line-height:.9;
+    margin-bottom:2px;
+}
 
-  .product-kpis{
+.product-kpis{
     grid-template-columns:repeat(2,1fr)!important;
     width:100%!important;
-    margin-top:18px;
-  }
-  .product-kpi{padding:16px 14px;background:rgba(255,255,255,.04)!important}
-  .product-kpi-v{font-size:2.1rem}
+    margin-top:12px;
+}
+
+  .product-kpi{
+    padding:12px 10px;
+    background:rgba(255,255,255,.04)!important;
+}
+  .product-kpi-v{
+    font-size:1.6rem;
+}
   .product-kpi-ghost{font-size:4rem}
-  .product-kpi-l{font-size:.48rem;color:rgba(255,255,255,.65)!important}
-  .product-text{margin-bottom:0}
+.product-kpi-l{
+    font-size:.42rem;
+    line-height:1.4;
+    color:rgba(255,255,255,.65)!important;
+}
+.product-text{
+    margin-bottom:0;
+    font-size:.68rem;
+    line-height:1.6;
+}
 
   /* Results panel */
   .product-panel.product-center{padding:0 4vw}
