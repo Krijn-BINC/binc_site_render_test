@@ -1025,11 +1025,11 @@ formBtn.addEventListener('click', async function () {
   showLeadAlert(null);
 
   try {
-    const response = await fetch(CONTACT_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+  const response = await fetch(API_URL, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(payload)
+});
 
     const data = await response.json();
 
