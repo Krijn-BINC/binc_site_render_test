@@ -1401,13 +1401,13 @@ async function initMap() {
     maxZoom: 19
   }).addTo(map);
 
-  const clusterGroup = L.markerClusterGroup({
-    maxClusterRadius: 60,
+ const clusterGroup = L.markerClusterGroup({
+    maxClusterRadius: 30,        // was 60, nu kleiner = minder samenvoegen
     spiderfyOnMaxZoom: true,
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true,
     iconCreateFunction: createClusterIcon
-  });
+});
 
   const bounds = [];
   STORES.forEach(pin => {
@@ -1425,8 +1425,8 @@ async function initMap() {
   map.addLayer(clusterGroup);
 
   if (bounds.length) {
-    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 8 });
-  }
+    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 10 }); // was 8, nu 10
+}
 }
 
 const mapOverlay = document.getElementById('mapOverlay');
