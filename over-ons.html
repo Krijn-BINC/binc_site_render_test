@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YG0JGDRRM6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YG0JGDRRM6');
+  </script>
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Over Ons | BINC International</title>
+
+  <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    *,*::before,*::after{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    :root{
+      --bg:#000;
+      --red:#c0392b;
+      --red2:#e74c3c;
+      --white:#fff;
+      --dim:rgba(255,255,255,.58);
+
+      --font-display:'Barlow Condensed',sans-serif;
+      --font-body:'Barlow',sans-serif;
+      --font-ui:'Rajdhani',sans-serif;
+      --font-bebas:'Bebas Neue',sans-serif;
+      --font-mono:'DM Mono',monospace;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      cursor:none;
+    }
+
+    body{
+      background:#000;
+      color:#fff;
+      font-family:var(--font-body);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    ::selection{
+      background:var(--red);
+      color:#fff;
+    }
+
+    #cur,#cur-ring{
+      position:fixed;
+      border-radius:50%;
+      pointer-events:none;
+      z-index:9999;
+      mix-blend-mode:difference;
+    }
+
+    #cur{
+      width:8px;
+      height:8px;
+      background:#fff;
+      transform:translate(-50%,-50%);
+    }
+
+    #cur-ring{
+      width:34px;
+      height:34px;
+      border:1.5px solid rgba(255,255,255,.45);
+      transform:translate(-50%,-50%);
+      transition:width .3s,height .3s;
+    }
+
+    body:has(a:hover) #cur-ring,
+    body:has(button:hover) #cur-ring,
+    body:has(.team-card:hover) #cur-ring{
+      width:52px;
+      height:52px;
+    }
+
+    /* NAV */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:500;
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 6vw;
+      transition:.4s;
+    }
+
+    nav.scrolled{
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(20px);
+    }
+
+    .nav-logo img{
+      height:38px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:4px;
+    }
+
+    .nav-links a{
+      font-family:var(--font-ui);
+      font-size:.78rem;
+      font-weight:600;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--dim);
+      text-decoration:none;
+      padding:8px 16px;
+      position:relative;
+    }
+
+    .nav-links a::after{
+      content:'';
+      position:absolute;
+      bottom:4px;
+      left:16px;
+      right:16px;
+      height:1px;
+      background:rgba(192,57,43,.85);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:#fff;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after{
+      transform:scaleX(1);
+    }
+
+    .nav-cta{
+      color:#fff!important;
+      background:var(--red)!important;
+      padding:10px 26px!important;
+      font-weight:700;
+      border-radius:2px;
+    }
+
+    .nav-cta::after{
+      display:none!important;
+    }
+
+    /* HERO */
+
+    #hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      padding:130px 6vw 100px;
+      background:#000;
+    }
+
+    .hero-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.35;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(to right,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 100%),
+      linear-gradient(to bottom,rgba(0,0,0,.25),rgba(0,0,0,.92));
+    }
+
+    .hero-grid{
+      position:absolute;
+      inset:0;
+      background-image:
+      linear-gradient(rgba(192,57,43,.03) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(192,57,43,.03) 1px,transparent 1px);
+      background-size:90px 90px;
+      opacity:.5;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:5;
+      max-width:1200px;
+    }
+
+    .label{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-family:var(--font-ui);
+      font-size:.68rem;
+      font-weight:700;
+      letter-spacing:.45em;
+      text-transform:uppercase;
+      color:rgba(192,57,43,.92);
+      margin-bottom:24px;
+    }
+
+    .label::before{
+      content:'';
+      width:24px;
+      height:1px;
+      background:rgba(192,57,43,.75);
+    }
+
+    .hero-title{
+      font-family:var(--font-display);
+      font-size:clamp(5rem,11vw,14rem);
+      font-weight:900;
+      line-height:.84;
+      letter-spacing:-.01em;
+      margin-bottom:34px;
+    }
+
+    .hero-title .red{
+      color:var(--red);
+    }
+
+    .hero-title .stroke{
+      -webkit-text-stroke:1.5px rgba(255,255,255,.36);
+      color:transparent;
+    }
+
+    .hero-sub{
+      max-width:640px;
+      font-size:1.05rem;
+      line-height:1.9;
+      color:rgba(255,255,255,.68);
+      font-weight:300;
+    }
+
+    /* SECTION */
+
+    .section{
+      padding:130px 6vw;
+      position:relative;
+    }
+
+    .display{
+      font-family:var(--font-display);
+      font-size:clamp(3.5rem,7vw,8rem);
+      font-weight:900;
+      line-height:.9;
+      margin-bottom:28px;
+    }
+
+    .body-text{
+      max-width:760px;
+      font-size:1rem;
+      line-height:1.95;
+      color:rgba(255,255,255,.62);
+      font-weight:300;
+    }
+
+    /* TEAM GRID */
+
+    .team-grid{
+      margin-top:80px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .team-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+      background:
+      linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+      border:1px solid rgba(192,57,43,.14);
+      min-height:580px;
+      transition:.35s;
+      box-shadow:
+      0 30px 80px rgba(0,0,0,.58),
+      inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .team-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(192,57,43,.4);
+    }
+
+    .team-image{
+      position:relative;
+      height:360px;
+      overflow:hidden;
+    }
+
+    .team-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.82;
+      transition:.5s;
+    }
+
+    .team-card:hover img{
+      transform:scale(1.05);
+      opacity:.95;
+    }
+
+    .team-image::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(to top,rgba(0,0,0,.9),transparent 40%);
+    }
+
+    .team-content{
+      padding:34px;
+    }
+
+    .team-role{
+      display:inline-block;
+      margin-bottom:16px;
+      font-family:var(--font-ui);
+      font-size:.58rem;
+      font-weight:700;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:rgba(192,57,43,.92);
+      border:1px solid rgba(192,57,43,.24);
+      padding:7px 12px;
+      border-radius:2px;
+      background:rgba(192,57,43,.06);
+    }
+
+    .team-name{
+      font-family:var(--font-display);
+      font-size:clamp(2.2rem,3vw,3.5rem);
+      font-weight:900;
+      line-height:.9;
+      margin-bottom:22px;
+    }
+
+    .team-info{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .team-info a{
+      color:rgba(255,255,255,.68);
+      text-decoration:none;
+      font-size:.95rem;
+      transition:.2s;
+    }
+
+    .team-info a:hover{
+      color:var(--red);
+    }
+
+    /* CTA */
+
+    #cta{
+      position:relative;
+      overflow:hidden;
+      padding:130px 6vw 140px;
+      border-top:1px solid rgba(192,57,43,.1);
+    }
+
+    #cta::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+      radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 60%);
+    }
+
+    .cta-wrap{
+      position:relative;
+      z-index:2;
+      max-width:1000px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:28px;
+    }
+
+    .cta-title{
+      font-family:var(--font-display);
+      font-size:clamp(4rem,8vw,10rem);
+      font-weight:900;
+      line-height:.86;
+    }
+
+    .cta-title .red{
+      color:var(--red);
+    }
+
+    .cta-title .stroke{
+      -webkit-text-stroke:1.5px rgba(255,255,255,.36);
+      color:transparent;
+    }
+
+    .btn-red{
+      font-family:var(--font-ui);
+      font-weight:700;
+      font-size:.8rem;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      border-radius:2px;
+      text-decoration:none;
+      display:inline-block;
+      transition:.2s;
+      color:#fff;
+      background:var(--red);
+      padding:18px 42px;
+    }
+
+    .btn-red:hover{
+      background:var(--red2);
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(192,57,43,.32);
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#000;
+      border-top:1px solid rgba(192,57,43,.16);
+      padding:80px 6vw 60px;
+      display:grid;
+      grid-template-columns:1.1fr 2fr;
+      gap:60px;
+    }
+
+    .ft-logo{
+      width:230px;
+    }
+
+    .ft-info{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:32px;
+    }
+
+    .ft-h{
+      font-family:var(--font-ui);
+      font-size:.85rem;
+      font-weight:800;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--red);
+      margin-bottom:12px;
+    }
+
+    .ft-item p,
+    .ft-item a{
+      font-size:1rem;
+      line-height:1.75;
+      color:rgba(255,255,255,.74);
+      text-decoration:none;
+    }
+
+    .ft-item a:hover{
+      color:var(--red);
+    }
+
+    /* REVEAL */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(50px);
+      transition:opacity .9s,transform .9s;
+    }
+
+    .reveal.on{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media(max-width:1000px){
+
+      html,body{
+        cursor:auto;
+      }
+
+      #cur,#cur-ring{
+        display:none;
+      }
+
+      .team-grid{
+        grid-template-columns:1fr;
+      }
+
+      footer{
+        grid-template-columns:1fr;
+      }
+
+      .ft-info{
+        grid-template-columns:1fr;
+      }
+
+      .hero-title{
+        font-size:clamp(4rem,16vw,8rem);
+      }
+
+      .display{
+        font-size:clamp(3rem,12vw,5rem);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+  </a>
+
+  <div class="nav-links">
+    <a href="horeca.html">Horeca</a>
+    <a href="evenementen.html">Evenementen</a>
+    <a href="vacatures.html">Vacatures</a>
+    <a href="over-ons.html" class="active">Over Ons</a>
+    <a href="index.html#lead" class="nav-cta">Samenwerken</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://cdn.shopify.com/videos/c/o/v/9690e8a2bed14220a0ecbf4df8209ce6.mov" type="video/mp4"/>
+  </video>
+
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <p class="label">BINC International</p>
+
+    <h1 class="hero-title">
+      THE PEOPLE<br>
+      <span class="red">BEHIND</span><br>
+      <span class="stroke">THE NETWORK.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Achter iedere listing, activatie en samenwerking staat een team dat merken begrijpt, relaties bouwt en kansen omzet in groei. Maak kennis met het team van BINC International.
+    </p>
+  </div>
+</section>
+
+<!-- INTRO -->
+
+<section class="section reveal">
+
+  <p class="label">Over ons</p>
+
+  <h2 class="display">
+    WE BUILD<br>
+    <span style="color:var(--red)">BRANDS</span><br>
+    WITH PEOPLE.
+  </h2>
+
+  <p class="body-text">
+    BINC International is gebouwd op relaties. Niet alleen met retailers, horeca en festivals — maar vooral met mensen. Ons team combineert sales, operations, data, activatie en branding om merken fysiek zichtbaar te maken in heel Nederland.
+  </p>
+
+</section>
+
+<!-- TEAM -->
+
+<section class="section">
+
+  <p class="label reveal">Ons team</p>
+
+  <h2 class="display reveal">
+    THE PEOPLE<br>
+    <span style="color:var(--red)">OF BINC.</span>
+  </h2>
+
+  <div class="team-grid">
+
+    <!-- CARD -->
+
+    <div class="team-card reveal">
+      <div class="team-image">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1400&auto=format&fit=crop"/>
+      </div>
+
+      <div class="team-content">
+        <span class="team-role">Director</span>
+        <h3 class="team-name">Merlijn<br>Stieger</h3>
+
+        <div class="team-info">
+          <a href="mailto:Merlijn@bincinternational.nl">Merlijn@bincinternational.nl</a>
+          <a href="tel:+31625399506">+31 6 25399506</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-image">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1400&auto=format&fit=crop"/>
+      </div>
+
+      <div class="team-content">
+        <span class="team-role">Manager Operations & Events</span>
+        <h3 class="team-name">Jorrit<br>Zwaanswijk</h3>
+
+        <div class="team-info">
+          <a href="mailto:Jorrit@bincinternational.nl">Jorrit@bincinternational.nl</a>
+          <a href="tel:+31644103175">+31 6 44103175</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-image">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1400&auto=format&fit=crop"/>
+      </div>
+
+      <div class="team-content">
+        <span class="team-role">Sales Manager</span>
+        <h3 class="team-name">Maud<br>Moolenschot</h3>
+
+        <div class="team-info">
+          <a href="mailto:Maud@bincinternational.nl">Maud@bincinternational.nl</a>
+          <a href="tel:+31611214399">+31 6 11214399</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-image">
+        <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?q=80&w=1400&auto=format&fit=crop"/>
+      </div>
+
+      <div class="team-content">
+        <span class="team-role">Commercieel Manager</span>
+        <h3 class="team-name">Tim van<br>Helvoort</h3>
+
+        <div class="team-info">
+          <a href="mailto:Tim@bincinternational.nl">Tim@bincinternational.nl</a>
+          <a href="tel:+31645476200">+31 6 45476200</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-image">
+        <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1400&auto=format&fit=crop"/>
+      </div>
+
+      <div class="team-content">
+        <span class="team-role">Systeem & Data Coordinator</span>
+        <h3 class="team-name">Krijn van<br>Lankveld</h3>
+
+        <div class="team-info">
+          <a href="mailto:Krijn@bincinternational.nl">Krijn@bincinternational.nl</a>
+          <a href="tel:+31633031903">+31 6 33031903</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-image">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop"/>
+      </div>
+
+      <div class="team-content">
+        <span class="team-role">Regiomanager Noord-Oost Nederland</span>
+        <h3 class="team-name">Sebastian<br>Beekhuis</h3>
+
+        <div class="team-info">
+          <a href="mailto:Sebas@bincinternational.nl">Sebas@bincinternational.nl</a>
+          <a href="tel:+31613208512">+31 6 13208512</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-image">
+        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1400&auto=format&fit=crop"/>
+      </div>
+
+      <div class="team-content">
+        <span class="team-role">Social & Influencer Manager</span>
+        <h3 class="team-name">Indy<br>Witjes</h3>
+
+        <div class="team-info">
+          <a href="mailto:Indy@bincinternational.nl">Indy@bincinternational.nl</a>
+          <a href="tel:+31636340673">+31 6 36340673</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section id="cta">
+
+  <div class="cta-wrap reveal">
+
+    <p class="label" style="justify-content:center">Samenwerken</p>
+
+    <h2 class="cta-title">
+      READY TO<br>
+      <span class="red">BUILD</span>
+      <span class="stroke">TOGETHER?</span>
+    </h2>
+
+    <p class="body-text" style="text-align:center;max-width:700px;">
+      Van retail tot horeca en activaties. Het team van BINC International staat klaar om jouw merk fysiek te laten groeien.
+    </p>
+
+    <a href="index.html#lead" class="btn-red">Neem contact op</a>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div>
+    <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181"/>
+  </div>
+
+  <div class="ft-info">
+
+    <div class="ft-item">
+      <p class="ft-h">BINC adres</p>
+      <p>Wim Rötherlaan 25,<br>5051 JS Goirle</p>
+    </div>
+
+    <div class="ft-item">
+      <p class="ft-h">E-mailadres</p>
+      <a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a>
+    </div>
+
+    <div class="ft-item">
+      <p class="ft-h">Telefoonnummer</p>
+      <a href="tel:+31132032643">013 203 2643</a>
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+
+  /* CURSOR */
+
+  const cur=document.getElementById('cur'),
+  ring=document.getElementById('cur-ring');
+
+  let mx=0,my=0,rx=0,ry=0;
+
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;
+    my=e.clientY;
+
+    cur.style.left=mx+'px';
+    cur.style.top=my+'px';
+  });
+
+  (function animRing(){
+    rx+=(mx-rx)*.11;
+    ry+=(my-ry)*.11;
+
+    ring.style.left=rx+'px';
+    ring.style.top=ry+'px';
+
+    requestAnimationFrame(animRing);
+  })();
+
+  /* NAV */
+
+  window.addEventListener('scroll',()=>{
+    document.getElementById('nav')
+    .classList.toggle('scrolled',window.scrollY>70);
+  },{passive:true});
+
+  /* REVEAL */
+
+  const revIO=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('on');
+        revIO.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+
+  document.querySelectorAll('.reveal')
+  .forEach(el=>revIO.observe(el));
+
+</script>
+
+</body>
+</html>
