@@ -19,7 +19,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" defer></script>
+  
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -301,7 +304,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.05);padding:22px 6vw;display:flex;justify-content:space-between;align-items:center}
 .ft-copy{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 
-/* LEAFLET */
+/* */
 .leaflet-container{background:#101010!important}
 .leaflet-control-attribution{display:none}
 .leaflet-control-zoom a{background:#0d0d0d!important;color:var(--red)!important;border:1px solid rgba(192,57,43,.42)!important}
@@ -1324,7 +1327,6 @@ function buildTape() {
 /* ══════════════════════════════════════════════════
    MAP
 ══════════════════════════════════════════════════ */
-const SHEET_URL = 'https://opensheet.elk.sh/1sxoGgMkgbk6pk4h6W9FDpTFyAqvP70kmlmrE0kGh3N8/Blad1';
 
 let STORES = [];
 
@@ -1334,125 +1336,96 @@ let mapInstance = null;
 async function initMap() {
   if (typeof L === 'undefined') return;
 
-function createRedIcon() {
+  function createRedIcon() {
+    return L.divIcon({
+      className: '',
+      html: `<div style="
+        position:relative;width:16px;height:16px;
+        transform:rotate(-45deg);
+        background:linear-gradient(135deg,#e74c3c 0%,#c0392b 60%,#7f1d1d 100%);
+        border-radius:50% 50% 50% 0;
+        border:1.5px solid rgba(255,255,255,.65);
+        box-shadow:0 0 18px rgba(192,57,43,.55),0 8px 18px rgba(0,0,0,.45);
+      "><div style="
+        position:absolute;width:8px;height:8px;background:#111;
+        border-radius:50%;top:50%;left:50%;
+        transform:translate(-50%,-50%) rotate(45deg);
+      "></div></div>`,
+      iconSize: [22, 22],
+      iconAnchor: [11, 22],
+      popupAnchor: [0, -22]
+    });
+  }
 
-  return L.divIcon({
-
-    className: '',
-
-    html: `
-      <div style="
-        position: relative;
-        width: 16px;
-height: 16px;
-        transform: rotate(-45deg);
-        background: linear-gradient(
-          135deg,
-          #e74c3c 0%,
-          #c0392b 60%,
-          #7f1d1d 100%
-        );
-        border-radius: 50% 50% 50% 0;
-        border: 1.5px solid rgba(255,255,255,.65);
-        box-shadow:
-          0 0 18px rgba(192,57,43,.55),
-          0 8px 18px rgba(0,0,0,.45);
-      ">
-      
-        <div style="
-          position:absolute;
-          width:8px;
-          height:8px;
-          background:#111;
-          border-radius:50%;
-          top:50%;
-          left:50%;
-          transform:translate(-50%,-50%) rotate(45deg);
-        "></div>
-
-      </div>
-    `,
-
-    iconSize: [22, 22],
-    iconAnchor: [11, 22],
-    popupAnchor: [0, -22]
-
-  });
-
-}
-
-  function getCell(row, possibleNames, fallbackIndex) {
-    for (const name of possibleNames) {
-      if (row[name] !== undefined && String(row[name]).trim() !== '') return String(row[name]).trim();
-    }
-    const values = Object.values(row);
-    return values[fallbackIndex] !== undefined ? String(values[fallbackIndex]).trim() : '';
+  function createClusterIcon(cluster) {
+    const n = cluster.getChildCount();
+    return L.divIcon({
+      html: `<div style="
+        background:var(--red);color:#fff;border-radius:50%;
+        width:36px;height:36px;
+        display:flex;align-items:center;justify-content:center;
+        font-family:var(--font-ui);font-size:.75rem;font-weight:700;
+        border:2px solid rgba(255,255,255,.5);
+        box-shadow:0 0 14px rgba(192,57,43,.6);
+      ">${n}</div>`,
+      className: '',
+      iconSize: [36, 36],
+      iconAnchor: [18, 18]
+    });
   }
 
   try {
-    const response = await fetch(SHEET_URL);
+    const response = await fetch(`${API_URL.replace('/api/contact', '')}/api/stores`);
     const data = await response.json();
-
-    STORES = data.map(row => {
-      const name = getCell(row, ['Bedrijfsnaam','bedrijfsnaam','Bedrijf','bedrijf','Naam','naam','A'], 0);
-      const count = getCell(row, ['Aantal merken','aantal merken','Merken','merken','Aantal','aantal','B'], 1);
-      const latlon = getCell(row, ['Latlon','latlon','LatLon','latLon','Lat/Lon','lat/lon','Coordinaten','coordinaten','C'], 2);
-
-      const coords = latlon.split(',').map(v => parseFloat(String(v).trim()));
-
-      return {
-        name,
-        count,
-        lat: coords[0],
-        lon: coords[1]
-      };
-    }).filter(store =>
-      store.name &&
-      !isNaN(store.lat) &&
-      !isNaN(store.lon)
-    );
-
+    if (!data.success) throw new Error('Stores niet beschikbaar');
+    STORES = data.stores;
   } catch (err) {
-    console.error('[map] Kon spreadsheet niet laden:', err);
+    console.error('[map] Stores ophalen mislukt:', err);
     STORES = [];
   }
 
   const map = L.map('storeMap', {
-    center:[52.18,5.30],
-    zoom:7,
-    zoomSnap:.25,
-    scrollWheelZoom:false,
-    dragging:!isMobile(),
-    touchZoom:false,
-    doubleClickZoom:false,
-    zoomControl:true
+    center: [52.18, 5.30],
+    zoom: 7,
+    zoomSnap: .25,
+    scrollWheelZoom: false,
+    dragging: !isMobile(),
+    touchZoom: false,
+    doubleClickZoom: false,
+    zoomControl: true
   });
 
   mapInstance = map;
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    maxZoom:19
+    maxZoom: 19
   }).addTo(map);
 
-  const bounds = [];
-
-  STORES.forEach(pin => {
-    bounds.push([pin.lat, pin.lon]);
-
-    L.marker([pin.lat, pin.lon], { icon: createRedIcon() })
-      .bindPopup(`
-        <div class="pop-name">${pin.name}</div>
-        <div class="pop-count">${pin.count}</div>
-        <div class="pop-label">merken in dit filiaal</div>
-      `)
-      .addTo(map);
+  const clusterGroup = L.markerClusterGroup({
+    maxClusterRadius: 60,
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true,
+    iconCreateFunction: createClusterIcon
   });
 
+  const bounds = [];
+  STORES.forEach(pin => {
+    bounds.push([pin.lat, pin.lon]);
+    clusterGroup.addLayer(
+      L.marker([pin.lat, pin.lon], { icon: createRedIcon() })
+        .bindPopup(`
+          <div class="pop-name">${pin.name}</div>
+          <div class="pop-count">${pin.count}</div>
+          <div class="pop-label">${t('map.pop.label')}</div>
+        `)
+    );
+  });
+
+  map.addLayer(clusterGroup);
+
   if (bounds.length) {
-    map.fitBounds(bounds, {
-      padding:[30,30],
-      maxZoom:8
-    });
+    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 8 });
   }
 }
 
