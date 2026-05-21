@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YG0JGDRRM6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-YG0JGDRRM6');
 </script>
 <meta charset="UTF-8"/>
@@ -29,98 +27,131 @@ body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-
 #cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
 #cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
 #cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
-body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring,body:has(input:hover) #cur-ring,body:has(textarea:hover) #cur-ring,body:has(select:hover) #cur-ring,body:has(label:hover) #cur-ring{width:52px;height:52px}
+body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:52px}
 ::selection{background:var(--red);color:#fff}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
 
-/* NAV */
+/* ── LANG SWITCH ── */
+.lang-switch{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-left:18px;flex-shrink:0}
+.lang-btn{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);background:transparent;border:none;padding:6px 11px;cursor:pointer;transition:.2s;line-height:1}
+.lang-btn.active{background:var(--red);color:#fff}
+.lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
+
+/* ── LANG FAB ── */
+.lang-fab{
+  display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;
+  position:fixed;bottom:28px;right:28px;z-index:600;
+  box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72);
+}
+.lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
+
+/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
 nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
 .nav-logo img{height:38px;width:auto;object-fit:contain}
-.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto;margin-right:20px}
 .nav-links a{font-family:var(--font-ui);font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:8px 16px;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:4px;left:16px;right:16px;height:1px;background:rgba(192,57,43,.85);transform:scaleX(0);transform-origin:left;transition:.3s}
 .nav-links a:hover{color:#fff}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}.nav-links a.active{color:#fff}
 .nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
-.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--red2)!important}
+.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--red2)!important;color:#fff!important}
+.nav-right{display:flex;align-items:center;gap:0}
+.nav-right .lang-switch{display:none}
 .nav-hamburger{display:none}
 
-/* MOBILE DRAWER */
+/* ── MOBILE DRAWER ── */
 .mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0}
 .mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
 .mobile-nav-drawer a{font-family:var(--font-display);font-size:clamp(2.8rem,11vw,5rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;line-height:1.1;display:block;padding:16px 0;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
 .mobile-nav-drawer a:hover,.mobile-nav-drawer a.active{color:#fff}
 .mobile-nav-drawer a.drawer-cta{color:#fff;background:var(--red);border-radius:4px;margin-top:28px;border-bottom:none;font-size:clamp(1.4rem,5vw,2rem);padding:18px 0;letter-spacing:.14em}
 .mobile-nav-drawer a.drawer-cta:hover{background:var(--red2)}
-.drawer-socials{display:flex;gap:28px;margin-top:36px}
+.drawer-lang{display:flex;align-items:center;justify-content:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-top:28px}
+.drawer-lang .lang-btn{font-size:.8rem;padding:10px 22px}
+.drawer-socials{display:flex;gap:28px;margin-top:28px}
 .drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
 .drawer-socials a:hover{color:var(--red)}.drawer-socials svg{width:100%;height:100%;fill:currentColor}
 
-/* JUMP OVERLAY */
+/* ── JUMP OVERLAY ── */
 .jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
 .jump-overlay::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px),radial-gradient(rgba(0,0,0,.08) 1px,transparent 1px);background-size:4px 4px,6px 6px;opacity:.5;mix-blend-mode:overlay}
 .jump-overlay::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(192,57,43,.28) 0%,rgba(192,57,43,.12) 35%,transparent 72%);filter:blur(50px)}
 .jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
 .jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
 
-/* HERO */
-.jobs-hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:#000;padding:130px 6vw 90px}
-.jobs-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 68% 42%,rgba(192,57,43,.13),transparent 34%),radial-gradient(circle at 28% 70%,rgba(255,255,255,.045),transparent 28%),linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.92));pointer-events:none}
-.jobs-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.45;animation:gridScroll 25s linear infinite}
+/* ── HERO ── */
+#hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.48) 48%,rgba(0,0,0,.2) 100%),linear-gradient(to bottom,rgba(0,0,0,.32) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.88) 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
 @keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
-.hero-orb{position:absolute;width:520px;height:520px;right:4vw;top:12vh;border-radius:50%;background:rgba(192,57,43,.08);filter:blur(100px);pointer-events:none}
-
-/* HERO LAYOUT */
-.jobs-wrap{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:80px;align-items:center}
-
-/* SHARED */
-.label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:22px}
-.label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
-
-/* HERO COPY */
-.jobs-title{font-family:var(--font-display);font-size:clamp(4.5rem,10vw,13rem);font-weight:900;line-height:.84;letter-spacing:-.01em;color:#fff;margin-bottom:36px;opacity:0;animation:riseUp .9s .25s forwards}
-.jobs-title .red{color:var(--red)}
-.jobs-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
-.jobs-copy{max-width:620px;font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,.68);font-weight:300;margin-bottom:34px;opacity:0;animation:riseUp .9s .45s forwards}
-.jobs-actions{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:riseUp .9s .65s forwards}
-@keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
-
-/* BUTTONS */
-.btn-red,.btn-outline,.btn-submit{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+.g-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.orb-a{width:500px;height:500px;background:rgba(192,57,43,.09);top:-8%;right:8%}
+.orb-b{width:320px;height:320px;background:rgba(192,57,43,.055);bottom:10%;right:30%}
+.hero-content{position:relative;z-index:10;padding:0 6vw;max-width:1500px;width:100%}
+.hero-inner{margin-left:clamp(32px,7vw,140px);max-width:1050px}
+.hero-label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:28px;opacity:0;animation:riseUp .9s .1s forwards}
+.hero-label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
+/* Desktop only label */
+.hero-label-desktop{display:flex}
+.hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,15rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:11ch;margin-bottom:40px;opacity:0;animation:riseUp .9s .25s forwards}
+.hero-title .red{color:var(--red)}.hero-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
+.hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.72);font-weight:300;max-width:520px;margin-bottom:48px;opacity:0;animation:riseUp .9s .45s forwards}
+.hero-btns{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:riseUp .9s .65s forwards}
+.btn-red,.btn-outline{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
 .btn-red{color:#fff;background:var(--red);border:none;padding:17px 40px}
 .btn-red:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
 .btn-outline{color:#fff;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.24);padding:16px 40px}
 .btn-outline:hover{border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.055)}
+@keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
 
-/* CARD */
-.jobs-card{position:relative;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012)),rgba(255,255,255,.014);border:1px solid rgba(192,57,43,.18);border-radius:16px;padding:44px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 34px 90px rgba(0,0,0,.55)}
-.jobs-card::before{content:'';position:absolute;inset:1px;border-radius:15px;background:radial-gradient(circle at 50% 0%,rgba(192,57,43,.08),transparent 48%);pointer-events:none}
-.jobs-card::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
-.card-inner{position:relative;z-index:1}
+/* ── SHARED ── */
+.label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
+.label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
+.display{font-family:var(--font-display);font-size:clamp(3.6rem,5.9vw,8.1rem);font-weight:900;line-height:.9;color:#fff}
+.body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:640px}
+
+/* ── NO VACATURE SECTION ── */
+#no-vacature{padding:140px 6vw 120px;background:#000;position:relative;overflow:hidden}
+#no-vacature::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
+.nv-grid{
+  display:grid;
+  grid-template-columns:minmax(0,680px) minmax(380px,580px);
+  gap:90px;
+  align-items:center;
+  justify-content:center;
+  max-width:1400px;
+  margin:0 auto;
+}
+.nv-copy{display:flex;flex-direction:column;gap:28px}
+
+/* Status card */
+.nv-card{position:relative;width:100%;max-width:520px;justify-self:end;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012)),rgba(255,255,255,.014);border:1px solid rgba(192,57,43,.18);border-radius:16px;padding:44px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 40px 100px rgba(0,0,0,.55)}
+.nv-card::before{content:'';position:absolute;inset:1px;border-radius:15px;background:radial-gradient(circle at 50% 0%,rgba(192,57,43,.08),transparent 48%);pointer-events:none}
+.nv-card::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
+.nv-card-inner{position:relative;z-index:1}
 
 .status-pill{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(120,40,40,.22),rgba(90,0,0,.32));border:1px solid rgba(140,70,70,.22);padding:11px 15px;border-radius:999px;font-family:var(--font-ui);font-size:.64rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin-bottom:26px;box-shadow:0 0 25px rgba(192,57,43,.18),inset 0 0 18px rgba(192,57,43,.15)}
 .status-dot{width:8px;height:8px;border-radius:50%;background:#b85a5a;box-shadow:0 0 10px rgba(184,90,90,.35);animation:liveBlink 1.1s infinite}
 @keyframes liveBlink{0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 16px rgba(192,57,43,.95)}50%{opacity:.25;transform:scale(.78);box-shadow:0 0 5px rgba(192,57,43,.35)}}
 
-.card-title{font-family:var(--font-display);font-size:clamp(2.7rem,4.2vw,5.4rem);font-weight:900;line-height:.9;color:#fff;margin-bottom:24px}
-.card-title span{color:var(--red)}
-.card-text{font-size:1rem;line-height:1.85;color:rgba(255,255,255,.6);font-weight:300}
-.card-list{margin-top:28px;display:grid;gap:12px}
-.card-list div{display:flex;gap:12px;align-items:flex-start;font-family:var(--font-ui);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.54)}
-.card-list div::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:7px;flex:0 0 auto}
+.nv-card-title{font-family:var(--font-display);font-size:clamp(2.4rem,3.6vw,4.8rem);font-weight:900;line-height:.88;color:#fff;margin-bottom:22px}
+.nv-card-title span{color:var(--red)}
+.nv-card-text{font-size:.95rem;line-height:1.85;color:rgba(255,255,255,.6);font-weight:300;margin-bottom:28px}
+.nv-list{display:grid;gap:12px}
+.nv-list div{display:flex;gap:12px;align-items:flex-start;font-family:var(--font-ui);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.54)}
+.nv-list div::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:6px;flex:0 0 auto}
 
-/* FORM SECTION */
-#open-sollicitatie{position:relative;background:#000;padding:140px 6vw 130px;overflow:hidden}
-#open-sollicitatie::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.05),transparent 60%);pointer-events:none}
-.form-wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:58px;text-align:center}
-.form-intro{width:100%;max-width:760px;margin:0 auto}
-.form-intro .label{justify-content:center}
-.form-title{font-family:var(--font-display);font-size:clamp(3rem,5.8vw,6.8rem);font-weight:900;line-height:.9;color:#fff;margin-bottom:28px}
+/* ── FORM SECTION ── */
+#open-sollicitatie{position:relative;background:#000;padding:130px 6vw 140px;overflow:hidden;border-top:1px solid rgba(192,57,43,.1)}
+#open-sollicitatie::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 60%);pointer-events:none}
+.form-outer{position:relative;z-index:1;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:70px}
+.form-head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:26px}
+.form-head .label{justify-content:center;margin-bottom:0}
+.form-title{font-family:var(--font-display);font-size:clamp(3rem,5.8vw,6.8rem);font-weight:900;line-height:.9;color:#fff}
 .form-title .red{color:var(--red)}
-.form-copy{max-width:680px;margin:0 auto;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62);font-weight:300}
-
-.lead-form{width:100%;max-width:760px;margin:0 auto;text-align:left}
+.form-copy{max-width:760px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62);font-weight:300}
+.lead-form{width:100%;max-width:760px}
 .form-block{display:flex;flex-direction:column;gap:18px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:17px}
 .f-field{display:flex;flex-direction:column;gap:7px}
@@ -129,11 +160,8 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .f-field input:focus,.f-field textarea:focus,.f-field select:focus{border-color:rgba(192,57,43,.7);background:rgba(192,57,43,.075)}
 .f-field textarea{resize:vertical;min-height:140px}
 .f-field select option{background:#000}
-
-/* SELECT ARROW */
 .select-wrap{position:relative}
 .select-wrap::after{content:'▾';position:absolute;right:16px;top:50%;transform:translateY(-50%);color:rgba(192,57,43,.7);pointer-events:none;font-size:.8rem}
-
 .file-box{position:relative;border:1px dashed rgba(192,57,43,.38);background:rgba(192,57,43,.055);border-radius:6px;padding:24px;transition:.2s}
 .file-box:hover{background:rgba(192,57,43,.085);border-color:rgba(192,57,43,.62)}
 .file-box input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
@@ -142,28 +170,20 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .file-main span{display:block;font-size:.9rem;color:rgba(255,255,255,.46);line-height:1.5}
 .file-icon{width:54px;height:54px;border-radius:50%;border:1px solid rgba(192,57,43,.32);display:flex;align-items:center;justify-content:center;color:var(--red);font-family:var(--font-display);font-size:1.8rem;font-weight:900;flex:0 0 auto}
 .file-name{margin-top:12px;font-size:.86rem;color:rgba(255,255,255,.62)}
-
-/* SUBMIT BUTTON */
-.btn-submit{color:#fff;background:var(--red);border:none;padding:18px 44px;align-self:center;border-radius:2px;position:relative;overflow:hidden;min-width:240px;text-align:center}
+.privacy-note{font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.36);font-weight:300;text-align:center}
+.btn-submit{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;color:#fff;background:var(--red);border:none;padding:18px 44px;align-self:center;position:relative;min-width:240px;text-align:center;transition:.2s}
 .btn-submit:hover:not(:disabled){background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
 .btn-submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
 .btn-submit.sending{background:rgba(192,57,43,.7)}
 .btn-submit.success{background:#1a7a4a;cursor:default}
-.btn-submit.error-state{background:#7a1a1a;cursor:default}
-
-/* SPINNER */
-.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* FORM ALERT */
-.form-alert{padding:16px 20px;border-radius:6px;font-family:var(--font-ui);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-align:center;display:none}
+.form-alert{padding:14px 18px;border-radius:4px;font-family:var(--font-ui);font-size:.8rem;font-weight:600;letter-spacing:.06em;display:none;margin-top:4px}
 .form-alert.show{display:block}
 .form-alert.success{background:rgba(26,122,74,.18);border:1px solid rgba(26,122,74,.45);color:#4ade80}
 .form-alert.error{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.45);color:#fc8181}
 
-.privacy-note{font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.36);font-weight:300;text-align:center}
-
-/* FOOTER */
+/* ── FOOTER ── */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
 .ft-logo{width:235px;opacity:.98}
@@ -175,22 +195,31 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .ft-item p,.ft-item a{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
 .ft-h{font-family:var(--font-ui);font-size:.85rem!important;font-weight:800!important;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,1)!important;margin-bottom:12px!important}
 .ft-item a:hover{color:var(--red)}
-.ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.05);padding:22px 6vw;display:flex;justify-content:space-between;align-items:center}
-.ft-copy{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.2)}
+.ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.07);padding:28px 6vw;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.ft-bar-left{display:flex;flex-direction:column;gap:6px}
+.ft-copy{font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:rgba(255,255,255,.32)}
+.ft-copy strong{color:rgba(192,57,43,.8);font-weight:700}
+.ft-bar-right{display:flex;align-items:center;gap:24px}
+.ft-kvk{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.07);padding:6px 14px;border-radius:2px}
 
-/* REVEAL */
+/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.38s}
 
-/* ─── MOBILE ─── */
+/* ══════════════════════════════
+   MOBILE ≤ 1000px
+══════════════════════════════ */
 @media(max-width:1000px){
   html,body{cursor:auto}
   #cur,#cur-ring{display:none}
+  .lang-fab{display:none}
+  .nav-right .lang-switch{display:flex}
 
   nav{height:70px;padding:0 5vw}
   .nav-logo img{height:32px}
   nav .nav-links{display:none}
+
   .nav-hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;cursor:pointer;background:none;border:none;padding:0;position:relative;z-index:510}
   .nav-hamburger span{display:block;width:26px;height:1.5px;background:#fff;border-radius:2px;transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .22s,background .22s;transform-origin:center}
   .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--red)}
@@ -198,40 +227,39 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
   .mobile-nav-drawer{display:flex}
 
-  .jobs-hero{min-height:auto;padding:110px 5vw 72px}
-  .jobs-wrap{grid-template-columns:1fr;gap:44px}
-  .jobs-title{font-size:clamp(4rem,16vw,8.5rem);margin-bottom:24px}
-  .jobs-copy{font-size:.95rem;margin-bottom:28px}
-  .jobs-actions{gap:12px}
-  .btn-red,.btn-outline{padding:14px 28px;font-size:.75rem}
+  /* Hero mobile — clean, no desktop label */
+  #hero{min-height:100svh;padding:100px 0 80px}
+  .hero-inner{margin-left:0}
+  .hero-label-desktop{display:none}
+  .hero-title{font-size:clamp(5.5rem,22vw,11rem);margin-bottom:28px}
+  .hero-sub{font-size:.95rem;margin-bottom:36px}
 
-  .jobs-card{padding:28px 22px}
-  .card-title{font-size:clamp(2.4rem,9vw,4rem)}
-  .card-text{font-size:.92rem}
-  .card-list div{font-size:.68rem}
+  /* No vacature section */
+  #no-vacature{padding:80px 6vw 60px}
+  .nv-grid{grid-template-columns:1fr;gap:44px}
+  .nv-card{max-width:100%;justify-self:stretch}
+  .nv-card{padding:28px 24px}
+  .nv-card-title{font-size:clamp(2.2rem,9vw,3.8rem)}
 
+  /* Form section */
   #open-sollicitatie{padding:80px 5vw 90px}
-  .form-wrap{gap:40px}
+  .form-outer{gap:44px}
   .form-row{grid-template-columns:1fr}
   .lead-form{max-width:100%}
   .file-content{flex-direction:column;align-items:flex-start;gap:14px}
   .file-icon{width:44px;height:44px;font-size:1.4rem}
-  .file-main strong{font-size:.75rem}
-  .btn-submit{width:100%;text-align:center;padding:16px 24px}
+  .btn-submit{width:100%;text-align:center;padding:16px 24px;align-self:stretch}
 
+  /* Footer */
   footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
   .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
   .ft-logo{width:min(200px,55vw);margin:0 auto}
   .ft-socials{justify-content:center}
   .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
-  .ft-bar{flex-direction:column;align-items:center;gap:8px;padding:18px 5vw;text-align:center}
-}
-
-@media(max-width:480px){
-  .jobs-title{font-size:clamp(3.4rem,18vw,7rem)}
-  .form-title{font-size:clamp(2.6rem,12vw,4.5rem)}
-  .jobs-card{padding:22px 18px}
-  .status-pill{font-size:.56rem;padding:9px 12px}
+  .ft-bar{flex-direction:column;align-items:center;gap:12px;padding:20px 5vw;text-align:center}
+  .ft-bar-right{flex-direction:column;gap:8px;align-items:center}
+  .lang-switch{margin-left:8px}
+  .lang-btn{padding:5px 9px;font-size:.62rem}
 }
 </style>
 </head>
@@ -243,12 +271,24 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
+<!-- LANG FAB -->
+<div class="lang-fab" id="langFab">
+  <button class="lang-btn active" data-lang="nl">NL</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
 <!-- Mobile drawer -->
 <div class="mobile-nav-drawer" id="mobileDrawer">
-  <a href="horeca.html">Horeca</a>
-  <a href="evenementen.html">Evenementen</a>
-  <a href="vacatures.html" class="active">Vacatures</a>
-  <a href="index.html#lead" class="drawer-cta">Samenwerken</a>
+  <a href="retail.html" data-i18n="nav.retail">Retail</a>
+  <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
+  <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
+  <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
+  <a href="vacatures.html" class="active" data-i18n="nav.jobs">Vacatures</a>
+  <a href="index.html#lead" class="drawer-cta" data-i18n="nav.cta">Samenwerken</a>
+  <div class="drawer-lang">
+    <button class="lang-btn active" data-lang="nl">NL</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
   <div class="drawer-socials">
     <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
     <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg></a>
@@ -256,135 +296,161 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </div>
 
+<!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">
     <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
   </a>
   <div class="nav-links">
-    <a href="horeca.html">Horeca</a>
-    <a href="evenementen.html">Evenementen</a>
-    <a href="vacatures.html" class="active">Vacatures</a>
-    <a href="index.html#lead" class="nav-cta">Samenwerken</a>
+    <a href="retail.html" data-i18n="nav.retail">Retail</a>
+    <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
+    <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
+    <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
+    <a href="vacatures.html" class="active" data-i18n="nav.jobs">Vacatures</a>
+    <a href="index.html#lead" class="nav-cta" data-i18n="nav.cta">Samenwerken</a>
   </div>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="nl">NL</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="jobs-hero">
-  <div class="hero-orb"></div>
-  <div class="jobs-wrap">
-    <div class="jobs-copy-wrap reveal">
-      <p class="label">Werken bij BINC</p>
-      <h1 class="jobs-title">BECOME<br><span class="red">A</span> <span class="stroke">BINC</span></h1>
-      <p class="jobs-copy">Wij bouwen merken groter in retail. Daarvoor zoeken we mensen met energie, ownership en gevoel voor sales, strategie en relaties.</p>
-      <div class="jobs-actions">
-        <a href="#open-sollicitatie" class="btn-red">Open solliciteren</a>
-        <a href="index.html" class="btn-outline">Terug naar home</a>
+<section id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="g-orb orb-a"></div>
+  <div class="g-orb orb-b"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <!-- Label verborgen op mobiel -->
+      <p class="hero-label hero-label-desktop" data-i18n="hero.label">Werken bij BINC</p>
+      <h1 class="hero-title">
+        BECOME<br>
+        <span class="red">A</span> <span class="stroke">BINC</span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero.sub">Wij bouwen merken groter in retail. Daarvoor zoeken we mensen met energie, ownership en gevoel voor sales, strategie en relaties.</p>
+      <div class="hero-btns">
+        <a href="#open-sollicitatie" class="btn-red" data-i18n="hero.btn1">Open solliciteren</a>
+        <a href="index.html" class="btn-outline" data-i18n="hero.btn2">Terug naar home</a>
       </div>
     </div>
-    <div class="jobs-card reveal d1">
-      <div class="card-inner">
-        <div class="status-pill">
-          <span class="status-dot"></span>
-          Geen vacature online
-        </div>
-        <h2 class="card-title">Altijd plek voor<br><span>talent.</span></h2>
-        <p class="card-text">Op dit moment staat er geen specifieke vacature online. Wel is het altijd mogelijk om een open sollicitatie achter te laten. Denk jij dat je bij BINC International past? Vertel ons wie je bent, waar je goed in bent en waarom jij ons team sterker maakt.</p>
-        <div class="card-list">
-          <div>Sales & accountmanagement</div>
-          <div>Retail, FMCG & brand growth</div>
-          <div>Strategie, discipline en doorpakken</div>
+  </div>
+</section>
+
+<!-- NO VACATURE + INFO -->
+<section id="no-vacature">
+  <div class="nv-grid">
+    <div class="reveal nv-copy">
+      <div>
+        <p class="label" data-i18n="nv.label">Carrière bij BINC</p>
+        <h2 class="display">ALTIJD PLEK<br>VOOR<br><span style="color:var(--red)">TALENT.</span></h2>
+      </div>
+      <p class="body-text" data-i18n="nv.body1">Op dit moment staat er geen specifieke vacature online. Maar bij BINC International is er altijd ruimte voor de juiste persoon. Denk jij dat je bij ons past?</p>
+      <p class="body-text" data-i18n="nv.body2">Vertel ons wie je bent, waar je goed in bent en waarom jij ons team sterker maakt. Wij bekijken elk profiel serieus en nemen contact op zodra er een match is.</p>
+      <a href="#open-sollicitatie" class="btn-red" style="align-self:flex-start" data-i18n="nv.cta">Stuur open sollicitatie</a>
+    </div>
+    <div class="reveal d2">
+      <div class="nv-card">
+        <div class="nv-card-inner">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span data-i18n="nv.pill">Geen vacature online</span>
+          </div>
+          <h3 class="nv-card-title" data-i18n="nv.card.title">Jij maakt<br>het <span>verschil.</span></h3>
+          <p class="nv-card-text" data-i18n="nv.card.text">We zoeken doorzetters die van aanpakken houden. Mensen die niet wachten op instructies maar zelf initiatief nemen en resultaten boeken.</p>
+          <div class="nv-list">
+            <div data-i18n="nv.list1">Sales & accountmanagement</div>
+            <div data-i18n="nv.list2">Retail, FMCG & brand growth</div>
+            <div data-i18n="nv.list3">Strategie, discipline en doorpakken</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FORM -->
+<!-- OPEN SOLLICITATIE FORM -->
 <section id="open-sollicitatie">
-  <div class="form-wrap">
-    <div class="form-intro reveal">
-      <p class="label">Open sollicitatie</p>
+  <div class="form-outer">
+    <div class="form-head reveal">
+      <p class="label" data-i18n="form.label">Open sollicitatie</p>
       <h2 class="form-title">LAAT VAN <span class="red">JE HOREN</span></h2>
-      <p class="form-copy">Vul hieronder je gegevens in en upload je CV. Wij bekijken je profiel en nemen contact op als we mogelijkheden zien die aansluiten bij jouw ervaring, energie en ambitie.</p>
+      <p class="form-copy" data-i18n="form.copy">Vul hieronder je gegevens in en upload je CV. Wij bekijken je profiel en nemen contact op als we mogelijkheden zien die aansluiten bij jouw ervaring, energie en ambitie.</p>
     </div>
     <div class="lead-form reveal d2">
-      <div class="form-block" id="sollicitatieForm">
+      <div class="form-block">
         <div class="form-row">
           <div class="f-field">
-            <label for="f-voornaam">Voornaam *</label>
-            <input id="f-voornaam" name="voornaam" type="text" placeholder="Jan" required/>
+            <label for="f-voornaam" data-i18n="form.firstname">Voornaam *</label>
+            <input id="f-voornaam" type="text" placeholder="Jan" required/>
           </div>
           <div class="f-field">
-            <label for="f-achternaam">Achternaam *</label>
-            <input id="f-achternaam" name="achternaam" type="text" placeholder="de Vries" required/>
+            <label for="f-achternaam" data-i18n="form.lastname">Achternaam *</label>
+            <input id="f-achternaam" type="text" placeholder="de Vries" required/>
           </div>
         </div>
         <div class="form-row">
           <div class="f-field">
-            <label for="f-email">E-mailadres *</label>
-            <input id="f-email" name="email" type="email" placeholder="jan@email.nl" required/>
+            <label for="f-email" data-i18n="form.email">E-mailadres *</label>
+            <input id="f-email" type="email" placeholder="jan@email.nl" required/>
           </div>
           <div class="f-field">
-            <label for="f-tel">Telefoonnummer</label>
-            <input id="f-tel" name="telefoon" type="tel" placeholder="+31 6 ..."/>
+            <label for="f-tel" data-i18n="form.phone">Telefoonnummer</label>
+            <input id="f-tel" type="tel" placeholder="+31 6 ..."/>
           </div>
         </div>
         <div class="form-row">
           <div class="f-field">
-            <label for="f-woon">Woonplaats</label>
-            <input id="f-woon" name="woonplaats" type="text" placeholder="Den Hout"/>
+            <label for="f-woon" data-i18n="form.city">Woonplaats</label>
+            <input id="f-woon" type="text" placeholder="Den Hout"/>
           </div>
           <div class="f-field">
-            <label for="f-li">LinkedIn profiel</label>
-            <input id="f-li" name="linkedin" type="url" placeholder="https://linkedin.com/in/..."/>
+            <label for="f-li" data-i18n="form.linkedin">LinkedIn profiel</label>
+            <input id="f-li" type="url" placeholder="https://linkedin.com/in/..."/>
           </div>
         </div>
         <div class="f-field">
-          <label for="f-int">Interessegebied</label>
+          <label for="f-int" data-i18n="form.interest">Interessegebied</label>
           <div class="select-wrap">
-            <select id="f-int" name="interessegebied">
-              <option value="" disabled selected>Selecteer richting</option>
-              <option>Sales / Accountmanagement</option>
-              <option>Retail / Buyer contact</option>
-              <option>Marketing / Brand growth</option>
-              <option>Operations / Backoffice</option>
-              <option>Stage / Afstuderen</option>
-              <option>Anders</option>
+            <select id="f-int">
+              <option value="" disabled selected data-i18n="form.interest.select">Selecteer richting</option>
+              <option data-i18n="form.int1">Sales / Accountmanagement</option>
+              <option data-i18n="form.int2">Retail / Buyer contact</option>
+              <option data-i18n="form.int3">Marketing / Brand growth</option>
+              <option data-i18n="form.int4">Operations / Backoffice</option>
+              <option data-i18n="form.int5">Stage / Afstuderen</option>
+              <option data-i18n="form.int6">Anders</option>
             </select>
           </div>
         </div>
         <div class="f-field">
-          <label for="f-mot">Motivatie</label>
-          <textarea id="f-mot" name="motivatie" placeholder="Vertel kort wie je bent, waar je goed in bent en waarom je bij BINC International wilt werken."></textarea>
+          <label for="f-mot" data-i18n="form.motivation">Motivatie</label>
+          <textarea id="f-mot" placeholder="Vertel kort wie je bent, waar je goed in bent en waarom je bij BINC International wilt werken."></textarea>
         </div>
         <div class="f-field">
-          <label>Upload CV</label>
+          <label data-i18n="form.cv">Upload CV</label>
           <div class="file-box" id="fileBox">
-            <input type="file" id="cvUpload" name="cv" accept=".pdf,.doc,.docx"/>
+            <input type="file" id="cvUpload" accept=".pdf,.doc,.docx"/>
             <div class="file-content">
               <div class="file-main">
-                <strong>Sleep je CV hier of klik om te uploaden</strong>
-                <span>PDF, DOC of DOCX · max. 10MB</span>
+                <strong data-i18n="form.cv.title">Sleep je CV hier of klik om te uploaden</strong>
+                <span data-i18n="form.cv.sub">PDF, DOC of DOCX · max. 10MB</span>
               </div>
               <div class="file-icon">+</div>
             </div>
-            <div class="file-name" id="fileName">Nog geen bestand geselecteerd</div>
+            <div class="file-name" id="fileName" data-i18n="form.cv.empty">Nog geen bestand geselecteerd</div>
           </div>
         </div>
-        <p class="privacy-note">Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw open sollicitatie.</p>
-
-        <!-- Alert messages -->
-        <div class="form-alert success" id="formSuccess">
-          ✓ &nbsp;Je sollicitatie is succesvol verstuurd. We nemen zo snel mogelijk contact met je op!
-        </div>
-        <div class="form-alert error" id="formError">
-          ✕ &nbsp;Er is iets misgegaan. Probeer het opnieuw of mail direct naar info@bincinternational.nl
-        </div>
-
-        <button class="btn-submit" id="applyBtn" type="button">Verstuur sollicitatie →</button>
+        <p class="privacy-note" data-i18n="form.privacy">Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw open sollicitatie.</p>
+        <div class="form-alert success" id="formSuccess"></div>
+        <div class="form-alert error" id="formError"></div>
+        <button class="btn-submit" id="applyBtn" type="button" data-i18n="form.submit">Verstuur sollicitatie →</button>
       </div>
     </div>
   </div>
@@ -401,156 +467,286 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     </div>
   </div>
   <div class="ft-info reveal d1">
-    <div class="ft-item"><p class="ft-h">BINC adres</p><p>Wim Rötherlaan 25,<br>5051 JS Goirle</p></div>
-    <div class="ft-item"><p class="ft-h">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
-    <div class="ft-item"><p class="ft-h">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.address.label">BINC adres</p><p>Wim Rötherlaan 25,<br>5051 JS Goirle</p></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.email.label">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.phone.label">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
   </div>
 </footer>
 <div class="ft-bar">
-  <span class="ft-copy">© 2025 BINC International B.V. — Alle rechten voorbehouden.</span>
-  <span class="ft-copy">KVK: 98970887</span>
+  <div class="ft-bar-left">
+    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+    <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)" data-i18n="footer.tagline.short">Full-service B2B voor ambitieuze merken in Nederland.</span>
+  </div>
+  <div class="ft-bar-right">
+    <span class="ft-kvk">KVK: 98970887</span>
+  </div>
 </div>
 
 <script>
-/* ── CONFIG ── */
-const API_URL = 'https://server-medewerker-kpi.onrender.com/api/sollicitatie';
+/* ══════════════════════════════════════════════════
+   TRANSLATIONS
+══════════════════════════════════════════════════ */
+const TRANSLATIONS = {
+  nl: {
+    'nav.retail':       'Retail',
+    'nav.horeca':       'Horeca',
+    'nav.events':       'Evenementen',
+    'nav.team':         'Ons Team',
+    'nav.jobs':         'Vacatures',
+    'nav.cta':          'Samenwerken',
+    'hero.label':       'Werken bij BINC',
+    'hero.sub':         'Wij bouwen merken groter in retail. Daarvoor zoeken we mensen met energie, ownership en gevoel voor sales, strategie en relaties.',
+    'hero.btn1':        'Open solliciteren',
+    'hero.btn2':        'Terug naar home',
+    'nv.label':         'Carrière bij BINC',
+    'nv.body1':         'Op dit moment staat er geen specifieke vacature online. Maar bij BINC International is er altijd ruimte voor de juiste persoon. Denk jij dat je bij ons past?',
+    'nv.body2':         'Vertel ons wie je bent, waar je goed in bent en waarom jij ons team sterker maakt. Wij bekijken elk profiel serieus en nemen contact op zodra er een match is.',
+    'nv.cta':           'Stuur open sollicitatie',
+    'nv.pill':          'Geen vacature online',
+    'nv.card.title':    'Jij maakt het verschil.',
+    'nv.card.text':     'We zoeken doorzetters die van aanpakken houden. Mensen die niet wachten op instructies maar zelf initiatief nemen en resultaten boeken.',
+    'nv.list1':         'Sales & accountmanagement',
+    'nv.list2':         'Retail, FMCG & brand growth',
+    'nv.list3':         'Strategie, discipline en doorpakken',
+    'form.label':       'Open sollicitatie',
+    'form.copy':        'Vul hieronder je gegevens in en upload je CV. Wij bekijken je profiel en nemen contact op als we mogelijkheden zien die aansluiten bij jouw ervaring, energie en ambitie.',
+    'form.firstname':   'Voornaam *',
+    'form.lastname':    'Achternaam *',
+    'form.email':       'E-mailadres *',
+    'form.phone':       'Telefoonnummer',
+    'form.city':        'Woonplaats',
+    'form.linkedin':    'LinkedIn profiel',
+    'form.interest':    'Interessegebied',
+    'form.interest.select': 'Selecteer richting',
+    'form.int1':        'Sales / Accountmanagement',
+    'form.int2':        'Retail / Buyer contact',
+    'form.int3':        'Marketing / Brand growth',
+    'form.int4':        'Operations / Backoffice',
+    'form.int5':        'Stage / Afstuderen',
+    'form.int6':        'Anders',
+    'form.motivation':  'Motivatie',
+    'form.cv':          'Upload CV',
+    'form.cv.title':    'Sleep je CV hier of klik om te uploaden',
+    'form.cv.sub':      'PDF, DOC of DOCX · max. 10MB',
+    'form.cv.empty':    'Nog geen bestand geselecteerd',
+    'form.privacy':     'Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw open sollicitatie.',
+    'form.submit':      'Verstuur sollicitatie →',
+    'form.sending':     'Versturen...',
+    'form.sent':        '✓ Sollicitatie verstuurd',
+    'form.retry':       'Opnieuw proberen →',
+    'form.success.msg': '✓  Je sollicitatie is succesvol verstuurd. We nemen zo snel mogelijk contact met je op!',
+    'form.error.required': '✕  Vul minimaal je voornaam, achternaam en e-mailadres in.',
+    'form.error.generic':  '✕  Er is iets misgegaan. Probeer het opnieuw of mail naar info@bincinternational.nl',
+    'footer.address.label': 'BINC adres',
+    'footer.email.label':   'E-mailadres',
+    'footer.phone.label':   'Telefoonnummer',
+    'footer.rights':        'Alle rechten voorbehouden.',
+    'footer.tagline.short': 'Full-service B2B voor ambitieuze merken in Nederland.',
+  },
+  en: {
+    'nav.retail':       'Retail',
+    'nav.horeca':       'Horeca',
+    'nav.events':       'Events',
+    'nav.team':         'Our Team',
+    'nav.jobs':         'Careers',
+    'nav.cta':          'Work With Us',
+    'hero.label':       'Join BINC',
+    'hero.sub':         'We build brands bigger in retail. For that we need people with energy, ownership and a feel for sales, strategy and relationships.',
+    'hero.btn1':        'Open application',
+    'hero.btn2':        'Back to home',
+    'nv.label':         'Career at BINC',
+    'nv.body1':         'There are no specific job openings at this moment. But at BINC International there is always room for the right person. Do you think you fit?',
+    'nv.body2':         'Tell us who you are, what you are good at and why you would make our team stronger. We review every profile seriously and will reach out when there is a match.',
+    'nv.cta':           'Send open application',
+    'nv.pill':          'No vacancies online',
+    'nv.card.title':    'You make the difference.',
+    'nv.card.text':     'We look for go-getters who love getting things done. People who don\'t wait for instructions but take initiative and deliver results.',
+    'nv.list1':         'Sales & account management',
+    'nv.list2':         'Retail, FMCG & brand growth',
+    'nv.list3':         'Strategy, discipline and follow-through',
+    'form.label':       'Open application',
+    'form.copy':        'Fill in your details below and upload your CV. We will review your profile and get in touch if we see opportunities that match your experience, energy and ambition.',
+    'form.firstname':   'First name *',
+    'form.lastname':    'Last name *',
+    'form.email':       'Email address *',
+    'form.phone':       'Phone number',
+    'form.city':        'City',
+    'form.linkedin':    'LinkedIn profile',
+    'form.interest':    'Area of interest',
+    'form.interest.select': 'Select direction',
+    'form.int1':        'Sales / Account management',
+    'form.int2':        'Retail / Buyer contact',
+    'form.int3':        'Marketing / Brand growth',
+    'form.int4':        'Operations / Back office',
+    'form.int5':        'Internship / Graduation',
+    'form.int6':        'Other',
+    'form.motivation':  'Motivation',
+    'form.cv':          'Upload CV',
+    'form.cv.title':    'Drag your CV here or click to upload',
+    'form.cv.sub':      'PDF, DOC or DOCX · max. 10MB',
+    'form.cv.empty':    'No file selected yet',
+    'form.privacy':     'By submitting your details you give BINC International permission to contact you about your open application.',
+    'form.submit':      'Send application →',
+    'form.sending':     'Sending...',
+    'form.sent':        '✓ Application sent',
+    'form.retry':       'Try again →',
+    'form.success.msg': '✓  Your application was sent successfully. We will get back to you as soon as possible!',
+    'form.error.required': '✕  Please fill in at least your first name, last name and email address.',
+    'form.error.generic':  '✕  Something went wrong. Please try again or email info@bincinternational.nl',
+    'footer.address.label': 'BINC address',
+    'footer.email.label':   'Email address',
+    'footer.phone.label':   'Phone number',
+    'footer.rights':        'All rights reserved.',
+    'footer.tagline.short': 'Full-service B2B for ambitious brands across the Netherlands.',
+  }
+};
+
+/* ══════════════════════════════════════════════════
+   LANGUAGE ENGINE
+══════════════════════════════════════════════════ */
+let currentLang = localStorage.getItem('binc_lang') || 'nl';
+
+function t(key) {
+  return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) || (TRANSLATIONS['nl'][key]) || key;
+}
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('binc_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (el.children.length === 0) el.textContent = val;
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  const applyBtn = document.getElementById('applyBtn');
+  if (applyBtn && !applyBtn.disabled) applyBtn.textContent = t('form.submit');
+  const fileNameEl = document.getElementById('fileName');
+  if (fileNameEl && !fileNameEl.dataset.hasFile) fileNameEl.textContent = t('form.cv.empty');
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
+});
 
 /* ── CURSOR ── */
 const cur = document.getElementById('cur'), ring = document.getElementById('cur-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
-(function animRing() { rx += (mx - rx) * .11; ry += (my - ry) * .11; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); })();
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+(function animRing(){ rx+=(mx-rx)*.11; ry+=(my-ry)*.11; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
 
 /* ── MOBILE NAV ── */
 const hamburger = document.getElementById('navHamburger'), drawer = document.getElementById('mobileDrawer');
-function toggleDrawer(open) { hamburger.classList.toggle('open', open); drawer.classList.toggle('open', open); document.body.style.overflow = open ? 'hidden' : ''; }
+function toggleDrawer(open) { hamburger.classList.toggle('open',open); drawer.classList.toggle('open',open); document.body.style.overflow=open?'hidden':''; }
 hamburger.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
 drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', () => toggleDrawer(false)));
-drawer.addEventListener('click', e => { if (e.target === drawer) toggleDrawer(false); });
+drawer.addEventListener('click', e => { if(e.target===drawer) toggleDrawer(false); });
 
 /* ── NAV SCROLL ── */
-window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 70); }, { passive: true });
+window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 70); }, { passive:true });
+
+/* ── ORBS ── */
+window.addEventListener('mousemove', e => {
+  const x=(e.clientX/innerWidth-.5)*18, y=(e.clientY/innerHeight-.5)*18;
+  document.querySelector('.orb-a').style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
+  document.querySelector('.orb-b').style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
+}, { passive:true });
 
 /* ── REVEAL ── */
 const revIO = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revIO.unobserve(e.target); } });
-}, { threshold: .1 });
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); revIO.unobserve(e.target); } });
+}, { threshold:.1 });
 document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
+
+/* ── SMOOTH SCROLL TO FORM ── */
+document.querySelectorAll('a[href="#open-sollicitatie"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector('#open-sollicitatie');
+    const navH = document.getElementById('nav').offsetHeight;
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - navH, behavior:'smooth' });
+  });
+});
 
 /* ── FILE UPLOAD ── */
 const cvUpload = document.getElementById('cvUpload');
-const fileName = document.getElementById('fileName');
-const fileBox  = document.getElementById('fileBox');
+const fileNameEl = document.getElementById('fileName');
+const fileBox = document.getElementById('fileBox');
 
-cvUpload.addEventListener('change', function () {
-  fileName.textContent = this.files && this.files.length > 0 ? this.files[0].name : 'Nog geen bestand geselecteerd';
+cvUpload.addEventListener('change', function() {
+  if (this.files && this.files.length > 0) {
+    fileNameEl.textContent = this.files[0].name;
+    fileNameEl.dataset.hasFile = 'true';
+  } else {
+    fileNameEl.textContent = t('form.cv.empty');
+    delete fileNameEl.dataset.hasFile;
+  }
 });
-
-fileBox.addEventListener('dragover', e => {
-  e.preventDefault();
-  fileBox.style.borderColor = 'rgba(192,57,43,.8)';
-  fileBox.style.background  = 'rgba(192,57,43,.12)';
-});
-fileBox.addEventListener('dragleave', () => {
-  fileBox.style.borderColor = '';
-  fileBox.style.background  = '';
-});
+fileBox.addEventListener('dragover', e => { e.preventDefault(); fileBox.style.borderColor='rgba(192,57,43,.8)'; fileBox.style.background='rgba(192,57,43,.12)'; });
+fileBox.addEventListener('dragleave', () => { fileBox.style.borderColor=''; fileBox.style.background=''; });
 fileBox.addEventListener('drop', e => {
-  e.preventDefault();
-  fileBox.style.borderColor = '';
-  fileBox.style.background  = '';
+  e.preventDefault(); fileBox.style.borderColor=''; fileBox.style.background='';
   if (e.dataTransfer.files.length > 0) {
-    // Assign dropped file to the input
-    const dt = new DataTransfer();
-    dt.items.add(e.dataTransfer.files[0]);
-    cvUpload.files = dt.files;
-    fileName.textContent = e.dataTransfer.files[0].name;
+    const dt = new DataTransfer(); dt.items.add(e.dataTransfer.files[0]); cvUpload.files = dt.files;
+    fileNameEl.textContent = e.dataTransfer.files[0].name; fileNameEl.dataset.hasFile='true';
   }
 });
 
 /* ── FORM SUBMIT ── */
-const applyBtn     = document.getElementById('applyBtn');
-const formSuccess  = document.getElementById('formSuccess');
-const formError    = document.getElementById('formError');
+const applyBtn = document.getElementById('applyBtn');
+const formSuccess = document.getElementById('formSuccess');
+const formError = document.getElementById('formError');
+const API_URL = 'https://server-medewerker-kpi.onrender.com/api/sollicitatie';
 
 function showAlert(type) {
-  formSuccess.classList.remove('show');
-  formError.classList.remove('show');
-  if (type === 'success') formSuccess.classList.add('show');
-  if (type === 'error')   formError.classList.add('show');
+  formSuccess.classList.remove('show'); formError.classList.remove('show');
+  if (type==='success') formSuccess.classList.add('show');
+  if (type==='error') formError.classList.add('show');
 }
-
 function setButtonState(state) {
-  applyBtn.disabled = false;
-  applyBtn.className = 'btn-submit';
-
-  if (state === 'loading') {
-    applyBtn.disabled = true;
-    applyBtn.classList.add('sending');
-    applyBtn.innerHTML = '<span class="spinner"></span>Versturen...';
-  } else if (state === 'success') {
-    applyBtn.disabled = true;
-    applyBtn.classList.add('success');
-    applyBtn.innerHTML = '✓ Sollicitatie verstuurd';
-  } else if (state === 'error') {
-    applyBtn.innerHTML = 'Opnieuw proberen →';
-  } else {
-    applyBtn.innerHTML = 'Verstuur sollicitatie →';
-  }
+  applyBtn.disabled=false; applyBtn.className='btn-submit';
+  if (state==='loading') { applyBtn.disabled=true; applyBtn.classList.add('sending'); applyBtn.innerHTML=`<span class="spinner"></span>${t('form.sending')}`; }
+  else if (state==='success') { applyBtn.disabled=true; applyBtn.classList.add('success'); applyBtn.textContent=t('form.sent'); }
+  else if (state==='error') { applyBtn.textContent=t('form.retry'); }
+  else { applyBtn.textContent=t('form.submit'); }
 }
 
-applyBtn.addEventListener('click', async function () {
-  // Basic validation
+applyBtn.addEventListener('click', async function() {
   const voornaam   = document.getElementById('f-voornaam').value.trim();
   const achternaam = document.getElementById('f-achternaam').value.trim();
   const email      = document.getElementById('f-email').value.trim();
-
   if (!voornaam || !achternaam || !email) {
-    showAlert('error');
-    formError.textContent = '✕  Vul minimaal je voornaam, achternaam en e-mailadres in.';
-    formError.classList.add('show');
-    return;
+    formError.textContent = t('form.error.required');
+    showAlert('error'); return;
   }
-
-  // Build FormData (multipart — required for file upload)
   const formData = new FormData();
-  formData.append('voornaam',       voornaam);
-  formData.append('achternaam',     achternaam);
-  formData.append('email',          email);
-  formData.append('telefoon',       document.getElementById('f-tel').value.trim());
-  formData.append('woonplaats',     document.getElementById('f-woon').value.trim());
-  formData.append('linkedin',       document.getElementById('f-li').value.trim());
-  formData.append('interessegebied',document.getElementById('f-int').value);
-  formData.append('motivatie',      document.getElementById('f-mot').value.trim());
+  formData.append('voornaam', voornaam);
+  formData.append('achternaam', achternaam);
+  formData.append('email', email);
+  formData.append('telefoon', document.getElementById('f-tel').value.trim());
+  formData.append('woonplaats', document.getElementById('f-woon').value.trim());
+  formData.append('linkedin', document.getElementById('f-li').value.trim());
+  formData.append('interessegebied', document.getElementById('f-int').value);
+  formData.append('motivatie', document.getElementById('f-mot').value.trim());
+  if (cvUpload.files && cvUpload.files[0]) formData.append('cv', cvUpload.files[0]);
 
-  if (cvUpload.files && cvUpload.files[0]) {
-    formData.append('cv', cvUpload.files[0]);
-  }
-
-  setButtonState('loading');
-  showAlert(null);
-
+  setButtonState('loading'); showAlert(null);
   try {
-    const response = await fetch(API_URL, {
-      method: 'POST',
-      body: formData
-      // Do NOT set Content-Type header — browser sets it with boundary for multipart
-    });
-
+    const response = await fetch(API_URL, { method:'POST', body:formData });
     const data = await response.json();
-
     if (response.ok && data.success) {
       setButtonState('success');
+      formSuccess.textContent = t('form.success.msg');
       showAlert('success');
-      // Scroll to success message
-      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      throw new Error(data.error || 'Onbekende fout');
-    }
-  } catch (err) {
-    console.error('[sollicitatie] Fout:', err);
+      formSuccess.scrollIntoView({ behavior:'smooth', block:'center' });
+    } else { throw new Error(data.error||'unknown'); }
+  } catch(err) {
+    console.error('[sollicitatie]', err);
     setButtonState('error');
-    formError.textContent = '✕  Er is iets misgegaan. Probeer het opnieuw of mail naar info@bincinternational.nl';
+    formError.textContent = t('form.error.generic');
     showAlert('error');
   }
 });
@@ -564,6 +760,9 @@ document.querySelectorAll('a[href="index.html#lead"]').forEach(link => {
     setTimeout(() => { window.location.href = 'index.html#lead'; }, 900);
   });
 });
+
+/* ── INIT ── */
+applyLang(currentLang);
 </script>
 </body>
 </html>
