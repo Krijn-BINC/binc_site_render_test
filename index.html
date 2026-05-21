@@ -528,17 +528,17 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
  @media(max-width:1000px){
 
-  .product-panel.product-kpi-panel{
-    padding:0!important;
-  }
-
-  .product-panel.product-kpi-panel > div,
-  .reverse-kpi-wrap{
+  .product-showcase[data-reverse="true"] .reverse-kpi-wrap{
     width:96vw!important;
     max-width:96vw!important;
-    padding:24px 18px!important;
     margin-left:auto!important;
     margin-right:auto!important;
+    padding:24px 18px!important;
+  }
+
+  .product-showcase[data-reverse="true"] .reverse-kpi-wrap .product-kpis{
+    width:100%!important;
+    grid-template-columns:repeat(2,1fr)!important;
   }
 
 }
