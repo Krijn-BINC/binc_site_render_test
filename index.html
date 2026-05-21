@@ -242,9 +242,20 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .score-pill span{color:var(--brand);font-weight:700}
 .results-panel-inner{position:relative;z-index:30;max-width:860px;text-align:center}
 .results-eyebrow{display:block;color:var(--brand);font-family:var(--font-mono);font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;opacity:.85;margin-bottom:18px}
-.product-showcase[data-reverse="true"] .product-panel.product-kpi-panel{align-items:flex-end!important}
-.product-showcase[data-reverse="true"] .reverse-kpi-wrap{width:min(720px,42vw)!important;margin-right:6vw;text-align:left}
-.product-showcase[data-reverse="true"] .reverse-kpi-wrap .product-kpis{width:100%}
+.product-showcase[data-reverse="true"] .product-panel.product-kpi-panel{
+  align-items:flex-end!important
+}
+
+.product-showcase[data-reverse="true"] .reverse-kpi-wrap{
+  width:min(820px,48vw)!important;
+  margin-right:6vw;
+  text-align:left
+}
+
+.product-showcase[data-reverse="true"] .reverse-kpi-wrap .product-kpis{
+  width:100%;
+  grid-template-columns:1fr 1fr 1fr 1.4fr;
+}
 
 /* LEAD */
 #lead{background:#000;padding:150px 6vw 130px;position:relative;overflow:hidden}
