@@ -286,7 +286,9 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .form-alert.show{display:block}
 .form-alert.success{background:rgba(26,122,74,.18);border:1px solid rgba(26,122,74,.45);color:#4ade80}
 .form-alert.error{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.45);color:#fc8181}
-
+.lead-title br{
+  display:block;
+}
 /* FOOTER */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
@@ -543,7 +545,14 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
 }
 
+@media(max-width:768px){
 
+  .lead-title{
+    font-size:clamp(42px,12vw,72px);
+    line-height:.9;
+  }
+
+}
 
 @media(min-width:1001px){
   .nav-links{margin-left:auto;margin-right:20px}
