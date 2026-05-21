@@ -17,8 +17,7 @@
 
   <title>Ons Team | BINC International</title>
 
-  <link rel="icon" type="image/png"
-  href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
+  <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -26,7 +25,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-
     *,*::before,*::after{
       box-sizing:border-box;
       margin:0;
@@ -170,12 +168,12 @@
 
     #hero{
       position:relative;
-      min-height:100vh;
+      min-height:108vh;
+      overflow:hidden;
       display:flex;
       align-items:center;
-      overflow:hidden;
-      padding:130px 6vw 100px;
       background:#000;
+      padding:110px 0 120px;
     }
 
     .hero-video{
@@ -184,60 +182,79 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      opacity:.35;
+      opacity:.54;
     }
 
- .hero-overlay{
-  position:absolute;
-  inset:0;
-  background:
-  linear-gradient(to right,rgba(0,0,0,.55) 0%,rgba(0,0,0,.20) 100%),
-  linear-gradient(to bottom,rgba(0,0,0,.10),rgba(0,0,0,.45));
-}
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(to right,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 46%,rgba(0,0,0,.18) 100%),
+      linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%);
+    }
 
     .hero-grid{
       position:absolute;
       inset:0;
       background-image:
-      linear-gradient(rgba(192,57,43,.03) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(192,57,43,.03) 1px,transparent 1px);
+      linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);
       background-size:90px 90px;
-      opacity:.5;
+      opacity:.55;
+      animation:gridScroll 25s linear infinite;
+    }
+
+    @keyframes gridScroll{
+      from{transform:translateY(0)}
+      to{transform:translateY(90px)}
+    }
+
+    .g-orb{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(100px);
+      pointer-events:none;
+    }
+
+    .orb-a{
+      width:500px;
+      height:500px;
+      background:rgba(192,57,43,.09);
+      top:-8%;
+      right:8%;
+    }
+
+    .orb-b{
+      width:320px;
+      height:320px;
+      background:rgba(192,57,43,.055);
+      bottom:10%;
+      right:30%;
     }
 
     .hero-content{
       position:relative;
-      z-index:5;
-      max-width:1200px;
+      z-index:10;
+      padding:0 6vw;
+      max-width:1500px;
+      width:100%;
     }
 
-    .label{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      font-family:var(--font-ui);
-      font-size:.68rem;
-      font-weight:700;
-      letter-spacing:.45em;
-      text-transform:uppercase;
-      color:rgba(192,57,43,.92);
-      margin-bottom:24px;
-    }
-
-    .label::before{
-      content:'';
-      width:24px;
-      height:1px;
-      background:rgba(192,57,43,.75);
+    .hero-inner{
+      margin-left:clamp(32px,7vw,140px);
+      max-width:1050px;
     }
 
     .hero-title{
       font-family:var(--font-display);
-      font-size:clamp(5rem,11vw,14rem);
+      font-size:clamp(5rem,11vw,15rem);
       font-weight:900;
       line-height:.84;
       letter-spacing:-.01em;
-      margin-bottom:34px;
+      max-width:11ch;
+      margin-bottom:40px;
+      opacity:0;
+      animation:riseUp .9s .25s forwards;
     }
 
     .hero-title .red{
@@ -245,11 +262,25 @@
     }
 
     .hero-sub{
-      max-width:700px;
       font-size:1.05rem;
-      line-height:1.9;
-      color:rgba(255,255,255,.68);
+      line-height:1.85;
+      color:rgba(255,255,255,.72);
       font-weight:300;
+      max-width:520px;
+      margin-bottom:48px;
+      opacity:0;
+      animation:riseUp .9s .45s forwards;
+    }
+
+    @keyframes riseUp{
+      from{
+        opacity:0;
+        transform:translateY(44px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
     }
 
     .section{
@@ -351,6 +382,26 @@
 
     .team-info a:hover{
       color:var(--red);
+    }
+
+    .label{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-family:var(--font-ui);
+      font-size:.68rem;
+      font-weight:700;
+      letter-spacing:.45em;
+      text-transform:uppercase;
+      color:rgba(192,57,43,.92);
+      margin-bottom:24px;
+    }
+
+    .label::before{
+      content:'';
+      width:24px;
+      height:1px;
+      background:rgba(192,57,43,.75);
     }
 
     #cta{
@@ -487,6 +538,44 @@
         display:none;
       }
 
+      nav{
+        height:70px;
+        padding:0 5vw;
+      }
+
+      .nav-logo img{
+        height:32px;
+      }
+
+      .nav-links{
+        gap:0;
+      }
+
+      .nav-links a{
+        font-size:.62rem;
+        letter-spacing:.14em;
+        padding:7px 8px;
+      }
+
+      .nav-cta{
+        padding:8px 12px!important;
+      }
+
+      #hero{
+        min-height:105vh;
+        padding:110px 0 90px;
+      }
+
+      .hero-inner{
+        margin-left:0;
+      }
+
+      .hero-title{
+        font-size:clamp(6.5rem,24vw,13rem);
+        max-width:11ch;
+        line-height:.82;
+      }
+
       .team-grid{
         grid-template-columns:1fr;
       }
@@ -498,9 +587,20 @@
       .ft-info{
         grid-template-columns:1fr;
       }
+    }
+
+    @media(max-width:600px){
+      .nav-links a:not(.nav-cta){
+        display:none;
+      }
 
       .hero-title{
-        font-size:clamp(4rem,16vw,8rem);
+        font-size:clamp(5rem,22vw,8rem);
+      }
+
+      .hero-sub{
+        font-size:1rem;
+        max-width:92%;
       }
     }
 
@@ -522,7 +622,7 @@
     <a href="horeca.html">Horeca</a>
     <a href="evenementen.html">Evenementen</a>
     <a href="vacatures.html">Vacatures</a>
-    <a href="over-ons.html" class="active">Ons Team</a>
+    <a href="ons-team.html" class="active">Ons Team</a>
     <a href="index.html#lead" class="nav-cta">Samenwerken</a>
   </div>
 
@@ -539,19 +639,22 @@
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
 
+  <div class="g-orb orb-a"></div>
+  <div class="g-orb orb-b"></div>
+
   <div class="hero-content">
+    <div class="hero-inner">
 
-    <p class="label">Ons team</p>
+      <h1 class="hero-title">
+        ONS<br>
+        <span class="red">TEAM.</span>
+      </h1>
 
-    <h1 class="hero-title">
-      ONS
-      <span class="red">TEAM.</span>
-    </h1>
+      <p class="hero-sub">
+        Achter iedere samenwerking staat een jong en gedreven team dat kansen ziet, relaties bouwt en merken vooruit helpt. Maak kennis met de mensen achter BINC International.
+      </p>
 
-    <p class="hero-sub">
-      Achter iedere samenwerking staat een jong en gedreven team dat kansen ziet, relaties bouwt en merken vooruit helpt. Maak kennis met de mensen achter BINC International.
-    </p>
-
+    </div>
   </div>
 
 </section>
@@ -562,11 +665,9 @@
 
   <div class="team-grid">
 
-    <!-- CARD -->
-
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1400&auto=format&fit=crop"/>
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1400&auto=format&fit=crop" alt="Merlijn Stieger"/>
       </div>
 
       <div class="team-content">
@@ -582,7 +683,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1400&auto=format&fit=crop"/>
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1400&auto=format&fit=crop" alt="Jorrit Zwaanswijk"/>
       </div>
 
       <div class="team-content">
@@ -598,7 +699,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1400&auto=format&fit=crop"/>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1400&auto=format&fit=crop" alt="Maud Moolenschot"/>
       </div>
 
       <div class="team-content">
@@ -614,7 +715,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?q=80&w=1400&auto=format&fit=crop"/>
+        <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?q=80&w=1400&auto=format&fit=crop" alt="Tim van Helvoort"/>
       </div>
 
       <div class="team-content">
@@ -630,7 +731,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1400&auto=format&fit=crop"/>
+        <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1400&auto=format&fit=crop" alt="Krijn van Lankveld"/>
       </div>
 
       <div class="team-content">
@@ -646,7 +747,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop"/>
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop" alt="Sebastian Beekhuis"/>
       </div>
 
       <div class="team-content">
@@ -662,7 +763,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1400&auto=format&fit=crop"/>
+        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1400&auto=format&fit=crop" alt="Indy Witjes"/>
       </div>
 
       <div class="team-content">
@@ -709,8 +810,7 @@
 <footer>
 
   <div>
-    <img class="ft-logo"
-    src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181"/>
+    <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
   </div>
 
   <div class="ft-info">
@@ -758,6 +858,17 @@
 
     requestAnimationFrame(animRing);
   })();
+
+  window.addEventListener('mousemove',e=>{
+    const x=(e.clientX/innerWidth-.5)*18;
+    const y=(e.clientY/innerHeight-.5)*18;
+
+    const orbA=document.querySelector('.orb-a');
+    const orbB=document.querySelector('.orb-b');
+
+    if(orbA) orbA.style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
+    if(orbB) orbB.style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
+  },{passive:true});
 
   window.addEventListener('scroll',()=>{
     document.getElementById('nav')
