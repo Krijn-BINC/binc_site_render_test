@@ -226,7 +226,12 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
   .ft-bar{flex-direction:column;align-items:center;gap:8px;padding:18px 5vw;text-align:center}
 }
-
+@media(max-width:1000px){
+  .jobs-copy-wrap .label{
+    display:none;
+  }
+}
+  
 @media(max-width:480px){
   .jobs-title{font-size:clamp(3.4rem,18vw,7rem)}
   .form-title{font-size:clamp(2.6rem,12vw,4.5rem)}
