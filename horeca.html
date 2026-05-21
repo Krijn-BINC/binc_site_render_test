@@ -2,275 +2,891 @@
 <html lang="nl">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YG0JGDRRM6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YG0JGDRRM6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YG0JGDRRM6');
+  </script>
 
-  gtag('config', 'G-YG0JGDRRM6');
-</script>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Horeca | BINC International</title>
-<link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#000;--red:#c0392b;--red2:#e74c3c;--white:#fff;--dim:rgba(255,255,255,.58);
-  --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;
-  --font-ui:'Rajdhani',sans-serif;--font-bebas:'Bebas Neue',sans-serif;--font-mono:'DM Mono',monospace;
-}
-html{scroll-behavior:smooth;cursor:none}
-body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-#cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
-#cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
-#cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
-body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:52px}
-::selection{background:var(--red);color:#fff}
-::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horeca | BINC International</title>
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
-nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
-.nav-logo{display:flex;align-items:center;text-decoration:none}
-.nav-logo img{height:38px;width:auto;object-fit:contain}
-.nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{font-family:var(--font-ui);font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:8px 16px;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:4px;left:16px;right:16px;height:1px;background:rgba(192,57,43,.85);transform:scaleX(0);transform-origin:left;transition:.3s}
-.nav-links a:hover{color:#fff}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}.nav-links a.active{color:#fff}
-.nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
-.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--red2)!important;color:#fff!important}
-.nav-hamburger{display:none}
+  <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 
-/* MOBILE DRAWER */
-.mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0}
-.mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
-.mobile-nav-drawer a{font-family:var(--font-display);font-size:clamp(3rem,12vw,5.5rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;line-height:1.1;display:block;padding:18px 0;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
-.mobile-nav-drawer a:hover,.mobile-nav-drawer a.active{color:#fff}
-.mobile-nav-drawer a.drawer-cta{color:#fff;background:var(--red);border-radius:4px;margin-top:28px;border-bottom:none;font-size:clamp(1.4rem,5vw,2rem);padding:18px 0;letter-spacing:.14em}
-.mobile-nav-drawer a.drawer-cta:hover{background:var(--red2)}
-.drawer-socials{display:flex;gap:28px;margin-top:36px}
-.drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
-.drawer-socials a:hover{color:var(--red)}.drawer-socials svg{width:100%;height:100%;fill:currentColor}
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-/* JUMP OVERLAY */
-.jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
-.jump-overlay::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px),radial-gradient(rgba(0,0,0,.08) 1px,transparent 1px);background-size:4px 4px,6px 6px;opacity:.5;mix-blend-mode:overlay}
-.jump-overlay::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(192,57,43,.28) 0%,rgba(192,57,43,.12) 35%,transparent 72%);filter:blur(50px)}
-.jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
-.jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
+    :root{
+      --bg:#000;
+      --red:#c0392b;
+      --red2:#e74c3c;
+      --white:#fff;
+      --dim:rgba(255,255,255,.58);
+      --font-display:'Barlow Condensed',sans-serif;
+      --font-body:'Barlow',sans-serif;
+      --font-ui:'Rajdhani',sans-serif;
+      --font-bebas:'Bebas Neue',sans-serif;
+      --font-mono:'DM Mono',monospace;
+    }
 
-/* HERO */
-#hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.48}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.48) 48%,rgba(0,0,0,.2) 100%),linear-gradient(to bottom,rgba(0,0,0,.32) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.88) 100%)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
-@keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
-.g-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
-.orb-a{width:500px;height:500px;background:rgba(192,57,43,.09);top:-8%;right:8%}
-.orb-b{width:320px;height:320px;background:rgba(192,57,43,.055);bottom:10%;right:30%}
-.hero-content{position:relative;z-index:10;padding:0 6vw;max-width:1500px;width:100%}
-.hero-inner{margin-left:clamp(32px,7vw,140px);max-width:1050px}
-.hero-title{font-family:var(--font-display);font-size:clamp(4.4rem,9.5vw,13rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:14ch;margin-bottom:40px;opacity:0;animation:riseUp .9s .25s forwards}
-.hero-title .red{color:var(--red)}.hero-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
-.hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.72);font-weight:300;max-width:520px;margin-bottom:48px;opacity:0;animation:riseUp .9s .45s forwards}
-.hero-btns{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:riseUp .9s .65s forwards}
-.btn-red,.btn-outline{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
-.btn-red{color:#fff;background:var(--red);border:none;padding:17px 40px}
-.btn-red:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
-.btn-outline{color:#fff;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.24);padding:16px 40px}
-.btn-outline:hover{border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.055)}
-.hero-scroll{position:absolute;bottom:92px;left:6vw;z-index:10;display:flex;align-items:center;gap:14px;opacity:0;animation:fadeIn 1s 1.1s forwards}
-.scroll-pill{width:30px;height:48px;border:1px solid rgba(192,57,43,.58);border-radius:16px;position:relative;box-shadow:0 0 18px rgba(192,57,43,.12)}
-.scroll-ball{width:5px;height:10px;background:var(--red);border-radius:3px;position:absolute;left:50%;top:7px;transform:translateX(-50%);animation:scrollAnim 1.7s infinite;box-shadow:0 0 10px rgba(192,57,43,.55)}
-.scroll-label{font-family:var(--font-ui);font-size:.66rem;font-weight:700;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.72)}
-@keyframes scrollAnim{0%{top:7px;opacity:1}80%{top:27px;opacity:0}100%{top:7px;opacity:0}}
-@keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    html{scroll-behavior:smooth;cursor:none}
+    body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    ::selection{background:var(--red);color:#fff}
+    ::-webkit-scrollbar{width:2px}
+    ::-webkit-scrollbar-track{background:#000}
+    ::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
 
-/* TAPE */
-.tape{background:var(--red);padding:16px 0;overflow:hidden;white-space:nowrap}
-.tape-inner{display:inline-block;animation:marquee 24s linear infinite}
-.tape-item{display:inline-block;font-family:var(--font-display);font-size:.95rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:#fff;margin:0 28px}
-.tape-dot{display:inline-block;width:5px;height:5px;background:rgba(255,255,255,.7);border-radius:50%;vertical-align:middle;margin:0 8px;opacity:.9}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    #cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
+    #cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
+    #cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
+    body:has(a:hover) #cur-ring,
+    body:has(button:hover) #cur-ring,
+    body:has(.visual-card:hover) #cur-ring,
+    body:has(.channel-card:hover) #cur-ring{width:52px;height:52px}
 
-/* SHARED */
-.label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
-.label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
-.display{font-family:var(--font-display);font-size:clamp(3.6rem,5.9vw,8.1rem);font-weight:900;line-height:.9;color:#fff}
-.body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:640px}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
+    nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
+    .nav-logo{display:flex;align-items:center;text-decoration:none}
+    .nav-logo img{height:38px;width:auto;object-fit:contain}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-links a{font-family:var(--font-ui);font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:8px 16px;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:4px;left:16px;right:16px;height:1px;background:rgba(192,57,43,.85);transform:scaleX(0);transform-origin:left;transition:.3s}
+    .nav-links a:hover,.nav-links a.active{color:#fff}
+    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
+    .nav-cta::after{display:none!important}
+    .nav-cta:hover{background:var(--red2)!important}
 
-/* INTRO */
-#intro{padding:140px 6vw 120px;background:#000;position:relative;overflow:hidden}
-#intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
-.intro-grid{display:grid;grid-template-columns:minmax(0,680px) minmax(380px,580px);gap:90px;align-items:center}
-.intro-copy{padding-left:clamp(24px,4vw,84px);display:flex;flex-direction:column;gap:28px}
-.intro-visual{position:relative;width:100%;aspect-ratio:3/4;max-width:520px;justify-self:end;border-radius:14px;overflow:hidden;border:1px solid rgba(192,57,43,.22);box-shadow:0 40px 100px rgba(0,0,0,.72),0 0 60px rgba(192,57,43,.08)}
-.intro-visual img{width:100%;height:100%;object-fit:cover;opacity:.78;transform:scale(1.04);transition:transform 8s ease}
-.intro-visual:hover img{transform:scale(1.08)}
-.intro-visual::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.18) 55%,rgba(0,0,0,.05) 100%),radial-gradient(circle at 50% 0%,rgba(192,57,43,.16),transparent 44%);z-index:1}
-.intro-visual::after{content:'';position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.9),transparent);z-index:2}
-.visual-caption{position:absolute;left:28px;right:28px;bottom:28px;z-index:3}
-.visual-tag{display:inline-block;font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.95);margin-bottom:12px;padding:6px 10px;border:1px solid rgba(192,57,43,.28);background:rgba(0,0,0,.4);border-radius:2px}
-.visual-title{font-family:var(--font-display);font-size:clamp(2.4rem,3.5vw,4.2rem);font-weight:900;line-height:.88;color:#fff}
-.visual-title span{color:var(--red)}
+    .nav-right{display:flex;align-items:center}
+    .nav-hamburger{display:none}
 
-/* STATS */
-#stats{background:#000;padding:0 6vw 120px}
-.stats-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.stat-cell{min-height:220px;padding:44px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,.048),rgba(255,255,255,.012)),rgba(255,255,255,.014);border:1px solid rgba(192,57,43,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 28px 80px rgba(0,0,0,.48)}
-.stat-cell::before{content:'';position:absolute;inset:1px;border-radius:13px;background:radial-gradient(circle at 50% 0%,rgba(192,57,43,.07),transparent 44%);pointer-events:none}
-.stat-cell::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
-.stat-n{position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(3.4rem,4.8vw,6.4rem);font-weight:800;letter-spacing:-.02em;line-height:.9;color:#fff}
-.stat-n sup{font-size:.38em;color:var(--red);vertical-align:top;margin-left:2px;font-weight:700}
-.stat-l{position:relative;z-index:1;font-family:var(--font-ui);font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:20px;line-height:1.45;max-width:200px}
+    .mobile-nav-drawer{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:490;
+      background:rgba(0,0,0,.97);
+      backdrop-filter:blur(28px);
+      -webkit-backdrop-filter:blur(28px);
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:100px 6vw 60px;
+      transform:translateY(-100%);
+      transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .3s;
+      pointer-events:none;
+      opacity:0;
+    }
 
-/* SEGMENTS */
-#segments{padding:120px 6vw 130px;background:#000}
-.seg-head{margin-bottom:70px}
-.seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.seg-card{position:relative;overflow:hidden;min-height:580px;border-radius:18px;border:1px solid rgba(192,57,43,.14);background:#060606;box-shadow:0 40px 100px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);transition:.4s}
-.seg-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.36);box-shadow:0 60px 120px rgba(0,0,0,.7),0 0 50px rgba(192,57,43,.07)}
-.seg-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.44;transform:scale(1.04);transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .4s}
-.seg-card:hover img{opacity:.6;transform:scale(1.09)}
-.seg-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(0,0,0,.38) 55%,rgba(0,0,0,.1) 100%),radial-gradient(circle at 50% 0%,rgba(192,57,43,.1),transparent 44%)}
-.seg-top-line{position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.85),transparent)}
-.seg-num{position:absolute;top:28px;right:28px;font-family:var(--font-bebas);font-size:5.5rem;line-height:1;color:rgba(192,57,43,.1);letter-spacing:.04em;pointer-events:none;filter:blur(.3px)}
-.seg-content{position:absolute;left:0;right:0;bottom:0;padding:42px 38px;z-index:3}
-.seg-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:16px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
-.seg-title{font-family:var(--font-display);font-size:clamp(2.8rem,4vw,5rem);font-weight:900;line-height:.88;color:#fff;margin-bottom:18px}
-.seg-title span{color:var(--red)}
-.seg-body{font-size:.95rem;line-height:1.82;color:rgba(255,255,255,.62);font-weight:300;max-width:440px;margin-bottom:24px}
-.seg-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border-radius:6px;overflow:hidden;background:rgba(192,57,43,.18)}
-.seg-kpi{background:rgba(0,0,0,.72);padding:16px 14px;position:relative}
-.seg-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(192,57,43,.5),transparent);opacity:.5}
-.seg-kpi strong{display:block;font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--red);line-height:.9}
-.seg-kpi span{display:block;font-family:var(--font-mono);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:7px;line-height:1.5}
+    .mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
+    .mobile-nav-drawer a{
+      font-family:var(--font-display);
+      font-size:clamp(2.8rem,11vw,5rem);
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.62);
+      text-decoration:none;
+      line-height:1.1;
+      display:block;
+      padding:16px 0;
+      width:100%;
+      text-align:center;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      transition:.2s;
+    }
 
-/* HOW IT WORKS */
-#how{padding:130px 6vw;background:#000;position:relative;overflow:hidden}
-#how::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(192,57,43,.04),transparent 55%);pointer-events:none}
-.how-grid{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:80px;align-items:start}
-.how-copy{padding-left:clamp(24px,4vw,84px);display:flex;flex-direction:column;gap:24px}
-.steps{display:flex;flex-direction:column;position:relative}
-.step{display:flex;gap:28px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.055)}
-.step:last-child{border-bottom:none}
-.step-num{font-family:var(--font-bebas);font-size:3.2rem;color:rgba(192,57,43,.22);line-height:1;flex-shrink:0;width:52px;text-align:right;transition:.3s}
-.step:hover .step-num{color:var(--red)}
-.step-title{font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:.04em;color:#fff;margin-bottom:8px;text-transform:uppercase}
-.step-text{font-size:.92rem;line-height:1.85;color:rgba(255,255,255,.55);font-weight:300}
+    .mobile-nav-drawer a:hover,
+    .mobile-nav-drawer a.active{color:#fff}
 
-/* CTA */
-#cta{position:relative;overflow:hidden;padding:130px 6vw 140px;border-top:1px solid rgba(192,57,43,.1)}
-#cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 60%)}
-.cta-wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px}
-.cta-title{font-family:var(--font-display);font-size:clamp(4rem,8vw,10rem);font-weight:900;line-height:.86}
-.cta-title .red{color:var(--red)}.cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
-.cta-copy{max-width:680px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62)}
+    .mobile-nav-drawer a.drawer-cta{
+      color:#fff;
+      background:var(--red);
+      border-radius:4px;
+      margin-top:28px;
+      border-bottom:none;
+      font-size:clamp(1.4rem,5vw,2rem);
+      padding:18px 0;
+      letter-spacing:.14em;
+    }
 
-/* FOOTER */
-footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
-.ft-brand{display:flex;flex-direction:column;gap:32px}
-.ft-logo{width:235px;opacity:.98}
-.ft-socials{display:flex;align-items:center;gap:22px}
-.ft-socials a{width:24px;height:24px;color:#fff;opacity:.72;transition:.2s;display:inline-flex;align-items:center;justify-content:center}
-.ft-socials a:hover{color:var(--red);opacity:1;transform:translateY(-2px)}
-.ft-socials svg{width:100%;height:100%;fill:currentColor}
-.ft-info{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.ft-item p,.ft-item a{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
-.ft-h{font-family:var(--font-ui);font-size:.85rem!important;font-weight:800!important;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,1)!important;margin-bottom:12px!important}
-.ft-item a:hover{color:var(--red)}
-.ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.05);padding:22px 6vw;display:flex;justify-content:space-between;align-items:center}
-.ft-copy{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.2)}
+    .drawer-socials{display:flex;gap:28px;margin-top:28px}
+    .drawer-socials a{
+      width:26px;
+      height:26px;
+      color:rgba(255,255,255,.5);
+      transition:.2s;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:none!important;
+      padding:0!important;
+      font-size:0!important;
+      background:none!important;
+      border-radius:0!important;
+      margin-top:0!important;
+    }
+    .drawer-socials a:hover{color:var(--red)}
+    .drawer-socials svg{width:100%;height:100%;fill:currentColor}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
-.reveal.on{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.38s}
+    .jump-overlay{
+      position:fixed;
+      inset:0;
+      z-index:10000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
+      opacity:0;
+      transition:opacity .45s ease;
+      background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);
+      backdrop-filter:blur(42px) saturate(1.15);
+      -webkit-backdrop-filter:blur(42px) saturate(1.15);
+      overflow:hidden;
+    }
 
-/* MOBILE */
-@media(max-width:1000px){
-  html,body{cursor:auto}
-  #cur,#cur-ring{display:none}
-  nav{height:70px;padding:0 5vw}
-  .nav-logo img{height:32px}
-  nav .nav-links{display:none}
-  .nav-hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;cursor:pointer;background:none;border:none;padding:0;position:relative;z-index:510}
-  .nav-hamburger span{display:block;width:26px;height:1.5px;background:#fff;border-radius:2px;transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .22s,background .22s;transform-origin:center}
-  .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--red)}
-  .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-  .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
-  .mobile-nav-drawer{display:flex}
-  #hero{min-height:105vh;padding:110px 0 90px}
-  .hero-inner{margin-left:0}
-  .hero-title{font-size:clamp(4rem,16vw,9rem)}
-  #intro{padding:80px 6vw 60px}
-  .intro-grid{grid-template-columns:1fr;gap:52px}
-  .intro-copy{padding-left:0}
-  .intro-visual{max-width:100%;justify-self:stretch;aspect-ratio:4/3}
-  #stats{padding:0 6vw 80px}
-  .stats-wrap{grid-template-columns:repeat(2,1fr)}
-  #segments{padding:80px 6vw 90px}
-  .seg-grid{grid-template-columns:1fr;gap:22px}
-  .seg-card{min-height:480px}
-  #how{padding:80px 6vw 90px}
-  .how-grid{grid-template-columns:1fr;gap:52px}
-  .how-copy{padding-left:0}
-  footer{grid-template-columns:1fr;gap:0;padding:56px 6vw 40px}
-  .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
-  .ft-logo{width:min(200px,55vw);margin:0 auto}
-  .ft-socials{justify-content:center}
-  .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
-  .ft-bar{flex-direction:column;align-items:center;gap:8px;padding:18px 6vw;text-align:center}
-}
-@media(max-width:1000px){
-  .hero-scroll{
-    display:none;
-  }
-}
+    .jump-overlay::after{
+      content:'';
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(192,57,43,.28) 0%,rgba(192,57,43,.12) 35%,transparent 72%);
+      filter:blur(50px);
+    }
 
-  @media(max-width:1000px){
-  #stats{
-    display:none;
-  }
-}
+    .jump-logo{
+      width:min(420px,68vw);
+      opacity:0;
+      transform:scale(.92);
+      filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));
+      transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);
+      position:relative;
+      z-index:2;
+    }
 
-  @media(max-width:1000px){
-  .seg-tag{
-    display:none;
-  }
-}
-  
-@media(max-width:480px){
-  .stats-wrap{grid-template-columns:1fr 1fr}
-  .seg-kpis{
-    grid-template-columns:repeat(3,1fr);
-}
-</style>
+    .jump-overlay.active{opacity:1}
+    .jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
+
+    #hero{
+      position:relative;
+      min-height:108vh;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      background:#000;
+      padding:110px 0 120px;
+    }
+
+    .hero-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.54;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(to right,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 46%,rgba(0,0,0,.18) 100%),
+      linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%);
+    }
+
+    .hero-grid{
+      position:absolute;
+      inset:0;
+      background-image:
+      linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);
+      background-size:90px 90px;
+      opacity:.55;
+      animation:gridScroll 25s linear infinite;
+    }
+
+    @keyframes gridScroll{
+      from{transform:translateY(0)}
+      to{transform:translateY(90px)}
+    }
+
+    .g-orb{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(100px);
+      pointer-events:none;
+    }
+
+    .orb-a{
+      width:500px;
+      height:500px;
+      background:rgba(192,57,43,.09);
+      top:-8%;
+      right:8%;
+    }
+
+    .orb-b{
+      width:320px;
+      height:320px;
+      background:rgba(192,57,43,.055);
+      bottom:10%;
+      right:30%;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:10;
+      padding:0 6vw;
+      max-width:1500px;
+      width:100%;
+    }
+
+    .hero-inner{
+      margin-left:clamp(32px,7vw,140px);
+      max-width:1050px;
+    }
+
+    .hero-title{
+      font-family:var(--font-display);
+      font-size:clamp(5rem,11vw,15rem);
+      font-weight:900;
+      line-height:.84;
+      letter-spacing:-.01em;
+      max-width:11ch;
+      margin-bottom:40px;
+      opacity:0;
+      animation:riseUp .9s .25s forwards;
+    }
+
+    .hero-title .red{color:var(--red)}
+    .hero-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
+
+    .hero-sub{
+      font-size:1.05rem;
+      line-height:1.85;
+      color:rgba(255,255,255,.72);
+      font-weight:300;
+      max-width:560px;
+      margin-bottom:48px;
+      opacity:0;
+      animation:riseUp .9s .45s forwards;
+    }
+
+    .hero-btns{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      opacity:0;
+      animation:riseUp .9s .65s forwards;
+    }
+
+    @keyframes riseUp{
+      from{opacity:0;transform:translateY(44px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .btn-red,.btn-outline{
+      font-family:var(--font-ui);
+      font-weight:700;
+      font-size:.8rem;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      border-radius:2px;
+      text-decoration:none;
+      display:inline-block;
+      transition:.2s;
+    }
+
+    .btn-red{
+      color:#fff;
+      background:var(--red);
+      padding:17px 40px;
+      border:none;
+    }
+
+    .btn-red:hover{
+      background:var(--red2);
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(192,57,43,.32);
+    }
+
+    .btn-outline{
+      color:#fff;
+      border:1px solid rgba(255,255,255,.24);
+      background:rgba(0,0,0,.22);
+      padding:16px 40px;
+    }
+
+    .btn-outline:hover{
+      border-color:rgba(192,57,43,.7);
+      background:rgba(192,57,43,.055);
+    }
+
+    .section{padding:140px 6vw;background:#000}
+
+    .label{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-family:var(--font-ui);
+      font-size:.68rem;
+      font-weight:700;
+      letter-spacing:.45em;
+      text-transform:uppercase;
+      color:rgba(192,57,43,.92);
+      margin-bottom:22px;
+    }
+
+    .label::before{
+      content:'';
+      width:24px;
+      height:1px;
+      background:rgba(192,57,43,.75);
+    }
+
+    .display{
+      font-family:var(--font-display);
+      font-size:clamp(3.4rem,6vw,7.5rem);
+      font-weight:900;
+      line-height:.9;
+      color:#fff;
+    }
+
+    .body-text{
+      max-width:720px;
+      font-size:1rem;
+      line-height:1.95;
+      color:rgba(255,255,255,.62);
+      font-weight:300;
+    }
+
+    .intro-grid{
+      display:grid;
+      grid-template-columns:minmax(0,760px) minmax(360px,640px);
+      gap:90px;
+      align-items:center;
+    }
+
+    .intro-copy{
+      display:flex;
+      flex-direction:column;
+      gap:28px;
+      padding-left:clamp(24px,4vw,84px);
+    }
+
+    .visual-card{
+      position:relative;
+      min-height:560px;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(192,57,43,.18);
+      background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+      box-shadow:0 34px 90px rgba(0,0,0,.72),inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .visual-card img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.55;
+      transition:.5s;
+    }
+
+    .visual-card:hover img{
+      transform:scale(1.06);
+      opacity:.7;
+    }
+
+    .visual-card::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,.15)),
+      radial-gradient(circle at 50% 0%,rgba(192,57,43,.16),transparent 48%);
+    }
+
+    .visual-content{
+      position:absolute;
+      left:36px;
+      right:36px;
+      bottom:36px;
+      z-index:3;
+    }
+
+    .visual-kicker{
+      display:inline-block;
+      font-family:var(--font-ui);
+      font-size:.58rem;
+      font-weight:800;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:rgba(192,57,43,.95);
+      margin-bottom:16px;
+      padding:7px 12px;
+      border:1px solid rgba(192,57,43,.28);
+      background:rgba(0,0,0,.36);
+      border-radius:2px;
+    }
+
+    .visual-title{
+      font-family:var(--font-display);
+      font-size:clamp(3rem,4.6vw,5.5rem);
+      font-weight:900;
+      line-height:.86;
+    }
+
+    .visual-title span{color:var(--red)}
+
+    #stats{
+      background:#000;
+      padding:105px 6vw 115px;
+    }
+
+    .stats-wrap{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .stat-cell{
+      min-height:260px;
+      padding:54px 32px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      border-radius:16px;
+      background:linear-gradient(145deg,rgba(255,255,255,.048),rgba(255,255,255,.012)),rgba(255,255,255,.014);
+      border:1px solid rgba(192,57,43,.13);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 28px 80px rgba(0,0,0,.48);
+    }
+
+    .stat-cell::before{
+      content:'';
+      position:absolute;
+      inset:1px;
+      border-radius:15px;
+      background:radial-gradient(circle at 50% 0%,rgba(192,57,43,.07),transparent 44%);
+      pointer-events:none;
+    }
+
+    .stat-cell::after{
+      content:'';
+      position:absolute;
+      top:0;
+      left:50%;
+      width:42%;
+      height:1px;
+      transform:translateX(-50%);
+      background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);
+      opacity:.65;
+    }
+
+    .stat-n{
+      position:relative;
+      z-index:1;
+      font-family:var(--font-display);
+      font-size:clamp(3.2rem,4.5vw,6.4rem);
+      font-weight:800;
+      letter-spacing:-.02em;
+      line-height:.9;
+      color:#fff;
+    }
+
+    .stat-n sup{
+      font-size:.38em;
+      color:var(--red);
+      vertical-align:top;
+      margin-left:2px;
+      font-weight:700;
+    }
+
+    .stat-l{
+      position:relative;
+      z-index:1;
+      font-family:var(--font-ui);
+      font-size:.72rem;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.55);
+      margin-top:24px;
+      line-height:1.45;
+      max-width:260px;
+    }
+
+    #channels{
+      padding:120px 6vw 140px;
+      background:#000;
+    }
+
+    .channels-head{
+      margin-bottom:56px;
+    }
+
+    .channel-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .channel-card{
+      position:relative;
+      overflow:hidden;
+      min-height:430px;
+      border-radius:16px;
+      border:1px solid rgba(192,57,43,.14);
+      background:rgba(255,255,255,.015);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);
+      transition:.3s;
+    }
+
+    .channel-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(192,57,43,.38);
+    }
+
+    .channel-card img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.42;
+      transition:.4s;
+    }
+
+    .channel-card:hover img{opacity:.56}
+
+    .channel-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.94) 0%,rgba(0,0,0,.32) 54%,rgba(0,0,0,.08) 100%);
+    }
+
+    .channel-top-line{
+      position:absolute;
+      top:0;
+      left:50%;
+      width:44%;
+      height:1px;
+      transform:translateX(-50%);
+      background:linear-gradient(90deg,transparent,rgba(192,57,43,.85),transparent);
+    }
+
+    .channel-content{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      padding:36px;
+      z-index:3;
+    }
+
+    .channel-tag{
+      display:inline-block;
+      font-family:var(--font-ui);
+      font-size:.58rem;
+      font-weight:700;
+      letter-spacing:.3em;
+      text-transform:uppercase;
+      color:rgba(192,57,43,.9);
+      margin-bottom:14px;
+      padding:6px 12px;
+      border:1px solid rgba(192,57,43,.28);
+      border-radius:2px;
+      background:rgba(192,57,43,.07);
+    }
+
+    .channel-content h3{
+      font-family:var(--font-display);
+      font-size:clamp(2.2rem,3vw,4rem);
+      font-weight:900;
+      line-height:.9;
+      margin-bottom:16px;
+    }
+
+    .channel-content p{
+      font-size:.95rem;
+      line-height:1.8;
+      color:rgba(255,255,255,.62);
+    }
+
+    #cta{
+      position:relative;
+      overflow:hidden;
+      padding:130px 6vw 140px;
+      border-top:1px solid rgba(192,57,43,.1);
+    }
+
+    #cta::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 60%);
+    }
+
+    .cta-wrap{
+      position:relative;
+      z-index:2;
+      max-width:1000px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:28px;
+    }
+
+    .cta-title{
+      font-family:var(--font-display);
+      font-size:clamp(4rem,8vw,10rem);
+      font-weight:900;
+      line-height:.86;
+    }
+
+    .cta-title .red{color:var(--red)}
+    .cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
+
+    .cta-copy{
+      max-width:700px;
+      font-size:1rem;
+      line-height:1.9;
+      color:rgba(255,255,255,.62);
+    }
+
+    footer{
+      background:#000;
+      border-top:1px solid rgba(192,57,43,.16);
+      padding:80px 6vw 60px;
+      display:grid;
+      grid-template-columns:1.1fr 2fr;
+      gap:60px;
+      align-items:start;
+    }
+
+    .ft-brand{display:flex;flex-direction:column;gap:32px}
+    .ft-logo{width:235px;opacity:.98}
+    .ft-socials{display:flex;align-items:center;gap:22px}
+
+    .ft-socials a{
+      width:24px;
+      height:24px;
+      color:#fff;
+      opacity:.72;
+      transition:.2s;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .ft-socials a:hover{
+      color:var(--red);
+      opacity:1;
+      transform:translateY(-2px);
+    }
+
+    .ft-socials svg{width:100%;height:100%;fill:currentColor}
+
+    .ft-info{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:32px;
+    }
+
+    .ft-item p,
+    .ft-item a{
+      font-size:1.05rem;
+      line-height:1.75;
+      color:rgba(255,255,255,.74);
+      text-decoration:none;
+      font-weight:400;
+    }
+
+    .ft-h{
+      font-family:var(--font-ui);
+      font-size:.85rem!important;
+      font-weight:800!important;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(192,57,43,1)!important;
+      margin-bottom:12px!important;
+    }
+
+    .ft-item a:hover{color:var(--red)}
+
+    .ft-bar{
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.07);
+      padding:28px 6vw;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+    }
+
+    .ft-bar-left{display:flex;flex-direction:column;gap:6px}
+    .ft-copy{font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:rgba(255,255,255,.32)}
+    .ft-copy strong{color:rgba(192,57,43,.8);font-weight:700}
+    .ft-bar-right{display:flex;align-items:center;gap:24px}
+
+    .ft-kvk{
+      font-family:var(--font-mono);
+      font-size:.62rem;
+      letter-spacing:.1em;
+      color:rgba(255,255,255,.2);
+      border:1px solid rgba(255,255,255,.07);
+      padding:6px 14px;
+      border-radius:2px;
+    }
+
+    .reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
+    .reveal.on{opacity:1;transform:translateY(0)}
+    .d1{transition-delay:.12s}
+    .d2{transition-delay:.24s}
+    .d3{transition-delay:.38s}
+
+    @media(max-width:1000px){
+      html,body{cursor:auto}
+      #cur,#cur-ring{display:none}
+
+      nav{height:70px;padding:0 5vw}
+      .nav-logo img{height:32px}
+      nav .nav-links{display:none}
+
+      .nav-hamburger{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:5px;
+        width:44px;
+        height:44px;
+        cursor:pointer;
+        background:none;
+        border:none;
+        padding:0;
+        position:relative;
+        z-index:510;
+      }
+
+      .nav-hamburger span{
+        display:block;
+        width:26px;
+        height:1.5px;
+        background:#fff;
+        border-radius:2px;
+        transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .22s,background .22s;
+        transform-origin:center;
+      }
+
+      .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--red)}
+      .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+      .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
+
+      .mobile-nav-drawer{display:flex}
+
+      #hero{min-height:105vh;padding:110px 0 90px}
+      .hero-inner{margin-left:0}
+      .hero-title{font-size:clamp(6.5rem,24vw,13rem);max-width:11ch;line-height:.82}
+      .hero-sub{max-width:92%}
+      .hero-btns{gap:12px}
+      .btn-red,.btn-outline{padding:14px 28px;font-size:.75rem}
+
+      .section{padding:80px 5vw 60px}
+      .intro-grid{grid-template-columns:1fr;gap:52px}
+      .intro-copy{padding-left:0}
+
+      .visual-card{min-height:420px}
+
+      #stats{padding:70px 5vw 80px}
+      .stats-wrap{grid-template-columns:1fr;gap:18px}
+
+      #channels{padding:80px 5vw 90px}
+      .channel-grid{grid-template-columns:1fr;gap:18px}
+      .channel-card{min-height:320px}
+      .channel-content{padding:24px}
+      .channel-content h3{font-size:clamp(2rem,8vw,3rem)}
+
+      #cta{padding:90px 5vw 100px}
+
+      footer{
+        grid-template-columns:1fr;
+        gap:0;
+        padding:56px 5vw 40px;
+      }
+
+      .ft-brand{
+        align-items:center;
+        text-align:center;
+        gap:20px;
+        padding-bottom:36px;
+        border-bottom:1px solid rgba(192,57,43,.12);
+        margin-bottom:36px;
+      }
+
+      .ft-logo{width:min(200px,55vw);margin:0 auto}
+      .ft-socials{justify-content:center}
+      .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
+
+      .ft-bar{
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
+        padding:20px 5vw;
+        text-align:center;
+      }
+
+      .ft-bar-right{flex-direction:column;gap:8px;align-items:center}
+    }
+
+    @media(max-width:480px){
+      .hero-title{font-size:clamp(4.8rem,20vw,8rem)}
+      .display{font-size:clamp(3rem,12vw,5rem)}
+      .cta-title{font-size:clamp(3.2rem,14vw,6rem)}
+    }
+  </style>
 </head>
+
 <body>
 
 <div class="jump-overlay" id="jumpOverlay">
   <img class="jump-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
 </div>
+
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
-<!-- Mobile drawer -->
 <div class="mobile-nav-drawer" id="mobileDrawer">
+  <a href="retail.html">Retail</a>
   <a href="horeca.html" class="active">Horeca</a>
   <a href="evenementen.html">Evenementen</a>
+  <a href="ons-team.html">Ons Team</a>
   <a href="vacatures.html">Vacatures</a>
-  <a href="index.html#lead" class="drawer-cta" id="drawerCta">Samenwerken</a>
+  <a href="index.html#lead" class="drawer-cta">Samenwerken</a>
+
   <div class="drawer-socials">
-    <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
-    <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg></a>
-    <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+    <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
+    </a>
   </div>
 </div>
 
@@ -278,248 +894,304 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <a href="index.html" class="nav-logo">
     <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
   </a>
+
   <div class="nav-links">
+    <a href="retail.html">Retail</a>
     <a href="horeca.html" class="active">Horeca</a>
     <a href="evenementen.html">Evenementen</a>
+    <a href="ons-team.html">Ons Team</a>
     <a href="vacatures.html">Vacatures</a>
     <a href="index.html#lead" class="nav-cta">Samenwerken</a>
   </div>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
-    <span></span><span></span><span></span>
-  </button>
+
+  <div class="nav-right">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <video class="hero-video" autoplay muted loop playsinline>
-    <source src="https://cdn.shopify.com/videos/c/o/v/b85b6cf4da4f49ea80c224cf8ed2fe53.mp4" type="video/mp4"/>
+    <source src="https://cdn.shopify.com/videos/c/o/v/9690e8a2bed14220a0ecbf4df8209ce6.mov" type="video/mp4"/>
   </video>
+
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <div class="g-orb orb-a"></div>
   <div class="g-orb orb-b"></div>
+
   <div class="hero-content">
     <div class="hero-inner">
-      <p class="label" style="opacity:0;animation:riseUp .9s .1s forwards">Horeca & foodservice</p>
-      <h1 class="hero-title">SERVE YOUR<br><span class="red">BRAND</span><span class="stroke"> RIGHT.</span></h1>
-      <p class="hero-sub">Van premium bars tot sportcantines: BINC International plaatst jouw merk op de plekken waar de doelgroep het écht ervaart. Wij regelen het gesprek, de listing en de opschaling.</p>
+      <h1 class="hero-title">
+        HORECA<br>
+        <span class="red">&</span>
+        <span class="stroke">FOODSERVICE</span>
+      </h1>
+
+      <p class="hero-sub">
+        BINC International brengt merken naar horeca, foodservice, sportlocaties en groothandelspartners. Van eerste introductie tot actieve verkooplocaties: wij zorgen dat jouw merk zichtbaar wordt waar mensen proeven, kopen en terugkomen.
+      </p>
+
       <div class="hero-btns">
-        <a href="#segments" class="btn-red">Bekijk kanalen</a>
-        <a href="index.html" class="btn-outline">Terug naar home</a>
+        <a href="#approach" class="btn-red">Bekijk aanpak</a>
+        <a href="index.html#lead" class="btn-outline">Samenwerken</a>
       </div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-pill"><div class="scroll-ball"></div></div>
-    <span class="scroll-label">Scroll</span>
-  </div>
 </section>
 
-<!-- TAPE -->
-<div class="tape"><div class="tape-inner" id="tapeInner"></div></div>
-
-<!-- INTRO -->
-<section id="intro">
+<section id="approach" class="section">
   <div class="intro-grid">
-    <div class="reveal intro-copy">
+    <div class="intro-copy reveal">
       <div>
-        <p class="label">Horeca distributie</p>
-        <h2 class="display">WHERE YOUR<br>BRAND GETS<br><span style="color:var(--red)">ORDERED.</span></h2>
+        <p class="label">Our Approach</p>
+        <h2 class="display">
+          FROM<br>
+          FIRST TASTE<br>
+          <span style="color:var(--red)">TO REPEAT</span>
+        </h2>
       </div>
-      <p class="body-text">Retail is de basis. Maar horeca is waar merken écht leven. Als iemand jouw product in een bar drinkt, op een sportsclub pakt of bij een evenement proeft, dan is dat geen aankoop. Dat is een ervaring.</p>
-      <p class="body-text">BINC International heeft directe lijnen met inkopers, horecagroothandels en sportaccommodaties door heel Nederland. Van het eerste gesprek tot doorlopend accountmanagement.</p>
+
+      <p class="body-text">
+        Horeca draait om vertrouwen, zichtbaarheid en snelheid. BINC International helpt merken binnen te komen bij de juiste locaties en partners, van horecazaken tot sportlocaties en groothandels.
+      </p>
+
+      <p class="body-text">
+        Wij combineren sales, activatie en accountmanagement zodat jouw merk niet alleen geplaatst wordt, maar ook blijft bewegen.
+      </p>
     </div>
-    <div class="reveal d2">
-      <div class="intro-visual">
-        <img src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?q=80&w=1400&auto=format&fit=crop" alt="Bar sfeer"/>
-        <div class="visual-caption">
-          <span class="visual-tag">Live in de horeca</span>
-          <h3 class="visual-title">Jouw merk.<br><span>Achter de bar.</span></h3>
-        </div>
+
+    <div class="visual-card reveal d2">
+      <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1600&auto=format&fit=crop" alt="Horeca activatie"/>
+      <div class="visual-content">
+        <span class="visual-kicker">Horeca network</span>
+        <h3 class="visual-title">
+          BUILT<br>
+          FOR <span>GROWTH.</span>
+        </h3>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
 <section id="stats">
   <div class="stats-wrap">
     <div class="stat-cell reveal">
-      <div class="stat-n" data-target="400"><span class="count">0</span><sup>+</sup></div>
-      <p class="stat-l">Horecapunten actief</p>
+      <div class="stat-n">50<sup>+</sup></div>
+      <p class="stat-l">Horecalocaties actief</p>
     </div>
+
     <div class="stat-cell reveal d1">
-      <div class="stat-n" data-target="8"><span class="count">0</span><sup>+</sup></div>
-      <p class="stat-l">Jaar in foodservice</p>
+      <div class="stat-n">600<sup>+</sup></div>
+      <p class="stat-l">Sportlocaties actief</p>
     </div>
+
     <div class="stat-cell reveal d2">
-      <div class="stat-n" data-target="3"><span class="count">0</span></div>
-      <p class="stat-l">Groothandels actief</p>
-    </div>
-    <div class="stat-cell reveal d3">
-      <div class="stat-n" data-target="100"><span class="count">0</span><sup>%</sup></div>
-      <p class="stat-l">B2B ontzorgd door BINC</p>
+      <div class="stat-n">6</div>
+      <p class="stat-l">Groothandel partners</p>
     </div>
   </div>
 </section>
 
-<!-- SEGMENTS -->
-<section id="segments">
-  <div class="seg-head reveal">
-    <p class="label">Onze kanalen</p>
-    <h2 class="display">TWO WORLDS.<br><span style="color:var(--red)">ONE NETWORK.</span></h2>
+<section id="channels">
+  <div class="channels-head reveal">
+    <p class="label">Horeca kanalen</p>
+    <h2 class="display">
+      WHERE<br>
+      BRANDS<br>
+      <span style="color:var(--red)">COME ALIVE</span>
+    </h2>
   </div>
-  <div class="seg-grid">
-    <div class="seg-card reveal">
-      <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1400&auto=format&fit=crop" alt="Bar & nachtleven"/>
-      <div class="seg-overlay"></div>
-      <div class="seg-top-line"></div>
-      <div class="seg-num">01</div>
-      <div class="seg-content">
-        <span class="seg-tag">Bars & nachtleven</span>
-        <h3 class="seg-title">Bars &<br><span>Nightlife.</span></h3>
-        <p class="seg-body">Van bruine kroegen tot premium cocktailbars en nachtclubs. BINC International plaatst jouw merk op de tap, in de koeling of als signature serve, met directe toegang tot horecagroothandels en zelfstandige exploitanten door heel Nederland.</p>
-        <div class="seg-kpis">
-          <div class="seg-kpi"><strong>250<sup style="font-size:.5em;color:var(--red)">+</sup></strong><span>Horecalocaties actief</span></div>
-          <div class="seg-kpi"><strong>6</strong><span>Groothandel partners</span></div>
-          <div class="seg-kpi"><strong>NL</strong><span>Landelijke dekking</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="seg-card reveal d1">
-      <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1400&auto=format&fit=crop" alt="Sportclub kantine"/>
-      <div class="seg-overlay"></div>
-      <div class="seg-top-line"></div>
-      <div class="seg-num">02</div>
-      <div class="seg-content">
-        <span class="seg-tag">Sportclubs & accommodaties</span>
-        <h3 class="seg-title">Sport &<br><span>Kantines.</span></h3>
-        <p class="seg-body">Voetbal, fitness, tennis, hockey — de kantine is de plek waar sporter en merk samenkomen. BINC International heeft directe contacten met sportaccommodaties en kantine-exploitanten, van amateurverenigingen tot professionele sportcentra.</p>
-        <div class="seg-kpis">
-          <div class="seg-kpi"><strong>150<sup style="font-size:.5em;color:var(--red)">+</sup></strong><span>Sportlocaties actief</span></div>
-          <div class="seg-kpi"><strong>12</strong><span>Sportketens bereikt</span></div>
-          <div class="seg-kpi"><strong>NL</strong><span>Landelijke dekking</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="how-grid">
-    <div class="reveal how-copy">
-      <p class="label">Onze aanpak</p>
-      <h2 class="display">YOUR BRAND<br>BEHIND<br><span style="color:var(--red)">THE BAR.</span></h2>
-      <p class="body-text">Wij nemen de volledige B2B uit handen. Geen koude acquisitie, geen onbeantwoorde e-mails. BINC International kent de inkopers, kent de processen en weet hoe je een merk duurzaam in de horeca positioneert.</p>
+  <div class="channel-grid">
+    <div class="channel-card reveal">
+      <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1600&auto=format&fit=crop" alt="Horeca locaties"/>
+      <div class="channel-overlay"></div>
+      <div class="channel-top-line"></div>
+      <div class="channel-content">
+        <span class="channel-tag">Horeca</span>
+        <h3>Cafés & restaurants</h3>
+        <p>Introductie, zichtbaarheid en herhaalaankopen binnen relevante horecalocaties.</p>
+      </div>
     </div>
-    <div class="steps reveal d1">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-body">
-          <p class="step-title">Strategy & Targeting</p>
-          <p class="step-text">Wij bepalen samen welke horecasegmenten het best passen bij jouw merk, doelgroep en prijspositie. Bars, sportclubs, events of alle drie, we bouwen een gericht distributieplan.</p>
-        </div>
+
+    <div class="channel-card reveal d1">
+      <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=1600&auto=format&fit=crop" alt="Sportlocaties"/>
+      <div class="channel-overlay"></div>
+      <div class="channel-top-line"></div>
+      <div class="channel-content">
+        <span class="channel-tag">Sport</span>
+        <h3>Sportlocaties</h3>
+        <p>Van clubs tot sportomgevingen waar doelgroep, energie en consumptie samenkomen.</p>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-body">
-          <p class="step-title">Buyer Outreach</p>
-          <p class="step-text">Directe gesprekken met inkopers en horecagroothandels. Wij kennen de juiste mensen en weten hoe we jouw merk op de agenda krijgen, zonder maanden te wachten.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-body">
-          <p class="step-title">Listing & Onboarding</p>
-          <p class="step-text">Van eerste proeforder tot vaste listing. Wij begeleiden het volledige onboardingproces: prijsafspraken, leveringsafspraken en schappresentatie of tappositie.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-body">
-          <p class="step-title">Accountmanagement & Groei</p>
-          <p class="step-text">Na de listing stopt ons werk niet. Wij managen de accounts doorlopend, monitoren rotatie en signaleren groeikansen, zodat jouw merk niet alleen listed is, maar ook verkoopt.</p>
-        </div>
+    </div>
+
+    <div class="channel-card reveal d2">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&auto=format&fit=crop" alt="Groothandel partners"/>
+      <div class="channel-overlay"></div>
+      <div class="channel-top-line"></div>
+      <div class="channel-content">
+        <span class="channel-tag">Groothandel</span>
+        <h3>Wholesale partners</h3>
+        <p>Groothandelspartners die zorgen voor schaal, distributie en structurele beschikbaarheid.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section id="cta">
   <div class="cta-wrap reveal">
-    <p class="label" style="justify-content:center">Klaar voor de tap?</p>
-    <h2 class="cta-title">JOUW MERK<br><span class="red">IN DE</span> <span class="stroke">HORECA.</span></h2>
-    <p class="cta-copy">Van eerste listing tot landelijke horecadekking. BINC International regelt het gesprek, de deal en de opschaling, jij focust op je merk.</p>
+    <p class="label" style="justify-content:center">Samenwerken</p>
+
+    <h2 class="cta-title">
+      READY TO<br>
+      <span class="red">GROW</span>
+      <span class="stroke">HORECA?</span>
+    </h2>
+
+    <p class="cta-copy">
+      Van horeca tot sportlocaties en groothandel. BINC International helpt jouw merk groeien op plekken waar mensen jouw product echt ervaren.
+    </p>
+
     <a href="index.html#lead" class="btn-red">Start samenwerking</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="ft-brand reveal">
     <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+
     <div class="ft-socials">
-      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
-      <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg></a>
-      <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
+      </a>
     </div>
   </div>
+
   <div class="ft-info reveal d1">
-    <div class="ft-item"><p class="ft-h">BINC adres</p><p>Wim Rötherlaan 25,<br>5051 JS Goirle</p></div>
-    <div class="ft-item"><p class="ft-h">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
-    <div class="ft-item"><p class="ft-h">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
+    <div class="ft-item">
+      <p class="ft-h">BINC adres</p>
+      <p>Wim Rötherlaan 25,<br>5051 JS Goirle</p>
+    </div>
+
+    <div class="ft-item">
+      <p class="ft-h">E-mailadres</p>
+      <a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a>
+    </div>
+
+    <div class="ft-item">
+      <p class="ft-h">Telefoonnummer</p>
+      <a href="tel:+31132032643">013 203 2643</a>
+    </div>
   </div>
 </footer>
+
 <div class="ft-bar">
-  <span class="ft-copy">© 2025 BINC International B.V. — Alle rechten voorbehouden.</span>
-  <span class="ft-copy">KVK: 98970887</span>
+  <div class="ft-bar-left">
+    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — Alle rechten voorbehouden.</span>
+    <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)">Full-service B2B voor ambitieuze merken in Nederland.</span>
+  </div>
+
+  <div class="ft-bar-right">
+    <span class="ft-kvk">KVK: 98970887</span>
+  </div>
 </div>
 
 <script>
-/* CURSOR */
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-(function animRing(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+  const cur=document.getElementById('cur');
+  const ring=document.getElementById('cur-ring');
 
-/* MOBILE NAV */
-const hamburger=document.getElementById('navHamburger'),drawer=document.getElementById('mobileDrawer');
-function toggleDrawer(open){hamburger.classList.toggle('open',open);drawer.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
-hamburger.addEventListener('click',()=>toggleDrawer(!drawer.classList.contains('open')));
-drawer.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleDrawer(false)));
-drawer.addEventListener('click',e=>{if(e.target===drawer)toggleDrawer(false);});
+  let mx=0,my=0,rx=0,ry=0;
 
-/* NAV SCROLL */
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);},{passive:true});
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;
+    my=e.clientY;
 
-/* TAPE */
-const WORDS=['Horeca Distributie','Bars & Nachtleven','Sportclubs','Foodservice','B2B Sales','Accountmanagement','BINC International'];
-const ti=document.getElementById('tapeInner');
-const chunk=()=>WORDS.map(w=>`<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
-ti.innerHTML=chunk()+chunk();
+    if(cur){
+      cur.style.left=mx+'px';
+      cur.style.top=my+'px';
+    }
+  });
 
-/* REVEAL */
-const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
+  (function animRing(){
+    rx+=(mx-rx)*.11;
+    ry+=(my-ry)*.11;
 
-/* COUNT-UP */
-function countUp(el,target){
-  const dur=1900,t0=performance.now();
-  const go=now=>{const p=Math.min((now-t0)/dur,1),eased=1-Math.pow(1-p,3);el.querySelector('.count').textContent=Math.round(eased*target).toLocaleString('nl-NL');if(p<1)requestAnimationFrame(go);else el.querySelector('.count').textContent=target.toLocaleString('nl-NL');};
-  requestAnimationFrame(go);
-}
-const statIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){countUp(e.target,+e.target.dataset.target);statIO.unobserve(e.target);}});},{threshold:.5});
-document.querySelectorAll('.stat-n[data-target]').forEach(el=>statIO.observe(el));
+    if(ring){
+      ring.style.left=rx+'px';
+      ring.style.top=ry+'px';
+    }
 
-/* ORBS */
-window.addEventListener('mousemove',e=>{const x=(e.clientX/innerWidth-.5)*18,y=(e.clientY/innerHeight-.5)*18;document.querySelector('.orb-a').style.transform=`translate(${x*1.1}px,${y*1.1}px)`;document.querySelector('.orb-b').style.transform=`translate(${-x*.7}px,${-y*.7}px)`;},{passive:true});
+    requestAnimationFrame(animRing);
+  })();
 
-/* JUMP OVERLAY */
-document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
-  link.addEventListener('click',e=>{e.preventDefault();const o=document.getElementById('jumpOverlay');o.classList.add('active');setTimeout(()=>{window.location.href='index.html#lead';},900);});
-});
+  const hamburger=document.getElementById('navHamburger');
+  const drawer=document.getElementById('mobileDrawer');
+
+  function toggleDrawer(open){
+    hamburger.classList.toggle('open',open);
+    drawer.classList.toggle('open',open);
+    document.body.style.overflow=open?'hidden':'';
+  }
+
+  hamburger.addEventListener('click',()=>{
+    toggleDrawer(!drawer.classList.contains('open'));
+  });
+
+  drawer.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click',()=>toggleDrawer(false));
+  });
+
+  drawer.addEventListener('click',e=>{
+    if(e.target===drawer) toggleDrawer(false);
+  });
+
+  window.addEventListener('mousemove',e=>{
+    const x=(e.clientX/innerWidth-.5)*18;
+    const y=(e.clientY/innerHeight-.5)*18;
+
+    const orbA=document.querySelector('.orb-a');
+    const orbB=document.querySelector('.orb-b');
+
+    if(orbA) orbA.style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
+    if(orbB) orbB.style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
+  },{passive:true});
+
+  window.addEventListener('scroll',()=>{
+    document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);
+  },{passive:true});
+
+  const revIO=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('on');
+        revIO.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+
+  document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
+
+  document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
+    link.addEventListener('click',e=>{
+      e.preventDefault();
+
+      const overlay=document.getElementById('jumpOverlay');
+      overlay.classList.add('active');
+
+      setTimeout(()=>{
+        window.location.href='index.html#lead';
+      },900);
+    });
+  });
 </script>
+
 </body>
 </html>
