@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YG0JGDRRM6"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -12,16 +14,19 @@
 
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Ons Team | BINC International</title>
 
-  <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
+  <link rel="icon" type="image/png"
+  href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
+
     *,*::before,*::after{
       box-sizing:border-box;
       margin:0;
@@ -38,8 +43,6 @@
       --font-display:'Barlow Condensed',sans-serif;
       --font-body:'Barlow',sans-serif;
       --font-ui:'Rajdhani',sans-serif;
-      --font-bebas:'Bebas Neue',sans-serif;
-      --font-mono:'DM Mono',monospace;
     }
 
     html{
@@ -80,11 +83,10 @@
       height:34px;
       border:1.5px solid rgba(255,255,255,.45);
       transform:translate(-50%,-50%);
-      transition:width .3s,height .3s;
+      transition:.3s;
     }
 
     body:has(a:hover) #cur-ring,
-    body:has(button:hover) #cur-ring,
     body:has(.team-card:hover) #cur-ring{
       width:52px;
       height:52px;
@@ -242,13 +244,8 @@
       color:var(--red);
     }
 
-    .hero-title .stroke{
-      -webkit-text-stroke:1.5px rgba(255,255,255,.36);
-      color:transparent;
-    }
-
     .hero-sub{
-      max-width:680px;
+      max-width:700px;
       font-size:1.05rem;
       line-height:1.9;
       color:rgba(255,255,255,.68);
@@ -256,28 +253,11 @@
     }
 
     .section{
-      padding:130px 6vw;
+      padding:120px 6vw;
       position:relative;
     }
 
-    .display{
-      font-family:var(--font-display);
-      font-size:clamp(3.5rem,7vw,8rem);
-      font-weight:900;
-      line-height:.9;
-      margin-bottom:28px;
-    }
-
-    .body-text{
-      max-width:760px;
-      font-size:1rem;
-      line-height:1.95;
-      color:rgba(255,255,255,.62);
-      font-weight:300;
-    }
-
     .team-grid{
-      margin-top:80px;
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:24px;
@@ -416,6 +396,14 @@
       color:transparent;
     }
 
+    .body-text{
+      max-width:700px;
+      font-size:1rem;
+      line-height:1.95;
+      color:rgba(255,255,255,.62);
+      font-weight:300;
+    }
+
     .btn-red{
       font-family:var(--font-ui);
       font-weight:700;
@@ -514,11 +502,8 @@
       .hero-title{
         font-size:clamp(4rem,16vw,8rem);
       }
-
-      .display{
-        font-size:clamp(3rem,12vw,5rem);
-      }
     }
+
   </style>
 </head>
 
@@ -528,6 +513,7 @@
 <div id="cur-ring"></div>
 
 <nav id="nav">
+
   <a href="index.html" class="nav-logo">
     <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
   </a>
@@ -539,7 +525,10 @@
     <a href="over-ons.html" class="active">Ons Team</a>
     <a href="index.html#lead" class="nav-cta">Samenwerken</a>
   </div>
+
 </nav>
+
+<!-- HERO -->
 
 <section id="hero">
 
@@ -551,54 +540,33 @@
   <div class="hero-grid"></div>
 
   <div class="hero-content">
-    <p class="label">BINC International</p>
+
+    <p class="label">Ons team</p>
 
     <h1 class="hero-title">
-      WE BUILD<br>
-      <span class="red">BRANDS</span><br>
-      <span class="stroke">WITH PEOPLE.</span>
+      ONS<br>
+      <span class="red">TEAM.</span>
     </h1>
 
     <p class="hero-sub">
-      BINC International is een jong en gedreven team dat merken helpt groeien door ze fysiek zichtbaar te maken. Met energie, lef en een sterk netwerk bouwen we aan samenwerkingen die werken.
+      Achter iedere samenwerking staat een jong en gedreven team dat kansen ziet, relaties bouwt en merken vooruit helpt. Maak kennis met de mensen achter BINC International.
     </p>
+
   </div>
-</section>
-
-<section class="section reveal">
-
-  <p class="label">Over BINC International</p>
-
-  <h2 class="display">
-    JONG.<br>
-    <span style="color:var(--red)">GEDREVEN.</span><br>
-    DIRECT.
-  </h2>
-
-  <p class="body-text">
-    Wij zijn BINC International. Een jong, ambitieus en gedreven team dat merken verbindt met de juiste plekken, mensen en momenten. Van retail tot horeca en evenementen: wij denken mee, schakelen snel en zorgen dat merken zichtbaar worden waar het telt.
-  </p>
 
 </section>
+
+<!-- TEAM -->
 
 <section class="section">
 
-  <p class="label reveal">Ons team</p>
-
-  <h2 class="display reveal">
-    ONS<br>
-    <span style="color:var(--red)">TEAM.</span>
-  </h2>
-
-  <p class="body-text reveal">
-    Achter iedere samenwerking staat een team dat kansen ziet, relaties bouwt en merken vooruit helpt. Maak kennis met de mensen achter BINC International.
-  </p>
-
   <div class="team-grid">
+
+    <!-- CARD -->
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1400&auto=format&fit=crop" alt="Merlijn Stieger"/>
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1400&auto=format&fit=crop"/>
       </div>
 
       <div class="team-content">
@@ -614,7 +582,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1400&auto=format&fit=crop" alt="Jorrit Zwaanswijk"/>
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1400&auto=format&fit=crop"/>
       </div>
 
       <div class="team-content">
@@ -630,7 +598,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1400&auto=format&fit=crop" alt="Maud Moolenschot"/>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1400&auto=format&fit=crop"/>
       </div>
 
       <div class="team-content">
@@ -646,7 +614,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?q=80&w=1400&auto=format&fit=crop" alt="Tim van Helvoort"/>
+        <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?q=80&w=1400&auto=format&fit=crop"/>
       </div>
 
       <div class="team-content">
@@ -662,7 +630,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1400&auto=format&fit=crop" alt="Krijn van Lankveld"/>
+        <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1400&auto=format&fit=crop"/>
       </div>
 
       <div class="team-content">
@@ -678,7 +646,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop" alt="Sebastian Beekhuis"/>
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop"/>
       </div>
 
       <div class="team-content">
@@ -694,7 +662,7 @@
 
     <div class="team-card reveal">
       <div class="team-image">
-        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1400&auto=format&fit=crop" alt="Indy Witjes"/>
+        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1400&auto=format&fit=crop"/>
       </div>
 
       <div class="team-content">
@@ -709,7 +677,10 @@
     </div>
 
   </div>
+
 </section>
+
+<!-- CTA -->
 
 <section id="cta">
 
@@ -723,7 +694,7 @@
       <span class="stroke">TOGETHER?</span>
     </h2>
 
-    <p class="body-text" style="text-align:center;max-width:700px;">
+    <p class="body-text" style="text-align:center;">
       Van retail tot horeca en activaties. Het team van BINC International staat klaar om jouw merk fysiek te laten groeien.
     </p>
 
@@ -733,10 +704,13 @@
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
 
   <div>
-    <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+    <img class="ft-logo"
+    src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181"/>
   </div>
 
   <div class="ft-info">
@@ -761,6 +735,7 @@
 </footer>
 
 <script>
+
   const cur=document.getElementById('cur'),
   ring=document.getElementById('cur-ring');
 
@@ -800,6 +775,7 @@
 
   document.querySelectorAll('.reveal')
   .forEach(el=>revIO.observe(el));
+
 </script>
 
 </body>
