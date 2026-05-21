@@ -7,6 +7,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-YG0JGDRRM6');
 </script>
 <meta charset="UTF-8"/>
@@ -49,14 +50,29 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:5
 ::-webkit-scrollbar-track{background:#000}
 ::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
 
-/* ── LANG SWITCH ── */
+/* ── LANG SWITCH (header — mobile only) ── */
 .lang-switch{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-left:18px;flex-shrink:0}
 .lang-btn{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);background:transparent;border:none;padding:6px 11px;cursor:pointer;transition:.2s;line-height:1}
 .lang-btn.active{background:var(--red);color:#fff}
 .lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
 
-/* ── LANG FAB ── */
-.lang-fab{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;position:fixed;bottom:28px;right:28px;z-index:600;box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72)}
+/* ── LANG FAB (desktop — fixed bottom right) ── */
+.lang-fab{
+  display:flex;
+  align-items:center;
+  gap:0;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:4px;
+  overflow:hidden;
+  position:fixed;
+  bottom:28px;
+  right:28px;
+  z-index:600;
+  box-shadow:0 4px 24px rgba(0,0,0,.55);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  background:rgba(0,0,0,.72);
+}
 .lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
 
 /* NAV */
@@ -72,6 +88,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
 .nav-cta::after{display:none!important}
 .nav-cta:hover{background:var(--red2)!important;color:#fff!important}
+/* nav-right: on desktop hide lang-switch (it lives in FAB) */
 .nav-right{display:flex;align-items:center;gap:0}
 .nav-right .lang-switch{display:none}
 .nav-hamburger{display:none}
@@ -155,11 +172,11 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 
 /* STATS */
 #stats{background:#000;padding:105px 6vw 115px}
-.stats-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stats-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .stat-cell{min-height:260px;padding:54px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.048),rgba(255,255,255,.012)),rgba(255,255,255,.014);border:1px solid rgba(192,57,43,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 28px 80px rgba(0,0,0,.48)}
 .stat-cell::before{content:'';position:absolute;inset:1px;border-radius:15px;background:radial-gradient(circle at 50% 0%,rgba(192,57,43,.07),transparent 44%);pointer-events:none}
 .stat-cell::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
-.stat-n{position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(3rem,4.8vw,6.5rem);font-weight:800;letter-spacing:-.02em;line-height:.9;color:#fff}
+.stat-n{position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(4.1rem,5.7vw,7.6rem);font-weight:800;letter-spacing:-.02em;line-height:.9;color:#fff}
 .stat-n sup{font-size:.38em;color:var(--red);vertical-align:top;margin-left:2px;font-weight:700}
 .stat-l{position:relative;z-index:1;font-family:var(--font-ui);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:24px;line-height:1.45;max-width:260px}
 
@@ -273,10 +290,9 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .form-alert.error{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.45);color:#fc8181}
 
 /* FOOTER */
-footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 6vw 60px;display:grid;grid-template-columns:1.2fr 2fr;gap:60px;align-items:start}
+footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
 .ft-logo{width:235px;opacity:.98}
-.ft-tagline{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.18em;color:rgba(255,255,255,.28);line-height:1.7;max-width:260px}
 .ft-socials{display:flex;align-items:center;gap:22px}
 .ft-socials a{width:24px;height:24px;color:#fff;opacity:.72;transition:.2s;display:inline-flex;align-items:center;justify-content:center}
 .ft-socials a:hover{color:var(--red);opacity:1;transform:translateY(-2px)}
@@ -285,13 +301,10 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
 .ft-item p,.ft-item a{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
 .ft-h{font-family:var(--font-ui);font-size:.85rem!important;font-weight:800!important;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,1)!important;margin-bottom:12px!important}
 .ft-item a:hover{color:var(--red)}
-.ft-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(192,57,43,.18),transparent);margin:0 6vw}
-.ft-bar{background:#050505;border-top:1px solid rgba(255,255,255,.06);padding:28px 6vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
-.ft-copy{font-family:var(--font-ui);font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.3)}
-.ft-copy-center{font-family:var(--font-display);font-size:1.1rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:rgba(192,57,43,.55);text-align:center}
-.ft-copy-right{font-family:var(--font-ui);font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.3);text-align:right}
+.ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.05);padding:22px 6vw;display:flex;justify-content:space-between;align-items:center}
+.ft-copy{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 
-/* MAP */
+/* */
 .leaflet-container{background:#101010!important}
 .leaflet-control-attribution{display:none}
 .leaflet-control-zoom a{background:#0d0d0d!important;color:var(--red)!important;border:1px solid rgba(192,57,43,.42)!important}
@@ -315,6 +328,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
 @media(max-width:1000px){
   html,body{cursor:auto}
   #cur,#cur-ring{display:none}
+  /* On mobile: hide FAB, show lang-switch in nav-right */
   .lang-fab{display:none}
   .nav-right .lang-switch{display:flex}
   nav{height:70px;padding:0 5vw}
@@ -391,16 +405,18 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
   .ft-logo{width:min(200px,55vw);margin:0 auto}
   .ft-socials{justify-content:center}
   .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
-  .ft-bar{grid-template-columns:1fr;gap:10px;padding:22px 5vw;text-align:center}
-  .ft-copy-center{display:none}
-  .ft-copy-right{text-align:center}
-  .stats-wrap{grid-template-columns:repeat(2,1fr)}
+  .ft-bar{flex-direction:column;align-items:center;gap:8px;padding:18px 5vw;text-align:center}
   .lang-switch{margin-left:8px}
   .lang-btn{padding:5px 9px;font-size:.62rem}
 }
 
-@media(min-width:1001px){
-  .nav-links{margin-left:auto;margin-right:20px}
+  @media(min-width:1001px){
+
+  .nav-links{
+    margin-left:auto;
+    margin-right:20px; /* speel hiermee */
+  }
+
 }
 @media(max-width:420px){
   .hero-title{font-size:clamp(5rem,20vw,8rem)}
@@ -427,10 +443,8 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
 
 <!-- Mobile nav drawer -->
 <div class="mobile-nav-drawer" id="mobileDrawer">
-  <a href="retail.html" data-i18n="nav.retail">Retail</a>
   <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
   <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
-  <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
   <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
   <a href="#lead" class="drawer-cta" id="drawerCta" data-i18n="nav.cta">Samenwerken</a>
   <div class="drawer-lang">
@@ -455,14 +469,13 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
     <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
   </a>
   <div class="nav-links">
-    <a href="retail.html" data-i18n="nav.retail">Retail</a>
     <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
     <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
-    <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
     <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
     <a href="#lead" class="nav-cta" data-i18n="nav.cta">Samenwerken</a>
   </div>
   <div class="nav-right">
+    <!-- visible on mobile only (shown via media query) -->
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="nl">NL</button>
       <button class="lang-btn" data-lang="en">EN</button>
@@ -485,7 +498,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
   <div class="hero-content">
     <div class="hero-inner">
       <h1 class="hero-title" id="heroTitle">GROEI <span class="red">JE</span><br><span class="stroke">MERK</span></h1>
-      <p class="hero-sub" data-i18n="hero.sub">Wij ontzorgen de volledige B2B voor ambitieuze merken. Van eerste listing tot landelijke dekking.</p>
+      <p class="hero-sub" data-i18n="hero.sub">Wij ontzorgen de volledige B2B voor ambitieuze merken. Van eerste listing tot landelijk schaalniveau.</p>
       <div class="hero-btns">
         <a href="#lead" class="btn-red" data-i18n="hero.btn1">Start samenwerking</a>
         <a href="#approach" class="btn-outline" data-i18n="hero.btn2">Ontdek aanpak</a>
@@ -505,8 +518,8 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
         <p class="label" data-i18n="approach.label">Onze aanpak</p>
         <h2 class="display" id="approachTitle"><span class="approach-title-line" data-i18n="approach.title1">HOE GROEI JE</span><br><span class="approach-title-line" data-i18n="approach.title2">JE MERK?</span></h2>
       </div>
-      <p class="body-text" data-i18n="approach.body1">Retail is een spel van relaties, timing en strategie. In enkele jaren heeft BINC International een sterk netwerk opgebouwd binnen de grootste retailers, groothandels en supermarktketens van Nederland.</p>
-      <p class="body-text" data-i18n="approach.body2">Van foodservice tot sport, van drogisterij tot premium slijterijen: ons netwerk opent deuren waar anderen stoppen.</p>
+      <p class="body-text" data-i18n="approach.body1">Retail is een spel van relaties, timing en strategie. BINC International heeft in meer dan 10 jaar een dicht netwerk opgebouwd bij de grootste retailers, groothandels en supermarktketens van Nederland.</p>
+      <p class="body-text" data-i18n="approach.body2">Van foodservice tot sport, van drogisterij tot premium slijterijen: ons netwerk reikt verder dan je denkt.</p>
     </div>
     <div class="reveal d2">
       <div class="locator-panel">
@@ -530,20 +543,16 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
 <section id="stats">
   <div class="stats-wrap">
     <div class="stat-cell reveal">
-      <div class="stat-n" data-target="8"><span class="count">0</span><sup>+</sup></div>
-      <p class="stat-l" data-i18n="stats.retailers">Retailpartners</p>
+      <div class="stat-n" data-target="10"><span class="count">0</span><sup>+</sup></div>
+      <p class="stat-l" data-i18n="stats.years">Jaar ervaring in retail</p>
     </div>
     <div class="stat-cell reveal d1">
-      <div class="stat-n" data-target="4000"><span class="count">0</span><sup>+</sup></div>
+      <div class="stat-n" data-target="5500"><span class="count">0</span><sup>+</sup></div>
       <p class="stat-l" data-i18n="stats.stores">Winkels aangesloten</p>
     </div>
     <div class="stat-cell reveal d2">
       <div class="stat-n" data-target="99"><span class="count">0</span><sup>%</sup></div>
       <p class="stat-l" data-i18n="stats.coverage">Dekking over Nederland</p>
-    </div>
-    <div class="stat-cell reveal d3">
-      <div class="stat-n" data-target="10"><span class="count">0</span><sup>+</sup></div>
-      <p class="stat-l" data-i18n="stats.years">Jaar ervaring in retail</p>
     </div>
   </div>
 </section>
@@ -551,7 +560,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
 <!-- ══════════════════════════════ CLIENTS INTRO ══════════════════════════════ -->
 <div id="clients-intro" class="reveal">
   <div class="ci-wrap">
-    <p class="label" data-i18n="clients.label">Trusted By</p>
+    <p class="label" data-i18n="clients.label">Onze merken</p>
     <h2 class="display clients-title" data-i18n="clients.title">ONZE PARTNERS</h2>
     <div class="ci-ghost">4</div>
   </div>
@@ -572,7 +581,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
         <div class="product-panel product-left product-active">
           <div class="product-content">
             <span class="product-eyebrow">— Gold Dry</span>
-            <h2 class="product-title"><span data-i18n="gd.title.taste">TASTE.</span><br><span class="product-brand">GOLD DRY.</span></h2>
+            <h2 class="product-title">Smaak.<br><span class="product-brand">Gold Dry.</span></h2>
             <p class="product-text" data-i18n="gd.intro">BINC International verzorgt al meer dan 3 jaar de volledige B2B voor Gold Dry. Van strategie en buyer outreach tot fysieke locatiebezoeken, orderverwerking en accountmanagement.</p>
             <div class="score-pills">
               <div class="score-pill"><span>3+</span> <span data-i18n="gd.pill1">jaar partner</span></div>
@@ -583,28 +592,28 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
         </div>
         <div class="product-panel product-left product-kpi-panel" style="flex-direction:column;align-items:flex-start;padding-top:0">
           <div style="position:relative;z-index:30;width:min(880px,88vw)">
-            <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="gd.eyebrow2">✦ Groei met BINC</span>
-            <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="gd.kpi.title">Van eerste retailer<br>naar landelijk.</h2>
+            <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="gd.eyebrow2">✦ Groei met BINC · Gold Dry</span>
+            <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="gd.kpi.title">Van nul<br>tot landelijk.</h2>
             <div class="product-line"></div>
-            <p class="product-text" style="margin-bottom:0" data-i18n="gd.kpi.body">Van eerste retailer naar landelijke dekking in 10 maanden, gebouwd op sterke rotatie en bewezen schapperformance.</p>
+            <p class="product-text" style="margin-bottom:0" data-i18n="gd.kpi.body">Binnen 14 maanden van eerste listing naar landelijke dekking — met bewezen rotatie als fundament voor elke volgende stap.</p>
             <div class="product-kpis">
-              <div class="product-kpi"><div class="product-kpi-v">10</div><div class="product-kpi-ghost">10</div><div class="product-kpi-l" data-i18n="kpi.months.national">Maanden tot landelijk bereik</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">2.500</div><div class="product-kpi-ghost">2.5k</div><div class="product-kpi-l" data-i18n="kpi.points">Verkooppunten actief</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">14</div><div class="product-kpi-ghost">14</div><div class="product-kpi-l" data-i18n="kpi.months.national">Maanden tot landelijk bereik</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">1.800</div><div class="product-kpi-ghost">1.8k</div><div class="product-kpi-l" data-i18n="kpi.points">Verkooppunten actief</div></div>
               <div class="product-kpi"><div class="product-kpi-v">340%</div><div class="product-kpi-ghost">340</div><div class="product-kpi-l" data-i18n="kpi.growth">Omzetgroei jaar 1→2</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">8</div><div class="product-kpi-ghost">8</div><div class="product-kpi-l" data-i18n="kpi.chains">Retailketens actief</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">6</div><div class="product-kpi-ghost">6</div><div class="product-kpi-l" data-i18n="kpi.chains">Retailketens actief</div></div>
             </div>
           </div>
         </div>
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
-            <span class="results-eyebrow" data-i18n="gd.results.eyebrow">✦ Resultaten · 3 jaar Gold Dry</span>
+            <span class="results-eyebrow" data-i18n="gd.results.eyebrow">✦ Resultaten · 3 jaar Gold Dry × BINC</span>
             <h2 class="product-section-title results-title" style="margin-bottom:8px" data-i18n="gd.results.title">Gold Dry<br>in cijfers.</h2>
             <div class="metric-wall gold-wall">
               <div class="metric-cell"><strong>3+</strong><span data-i18n="metric.years.partner">Jaar actieve samenwerking</span></div>
-              <div class="metric-cell"><strong>2.500</strong><span data-i18n="metric.points.national">Verkooppunten landelijk</span></div>
+              <div class="metric-cell"><strong>1.800</strong><span data-i18n="metric.points.national">Verkooppunten landelijk</span></div>
               <div class="metric-cell"><strong>340%</strong><span data-i18n="metric.growth.y1y2">Omzetgroei jaar 1 naar 2</span></div>
-              <div class="metric-cell"><strong>8</strong><span data-i18n="metric.chains.live">Retailketens live</span></div>
-              <div class="metric-cell"><strong>10</strong><span data-i18n="metric.months.coverage">Maanden tot landelijke dekking</span></div>
+              <div class="metric-cell"><strong>6</strong><span data-i18n="metric.chains.live">Retailketens live</span></div>
+              <div class="metric-cell"><strong>14</strong><span data-i18n="metric.months.coverage">Maanden tot landelijke dekking</span></div>
               <div class="metric-cell"><strong>100%</strong><span data-i18n="metric.b2b.binc">B2B ontzorgd door BINC</span></div>
             </div>
           </div>
@@ -635,8 +644,8 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
       <div class="product-panels">
         <div class="product-panel product-right product-active">
           <div class="product-content">
-            <span class="product-eyebrow">— FeelSoGood</span>
-            <h2 class="product-title"><span data-i18n="fsg.title.taste">TASTE.</span><br><span class="product-brand">FEELSOGOOD.</span></h2>
+            <span class="product-eyebrow">— FeelSoGood · Blackberry Blueberry · 0,6L</span>
+            <h2 class="product-title">Lekker.<br><span class="product-brand" data-i18n="fsg.title.sub">Wij bouwen het.</span></h2>
             <p class="product-text" data-i18n="fsg.intro">BINC International is verantwoordelijk voor de volledige B2B-uitrol van FeelSoGood in Nederland. Van het eerste buyer gesprek tot de schappresentatie en repeat orders.</p>
             <div class="score-pills">
               <div class="score-pill"><span data-i18n="pill.full">Volledig</span> B2B <span data-i18n="pill.managed">beheer</span></div>
@@ -647,35 +656,35 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
         </div>
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
           <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
-            <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="fsg.eyebrow2">✦ Groei met BINC</span>
-            <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="fsg.kpi.title">Sneller opgeschaald<br>dan verwacht.</h2>
+            <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="fsg.eyebrow2">✦ Groei met BINC · FeelSoGood</span>
+            <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="fsg.kpi.title">Sneller<br>dan verwacht.</h2>
             <div class="product-line"></div>
-            <p class="product-text" style="margin-bottom:0" data-i18n="fsg.kpi.body">Sneller opgeschaald dan verwacht, dankzij directe retailvalidatie en sterke prestaties op de winkelvloer.</p>
+            <p class="product-text" style="margin-bottom:0" data-i18n="fsg.kpi.body">Binnen 9 maanden van eerste pitch tot landelijke uitrol — van testpunten naar volledige retailvalidatie naar nationale dekking.</p>
             <div class="product-kpis">
               <div class="product-kpi"><div class="product-kpi-v">9</div><div class="product-kpi-ghost">9</div><div class="product-kpi-l" data-i18n="kpi.months.rollout">Maanden tot landelijke uitrol</div></div>
               <div class="product-kpi"><div class="product-kpi-v">1.250</div><div class="product-kpi-ghost">1.2k</div><div class="product-kpi-l" data-i18n="kpi.points">Verkooppunten actief</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">10M+</div><div class="product-kpi-ghost">10M</div><div class="product-kpi-l" data-i18n="kpi.social.views">Social media views</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">250+</div><div class="product-kpi-ghost">250</div><div class="product-kpi-l" data-i18n="kpi.franchises">Franchisers aangesloten jaar 1</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">210%</div><div class="product-kpi-ghost">210</div><div class="product-kpi-l" data-i18n="kpi.growth.y1">Omzetgroei eerste jaar</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">62%</div><div class="product-kpi-ghost">62</div><div class="product-kpi-l" data-i18n="kpi.repeat">Repeat orders na pilot</div></div>
             </div>
           </div>
         </div>
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
-            <span class="results-eyebrow" data-i18n="fsg.results.eyebrow">✦ Resultaten · FeelSoGood</span>
+            <span class="results-eyebrow" data-i18n="fsg.results.eyebrow">✦ Resultaten · FeelSoGood × BINC</span>
             <h2 class="product-section-title results-title" style="margin-bottom:8px" data-i18n="fsg.results.title">FeelSoGood<br>in cijfers.</h2>
             <div class="metric-wall fsg-wall">
-              <div class="metric-cell"><strong>10M+</strong><span data-i18n="kpi.social.views">Social media views</span></div>
-              <div class="metric-cell"><strong>1M+</strong><span data-i18n="metric.shoppers">Winkelaars bereikt</span></div>
-              <div class="metric-cell"><strong>250+</strong><span data-i18n="kpi.franchises">Franchisers aangesloten jaar 1</span></div>
-              <div class="metric-cell"><strong>8</strong><span data-i18n="metric.channels.live">Retailkanalen live</span></div>
-              <div class="metric-cell"><strong>1.000</strong><span data-i18n="metric.store.visits">Winkelbezoeken uitgevoerd</span></div>
-              <div class="metric-cell"><strong>10K+</strong><span data-i18n="metric.trays.sold">Trays verkocht eerste jaar</span></div>
+              <div class="metric-cell"><strong>9</strong><span data-i18n="kpi.months.rollout">Maanden tot landelijke uitrol</span></div>
+              <div class="metric-cell"><strong>1.250</strong><span data-i18n="kpi.points">Verkooppunten actief</span></div>
+              <div class="metric-cell"><strong>210%</strong><span data-i18n="kpi.growth.y1">Omzetgroei eerste jaar</span></div>
+              <div class="metric-cell"><strong>4</strong><span data-i18n="metric.channels.live">Retailkanalen live</span></div>
+              <div class="metric-cell"><strong>62%</strong><span data-i18n="kpi.repeat">Repeat orders na pilot</span></div>
+              <div class="metric-cell"><strong>18K</strong><span data-i18n="metric.units.first">Units eerste retailronde</span></div>
             </div>
           </div>
         </div>
         <div class="product-panel product-center">
           <div class="product-content">
-            <p class="product-statement" data-i18n="fsg.statement">Jouw idee.<br><em>Onze uitvoering.</em><br>Eén krachtig resultaat.</p>
+            <p class="product-statement" data-i18n="fsg.statement">Niet alleen<br><em>mooi blauw.</em><br>Gebouwd voor rotatie.</p>
           </div>
         </div>
       </div>
@@ -699,8 +708,8 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
       <div class="product-panels">
         <div class="product-panel product-left product-active">
           <div class="product-content">
-            <span class="product-eyebrow">— BeatBox</span>
-            <h2 class="product-title"><span data-i18n="bb.title.taste">TASTE.</span><br><span class="product-brand">BEATBOX.</span></h2>
+            <span class="product-eyebrow">— BeatBox Benelux</span>
+            <h2 class="product-title">Feest in<br><span class="product-brand">een doos.</span></h2>
             <p class="product-text" data-i18n="bb.intro">BINC International verzorgt de volledige B2B voor BeatBox in Nederland. Van de eerste retailpitch tot leveringen, locatiebezoeken en doorlopend accountmanagement.</p>
             <div class="score-pills">
               <div class="score-pill"><span>330ml</span> carton</div>
@@ -711,35 +720,35 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
         </div>
         <div class="product-panel product-left product-kpi-panel" style="flex-direction:column;align-items:flex-start;padding-top:0">
           <div style="position:relative;z-index:30;width:min(880px,88vw)">
-            <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="bb.eyebrow2">✦ Groei met BINC</span>
-            <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="bb.kpi.title">Slim groeien.<br>Snel bewezen.</h2>
+            <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="bb.eyebrow2">✦ Groei met BINC · BeatBox</span>
+            <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="bb.kpi.title">Slim<br>opschalen.</h2>
             <div class="product-line"></div>
-            <p class="product-text" style="margin-bottom:0" data-i18n="bb.kpi.body">Sinds de start van onze samenwerking in 2026 groeide BeatBox uit van een gerichte retailintroductie naar meer dan 200 actieve verkooppunten in Nederland. Door slim te starten op high-traffic locaties ontstond snel retailvalidatie en schaalbare groei.</p>
+            <p class="product-text" style="margin-bottom:0" data-i18n="bb.kpi.body">Van 90 testpunten naar bijna 1.000 actieve verkooppunten in 11 maanden — gefaseerd via high-traffic locaties naar bewezen retailvalidatie.</p>
             <div class="product-kpis">
-              <div class="product-kpi"><div class="product-kpi-v">2026</div><div class="product-kpi-ghost">26</div><div class="product-kpi-l" data-i18n="kpi.start.year">Start retailuitrol Nederland</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">200+</div><div class="product-kpi-ghost">200</div><div class="product-kpi-l" data-i18n="kpi.points.active">Actieve verkooppunten aangesloten</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">High-<br>traffic</div><div class="product-kpi-ghost">HT</div><div class="product-kpi-l" data-i18n="kpi.strategic">Op strategische locaties</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">✓</div><div class="product-kpi-ghost">✓</div><div class="product-kpi-l" data-i18n="kpi.validated">Bewezen rotatie en marktvraag</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">11</div><div class="product-kpi-ghost">11</div><div class="product-kpi-l" data-i18n="kpi.months.rollout">Maanden tot landelijke uitrol</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">980</div><div class="product-kpi-ghost">980</div><div class="product-kpi-l" data-i18n="kpi.points">Verkooppunten actief</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">185%</div><div class="product-kpi-ghost">185</div><div class="product-kpi-l" data-i18n="kpi.growth.y1">Omzetgroei eerste jaar</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">57%</div><div class="product-kpi-ghost">57</div><div class="product-kpi-l" data-i18n="kpi.repeat">Repeat orders na pilot</div></div>
             </div>
           </div>
         </div>
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
-            <span class="results-eyebrow" data-i18n="bb.results.eyebrow">✦ Resultaten · BeatBox</span>
+            <span class="results-eyebrow" data-i18n="bb.results.eyebrow">✦ Resultaten · BeatBox × BINC</span>
             <h2 class="product-section-title results-title" style="margin-bottom:8px" data-i18n="bb.results.title">BeatBox<br>in cijfers.</h2>
             <div class="metric-wall bb-wall">
-              <div class="metric-cell"><strong>200+</strong><span data-i18n="kpi.points.active">Actieve verkooppunten</span></div>
-              <div class="metric-cell"><strong>2026</strong><span data-i18n="kpi.start.year">Start retailuitrol Nederland</span></div>
+              <div class="metric-cell"><strong>11</strong><span data-i18n="kpi.months.rollout">Maanden tot landelijke uitrol</span></div>
+              <div class="metric-cell"><strong>980</strong><span data-i18n="kpi.points">Verkooppunten actief</span></div>
+              <div class="metric-cell"><strong>185%</strong><span data-i18n="kpi.growth.y1">Omzetgroei eerste jaar</span></div>
               <div class="metric-cell"><strong>3</strong><span data-i18n="metric.channels.live">Retailkanalen live</span></div>
-              <div class="metric-cell"><strong>Multi-<br>channel</strong><span data-i18n="metric.bb.multichannel">Actief binnen retail, horeca en specialty stores</span></div>
-              <div class="metric-cell"><strong>Premium</strong><span data-i18n="metric.bb.placement">Geplaatst bij retailers met hoge merkzichtbaarheid</span></div>
-              <div class="metric-cell"><strong>✓</strong><span data-i18n="kpi.validated">Bewezen rotatie en sterke marktvraag</span></div>
+              <div class="metric-cell"><strong>57%</strong><span data-i18n="kpi.repeat">Repeat orders na pilot</span></div>
+              <div class="metric-cell"><strong>14K</strong><span data-i18n="metric.units.first">Units eerste retailronde</span></div>
             </div>
           </div>
         </div>
         <div class="product-panel product-center">
           <div class="product-content">
-            <p class="product-statement" data-i18n="bb.statement">Jouw merk.<br><em>Onze passie.</em><br>Eén indruk die blijft.</p>
+            <p class="product-statement" data-i18n="bb.statement">Niet zomaar<br><em>een drankje.</em><br>Wij maken het groot.</p>
           </div>
         </div>
       </div>
@@ -764,40 +773,40 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
         <div class="product-panel product-right product-active">
           <div class="product-content">
             <span class="product-eyebrow">— Clean Nutrition · Golden Bar · Salty Peanut · 50g</span>
-            <h2 class="product-title"><span data-i18n="cn.title.taste">TASTE.</span><br><span class="product-brand">CLEAN NUTRITION.</span></h2>
-            <p class="product-text" data-i18n="cn.intro">Van sportretail tot supermarkt: BINC International bouwt actief aan de distributie en groei van Clean Nutrition.</p>
+            <h2 class="product-title">Pure kracht.<br><span class="product-brand" data-i18n="cn.title.sub">Wij openen deuren.</span></h2>
+            <p class="product-text" data-i18n="cn.intro">BINC International beheert de volledige B2B voor Clean Nutrition. Van sportretail tot drogisterij en supermarkt — wij bouwen de distributiestrategie en begeleiden elke fase van groei.</p>
             <div class="score-pills">
-              <div class="score-pill"><span data-i18n="cn.assortment">Uitgebreid</span> assortiment</div>
+              <div class="score-pill"><span>16g</span> <span data-i18n="cn.protein">proteïne</span></div>
               <div class="score-pill"><span data-i18n="pill.full">Volledig</span> B2B <span data-i18n="pill.managed">beheer</span></div>
-              <div class="score-pill"><span data-i18n="cn.built.retail">Gebouwd</span> voor retail</div>
+              <div class="score-pill"><span>Multi</span> <span data-i18n="cn.channel">kanaal</span></div>
             </div>
           </div>
         </div>
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
           <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
-            <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="cn.eyebrow2">✦ Groei met BINC</span>
-            <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="cn.kpi.title">Slim gebouwd<br>op performance.</h2>
+            <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="cn.eyebrow2">✦ Groei met BINC · Clean Nutrition</span>
+            <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="cn.kpi.title">Marge &amp;<br>rotatie.</h2>
             <div class="product-line"></div>
-            <p class="product-text" style="margin-bottom:0" data-i18n="cn.kpi.body">Sinds 2024 ondersteunt BINC International de volledige retailgroei van Clean Nutrition binnen Nederland. Vanuit een eerste retailpartner groeide het merk door naar honderden aangesloten filialen verspreid over meerdere retailkanalen.</p>
+            <p class="product-text" style="margin-bottom:0" data-i18n="cn.kpi.body">In 10 maanden van eerste sportpunten naar meer dan 1.100 actieve verkooppunten — buyers zagen direct het potentieel van de Golden Bar.</p>
             <div class="product-kpis">
-              <div class="product-kpi"><div class="product-kpi-v">2024</div><div class="product-kpi-ghost">24</div><div class="product-kpi-l" data-i18n="cn.start.year">Start samenwerking Nederland</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">750+</div><div class="product-kpi-ghost">750</div><div class="product-kpi-l" data-i18n="cn.branches">Filialen aangesloten</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">Sport<br>retail</div><div class="product-kpi-ghost">SP</div><div class="product-kpi-l" data-i18n="cn.sport.position">Sterke positie binnen performance nutrition</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">↑</div><div class="product-kpi-ghost">↑</div><div class="product-kpi-l" data-i18n="cn.growth.ongoing">Doorlopende uitbreiding retailkanalen</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">10</div><div class="product-kpi-ghost">10</div><div class="product-kpi-l" data-i18n="kpi.months.rollout">Maanden tot landelijke uitrol</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">1.100</div><div class="product-kpi-ghost">1.1k</div><div class="product-kpi-l" data-i18n="kpi.points">Verkooppunten actief</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">230%</div><div class="product-kpi-ghost">230</div><div class="product-kpi-l" data-i18n="kpi.growth.y1">Omzetgroei eerste jaar</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">66%</div><div class="product-kpi-ghost">66</div><div class="product-kpi-l" data-i18n="kpi.repeat">Repeat orders na pilot</div></div>
             </div>
           </div>
         </div>
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
-            <span class="results-eyebrow" data-i18n="cn.results.eyebrow">✦ Resultaten · Clean Nutrition</span>
+            <span class="results-eyebrow" data-i18n="cn.results.eyebrow">✦ Resultaten · Clean Nutrition × BINC</span>
             <h2 class="product-section-title results-title" style="margin-bottom:8px" data-i18n="cn.results.title">Golden Bar<br>in cijfers.</h2>
             <div class="metric-wall cn-wall">
-              <div class="metric-cell"><strong>2024</strong><span data-i18n="cn.start.year">Start samenwerking Nederland</span></div>
-              <div class="metric-cell"><strong>750+</strong><span data-i18n="cn.branches">Filialen aangesloten</span></div>
-              <div class="metric-cell"><strong>2</strong><span data-i18n="cn.retail.partners">Retailpartners</span></div>
-              <div class="metric-cell"><strong>Sport<br>retail</strong><span data-i18n="cn.sport.position">Sterke positie binnen performance nutrition</span></div>
-              <div class="metric-cell"><strong>Repeat</strong><span data-i18n="cn.repeat.orders">Consistente vraag vanuit retailers</span></div>
-              <div class="metric-cell"><strong>↑</strong><span data-i18n="cn.growth.ongoing">Doorlopende uitbreiding binnen retailkanalen</span></div>
+              <div class="metric-cell"><strong>10</strong><span data-i18n="kpi.months.rollout">Maanden tot landelijke uitrol</span></div>
+              <div class="metric-cell"><strong>1.100</strong><span data-i18n="kpi.points">Verkooppunten actief</span></div>
+              <div class="metric-cell"><strong>230%</strong><span data-i18n="kpi.growth.y1">Omzetgroei eerste jaar</span></div>
+              <div class="metric-cell"><strong>4</strong><span data-i18n="metric.channels.live">Retailkanalen live</span></div>
+              <div class="metric-cell"><strong>66%</strong><span data-i18n="kpi.repeat">Repeat orders na pilot</span></div>
+              <div class="metric-cell"><strong>22K</strong><span data-i18n="metric.units.first">Units eerste retailronde</span></div>
             </div>
           </div>
         </div>
@@ -872,7 +881,6 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
 <footer>
   <div class="ft-brand reveal">
     <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
-    <p class="ft-tagline" data-i18n="footer.tagline">Van eerste listing tot landelijke dekking. Wij ontzorgen de volledige B2B voor ambitieuze merken.</p>
     <div class="ft-socials">
       <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
@@ -902,9 +910,8 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
 </footer>
 
 <div class="ft-bar">
-  <span class="ft-copy">© 2025 BINC International B.V. &nbsp;·&nbsp; KVK: 98970887</span>
-  <span class="ft-copy-center">BINC International</span>
-  <span class="ft-copy-right"><span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+  <span class="ft-copy">© 2025 BINC International B.V. — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+  <span class="ft-copy">KVK: 98970887</span>
 </div>
 
 <script>
@@ -914,18 +921,16 @@ footer{background:#0a0a0a;border-top:1px solid rgba(192,57,43,.22);padding:90px 
 const TRANSLATIONS = {
   nl: {
     /* NAV */
-    'nav.retail':           'Retail',
     'nav.horeca':           'Horeca',
     'nav.events':           'Evenementen',
-    'nav.team':             'Ons Team',
     'nav.jobs':             'Vacatures',
     'nav.cta':              'Samenwerken',
     /* HERO */
-    'hero.sub':             'Wij ontzorgen de volledige B2B voor ambitieuze merken. Van eerste listing tot landelijke dekking.',
+    'hero.sub':             'Wij ontzorgen de volledige B2B voor ambitieuze merken. Van eerste listing tot landelijk schaalniveau.',
     'hero.btn1':            'Start samenwerking',
     'hero.btn2':            'Ontdek aanpak',
     /* TAPE */
-    'tape.words':           'Groei Je Merk|B2B Verkoop|Accountmanagement|Retail Listings|Landelijk Netwerk|Strategie & Groei',
+    'tape.words':           'Groei Je Merk|B2B Verkoop|Accountmanagement|Retail Listings|Landelijk Netwerk|Strategie & Groei|BINC International',
     /* APPROACH */
     'approach.label':       'Onze aanpak',
     'approach.title1':      'HOE GROEI JE',
@@ -936,15 +941,14 @@ const TRANSLATIONS = {
     'map.tap':              'Tik om de kaart te activeren',
     'map.pop.label':        'aangesloten locaties',
     /* APPROACH BODY */
-    'approach.body1':       'Retail is een spel van relaties, timing en strategie. In enkele jaren heeft BINC International een sterk netwerk opgebouwd binnen de grootste retailers, groothandels en supermarktketens van Nederland.',
-    'approach.body2':       'Van foodservice tot sport, van drogisterij tot premium slijterijen: ons netwerk opent deuren waar anderen stoppen.',
+    'approach.body1':       'Retail is een spel van relaties, timing en strategie. BINC International heeft in meer dan 10 jaar een dicht netwerk opgebouwd bij de grootste retailers, groothandels en supermarktketens van Nederland.',
+    'approach.body2':       'Van foodservice tot sport, van drogisterij tot premium slijterijen: ons netwerk reikt verder dan je denkt.',
     /* STATS */
-    'stats.retailers':      'Retailpartners',
+    'stats.years':          'Jaar ervaring in retail',
     'stats.stores':         'Winkels aangesloten',
     'stats.coverage':       'Dekking over Nederland',
-    'stats.years':          'Jaar ervaring in retail',
     /* CLIENTS */
-    'clients.label':        'Trusted By',
+    'clients.label':        'Onze PARTNES',
     'clients.title':        'ONZE PARTNERS',
     /* SHARED PILLS */
     'pill.full':            'Volledig',
@@ -961,12 +965,6 @@ const TRANSLATIONS = {
     'kpi.growth.y1':        'Omzetgroei eerste jaar',
     'kpi.chains':           'Retailketens actief',
     'kpi.repeat':           'Repeat orders na pilot',
-    'kpi.social.views':     'Social media views',
-    'kpi.franchises':       'Franchisers aangesloten jaar 1',
-    'kpi.start.year':       'Start retailuitrol Nederland',
-    'kpi.points.active':    'Actieve verkooppunten aangesloten',
-    'kpi.strategic':        'Op strategische locaties',
-    'kpi.validated':        'Bewezen rotatie en marktvraag',
     /* SHARED METRIC LABELS */
     'metric.years.partner': 'Jaar actieve samenwerking',
     'metric.points.national':'Verkooppunten landelijk',
@@ -976,54 +974,41 @@ const TRANSLATIONS = {
     'metric.b2b.binc':      'B2B ontzorgd door BINC',
     'metric.channels.live': 'Retailkanalen live',
     'metric.units.first':   'Units eerste retailronde',
-    'metric.shoppers':      'Winkelaars bereikt',
-    'metric.store.visits':  'Winkelbezoeken uitgevoerd',
-    'metric.trays.sold':    'Trays verkocht eerste jaar',
-    'metric.bb.multichannel':'Actief binnen retail, horeca en specialty stores',
-    'metric.bb.placement':  'Geplaatst bij retailers met hoge merkzichtbaarheid',
     /* GOLD DRY */
-    'gd.title.taste':       'TASTE.',
     'gd.intro':             'BINC International verzorgt al meer dan 3 jaar de volledige B2B voor Gold Dry. Van strategie en buyer outreach tot fysieke locatiebezoeken, orderverwerking en accountmanagement.',
     'gd.pill1':             'jaar partner',
-    'gd.eyebrow2':          '✦ Groei met BINC',
-    'gd.kpi.title':         'Van eerste retailer\nnaar landelijk.',
-    'gd.kpi.body':          'Van eerste retailer naar landelijke dekking in 10 maanden, gebouwd op sterke rotatie en bewezen schapperformance.',
-    'gd.results.eyebrow':   '✦ Resultaten · 3 jaar Gold Dry',
+    'gd.eyebrow2':          '✦ Groei met BINC · Gold Dry',
+    'gd.kpi.title':         'Van nul\ntot landelijk.',
+    'gd.kpi.body':          'Binnen 14 maanden van eerste listing naar landelijke dekking — met bewezen rotatie als fundament voor elke volgende stap.',
+    'gd.results.eyebrow':   '✦ Resultaten · 3 jaar Gold Dry × BINC',
     'gd.results.title':     'Gold Dry\nin cijfers.',
     'gd.statement':         'Jouw merk.\nOnze handen.\nEén resultaat.',
     /* FEELSOGOOD */
-    'fsg.title.taste':      'TASTE.',
+    'fsg.title.sub':        'Wij bouwen het.',
     'fsg.intro':            'BINC International is verantwoordelijk voor de volledige B2B-uitrol van FeelSoGood in Nederland. Van het eerste buyer gesprek tot de schappresentatie en repeat orders.',
-    'fsg.eyebrow2':         '✦ Groei met BINC',
-    'fsg.kpi.title':        'Sneller opgeschaald\ndan verwacht.',
-    'fsg.kpi.body':         'Sneller opgeschaald dan verwacht, dankzij directe retailvalidatie en sterke prestaties op de winkelvloer.',
-    'fsg.results.eyebrow':  '✦ Resultaten · FeelSoGood',
+    'fsg.eyebrow2':         '✦ Groei met BINC · FeelSoGood',
+    'fsg.kpi.title':        'Sneller\ndan verwacht.',
+    'fsg.kpi.body':         'Binnen 9 maanden van eerste pitch tot landelijke uitrol — van testpunten naar volledige retailvalidatie naar nationale dekking.',
+    'fsg.results.eyebrow':  '✦ Resultaten · FeelSoGood × BINC',
     'fsg.results.title':    'FeelSoGood\nin cijfers.',
-    'fsg.statement':        'Jouw idee.\nOnze uitvoering.\nEén krachtig resultaat.',
+    'fsg.statement':        'Niet alleen\nmooi blauw.\nGebouwd voor rotatie.',
     /* BEATBOX */
-    'bb.title.taste':       'TASTE.',
     'bb.intro':             'BINC International verzorgt de volledige B2B voor BeatBox in Nederland. Van de eerste retailpitch tot leveringen, locatiebezoeken en doorlopend accountmanagement.',
-    'bb.eyebrow2':          '✦ Groei met BINC',
-    'bb.kpi.title':         'Slim groeien.\nSnel bewezen.',
-    'bb.kpi.body':          'Sinds de start van onze samenwerking in 2026 groeide BeatBox uit van een gerichte retailintroductie naar meer dan 200 actieve verkooppunten in Nederland. Door slim te starten op high-traffic locaties ontstond snel retailvalidatie en schaalbare groei.',
-    'bb.results.eyebrow':   '✦ Resultaten · BeatBox',
+    'bb.eyebrow2':          '✦ Groei met BINC · BeatBox',
+    'bb.kpi.title':         'Slim\nopschalen.',
+    'bb.kpi.body':          'Van 90 testpunten naar bijna 1.000 actieve verkooppunten in 11 maanden — gefaseerd via high-traffic locaties naar bewezen retailvalidatie.',
+    'bb.results.eyebrow':   '✦ Resultaten · BeatBox × BINC',
     'bb.results.title':     'BeatBox\nin cijfers.',
-    'bb.statement':         'Jouw merk.\nOnze passie.\nEén indruk die blijft.',
+    'bb.statement':         'Niet zomaar\neen drankje.\nWij maken het groot.',
     /* CLEAN NUTRITION */
-    'cn.title.taste':       'TASTE.',
-    'cn.intro':             'Van sportretail tot supermarkt: BINC International bouwt actief aan de distributie en groei van Clean Nutrition.',
-    'cn.assortment':        'Uitgebreid',
-    'cn.built.retail':      'Gebouwd',
-    'cn.eyebrow2':          '✦ Groei met BINC',
-    'cn.kpi.title':         'Slim gebouwd\nop performance.',
-    'cn.kpi.body':          'Sinds 2024 ondersteunt BINC International de volledige retailgroei van Clean Nutrition binnen Nederland. Vanuit een eerste retailpartner groeide het merk door naar honderden aangesloten filialen verspreid over meerdere retailkanalen.',
-    'cn.start.year':        'Start samenwerking Nederland',
-    'cn.branches':          'Filialen aangesloten',
-    'cn.sport.position':    'Sterke positie binnen performance nutrition',
-    'cn.growth.ongoing':    'Doorlopende uitbreiding retailkanalen',
-    'cn.retail.partners':   'Retailpartners',
-    'cn.repeat.orders':     'Consistente vraag vanuit retailers',
-    'cn.results.eyebrow':   '✦ Resultaten · Clean Nutrition',
+    'cn.title.sub':         'Wij openen deuren.',
+    'cn.intro':             'BINC International beheert de volledige B2B voor Clean Nutrition. Van sportretail tot drogisterij en supermarkt — wij bouwen de distributiestrategie en begeleiden elke fase van groei.',
+    'cn.protein':           'proteïne',
+    'cn.channel':           'kanaal',
+    'cn.eyebrow2':          '✦ Groei met BINC · Clean Nutrition',
+    'cn.kpi.title':         'Marge &\nrotatie.',
+    'cn.kpi.body':          'In 10 maanden van eerste sportpunten naar meer dan 1.100 actieve verkooppunten — buyers zagen direct het potentieel van de Golden Bar.',
+    'cn.results.eyebrow':   '✦ Resultaten · Clean Nutrition × BINC',
     'cn.results.title':     'Golden Bar\nin cijfers.',
     'cn.statement':         'Niet gewoon\neen reep.\nWij maken het schaalbaar.',
     /* LEAD */
@@ -1056,7 +1041,6 @@ const TRANSLATIONS = {
     'form.error.required':  '✕  Vul minimaal je voornaam, achternaam en e-mailadres in.',
     'form.error.generic':   '✕  Er is iets misgegaan. Probeer het opnieuw of mail naar info@bincinternational.nl',
     /* FOOTER */
-    'footer.tagline':       'Van eerste listing tot landelijke dekking. Wij ontzorgen de volledige B2B voor ambitieuze merken.',
     'footer.address.label': 'BINC adres',
     'footer.email.label':   'E-mailadres',
     'footer.phone.label':   'Telefoonnummer',
@@ -1065,18 +1049,16 @@ const TRANSLATIONS = {
 
   en: {
     /* NAV */
-    'nav.retail':           'Retail',
     'nav.horeca':           'Horeca',
     'nav.events':           'Events',
-    'nav.team':             'Our Team',
     'nav.jobs':             'Careers',
     'nav.cta':              'Work With Us',
     /* HERO */
-    'hero.sub':             'We handle the full B2B for ambitious brands. From first listing to national coverage.',
+    'hero.sub':             'We handle the full B2B for ambitious brands. From first listing to national scale.',
     'hero.btn1':            'Start partnership',
     'hero.btn2':            'Discover our approach',
     /* TAPE */
-    'tape.words':           'Grow Your Brand|B2B Sales|Account Management|Retail Listings|National Network|Strategy & Growth',
+    'tape.words':           'Grow Your Brand|B2B Sales|Account Management|Retail Listings|National Network|Strategy & Growth|BINC International',
     /* APPROACH */
     'approach.label':       'Our approach',
     'approach.title1':      'HOW TO GROW',
@@ -1087,15 +1069,14 @@ const TRANSLATIONS = {
     'map.tap':              'Tap to activate the map',
     'map.pop.label':        'connected locations',
     /* APPROACH BODY */
-    'approach.body1':       'Retail is a game of relationships, timing and strategy. In just a few years, BINC International has built a strong network within the largest retailers, wholesalers and supermarket chains in the Netherlands.',
-    'approach.body2':       'From foodservice to sports, from pharmacy to premium liquor stores: our network opens doors where others stop.',
+    'approach.body1':       'Retail is a game of relationships, timing and strategy. Over the past 10+ years, BINC International has built a dense network with the largest retailers, wholesalers and supermarket chains in the Netherlands.',
+    'approach.body2':       'From foodservice to sports, from pharmacy to premium liquor stores: our network reaches further than you think.',
     /* STATS */
-    'stats.retailers':      'Retail partners',
+    'stats.years':          'Years of retail experience',
     'stats.stores':         'Stores connected',
     'stats.coverage':       'Coverage across the Netherlands',
-    'stats.years':          'Years of retail experience',
     /* CLIENTS */
-    'clients.label':        'Trusted By',
+    'clients.label':        'Our brands',
     'clients.title':        'OUR CLIENTS',
     /* SHARED PILLS */
     'pill.full':            'Full',
@@ -1112,12 +1093,6 @@ const TRANSLATIONS = {
     'kpi.growth.y1':        'Revenue growth first year',
     'kpi.chains':           'Retail chains active',
     'kpi.repeat':           'Repeat orders after pilot',
-    'kpi.social.views':     'Social media views',
-    'kpi.franchises':       'Franchisees onboarded year 1',
-    'kpi.start.year':       'Start retail rollout Netherlands',
-    'kpi.points.active':    'Active sales points onboarded',
-    'kpi.strategic':        'At strategic high-traffic locations',
-    'kpi.validated':        'Proven rotation and market demand',
     /* SHARED METRIC LABELS */
     'metric.years.partner': 'Years active partnership',
     'metric.points.national':'Sales points nationwide',
@@ -1127,54 +1102,41 @@ const TRANSLATIONS = {
     'metric.b2b.binc':      'B2B fully handled by BINC',
     'metric.channels.live': 'Retail channels live',
     'metric.units.first':   'Units in first retail round',
-    'metric.shoppers':      'Shoppers reached',
-    'metric.store.visits':  'Store visits completed',
-    'metric.trays.sold':    'Trays sold in first year',
-    'metric.bb.multichannel':'Active across retail, horeca and specialty stores',
-    'metric.bb.placement':  'Placed at retailers with high brand visibility',
     /* GOLD DRY */
-    'gd.title.taste':       'TASTE.',
     'gd.intro':             'BINC International has been handling the complete B2B for Gold Dry for over 3 years. From strategy and buyer outreach to in-store visits, order processing and account management.',
     'gd.pill1':             'year partner',
-    'gd.eyebrow2':          '✦ Growth with BINC',
-    'gd.kpi.title':         'From first retailer\nto national.',
-    'gd.kpi.body':          'From first retailer to national coverage in 10 months, built on strong rotation and proven shelf performance.',
-    'gd.results.eyebrow':   '✦ Results · 3 years Gold Dry',
+    'gd.eyebrow2':          '✦ Growth with BINC · Gold Dry',
+    'gd.kpi.title':         'From zero\nto national.',
+    'gd.kpi.body':          'From first listing to national coverage in 14 months — with proven shelf rotation as the foundation for every next step.',
+    'gd.results.eyebrow':   '✦ Results · 3 years Gold Dry × BINC',
     'gd.results.title':     'Gold Dry\nby the numbers.',
     'gd.statement':         'Your brand.\nOur hands.\nOne result.',
     /* FEELSOGOOD */
-    'fsg.title.taste':      'TASTE.',
+    'fsg.title.sub':        'We build it.',
     'fsg.intro':            'BINC International is responsible for the full B2B rollout of FeelSoGood in the Netherlands. From the first buyer meeting to shelf presentation and repeat orders.',
-    'fsg.eyebrow2':         '✦ Growth with BINC',
-    'fsg.kpi.title':        'Scaled faster\nthan expected.',
-    'fsg.kpi.body':         'Scaled faster than expected, thanks to immediate retail validation and strong in-store performance.',
-    'fsg.results.eyebrow':  '✦ Results · FeelSoGood',
+    'fsg.eyebrow2':         '✦ Growth with BINC · FeelSoGood',
+    'fsg.kpi.title':        'Faster\nthan expected.',
+    'fsg.kpi.body':         'From first pitch to national rollout in 9 months — from test points to full retail validation to national coverage.',
+    'fsg.results.eyebrow':  '✦ Results · FeelSoGood × BINC',
     'fsg.results.title':    'FeelSoGood\nby the numbers.',
-    'fsg.statement':        'Your idea.\nOur execution.\nOne powerful result.',
+    'fsg.statement':        'Not just\nbeautiful blue.\nBuilt for rotation.',
     /* BEATBOX */
-    'bb.title.taste':       'TASTE.',
     'bb.intro':             'BINC International handles the complete B2B for BeatBox in the Netherlands. From the first retail pitch to deliveries, location visits and ongoing account management.',
-    'bb.eyebrow2':          '✦ Growth with BINC',
-    'bb.kpi.title':         'Smart growth.\nFast proof.',
-    'bb.kpi.body':          'Since the start of our partnership in 2026, BeatBox has grown from a targeted retail introduction to over 200 active sales points across the Netherlands. By starting smart at high-traffic locations, retail validation was achieved quickly and growth became scalable.',
-    'bb.results.eyebrow':   '✦ Results · BeatBox',
+    'bb.eyebrow2':          '✦ Growth with BINC · BeatBox',
+    'bb.kpi.title':         'Smart\nscaling.',
+    'bb.kpi.body':          'From 90 test points to nearly 1,000 active sales points in 11 months — phased through high-traffic locations to proven retail validation.',
+    'bb.results.eyebrow':   '✦ Results · BeatBox × BINC',
     'bb.results.title':     'BeatBox\nby the numbers.',
-    'bb.statement':         'Your brand.\nOur passion.\nOne lasting impression.',
+    'bb.statement':         'Not just\na drink.\nWe make it big.',
     /* CLEAN NUTRITION */
-    'cn.title.taste':       'TASTE.',
-    'cn.intro':             'From sports retail to supermarket: BINC International actively builds the distribution and growth of Clean Nutrition.',
-    'cn.assortment':        'Extended',
-    'cn.built.retail':      'Built',
-    'cn.eyebrow2':          '✦ Growth with BINC',
-    'cn.kpi.title':         'Built smart\nfor performance.',
-    'cn.kpi.body':          'Since 2024, BINC International has supported the full retail growth of Clean Nutrition within the Netherlands. Starting from a single retail partner, the brand expanded to hundreds of connected stores across multiple retail channels.',
-    'cn.start.year':        'Start partnership Netherlands',
-    'cn.branches':          'Stores connected',
-    'cn.sport.position':    'Strong position within performance nutrition',
-    'cn.growth.ongoing':    'Ongoing expansion across retail channels',
-    'cn.retail.partners':   'Retail partners',
-    'cn.repeat.orders':     'Consistent demand from retailers',
-    'cn.results.eyebrow':   '✦ Results · Clean Nutrition',
+    'cn.title.sub':         'We open doors.',
+    'cn.intro':             'BINC International manages the full B2B for Clean Nutrition. From sports retail to pharmacy and supermarket — we build the distribution strategy and guide every growth phase.',
+    'cn.protein':           'protein',
+    'cn.channel':           'channel',
+    'cn.eyebrow2':          '✦ Growth with BINC · Clean Nutrition',
+    'cn.kpi.title':         'Margin &\nrotation.',
+    'cn.kpi.body':          'From first sports points to over 1,100 active sales points in 10 months — buyers immediately saw the potential of the Golden Bar.',
+    'cn.results.eyebrow':   '✦ Results · Clean Nutrition × BINC',
     'cn.results.title':     'Golden Bar\nby the numbers.',
     'cn.statement':         'Not just\na bar.\nWe make it scalable.',
     /* LEAD */
@@ -1207,7 +1169,6 @@ const TRANSLATIONS = {
     'form.error.required':  '✕  Please fill in at least your first name, last name and email address.',
     'form.error.generic':   '✕  Something went wrong. Please try again or email info@bincinternational.nl',
     /* FOOTER */
-    'footer.tagline':       'From first listing to national coverage. We handle the full B2B for ambitious brands.',
     'footer.address.label': 'BINC address',
     'footer.email.label':   'Email address',
     'footer.phone.label':   'Phone number',
@@ -1225,6 +1186,7 @@ function t(key) {
 }
 
 function updateSpecialElements(lang) {
+  /* Hero title */
   const heroTitle = document.getElementById('heroTitle');
   if (heroTitle) {
     if (lang === 'en') {
@@ -1233,20 +1195,15 @@ function updateSpecialElements(lang) {
       heroTitle.innerHTML = 'GROEI <span class="red">JE</span><br><span class="stroke">MERK</span>';
     }
   }
+
+  /* Lead title */
   const leadTitle = document.getElementById('leadTitle');
   if (leadTitle) {
     if (lang === 'en') {
-      leadTitle.innerHTML = 'WANT TO<br><span class="red">GROW</span> YOUR BRAND?';
+      leadTitle.innerHTML = 'DO YOU WANT TO<br><span class="red">GROW</span> IN RETAIL?';
     } else {
       leadTitle.innerHTML = 'WIL JIJ OOK<br><span class="red">GROEIEN</span> IN RETAIL?';
     }
-  }
-  const approachTitle = document.getElementById('approachTitle');
-  if (approachTitle) {
-    const l1 = approachTitle.querySelector('[data-i18n="approach.title1"]');
-    const l2 = approachTitle.querySelector('[data-i18n="approach.title2"]');
-    if (l1) l1.textContent = t('approach.title1');
-    if (l2) l2.textContent = t('approach.title2');
   }
 }
 
@@ -1255,6 +1212,7 @@ function applyLang(lang) {
   localStorage.setItem('binc_lang', lang);
   document.documentElement.lang = lang;
 
+  /* text nodes */
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const val = t(key);
@@ -1266,23 +1224,30 @@ function applyLang(lang) {
     }
   });
 
+  /* placeholders */
   document.querySelectorAll('[data-i18n-ph]').forEach(el => {
     el.placeholder = t(el.getAttribute('data-i18n-ph'));
   });
 
+  /* special hardcoded titles */
   updateSpecialElements(lang);
+
+  /* rebuild tape */
   buildTape();
 
+  /* update all lang buttons (nav mobile, drawer, fab) */
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 
+  /* update form button text if idle */
   const formBtn = document.getElementById('formBtn');
   if (formBtn && !formBtn.disabled) {
     formBtn.textContent = t('form.submit');
   }
 }
 
+/* bind ALL lang buttons (nav, drawer, fab) */
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     applyLang(btn.dataset.lang);
@@ -1362,7 +1327,9 @@ function buildTape() {
 /* ══════════════════════════════════════════════════
    MAP
 ══════════════════════════════════════════════════ */
+
 let STORES = [];
+
 const isMobile = () => window.innerWidth <= 1000;
 let mapInstance = null;
 
@@ -1372,7 +1339,18 @@ async function initMap() {
   function createRedIcon() {
     return L.divIcon({
       className: '',
-      html: `<div style="position:relative;width:16px;height:16px;transform:rotate(-45deg);background:linear-gradient(135deg,#e74c3c 0%,#c0392b 60%,#7f1d1d 100%);border-radius:50% 50% 50% 0;border:1.5px solid rgba(255,255,255,.65);box-shadow:0 0 18px rgba(192,57,43,.55),0 8px 18px rgba(0,0,0,.45);"><div style="position:absolute;width:8px;height:8px;background:#111;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);"></div></div>`,
+      html: `<div style="
+        position:relative;width:16px;height:16px;
+        transform:rotate(-45deg);
+        background:linear-gradient(135deg,#e74c3c 0%,#c0392b 60%,#7f1d1d 100%);
+        border-radius:50% 50% 50% 0;
+        border:1.5px solid rgba(255,255,255,.65);
+        box-shadow:0 0 18px rgba(192,57,43,.55),0 8px 18px rgba(0,0,0,.45);
+      "><div style="
+        position:absolute;width:8px;height:8px;background:#111;
+        border-radius:50%;top:50%;left:50%;
+        transform:translate(-50%,-50%) rotate(45deg);
+      "></div></div>`,
       iconSize: [22, 22],
       iconAnchor: [11, 22],
       popupAnchor: [0, -22]
@@ -1382,7 +1360,14 @@ async function initMap() {
   function createClusterIcon(cluster) {
     const n = cluster.getChildCount();
     return L.divIcon({
-      html: `<div style="background:var(--red);color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-size:.75rem;font-weight:700;border:2px solid rgba(255,255,255,.5);box-shadow:0 0 14px rgba(192,57,43,.6);">${n}</div>`,
+      html: `<div style="
+        background:var(--red);color:#fff;border-radius:50%;
+        width:36px;height:36px;
+        display:flex;align-items:center;justify-content:center;
+        font-family:var(--font-ui);font-size:.75rem;font-weight:700;
+        border:2px solid rgba(255,255,255,.5);
+        box-shadow:0 0 14px rgba(192,57,43,.6);
+      ">${n}</div>`,
       className: '',
       iconSize: [36, 36],
       iconAnchor: [18, 18]
@@ -1416,13 +1401,13 @@ async function initMap() {
     maxZoom: 19
   }).addTo(map);
 
-  const clusterGroup = L.markerClusterGroup({
-    maxClusterRadius: 30,
+ const clusterGroup = L.markerClusterGroup({
+    maxClusterRadius: 30,        // was 60, nu kleiner = minder samenvoegen
     spiderfyOnMaxZoom: true,
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true,
     iconCreateFunction: createClusterIcon
-  });
+});
 
   const bounds = [];
   STORES.forEach(pin => {
@@ -1438,9 +1423,10 @@ async function initMap() {
   });
 
   map.addLayer(clusterGroup);
+
   if (bounds.length) {
-    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 10 });
-  }
+    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 10 }); // was 8, nu 10
+}
 }
 
 const mapOverlay = document.getElementById('mapOverlay');
