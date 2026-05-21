@@ -115,8 +115,21 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 /* INTRO */
 #intro{padding:140px 6vw 120px;background:#000;position:relative;overflow:hidden}
 #intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
-.intro-grid{display:grid;grid-template-columns:minmax(0,680px) minmax(380px,580px);gap:90px;align-items:center}
-.intro-copy{padding-left:clamp(24px,4vw,84px);display:flex;flex-direction:column;gap:28px}
+.intro-grid{
+  display:grid;
+  grid-template-columns:minmax(0,680px) minmax(380px,580px);
+  gap:90px;
+  align-items:center;
+  justify-content:center;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.intro-copy{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
 .intro-visual{position:relative;width:100%;aspect-ratio:3/4;max-width:520px;justify-self:end;border-radius:14px;overflow:hidden;border:1px solid rgba(192,57,43,.22);box-shadow:0 40px 100px rgba(0,0,0,.72),0 0 60px rgba(192,57,43,.08)}
 .intro-visual img{width:100%;height:100%;object-fit:cover;opacity:.78;transform:scale(1.04);transition:transform 8s ease}
 .intro-visual:hover img{transform:scale(1.08)}
