@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -30,36 +30,18 @@
       --font-display:'Barlow Condensed',sans-serif;
       --font-body:'Barlow',sans-serif;
       --font-ui:'Rajdhani',sans-serif;
-      --font-bebas:'Bebas Neue',sans-serif;
       --font-mono:'DM Mono',monospace;
     }
 
     html{scroll-behavior:smooth;cursor:none}
     body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    ::selection{background:var(--red);color:#fff}
+
     #cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
     #cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
     #cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
     body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring,body:has(.team-card:hover) #cur-ring{width:52px;height:52px}
-    ::selection{background:var(--red);color:#fff}
-    ::-webkit-scrollbar{width:2px}
-    ::-webkit-scrollbar-track{background:#000}
-    ::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
 
-    /* ── LANG SWITCH ── */
-    .lang-switch{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-left:18px;flex-shrink:0}
-    .lang-btn{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);background:transparent;border:none;padding:6px 11px;cursor:pointer;transition:.2s;line-height:1}
-    .lang-btn.active{background:var(--red);color:#fff}
-    .lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
-
-    /* ── LANG FAB ── */
-    .lang-fab{
-      display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;
-      position:fixed;bottom:28px;right:28px;z-index:600;
-      box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72);
-    }
-    .lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
-
-    /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
     nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
     .nav-logo{display:flex;align-items:center;text-decoration:none}
@@ -72,108 +54,120 @@
     .nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
     .nav-cta::after{display:none!important}
     .nav-cta:hover{background:var(--red2)!important;color:#fff!important}
-    .nav-right{display:flex;align-items:center;gap:0}
-    .nav-right .lang-switch{display:none}
+    .nav-right{display:flex;align-items:center}
     .nav-hamburger{display:none}
 
-    /* MOBILE DRAWER */
-    .mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0}
+    .mobile-nav-drawer{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:490;
+      background:rgba(0,0,0,.97);
+      backdrop-filter:blur(28px);
+      -webkit-backdrop-filter:blur(28px);
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:100px 6vw 60px;
+      transform:translateY(-100%);
+      transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .3s;
+      pointer-events:none;
+      opacity:0;
+    }
+
     .mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
-    .mobile-nav-drawer a{font-family:var(--font-display);font-size:clamp(2.8rem,11vw,5rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;line-height:1.1;display:block;padding:16px 0;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);transition:.2s}
+    .mobile-nav-drawer a{
+      font-family:var(--font-display);
+      font-size:clamp(2.8rem,11vw,5rem);
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.62);
+      text-decoration:none;
+      line-height:1.1;
+      display:block;
+      padding:16px 0;
+      width:100%;
+      text-align:center;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      transition:.2s;
+    }
+
     .mobile-nav-drawer a:hover,.mobile-nav-drawer a.active{color:#fff}
-    .mobile-nav-drawer a.drawer-cta{color:#fff;background:var(--red);border-radius:4px;margin-top:28px;border-bottom:none;font-size:clamp(1.4rem,5vw,2rem);padding:18px 0;letter-spacing:.14em}
-    .mobile-nav-drawer a.drawer-cta:hover{background:var(--red2)}
-    .drawer-lang{display:flex;align-items:center;justify-content:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-top:28px}
-    .drawer-lang .lang-btn{font-size:.8rem;padding:10px 22px}
+    .mobile-nav-drawer a.drawer-cta{
+      color:#fff;
+      background:var(--red);
+      border-radius:4px;
+      margin-top:28px;
+      border-bottom:none;
+      font-size:clamp(1.4rem,5vw,2rem);
+      padding:18px 0;
+      letter-spacing:.14em;
+    }
+
     .drawer-socials{display:flex;gap:28px;margin-top:28px}
-    .drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
+    .drawer-socials a{
+      width:26px;
+      height:26px;
+      color:rgba(255,255,255,.5);
+      transition:.2s;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:none!important;
+      padding:0!important;
+      font-size:0!important;
+      background:none!important;
+      border-radius:0!important;
+      margin-top:0!important;
+    }
     .drawer-socials a:hover{color:var(--red)}
     .drawer-socials svg{width:100%;height:100%;fill:currentColor}
 
-    /* HERO */
-    #hero{position:relative;min-height:78vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 100px}
-    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.52) 46%,rgba(0,0,0,.22) 100%),linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.88) 100%)}
+    #hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.54}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 46%,rgba(0,0,0,.18) 100%),linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%)}
     .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
     @keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
+
     .g-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
     .orb-a{width:500px;height:500px;background:rgba(192,57,43,.09);top:-8%;right:8%}
     .orb-b{width:320px;height:320px;background:rgba(192,57,43,.055);bottom:10%;right:30%}
     .hero-content{position:relative;z-index:10;padding:0 6vw;max-width:1500px;width:100%}
     .hero-inner{margin-left:clamp(32px,7vw,140px);max-width:1050px}
-    .hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,14rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:11ch;margin-bottom:32px;opacity:0;animation:riseUp .9s .25s forwards}
+    .hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,15rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:11ch;margin-bottom:40px;opacity:0;animation:riseUp .9s .25s forwards}
     .hero-title .red{color:var(--red)}
-    .hero-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
-    .hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.72);font-weight:300;max-width:520px;opacity:0;animation:riseUp .9s .45s forwards}
+    .hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.72);font-weight:300;max-width:520px;margin-bottom:48px;opacity:0;animation:riseUp .9s .45s forwards}
     @keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
 
-    /* TAPE */
-    .tape{background:var(--red);padding:14px 0;overflow:hidden;white-space:nowrap}
-    .tape-inner{display:inline-block;animation:marquee 28s linear infinite}
-    .tape-item{display:inline-block;font-family:var(--font-display);font-size:.9rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:#fff;margin:0 28px}
-    .tape-dot{display:inline-block;width:5px;height:5px;background:rgba(255,255,255,.7);border-radius:50%;vertical-align:middle;margin:0 8px;opacity:.9}
-    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .section{padding:120px 6vw;position:relative}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .team-card{position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(192,57,43,.14);min-height:580px;transition:.35s;box-shadow:0 30px 80px rgba(0,0,0,.58),inset 0 1px 0 rgba(255,255,255,.06)}
+    .team-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.4)}
+    .team-image{position:relative;height:360px;overflow:hidden}
+    .team-image img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:.5s}
+    .team-card:hover img{transform:scale(1.05);opacity:.95}
+    .team-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9),transparent 40%)}
+    .team-content{padding:34px}
+    .team-role{display:inline-block;margin-bottom:16px;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.92);border:1px solid rgba(192,57,43,.24);padding:7px 12px;border-radius:2px;background:rgba(192,57,43,.06)}
+    .team-name{font-family:var(--font-display);font-size:clamp(2.2rem,3vw,3.5rem);font-weight:900;line-height:.9;margin-bottom:22px}
+    .team-info{display:flex;flex-direction:column;gap:14px}
+    .team-info a{color:rgba(255,255,255,.68);text-decoration:none;font-size:.95rem;transition:.2s}
+    .team-info a:hover{color:var(--red)}
 
-    /* SHARED */
-    .label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
+    .label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.92);margin-bottom:24px}
     .label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
 
-    /* TEAM SECTION */
-    #team{padding:130px 6vw 140px;background:#000;position:relative}
-    #team::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.04),transparent 55%);pointer-events:none}
-
-    .team-intro{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:90px;position:relative;z-index:1}
-    .team-intro-ghost{font-family:var(--font-display);font-size:clamp(8rem,18vw,28rem);font-weight:900;line-height:.85;-webkit-text-stroke:1px rgba(255,255,255,.04);color:transparent;position:absolute;top:-3rem;left:50%;transform:translateX(-50%);white-space:nowrap;pointer-events:none;user-select:none}
-    .team-intro h2{font-family:var(--font-display);font-size:clamp(3.2rem,5.5vw,7rem);font-weight:900;line-height:.9;color:#fff;margin-bottom:22px;position:relative;z-index:1}
-    .team-intro p{font-size:1rem;line-height:1.9;color:rgba(255,255,255,.58);font-weight:300;max-width:620px;position:relative;z-index:1}
-
-    /* TEAM GRID */
-    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;z-index:1}
-
-    .team-card{
-      position:relative;overflow:hidden;border-radius:16px;
-      background:linear-gradient(145deg,rgba(255,255,255,.046),rgba(255,255,255,.012));
-      border:1px solid rgba(192,57,43,.13);
-      transition:.38s cubic-bezier(.22,1,.36,1);
-      box-shadow:0 28px 72px rgba(0,0,0,.54),inset 0 1px 0 rgba(255,255,255,.06);
-    }
-    .team-card::before{content:'';position:absolute;top:0;left:50%;width:55%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.6),transparent);opacity:.55;z-index:5}
-    .team-card:hover{transform:translateY(-8px);border-color:rgba(192,57,43,.38);box-shadow:0 44px 90px rgba(0,0,0,.62),0 0 40px rgba(192,57,43,.06),inset 0 1px 0 rgba(255,255,255,.08)}
-
-    .team-image{position:relative;height:340px;overflow:hidden}
-    .team-image img{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.78;transition:.55s cubic-bezier(.22,1,.36,1);filter:grayscale(20%)}
-    .team-card:hover .team-image img{transform:scale(1.06);opacity:.92;filter:grayscale(0%)}
-    .team-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.35) 45%,transparent 100%)}
-
-    /* Number badge on image */
-    .team-num{position:absolute;bottom:18px;right:20px;font-family:var(--font-display);font-size:5.5rem;font-weight:900;line-height:1;color:rgba(255,255,255,.06);pointer-events:none;z-index:2;letter-spacing:-.02em;user-select:none}
-
-    .team-content{padding:30px 30px 36px}
-    .team-role{display:inline-block;margin-bottom:14px;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.92);border:1px solid rgba(192,57,43,.24);padding:6px 12px;border-radius:2px;background:rgba(192,57,43,.06)}
-    .team-name{font-family:var(--font-display);font-size:clamp(2.2rem,3vw,3.2rem);font-weight:900;line-height:.88;margin-bottom:24px;color:#fff}
-    .team-divider{width:32px;height:1px;background:rgba(192,57,43,.5);margin-bottom:20px}
-    .team-info{display:flex;flex-direction:column;gap:10px}
-    .team-info a{color:rgba(255,255,255,.52);text-decoration:none;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;transition:.2s;display:flex;align-items:center;gap:10px}
-    .team-info a::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:rgba(192,57,43,.55);flex-shrink:0;transition:.2s}
-    .team-info a:hover{color:var(--red)}
-    .team-info a:hover::before{background:var(--red);box-shadow:0 0 8px rgba(192,57,43,.5)}
-
-    /* DIRECTOR card special treatment */
-    .team-card.is-director{grid-column:span 1}
-    .team-card.is-director .team-role{background:rgba(192,57,43,.12);border-color:rgba(192,57,43,.45);color:#fff}
-
-    /* CTA */
-    #cta{position:relative;overflow:hidden;padding:130px 6vw 150px;border-top:1px solid rgba(192,57,43,.1);background:#000}
-    #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 60%);pointer-events:none}
+    #cta{position:relative;overflow:hidden;padding:130px 6vw 140px;border-top:1px solid rgba(192,57,43,.1)}
+    #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 60%)}
     .cta-wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px}
     .cta-title{font-family:var(--font-display);font-size:clamp(4rem,8vw,10rem);font-weight:900;line-height:.86}
     .cta-title .red{color:var(--red)}
     .cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
     .body-text{max-width:700px;font-size:1rem;line-height:1.95;color:rgba(255,255,255,.62);font-weight:300}
-    .btn-red{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;text-decoration:none;display:inline-block;transition:.2s;color:#fff;background:var(--red);border:none;padding:18px 42px;cursor:pointer}
+    .btn-red{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;text-decoration:none;display:inline-block;transition:.2s;color:#fff;background:var(--red);padding:18px 42px}
     .btn-red:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
 
-    /* FOOTER */
     footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
     .ft-brand{display:flex;flex-direction:column;gap:32px}
     .ft-logo{width:235px;opacity:.98}
@@ -185,6 +179,7 @@
     .ft-item p,.ft-item a{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
     .ft-h{font-family:var(--font-ui);font-size:.85rem!important;font-weight:800!important;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,1)!important;margin-bottom:12px!important}
     .ft-item a:hover{color:var(--red)}
+
     .ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.07);padding:28px 6vw;display:flex;justify-content:space-between;align-items:center;gap:24px}
     .ft-bar-left{display:flex;flex-direction:column;gap:6px}
     .ft-copy{font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:rgba(255,255,255,.32)}
@@ -192,54 +187,44 @@
     .ft-bar-right{display:flex;align-items:center;gap:24px}
     .ft-kvk{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.07);padding:6px 14px;border-radius:2px}
 
-    /* REVEAL */
-    .reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
+    .reveal{opacity:0;transform:translateY(50px);transition:opacity .9s,transform .9s}
     .reveal.on{opacity:1;transform:translateY(0)}
-    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
 
-    /* ─── MOBILE ─── */
     @media(max-width:1000px){
       html,body{cursor:auto}
       #cur,#cur-ring{display:none}
-      .lang-fab{display:none}
-      .nav-right .lang-switch{display:flex}
 
       nav{height:70px;padding:0 5vw}
       .nav-logo img{height:32px}
       nav .nav-links{display:none}
+
       .nav-hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;cursor:pointer;background:none;border:none;padding:0;position:relative;z-index:510}
       .nav-hamburger span{display:block;width:26px;height:1.5px;background:#fff;border-radius:2px;transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .22s,background .22s;transform-origin:center}
       .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--red)}
       .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
       .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
+
       .mobile-nav-drawer{display:flex}
 
-      #hero{min-height:72vh;padding:110px 0 80px}
+      #hero{min-height:105vh;padding:110px 0 90px}
       .hero-inner{margin-left:0}
-      .hero-title{font-size:clamp(5.5rem,22vw,12rem)}
+      .hero-title{font-size:clamp(6.5rem,24vw,13rem);max-width:11ch;line-height:.82}
+      .hero-sub{max-width:92%}
 
-      #team{padding:80px 5vw 100px}
-      .team-intro{margin-bottom:60px}
-      .team-grid{grid-template-columns:1fr;gap:18px}
-      .team-image{height:300px}
+      .team-grid{grid-template-columns:1fr}
 
       footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
       .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
       .ft-logo{width:min(200px,55vw);margin:0 auto}
       .ft-socials{justify-content:center}
       .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
+
       .ft-bar{flex-direction:column;align-items:center;gap:12px;padding:20px 5vw;text-align:center}
       .ft-bar-right{flex-direction:column;gap:8px;align-items:center}
-      .lang-switch{margin-left:8px}
-      .lang-btn{padding:5px 9px;font-size:.62rem}
     }
 
     @media(max-width:420px){
-      .hero-title{font-size:clamp(4.5rem,19vw,8rem)}
-    }
-
-    @media(min-width:1001px){
-      .nav-links{margin-left:auto;margin-right:20px}
+      .hero-title{font-size:clamp(5rem,20vw,8rem)}
     }
   </style>
 </head>
@@ -249,13 +234,6 @@
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
-<!-- LANG FAB -->
-<div class="lang-fab" id="langFab">
-  <button class="lang-btn active" data-lang="nl">NL</button>
-  <button class="lang-btn" data-lang="en">EN</button>
-</div>
-
-<!-- MOBILE DRAWER -->
 <div class="mobile-nav-drawer" id="mobileDrawer">
   <a href="retail.html">Retail</a>
   <a href="horeca.html">Horeca</a>
@@ -263,10 +241,7 @@
   <a href="ons-team.html" class="active">Ons Team</a>
   <a href="vacatures.html">Vacatures</a>
   <a href="index.html#lead" class="drawer-cta">Samenwerken</a>
-  <div class="drawer-lang">
-    <button class="lang-btn active" data-lang="nl">NL</button>
-    <button class="lang-btn" data-lang="en">EN</button>
-  </div>
+
   <div class="drawer-socials">
     <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
@@ -280,11 +255,11 @@
   </div>
 </div>
 
-<!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">
     <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
   </a>
+
   <div class="nav-links">
     <a href="retail.html">Retail</a>
     <a href="horeca.html">Horeca</a>
@@ -293,58 +268,48 @@
     <a href="vacatures.html">Vacatures</a>
     <a href="index.html#lead" class="nav-cta">Samenwerken</a>
   </div>
+
   <div class="nav-right">
-    <div class="lang-switch">
-      <button class="lang-btn active" data-lang="nl">NL</button>
-      <button class="lang-btn" data-lang="en">EN</button>
-    </div>
     <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <video class="hero-video" autoplay muted loop playsinline>
     <source src="https://cdn.shopify.com/videos/c/o/v/9690e8a2bed14220a0ecbf4df8209ce6.mov" type="video/mp4"/>
   </video>
+
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <div class="g-orb orb-a"></div>
   <div class="g-orb orb-b"></div>
+
   <div class="hero-content">
     <div class="hero-inner">
-      <h1 class="hero-title">ONS<br><span class="red">TEAM.</span></h1>
-      <p class="hero-sub">Achter iedere samenwerking staat een jong en gedreven team dat kansen ziet, relaties bouwt en merken vooruit helpt. Maak kennis met de mensen achter BINC International.</p>
+      <h1 class="hero-title">
+        ONS<br>
+        <span class="red">TEAM.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Achter iedere samenwerking staat een jong en gedreven team dat kansen ziet, relaties bouwt en merken vooruit helpt. Maak kennis met de mensen achter BINC International.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- TAPE -->
-<div class="tape"><div class="tape-inner" id="tapeInner"></div></div>
-
-<!-- TEAM -->
-<section id="team">
-  <div class="team-intro reveal">
-    <div class="team-intro-ghost">7</div>
-    <p class="label" style="justify-content:center">The people behind BINC</p>
-    <h2>ONZE MENSEN.<br><span style="color:var(--red)">JOUW GROEI.</span></h2>
-    <p>Een compact, gedreven team met één focus: jouw merk fysiek laten groeien. Van directie tot operations — iedereen bij BINC zet zich volledig in.</p>
-  </div>
-
+<section class="section">
   <div class="team-grid">
 
-    <!-- 1 — Merlijn -->
-    <div class="team-card is-director reveal d1">
+    <div class="team-card reveal">
       <div class="team-image">
         <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1400&auto=format&fit=crop" alt="Merlijn Stieger"/>
-        <div class="team-num">01</div>
       </div>
       <div class="team-content">
         <span class="team-role">Director</span>
         <h3 class="team-name">Merlijn<br>Stieger</h3>
-        <div class="team-divider"></div>
         <div class="team-info">
           <a href="mailto:Merlijn@bincinternational.nl">Merlijn@bincinternational.nl</a>
           <a href="tel:+31625399506">+31 6 25399506</a>
@@ -352,16 +317,13 @@
       </div>
     </div>
 
-    <!-- 2 — Jorrit -->
-    <div class="team-card reveal d2">
+    <div class="team-card reveal">
       <div class="team-image">
         <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1400&auto=format&fit=crop" alt="Jorrit Zwaanswijk"/>
-        <div class="team-num">02</div>
       </div>
       <div class="team-content">
         <span class="team-role">Manager Operations & Events</span>
         <h3 class="team-name">Jorrit<br>Zwaanswijk</h3>
-        <div class="team-divider"></div>
         <div class="team-info">
           <a href="mailto:Jorrit@bincinternational.nl">Jorrit@bincinternational.nl</a>
           <a href="tel:+31644103175">+31 6 44103175</a>
@@ -369,16 +331,13 @@
       </div>
     </div>
 
-    <!-- 3 — Maud -->
-    <div class="team-card reveal d3">
+    <div class="team-card reveal">
       <div class="team-image">
         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1400&auto=format&fit=crop" alt="Maud Moolenschot"/>
-        <div class="team-num">03</div>
       </div>
       <div class="team-content">
         <span class="team-role">Sales Manager</span>
         <h3 class="team-name">Maud<br>Moolenschot</h3>
-        <div class="team-divider"></div>
         <div class="team-info">
           <a href="mailto:Maud@bincinternational.nl">Maud@bincinternational.nl</a>
           <a href="tel:+31611214399">+31 6 11214399</a>
@@ -386,16 +345,13 @@
       </div>
     </div>
 
-    <!-- 4 — Tim -->
-    <div class="team-card reveal d1">
+    <div class="team-card reveal">
       <div class="team-image">
         <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?q=80&w=1400&auto=format&fit=crop" alt="Tim van Helvoort"/>
-        <div class="team-num">04</div>
       </div>
       <div class="team-content">
         <span class="team-role">Commercieel Manager</span>
         <h3 class="team-name">Tim van<br>Helvoort</h3>
-        <div class="team-divider"></div>
         <div class="team-info">
           <a href="mailto:Tim@bincinternational.nl">Tim@bincinternational.nl</a>
           <a href="tel:+31645476200">+31 6 45476200</a>
@@ -403,16 +359,13 @@
       </div>
     </div>
 
-    <!-- 5 — Krijn -->
-    <div class="team-card reveal d2">
+    <div class="team-card reveal">
       <div class="team-image">
         <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1400&auto=format&fit=crop" alt="Krijn van Lankveld"/>
-        <div class="team-num">05</div>
       </div>
       <div class="team-content">
         <span class="team-role">Systeem & Data Coordinator</span>
         <h3 class="team-name">Krijn van<br>Lankveld</h3>
-        <div class="team-divider"></div>
         <div class="team-info">
           <a href="mailto:Krijn@bincinternational.nl">Krijn@bincinternational.nl</a>
           <a href="tel:+31633031903">+31 6 33031903</a>
@@ -420,16 +373,13 @@
       </div>
     </div>
 
-    <!-- 6 — Sebastian -->
-    <div class="team-card reveal d3">
+    <div class="team-card reveal">
       <div class="team-image">
         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop" alt="Sebastian Beekhuis"/>
-        <div class="team-num">06</div>
       </div>
       <div class="team-content">
         <span class="team-role">Regiomanager Noord-Oost Nederland</span>
         <h3 class="team-name">Sebastian<br>Beekhuis</h3>
-        <div class="team-divider"></div>
         <div class="team-info">
           <a href="mailto:Sebas@bincinternational.nl">Sebas@bincinternational.nl</a>
           <a href="tel:+31613208512">+31 6 13208512</a>
@@ -437,16 +387,13 @@
       </div>
     </div>
 
-    <!-- 7 — Indy -->
-    <div class="team-card reveal d2">
+    <div class="team-card reveal">
       <div class="team-image">
         <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1400&auto=format&fit=crop" alt="Indy Witjes"/>
-        <div class="team-num">07</div>
       </div>
       <div class="team-content">
         <span class="team-role">Social & Influencer Manager</span>
         <h3 class="team-name">Indy<br>Witjes</h3>
-        <div class="team-divider"></div>
         <div class="team-info">
           <a href="mailto:Indy@bincinternational.nl">Indy@bincinternational.nl</a>
           <a href="tel:+31636340673">+31 6 36340673</a>
@@ -457,24 +404,28 @@
   </div>
 </section>
 
-<!-- CTA -->
 <section id="cta">
   <div class="cta-wrap reveal">
     <p class="label" style="justify-content:center">Start together</p>
+
     <h2 class="cta-title">
       READY TO<br>
       <span class="red">BUILD</span>
       <span class="stroke">TOGETHER?</span>
     </h2>
-    <p class="body-text">Van retail tot horeca en activaties. Het team van BINC International staat klaar om jouw merk fysiek te laten groeien.</p>
+
+    <p class="body-text" style="text-align:center;">
+      Van retail tot horeca en activaties. Het team van BINC International staat klaar om jouw merk fysiek te laten groeien.
+    </p>
+
     <a href="index.html#lead" class="btn-red">Neem contact op</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="ft-brand reveal">
     <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+
     <div class="ft-socials">
       <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
@@ -487,15 +438,18 @@
       </a>
     </div>
   </div>
-  <div class="ft-info reveal d1">
+
+  <div class="ft-info reveal">
     <div class="ft-item">
       <p class="ft-h">BINC adres</p>
       <p>Wim Rötherlaan 25,<br>5051 JS Goirle</p>
     </div>
+
     <div class="ft-item">
       <p class="ft-h">E-mailadres</p>
       <a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a>
     </div>
+
     <div class="ft-item">
       <p class="ft-h">Telefoonnummer</p>
       <a href="tel:+31132032643">013 203 2643</a>
@@ -508,78 +462,79 @@
     <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — Alle rechten voorbehouden.</span>
     <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)">Full-service B2B voor ambitieuze merken in Nederland.</span>
   </div>
+
   <div class="ft-bar-right">
     <span class="ft-kvk">KVK: 98970887</span>
   </div>
 </div>
 
 <script>
-/* ── LANG ── */
-let currentLang = localStorage.getItem('binc_lang') || 'nl';
+  const cur=document.getElementById('cur');
+  const ring=document.getElementById('cur-ring');
 
-const TAPE = {
-  nl: 'Ons Team|Jong & Gedreven|Retail Experts|Accountmanagement|Jouw Merk Groeit|B2B Verkoop',
-  en: 'Our Team|Young & Driven|Retail Experts|Account Management|Your Brand Grows|B2B Sales'
-};
+  let mx=0,my=0,rx=0,ry=0;
 
-function buildTape() {
-  const words = TAPE[currentLang].split('|');
-  const ti = document.getElementById('tapeInner');
-  const chunk = () => words.map(w => `<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
-  ti.innerHTML = chunk() + chunk();
-}
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;
+    my=e.clientY;
+    cur.style.left=mx+'px';
+    cur.style.top=my+'px';
+  });
 
-function applyLang(lang) {
-  currentLang = lang;
-  localStorage.setItem('binc_lang', lang);
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-  buildTape();
-}
+  (function animRing(){
+    rx+=(mx-rx)*.11;
+    ry+=(my-ry)*.11;
+    ring.style.left=rx+'px';
+    ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  })();
 
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
-});
+  const hamburger=document.getElementById('navHamburger');
+  const drawer=document.getElementById('mobileDrawer');
 
-/* ── CURSOR ── */
-const cur = document.getElementById('cur');
-const ring = document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-(function animRing(){ rx+=(mx-rx)*.11; ry+=(my-ry)*.11; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
+  function toggleDrawer(open){
+    hamburger.classList.toggle('open',open);
+    drawer.classList.toggle('open',open);
+    document.body.style.overflow=open?'hidden':'';
+  }
 
-/* ── HAMBURGER ── */
-const hamburger = document.getElementById('navHamburger');
-const drawer = document.getElementById('mobileDrawer');
-function toggleDrawer(open) {
-  hamburger.classList.toggle('open', open);
-  drawer.classList.toggle('open', open);
-  document.body.style.overflow = open ? 'hidden' : '';
-}
-hamburger.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
-drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', () => toggleDrawer(false)));
-drawer.addEventListener('click', e => { if(e.target===drawer) toggleDrawer(false); });
+  hamburger.addEventListener('click',()=>{
+    toggleDrawer(!drawer.classList.contains('open'));
+  });
 
-/* ── NAV SCROLL ── */
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 70);
-}, { passive: true });
+  drawer.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click',()=>toggleDrawer(false));
+  });
 
-/* ── ORBS ── */
-window.addEventListener('mousemove', e => {
-  const x=(e.clientX/innerWidth-.5)*18, y=(e.clientY/innerHeight-.5)*18;
-  const a=document.querySelector('.orb-a'), b=document.querySelector('.orb-b');
-  if(a) a.style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
-  if(b) b.style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
-}, { passive: true });
+  drawer.addEventListener('click',e=>{
+    if(e.target===drawer) toggleDrawer(false);
+  });
 
-/* ── REVEAL ── */
-const revIO = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); revIO.unobserve(e.target); } });
-}, { threshold: .1 });
-document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
+  window.addEventListener('mousemove',e=>{
+    const x=(e.clientX/innerWidth-.5)*18;
+    const y=(e.clientY/innerHeight-.5)*18;
 
-/* ── INIT ── */
-applyLang(currentLang);
+    const orbA=document.querySelector('.orb-a');
+    const orbB=document.querySelector('.orb-b');
+
+    if(orbA) orbA.style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
+    if(orbB) orbB.style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
+  },{passive:true});
+
+  window.addEventListener('scroll',()=>{
+    document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);
+  },{passive:true});
+
+  const revIO=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('on');
+        revIO.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+
+  document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
 </script>
 
 </body>
