@@ -226,6 +226,52 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
   .ft-bar{flex-direction:column;align-items:center;gap:8px;padding:18px 5vw;text-align:center}
 }
+
+@media(max-width:1000px){
+
+  .jobs-hero{
+    min-height:100vh;
+    padding:120px 5vw 40px;
+    display:flex;
+    align-items:center;
+  }
+
+  .jobs-wrap{
+    grid-template-columns:1fr;
+    gap:120px;
+  }
+
+  .jobs-copy-wrap{
+    min-height:75vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .jobs-copy-wrap .label{
+    display:none;
+  }
+
+  .jobs-title{
+    font-size:clamp(4.5rem,20vw,9rem);
+    margin-bottom:20px;
+    line-height:.82;
+  }
+
+  .jobs-copy{
+    font-size:1rem;
+    max-width:100%;
+  }
+
+  .jobs-actions{
+    margin-top:10px;
+  }
+
+  .jobs-card{
+    margin-top:0;
+  }
+}
+  
 @media(max-width:1000px){
   .jobs-copy-wrap .label{
     display:none;
