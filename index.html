@@ -159,7 +159,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 
 /* STATS */
 #stats{background:#000;padding:105px 6vw 115px}
-.stats-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.stats-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .stat-cell{min-height:260px;padding:54px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.048),rgba(255,255,255,.012)),rgba(255,255,255,.014);border:1px solid rgba(192,57,43,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 28px 80px rgba(0,0,0,.48)}
 .stat-cell::before{content:'';position:absolute;inset:1px;border-radius:15px;background:radial-gradient(circle at 50% 0%,rgba(192,57,43,.07),transparent 44%);pointer-events:none}
 .stat-cell::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
@@ -404,7 +404,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .ft-bar-right{flex-direction:column;gap:8px;align-items:center}
   .lang-switch{margin-left:8px}
   .lang-btn{padding:5px 9px;font-size:.62rem}
-.stats-wrap{grid-template-columns:repeat(3,1fr)}
+  .stats-wrap{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(min-width:1001px){
@@ -510,7 +510,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="approach-grid">
     <div class="reveal approach-copy" style="display:flex;flex-direction:column;gap:36px">
       <div>
-        <p class="label" data-i18n="approach.label">Our approach</p>
+        <p class="label" data-i18n="approach.label">Onze aanpak</p>
         <h2 class="display" id="approachTitle">
           <span class="approach-title-line" data-i18n="approach.title1">HOW TO GROW</span><br>
           <span class="approach-title-line" data-i18n="approach.title2">YOUR BRAND?</span>
@@ -551,6 +551,10 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     <div class="stat-cell reveal d2">
       <div class="stat-n" data-target="99"><span class="count">0</span><sup>%</sup></div>
       <p class="stat-l" data-i18n="stats.coverage">Dekking over Nederland</p>
+    </div>
+    <div class="stat-cell reveal d3">
+      <div class="stat-n" data-target="10"><span class="count">0</span><sup>+</sup></div>
+      <p class="stat-l" data-i18n="stats.years">Jaar ervaring in retail</p>
     </div>
   </div>
 </section>
@@ -598,7 +602,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             <p class="product-text" style="margin-bottom:0" data-i18n="gd.kpi.body">Van eerste retailer naar landelijke dekking in 10 maanden, gebouwd op sterke rotatie.</p>
             <div class="product-kpis">
               <div class="product-kpi"><div class="product-kpi-v">10</div><div class="product-kpi-ghost">10</div><div class="product-kpi-l" data-i18n="kpi.months.national">Maanden tot landelijk bereik</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">2.500+</div><div class="product-kpi-ghost">2.5k</div><div class="product-kpi-l" data-i18n="kpi.points">Verkooppunten actief</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">2.500</div><div class="product-kpi-ghost">2.5k</div><div class="product-kpi-l" data-i18n="kpi.points">Verkooppunten actief</div></div>
               <div class="product-kpi"><div class="product-kpi-v">340%</div><div class="product-kpi-ghost">340</div><div class="product-kpi-l" data-i18n="kpi.growth">Omzetgroei jaar 1→2</div></div>
               <div class="product-kpi"><div class="product-kpi-v">8</div><div class="product-kpi-ghost">8</div><div class="product-kpi-l" data-i18n="kpi.chains">Retailketens actief</div></div>
             </div>
@@ -611,7 +615,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             <h2 class="product-section-title results-title" style="margin-bottom:8px" data-i18n="gd.results.title">Gold Dry<br>in cijfers.</h2>
             <div class="metric-wall gold-wall">
               <div class="metric-cell"><strong>3+</strong><span data-i18n="metric.years.partner">Jaar actieve samenwerking</span></div>
-              <div class="metric-cell"><strong>2.500+</strong><span data-i18n="metric.points.national">Verkooppunten landelijk</span></div>
+              <div class="metric-cell"><strong>2.500</strong><span data-i18n="metric.points.national">Verkooppunten landelijk</span></div>
               <div class="metric-cell"><strong>340%</strong><span data-i18n="metric.growth.y1y2">Omzetgroei jaar 1 naar 2</span></div>
               <div class="metric-cell"><strong>8</strong><span data-i18n="metric.chains.live">Retailketens live</span></div>
               <div class="metric-cell"><strong>10</strong><span data-i18n="metric.months.coverage">Maanden tot landelijke dekking</span></div>
@@ -665,24 +669,10 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             <div class="product-line"></div>
             <p class="product-text" style="margin-bottom:0" data-i18n="fsg.kpi.body">Sneller opgeschaald dan verwacht, dankzij directe retailvalidatie en sterke prestaties op de winkelvloer.</p>
             <div class="product-kpis">
-              <div class="product-kpi">
-  <div class="product-kpi-v">2026</div>
-  <div class="product-kpi-ghost">26</div>
-  <div class="product-kpi-l">
-    Start retailuitrol Nederland
-  </div>
-</div>
-              <div class="product-kpi">
-  <div class="product-kpi-v">1M+</div>
-  <div class="product-kpi-ghost">1M</div>
-  <div class="product-kpi-l">
-    Winkelaars bereikt
-  </div>
-</div>
+              <div class="product-kpi"><div class="product-kpi-v">9</div><div class="product-kpi-ghost">9</div><div class="product-kpi-l" data-i18n="kpi.months.rollout">Maanden tot landelijke uitrol</div></div>
+              <div class="product-kpi"><div class="product-kpi-v">1.250</div><div class="product-kpi-ghost">1.2k</div><div class="product-kpi-l" data-i18n="kpi.points">Verkooppunten actief</div></div>
               <div class="product-kpi"><div class="product-kpi-v">10M+</div><div class="product-kpi-ghost">10M</div><div class="product-kpi-l" data-i18n="kpi.social.views">Views op social media</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">250+</div><div class="product-kpi-ghost">250</div><div class="product-kpi-l" data-i18n="kpi.franchise">
-  Franchisers aangesloten in jaar 1
-</div>
+              <div class="product-kpi"><div class="product-kpi-v">250+</div><div class="product-kpi-ghost">250</div><div class="product-kpi-l" data-i18n="kpi.franchise">Franchisers aangesloten in jaar 1</div></div>
             </div>
           </div>
         </div>
@@ -840,7 +830,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         <!-- Panel 4: Statement -->
         <div class="product-panel product-center">
           <div class="product-content">
-            <p class="product-statement" data-i18n="cn.statement">Jouw ambitie.<br><em>Onze aanpak.</em><br>Eén resultaat met impact.</p>
+            <p class="product-statement" data-i18n="cn.statement">Niet gewoon<br><em>een reep.</em><br>Wij maken het schaalbaar.</p>
           </div>
         </div>
       </div>
@@ -909,6 +899,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <footer>
   <div class="ft-brand reveal">
     <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+    <p class="ft-tagline" data-i18n="footer.tagline">Van eerste listing tot landelijke dekking — wij bouwen jouw merk in retail.</p>
     <div class="ft-socials">
       <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
@@ -939,10 +930,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
 <div class="ft-bar">
   <div class="ft-bar-left">
-    <span class="ft-copy">© 2026 <strong>BINC International B.V.</strong> - <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
     <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)" data-i18n="footer.tagline.short">Full-service B2B voor ambitieuze merken in Nederland.</span>
   </div>
   <div class="ft-bar-right">
+    <span class="ft-bar-badge">Est. 2014</span>
     <span class="ft-kvk">KVK: 98970887</span>
   </div>
 </div>
