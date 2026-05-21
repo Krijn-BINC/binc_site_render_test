@@ -104,12 +104,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 @keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* TAPE */
-.tape{background:var(--red);padding:16px 0;overflow:hidden;white-space:nowrap}
-.tape-inner{display:inline-block;animation:marquee 24s linear infinite}
-.tape-item{display:inline-block;font-family:var(--font-display);font-size:.95rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:#fff;margin:0 28px}
-.tape-dot{display:inline-block;width:5px;height:5px;background:rgba(255,255,255,.7);border-radius:50%;vertical-align:middle;margin:0 8px;opacity:.9}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SHARED */
 .label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
@@ -649,13 +643,7 @@ drawer.addEventListener('click',e=>{if(e.target===drawer)toggleDrawer(false);});
 /* NAV SCROLL */
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);},{passive:true});
 
-/* TAPE */
-function buildTape() {
-  const words = t('tape.words').split('|');
-  const ti = document.getElementById('tapeInner');
-  const chunk = () => words.map(w=>`<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
-  ti.innerHTML = chunk() + chunk();
-}
+
 
 /* REVEAL */
 const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
