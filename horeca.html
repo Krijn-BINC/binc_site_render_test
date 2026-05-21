@@ -104,12 +104,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 @keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* TAPE */
-.tape{background:var(--red);padding:16px 0;overflow:hidden;white-space:nowrap}
-.tape-inner{display:inline-block;animation:marquee 24s linear infinite}
-.tape-item{display:inline-block;font-family:var(--font-display);font-size:.95rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:#fff;margin:0 28px}
-.tape-dot{display:inline-block;width:5px;height:5px;background:rgba(255,255,255,.7);border-radius:50%;vertical-align:middle;margin:0 8px;opacity:.9}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SHARED */
 .label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
@@ -335,8 +329,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </section>
 
-<!-- TAPE -->
-<div class="tape"><div class="tape-inner" id="tapeInner"></div></div>
+
 
 <!-- INTRO -->
 <section id="intro">
@@ -515,7 +508,6 @@ const TRANSLATIONS = {
     'hero.sub':         'Van premium bars tot sportcantines: BINC International plaatst jouw merk op de plekken waar de doelgroep het écht ervaart.',
     'hero.btn1':        'Bekijk kanalen',
     'hero.btn2':        'Terug naar home',
-    'tape.words':       'Horeca Distributie|Bars & Nachtleven|Sportclubs|Foodservice|B2B Sales|Accountmanagement|BINC International',
     'intro.label':      'Horeca distributie',
     'intro.body1':      'Horeca is waar merken écht tot leven komen. Wanneer iemand jouw product drinkt in een bar, ontdekt op een sportclub of proeft tijdens een evenement, draait het niet alleen om consumptie maar om beleving.',
     'intro.body2':      'BINC International brengt merken direct in contact met inkopers, horecagroothandels en sportaccommodaties door heel Nederland. Van introductie tot langdurig accountmanagement zorgen we voor sterke samenwerkingen en zichtbare groei op de juiste locaties.',
@@ -563,7 +555,6 @@ const TRANSLATIONS = {
     'hero.sub':         'From premium bars to sports canteens: BINC International places your brand where your audience truly experiences it.',
     'hero.btn1':        'View channels',
     'hero.btn2':        'Back to home',
-    'tape.words':       'Catering Distribution|Bars & Nightlife|Sports Clubs|Foodservice|B2B Sales|Account Management|BINC International',
     'intro.label':      'Catering distribution',
     'intro.body1':      'Horeca is where brands truly come to life. When someone drinks your product in a bar, discovers it at a sports club or tastes it at an event, it is not just consumption — it is an experience.',
     'intro.body2':      'BINC International connects brands directly with buyers, catering wholesalers and sports venues across the Netherlands. From introduction to long-term account management, we build strong partnerships and drive visible growth at the right locations.',
@@ -627,8 +618,7 @@ function applyLang(lang) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 
-  buildTape();
-}
+
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -653,13 +643,7 @@ drawer.addEventListener('click',e=>{if(e.target===drawer)toggleDrawer(false);});
 /* NAV SCROLL */
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);},{passive:true});
 
-/* TAPE */
-function buildTape() {
-  const words = t('tape.words').split('|');
-  const ti = document.getElementById('tapeInner');
-  const chunk = () => words.map(w=>`<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
-  ti.innerHTML = chunk() + chunk();
-}
+
 
 /* REVEAL */
 const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
