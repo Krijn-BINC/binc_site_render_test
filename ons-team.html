@@ -92,46 +92,6 @@
     .drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
     .drawer-socials a:hover{color:var(--red)}.drawer-socials svg{width:100%;height:100%;fill:currentColor}
 
-/* JUMP OVERLAY */
-.jump-overlay{
-  position:fixed;
-  inset:0;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:99999;
-
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-
-  transition:
-    opacity .45s ease,
-    visibility .45s ease;
-}
-
-.jump-overlay.active{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-}
-
-.jump-logo{
-  width:min(180px,40vw);
-  opacity:0;
-  transform:translateY(10px) scale(.96);
-
-  transition:
-    opacity .5s ease .08s,
-    transform .5s ease .08s;
-}
-
-.jump-overlay.active .jump-logo{
-  opacity:1;
-  transform:translateY(0) scale(1);
-}
-    
     /* HERO */
     #hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
     .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.54}
@@ -276,10 +236,6 @@
 </head>
 
 <body>
-<div class="jump-overlay" id="jumpOverlay">
-  <img class="jump-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_full.svg?v=1779440011" alt="BINC International"/>
-</div>
-  
   <div id="cur"></div>
   <div id="cur-ring"></div>
 
@@ -296,7 +252,7 @@
     <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
     <a href="ons-team.html" class="active" data-i18n="nav.team">Ons Team</a>
     <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
-  <a href="index.html#lead" class="drawer-cta js-jump-link" data-i18n="nav.cta">Samenwerken</a>
+    <a href="index.html#lead" class="drawer-cta" data-i18n="nav.cta">Samenwerken</a>
     <div class="drawer-lang">
       <button class="lang-btn active" data-lang="nl">NL</button>
       <button class="lang-btn" data-lang="en">EN</button>
@@ -325,7 +281,7 @@
       <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
       <a href="ons-team.html" class="active" data-i18n="nav.team">Ons Team</a>
       <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
-      <a href="index.html#lead" class="nav-cta js-jump-link" data-i18n="nav.cta">Samenwerken</a>
+      <a href="index.html#lead" class="nav-cta" data-i18n="nav.cta">Samenwerken</a>
     </div>
     <div class="nav-right">
       <div class="lang-switch">
@@ -699,18 +655,7 @@ const revIO = new IntersectionObserver(entries => {
 }, { threshold: .1 });
 document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
 
-document.querySelectorAll('.js-jump-link').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
 
-    const overlay = document.getElementById('jumpOverlay');
-    overlay.classList.add('active');
-
-    setTimeout(() => {
-      window.location.href = link.href;
-    }, 450);
-  });
-});
 
 /* ── INIT ── */
 applyLang(currentLang);
