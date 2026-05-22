@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-YG0JGDRRM6');
 </script>
 <meta charset="UTF-8"/>
@@ -29,9 +28,23 @@ body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-
 #cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
 #cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
 #cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
-body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring,body:has(.stack-card:hover) #cur-ring{width:52px;height:52px}
+body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:52px}
 ::selection{background:var(--red);color:#fff}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
+
+/* LANG SWITCH */
+.lang-switch{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-left:18px;flex-shrink:0}
+.lang-btn{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);background:transparent;border:none;padding:6px 11px;cursor:pointer;transition:.2s;line-height:1}
+.lang-btn.active{background:var(--red);color:#fff}
+.lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
+
+/* LANG FAB */
+.lang-fab{
+  display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;
+  position:fixed;bottom:28px;right:28px;z-index:600;
+  box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72);
+}
+.lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
@@ -44,6 +57,8 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-links a:hover{color:#fff}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}.nav-links a.active{color:#fff}
 .nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
 .nav-cta::after{display:none!important}.nav-cta:hover{background:var(--red2)!important}
+.nav-right{display:flex;align-items:center;gap:0}
+.nav-right .lang-switch{display:none}
 .nav-hamburger{display:none}
 
 /* MOBILE DRAWER */
@@ -53,7 +68,9 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .mobile-nav-drawer a:hover,.mobile-nav-drawer a.active{color:#fff}
 .mobile-nav-drawer a.drawer-cta{color:#fff;background:var(--red);border-radius:4px;margin-top:28px;border-bottom:none;font-size:clamp(1.4rem,5vw,2rem);padding:18px 0;letter-spacing:.14em}
 .mobile-nav-drawer a.drawer-cta:hover{background:var(--red2)}
-.drawer-socials{display:flex;gap:28px;margin-top:36px}
+.drawer-lang{display:flex;align-items:center;justify-content:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-top:28px}
+.drawer-lang .lang-btn{font-size:.8rem;padding:10px 22px}
+.drawer-socials{display:flex;gap:28px;margin-top:28px}
 .drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
 .drawer-socials a:hover{color:var(--red)}.drawer-socials svg{width:100%;height:100%;fill:currentColor}
 
@@ -65,74 +82,53 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
 
 /* HERO */
-#hero{position:relative;min-height:105vh;display:flex;align-items:center;overflow:hidden;background:#000;padding:120px 6vw 100px}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.48) 48%,rgba(0,0,0,.22) 100%),linear-gradient(to bottom,rgba(0,0,0,.28),rgba(0,0,0,.92))}
+#hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.54}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 46%,rgba(0,0,0,.18) 100%),linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
 @keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
-.hero-orb{position:absolute;border-radius:50%;filter:blur(100px)}
-.orb-a{width:520px;height:520px;background:rgba(192,57,43,.08);top:-6%;right:5%}
-.orb-b{width:320px;height:320px;background:rgba(192,57,43,.05);bottom:8%;right:24%}
-.hero-content{position:relative;z-index:5;width:100%;max-width:1500px}
-.hero-inner{max-width:980px;margin-left:clamp(24px,6vw,120px)}
-
-/* HERO ANIM */
-.hero-label{opacity:0;animation:riseUp .9s .1s forwards}
-.hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,14rem);font-weight:900;line-height:.84;letter-spacing:-.01em;margin-bottom:36px;opacity:0;animation:riseUp .9s .25s forwards}
+.g-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.orb-a{width:500px;height:500px;background:rgba(192,57,43,.09);top:-8%;right:8%}
+.orb-b{width:320px;height:320px;background:rgba(192,57,43,.055);bottom:10%;right:30%}
+.hero-content{position:relative;z-index:10;padding:0 6vw;max-width:1500px;width:100%}
+.hero-inner{margin-left:clamp(32px,7vw,140px);max-width:1050px}
+.hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,15rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:11ch;margin-bottom:40px;opacity:0;animation:riseUp .9s .25s forwards}
 .hero-title .red{color:var(--red)}.hero-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
-.hero-sub{max-width:560px;font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,.7);font-weight:300;margin-bottom:42px;opacity:0;animation:riseUp .9s .45s forwards}
+.hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.72);font-weight:300;max-width:520px;margin-bottom:48px;opacity:0;animation:riseUp .9s .45s forwards}
 .hero-btns{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:riseUp .9s .65s forwards}
+.btn-red,.btn-outline{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+.btn-red{color:#fff;background:var(--red);border:none;padding:17px 40px}
+.btn-red:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
+.btn-outline{color:#fff;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.24);padding:16px 40px}
+.btn-outline:hover{border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.055)}
 @keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
 
 /* SHARED */
-.label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.92);margin-bottom:22px}
+.label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
 .label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
-.display{font-family:var(--font-display);font-size:clamp(3.4rem,6vw,7.5rem);font-weight:900;line-height:.9;color:#fff}
-.body-text{max-width:720px;font-size:1rem;line-height:1.95;color:rgba(255,255,255,.62);font-weight:300}
+.display{font-family:var(--font-display);font-size:clamp(3.6rem,5.9vw,8.1rem);font-weight:900;line-height:.9;color:#fff}
+.body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:700px}
 
-/* BUTTONS */
-.btn-red,.btn-outline{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;text-decoration:none;display:inline-block;transition:.2s}
-.btn-red{color:#fff;background:var(--red);padding:17px 40px;border:none}
-.btn-red:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
-.btn-outline{color:#fff;border:1px solid rgba(255,255,255,.24);background:rgba(0,0,0,.22);padding:16px 40px}
-.btn-outline:hover{border-color:rgba(192,57,43,.7);background:rgba(192,57,43,.055)}
-
-/* INTRO SECTION */
-.section{padding:140px 6vw;background:#000}
-.intro-grid{display:grid;grid-template-columns:minmax(0,760px) minmax(360px,640px);gap:90px;align-items:center}
+/* INTRO */
+#intro{padding:140px 6vw 120px;background:#000;position:relative;overflow:hidden}
+#intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
+.intro-grid{display:grid;grid-template-columns:minmax(0,780px) minmax(420px,640px);gap:90px;align-items:center;max-width:1400px;margin:0 auto}
 .intro-copy{display:flex;flex-direction:column;gap:28px;padding-left:clamp(24px,4vw,84px)}
-
-/* STACK CARDS */
-.stack-visual{position:relative;width:100%;min-height:560px;perspective:1200px;display:flex;align-items:center;justify-content:center;transition:transform .25s ease}
-.stack-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(192,57,43,.12);filter:blur(90px);opacity:.8}
-.stack-ring{position:absolute;width:430px;height:430px;border-radius:50%;border:1px solid rgba(192,57,43,.13);box-shadow:0 0 60px rgba(192,57,43,.06),inset 0 0 60px rgba(192,57,43,.025)}
-.stack-ring::before{content:'';position:absolute;inset:55px;border-radius:50%;border:1px solid rgba(255,255,255,.045)}
-.stack-card{position:absolute;width:min(380px,72vw);height:500px;border-radius:18px;overflow:hidden;border:1px solid rgba(192,57,43,.2);background:#080808;box-shadow:0 34px 90px rgba(0,0,0,.72),inset 0 1px 0 rgba(255,255,255,.08);transform-style:preserve-3d;transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .4s ease,border-color .3s ease,filter .3s ease;cursor:pointer}
-.stack-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.82;transform:scale(1.04);transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .3s ease}
-.stack-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.25) 55%,rgba(0,0,0,.08) 100%),radial-gradient(circle at 50% 0%,rgba(192,57,43,.14),transparent 48%);z-index:1}
-.stack-card::after{content:'';position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.9),transparent);z-index:3}
-.stack-card-main{z-index:4;transform:translate3d(0,0,80px) rotate(-2deg)}
-.stack-card-left{z-index:3;transform:translate3d(-95px,28px,10px) rotate(-10deg) scale(.88);opacity:.72;filter:grayscale(.2) brightness(.82)}
-.stack-card-right{z-index:2;transform:translate3d(105px,42px,-20px) rotate(9deg) scale(.84);opacity:.55;filter:grayscale(.35) brightness(.72)}
-.stack-card-back{z-index:1;transform:translate3d(0,70px,-80px) rotate(2deg) scale(.78);opacity:.32;filter:grayscale(.55) brightness(.55)}
-.stack-visual:hover .stack-card-main{transform:translate3d(0,-8px,110px) rotate(-1deg) scale(1.02);border-color:rgba(192,57,43,.42)}
-.stack-visual:hover .stack-card-left{transform:translate3d(-130px,38px,15px) rotate(-13deg) scale(.9)}
-.stack-visual:hover .stack-card-right{transform:translate3d(140px,52px,-15px) rotate(12deg) scale(.86)}
-.stack-visual:hover .stack-card-back{transform:translate3d(0,88px,-80px) rotate(3deg) scale(.8)}
-.stack-visual:hover .stack-card-main img{transform:scale(1.1);opacity:.9}
-.stack-info{position:absolute;left:28px;right:28px;bottom:28px;z-index:4}
-.stack-kicker{display:inline-block;font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.95);margin-bottom:12px;padding:6px 10px;border:1px solid rgba(192,57,43,.28);background:rgba(0,0,0,.36);border-radius:2px}
-.stack-title{font-family:var(--font-display);font-size:clamp(2.7rem,4vw,4.8rem);font-weight:900;line-height:.88;color:#fff}
-.stack-title span{color:var(--red)}
-.stack-meta{position:absolute;top:24px;right:24px;z-index:4;font-family:var(--font-ui);font-size:.58rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(0,0,0,.36);border:1px solid rgba(255,255,255,.1);padding:8px 10px;border-radius:999px;backdrop-filter:blur(8px)}
-.stack-mini{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);z-index:8;display:flex;gap:8px}
-.stack-mini span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.18);border:1px solid rgba(192,57,43,.25);transition:.25s}
-.stack-mini span.active{background:var(--red);box-shadow:0 0 12px rgba(192,57,43,.5)}
-.stack-hint{position:absolute;bottom:-34px;left:50%;transform:translateX(-50%);font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.32);white-space:nowrap}
+.intro-visual{position:relative;width:100%;aspect-ratio:3/4;max-width:520px;justify-self:end;border-radius:14px;overflow:hidden;border:1px solid rgba(192,57,43,.22);box-shadow:0 40px 100px rgba(0,0,0,.72),0 0 60px rgba(192,57,43,.08)}
+.intro-visual img{width:100%;height:100%;object-fit:cover;opacity:.78;transform:scale(1.04);transition:transform 8s ease}
+.intro-visual:hover img{transform:scale(1.08)}
+.intro-visual::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.18) 55%,rgba(0,0,0,.05) 100%),radial-gradient(circle at 50% 0%,rgba(192,57,43,.16),transparent 44%);z-index:1}
+.intro-visual::after{content:'';position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.9),transparent);z-index:2}
+.visual-caption{position:absolute;left:28px;right:28px;bottom:28px;z-index:3}
+.visual-tag{display:inline-block;font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.95);margin-bottom:12px;padding:6px 10px;border:1px solid rgba(192,57,43,.28);background:rgba(0,0,0,.4);border-radius:2px}
+.visual-title{font-family:var(--font-display);font-size:clamp(2.4rem,3.5vw,4.2rem);font-weight:900;line-height:.88;color:#fff}
+.visual-title span{color:var(--red)}
 
 /* EVENTS SECTION */
 #events{padding:120px 6vw 140px;background:#000}
 .events-head{margin-bottom:56px}
+
+/* Desktop: 3-col grid */
 .event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .event-card{position:relative;overflow:hidden;min-height:460px;border-radius:16px;border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);transition:.3s}
 .event-card:hover{transform:translateY(-4px);border-color:rgba(192,57,43,.38)}
@@ -153,48 +149,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .cta-title .red{color:var(--red)}.cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
 .cta-copy{max-width:700px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62)}
 
-/* EVENT TAPE */
-.event-tape{
-  background:var(--red);
-  overflow:hidden;
-  white-space:nowrap;
-  padding:16px 0;
-  border-top:1px solid rgba(255,255,255,.06);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.event-tape-track{
-  display:inline-block;
-  white-space:nowrap;
-  animation:eventTape 24s linear infinite;
-}
-
-.event-tape-track span{
-  display:inline-block;
-  margin:0 34px;
-  font-family:var(--font-display);
-  font-size:.95rem;
-  font-weight:700;
-  letter-spacing:.34em;
-  text-transform:uppercase;
-  color:#fff;
-}
-
-.event-tape-track span::after{
-  content:'•';
-  margin-left:34px;
-  opacity:.7;
-}
-
-@keyframes eventTape{
-  from{
-    transform:translateX(0);
-  }
-  to{
-    transform:translateX(-50%);
-  }
-}
-  
 /* FOOTER */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
@@ -207,8 +161,12 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .ft-item p,.ft-item a{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
 .ft-h{font-family:var(--font-ui);font-size:.85rem!important;font-weight:800!important;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,1)!important;margin-bottom:12px!important}
 .ft-item a:hover{color:var(--red)}
-.ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.05);padding:22px 6vw;display:flex;justify-content:space-between;align-items:center}
-.ft-copy{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.2)}
+.ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.07);padding:28px 6vw;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.ft-bar-left{display:flex;flex-direction:column;gap:6px}
+.ft-copy{font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:rgba(255,255,255,.32)}
+.ft-copy strong{color:rgba(192,57,43,.8);font-weight:700}
+.ft-bar-right{display:flex;align-items:center;gap:24px}
+.ft-kvk{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.07);padding:6px 14px;border-radius:2px}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
@@ -219,8 +177,8 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 @media(max-width:1000px){
   html,body{cursor:auto}
   #cur,#cur-ring{display:none}
-
-  /* NAV MOBILE */
+  .lang-fab{display:none}
+  .nav-right .lang-switch{display:flex}
   nav{height:70px;padding:0 5vw}
   .nav-logo img{height:32px}
   nav .nav-links{display:none}
@@ -231,56 +189,61 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
   .mobile-nav-drawer{display:flex}
 
-  /* HERO MOBILE */
-  #hero{min-height:100svh;padding:110px 5vw 80px}
-  .hero-inner{margin-left:0}
-  .hero-title{font-size:clamp(4rem,16vw,8rem)}
-  .hero-sub{font-size:.95rem;max-width:100%}
-  .hero-btns{gap:12px}
-  .btn-red,.btn-outline{padding:14px 28px;font-size:.75rem}
+  #hero{min-height:105vh;padding:110px 0 90px}
+  .hero-inner{margin-left:0;padding:0 5vw}
+  .hero-title{font-size:clamp(5rem,20vw,10rem)}
 
-  /* INTRO MOBILE */
-  .section{padding:80px 5vw 60px}
+  #intro{padding:80px 5vw 60px}
   .intro-grid{grid-template-columns:1fr;gap:52px}
   .intro-copy{padding-left:0}
+  .intro-visual{max-width:100%;justify-self:stretch;aspect-ratio:4/3}
 
-  /* STACK MOBILE */
-  .stack-visual{min-height:440px;perspective:900px}
-  .stack-glow,.stack-ring{width:280px;height:280px}
-  .stack-card{width:min(280px,76vw);height:380px;border-radius:14px}
-  .stack-card-left{transform:translate3d(-52px,24px,10px) rotate(-9deg) scale(.86);opacity:.65}
-  .stack-card-right{transform:translate3d(58px,36px,-20px) rotate(8deg) scale(.82);opacity:.48}
-  .stack-card-back{transform:translate3d(0,60px,-80px) rotate(2deg) scale(.76);opacity:.28}
-  .stack-visual:hover .stack-card-left{transform:translate3d(-70px,32px,15px) rotate(-11deg) scale(.88)}
-  .stack-visual:hover .stack-card-right{transform:translate3d(76px,46px,-15px) rotate(10deg) scale(.84)}
-  .stack-hint{display:none}
-
-  /* EVENTS MOBILE */
-  #events{padding:80px 5vw 90px}
-  .event-grid{grid-template-columns:1fr;gap:18px}
-  .event-card{min-height:320px}
+  /* Mobile horizontal scroll for event cards */
+  #events{padding:80px 0 90px}
+  .events-head{padding:0 5vw}
+  .event-grid{
+    display:flex;
+    flex-direction:row;
+    gap:16px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding:0 5vw 24px;
+    scrollbar-width:none;
+  }
+  .event-grid::-webkit-scrollbar{display:none}
+  .event-card{
+    flex:0 0 80vw;
+    max-width:320px;
+    min-height:400px;
+    scroll-snap-align:start;
+    border-radius:14px;
+  }
   .event-content{padding:24px}
   .event-content h3{font-size:clamp(2rem,8vw,3rem)}
 
-  /* CTA MOBILE */
+  /* scroll hint */
+  .scroll-hint{display:flex;align-items:center;gap:10px;padding:0 5vw;margin-bottom:20px;font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+  .scroll-hint::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.1),transparent)}
+
   #cta{padding:90px 5vw 100px}
 
-  /* FOOTER MOBILE */
   footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
   .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
   .ft-logo{width:min(200px,55vw);margin:0 auto}
   .ft-socials{justify-content:center}
   .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
-  .ft-bar{flex-direction:column;align-items:center;gap:8px;padding:18px 5vw;text-align:center}
+  .ft-bar{flex-direction:column;align-items:center;gap:12px;padding:20px 5vw;text-align:center}
+  .ft-bar-right{flex-direction:column;gap:8px;align-items:center}
+  .lang-switch{margin-left:8px}
+  .lang-btn{padding:5px 9px;font-size:.62rem}
 }
 
-@media(max-width:480px){
-  .hero-title{font-size:clamp(3.4rem,18vw,7rem)}
-  .display{font-size:clamp(3rem,12vw,5rem)}
-  .cta-title{font-size:clamp(3.2rem,14vw,6rem)}
-  .stack-card{width:min(240px,78vw);height:340px}
-  .stack-card-left{transform:translate3d(-38px,20px,10px) rotate(-8deg) scale(.84)}
-  .stack-card-right{transform:translate3d(42px,30px,-20px) rotate(7deg) scale(.80)}
+/* hide scroll hint on desktop */
+.scroll-hint{display:none}
+
+@media(min-width:1001px){
+  .nav-links{margin-left:auto;margin-right:20px}
 }
 </style>
 </head>
@@ -292,12 +255,24 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
+<!-- LANG FAB -->
+<div class="lang-fab" id="langFab">
+  <button class="lang-btn active" data-lang="nl">NL</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
 <!-- Mobile drawer -->
 <div class="mobile-nav-drawer" id="mobileDrawer">
-  <a href="horeca.html">Horeca</a>
-  <a href="evenementen.html" class="active">Evenementen</a>
-  <a href="vacatures.html">Vacatures</a>
-  <a href="index.html#lead" class="drawer-cta">Samenwerken</a>
+  <a href="retail.html" data-i18n="nav.retail">Retail</a>
+  <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
+  <a href="evenementen.html" class="active" data-i18n="nav.events">Evenementen</a>
+  <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
+  <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
+  <a href="index.html#lead" class="drawer-cta" data-i18n="nav.cta">Samenwerken</a>
+  <div class="drawer-lang">
+    <button class="lang-btn active" data-lang="nl">NL</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
   <div class="drawer-socials">
     <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
     <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg></a>
@@ -310,112 +285,87 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
   </a>
   <div class="nav-links">
-    <a href="horeca.html">Horeca</a>
-    <a href="evenementen.html" class="active">Evenementen</a>
-    <a href="vacatures.html">Vacatures</a>
-    <a href="index.html#lead" class="nav-cta">Samenwerken</a>
+    <a href="retail.html" data-i18n="nav.retail">Retail</a>
+    <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
+    <a href="evenementen.html" class="active" data-i18n="nav.events">Evenementen</a>
+    <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
+    <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
+    <a href="index.html#lead" class="nav-cta" data-i18n="nav.cta">Samenwerken</a>
   </div>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="nl">NL</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO (geen label) -->
 <section id="hero">
   <video class="hero-video" autoplay muted loop playsinline>
     <source src="https://cdn.shopify.com/videos/c/o/v/9690e8a2bed14220a0ecbf4df8209ce6.mov" type="video/mp4"/>
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
-  <div class="hero-orb orb-a"></div>
-  <div class="hero-orb orb-b"></div>
+  <div class="g-orb orb-a"></div>
+  <div class="g-orb orb-b"></div>
   <div class="hero-content">
     <div class="hero-inner">
-      <p class="label hero-label">Events & activaties</p>
       <h1 class="hero-title">FROM SHELF<br><span class="red">TO</span> <span class="stroke">FESTIVAL</span></h1>
-      <p class="hero-sub">BINC International brengt merken niet alleen naar retail, maar ook naar plekken waar cultuur, energie en doelgroep samenkomen. Van festivals tot high-traffic activaties door heel Nederland.</p>
+      <p class="hero-sub" data-i18n="hero.sub">BINC International brengt merken niet alleen naar retail, maar ook naar plekken waar cultuur, energie en doelgroep samenkomen. Van festivals tot high-traffic activaties door heel Nederland.</p>
       <div class="hero-btns">
-        <a href="#events" class="btn-red">Bekijk activaties</a>
-        <a href="index.html" class="btn-outline">Terug naar home</a>
+        <a href="#events" class="btn-red" data-i18n="hero.btn1">Bekijk activaties</a>
+        <a href="index.html" class="btn-outline" data-i18n="hero.btn2">Terug naar home</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MOVING TAPE -->
-<div class="event-tape">
-  <div class="event-tape-track">
-    <span>FESTIVALS</span>
-    <span>BRAND ACTIVATIONS</span>
-    <span>SAMPLING</span>
-    <span>LIVE EVENTS</span>
-    <span>HIGH TRAFFIC</span>
-    <span>BINC INTERNATIONAL</span>
-
-    <!-- duplicate voor infinite loop -->
-    <span>FESTIVALS</span>
-    <span>BRAND ACTIVATIONS</span>
-    <span>SAMPLING</span>
-    <span>LIVE EVENTS</span>
-    <span>HIGH TRAFFIC</span>
-    <span>BINC INTERNATIONAL</span>
-  </div>
-</div>
-  
 <!-- INTRO -->
-<section class="section">
+<section id="intro">
   <div class="intro-grid">
     <div class="reveal intro-copy">
       <div>
-        <p class="label">Live activations</p>
+        <p class="label" data-i18n="intro.label">Live activations</p>
         <h2 class="display">WE BUILD<br>REAL-WORLD<br><span style="color:var(--red)">ATTENTION</span></h2>
       </div>
-      <p class="body-text">Retail is belangrijk. Maar echte merkbeleving ontstaat op plekken waar mensen voelen, proeven en ervaren.</p>
-      <p class="body-text">Daarom activeert BINC International merken op festivals, evenementen en high-traffic locaties. Van sampling tot complete merkactivaties.</p>
+      <p class="body-text" data-i18n="intro.body1">Retail is belangrijk. Maar echte merkbeleving ontstaat op plekken waar mensen voelen, proeven en ervaren.</p>
+      <p class="body-text" data-i18n="intro.body2">Daarom activeert BINC International merken op festivals, evenementen en high-traffic locaties. Van sampling tot complete merkactivaties.</p>
     </div>
-    <div class="stack-visual reveal d2" id="stackVisual">
-      <div class="stack-glow"></div>
-      <div class="stack-ring"></div>
-      <div class="stack-card stack-card-back" data-card="back">
-        <img id="stackBackImg" src="" alt="Event visual"/>
-      </div>
-      <div class="stack-card stack-card-right" data-card="next">
-        <img id="stackRightImg" src="" alt="Event visual"/>
-      </div>
-      <div class="stack-card stack-card-left" data-card="prev">
-        <img id="stackLeftImg" src="" alt="Event visual"/>
-      </div>
-      <div class="stack-card stack-card-main" data-card="main">
-        <img id="stackMainImg" src="" alt="Event visual"/>
-        <div class="stack-meta" id="stackMeta">Live</div>
-        <div class="stack-info">
-          <span class="stack-kicker" id="stackKicker">Activation moments</span>
-          <h3 class="stack-title" id="stackTitle">Culture<br><span>in motion</span></h3>
+    <div class="reveal d2">
+      <div class="intro-visual">
+        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1400&auto=format&fit=crop" alt="Festival sfeer"/>
+        <div class="visual-caption">
+          <span class="visual-tag" data-i18n="intro.visual.tag">Live in the field</span>
+          <h3 class="visual-title">Jouw merk.<br><span>Op het podium.</span></h3>
         </div>
       </div>
-      <div class="stack-mini" id="stackDots">
-        <span></span><span></span><span></span><span></span>
-      </div>
-      <div class="stack-hint">Klik links of rechts om te swipen</div>
     </div>
   </div>
 </section>
 
 <!-- EVENTS -->
 <section id="events">
-  <div class="events-head reveal">
-    <p class="label">Events & ervaringen</p>
-    <h2 class="display">EVENTS THAT<br><span style="color:var(--red)">CREATE IMPACT</span></h2>
+  <div class="events-head reveal" style="padding:0 6vw">
+    <p class="label" data-i18n="events.label">Events & experiences</p>
+    <h2 class="display">EVENTS THAT<br><span style="color:var(--red)" data-i18n="events.title.sub">CREATE IMPACT</span></h2>
   </div>
+
+  <!-- scroll hint: alleen zichtbaar op mobiel via CSS -->
+  <p class="scroll-hint" data-i18n="events.scroll">Scroll voor meer →</p>
+
   <div class="event-grid">
     <div class="event-card reveal">
       <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1600&auto=format&fit=crop" alt="7th Sunday"/>
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
       <div class="event-content">
-        <span class="event-tag">Festival activatie</span>
+        <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
         <h3>7th Sunday</h3>
-        <p>Brand activations, sampling en directe zichtbaarheid op één van de grootste festivals van Nederland.</p>
+        <p data-i18n="ev1.body">Brand activations, sampling en directe zichtbaarheid op één van de grootste festivals van Nederland.</p>
       </div>
     </div>
     <div class="event-card reveal d1">
@@ -423,9 +373,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
       <div class="event-content">
-        <span class="event-tag">Festival activatie</span>
+        <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
         <h3>Harmony of Hardcore</h3>
-        <p>Hoge energie, hoge traffic en directe merkinteractie met duizenden festivalbezoekers.</p>
+        <p data-i18n="ev2.body">Hoge energie, hoge traffic en directe merkinteractie met duizenden festivalbezoekers.</p>
       </div>
     </div>
     <div class="event-card reveal d2">
@@ -433,9 +383,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
       <div class="event-content">
-        <span class="event-tag">Festival activatie</span>
+        <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
         <h3>Dauwpop</h3>
-        <p>Live activaties en branded experiences waar cultuur, muziek en merkbeleving samenkomen.</p>
+        <p data-i18n="ev3.body">Live activaties en branded experiences waar cultuur, muziek en merkbeleving samenkomen.</p>
       </div>
     </div>
   </div>
@@ -444,10 +394,10 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <!-- CTA -->
 <section id="cta">
   <div class="cta-wrap reveal">
-    <p class="label" style="justify-content:center">Samenwerken</p>
+    <p class="label" style="justify-content:center" data-i18n="cta.label">Work together</p>
     <h2 class="cta-title">READY TO BUILD<br><span class="red">REAL</span> <span class="stroke">ATTENTION?</span></h2>
-    <p class="cta-copy">Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.</p>
-    <a href="index.html#lead" class="btn-red">Start samenwerking</a>
+    <p class="cta-copy" data-i18n="cta.copy">Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.</p>
+    <a href="index.html#lead" class="btn-red" data-i18n="cta.btn">Start samenwerking</a>
   </div>
 </section>
 
@@ -462,17 +412,112 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     </div>
   </div>
   <div class="ft-info reveal d1">
-    <div class="ft-item"><p class="ft-h">BINC adres</p><p>Wim Rötherlaan 25,<br>5051 JS Goirle</p></div>
-    <div class="ft-item"><p class="ft-h">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
-    <div class="ft-item"><p class="ft-h">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.address.label">BINC adres</p><p>Wim Rötherlaan 25,<br>5051 JS Goirle</p></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.email.label">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.phone.label">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
   </div>
 </footer>
 <div class="ft-bar">
-  <span class="ft-copy">© 2025 BINC International B.V. — Alle rechten voorbehouden.</span>
-  <span class="ft-copy">KVK: 98970887</span>
+  <div class="ft-bar-left">
+    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+    <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)" data-i18n="footer.tagline.short">Full-service B2B voor ambitieuze merken in Nederland.</span>
+  </div>
+  <div class="ft-bar-right">
+    <span class="ft-kvk">KVK: 98970887</span>
+  </div>
 </div>
 
 <script>
+/* ══════════════════════════════════════════════════
+   TRANSLATIONS
+══════════════════════════════════════════════════ */
+const TRANSLATIONS = {
+  nl: {
+    'nav.retail':           'Retail',
+    'nav.horeca':           'Horeca',
+    'nav.events':           'Evenementen',
+    'nav.team':             'Ons Team',
+    'nav.jobs':             'Vacatures',
+    'nav.cta':              'Samenwerken',
+    'hero.sub':             'BINC International brengt merken niet alleen naar retail, maar ook naar plekken waar cultuur, energie en doelgroep samenkomen. Van festivals tot high-traffic activaties door heel Nederland.',
+    'hero.btn1':            'Bekijk activaties',
+    'hero.btn2':            'Terug naar home',
+    'intro.label':          'Live activations',
+    'intro.body1':          'Retail is belangrijk. Maar echte merkbeleving ontstaat op plekken waar mensen voelen, proeven en ervaren.',
+    'intro.body2':          'Daarom activeert BINC International merken op festivals, evenementen en high-traffic locaties. Van sampling tot complete merkactivaties.',
+    'intro.visual.tag':     'Live in the field',
+    'events.label':         'Events & experiences',
+    'events.title.sub':     'CREATE IMPACT',
+    'events.scroll':        'Scroll voor meer →',
+    'events.tag':           'Festival activatie',
+    'ev1.body':             'Brand activations, sampling en directe zichtbaarheid op één van de grootste festivals van Nederland.',
+    'ev2.body':             'Hoge energie, hoge traffic en directe merkinteractie met duizenden festivalbezoekers.',
+    'ev3.body':             'Live activaties en branded experiences waar cultuur, muziek en merkbeleving samenkomen.',
+    'cta.label':            'Work together',
+    'cta.copy':             'Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.',
+    'cta.btn':              'Start samenwerking',
+    'footer.address.label': 'BINC adres',
+    'footer.email.label':   'E-mailadres',
+    'footer.phone.label':   'Telefoonnummer',
+    'footer.rights':        'Alle rechten voorbehouden.',
+    'footer.tagline.short': 'Full-service B2B voor ambitieuze merken in Nederland.',
+  },
+  en: {
+    'nav.retail':           'Retail',
+    'nav.horeca':           'Horeca',
+    'nav.events':           'Events',
+    'nav.team':             'Our Team',
+    'nav.jobs':             'Careers',
+    'nav.cta':              'Work With Us',
+    'hero.sub':             'BINC International brings brands not just to retail, but to places where culture, energy and audience come together. From festivals to high-traffic activations across the Netherlands.',
+    'hero.btn1':            'View activations',
+    'hero.btn2':            'Back to home',
+    'intro.label':          'Live activations',
+    'intro.body1':          'Retail matters. But real brand experience happens where people feel, taste and discover.',
+    'intro.body2':          'That is why BINC International activates brands at festivals, events and high-traffic locations. From sampling to full brand activations.',
+    'intro.visual.tag':     'Live in the field',
+    'events.label':         'Events & experiences',
+    'events.title.sub':     'CREATE IMPACT',
+    'events.scroll':        'Scroll for more →',
+    'events.tag':           'Festival activation',
+    'ev1.body':             'Brand activations, sampling and direct visibility at one of the biggest festivals in the Netherlands.',
+    'ev2.body':             'High energy, high traffic and direct brand interaction with thousands of festival visitors.',
+    'ev3.body':             'Live activations and branded experiences where culture, music and brand experience come together.',
+    'cta.label':            'Work together',
+    'cta.copy':             'From retail to festivals. From first listing to physical activation. BINC International helps brands grow where impact is created.',
+    'cta.btn':              'Start partnership',
+    'footer.address.label': 'BINC address',
+    'footer.email.label':   'Email address',
+    'footer.phone.label':   'Phone number',
+    'footer.rights':        'All rights reserved.',
+    'footer.tagline.short': 'Full-service B2B for ambitious brands across the Netherlands.',
+  }
+};
+
+/* ══════════════════════════════════════════════════
+   LANGUAGE ENGINE
+══════════════════════════════════════════════════ */
+let currentLang = localStorage.getItem('binc_lang') || 'nl';
+function t(key){ return (TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang][key])||(TRANSLATIONS['nl'][key])||key; }
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('binc_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (el.children.length === 0) el.textContent = val;
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
+});
+
 /* CURSOR */
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
@@ -493,60 +538,25 @@ window.addEventListener('scroll',()=>{document.getElementById('nav').classList.t
 const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
 
-/* STACK CAROUSEL */
-const stackItems=[
-  {image:'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1600&auto=format&fit=crop',meta:'Live',kicker:'Activation moments',title:'Culture<br><span>in motion</span>'},
-  {image:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1600&auto=format&fit=crop',meta:'Energy',kicker:'Festival reach',title:'Crowds<br><span>that feel it</span>'},
-  {image:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop',meta:'Impact',kicker:'Brand presence',title:'Moments<br><span>that stick</span>'},
-  {image:'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop',meta:'Culture',kicker:'Live experience',title:'From shelf<br><span>to stage</span>'}
-];
-let stackIndex=0;
-const stack=document.getElementById('stackVisual');
-const mainImg=document.getElementById('stackMainImg'),leftImg=document.getElementById('stackLeftImg'),rightImg=document.getElementById('stackRightImg'),backImg=document.getElementById('stackBackImg');
-const stackMeta=document.getElementById('stackMeta'),stackKicker=document.getElementById('stackKicker'),stackTitle=document.getElementById('stackTitle');
-const stackDots=[...document.querySelectorAll('#stackDots span')];
-function stackWrap(i){return(i+stackItems.length)%stackItems.length;}
-function renderStack(){
-  const cur=stackItems[stackWrap(stackIndex)],prev=stackItems[stackWrap(stackIndex-1)],next=stackItems[stackWrap(stackIndex+1)],back=stackItems[stackWrap(stackIndex+2)];
-  mainImg.src=cur.image;leftImg.src=prev.image;rightImg.src=next.image;backImg.src=back.image;
-  stackMeta.textContent=cur.meta;stackKicker.textContent=cur.kicker;stackTitle.innerHTML=cur.title;
-  stackDots.forEach((d,i)=>d.classList.toggle('active',i===stackIndex));
-}
-function nextStack(){stackIndex=stackWrap(stackIndex+1);renderStack();}
-function prevStack(){stackIndex=stackWrap(stackIndex-1);renderStack();}
-document.querySelector('[data-card="next"]').addEventListener('click',nextStack);
-document.querySelector('[data-card="prev"]').addEventListener('click',prevStack);
-document.querySelector('[data-card="main"]').addEventListener('click',nextStack);
-document.querySelector('[data-card="back"]').addEventListener('click',nextStack);
-stackDots.forEach((d,i)=>d.addEventListener('click',()=>{stackIndex=i;renderStack();}));
-renderStack();
-
-/* TOUCH SWIPE on stack */
-let touchStartX=0;
-if(stack){
-  stack.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;},{passive:true});
-  stack.addEventListener('touchend',e=>{
-    const dx=e.changedTouches[0].clientX-touchStartX;
-    if(Math.abs(dx)>40){dx<0?nextStack():prevStack();}
-  },{passive:true});
-
-  window.addEventListener('mousemove',e=>{
-    const rect=stack.getBoundingClientRect();
-    const inside=e.clientX>=rect.left&&e.clientX<=rect.right&&e.clientY>=rect.top&&e.clientY<=rect.bottom;
-    if(!inside)return;
-    const x=(e.clientX-rect.left)/rect.width-.5,y=(e.clientY-rect.top)/rect.height-.5;
-    stack.style.transform=`rotateY(${x*5}deg) rotateX(${-y*4}deg)`;
-  },{passive:true});
-  stack.addEventListener('mouseleave',()=>{stack.style.transform='rotateY(0deg) rotateX(0deg)';});
-}
-
-/* AUTO-ROTATE */
-setInterval(nextStack,4000);
+/* ORBS */
+window.addEventListener('mousemove',e=>{
+  const x=(e.clientX/innerWidth-.5)*18,y=(e.clientY/innerHeight-.5)*18;
+  document.querySelector('.orb-a').style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
+  document.querySelector('.orb-b').style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
+},{passive:true});
 
 /* JUMP OVERLAY */
 document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
-  link.addEventListener('click',e=>{e.preventDefault();const o=document.getElementById('jumpOverlay');o.classList.add('active');setTimeout(()=>{window.location.href='index.html#lead';},900);});
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const o=document.getElementById('jumpOverlay');
+    o.classList.add('active');
+    setTimeout(()=>{window.location.href='index.html#lead';},900);
+  });
 });
+
+/* INIT */
+applyLang(currentLang);
 </script>
 </body>
 </html>
