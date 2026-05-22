@@ -396,9 +396,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <section id="retailers">
   <div class="retailers-head reveal">
     <p class="label" data-i18n="ret.label">Our retailpartners</p>
-    <h2 class="display" data-i18n="ret.heading">
-  VIJF KETENS.<br><span style="color:var(--red)">ÉÉN NETWERK.</span>
-</h2>
+    <h2 class="display" data-i18n="ret.heading">VIJF KETENS.<br><span style="color:var(--red)">ÉÉN NETWERK.</span></h2>
   </div>
 
   <div class="retailer-list reveal d1">
@@ -640,15 +638,15 @@ function applyLang(lang) {
     const vlines = t('intro.visual.title').split('\n');
     visualTitle.innerHTML = vlines[0] + '<br><span>' + vlines[1] + '</span>';
   }
+  // Handle retail heading with line breaks
+  const retailHeading = document.querySelector('[data-i18n="ret.heading"]');
+  if (retailHeading) {
+    const rlines = t('ret.heading').split('\n');
+    retailHeading.innerHTML = rlines[0] + '<br><span style="color:var(--red)">' + rlines[1] + '</span>';
+  }
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
-}
-
-  const retailHeading = document.querySelector('[data-i18n="ret.heading"]');
-if (retailHeading) {
-  const rlines = t('ret.heading').split('\n');
-  retailHeading.innerHTML = rlines[0] + '<br><span style="color:var(--red)">' + rlines[1] + '</span>';
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
