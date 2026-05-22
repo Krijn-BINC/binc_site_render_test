@@ -61,6 +61,18 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-right .lang-switch{display:none}
 .nav-hamburger{display:none}
 
+.hero-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  background-image:url('https://loutjefotos.nl/wp-content/uploads/2021/05/2-horeca-at-sea.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:.54;
+}
+  
 /* MOBILE DRAWER */
 .mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0}
 .mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
@@ -319,9 +331,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
 <!-- HERO (geen label) -->
 <section id="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="https://cdn.shopify.com/videos/c/o/v/9690e8a2bed14220a0ecbf4df8209ce6.mov" type="video/mp4"/>
-  </video>
+  <div class="hero-image"></div>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <div class="g-orb orb-a"></div>
