@@ -537,9 +537,17 @@ function toggleDrawer(open) {
   drawer.classList.toggle('open', open);
   document.body.style.overflow = open ? 'hidden' : '';
 }
-hamburger.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
-drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', () => toggleDrawer(false)));
-drawer.addEventListener('click', e => { if(e.target===drawer) toggleDrawer(false); });
+if (hamburger && drawer) {
+  hamburger.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
+
+  drawer.querySelectorAll('a').forEach(l => {
+    l.addEventListener('click', () => toggleDrawer(false));
+  });
+
+  drawer.addEventListener('click', e => {
+    if (e.target === drawer) toggleDrawer(false);
+  });
+}
 
 /* ── NAV SCROLL ── */
 window.addEventListener('scroll', () => {
@@ -652,7 +660,13 @@ function applyLang(lang) {
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
+  btn.addEventListener('click', () => {
+    applyLang(btn.dataset.lang);
+
+    if (typeof toggleDrawer === 'function' && drawer) {
+      toggleDrawer(false);
+    }
+  });
 });
 
 applyLang(currentLang);
