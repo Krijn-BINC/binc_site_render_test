@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YG0JGDRRM6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -13,7 +12,6 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ons Team | BINC International</title>
-
   <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -61,17 +59,7 @@
       box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72);
     }
     .lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
-.hero-image{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  background-image:url('https://www.lsst.ac/wp-content/uploads/hd_party_wallpaper.jpg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  opacity:.54;
-}
+
     /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
     nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
@@ -104,7 +92,7 @@
 
     /* HERO */
     #hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
-    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.54}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(192,57,43,.06) 0%,transparent 50%,rgba(192,57,43,.03) 100%)}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 46%,rgba(0,0,0,.18) 100%),linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%)}
     .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
     @keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
@@ -130,23 +118,33 @@
     .team-title{font-family:var(--font-display);font-size:clamp(3rem,6vw,7rem);font-weight:900;line-height:.9;color:#fff}
 
     .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;z-index:1}
-/* 7e profiel centreren op desktop */
-@media(min-width:1001px){
-  .team-grid .team-card:last-child{
-    grid-column: 2;
-  }
-}
 
-    
-    
+    @media(min-width:1001px){
+      .team-grid .team-card:last-child{grid-column:2}
+    }
+
     .team-card{position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.048),rgba(255,255,255,.012));border:1px solid rgba(192,57,43,.13);transition:.35s;box-shadow:0 30px 80px rgba(0,0,0,.58),inset 0 1px 0 rgba(255,255,255,.06)}
     .team-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.4);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.08),inset 0 1px 0 rgba(255,255,255,.08)}
     .team-card::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
 
-    .team-image{position:relative;height:360px;overflow:hidden}
-    .team-image img{width:100%;height:100%;object-fit:cover;object-position:top;opacity:.82;transition:.5s;filter:grayscale(18%)}
-    .team-card:hover .team-image img{transform:scale(1.05);opacity:.95;filter:grayscale(0%)}
-    .team-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.4) 40%,transparent 70%)}
+    /* AVATAR PLACEHOLDER — geen foto nodig */
+    .team-avatar{position:relative;height:320px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(192,57,43,.07) 0%,rgba(0,0,0,.6) 100%)}
+    .team-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.3) 60%,transparent 100%)}
+
+    /* Monogram cirkel */
+    .avatar-monogram{position:relative;z-index:2;width:108px;height:108px;border-radius:50%;border:1.5px solid rgba(192,57,43,.45);background:rgba(192,57,43,.08);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;backdrop-filter:blur(6px)}
+    .avatar-monogram span{font-family:var(--font-display);font-size:2.8rem;font-weight:900;line-height:1;color:rgba(255,255,255,.88);letter-spacing:-.02em}
+    .avatar-monogram small{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.22em;color:rgba(192,57,43,.75);text-transform:uppercase;margin-top:4px}
+
+    /* decoratieve ringen */
+    .avatar-ring{position:absolute;border-radius:50%;border:1px solid rgba(192,57,43,.1);pointer-events:none;z-index:1}
+    .avatar-ring-1{width:180px;height:180px}
+    .avatar-ring-2{width:240px;height:240px;border-color:rgba(192,57,43,.05)}
+    .team-card:hover .avatar-ring-1{border-color:rgba(192,57,43,.22);transition:.4s}
+    .team-card:hover .avatar-ring-2{border-color:rgba(192,57,43,.1);transition:.4s}
+
+    /* foto-badge "foto volgt" */
+    .photo-badge{position:absolute;bottom:18px;right:18px;z-index:3;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.1);padding:5px 10px;border-radius:2px;background:rgba(0,0,0,.4)}
 
     .team-content{padding:32px 34px 36px}
     .team-role{display:inline-block;margin-bottom:16px;font-family:var(--font-ui);font-size:.57rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.92);border:1px solid rgba(192,57,43,.24);padding:6px 12px;border-radius:2px;background:rgba(192,57,43,.06)}
@@ -220,7 +218,7 @@
 
       .team-section{padding:80px 5vw 80px}
       .team-grid{grid-template-columns:1fr;gap:20px}
-      .team-image{height:300px}
+      .team-avatar{height:260px}
 
       #cta{padding:80px 5vw 90px}
 
@@ -308,7 +306,7 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-image"></div>
+    <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="g-orb orb-a"></div>
@@ -316,7 +314,7 @@
     <div class="hero-content">
       <div class="hero-inner">
         <h1 class="hero-title" data-i18n="hero.title.html"></h1>
-        <p class="hero-sub" data-i18n="hero.sub">Achter iedere samenwerking staat een jong en gedreven team dat kansen ziet, relaties bouwt en merken vooruit helpt. Maak kennis met de mensen achter BINC International.</p>
+        <p class="hero-sub" data-i18n="hero.sub"></p>
       </div>
     </div>
   </section>
@@ -333,8 +331,13 @@
 
       <!-- Merlijn Stieger -->
       <div class="team-card reveal">
-        <div class="team-image">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1400&auto=format&fit=crop" alt="Merlijn Stieger"/>
+        <div class="team-avatar">
+          <div class="avatar-ring avatar-ring-2"></div>
+          <div class="avatar-ring avatar-ring-1"></div>
+          <div class="avatar-monogram">
+            <span>MS</span>
+          </div>
+          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.merlijn">Director</span>
@@ -354,8 +357,13 @@
 
       <!-- Jorrit Zwaanswijk -->
       <div class="team-card reveal d1">
-        <div class="team-image">
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1400&auto=format&fit=crop" alt="Jorrit Zwaanswijk"/>
+        <div class="team-avatar">
+          <div class="avatar-ring avatar-ring-2"></div>
+          <div class="avatar-ring avatar-ring-1"></div>
+          <div class="avatar-monogram">
+            <span>JZ</span>
+          </div>
+          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.jorrit">Manager Operations &amp; Events</span>
@@ -375,8 +383,13 @@
 
       <!-- Maud Moolenschot -->
       <div class="team-card reveal d2">
-        <div class="team-image">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1400&auto=format&fit=crop" alt="Maud Moolenschot"/>
+        <div class="team-avatar">
+          <div class="avatar-ring avatar-ring-2"></div>
+          <div class="avatar-ring avatar-ring-1"></div>
+          <div class="avatar-monogram">
+            <span>MM</span>
+          </div>
+          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.maud">Sales Manager</span>
@@ -396,8 +409,13 @@
 
       <!-- Tim van Helvoort -->
       <div class="team-card reveal">
-        <div class="team-image">
-          <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?q=80&w=1400&auto=format&fit=crop" alt="Tim van Helvoort"/>
+        <div class="team-avatar">
+          <div class="avatar-ring avatar-ring-2"></div>
+          <div class="avatar-ring avatar-ring-1"></div>
+          <div class="avatar-monogram">
+            <span>TH</span>
+          </div>
+          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.tim">Commercieel Manager</span>
@@ -417,8 +435,13 @@
 
       <!-- Krijn van Lankveld -->
       <div class="team-card reveal d1">
-        <div class="team-image">
-          <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1400&auto=format&fit=crop" alt="Krijn van Lankveld"/>
+        <div class="team-avatar">
+          <div class="avatar-ring avatar-ring-2"></div>
+          <div class="avatar-ring avatar-ring-1"></div>
+          <div class="avatar-monogram">
+            <span>KL</span>
+          </div>
+          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.krijn">Systeem &amp; Data Coordinator</span>
@@ -438,8 +461,13 @@
 
       <!-- Sebastian Beekhuis -->
       <div class="team-card reveal d2">
-        <div class="team-image">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop" alt="Sebastian Beekhuis"/>
+        <div class="team-avatar">
+          <div class="avatar-ring avatar-ring-2"></div>
+          <div class="avatar-ring avatar-ring-1"></div>
+          <div class="avatar-monogram">
+            <span>SB</span>
+          </div>
+          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.sebastian">Regiomanager Noord-Oost Nederland</span>
@@ -459,8 +487,13 @@
 
       <!-- Indy Witjes -->
       <div class="team-card reveal d1">
-        <div class="team-image">
-          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1400&auto=format&fit=crop" alt="Indy Witjes"/>
+        <div class="team-avatar">
+          <div class="avatar-ring avatar-ring-2"></div>
+          <div class="avatar-ring avatar-ring-1"></div>
+          <div class="avatar-monogram">
+            <span>IW</span>
+          </div>
+          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.indy">Social &amp; Influencer Manager</span>
@@ -538,9 +571,6 @@
   </div>
 
 <script>
-/* ══════════════════════════════════════════════════
-   TRANSLATIONS — altijd als eerste definiëren
-══════════════════════════════════════════════════ */
 const TRANSLATIONS = {
   nl: {
     'nav.retail':           'Retail',
@@ -560,6 +590,7 @@ const TRANSLATIONS = {
     'role.krijn':           'Systeem & Data Coordinator',
     'role.sebastian':       'Regiomanager Noord-Oost Nederland',
     'role.indy':            'Social & Influencer Manager',
+    'photo.soon':           'foto volgt',
     'cta.label':            'Start together',
     'cta.body':             'Van retail tot horeca en activaties. Het team van BINC International staat klaar om jouw merk fysiek te laten groeien.',
     'cta.btn':              'Neem contact op',
@@ -587,6 +618,7 @@ const TRANSLATIONS = {
     'role.krijn':           'Systems & Data Coordinator',
     'role.sebastian':       'Regional Manager North-East Netherlands',
     'role.indy':            'Social & Influencer Manager',
+    'photo.soon':           'photo coming soon',
     'cta.label':            'Start together',
     'cta.body':             'From retail to horeca and activations. The BINC International team is ready to grow your brand physically.',
     'cta.btn':              'Get in touch',
@@ -664,8 +696,6 @@ const revIO = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); revIO.unobserve(e.target); } });
 }, { threshold: .1 });
 document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
-
-
 
 /* ── INIT ── */
 applyLang(currentLang);
