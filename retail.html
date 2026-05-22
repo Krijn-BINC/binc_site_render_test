@@ -645,6 +645,12 @@ function applyLang(lang) {
   });
 }
 
+  const retailHeading = document.querySelector('[data-i18n="ret.heading"]');
+if (retailHeading) {
+  const rlines = t('ret.heading').split('\n');
+  retailHeading.innerHTML = rlines[0] + '<br><span style="color:var(--red)">' + rlines[1] + '</span>';
+}
+
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
 });
