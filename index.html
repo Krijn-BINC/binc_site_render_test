@@ -1567,14 +1567,9 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     const navH = document.getElementById('nav').offsetHeight;
     const top  = target.getBoundingClientRect().top + window.pageYOffset - navH;
     if (href === '#lead') {
-      const overlay = document.getElementById('jumpOverlay');
-      overlay.classList.add('active');
-      setTimeout(() => {
-        window.scrollTo({ top, behavior: 'auto' });
-        setTimeout(() => { overlay.classList.remove('active'); }, 1050);
-      }, 250);
-      return;
-    }
+  window.scrollTo({ top, behavior: 'smooth' });
+  return;
+}
     window.scrollTo({ top, behavior: 'smooth' });
   });
 });
