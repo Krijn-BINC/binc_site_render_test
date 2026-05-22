@@ -127,6 +127,16 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .retailers-head{margin-bottom:70px}
 .retailer-list{display:flex;flex-direction:column;gap:1px;border-radius:12px;overflow:hidden;border:1px solid rgba(192,57,43,.12)}
 
+.hero-image{
+  position:absolute;
+  inset:0;
+  background-image:url('https://www.24kitchen.nl/files/styles/social_media_share/public/2018-10/shutterstock_406913140.jpg?itok=3sImo-Nx');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:.48;
+}
+  
 /* Retailer row */
 .retailer-row{
   display:grid;
@@ -350,9 +360,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
 <!-- ══ HERO ══ -->
 <section id="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="https://www.24kitchen.nl/files/styles/social_media_share/public/2018-10/shutterstock_406913140.jpg?itok=3sImo-Nx" type="video/mp4"/>
-  </video>
+ <div class="hero-image"></div>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <div class="g-orb orb-a"></div>
