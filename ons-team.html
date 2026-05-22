@@ -522,64 +522,9 @@
   </div>
 
 <script>
-/* ── CURSOR ── */
-const cur  = document.getElementById('cur');
-const ring = document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-(function animRing(){ rx+=(mx-rx)*.11; ry+=(my-ry)*.11; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
-
-/* ── MOBILE NAV ── */
-const hamburger = document.getElementById('navHamburger');
-const drawer    = document.getElementById('mobileDrawer');
-function toggleDrawer(open) {
-  hamburger.classList.toggle('open', open);
-  drawer.classList.toggle('open', open);
-  document.body.style.overflow = open ? 'hidden' : '';
-}
-if (hamburger && drawer) {
-  hamburger.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
-
-  drawer.querySelectorAll('a').forEach(l => {
-    l.addEventListener('click', () => toggleDrawer(false));
-  });
-
-  drawer.addEventListener('click', e => {
-    if (e.target === drawer) toggleDrawer(false);
-  });
-}
-
-/* ── NAV SCROLL ── */
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 70);
-}, { passive: true });
-
-/* ── ORBS ── */
-window.addEventListener('mousemove', e => {
-  const x = (e.clientX/innerWidth-.5)*18, y = (e.clientY/innerHeight-.5)*18;
-  const orbA = document.querySelector('.orb-a');
-  const orbB = document.querySelector('.orb-b');
-  if(orbA) orbA.style.transform = `translate(${x*1.1}px,${y*1.1}px)`;
-  if(orbB) orbB.style.transform = `translate(${-x*.7}px,${-y*.7}px)`;
-}, { passive: true });
-
-/* ── REVEAL ── */
-const revIO = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); revIO.unobserve(e.target); } });
-}, { threshold: .1 });
-document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
-
-/* ── JUMP OVERLAY ── */
-document.querySelectorAll('a[href="index.html#lead"]').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    setTimeout(() => { window.location.href = 'index.html#lead'; }, 900);
-  });
-});
-
-/* ── LANG SWITCH ── */
-let currentLang = localStorage.getItem('binc_lang') || 'nl';
-
+/* ══════════════════════════════════════════════════
+   TRANSLATIONS — altijd als eerste definiëren
+══════════════════════════════════════════════════ */
 const TRANSLATIONS = {
   nl: {
     'nav.retail':           'Retail',
@@ -637,6 +582,8 @@ const TRANSLATIONS = {
   }
 };
 
+let currentLang = localStorage.getItem('binc_lang') || 'nl';
+
 function applyLang(lang) {
   currentLang = lang;
   localStorage.setItem('binc_lang', lang);
@@ -646,7 +593,6 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n');
     const val = T[key];
     if (val !== undefined) {
-      // Keys ending in .html may contain markup (spans, br)
       if (key.endsWith('.html')) {
         el.innerHTML = val;
       } else {
@@ -659,16 +605,59 @@ function applyLang(lang) {
   });
 }
 
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    applyLang(btn.dataset.lang);
+/* ── CURSOR ── */
+const cur  = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+(function animRing(){ rx+=(mx-rx)*.11; ry+=(my-ry)*.11; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
 
-    if (typeof toggleDrawer === 'function' && drawer) {
-      toggleDrawer(false);
-    }
+/* ── MOBILE NAV ── */
+const hamburger = document.getElementById('navHamburger');
+const drawer    = document.getElementById('mobileDrawer');
+function toggleDrawer(open) {
+  hamburger.classList.toggle('open', open);
+  drawer.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+hamburger.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
+drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', () => toggleDrawer(false)));
+drawer.addEventListener('click', e => { if(e.target===drawer) toggleDrawer(false); });
+
+/* ── LANG BUTTONS ── */
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
+});
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 70);
+}, { passive: true });
+
+/* ── ORBS ── */
+window.addEventListener('mousemove', e => {
+  const x = (e.clientX/innerWidth-.5)*18, y = (e.clientY/innerHeight-.5)*18;
+  const orbA = document.querySelector('.orb-a');
+  const orbB = document.querySelector('.orb-b');
+  if(orbA) orbA.style.transform = `translate(${x*1.1}px,${y*1.1}px)`;
+  if(orbB) orbB.style.transform = `translate(${-x*.7}px,${-y*.7}px)`;
+}, { passive: true });
+
+/* ── REVEAL ── */
+const revIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); revIO.unobserve(e.target); } });
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
+
+/* ── JUMP OVERLAY ── */
+document.querySelectorAll('a[href="index.html#lead"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    setTimeout(() => { window.location.href = 'index.html#lead'; }, 900);
   });
 });
 
+/* ── INIT ── */
 applyLang(currentLang);
 </script>
 </body>
