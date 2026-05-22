@@ -655,13 +655,7 @@ const revIO = new IntersectionObserver(entries => {
 }, { threshold: .1 });
 document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
 
-/* ── JUMP OVERLAY ── */
-document.querySelectorAll('a[href="index.html#lead"]').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    setTimeout(() => { window.location.href = 'index.html#lead'; }, 900);
-  });
-});
+
 
 /* ── INIT ── */
 applyLang(currentLang);
