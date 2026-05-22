@@ -105,13 +105,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .display{font-family:var(--font-display);font-size:clamp(3.6rem,5.9vw,8.1rem);font-weight:900;line-height:.9;color:#fff}
 .body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:700px}
 
-/* TAPE */
-.tape{background:var(--red);padding:16px 0;overflow:hidden;white-space:nowrap}
-.tape-inner{display:inline-block;animation:marquee 28s linear infinite}
-.tape-item{display:inline-block;font-family:var(--font-display);font-size:.95rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:#fff;margin:0 28px}
-.tape-dot{display:inline-block;width:5px;height:5px;background:rgba(255,255,255,.7);border-radius:50%;vertical-align:middle;margin:0 8px}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
 /* INTRO */
 #intro{padding:140px 6vw 100px;background:#000;position:relative;overflow:hidden}
 #intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
@@ -137,7 +130,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 /* Retailer row */
 .retailer-row{
   display:grid;
-  grid-template-columns:80px 1fr auto;
+  grid-template-columns:80px 1fr;
   align-items:center;
   gap:40px;
   padding:44px 52px;
@@ -188,22 +181,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 }
 .retailer-desc{font-size:.95rem;line-height:1.82;color:rgba(255,255,255,.52);font-weight:300;max-width:620px}
 
-/* Retailer right: kpi column */
-.retailer-kpis{
-  position:relative;z-index:2;display:flex;flex-direction:column;gap:20px;
-  min-width:160px;text-align:right;
-}
-.retailer-kpi-item{}
-.retailer-kpi-v{
-  font-family:var(--font-display);font-size:clamp(2rem,2.5vw,3.2rem);
-  font-weight:900;line-height:.88;color:var(--red);
-}
-.retailer-kpi-l{
-  font-family:var(--font-mono);font-size:.48rem;letter-spacing:.14em;
-  text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:5px;line-height:1.45;
-}
-
-/* INTRO VISUAL (same as horeca) */
+/* INTRO VISUAL */
 .intro-visual{position:relative;width:100%;aspect-ratio:3/4;max-width:520px;justify-self:end;border-radius:14px;overflow:hidden;border:1px solid rgba(192,57,43,.22);box-shadow:0 40px 100px rgba(0,0,0,.72),0 0 60px rgba(192,57,43,.08)}
 .intro-visual img{width:100%;height:100%;object-fit:cover;opacity:.72;transform:scale(1.04);transition:transform 8s ease}
 .intro-visual:hover img{transform:scale(1.08)}
@@ -292,8 +270,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     padding:32px 24px;
   }
   .retailer-num{font-size:2.6rem;text-align:left}
-  .retailer-kpis{flex-direction:row;flex-wrap:wrap;text-align:left;gap:16px 28px;min-width:unset}
-  .retailer-kpi-v{font-size:1.8rem}
 
   #how{padding:0 5vw 90px}
   .how-grid{grid-template-columns:1fr;gap:52px}
@@ -393,26 +369,23 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </section>
 
-<!-- TAPE -->
-<div class="tape"><div class="tape-inner" id="tapeInner"></div></div>
-
 <!-- ══ INTRO ══ -->
 <section id="intro">
   <div class="intro-grid">
     <div class="reveal intro-copy">
       <div>
         <p class="label" data-i18n="intro.label">Retail distribution</p>
-        <h2 class="display">IN DE WINKEL.<br>IN HET RAK.<br><span style="color:var(--red)">IN BEWEGING.</span></h2>
+        <h2 class="display" data-i18n="intro.heading">Your brand.<br>Standing out<br><span style="color:var(--red)">in-store.</span></h2>
       </div>
       <p class="body-text" data-i18n="intro.body1">Retail winnen betekent meer dan een listing binnenhalen. Het gaat om de juiste positie in het schap, sterke rotatie en een langdurige samenwerking met de inkopers die er toe doen.</p>
-      <p class="body-text" data-i18n="intro.body2">BINC International heeft directe relaties opgebouwd met de grootste retailers van Nederland. Jumbo, Albert Heijn, Spar en Sligro — wij kennen de mensen, kennen de processen en weten hoe jouw merk een vaste plek verovert in het winkellandschap.</p>
+      <p class="body-text" data-i18n="intro.body2">BINC International heeft directe relaties opgebouwd met de grootste retailers van Nederland. Jumbo, Albert Heijn, Spar, Plus en Sligro — wij kennen de mensen, kennen de processen en weten hoe jouw merk een vaste plek verovert in het winkellandschap.</p>
     </div>
     <div class="reveal d2">
       <div class="intro-visual">
-        <img src="https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?q=80&w=1400&auto=format&fit=crop" alt="Supermarkt schappen"/>
+        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?q=80&w=1400&auto=format&fit=crop" alt="Supermarkt schappen met producten"/>
         <div class="visual-caption">
           <span class="visual-tag" data-i18n="intro.visual.tag">Landelijk actief</span>
-          <h3 class="visual-title">Jouw merk.<br><span>In het schap.</span></h3>
+          <h3 class="visual-title" data-i18n="intro.visual.title">Jouw merk.<br><span>In het schap.</span></h3>
         </div>
       </div>
     </div>
@@ -423,11 +396,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <section id="stats-strip">
   <div class="stats-wrap">
     <div class="stat-cell reveal">
-      <div class="stat-n" data-target="4"><span class="count">0</span></div>
+      <div class="stat-n" data-target="5"><span class="count">0</span></div>
       <p class="stat-l" data-i18n="stats.retailers">Retail partners actief</p>
     </div>
     <div class="stat-cell reveal d1">
-      <div class="stat-n" data-target="2500"><span class="count">0</span><sup>+</sup></div>
+      <div class="stat-n" data-target="3000"><span class="count">0</span><sup>+</sup></div>
       <p class="stat-l" data-i18n="stats.stores">Aangesloten filialen</p>
     </div>
     <div class="stat-cell reveal d2">
@@ -441,7 +414,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <section id="retailers">
   <div class="retailers-head reveal">
     <p class="label" data-i18n="ret.label">Our retailpartners</p>
-    <h2 class="display">VIER KETENS.<br><span style="color:var(--red)">ÉÉN NETWERK.</span></h2>
+    <h2 class="display">VIJF KETENS.<br><span style="color:var(--red)">ÉÉN NETWERK.</span></h2>
   </div>
 
   <div class="retailer-list reveal d1">
@@ -453,9 +426,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         <h3 class="retailer-name">Jumbo<span class="accent">.</span></h3>
         <div class="retailer-tags">
           <span class="retailer-tag" data-i18n="tag.supermarkt">Supermarkt</span>
-          <span class="retailer-tag" data-i18n="tag.food">Food & Dranken</span>
+          <span class="retailer-tag" data-i18n="tag.food">Food &amp; Dranken</span>
           <span class="retailer-tag" data-i18n="tag.nationwide">Landelijk</span>
-          <span class="retailer-tag" data-i18n="tag.franchise">Franchise & formule</span>
+          <span class="retailer-tag" data-i18n="tag.franchise">Franchise &amp; formule</span>
         </div>
         <p class="retailer-desc" data-i18n="jumbo.desc">Met meer dan 700 filialen door heel Nederland is Jumbo één van de grootste supermarktketens van het land. BINC International zorgt voor de volledige listing en begeleiding, van buyer outreach tot schapplaatsing en doorlopend accountmanagement.</p>
       </div>
@@ -468,7 +441,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         <h3 class="retailer-name">Albert Heijn<span class="accent">.</span></h3>
         <div class="retailer-tags">
           <span class="retailer-tag" data-i18n="tag.supermarkt">Supermarkt</span>
-          <span class="retailer-tag" data-i18n="tag.food">Food & Dranken</span>
+          <span class="retailer-tag" data-i18n="tag.food">Food &amp; Dranken</span>
           <span class="retailer-tag" data-i18n="tag.nationwide">Landelijk</span>
           <span class="retailer-tag">#1 Nederland</span>
         </div>
@@ -491,19 +464,36 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
       </div>
     </div>
 
-    <!-- SLIGRO -->
+    <!-- PLUS -->
     <div class="retailer-row">
       <div class="retailer-num">04</div>
+      <div class="retailer-body">
+        <h3 class="retailer-name">Plus<span class="accent">.</span></h3>
+        <div class="retailer-tags">
+          <span class="retailer-tag" data-i18n="tag.supermarkt">Supermarkt</span>
+          <span class="retailer-tag" data-i18n="tag.food">Food &amp; Dranken</span>
+          <span class="retailer-tag" data-i18n="tag.nationwide">Landelijk</span>
+          <span class="retailer-tag" data-i18n="tag.franchise">Franchise &amp; formule</span>
+        </div>
+        <p class="retailer-desc" data-i18n="plus.desc">Plus is een van de toonaangevende supermarktketens van Nederland met een sterk lokaal geworteld franchisenetwerk. BINC International regelt de volledige listing bij Plus en zorgt voor een sterke schappositie bij een keten die kwaliteit en service hoog in het vaandel heeft.</p>
+      </div>
+    </div>
+
+    <!-- SLIGRO -->
+    <div class="retailer-row">
+      <div class="retailer-num">05</div>
       <div class="retailer-body">
         <h3 class="retailer-name">Sligro<span class="accent">.</span></h3>
         <div class="retailer-tags">
           <span class="retailer-tag" data-i18n="tag.groothandel">Groothandel</span>
-          <span class="retailer-tag" data-i18n="tag.food">Food & Dranken</span>
-          <span class="retailer-tag" data-i18n="tag.horeca">Horeca & Zakelijk</span>
+          <span class="retailer-tag" data-i18n="tag.food">Food &amp; Dranken</span>
+          <span class="retailer-tag" data-i18n="tag.horeca">Horeca &amp; Zakelijk</span>
           <span class="retailer-tag" data-i18n="tag.b2b">B2B</span>
         </div>
         <p class="retailer-desc" data-i18n="sligro.desc">Sligro is dé groothandel voor horeca, catering en zakelijke klanten in Nederland. Via Sligro bereikt jouw merk een breed professioneel publiek. BINC International regelt de volledige B2B-listing bij Sligro en zorgt voor een sterke positie in het assortiment.</p>
       </div>
+    </div>
+
   </div>
 </section>
 
@@ -559,11 +549,12 @@ const TRANSLATIONS = {
     'hero.sub':             'BINC International plaatst jouw merk in de grootste supermarkten en groothandels van Nederland. Van eerste listing tot landelijke dekking.',
     'hero.btn1':            'Bekijk retailers',
     'hero.btn2':            'Start samenwerking',
-    'tape.words':           'Retail Listings|Jumbo|Albert Heijn|Spar|Sligro|Landelijk Netwerk|B2B Sales|Accountmanagement|Schapplaatsing',
     'intro.label':          'Retail distribution',
+    'intro.heading':        'Your brand.\nStanding out\nin-store.',
     'intro.body1':          'Retail winnen betekent meer dan een listing binnenhalen. Het gaat om de juiste positie in het schap, sterke rotatie en een langdurige samenwerking met de inkopers die er toe doen.',
-    'intro.body2':          'BINC International heeft directe relaties opgebouwd met de grootste retailers van Nederland. Jumbo, Albert Heijn, Spar en Sligro — wij kennen de mensen, kennen de processen en weten hoe jouw merk een vaste plek verovert in het winkellandschap.',
+    'intro.body2':          'BINC International heeft directe relaties opgebouwd met de grootste retailers van Nederland. Jumbo, Albert Heijn, Spar, Plus en Sligro — wij kennen de mensen, kennen de processen en weten hoe jouw merk een vaste plek verovert in het winkellandschap.',
     'intro.visual.tag':     'Landelijk actief',
+    'intro.visual.title':   'Jouw merk.\nIn het schap.',
     'stats.retailers':      'Retail partners actief',
     'stats.stores':         'Aangesloten filialen',
     'stats.coverage':       'Dekking over Nederland',
@@ -580,22 +571,8 @@ const TRANSLATIONS = {
     'jumbo.desc':           'Met meer dan 700 filialen door heel Nederland is Jumbo één van de grootste supermarktketens van het land. BINC International zorgt voor de volledige listing en begeleiding, van buyer outreach tot schapplaatsing en doorlopend accountmanagement.',
     'ah.desc':              'Albert Heijn is de grootste supermarktketen van Nederland met meer dan 1.000 vestigingen. Een listing bij Albert Heijn betekent maximaal bereik. BINC International navigeert het complexe inkoopproces en zorgt dat jouw merk de juiste plek in het schap krijgt.',
     'spar.desc':            'Spar richt zich op buurtsupers en gemakslocaties door heel Nederland. Een sterk kanaal voor merken die dicht bij de consument willen zijn. BINC International verzorgt de volledige samenwerking met Spar, van eerste introductie tot structurele herorders en accountbeheer.',
+    'plus.desc':            'Plus is een van de toonaangevende supermarktketens van Nederland met een sterk lokaal geworteld franchisenetwerk. BINC International regelt de volledige listing bij Plus en zorgt voor een sterke schappositie bij een keten die kwaliteit en service hoog in het vaandel heeft.',
     'sligro.desc':          'Sligro is dé groothandel voor horeca, catering en zakelijke klanten in Nederland. Via Sligro bereikt jouw merk een breed professioneel publiek. BINC International regelt de volledige B2B-listing bij Sligro en zorgt voor een sterke positie in het assortiment.',
-    'kpi.stores':           'Filialen',
-    'kpi.coverage':         'Landelijke dekking',
-    'kpi.market':           'Marktpositie NL',
-    'kpi.locations':        'Locaties',
-    'kpi.channel':          'Groothandel kanaal',
-    'how.label':            'Onze aanpak',
-    'how.body':             'Wij nemen de volledige retailroute uit handen. Van strategisch plan tot het eerste order en alles daartussenin. Geen losse eindjes, geen gemiste kansen.',
-    'step1.title':          'Strategy & Targeting',
-    'step1.body':           'We analyseren welke retailers het beste passen bij jouw merk, doelgroep en marges. Jumbo, AH, Spar of Sligro, of een combinatie: wij bouwen een gefocust plan.',
-    'step2.title':          'Buyer Outreach',
-    'step2.body':           'Directe toegang tot de inkopers van de grootste ketens. Geen koude acquisitie maar warme introductie via ons bestaande netwerk.',
-    'step3.title':          'Listing & Schapplaatsing',
-    'step3.body':           'Van first pitch tot getekend contract. Wij begeleiden het volledige onboardingproces en zorgen voor de juiste schappositie en presentatie.',
-    'step4.title':          'Accountmanagement & Groei',
-    'step4.body':           'Na de listing managen wij de relatie doorlopend. We monitoren sell-through, signaleren kansen en schalen op naar nieuwe ketens of categorieën.',
     'cta.label':            'Ready to list?',
     'cta.copy':             'Van eerste buyer gesprek tot landelijke schapplaatsing. BINC International regelt het gesprek, de deal en de opschaling. Jij focust op je merk.',
     'cta.btn':              'Start samenwerking',
@@ -615,11 +592,12 @@ const TRANSLATIONS = {
     'hero.sub':             'BINC International places your brand in the biggest supermarkets and wholesalers in the Netherlands. From first listing to national coverage.',
     'hero.btn1':            'View retailers',
     'hero.btn2':            'Start partnership',
-    'tape.words':           'Retail Listings|Jumbo|Albert Heijn|Spar|Sligro|National Network|B2B Sales|Account Management|Shelf Placement',
     'intro.label':          'Retail distribution',
+    'intro.heading':        'Your brand.\nStanding out\nin-store.',
     'intro.body1':          'Winning in retail means more than securing a listing. It is about the right shelf position, strong rotation and a lasting relationship with the buyers that matter.',
-    'intro.body2':          'BINC International has built direct relationships with the biggest retailers in the Netherlands. Jumbo, Albert Heijn, Spar and Sligro — we know the people, know the processes and know how to win a permanent spot for your brand.',
+    'intro.body2':          'BINC International has built direct relationships with the biggest retailers in the Netherlands. Jumbo, Albert Heijn, Spar, Plus and Sligro — we know the people, know the processes and know how to win a permanent spot for your brand.',
     'intro.visual.tag':     'Active nationwide',
+    'intro.visual.title':   'Your brand.\nOn the shelf.',
     'stats.retailers':      'Retail partners active',
     'stats.stores':         'Connected stores',
     'stats.coverage':       'Coverage across the Netherlands',
@@ -636,22 +614,8 @@ const TRANSLATIONS = {
     'jumbo.desc':           'With over 700 stores across the Netherlands, Jumbo is one of the country\'s largest supermarket chains. BINC International handles the full listing and onboarding, from buyer outreach to shelf placement and ongoing account management.',
     'ah.desc':              'Albert Heijn is the largest supermarket chain in the Netherlands with over 1,000 locations. A listing at Albert Heijn means maximum reach. BINC International navigates the complex buying process and ensures your brand gets the right shelf position.',
     'spar.desc':            'Spar focuses on neighbourhood stores and convenience locations across the Netherlands. A strong channel for brands that want to be close to the consumer. BINC International manages the full Spar partnership from first introduction to structural repeat orders.',
+    'plus.desc':            'Plus is one of the leading supermarket chains in the Netherlands with a strong locally rooted franchise network. BINC International handles the full listing at Plus and secures a strong shelf position with a chain that puts quality and service first.',
     'sligro.desc':          'Sligro is the leading wholesale partner for horeca, catering and business customers in the Netherlands. Through Sligro your brand reaches a broad professional audience. BINC International handles the full B2B listing at Sligro and secures a strong assortment position.',
-    'kpi.stores':           'Stores',
-    'kpi.coverage':         'National coverage',
-    'kpi.market':           'Market position NL',
-    'kpi.locations':        'Locations',
-    'kpi.channel':          'Wholesale channel',
-    'how.label':            'Our approach',
-    'how.body':             'We take the full retail route off your hands. From strategic plan to first order and everything in between. No loose ends, no missed opportunities.',
-    'step1.title':          'Strategy & Targeting',
-    'step1.body':           'We analyse which retailers best fit your brand, target audience and margins. Jumbo, AH, Spar or Sligro — or a combination. We build a focused plan.',
-    'step2.title':          'Buyer Outreach',
-    'step2.body':           'Direct access to buyers at the biggest chains. No cold outreach — warm introductions through our existing network.',
-    'step3.title':          'Listing & Shelf Placement',
-    'step3.body':           'From first pitch to signed contract. We guide the full onboarding process and secure the right shelf position and presentation.',
-    'step4.title':          'Account Management & Growth',
-    'step4.body':           'After listing we manage the relationship continuously. We monitor sell-through, identify opportunities and scale into new chains or categories.',
     'cta.label':            'Ready to list?',
     'cta.copy':             'From first buyer conversation to national shelf placement. BINC International handles the conversation, the deal and the scale-up. You focus on your brand.',
     'cta.btn':              'Start partnership',
@@ -678,10 +642,21 @@ function applyLang(lang) {
     const val = t(key);
     if (el.children.length === 0) el.textContent = val;
   });
+  // Handle intro heading with line breaks
+  const introHeading = document.querySelector('[data-i18n="intro.heading"]');
+  if (introHeading) {
+    const lines = t('intro.heading').split('\n');
+    introHeading.innerHTML = lines[0] + '<br>' + lines[1] + '<br><span style="color:var(--red)">' + lines[2] + '</span>';
+  }
+  // Handle visual title with line breaks
+  const visualTitle = document.querySelector('[data-i18n="intro.visual.title"]');
+  if (visualTitle) {
+    const vlines = t('intro.visual.title').split('\n');
+    visualTitle.innerHTML = vlines[0] + '<br><span>' + vlines[1] + '</span>';
+  }
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
-  buildTape();
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -703,14 +678,6 @@ drawer.addEventListener('click',e=>{if(e.target===drawer)toggleDrawer(false);});
 
 /* NAV SCROLL */
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);},{passive:true});
-
-/* TAPE */
-function buildTape() {
-  const words = t('tape.words').split('|');
-  const ti = document.getElementById('tapeInner');
-  const chunk = () => words.map(w=>`<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
-  ti.innerHTML = chunk() + chunk();
-}
 
 /* REVEAL */
 const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
