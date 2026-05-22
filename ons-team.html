@@ -120,7 +120,13 @@
     .team-title{font-family:var(--font-display);font-size:clamp(3rem,6vw,7rem);font-weight:900;line-height:.9;color:#fff}
 
     .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;z-index:1}
-
+/* 7e profiel centreren op desktop */
+@media(min-width:1001px){
+  .team-grid .team-card:last-child{
+    grid-column: 2;
+  }
+}
+    
     .team-card{position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.048),rgba(255,255,255,.012));border:1px solid rgba(192,57,43,.13);transition:.35s;box-shadow:0 30px 80px rgba(0,0,0,.58),inset 0 1px 0 rgba(255,255,255,.06)}
     .team-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.4);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.08),inset 0 1px 0 rgba(255,255,255,.08)}
     .team-card::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
