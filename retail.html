@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YG0JGDRRM6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YG0JGDRRM6');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Retail | BINC International</title>
+<link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000;--red:#c0392b;--red2:#e74c3c;--white:#fff;--dim:rgba(255,255,255,.58);
+  --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;
+  --font-ui:'Rajdhani',sans-serif;--font-bebas:'Bebas Neue',sans-serif;--font-mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;cursor:none}
+body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+#cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
+#cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
+#cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
+body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:52px}
+::selection{background:var(--red);color:#fff}
+::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
+
+/* LANG SWITCH */
+.lang-switch{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-left:18px;flex-shrink:0}
+.lang-btn{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);background:transparent;border:none;padding:6px 11px;cursor:pointer;transition:.2s;line-height:1}
+.lang-btn.active{background:var(--red);color:#fff}
+.lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
+
+/* LANG FAB */
+.lang-fab{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;position:fixed;bottom:28px;right:28px;z-index:600;box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72)}
+.lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
+nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:38px;width:auto;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{font-family:var(--font-ui);font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:8px 16px;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:4px;left:16px;right:16px;height:1px;background:rgba(192,57,43,.85);transform:scaleX(0);transform-origin:left;transition:.3s}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}.nav-links a.active{color:#fff}
+.nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
+.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--red2)!important}
+.nav-right{display:flex;align-items:center;gap:0}
+.nav-right .lang-switch{display:none}
+.nav-hamburger{display:none}
+
+/* MOBILE DRAWER */
+.mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0}
+.mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
+.mobile-nav-drawer a{font-family:var(--font-display);font-size:clamp(2.8rem,11vw,5rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;line-height:1.1;display:block;padding:16px 0;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
+.mobile-nav-drawer a:hover,.mobile-nav-drawer a.active{color:#fff}
+.mobile-nav-drawer a.drawer-cta{color:#fff;background:var(--red);border-radius:4px;margin-top:28px;border-bottom:none;font-size:clamp(1.4rem,5vw,2rem);padding:18px 0;letter-spacing:.14em}
+.mobile-nav-drawer a.drawer-cta:hover{background:var(--red2)}
+.drawer-lang{display:flex;align-items:center;justify-content:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-top:28px}
+.drawer-lang .lang-btn{font-size:.8rem;padding:10px 22px}
+.drawer-socials{display:flex;gap:28px;margin-top:28px}
+.drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
+.drawer-socials a:hover{color:var(--red)}.drawer-socials svg{width:100%;height:100%;fill:currentColor}
+
+/* JUMP OVERLAY */
+.jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
+.jump-overlay::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:4px 4px;opacity:.5;mix-blend-mode:overlay}
+.jump-overlay::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(192,57,43,.28) 0%,rgba(192,57,43,.12) 35%,transparent 72%);filter:blur(50px)}
+.jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
+.jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
+
+/* HERO */
+#hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.48}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.5) 48%,rgba(0,0,0,.2) 100%),linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.86) 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
+@keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
+.g-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.orb-a{width:500px;height:500px;background:rgba(192,57,43,.09);top:-8%;right:8%}
+.orb-b{width:320px;height:320px;background:rgba(192,57,43,.055);bottom:10%;right:30%}
+.hero-content{position:relative;z-index:10;padding:0 6vw;max-width:1500px;width:100%}
+.hero-inner{margin-left:clamp(32px,7vw,140px);max-width:1050px}
+.hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,15rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:11ch;margin-bottom:40px;opacity:0;animation:riseUp .9s .25s forwards}
+.hero-title .red{color:var(--red)}.hero-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
+.hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.72);font-weight:300;max-width:520px;margin-bottom:48px;opacity:0;animation:riseUp .9s .45s forwards}
+.hero-btns{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:riseUp .9s .65s forwards}
+.btn-red,.btn-outline{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+.btn-red{color:#fff;background:var(--red);border:none;padding:17px 40px}
+.btn-red:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
+.btn-outline{color:#fff;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.24);padding:16px 40px}
+.btn-outline:hover{border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.055)}
+@keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
+
+/* SHARED */
+.label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
+.label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
+.display{font-family:var(--font-display);font-size:clamp(3.6rem,5.9vw,8.1rem);font-weight:900;line-height:.9;color:#fff}
+.body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:700px}
+
+/* TAPE */
+.tape{background:var(--red);padding:16px 0;overflow:hidden;white-space:nowrap}
+.tape-inner{display:inline-block;animation:marquee 28s linear infinite}
+.tape-item{display:inline-block;font-family:var(--font-display);font-size:.95rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:#fff;margin:0 28px}
+.tape-dot{display:inline-block;width:5px;height:5px;background:rgba(255,255,255,.7);border-radius:50%;vertical-align:middle;margin:0 8px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* INTRO */
+#intro{padding:140px 6vw 100px;background:#000;position:relative;overflow:hidden}
+#intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
+.intro-grid{display:grid;grid-template-columns:minmax(0,700px) minmax(400px,600px);gap:90px;align-items:center;max-width:1400px;margin:0 auto}
+.intro-copy{display:flex;flex-direction:column;gap:28px;padding-left:clamp(24px,4vw,84px)}
+
+/* STATS STRIP */
+#stats-strip{padding:0 6vw 110px;background:#000}
+.stats-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1400px;margin:0 auto}
+.stat-cell{min-height:220px;padding:44px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,.048),rgba(255,255,255,.012)),rgba(255,255,255,.014);border:1px solid rgba(192,57,43,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 28px 80px rgba(0,0,0,.48)}
+.stat-cell::before{content:'';position:absolute;inset:1px;border-radius:13px;background:radial-gradient(circle at 50% 0%,rgba(192,57,43,.07),transparent 44%);pointer-events:none}
+.stat-cell::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
+.stat-n{position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(3.2rem,4.5vw,6.4rem);font-weight:800;letter-spacing:-.02em;line-height:.9;color:#fff}
+.stat-n sup{font-size:.38em;color:var(--red);vertical-align:top;margin-left:2px;font-weight:700}
+.stat-l{position:relative;z-index:1;font-family:var(--font-ui);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:20px;line-height:1.45;max-width:200px}
+
+/* RETAILERS SECTION */
+#retailers{padding:120px 6vw 140px;background:#000;position:relative}
+#retailers::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(192,57,43,.04),transparent 55%);pointer-events:none}
+.retailers-head{margin-bottom:70px}
+.retailer-list{display:flex;flex-direction:column;gap:1px;border-radius:12px;overflow:hidden;border:1px solid rgba(192,57,43,.12)}
+
+/* Retailer row */
+.retailer-row{
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  align-items:center;
+  gap:40px;
+  padding:44px 52px;
+  background:rgba(255,255,255,.016);
+  border-bottom:1px solid rgba(255,255,255,.04);
+  position:relative;
+  overflow:hidden;
+  cursor:default;
+  transition:background .35s ease;
+}
+.retailer-row:last-child{border-bottom:none}
+.retailer-row::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  background:var(--red);opacity:0;transition:opacity .35s ease;
+}
+.retailer-row::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 0% 50%,rgba(192,57,43,.06),transparent 50%);
+  opacity:0;transition:opacity .35s ease;
+}
+.retailer-row:hover{background:rgba(255,255,255,.03)}
+.retailer-row:hover::before{opacity:1}
+.retailer-row:hover::after{opacity:1}
+
+/* Retailer number */
+.retailer-num{
+  font-family:var(--font-bebas);font-size:3.6rem;line-height:1;
+  color:rgba(192,57,43,.14);letter-spacing:.04em;
+  position:relative;z-index:2;text-align:center;
+  transition:color .35s;
+}
+.retailer-row:hover .retailer-num{color:rgba(192,57,43,.45)}
+
+/* Retailer body */
+.retailer-body{position:relative;z-index:2}
+.retailer-name{
+  font-family:var(--font-display);font-size:clamp(2.4rem,3.8vw,5rem);
+  font-weight:900;line-height:.88;letter-spacing:.01em;color:#fff;
+  margin-bottom:14px;
+}
+.retailer-name .accent{color:var(--red)}
+.retailer-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.retailer-tag{
+  font-family:var(--font-mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.38);padding:6px 12px;
+  border:1px solid rgba(255,255,255,.08);border-radius:999px;
+  background:rgba(255,255,255,.03);
+}
+.retailer-desc{font-size:.95rem;line-height:1.82;color:rgba(255,255,255,.52);font-weight:300;max-width:620px}
+
+/* Retailer right: kpi column */
+.retailer-kpis{
+  position:relative;z-index:2;display:flex;flex-direction:column;gap:20px;
+  min-width:160px;text-align:right;
+}
+.retailer-kpi-item{}
+.retailer-kpi-v{
+  font-family:var(--font-display);font-size:clamp(2rem,2.5vw,3.2rem);
+  font-weight:900;line-height:.88;color:var(--red);
+}
+.retailer-kpi-l{
+  font-family:var(--font-mono);font-size:.48rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:5px;line-height:1.45;
+}
+
+/* INTRO VISUAL (same as horeca) */
+.intro-visual{position:relative;width:100%;aspect-ratio:3/4;max-width:520px;justify-self:end;border-radius:14px;overflow:hidden;border:1px solid rgba(192,57,43,.22);box-shadow:0 40px 100px rgba(0,0,0,.72),0 0 60px rgba(192,57,43,.08)}
+.intro-visual img{width:100%;height:100%;object-fit:cover;opacity:.72;transform:scale(1.04);transition:transform 8s ease}
+.intro-visual:hover img{transform:scale(1.08)}
+.intro-visual::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.18) 55%,rgba(0,0,0,.05) 100%),radial-gradient(circle at 50% 0%,rgba(192,57,43,.16),transparent 44%);z-index:1}
+.intro-visual::after{content:'';position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.9),transparent);z-index:2}
+.visual-caption{position:absolute;left:28px;right:28px;bottom:28px;z-index:3}
+.visual-tag{display:inline-block;font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.95);margin-bottom:12px;padding:6px 10px;border:1px solid rgba(192,57,43,.28);background:rgba(0,0,0,.4);border-radius:2px}
+.visual-title{font-family:var(--font-display);font-size:clamp(2.4rem,3.5vw,4.2rem);font-weight:900;line-height:.88;color:#fff}
+.visual-title span{color:var(--red)}
+
+/* HOW IT WORKS */
+#how{padding:0 6vw 140px;background:#000;position:relative}
+.how-grid{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:80px;align-items:start;max-width:1400px;margin:0 auto}
+.how-copy{padding-left:clamp(24px,4vw,84px);display:flex;flex-direction:column;gap:24px}
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:28px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+.step:last-child{border-bottom:none}
+.step-num{font-family:var(--font-bebas);font-size:3.2rem;color:rgba(192,57,43,.22);line-height:1;flex-shrink:0;width:52px;text-align:right;transition:.3s}
+.step:hover .step-num{color:var(--red)}
+.step-title{font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:.04em;color:#fff;margin-bottom:8px;text-transform:uppercase}
+.step-text{font-size:.92rem;line-height:1.85;color:rgba(255,255,255,.55);font-weight:300}
+
+/* CTA */
+#cta{position:relative;overflow:hidden;padding:130px 6vw 140px;border-top:1px solid rgba(192,57,43,.1)}
+#cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 60%)}
+.cta-wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px}
+.cta-title{font-family:var(--font-display);font-size:clamp(4rem,8vw,10rem);font-weight:900;line-height:.86}
+.cta-title .red{color:var(--red)}.cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
+.cta-copy{max-width:700px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62)}
+
+/* FOOTER */
+footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
+.ft-brand{display:flex;flex-direction:column;gap:32px}
+.ft-logo{width:235px;opacity:.98}
+.ft-socials{display:flex;align-items:center;gap:22px}
+.ft-socials a{width:24px;height:24px;color:#fff;opacity:.72;transition:.2s;display:inline-flex;align-items:center;justify-content:center}
+.ft-socials a:hover{color:var(--red);opacity:1;transform:translateY(-2px)}
+.ft-socials svg{width:100%;height:100%;fill:currentColor}
+.ft-info{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.ft-item p,.ft-item a{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
+.ft-h{font-family:var(--font-ui);font-size:.85rem!important;font-weight:800!important;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,1)!important;margin-bottom:12px!important}
+.ft-item a:hover{color:var(--red)}
+.ft-bar{background:#000;border-top:1px solid rgba(255,255,255,.07);padding:28px 6vw;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.ft-bar-left{display:flex;flex-direction:column;gap:6px}
+.ft-copy{font-family:var(--font-ui);font-size:.7rem;letter-spacing:.14em;color:rgba(255,255,255,.32)}
+.ft-copy strong{color:rgba(192,57,43,.8);font-weight:700}
+.ft-bar-right{display:flex;align-items:center;gap:24px}
+.ft-kvk{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.07);padding:6px 14px;border-radius:2px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.38s}
+
+/* ─── MOBILE ─── */
+@media(max-width:1000px){
+  html,body{cursor:auto}
+  #cur,#cur-ring{display:none}
+  .lang-fab{display:none}
+  .nav-right .lang-switch{display:flex}
+  nav{height:70px;padding:0 5vw}
+  .nav-logo img{height:32px}
+  nav .nav-links{display:none}
+  .nav-hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;cursor:pointer;background:none;border:none;padding:0;position:relative;z-index:510}
+  .nav-hamburger span{display:block;width:26px;height:1.5px;background:#fff;border-radius:2px;transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .22s,background .22s;transform-origin:center}
+  .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--red)}
+  .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
+  .mobile-nav-drawer{display:flex}
+
+  #hero{min-height:105vh;padding:110px 0 90px}
+  .hero-inner{margin-left:0;padding:0 5vw}
+  .hero-title{font-size:clamp(5rem,20vw,10rem)}
+
+  #intro{padding:80px 5vw 60px}
+  .intro-grid{grid-template-columns:1fr;gap:52px}
+  .intro-copy{padding-left:0}
+  .intro-visual{max-width:100%;justify-self:stretch;aspect-ratio:4/3}
+
+  #stats-strip{padding:0 5vw 80px;display:none}
+
+  #retailers{padding:80px 5vw 90px}
+  .retailer-row{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:32px 24px;
+  }
+  .retailer-num{font-size:2.6rem;text-align:left}
+  .retailer-kpis{flex-direction:row;flex-wrap:wrap;text-align:left;gap:16px 28px;min-width:unset}
+  .retailer-kpi-v{font-size:1.8rem}
+
+  #how{padding:0 5vw 90px}
+  .how-grid{grid-template-columns:1fr;gap:52px}
+  .how-copy{padding-left:0}
+
+  #cta{padding:90px 5vw 100px}
+
+  footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
+  .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
+  .ft-logo{width:min(200px,55vw);margin:0 auto}
+  .ft-socials{justify-content:center}
+  .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
+  .ft-bar{flex-direction:column;align-items:center;gap:12px;padding:20px 5vw;text-align:center}
+  .ft-bar-right{flex-direction:column;gap:8px;align-items:center}
+  .lang-switch{margin-left:8px}
+  .lang-btn{padding:5px 9px;font-size:.62rem}
+}
+@media(min-width:1001px){
+  .nav-links{margin-left:auto;margin-right:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="jump-overlay" id="jumpOverlay">
+  <img class="jump-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+</div>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- LANG FAB -->
+<div class="lang-fab">
+  <button class="lang-btn active" data-lang="nl">NL</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
+<!-- Mobile drawer -->
+<div class="mobile-nav-drawer" id="mobileDrawer">
+  <a href="retail.html" class="active" data-i18n="nav.retail">Retail</a>
+  <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
+  <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
+  <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
+  <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
+  <a href="index.html#lead" class="drawer-cta" data-i18n="nav.cta">Samenwerken</a>
+  <div class="drawer-lang">
+    <button class="lang-btn active" data-lang="nl">NL</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+  <div class="drawer-socials">
+    <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
+    <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg></a>
+    <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+  </div>
+</div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+  </a>
+  <div class="nav-links">
+    <a href="retail.html" class="active" data-i18n="nav.retail">Retail</a>
+    <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
+    <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
+    <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
+    <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
+    <a href="index.html#lead" class="nav-cta" data-i18n="nav.cta">Samenwerken</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="nl">NL</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://cdn.shopify.com/videos/c/o/v/9690e8a2bed14220a0ecbf4df8209ce6.mov" type="video/mp4"/>
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="g-orb orb-a"></div>
+  <div class="g-orb orb-b"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <h1 class="hero-title">ON THE<br><span class="red">SHELF.</span><br><span class="stroke">NATIONWIDE.</span></h1>
+      <p class="hero-sub" data-i18n="hero.sub">BINC International plaatst jouw merk in de grootste supermarkten en groothandels van Nederland. Van eerste listing tot landelijke dekking.</p>
+      <div class="hero-btns">
+        <a href="#retailers" class="btn-red" data-i18n="hero.btn1">Bekijk retailers</a>
+        <a href="index.html#lead" class="btn-outline" data-i18n="hero.btn2">Start samenwerking</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAPE -->
+<div class="tape"><div class="tape-inner" id="tapeInner"></div></div>
+
+<!-- ══ INTRO ══ -->
+<section id="intro">
+  <div class="intro-grid">
+    <div class="reveal intro-copy">
+      <div>
+        <p class="label" data-i18n="intro.label">Retail distribution</p>
+        <h2 class="display">IN DE WINKEL.<br>IN HET RAK.<br><span style="color:var(--red)">IN BEWEGING.</span></h2>
+      </div>
+      <p class="body-text" data-i18n="intro.body1">Retail winnen betekent meer dan een listing binnenhalen. Het gaat om de juiste positie in het schap, sterke rotatie en een langdurige samenwerking met de inkopers die er toe doen.</p>
+      <p class="body-text" data-i18n="intro.body2">BINC International heeft directe relaties opgebouwd met de grootste retailers van Nederland. Jumbo, Albert Heijn, Spar en Sligro — wij kennen de mensen, kennen de processen en weten hoe jouw merk een vaste plek verovert in het winkellandschap.</p>
+    </div>
+    <div class="reveal d2">
+      <div class="intro-visual">
+        <img src="https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?q=80&w=1400&auto=format&fit=crop" alt="Supermarkt schappen"/>
+        <div class="visual-caption">
+          <span class="visual-tag" data-i18n="intro.visual.tag">Landelijk actief</span>
+          <h3 class="visual-title">Jouw merk.<br><span>In het schap.</span></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<section id="stats-strip">
+  <div class="stats-wrap">
+    <div class="stat-cell reveal">
+      <div class="stat-n" data-target="4"><span class="count">0</span></div>
+      <p class="stat-l" data-i18n="stats.retailers">Retail partners actief</p>
+    </div>
+    <div class="stat-cell reveal d1">
+      <div class="stat-n" data-target="2500"><span class="count">0</span><sup>+</sup></div>
+      <p class="stat-l" data-i18n="stats.stores">Aangesloten filialen</p>
+    </div>
+    <div class="stat-cell reveal d2">
+      <div class="stat-n" data-target="99"><span class="count">0</span><sup>%</sup></div>
+      <p class="stat-l" data-i18n="stats.coverage">Dekking over Nederland</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RETAILERS ══ -->
+<section id="retailers">
+  <div class="retailers-head reveal">
+    <p class="label" data-i18n="ret.label">Onze retailpartners</p>
+    <h2 class="display">VIER KETENS.<br><span style="color:var(--red)">ÉÉN NETWERK.</span></h2>
+  </div>
+
+  <div class="retailer-list reveal d1">
+
+    <!-- JUMBO -->
+    <div class="retailer-row">
+      <div class="retailer-num">01</div>
+      <div class="retailer-body">
+        <h3 class="retailer-name">Jumbo<span class="accent">.</span></h3>
+        <div class="retailer-tags">
+          <span class="retailer-tag" data-i18n="tag.supermarkt">Supermarkt</span>
+          <span class="retailer-tag" data-i18n="tag.food">Food & Dranken</span>
+          <span class="retailer-tag" data-i18n="tag.nationwide">Landelijk</span>
+          <span class="retailer-tag" data-i18n="tag.franchise">Franchise & formule</span>
+        </div>
+        <p class="retailer-desc" data-i18n="jumbo.desc">Met meer dan 700 filialen door heel Nederland is Jumbo één van de grootste supermarktketens van het land. BINC International zorgt voor de volledige listing en begeleiding, van buyer outreach tot schapplaatsing en doorlopend accountmanagement.</p>
+      </div>
+      <div class="retailer-kpis">
+        <div class="retailer-kpi-item">
+          <div class="retailer-kpi-v">700<sup style="font-size:.5em">+</sup></div>
+          <div class="retailer-kpi-l" data-i18n="kpi.stores">Filialen</div>
+        </div>
+        <div class="retailer-kpi-item">
+          <div class="retailer-kpi-v">NL</div>
+          <div class="retailer-kpi-l" data-i18n="kpi.coverage">Landelijke dekking</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALBERT HEIJN -->
+    <div class="retailer-row">
+      <div class="retailer-num">02</div>
+      <div class="retailer-body">
+        <h3 class="retailer-name">Albert Heijn<span class="accent">.</span></h3>
+        <div class="retailer-tags">
+          <span class="retailer-tag" data-i18n="tag.supermarkt">Supermarkt</span>
+          <span class="retailer-tag" data-i18n="tag.food">Food & Dranken</span>
+          <span class="retailer-tag" data-i18n="tag.nationwide">Landelijk</span>
+          <span class="retailer-tag">#1 Nederland</span>
+        </div>
+        <p class="retailer-desc" data-i18n="ah.desc">Albert Heijn is de grootste supermarktketen van Nederland met meer dan 1.000 vestigingen. Een listing bij Albert Heijn betekent maximaal bereik. BINC International navigeert het complexe inkoopproces en zorgt dat jouw merk de juiste plek in het schap krijgt.</p>
+      </div>
+      <div class="retailer-kpis">
+        <div class="retailer-kpi-item">
+          <div class="retailer-kpi-v">1000<sup style="font-size:.5em">+</sup></div>
+          <div class="retailer-kpi-l" data-i18n="kpi.stores">Filialen</div>
+        </div>
+        <div class="retailer-kpi-item">
+          <div class="retailer-kpi-v">#1</div>
+          <div class="retailer-kpi-l" data-i18n="kpi.market">Marktpositie NL</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPAR -->
+    <div class="retailer-row">
+      <div class="retailer-num">03</div>
+      <div class="retailer-body">
+        <h3 class="retailer-name">Spar<span class="accent">.</span></h3>
+        <div class="retailer-tags">
+          <span class="retailer-tag" data-i18n="tag.supermarkt">Supermarkt</span>
+          <span class="retailer-tag" data-i18n="tag.convenience">Convenience</span>
+          <span class="retailer-tag" data-i18n="tag.nationwide">Landelijk</span>
+          <span class="retailer-tag" data-i18n="tag.local">Buurtsupers</span>
+        </div>
+        <p class="retailer-desc" data-i18n="spar.desc">Spar richt zich op buurtsupers en gemakslocaties door heel Nederland. Een sterk kanaal voor merken die dicht bij de consument willen zijn. BINC International verzorgt de volledige samenwerking met Spar, van eerste introductie tot structurele herorders en accountbeheer.</p>
+      </div>
+      <div class="retailer-kpis">
+        <div class="retailer-kpi-item">
+          <div class="retailer-kpi-v">500<sup style="font-size:.5em">+</sup></div>
+          <div class="retailer-kpi-l" data-i18n="kpi.stores">Filialen</div>
+        </div>
+        <div class="retailer-kpi-item">
+          <div class="retailer-kpi-v">NL</div>
+          <div class="retailer-kpi-l" data-i18n="kpi.coverage">Landelijke dekking</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIGRO -->
+    <div class="retailer-row">
+      <div class="retailer-num">04</div>
+      <div class="retailer-body">
+        <h3 class="retailer-name">Sligro<span class="accent">.</span></h3>
+        <div class="retailer-tags">
+          <span class="retailer-tag" data-i18n="tag.groothandel">Groothandel</span>
+          <span class="retailer-tag" data-i18n="tag.food">Food & Dranken</span>
+          <span class="retailer-tag" data-i18n="tag.horeca">Horeca & Zakelijk</span>
+          <span class="retailer-tag" data-i18n="tag.b2b">B2B</span>
+        </div>
+        <p class="retailer-desc" data-i18n="sligro.desc">Sligro is dé groothandel voor horeca, catering en zakelijke klanten in Nederland. Via Sligro bereikt jouw merk een breed professioneel publiek. BINC International regelt de volledige B2B-listing bij Sligro en zorgt voor een sterke positie in het assortiment.</p>
+      </div>
+      <div class="retailer-kpis">
+        <div class="retailer-kpi-item">
+          <div class="retailer-kpi-v">50<sup style="font-size:.5em">+</sup></div>
+          <div class="retailer-kpi-l" data-i18n="kpi.locations">Locaties</div>
+        </div>
+        <div class="retailer-kpi-item">
+          <div class="retailer-kpi-v">B2B</div>
+          <div class="retailer-kpi-l" data-i18n="kpi.channel">Groothandel kanaal</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section id="how">
+  <div class="how-grid">
+    <div class="reveal how-copy">
+      <p class="label" data-i18n="how.label">Onze aanpak</p>
+      <h2 class="display">YOUR BRAND<br>ON THE<br><span style="color:var(--red)">SHELF.</span></h2>
+      <p class="body-text" data-i18n="how.body">Wij nemen de volledige retailroute uit handen. Van strategisch plan tot het eerste order en alles daartussenin. Geen losse eindjes, geen gemiste kansen.</p>
+    </div>
+    <div class="steps reveal d1">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <p class="step-title" data-i18n="step1.title">Strategy & Targeting</p>
+          <p class="step-text" data-i18n="step1.body">We analyseren welke retailers het beste passen bij jouw merk, doelgroep en marges. Jumbo, AH, Spar of Sligro, of een combinatie: wij bouwen een gefocust plan.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <p class="step-title" data-i18n="step2.title">Buyer Outreach</p>
+          <p class="step-text" data-i18n="step2.body">Directe toegang tot de inkopers van de grootste ketens. Geen koude acquisitie maar warme introductie via ons bestaande netwerk.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <p class="step-title" data-i18n="step3.title">Listing & Schapplaatsing</p>
+          <p class="step-text" data-i18n="step3.body">Van first pitch tot getekend contract. Wij begeleiden het volledige onboardingproces en zorgen voor de juiste schappositie en presentatie.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <p class="step-title" data-i18n="step4.title">Accountmanagement & Groei</p>
+          <p class="step-text" data-i18n="step4.body">Na de listing managen wij de relatie doorlopend. We monitoren sell-through, signaleren kansen en schalen op naar nieuwe ketens of categorieën.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section id="cta">
+  <div class="cta-wrap reveal">
+    <p class="label" style="justify-content:center" data-i18n="cta.label">Ready to list?</p>
+    <h2 class="cta-title">JOUW MERK<br><span class="red">IN HET</span> <span class="stroke">RAK.</span></h2>
+    <p class="cta-copy" data-i18n="cta.copy">Van eerste buyer gesprek tot landelijke schapplaatsing. BINC International regelt het gesprek, de deal en de opschaling. Jij focust op je merk.</p>
+    <a href="index.html#lead" class="btn-red" data-i18n="cta.btn">Start samenwerking</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="ft-brand reveal">
+    <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/BINC_LOGO_FULL_WIT.png?v=1765981181" alt="BINC International"/>
+    <div class="ft-socials">
+      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
+      <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg></a>
+      <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+    </div>
+  </div>
+  <div class="ft-info reveal d1">
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.address.label">BINC adres</p><p>Wim Rötherlaan 25,<br>5051 JS Goirle</p></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.email.label">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.phone.label">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
+  </div>
+</footer>
+<div class="ft-bar">
+  <div class="ft-bar-left">
+    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+    <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)" data-i18n="footer.tagline.short">Full-service B2B voor ambitieuze merken in Nederland.</span>
+  </div>
+  <div class="ft-bar-right">
+    <span class="ft-kvk">KVK: 98970887</span>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════
+   TRANSLATIONS
+══════════════════════════════════════════════════ */
+const TRANSLATIONS = {
+  nl: {
+    'nav.retail':           'Retail',
+    'nav.horeca':           'Horeca',
+    'nav.events':           'Evenementen',
+    'nav.team':             'Ons Team',
+    'nav.jobs':             'Vacatures',
+    'nav.cta':              'Samenwerken',
+    'hero.sub':             'BINC International plaatst jouw merk in de grootste supermarkten en groothandels van Nederland. Van eerste listing tot landelijke dekking.',
+    'hero.btn1':            'Bekijk retailers',
+    'hero.btn2':            'Start samenwerking',
+    'tape.words':           'Retail Listings|Jumbo|Albert Heijn|Spar|Sligro|Landelijk Netwerk|B2B Sales|Accountmanagement|Schapplaatsing',
+    'intro.label':          'Retail distribution',
+    'intro.body1':          'Retail winnen betekent meer dan een listing binnenhalen. Het gaat om de juiste positie in het schap, sterke rotatie en een langdurige samenwerking met de inkopers die er toe doen.',
+    'intro.body2':          'BINC International heeft directe relaties opgebouwd met de grootste retailers van Nederland. Jumbo, Albert Heijn, Spar en Sligro — wij kennen de mensen, kennen de processen en weten hoe jouw merk een vaste plek verovert in het winkellandschap.',
+    'intro.visual.tag':     'Landelijk actief',
+    'stats.retailers':      'Retail partners actief',
+    'stats.stores':         'Aangesloten filialen',
+    'stats.coverage':       'Dekking over Nederland',
+    'ret.label':            'Onze retailpartners',
+    'tag.supermarkt':       'Supermarkt',
+    'tag.food':             'Food & Dranken',
+    'tag.nationwide':       'Landelijk',
+    'tag.franchise':        'Franchise & formule',
+    'tag.convenience':      'Convenience',
+    'tag.local':            'Buurtsupers',
+    'tag.groothandel':      'Groothandel',
+    'tag.horeca':           'Horeca & Zakelijk',
+    'tag.b2b':              'B2B',
+    'jumbo.desc':           'Met meer dan 700 filialen door heel Nederland is Jumbo één van de grootste supermarktketens van het land. BINC International zorgt voor de volledige listing en begeleiding, van buyer outreach tot schapplaatsing en doorlopend accountmanagement.',
+    'ah.desc':              'Albert Heijn is de grootste supermarktketen van Nederland met meer dan 1.000 vestigingen. Een listing bij Albert Heijn betekent maximaal bereik. BINC International navigeert het complexe inkoopproces en zorgt dat jouw merk de juiste plek in het schap krijgt.',
+    'spar.desc':            'Spar richt zich op buurtsupers en gemakslocaties door heel Nederland. Een sterk kanaal voor merken die dicht bij de consument willen zijn. BINC International verzorgt de volledige samenwerking met Spar, van eerste introductie tot structurele herorders en accountbeheer.',
+    'sligro.desc':          'Sligro is dé groothandel voor horeca, catering en zakelijke klanten in Nederland. Via Sligro bereikt jouw merk een breed professioneel publiek. BINC International regelt de volledige B2B-listing bij Sligro en zorgt voor een sterke positie in het assortiment.',
+    'kpi.stores':           'Filialen',
+    'kpi.coverage':         'Landelijke dekking',
+    'kpi.market':           'Marktpositie NL',
+    'kpi.locations':        'Locaties',
+    'kpi.channel':          'Groothandel kanaal',
+    'how.label':            'Onze aanpak',
+    'how.body':             'Wij nemen de volledige retailroute uit handen. Van strategisch plan tot het eerste order en alles daartussenin. Geen losse eindjes, geen gemiste kansen.',
+    'step1.title':          'Strategy & Targeting',
+    'step1.body':           'We analyseren welke retailers het beste passen bij jouw merk, doelgroep en marges. Jumbo, AH, Spar of Sligro, of een combinatie: wij bouwen een gefocust plan.',
+    'step2.title':          'Buyer Outreach',
+    'step2.body':           'Directe toegang tot de inkopers van de grootste ketens. Geen koude acquisitie maar warme introductie via ons bestaande netwerk.',
+    'step3.title':          'Listing & Schapplaatsing',
+    'step3.body':           'Van first pitch tot getekend contract. Wij begeleiden het volledige onboardingproces en zorgen voor de juiste schappositie en presentatie.',
+    'step4.title':          'Accountmanagement & Groei',
+    'step4.body':           'Na de listing managen wij de relatie doorlopend. We monitoren sell-through, signaleren kansen en schalen op naar nieuwe ketens of categorieën.',
+    'cta.label':            'Ready to list?',
+    'cta.copy':             'Van eerste buyer gesprek tot landelijke schapplaatsing. BINC International regelt het gesprek, de deal en de opschaling. Jij focust op je merk.',
+    'cta.btn':              'Start samenwerking',
+    'footer.address.label': 'BINC adres',
+    'footer.email.label':   'E-mailadres',
+    'footer.phone.label':   'Telefoonnummer',
+    'footer.rights':        'Alle rechten voorbehouden.',
+    'footer.tagline.short': 'Full-service B2B voor ambitieuze merken in Nederland.',
+  },
+  en: {
+    'nav.retail':           'Retail',
+    'nav.horeca':           'Horeca',
+    'nav.events':           'Events',
+    'nav.team':             'Our Team',
+    'nav.jobs':             'Careers',
+    'nav.cta':              'Work With Us',
+    'hero.sub':             'BINC International places your brand in the biggest supermarkets and wholesalers in the Netherlands. From first listing to national coverage.',
+    'hero.btn1':            'View retailers',
+    'hero.btn2':            'Start partnership',
+    'tape.words':           'Retail Listings|Jumbo|Albert Heijn|Spar|Sligro|National Network|B2B Sales|Account Management|Shelf Placement',
+    'intro.label':          'Retail distribution',
+    'intro.body1':          'Winning in retail means more than securing a listing. It is about the right shelf position, strong rotation and a lasting relationship with the buyers that matter.',
+    'intro.body2':          'BINC International has built direct relationships with the biggest retailers in the Netherlands. Jumbo, Albert Heijn, Spar and Sligro — we know the people, know the processes and know how to win a permanent spot for your brand.',
+    'intro.visual.tag':     'Active nationwide',
+    'stats.retailers':      'Retail partners active',
+    'stats.stores':         'Connected stores',
+    'stats.coverage':       'Coverage across the Netherlands',
+    'ret.label':            'Our retail partners',
+    'tag.supermarkt':       'Supermarket',
+    'tag.food':             'Food & Beverages',
+    'tag.nationwide':       'Nationwide',
+    'tag.franchise':        'Franchise & formula',
+    'tag.convenience':      'Convenience',
+    'tag.local':            'Neighbourhood stores',
+    'tag.groothandel':      'Wholesale',
+    'tag.horeca':           'Horeca & Business',
+    'tag.b2b':              'B2B',
+    'jumbo.desc':           'With over 700 stores across the Netherlands, Jumbo is one of the country\'s largest supermarket chains. BINC International handles the full listing and onboarding, from buyer outreach to shelf placement and ongoing account management.',
+    'ah.desc':              'Albert Heijn is the largest supermarket chain in the Netherlands with over 1,000 locations. A listing at Albert Heijn means maximum reach. BINC International navigates the complex buying process and ensures your brand gets the right shelf position.',
+    'spar.desc':            'Spar focuses on neighbourhood stores and convenience locations across the Netherlands. A strong channel for brands that want to be close to the consumer. BINC International manages the full Spar partnership from first introduction to structural repeat orders.',
+    'sligro.desc':          'Sligro is the leading wholesale partner for horeca, catering and business customers in the Netherlands. Through Sligro your brand reaches a broad professional audience. BINC International handles the full B2B listing at Sligro and secures a strong assortment position.',
+    'kpi.stores':           'Stores',
+    'kpi.coverage':         'National coverage',
+    'kpi.market':           'Market position NL',
+    'kpi.locations':        'Locations',
+    'kpi.channel':          'Wholesale channel',
+    'how.label':            'Our approach',
+    'how.body':             'We take the full retail route off your hands. From strategic plan to first order and everything in between. No loose ends, no missed opportunities.',
+    'step1.title':          'Strategy & Targeting',
+    'step1.body':           'We analyse which retailers best fit your brand, target audience and margins. Jumbo, AH, Spar or Sligro — or a combination. We build a focused plan.',
+    'step2.title':          'Buyer Outreach',
+    'step2.body':           'Direct access to buyers at the biggest chains. No cold outreach — warm introductions through our existing network.',
+    'step3.title':          'Listing & Shelf Placement',
+    'step3.body':           'From first pitch to signed contract. We guide the full onboarding process and secure the right shelf position and presentation.',
+    'step4.title':          'Account Management & Growth',
+    'step4.body':           'After listing we manage the relationship continuously. We monitor sell-through, identify opportunities and scale into new chains or categories.',
+    'cta.label':            'Ready to list?',
+    'cta.copy':             'From first buyer conversation to national shelf placement. BINC International handles the conversation, the deal and the scale-up. You focus on your brand.',
+    'cta.btn':              'Start partnership',
+    'footer.address.label': 'BINC address',
+    'footer.email.label':   'Email address',
+    'footer.phone.label':   'Phone number',
+    'footer.rights':        'All rights reserved.',
+    'footer.tagline.short': 'Full-service B2B for ambitious brands across the Netherlands.',
+  }
+};
+
+/* ══════════════════════════════════════════════════
+   LANGUAGE ENGINE
+══════════════════════════════════════════════════ */
+let currentLang = localStorage.getItem('binc_lang') || 'nl';
+function t(key){ return (TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang][key])||(TRANSLATIONS['nl'][key])||key; }
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('binc_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (el.children.length === 0) el.textContent = val;
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  buildTape();
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
+});
+
+/* CURSOR */
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+
+/* MOBILE NAV */
+const hamburger=document.getElementById('navHamburger'),drawer=document.getElementById('mobileDrawer');
+function toggleDrawer(open){hamburger.classList.toggle('open',open);drawer.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+hamburger.addEventListener('click',()=>toggleDrawer(!drawer.classList.contains('open')));
+drawer.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleDrawer(false)));
+drawer.addEventListener('click',e=>{if(e.target===drawer)toggleDrawer(false);});
+
+/* NAV SCROLL */
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);},{passive:true});
+
+/* TAPE */
+function buildTape() {
+  const words = t('tape.words').split('|');
+  const ti = document.getElementById('tapeInner');
+  const chunk = () => words.map(w=>`<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
+  ti.innerHTML = chunk() + chunk();
+}
+
+/* REVEAL */
+const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
+
+/* COUNT-UP */
+function countUp(el,target){
+  const dur=1900,t0=performance.now();
+  const go=now=>{const p=Math.min((now-t0)/dur,1),eased=1-Math.pow(1-p,3);el.querySelector('.count').textContent=Math.round(eased*target).toLocaleString('nl-NL');if(p<1)requestAnimationFrame(go);else el.querySelector('.count').textContent=target.toLocaleString('nl-NL');};
+  requestAnimationFrame(go);
+}
+const statIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){countUp(e.target,+e.target.dataset.target);statIO.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('.stat-n[data-target]').forEach(el=>statIO.observe(el));
+
+/* ORBS */
+window.addEventListener('mousemove',e=>{
+  const x=(e.clientX/innerWidth-.5)*18,y=(e.clientY/innerHeight-.5)*18;
+  document.querySelector('.orb-a').style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
+  document.querySelector('.orb-b').style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
+},{passive:true});
+
+/* JUMP OVERLAY */
+document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const o=document.getElementById('jumpOverlay');
+    o.classList.add('active');
+    setTimeout(()=>{window.location.href='index.html#lead';},900);
+  });
+});
+
+/* INIT */
+applyLang(currentLang);
+</script>
+</body>
+</html>
