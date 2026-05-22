@@ -1483,8 +1483,8 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n');
     const val = t(key);
     if (el.children.length === 0) {
-      el.textContent = val;
-    } else if (el.tagName === 'P' && el.classList.contains('product-statement')) {
+  el.innerHTML = val.replace(/\n/g, '<br>');
+} else if (el.tagName === 'P' && el.classList.contains('product-statement')) {
       const parts = val.split('\n');
       el.innerHTML = parts.map((p,i) => i < parts.length-1 ? p + '<br>' : `<em>${p}</em>`).join('');
     }
