@@ -242,6 +242,12 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 /* hide scroll hint on desktop */
 .scroll-hint{display:none}
 
+  @media(max-width:1000px){
+  .cta-title{
+    font-size:clamp(4rem,16vw,7rem);
+  }
+}
+  
 @media(min-width:1001px){
   .nav-links{margin-left:auto;margin-right:20px}
 }
@@ -395,7 +401,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <section id="cta">
   <div class="cta-wrap reveal">
     <p class="label" style="justify-content:center" data-i18n="cta.label">Work together</p>
-    <h2 class="cta-title">READY TO BUILD<br><span class="red">REAL</span> <span class="stroke">ATTENTION?</span></h2>
+    <h2 class="cta-title">
+  READY TO<br>
+  BUILD <span class="red">REAL</span><br>
+  <span class="stroke">ATTENTION?</span>
+</h2>
     <p class="cta-copy" data-i18n="cta.copy">Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.</p>
     <a href="index.html#lead" class="btn-red" data-i18n="cta.btn">Start samenwerking</a>
   </div>
