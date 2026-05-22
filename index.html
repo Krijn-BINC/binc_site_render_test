@@ -1482,16 +1482,19 @@ function applyLang(lang) {
   localStorage.setItem('binc_lang', lang);
   document.documentElement.lang = lang;
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const val = t(key);
-    if (el.children.length === 0) {
-  el.innerHTML = val.replace(/\n/g, '<br>');
-} else if (el.tagName === 'P' && el.classList.contains('product-statement')) {
-      const parts = val.split('\n');
-      el.innerHTML = parts.map((p,i) => i < parts.length-1 ? p + '<br>' : `<em>${p}</em>`).join('');
-    }
-  });
+document.querySelectorAll('[data-i18n]').forEach(el => {
+  const key = el.getAttribute('data-i18n');
+  const val = t(key);
+
+  if (el.tagName === 'P' && el.classList.contains('product-statement')) {
+    const parts = val.split('\n');
+    el.innerHTML = parts
+      .map((p, i) => i < parts.length - 1 ? p + '<br>' : `<em>${p}</em>`)
+      .join('');
+  } else {
+    el.innerHTML = val.replace(/\n/g, '<br>');
+  }
+});
 
   document.querySelectorAll('[data-i18n-ph]').forEach(el => {
     el.placeholder = t(el.getAttribute('data-i18n-ph'));
