@@ -11,7 +11,7 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Horeca | BINC International</title>
+<title>Evenementen | BINC International</title>
 <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -56,7 +56,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-links a::after{content:'';position:absolute;bottom:4px;left:16px;right:16px;height:1px;background:rgba(192,57,43,.85);transform:scaleX(0);transform-origin:left;transition:.3s}
 .nav-links a:hover{color:#fff}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}.nav-links a.active{color:#fff}
 .nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
-.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--red2)!important;color:#fff!important}
+.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--red2)!important}
 .nav-right{display:flex;align-items:center;gap:0}
 .nav-right .lang-switch{display:none}
 .nav-hamburger{display:none}
@@ -83,8 +83,8 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 
 /* HERO */
 #hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.48}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.48) 48%,rgba(0,0,0,.2) 100%),linear-gradient(to bottom,rgba(0,0,0,.32) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.88) 100%)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.54}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 46%,rgba(0,0,0,.18) 100%),linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
 @keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
 .g-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
@@ -102,34 +102,18 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .btn-outline{color:#fff;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.24);padding:16px 40px}
 .btn-outline:hover{border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.055)}
 @keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-
 
 /* SHARED */
 .label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
 .label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
 .display{font-family:var(--font-display);font-size:clamp(3.6rem,5.9vw,8.1rem);font-weight:900;line-height:.9;color:#fff}
-.body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:640px}
+.body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:700px}
 
 /* INTRO */
 #intro{padding:140px 6vw 120px;background:#000;position:relative;overflow:hidden}
 #intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
-.intro-grid{
-  display:grid;
-  grid-template-columns:minmax(0,680px) minmax(380px,580px);
-  gap:90px;
-  align-items:center;
-  justify-content:center;
-  max-width:1400px;
-  margin:0 auto;
-}
-
-.intro-copy{
-  display:flex;
-  flex-direction:column;
-  gap:28px;
-}
+.intro-grid{display:grid;grid-template-columns:minmax(0,780px) minmax(420px,640px);gap:90px;align-items:center;max-width:1400px;margin:0 auto}
+.intro-copy{display:flex;flex-direction:column;gap:28px;padding-left:clamp(24px,4vw,84px)}
 .intro-visual{position:relative;width:100%;aspect-ratio:3/4;max-width:520px;justify-self:end;border-radius:14px;overflow:hidden;border:1px solid rgba(192,57,43,.22);box-shadow:0 40px 100px rgba(0,0,0,.72),0 0 60px rgba(192,57,43,.08)}
 .intro-visual img{width:100%;height:100%;object-fit:cover;opacity:.78;transform:scale(1.04);transition:transform 8s ease}
 .intro-visual:hover img{transform:scale(1.08)}
@@ -140,50 +124,22 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .visual-title{font-family:var(--font-display);font-size:clamp(2.4rem,3.5vw,4.2rem);font-weight:900;line-height:.88;color:#fff}
 .visual-title span{color:var(--red)}
 
-/* STATS */
-#stats{background:#000;padding:0 6vw 120px}
-.stats-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.stat-cell{min-height:220px;padding:44px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,.048),rgba(255,255,255,.012)),rgba(255,255,255,.014);border:1px solid rgba(192,57,43,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 28px 80px rgba(0,0,0,.48)}
-.stat-cell::before{content:'';position:absolute;inset:1px;border-radius:13px;background:radial-gradient(circle at 50% 0%,rgba(192,57,43,.07),transparent 44%);pointer-events:none}
-.stat-cell::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
-.stat-n{position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(3.4rem,4.8vw,6.4rem);font-weight:800;letter-spacing:-.02em;line-height:.9;color:#fff}
-.stat-n sup{font-size:.38em;color:var(--red);vertical-align:top;margin-left:2px;font-weight:700}
-.stat-l{position:relative;z-index:1;font-family:var(--font-ui);font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:20px;line-height:1.45;max-width:200px}
+/* EVENTS SECTION */
+#events{padding:120px 6vw 140px;background:#000}
+.events-head{margin-bottom:56px}
 
-/* SEGMENTS */
-#segments{padding:120px 6vw 130px;background:#000}
-.seg-head{margin-bottom:70px}
-.seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.seg-card{position:relative;overflow:hidden;min-height:580px;border-radius:18px;border:1px solid rgba(192,57,43,.14);background:#060606;box-shadow:0 40px 100px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);transition:.4s}
-.seg-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.36);box-shadow:0 60px 120px rgba(0,0,0,.7),0 0 50px rgba(192,57,43,.07)}
-.seg-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.44;transform:scale(1.04);transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .4s}
-.seg-card:hover img{opacity:.6;transform:scale(1.09)}
-.seg-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(0,0,0,.38) 55%,rgba(0,0,0,.1) 100%),radial-gradient(circle at 50% 0%,rgba(192,57,43,.1),transparent 44%)}
-.seg-top-line{position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.85),transparent)}
-.seg-num{position:absolute;top:28px;right:28px;font-family:var(--font-bebas);font-size:5.5rem;line-height:1;color:rgba(192,57,43,.1);letter-spacing:.04em;pointer-events:none;filter:blur(.3px)}
-.seg-content{position:absolute;left:0;right:0;bottom:0;padding:42px 38px;z-index:3}
-.seg-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:16px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
-.seg-title{font-family:var(--font-display);font-size:clamp(2.8rem,4vw,5rem);font-weight:900;line-height:.88;color:#fff;margin-bottom:18px}
-.seg-title span{color:var(--red)}
-.seg-body{font-size:.95rem;line-height:1.82;color:rgba(255,255,255,.62);font-weight:300;max-width:440px;margin-bottom:24px}
-.seg-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border-radius:6px;overflow:hidden;background:rgba(192,57,43,.18)}
-.seg-kpi{background:rgba(0,0,0,.72);padding:16px 14px;position:relative}
-.seg-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(192,57,43,.5),transparent);opacity:.5}
-.seg-kpi strong{display:block;font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--red);line-height:.9}
-.seg-kpi span{display:block;font-family:var(--font-mono);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:7px;line-height:1.5}
-
-/* HOW IT WORKS */
-#how{padding:130px 6vw;background:#000;position:relative;overflow:hidden}
-#how::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(192,57,43,.04),transparent 55%);pointer-events:none}
-.how-grid{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:80px;align-items:start}
-.how-copy{padding-left:clamp(24px,4vw,84px);display:flex;flex-direction:column;gap:24px}
-.steps{display:flex;flex-direction:column;position:relative}
-.step{display:flex;gap:28px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.055)}
-.step:last-child{border-bottom:none}
-.step-num{font-family:var(--font-bebas);font-size:3.2rem;color:rgba(192,57,43,.22);line-height:1;flex-shrink:0;width:52px;text-align:right;transition:.3s}
-.step:hover .step-num{color:var(--red)}
-.step-title{font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:.04em;color:#fff;margin-bottom:8px;text-transform:uppercase}
-.step-text{font-size:.92rem;line-height:1.85;color:rgba(255,255,255,.55);font-weight:300}
+/* Desktop: 3-col grid */
+.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.event-card{position:relative;overflow:hidden;min-height:460px;border-radius:16px;border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);transition:.3s}
+.event-card:hover{transform:translateY(-4px);border-color:rgba(192,57,43,.38)}
+.event-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;transition:.4s}
+.event-card:hover img{opacity:.56}
+.event-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.94) 0%,rgba(0,0,0,.32) 54%,rgba(0,0,0,.08) 100%)}
+.event-top-line{position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.85),transparent)}
+.event-content{position:absolute;left:0;right:0;bottom:0;padding:36px;z-index:3}
+.event-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:14px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
+.event-content h3{font-family:var(--font-display);font-size:clamp(2.2rem,3vw,4rem);font-weight:900;line-height:.9;margin-bottom:16px}
+.event-content p{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.62)}
 
 /* CTA */
 #cta{position:relative;overflow:hidden;padding:130px 6vw 140px;border-top:1px solid rgba(192,57,43,.1)}
@@ -191,7 +147,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .cta-wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px}
 .cta-title{font-family:var(--font-display);font-size:clamp(4rem,8vw,10rem);font-weight:900;line-height:.86}
 .cta-title .red{color:var(--red)}.cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
-.cta-copy{max-width:680px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62)}
+.cta-copy{max-width:700px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62)}
 
 /* FOOTER */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
@@ -217,7 +173,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.38s}
 
-/* MOBILE */
+/* ─── MOBILE ─── */
 @media(max-width:1000px){
   html,body{cursor:auto}
   #cur,#cur-ring{display:none}
@@ -232,21 +188,46 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
   .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
   .mobile-nav-drawer{display:flex}
+
   #hero{min-height:105vh;padding:110px 0 90px}
-  .hero-inner{margin-left:0}
+  .hero-inner{margin-left:0;padding:0 5vw}
   .hero-title{font-size:clamp(5rem,20vw,10rem)}
-  #intro{padding:80px 6vw 60px}
+
+  #intro{padding:80px 5vw 60px}
   .intro-grid{grid-template-columns:1fr;gap:52px}
   .intro-copy{padding-left:0}
   .intro-visual{max-width:100%;justify-self:stretch;aspect-ratio:4/3}
-  #stats{padding:0 6vw 80px;display:none}
-  #segments{padding:80px 6vw 90px}
-  .seg-grid{grid-template-columns:1fr;gap:22px}
-  .seg-card{min-height:480px}
-  .seg-tag{display:none}
-  #how{padding:80px 6vw 90px}
-  .how-grid{grid-template-columns:1fr;gap:52px}
-  .how-copy{padding-left:0}
+
+  /* Mobile horizontal scroll for event cards */
+  #events{padding:80px 0 90px}
+  .events-head{padding:0 5vw}
+  .event-grid{
+    display:flex;
+    flex-direction:row;
+    gap:16px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding:0 5vw 24px;
+    scrollbar-width:none;
+  }
+  .event-grid::-webkit-scrollbar{display:none}
+  .event-card{
+    flex:0 0 80vw;
+    max-width:320px;
+    min-height:400px;
+    scroll-snap-align:start;
+    border-radius:14px;
+  }
+  .event-content{padding:24px}
+  .event-content h3{font-size:clamp(2rem,8vw,3rem)}
+
+  /* scroll hint */
+  .scroll-hint{display:flex;align-items:center;gap:10px;padding:0 5vw;margin-bottom:20px;font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+  .scroll-hint::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.1),transparent)}
+
+  #cta{padding:90px 5vw 100px}
+
   footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
   .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
   .ft-logo{width:min(200px,55vw);margin:0 auto}
@@ -257,6 +238,24 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .lang-switch{margin-left:8px}
   .lang-btn{padding:5px 9px;font-size:.62rem}
 }
+
+/* hide scroll hint on desktop */
+.scroll-hint{display:none}
+
+  @media(max-width:1000px){
+  .cta-title{
+    font-size:clamp(4rem,16vw,7rem);
+  }
+}
+
+  @media(max-width:1000px){
+
+  .event-card:hover{
+    transform:none !important;
+  }
+
+}
+  
 @media(min-width:1001px){
   .nav-links{margin-left:auto;margin-right:20px}
 }
@@ -279,11 +278,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <!-- Mobile drawer -->
 <div class="mobile-nav-drawer" id="mobileDrawer">
   <a href="retail.html" data-i18n="nav.retail">Retail</a>
-  <a href="horeca.html" class="active" data-i18n="nav.horeca">Horeca</a>
-  <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
+  <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
+  <a href="evenementen.html" class="active" data-i18n="nav.events">Evenementen</a>
   <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
   <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
-  <a href="index.html#lead" class="drawer-cta" id="drawerCta" data-i18n="nav.cta">Samenwerken</a>
+  <a href="index.html#lead" class="drawer-cta" data-i18n="nav.cta">Samenwerken</a>
   <div class="drawer-lang">
     <button class="lang-btn active" data-lang="nl">NL</button>
     <button class="lang-btn" data-lang="en">EN</button>
@@ -301,8 +300,8 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </a>
   <div class="nav-links">
     <a href="retail.html" data-i18n="nav.retail">Retail</a>
-    <a href="horeca.html" class="active" data-i18n="nav.horeca">Horeca</a>
-    <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
+    <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
+    <a href="evenementen.html" class="active" data-i18n="nav.events">Evenementen</a>
     <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
     <a href="vacatures.html" data-i18n="nav.jobs">Vacatures</a>
     <a href="index.html#lead" class="nav-cta" data-i18n="nav.cta">Samenwerken</a>
@@ -318,10 +317,10 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO (geen label) -->
 <section id="hero">
   <video class="hero-video" autoplay muted loop playsinline>
-    <source src="https://cdn.shopify.com/videos/c/o/v/b85b6cf4da4f49ea80c224cf8ed2fe53.mp4" type="video/mp4"/>
+    <source src="https://cdn.shopify.com/videos/c/o/v/9690e8a2bed14220a0ecbf4df8209ce6.mov" type="video/mp4"/>
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
@@ -330,141 +329,80 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="hero-content">
     <div class="hero-inner">
       <h1 class="hero-title">
-  Perfect<br>
-  <span class="red">SERVE.</span> 
+  EVENTS &<br>
+  <span class="red">FESTIVALS</span>
 </h1>
-      <p class="hero-sub" data-i18n="hero.sub">Van premium bars tot sportcantines: BINC International plaatst jouw merk op de plekken waar de doelgroep het écht ervaart.</p>
+      <p class="hero-sub" data-i18n="hero.sub">BINC International brengt merken niet alleen naar retail, maar ook naar plekken waar cultuur, energie en doelgroep samenkomen. Van festivals tot high-traffic activaties door heel Nederland.</p>
       <div class="hero-btns">
-        <a href="#segments" class="btn-red" data-i18n="hero.btn1">Bekijk kanalen</a>
+        <a href="#events" class="btn-red" data-i18n="hero.btn1">Bekijk activaties</a>
         <a href="index.html" class="btn-outline" data-i18n="hero.btn2">Terug naar home</a>
       </div>
     </div>
   </div>
 </section>
 
-
-
 <!-- INTRO -->
 <section id="intro">
   <div class="intro-grid">
     <div class="reveal intro-copy">
       <div>
-        <p class="label" data-i18n="intro.label">Catering distribution</p>
-        <h2 class="display">WHERE YOUR<br>BRAND GETS<br><span style="color:var(--red)">ORDERED.</span></h2>
+        <p class="label" data-i18n="intro.label">Live activations</p>
+        <h2 class="display">WE BUILD<br>REAL-WORLD<br><span style="color:var(--red)">ATTENTION</span></h2>
       </div>
-      <p class="body-text" data-i18n="intro.body1">Horeca is waar merken écht tot leven komen. Wanneer iemand jouw product drinkt in een bar, ontdekt op een sportclub of proeft tijdens een evenement, draait het niet alleen om consumptie maar om beleving.</p>
-      <p class="body-text" data-i18n="intro.body2">BINC International brengt merken direct in contact met inkopers, horecagroothandels en sportaccommodaties door heel Nederland. Van introductie tot langdurig accountmanagement zorgen we voor sterke samenwerkingen en zichtbare groei op de juiste locaties.</p>
+      <p class="body-text" data-i18n="intro.body1">Retail is belangrijk. Maar echte merkbeleving ontstaat op plekken waar mensen voelen, proeven en ervaren.</p>
+      <p class="body-text" data-i18n="intro.body2">Daarom activeert BINC International merken op festivals, evenementen en high-traffic locaties. Van sampling tot complete merkactivaties.</p>
     </div>
     <div class="reveal d2">
       <div class="intro-visual">
-        <img src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?q=80&w=1400&auto=format&fit=crop" alt="Bar sfeer"/>
+        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1400&auto=format&fit=crop" alt="Festival sfeer"/>
         <div class="visual-caption">
-          <span class="visual-tag" data-i18n="intro.visual.tag">Live in de horeca</span>
-          <h3 class="visual-title">Jouw merk.<br><span>Achter de bar.</span></h3>
+          <span class="visual-tag" data-i18n="intro.visual.tag">Live in the field</span>
+          <h3 class="visual-title" data-i18n="intro.visual.title">Jouw merk.<br><span>Op het podium.</span></h3>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section id="stats">
-  <div class="stats-wrap">
-    <div class="stat-cell reveal">
-      <div class="stat-n" data-target="600"><span class="count">0</span><sup>+</sup></div>
-      <p class="stat-l" data-i18n="stats.locations">Sportlocaties actief</p>
-    </div>
-    <div class="stat-cell reveal d1">
-      <div class="stat-n" data-target="8"><span class="count">0</span></div>
-      <p class="stat-l" data-i18n="stats.wholesalers">Groothandels actief</p>
-    </div>
-    <div class="stat-cell reveal d2">
-      <div class="stat-n" data-target="100"><span class="count">0</span><sup>%</sup></div>
-      <p class="stat-l" data-i18n="stats.b2b">B2B ontzorgd door BINC</p>
-    </div>
+<!-- EVENTS -->
+<section id="events">
+  <div class="events-head reveal" style="padding:0 6vw">
+    <p class="label" data-i18n="events.label">Events & experiences</p>
+    <h2 class="display">EVENTS THAT<br><span style="color:var(--red)" data-i18n="events.title.sub">CREATE IMPACT</span></h2>
   </div>
-</section>
 
-<!-- SEGMENTS -->
-<section id="segments">
-  <div class="seg-head reveal">
-    <p class="label" data-i18n="seg.label">Our channels</p>
-    <h2 class="display">TWO WORLDS.<br><span style="color:var(--red)">ONE NETWORK.</span></h2>
-  </div>
-  <div class="seg-grid">
-    <!-- Bars & Nightlife -->
-    <div class="seg-card reveal">
-      <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1400&auto=format&fit=crop" alt="Bar & nachtleven"/>
-      <div class="seg-overlay"></div>
-      <div class="seg-top-line"></div>
-      <div class="seg-num">01</div>
-      <div class="seg-content">
-        <span class="seg-tag" data-i18n="seg1.tag">Bars & nachtleven</span>
-        <h3 class="seg-title">Bars &<br><span>Nightlife.</span></h3>
-        <p class="seg-body" data-i18n="seg1.body">Van bruine kroegen tot premium cocktailbars en nachtclubs. BINC International plaatst jouw merk op de tap, in de koeling of als signature serve, met directe toegang tot horecagroothandels en zelfstandige exploitanten door heel Nederland.</p>
-        <div class="seg-kpis">
-          <div class="seg-kpi"><strong>100<sup style="font-size:.5em;color:var(--red)">+</sup></strong><span data-i18n="seg1.kpi1">Horecalocaties actief</span></div>
-          <div class="seg-kpi"><strong>8</strong><span data-i18n="seg1.kpi2">Groothandel partners</span></div>
-          <div class="seg-kpi"><strong>NL</strong><span data-i18n="seg1.kpi3">Landelijke dekking</span></div>
-        </div>
-      </div>
-    </div>
-    <!-- Sport & Kantines -->
-    <div class="seg-card reveal d1">
-      <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1400&auto=format&fit=crop" alt="Sportclub kantine"/>
-      <div class="seg-overlay"></div>
-      <div class="seg-top-line"></div>
-      <div class="seg-num">02</div>
-      <div class="seg-content">
-        <span class="seg-tag" data-i18n="seg2.tag">Sportclubs & accommodaties</span>
-        <h3 class="seg-title">Sport &<br><span>Kantines.</span></h3>
-        <p class="seg-body" data-i18n="seg2.body">Voetbal, fitness, tennis en hockey zijn plekken waar sport en beleving samenkomen. Van lokale verenigingen tot professionele sportcentra BINC International zorgt voor sterke samenwerkingen en zichtbaarheid op de juiste plekken.</p>
-        <div class="seg-kpis">
-          <div class="seg-kpi"><strong>600<sup style="font-size:.5em;color:var(--red)">+</sup></strong><span data-i18n="seg2.kpi1">Sportlocaties actief</span></div>
-          <div class="seg-kpi"><strong>8</strong><span data-i18n="seg2.kpi2">Sportclub groothandels</span></div>
-          <div class="seg-kpi"><strong>NL</strong><span data-i18n="seg2.kpi3">Landelijke dekking</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- scroll hint: alleen zichtbaar op mobiel via CSS -->
+  <p class="scroll-hint" data-i18n="events.scroll">Scroll voor meer →</p>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="how-grid">
-    <div class="reveal how-copy">
-      <p class="label" data-i18n="how.label">Onze aanpak</p>
-      <h2 class="display">YOUR BRAND<br>BEHIND<br><span style="color:var(--red)">THE BAR.</span></h2>
-      <p class="body-text" data-i18n="how.body">Wij nemen de volledige B2B uit handen. Geen koude acquisitie, geen onbeantwoorde e-mails. BINC International kent de inkopers, kent de processen en weet hoe je een merk positioneert in de horeca.</p>
+  <div class="event-grid">
+    <div class="event-card reveal">
+      <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1600&auto=format&fit=crop" alt="7th Sunday"/>
+      <div class="event-overlay"></div>
+      <div class="event-top-line"></div>
+      <div class="event-content">
+        <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
+        <h3>7th Sunday</h3>
+        <p data-i18n="ev1.body">Brand activations, sampling en directe zichtbaarheid op één van de grootste festivals van Nederland.</p>
+      </div>
     </div>
-    <div class="steps reveal d1">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-body">
-          <p class="step-title" data-i18n="step1.title">Strategy & Targeting</p>
-          <p class="step-text" data-i18n="step1.body">Wij bepalen samen welke horecasegmenten het best passen bij jouw merk, doelgroep en prijspositie. Bars, sportclubs, events of alle drie, we bouwen een gericht distributieplan.</p>
-        </div>
+    <div class="event-card reveal d1">
+      <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1600&auto=format&fit=crop" alt="Harmony of Hardcore"/>
+      <div class="event-overlay"></div>
+      <div class="event-top-line"></div>
+      <div class="event-content">
+        <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
+        <h3>Harmony of Hardcore</h3>
+        <p data-i18n="ev2.body">Hoge energie, hoge traffic en directe merkinteractie met duizenden festivalbezoekers.</p>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-body">
-          <p class="step-title" data-i18n="step2.title">Buyer Outreach</p>
-          <p class="step-text" data-i18n="step2.body">Directe gesprekken met inkopers en horecagroothandels. Wij kennen de juiste mensen en weten hoe we jouw merk op de agenda krijgen, zonder maanden te wachten.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-body">
-          <p class="step-title" data-i18n="step3.title">Listing & Onboarding</p>
-          <p class="step-text" data-i18n="step3.body">Van eerste proeforder tot vaste listing. Wij begeleiden het volledige onboardingproces: prijsafspraken, leveringsafspraken en schappresentatie of tappositie.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-body">
-          <p class="step-title" data-i18n="step4.title">Accountmanagement & Groei</p>
-          <p class="step-text" data-i18n="step4.body">Na de listing stopt ons werk niet. Wij managen de accounts doorlopend, monitoren rotatie en signaleren groeikansen, zodat jouw merk niet alleen listed is, maar ook verkoopt.</p>
-        </div>
+    </div>
+    <div class="event-card reveal d2">
+      <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop" alt="Dauwpop"/>
+      <div class="event-overlay"></div>
+      <div class="event-top-line"></div>
+      <div class="event-content">
+        <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
+        <h3>Dauwpop</h3>
+        <p data-i18n="ev3.body">Live activaties en branded experiences waar cultuur, muziek en merkbeleving samenkomen.</p>
       </div>
     </div>
   </div>
@@ -473,9 +411,13 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <!-- CTA -->
 <section id="cta">
   <div class="cta-wrap reveal">
-    <p class="label" style="justify-content:center" data-i18n="cta.label">Ready for perfect serve?</p>
-    <h2 class="cta-title">JOUW MERK<br><span class="red">IN DE</span> <span class="stroke">HORECA.</span></h2>
-    <p class="cta-copy" data-i18n="cta.copy">Van eerste listing tot landelijke horecadekking. BINC International regelt het gesprek, de deal en de opschaling, jij focust op je merk.</p>
+    <p class="label" style="justify-content:center" data-i18n="cta.label">Work together</p>
+    <h2 class="cta-title">
+  READY TO<br>
+  BUILD <span class="red">REAL</span><br>
+  <span class="stroke">ATTENTION?</span>
+</h2>
+    <p class="cta-copy" data-i18n="cta.copy">Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.</p>
     <a href="index.html#lead" class="btn-red" data-i18n="cta.btn">Start samenwerking</a>
   </div>
 </section>
@@ -512,47 +454,30 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 ══════════════════════════════════════════════════ */
 const TRANSLATIONS = {
   nl: {
-    'nav.retail':       'Retail',
-    'nav.horeca':       'Horeca',
-    'nav.events':       'Evenementen',
-    'nav.team':         'Ons Team',
-    'nav.jobs':         'Vacatures',
-    'nav.cta':          'Samenwerken',
-    'hero.sub':         'Van premium bars tot sportcantines: BINC International plaatst jouw merk op de plekken waar de doelgroep het écht ervaart.',
-    'hero.btn1':        'Bekijk kanalen',
-    'hero.btn2':        'Terug naar home',
-    'tape.words':       'Horeca Distributie|Bars & Nachtleven|Sportclubs|Foodservice|B2B Sales|Accountmanagement|BINC International',
-    'intro.label':      'Catering distribution',
-    'intro.body1':      'Horeca is waar merken écht tot leven komen. Wanneer iemand jouw product drinkt in een bar, ontdekt op een sportclub of proeft tijdens een evenement, draait het niet alleen om consumptie maar om beleving.',
-    'intro.body2':      'BINC International brengt merken direct in contact met inkopers, horecagroothandels en sportaccommodaties door heel Nederland. Van introductie tot langdurig accountmanagement zorgen we voor sterke samenwerkingen en zichtbare groei op de juiste locaties.',
-    'intro.visual.tag': 'Live in de horeca',
-    'stats.locations':  'Sportlocaties actief',
-    'stats.wholesalers':'Groothandels actief',
-    'stats.b2b':        'B2B ontzorgd door BINC',
-    'seg.label':        'Our channels',
-    'seg1.tag':         'Bars & nachtleven',
-    'seg1.body':        'Van bruine kroegen tot premium cocktailbars en nachtclubs. BINC International plaatst jouw merk op de tap, in de koeling of als signature serve, met directe toegang tot horecagroothandels en zelfstandige exploitanten door heel Nederland.',
-    'seg1.kpi1':        'Horecalocaties actief',
-    'seg1.kpi2':        'Groothandel partners',
-    'seg1.kpi3':        'Landelijke dekking',
-    'seg2.tag':         'Sportclubs & accommodaties',
-    'seg2.body':        'Voetbal, fitness, tennis en hockey zijn plekken waar sport en beleving samenkomen. Van lokale verenigingen tot professionele sportcentra BINC International zorgt voor sterke samenwerkingen en zichtbaarheid op de juiste plekken.',
-    'seg2.kpi1':        'Sportlocaties actief',
-    'seg2.kpi2':        'Sportclub groothandels',
-    'seg2.kpi3':        'Landelijke dekking',
-    'how.label':        'Our approach',
-    'how.body':         'Wij nemen de volledige B2B uit handen. Geen koude acquisitie, geen onbeantwoorde e-mails. BINC International kent de inkopers, kent de processen en weet hoe je een merk positioneert in de horeca.',
-    'step1.title':      'Strategy & Targeting',
-    'step1.body':       'Wij bepalen samen welke horecasegmenten het best passen bij jouw merk, doelgroep en prijspositie. Bars, sportclubs, events of alle drie, we bouwen een gericht distributieplan.',
-    'step2.title':      'Buyer Outreach',
-    'step2.body':       'Directe gesprekken met inkopers en horecagroothandels. Wij kennen de juiste mensen en weten hoe we jouw merk op de agenda krijgen, zonder maanden te wachten.',
-    'step3.title':      'Listing & Onboarding',
-    'step3.body':       'Van eerste proeforder tot vaste listing. Wij begeleiden het volledige onboardingproces: prijsafspraken, leveringsafspraken en schappresentatie of tappositie.',
-    'step4.title':      'Accountmanagement & Groei',
-    'step4.body':       'Na de listing stopt ons werk niet. Wij managen de accounts doorlopend, monitoren rotatie en signaleren groeikansen, zodat jouw merk niet alleen listed is, maar ook verkoopt.',
-    'cta.label':        'Ready for the perfect serve?',
-    'cta.copy':         'Van eerste listing tot landelijke horecadekking. BINC International regelt het gesprek, de deal en de opschaling, jij focust op je merk.',
-    'cta.btn':          'Start samenwerking',
+    'nav.retail':           'Retail',
+    'nav.horeca':           'Horeca',
+    'nav.events':           'Evenementen',
+    'nav.team':             'Ons Team',
+    'nav.jobs':             'Vacatures',
+    'nav.cta':              'Samenwerken',
+    'hero.sub':             'BINC International brengt merken niet alleen naar retail, maar ook naar plekken waar cultuur, energie en doelgroep samenkomen. Van festivals tot high-traffic activaties door heel Nederland.',
+    'hero.btn1':            'Bekijk activaties',
+    'hero.btn2':            'Terug naar home',
+    'intro.label':          'Live activations',
+    'intro.body1':          'Retail is belangrijk. Maar echte merkbeleving ontstaat op plekken waar mensen voelen, proeven en ervaren.',
+    'intro.body2':          'Daarom activeert BINC International merken op festivals, evenementen en high-traffic locaties. Van sampling tot complete merkactivaties.',
+    'intro.visual.tag':     'Live in the field',
+    'intro.visual.title':   'Jouw merk.<br><span>Op het podium.</span>',
+    'events.label':         'Events & experiences',
+    'events.title.sub':     'CREATE IMPACT',
+    'events.scroll':        'Scroll voor meer →',
+    'events.tag':           'Festival activatie',
+    'ev1.body':             'Brand activations, sampling en directe zichtbaarheid op één van de grootste festivals van Nederland.',
+    'ev2.body':             'Hoge energie, hoge traffic en directe merkinteractie met duizenden festivalbezoekers.',
+    'ev3.body':             'Live activaties en branded experiences waar cultuur, muziek en merkbeleving samenkomen.',
+    'cta.label':            'Work together',
+    'cta.copy':             'Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.',
+    'cta.btn':              'Start samenwerking',
     'footer.address.label': 'BINC adres',
     'footer.email.label':   'E-mailadres',
     'footer.phone.label':   'Telefoonnummer',
@@ -560,47 +485,30 @@ const TRANSLATIONS = {
     'footer.tagline.short': 'Full-service B2B voor ambitieuze merken in Nederland.',
   },
   en: {
-    'nav.retail':       'Retail',
-    'nav.horeca':       'Horeca',
-    'nav.events':       'Events',
-    'nav.team':         'Our Team',
-    'nav.jobs':         'Careers',
-    'nav.cta':          'Work With Us',
-    'hero.sub':         'From premium bars to sports canteens: BINC International places your brand where your audience truly experiences it.',
-    'hero.btn1':        'View channels',
-    'hero.btn2':        'Back to home',
-    'tape.words':       'Catering Distribution|Bars & Nightlife|Sports Clubs|Foodservice|B2B Sales|Account Management|BINC International',
-    'intro.label':      'Catering distribution',
-    'intro.body1':      'Horeca is where brands truly come to life. When someone drinks your product in a bar, discovers it at a sports club or tastes it at an event, it is not just consumption — it is an experience.',
-    'intro.body2':      'BINC International connects brands directly with buyers, catering wholesalers and sports venues across the Netherlands. From introduction to long-term account management, we build strong partnerships and drive visible growth at the right locations.',
-    'intro.visual.tag': 'Live in horeca',
-    'stats.locations':  'Sports locations active',
-    'stats.wholesalers':'Wholesalers active',
-    'stats.b2b':        'B2B fully handled by BINC',
-    'seg.label':        'Our channels',
-    'seg1.tag':         'Bars & nightlife',
-    'seg1.body':        'From local pubs to premium cocktail bars and nightclubs. BINC International places your brand on tap, in the fridge or as a signature serve, with direct access to catering wholesalers and independent operators across the Netherlands.',
-    'seg1.kpi1':        'Horeca locations active',
-    'seg1.kpi2':        'Wholesale partners',
-    'seg1.kpi3':        'National coverage',
-    'seg2.tag':         'Sports clubs & venues',
-    'seg2.body':        'Football, fitness, tennis and hockey are places where sport and experience come together. From local clubs to professional sports centres, BINC International creates strong partnerships and visibility in the right places across the Netherlands.',
-    'seg2.kpi1':        'Sports locations active',
-    'seg2.kpi2':        'Sports club wholesalers',
-    'seg2.kpi3':        'National coverage',
-    'how.label':        'Our approach',
-    'how.body':         'We take the entire B2B off your hands. No cold acquisition, no unanswered emails. BINC International knows the buyers, knows the processes and knows how to position a brand in the horeca.',
-    'step1.title':      'Strategy & Targeting',
-    'step1.body':       'Together we determine which horeca segments best match your brand, target audience and price positioning. Bars, sports clubs, events or all three — we build a focused distribution plan.',
-    'step2.title':      'Buyer Outreach',
-    'step2.body':       'Direct conversations with buyers and catering wholesalers. We know the right people and know how to get your brand on the agenda without waiting months.',
-    'step3.title':      'Listing & Onboarding',
-    'step3.body':       'From first trial order to permanent listing. We guide the full onboarding process: pricing agreements, delivery terms and shelf or tap positioning.',
-    'step4.title':      'Account Management & Growth',
-    'step4.body':       'After the listing, our work does not stop. We manage accounts continuously, monitor rotation and identify growth opportunities, so your brand is not just listed — it sells.',
-    'cta.label':        'Ready for perfect serve?',
-    'cta.copy':         'From first listing to national horeca coverage. BINC International handles the conversation, the deal and the scale-up — you focus on your brand.',
-    'cta.btn':          'Start partnership',
+    'nav.retail':           'Retail',
+    'nav.horeca':           'Horeca',
+    'nav.events':           'Events',
+    'nav.team':             'Our Team',
+    'nav.jobs':             'Careers',
+    'nav.cta':              'Work With Us',
+    'hero.sub':             'BINC International brings brands not just to retail, but to places where culture, energy and audience come together. From festivals to high-traffic activations across the Netherlands.',
+    'hero.btn1':            'View activations',
+    'hero.btn2':            'Back to home',
+    'intro.label':          'Live activations',
+    'intro.body1':          'Retail matters. But real brand experience happens where people feel, taste and discover.',
+    'intro.body2':          'That is why BINC International activates brands at festivals, events and high-traffic locations. From sampling to full brand activations.',
+    'intro.visual.tag':     'Live in the field',
+    'intro.visual.title':   'Your brand.<br><span>On the stage.</span>',
+    'events.label':         'Events & experiences',
+    'events.title.sub':     'CREATE IMPACT',
+    'events.scroll':        'Scroll for more →',
+    'events.tag':           'Festival activation',
+    'ev1.body':             'Brand activations, sampling and direct visibility at one of the biggest festivals in the Netherlands.',
+    'ev2.body':             'High energy, high traffic and direct brand interaction with thousands of festival visitors.',
+    'ev3.body':             'Live activations and branded experiences where culture, music and brand experience come together.',
+    'cta.label':            'Work together',
+    'cta.copy':             'From retail to festivals. From first listing to physical activation. BINC International helps brands grow where impact is created.',
+    'cta.btn':              'Start partnership',
     'footer.address.label': 'BINC address',
     'footer.email.label':   'Email address',
     'footer.phone.label':   'Phone number',
@@ -613,34 +521,24 @@ const TRANSLATIONS = {
    LANGUAGE ENGINE
 ══════════════════════════════════════════════════ */
 let currentLang = localStorage.getItem('binc_lang') || 'nl';
-
-function t(key) {
-  return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) || (TRANSLATIONS['nl'][key]) || key;
-}
+function t(key){ return (TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang][key])||(TRANSLATIONS['nl'][key])||key; }
 
 function applyLang(lang) {
   currentLang = lang;
   localStorage.setItem('binc_lang', lang);
   document.documentElement.lang = lang;
-
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const val = t(key);
-    if (el.children.length === 0) el.textContent = val;
+    if (el.children.length === 0) el.innerHTML = val;
   });
-
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
-
-  buildTape();
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    applyLang(btn.dataset.lang);
-    toggleDrawer(false);
-  });
+  btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
 });
 
 /* CURSOR */
@@ -659,29 +557,16 @@ drawer.addEventListener('click',e=>{if(e.target===drawer)toggleDrawer(false);});
 /* NAV SCROLL */
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);},{passive:true});
 
-/* TAPE */
-function buildTape() {
-  const words = t('tape.words').split('|');
-  const ti = document.getElementById('tapeInner');
-  const chunk = () => words.map(w=>`<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
-  ti.innerHTML = chunk() + chunk();
-}
-
 /* REVEAL */
 const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
 
-/* COUNT-UP */
-function countUp(el,target){
-  const dur=1900,t0=performance.now();
-  const go=now=>{const p=Math.min((now-t0)/dur,1),eased=1-Math.pow(1-p,3);el.querySelector('.count').textContent=Math.round(eased*target).toLocaleString('nl-NL');if(p<1)requestAnimationFrame(go);else el.querySelector('.count').textContent=target.toLocaleString('nl-NL');};
-  requestAnimationFrame(go);
-}
-const statIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){countUp(e.target,+e.target.dataset.target);statIO.unobserve(e.target);}});},{threshold:.5});
-document.querySelectorAll('.stat-n[data-target]').forEach(el=>statIO.observe(el));
-
 /* ORBS */
-window.addEventListener('mousemove',e=>{const x=(e.clientX/innerWidth-.5)*18,y=(e.clientY/innerHeight-.5)*18;document.querySelector('.orb-a').style.transform=`translate(${x*1.1}px,${y*1.1}px)`;document.querySelector('.orb-b').style.transform=`translate(${-x*.7}px,${-y*.7}px)`;},{passive:true});
+window.addEventListener('mousemove',e=>{
+  const x=(e.clientX/innerWidth-.5)*18,y=(e.clientY/innerHeight-.5)*18;
+  document.querySelector('.orb-a').style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
+  document.querySelector('.orb-b').style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
+},{passive:true});
 
 /* JUMP OVERLAY */
 document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
