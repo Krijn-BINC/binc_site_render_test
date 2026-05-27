@@ -1,0 +1,14 @@
+[build]
+  publish = "public"
+
+[[redirects]]
+  from = "https://polite-cheesecake-e2a6dd.netlify.app/*"
+  to = "https://bincinternational.nl/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://polite-cheesecake-e2a6dd.netlify.app/*"
+  to = "https://bincinternational.nl/:splat"
+  status = 301
+  force = true
