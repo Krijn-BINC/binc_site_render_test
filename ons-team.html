@@ -655,11 +655,11 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n');
     const val = T[key];
     if (val !== undefined) {
-      if (key.endsWith('.html')) {
-        el.innerHTML = val;
-      } else {
-        el.textContent = val;
-      }
+if (key.endsWith('.html') || key === 'role.tim') {
+  el.innerHTML = val;
+} else {
+  el.textContent = val;
+}
     }
   });
   document.querySelectorAll('.lang-btn').forEach(btn => {
