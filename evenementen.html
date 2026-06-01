@@ -211,7 +211,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 }
 .lb-main-img.changing{opacity:0;transform:scale(.97)}
 
-/* Loading spinner inside lightbox */
 .lb-spinner{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:36px;height:36px;border-radius:50%;
@@ -516,7 +515,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
     <!-- Harmony of Hardcore -->
     <div class="event-card reveal d1" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
-      <img src="images/hoh/1.jpg" alt="Harmony of Hardcore" loading="lazy"/>
+      <img src="images/hoh/web/1.jpg" alt="Harmony of Hardcore" loading="lazy"/>
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
       <div class="event-gallery-badge">
@@ -691,37 +690,26 @@ function applyLang(lang){
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{applyLang(b.dataset.lang);toggleDrawer(false);}));
 
 /* ══════════════════════════════════════════════
-   GALLERY DATA — 24 foto's per event
-   
-   PADEN UITLEG:
-   - imgs:      images/web/<event>/<n>.jpg      ← gecomprimeerde versie (max 1920px)
-                na compress_images.py draaien
-   - thumbImgs: images/thumbs/<event>/<n>.jpg   ← thumbnail versie (400px)
-                na compress_images.py draaien
-
-   Heb je het script nog NIET gedraaid?
-   Verander tijdelijk beide arrays naar:
-     Array.from({length:24},(_,i)=>`images/<event>/${i+1}.jpg`)
-   en draai het script later voor optimale snelheid.
+   GALLERY DATA
 ══════════════════════════════════════════════ */
 const GALLERIES = {
   '7th': {
     titleNL:'7th Sunday', titleEN:'7th Sunday',
     metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
-    imgs:      Array.from({length:24},(_,i)=>`images/web/7th/${i+1}.jpg`),
-    thumbImgs: Array.from({length:24},(_,i)=>`images/thumbs/7th/${i+1}.jpg`)
+    imgs:      Array.from({length:24},(_,i)=>`images/7th/${i+1}.jpg`),
+    thumbImgs: Array.from({length:24},(_,i)=>`images/7th/${i+1}.jpg`)
   },
   'hoh': {
     titleNL:'Harmony of Hardcore', titleEN:'Harmony of Hardcore',
     metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
-    imgs:      Array.from({length:24},(_,i)=>`images/web/hoh/${i+1}.jpg`),
-    thumbImgs: Array.from({length:24},(_,i)=>`images/thumbs/hoh/${i+1}.jpg`)
+    imgs:      Array.from({length:24},(_,i)=>`images/hoh/web/${i+1}.jpg`),
+    thumbImgs: Array.from({length:24},(_,i)=>`images/hoh/thumbs/${i+1}.jpg`)
   },
   'dauwpop': {
     titleNL:'Dauwpop', titleEN:'Dauwpop',
     metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
-    imgs:      Array.from({length:24},(_,i)=>`images/web/dauwpop/${i+1}.jpg`),
-    thumbImgs: Array.from({length:24},(_,i)=>`images/thumbs/dauwpop/${i+1}.jpg`)
+    imgs:      Array.from({length:24},(_,i)=>`images/dauwpop/${i+1}.jpg`),
+    thumbImgs: Array.from({length:24},(_,i)=>`images/dauwpop/${i+1}.jpg`)
   }
 };
 
@@ -743,7 +731,6 @@ let currentGallery = null;
 let currentIndex   = 0;
 let loadingTimer   = null;
 
-/* Preload volgende + vorige voor snelle navigatie */
 function preloadAdjacent(idx){
   if(!currentGallery) return;
   const n = currentGallery.imgs.length;
@@ -771,7 +758,6 @@ function openGallery(eventKey){
   lbTitle.textContent = currentLang==='en' ? g.titleEN : g.titleNL;
   lbMeta.textContent  = currentLang==='en' ? g.metaEN  : g.metaNL;
 
-  /* Thumbnails bouwen — kleine bestanden, lazy loaded */
   lbThumbs.innerHTML = '';
   g.thumbImgs.forEach((src, i) => {
     const d   = document.createElement('div');
@@ -785,7 +771,6 @@ function openGallery(eventKey){
     lbThumbs.appendChild(d);
   });
 
-  /* Eerste foto laden */
   showSpinner();
   lbImg.src = '';
   const first = new Image();
@@ -823,11 +808,6 @@ function goTo(idx){
     hideSpinner();
   };
   next.onerror = () => {
-    /* Fallback naar origineel pad als web-versie ontbreekt */
-    const fallback = currentGallery.imgs[idx]
-      .replace('images/web/', 'images/')
-      .replace('images/thumbs/', 'images/');
-    lbImg.src = fallback;
     lbImg.classList.remove('changing');
     hideSpinner();
   };
@@ -846,7 +826,6 @@ function scrollThumb(idx){
   if(thumb) thumb.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
 }
 
-/* Card interactie */
 document.querySelectorAll('.event-card').forEach(card => {
   card.addEventListener('click', () => openGallery(card.dataset.event));
   card.addEventListener('keydown', e => {
@@ -865,10 +844,8 @@ document.addEventListener('keydown', e => {
   if(e.key==='ArrowRight') goTo(currentIndex + 1);
 });
 
-/* Sluiten via achtergrond klik */
 lb.addEventListener('click', e => { if(e.target===lb) closeGallery(); });
 
-/* Touch swipe */
 let touchStartX = 0;
 lbImg.addEventListener('touchstart', e => {
   touchStartX = e.changedTouches[0].screenX;
