@@ -123,6 +123,13 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   cursor:pointer;
   transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;
   --shimmer-angle:0deg;
+  /* FIX: verwijder blauwe browser focus-outline */
+  outline:none;
+}
+/* Alleen zichtbare focus-ring tonen bij keyboard navigatie, niet bij muisklik */
+.event-card:focus-visible{
+  outline:2px solid rgba(192,57,43,.7);
+  outline-offset:2px;
 }
 .event-card::before{
   content:'';position:absolute;inset:-1px;border-radius:17px;
@@ -143,6 +150,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .event-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.96) 0%,rgba(0,0,0,.38) 54%,rgba(0,0,0,.1) 100%);z-index:2}
 .event-top-line{position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.85),transparent);z-index:3}
 
+/* FIX: gallery badge met rood icoontje */
 .event-gallery-badge{
   position:absolute;top:20px;right:20px;z-index:4;
   display:flex;align-items:center;gap:7px;
@@ -154,7 +162,16 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   transition:background .3s,color .3s,border-color .3s;
 }
 .event-card:hover .event-gallery-badge{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.7);color:#fff}
-.event-gallery-badge svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+/* Icoontje altijd rood */
+.event-gallery-badge svg{
+  width:14px;height:14px;flex-shrink:0;
+  color:var(--red);
+  stroke:var(--red);
+  fill:none;
+}
+.event-gallery-badge svg rect{fill:none;stroke:var(--red);stroke-width:2}
+.event-gallery-badge svg circle{fill:var(--red)}
+.event-gallery-badge svg polyline{stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 .event-content{position:absolute;left:0;right:0;bottom:0;padding:36px;z-index:3}
 .event-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:14px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
@@ -493,13 +510,17 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
   <div class="event-grid" id="eventGrid">
 
-    <!-- 7th Sunday — preview foto: 7th2/web/8.jpg, 14 foto's -->
+    <!-- 7th Sunday — 14 foto's -->
     <div class="event-card reveal" data-event="7th" role="button" tabindex="0" aria-label="7th Sunday galerij openen">
       <img src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
       <div class="event-gallery-badge">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
         <span>14 foto's</span>
       </div>
       <div class="event-content">
@@ -513,13 +534,17 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
       </div>
     </div>
 
-    <!-- Harmony of Hardcore — preview foto: hoh/web/12.jpg, 24 foto's -->
+    <!-- Harmony of Hardcore — 24 foto's -->
     <div class="event-card reveal d1" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
       <img src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
       <div class="event-gallery-badge">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
         <span>24 foto's</span>
       </div>
       <div class="event-content">
@@ -533,14 +558,18 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
       </div>
     </div>
 
-    <!-- Dauwpop — preview foto: 7th/web/18.jpg, 30 foto's -->
+    <!-- Dauwpop — 29 foto's (FIX: was 30) -->
     <div class="event-card reveal d2" data-event="dauwpop" role="button" tabindex="0" aria-label="Dauwpop galerij openen">
       <img src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
       <div class="event-gallery-badge">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>30 foto's</span>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>29 foto's</span>
       </div>
       <div class="event-content">
         <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
@@ -600,7 +629,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="ft-brand reveal">
     <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
     <div class="ft-socials">
-      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-2.52-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
+      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.52-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
       <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg></a>
       <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
     </div>
@@ -693,7 +722,7 @@ document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=
    GALLERY DATA
    7th Sunday  → images/7th2/  (14 foto's)
    HoH         → images/hoh/   (24 foto's)
-   Dauwpop     → images/7th/   (30 foto's)
+   Dauwpop     → images/7th/   (29 foto's) — FIX: was 30
 ══════════════════════════════════════════════ */
 const GALLERIES = {
   '7th': {
@@ -711,8 +740,8 @@ const GALLERIES = {
   'dauwpop': {
     titleNL:'Dauwpop', titleEN:'Dauwpop',
     metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
-    imgs:      Array.from({length:30},(_,i)=>`images/7th/web/${i+1}.jpg`),
-    thumbImgs: Array.from({length:30},(_,i)=>`images/7th/thumbs/${i+1}.jpg`)
+    imgs:      Array.from({length:29},(_,i)=>`images/7th/web/${i+1}.jpg`),
+    thumbImgs: Array.from({length:29},(_,i)=>`images/7th/thumbs/${i+1}.jpg`)
   }
 };
 
@@ -733,6 +762,7 @@ const lbSpinner = document.getElementById('lbSpinner');
 let currentGallery = null;
 let currentIndex   = 0;
 let loadingTimer   = null;
+let lastOpenedCard = null;
 
 function preloadAdjacent(idx){
   if(!currentGallery) return;
@@ -745,10 +775,11 @@ function preloadAdjacent(idx){
 function showSpinner(){clearTimeout(loadingTimer);loadingTimer=setTimeout(()=>lbSpinner.classList.add('visible'),150);}
 function hideSpinner(){clearTimeout(loadingTimer);lbSpinner.classList.remove('visible');}
 
-function openGallery(eventKey){
+function openGallery(eventKey, triggerCard){
   const g=GALLERIES[eventKey];
   if(!g) return;
   currentGallery=g;currentIndex=0;
+  lastOpenedCard=triggerCard||null;
 
   lbTitle.textContent=currentLang==='en'?g.titleEN:g.titleNL;
   lbMeta.textContent =currentLang==='en'?g.metaEN :g.metaNL;
@@ -780,6 +811,11 @@ function closeGallery(){
   lb.classList.remove('open');
   document.body.style.overflow='';
   currentGallery=null;hideSpinner();
+  /* FIX: verwijder focus van de kaart na sluiten zodat geen blauwe outline verschijnt */
+  if(lastOpenedCard){
+    lastOpenedCard.blur();
+    lastOpenedCard=null;
+  }
 }
 
 function goTo(idx){
@@ -802,8 +838,8 @@ function scrollThumb(idx){
 }
 
 document.querySelectorAll('.event-card').forEach(card=>{
-  card.addEventListener('click',()=>openGallery(card.dataset.event));
-  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGallery(card.dataset.event);}});
+  card.addEventListener('click',()=>openGallery(card.dataset.event, card));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGallery(card.dataset.event, card);}});
 });
 
 lbClose.addEventListener('click',closeGallery);
