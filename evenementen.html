@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta name="description" content="BINC International activeert merken op festivals en evenementen door heel Nederland. Van 7th Sunday tot Dauwpop sampling, brand activations en directe zichtbaarheid op de juiste plekken."/>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VRHH6551CL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta name="description" content="BINC International activeert merken op festivals en evenementen door heel Nederland. Van 7th Sunday tot Dauwpop — sampling, brand activations en directe zichtbaarheid op de juiste plekken."/>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRHH6551CL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VRHH6551CL');
+  </script>
+  <link rel="canonical" href="https://bincinternational.nl/evenementen.html" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evenementen | BINC International</title>
+  <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 
-  gtag('config', 'G-VRHH6551CL');
-</script>
-  
-<link rel="canonical" href="https://bincinternational.nl/" />
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Evenementen | BINC International</title>
-<link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -32,25 +31,21 @@ body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-
 #cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
 #cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
 #cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
-body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:52px}
+body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring,body:has(.event-card:hover) #cur-ring{width:52px;height:52px}
 ::selection{background:var(--red);color:#fff}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
 
-/* LANG SWITCH */
+/* ── LANG SWITCH ── */
 .lang-switch{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-left:18px;flex-shrink:0}
 .lang-btn{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);background:transparent;border:none;padding:6px 11px;cursor:pointer;transition:.2s;line-height:1}
 .lang-btn.active{background:var(--red);color:#fff}
 .lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
 
-/* LANG FAB */
-.lang-fab{
-  display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;
-  position:fixed;bottom:28px;right:28px;z-index:600;
-  box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72);
-}
+/* ── LANG FAB ── */
+.lang-fab{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;position:fixed;bottom:28px;right:28px;z-index:600;box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72)}
 .lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
 
-/* NAV */
+/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
 nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
@@ -64,41 +59,10 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-right{display:flex;align-items:center;gap:0}
 .nav-right .lang-switch{display:none}
 .nav-hamburger{display:none}
-.hero-image{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  background-image:url('images/Golddrystage.JPG');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  opacity:.54;
-}
-  
-/* MOBILE DRAWER */
-.mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0}
-.mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
-.mobile-nav-drawer a{font-family:var(--font-display);font-size:clamp(2.8rem,11vw,5rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;line-height:1.1;display:block;padding:16px 0;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
-.mobile-nav-drawer a:hover,.mobile-nav-drawer a.active{color:#fff}
-.mobile-nav-drawer a.drawer-cta{color:#fff;background:var(--red);border-radius:4px;margin-top:28px;border-bottom:none;font-size:clamp(1.4rem,5vw,2rem);padding:18px 0;letter-spacing:.14em}
-.mobile-nav-drawer a.drawer-cta:hover{background:var(--red2)}
-.drawer-lang{display:flex;align-items:center;justify-content:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-top:28px}
-.drawer-lang .lang-btn{font-size:.8rem;padding:10px 22px}
-.drawer-socials{display:flex;gap:28px;margin-top:28px}
-.drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
-.drawer-socials a:hover{color:var(--red)}.drawer-socials svg{width:100%;height:100%;fill:currentColor}
 
-/* JUMP OVERLAY */
-.jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
-.jump-overlay::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px),radial-gradient(rgba(0,0,0,.08) 1px,transparent 1px);background-size:4px 4px,6px 6px;opacity:.5;mix-blend-mode:overlay}
-.jump-overlay::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(192,57,43,.28) 0%,rgba(192,57,43,.12) 35%,transparent 72%);filter:blur(50px)}
-.jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
-.jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
-
-/* HERO */
+/* ── HERO ── */
+.hero-image{position:absolute;inset:0;width:100%;height:100%;background-image:url('images/Golddrystage.JPG');background-size:cover;background-position:center;background-repeat:no-repeat;opacity:.54}
 #hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.54}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 46%,rgba(0,0,0,.18) 100%),linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
 @keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
@@ -118,13 +82,13 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .btn-outline:hover{border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.055)}
 @keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
 
-/* SHARED */
+/* ── SHARED ── */
 .label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
 .label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
 .display{font-family:var(--font-display);font-size:clamp(3.6rem,5.9vw,8.1rem);font-weight:900;line-height:.9;color:#fff}
 .body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:700px}
 
-/* INTRO */
+/* ── INTRO ── */
 #intro{padding:140px 6vw 120px;background:#000;position:relative;overflow:hidden}
 #intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
 .intro-grid{display:grid;grid-template-columns:minmax(0,780px) minmax(420px,640px);gap:90px;align-items:center;max-width:1400px;margin:0 auto}
@@ -139,24 +103,155 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .visual-title{font-family:var(--font-display);font-size:clamp(2.4rem,3.5vw,4.2rem);font-weight:900;line-height:.88;color:#fff}
 .visual-title span{color:var(--red)}
 
-/* EVENTS SECTION */
+/* ── EVENTS SECTION ── */
 #events{padding:120px 6vw 140px;background:#000}
-.events-head{margin-bottom:56px}
+.events-head{margin-bottom:24px}
+.events-hint{
+  font-family:var(--font-ui);font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);margin-bottom:56px;display:flex;align-items:center;gap:14px;
+}
+.events-hint svg{width:18px;height:18px;opacity:.45;flex-shrink:0}
+.events-hint span{animation:pulseHint 2.4s ease-in-out infinite}
+@keyframes pulseHint{0%,100%{opacity:.28}50%{opacity:.7}}
 
-/* Desktop: 3-col grid */
+/* ── EVENT GRID + CARDS ── */
 .event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.event-card{position:relative;overflow:hidden;min-height:460px;border-radius:16px;border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);transition:.3s}
-.event-card:hover{transform:translateY(-4px);border-color:rgba(192,57,43,.38)}
-.event-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;transition:.4s}
-.event-card:hover img{opacity:.56}
-.event-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.94) 0%,rgba(0,0,0,.32) 54%,rgba(0,0,0,.08) 100%)}
-.event-top-line{position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.85),transparent)}
+
+.event-card{
+  position:relative;overflow:hidden;min-height:520px;border-radius:16px;
+  border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);
+  cursor:pointer;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;
+  /* Shimmer border animation */
+  --shimmer-angle:0deg;
+}
+.event-card::before{
+  content:'';position:absolute;inset:-1px;border-radius:17px;
+  background:conic-gradient(from var(--shimmer-angle),transparent 70%,rgba(192,57,43,.7) 80%,rgba(231,76,60,.9) 85%,rgba(192,57,43,.7) 90%,transparent 100%);
+  z-index:0;opacity:0;transition:opacity .4s;
+  animation:shimmerSpin 3s linear infinite paused;
+}
+@property --shimmer-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes shimmerSpin{to{--shimmer-angle:360deg}}
+.event-card::after{
+  content:'';position:absolute;inset:1px;border-radius:15px;background:#000;z-index:0;
+}
+.event-card:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.15)}
+.event-card:hover::before{opacity:1;animation-play-state:running}
+
+.event-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;transition:opacity .4s,transform .5s cubic-bezier(.22,1,.36,1);z-index:1}
+.event-card:hover img{opacity:.6;transform:scale(1.04)}
+.event-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.96) 0%,rgba(0,0,0,.38) 54%,rgba(0,0,0,.1) 100%);z-index:2}
+.event-top-line{position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.85),transparent);z-index:3}
+
+/* Gallery icon badge */
+.event-gallery-badge{
+  position:absolute;top:20px;right:20px;z-index:4;
+  display:flex;align-items:center;gap:7px;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(10px);
+  border:1px solid rgba(192,57,43,.3);border-radius:4px;
+  padding:7px 12px;
+  font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+  transition:background .3s,color .3s,border-color .3s;
+}
+.event-card:hover .event-gallery-badge{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.7);color:#fff}
+.event-gallery-badge svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+
 .event-content{position:absolute;left:0;right:0;bottom:0;padding:36px;z-index:3}
 .event-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:14px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
-.event-content h3{font-family:var(--font-display);font-size:clamp(2.2rem,3vw,4rem);font-weight:900;line-height:.9;margin-bottom:16px}
+.event-content h3{font-family:var(--font-display);font-size:clamp(2.4rem,3.2vw,4.2rem);font-weight:900;line-height:.9;margin-bottom:14px;transition:color .3s}
+.event-card:hover .event-content h3{color:var(--red)}
 .event-content p{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.62)}
 
-/* CTA */
+/* Open gallery CTA inside card */
+.event-open-cta{
+  display:flex;align-items:center;gap:10px;margin-top:20px;
+  font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(192,57,43,.7);
+  opacity:0;transform:translateY(8px);
+  transition:opacity .3s,transform .3s,color .2s;
+}
+.event-card:hover .event-open-cta{opacity:1;transform:translateY(0)}
+.event-open-cta svg{width:16px;height:16px;fill:currentColor;transition:transform .3s}
+.event-card:hover .event-open-cta svg{transform:translateX(4px)}
+
+/* ── LIGHTBOX ── */
+.lightbox{
+  position:fixed;inset:0;z-index:800;
+  background:rgba(0,0,0,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease;
+}
+.lightbox.open{opacity:1;pointer-events:auto}
+
+.lb-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 32px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;
+}
+.lb-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,3rem);font-weight:900;letter-spacing:.02em}
+.lb-title span{color:var(--red)}
+.lb-meta{font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
+.lb-close{
+  display:flex;align-items:center;justify-content:center;
+  width:48px;height:48px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);
+  cursor:pointer;color:#fff;flex-shrink:0;transition:.2s;
+}
+.lb-close:hover{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.5)}
+.lb-close svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+
+/* Main image viewer */
+.lb-main{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;padding:20px 80px;min-height:0;
+}
+.lb-main-img{
+  max-width:100%;max-height:100%;object-fit:contain;
+  border-radius:8px;
+  transition:opacity .28s ease,transform .28s cubic-bezier(.22,1,.36,1);
+  box-shadow:0 30px 80px rgba(0,0,0,.8);
+}
+.lb-main-img.changing{opacity:0;transform:scale(.97)}
+
+.lb-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  display:flex;align-items:center;justify-content:center;
+  width:52px;height:52px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);
+  cursor:pointer;color:#fff;transition:.2s;z-index:2;
+}
+.lb-arrow:hover{background:rgba(192,57,43,.25);border-color:rgba(192,57,43,.6)}
+.lb-arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lb-prev{left:12px}.lb-next{right:12px}
+
+/* Thumbnails */
+.lb-thumbs{
+  display:flex;gap:8px;overflow-x:auto;
+  padding:16px 32px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0;
+  scrollbar-width:thin;scrollbar-color:rgba(192,57,43,.4) transparent;
+}
+.lb-thumbs::-webkit-scrollbar{height:3px}
+.lb-thumbs::-webkit-scrollbar-thumb{background:rgba(192,57,43,.4);border-radius:2px}
+.lb-thumb{
+  flex-shrink:0;width:72px;height:52px;border-radius:5px;overflow:hidden;
+  border:2px solid transparent;cursor:pointer;transition:.2s;opacity:.5;
+}
+.lb-thumb:hover{opacity:.8}
+.lb-thumb.active{border-color:var(--red);opacity:1}
+.lb-thumb img{width:100%;height:100%;object-fit:cover}
+
+/* Counter */
+.lb-counter{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;
+  color:rgba(255,255,255,.38);background:rgba(0,0,0,.5);padding:5px 14px;border-radius:20px;
+  pointer-events:none;z-index:2;
+}
+
+/* ── CTA ── */
 #cta{position:relative;overflow:hidden;padding:130px 6vw 140px;border-top:1px solid rgba(192,57,43,.1)}
 #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 60%)}
 .cta-wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px}
@@ -164,7 +259,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .cta-title .red{color:var(--red)}.cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
 .cta-copy{max-width:700px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62)}
 
-/* FOOTER */
+/* ── FOOTER ── */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
 .ft-logo{width:235px;opacity:.98}
@@ -183,10 +278,29 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .ft-bar-right{display:flex;align-items:center;gap:24px}
 .ft-kvk{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.07);padding:6px 14px;border-radius:2px}
 
-/* REVEAL */
+/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.38s}
+
+/* ── MOBILE DRAWER ── */
+.mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0}
+.mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
+.mobile-nav-drawer a{font-family:var(--font-display);font-size:clamp(2.8rem,11vw,5rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;line-height:1.1;display:block;padding:16px 0;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
+.mobile-nav-drawer a:hover,.mobile-nav-drawer a.active{color:#fff}
+.mobile-nav-drawer a.drawer-cta{color:#fff;background:var(--red);border-radius:4px;margin-top:28px;border-bottom:none;font-size:clamp(1.4rem,5vw,2rem);padding:18px 0;letter-spacing:.14em}
+.mobile-nav-drawer a.drawer-cta:hover{background:var(--red2)}
+.drawer-lang{display:flex;align-items:center;justify-content:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-top:28px}
+.drawer-lang .lang-btn{font-size:.8rem;padding:10px 22px}
+.drawer-socials{display:flex;gap:28px;margin-top:28px}
+.drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
+.drawer-socials a:hover{color:var(--red)}.drawer-socials svg{width:100%;height:100%;fill:currentColor}
+
+/* ── JUMP OVERLAY ── */
+.jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
+.jump-overlay::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(192,57,43,.28) 0%,rgba(192,57,43,.12) 35%,transparent 72%);filter:blur(50px)}
+.jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
+.jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
 
 /* ─── MOBILE ─── */
 @media(max-width:1000px){
@@ -213,35 +327,34 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .intro-copy{padding-left:0}
   .intro-visual{max-width:100%;justify-self:stretch;aspect-ratio:4/3}
 
-  /* Mobile horizontal scroll for event cards */
   #events{padding:80px 0 90px}
   .events-head{padding:0 5vw}
+  .events-hint{padding:0 5vw}
   .event-grid{
-    display:flex;
-    flex-direction:row;
-    gap:16px;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;
-    padding:0 5vw 24px;
-    scrollbar-width:none;
+    display:flex;flex-direction:row;gap:16px;overflow-x:auto;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    padding:0 5vw 24px;scrollbar-width:none;
   }
   .event-grid::-webkit-scrollbar{display:none}
   .event-card{
-    flex:0 0 80vw;
-    max-width:320px;
-    min-height:400px;
-    scroll-snap-align:start;
-    border-radius:14px;
+    flex:0 0 80vw;max-width:320px;min-height:440px;
+    scroll-snap-align:start;border-radius:14px;
   }
+  .event-card::before{display:none} /* disable shimmer on mobile for perf */
   .event-content{padding:24px}
   .event-content h3{font-size:clamp(2rem,8vw,3rem)}
+  .event-open-cta{opacity:1;transform:translateY(0)} /* always show on mobile */
 
-  /* scroll hint */
-  .scroll-hint{display:flex;align-items:center;gap:10px;padding:0 5vw;margin-bottom:20px;font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.28)}
-  .scroll-hint::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.1),transparent)}
+  /* Lightbox mobile */
+  .lb-header{padding:16px 20px}
+  .lb-main{padding:12px 52px}
+  .lb-arrow{width:40px;height:40px}
+  .lb-prev{left:6px}.lb-next{right:6px}
+  .lb-thumbs{padding:12px 16px}
+  .lb-thumb{width:56px;height:40px}
 
   #cta{padding:90px 5vw 100px}
+  .cta-title{font-size:clamp(4rem,16vw,7rem)}
 
   footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
   .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
@@ -254,23 +367,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .lang-btn{padding:5px 9px;font-size:.62rem}
 }
 
-/* hide scroll hint on desktop */
-.scroll-hint{display:none}
-
-  @media(max-width:1000px){
-  .cta-title{
-    font-size:clamp(4rem,16vw,7rem);
-  }
-}
-
-  @media(max-width:1000px){
-
-  .event-card:hover{
-    transform:none !important;
-  }
-
-}
-  
 @media(min-width:1001px){
   .nav-links{margin-left:auto;margin-right:20px}
 }
@@ -332,7 +428,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </nav>
 
-<!-- HERO (geen label) -->
+<!-- ══════════ HERO ══════════ -->
 <section id="hero">
   <div class="hero-image"></div>
   <div class="hero-overlay"></div>
@@ -342,9 +438,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="hero-content">
     <div class="hero-inner">
       <h1 class="hero-title">
-  EVENTS &<br>
-  <span class="red">FESTIVALS</span>
-</h1>
+        EVENTS &<br>
+        <span class="red">FESTIVALS</span>
+      </h1>
       <p class="hero-sub" data-i18n="hero.sub">BINC International brengt merken niet alleen naar retail, maar ook naar plekken waar cultuur, energie en doelgroep samenkomen. Van festivals tot high-traffic activaties door heel Nederland.</p>
       <div class="hero-btns">
         <a href="#events" class="btn-red" data-i18n="hero.btn1">Bekijk activaties</a>
@@ -354,7 +450,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </section>
 
-<!-- INTRO -->
+<!-- ══════════ INTRO ══════════ -->
 <section id="intro">
   <div class="intro-grid">
     <div class="reveal intro-copy">
@@ -371,74 +467,131 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         <div class="visual-caption">
           <span class="visual-tag" data-i18n="intro.visual.tag">Live in the field</span>
           <h3 class="visual-title">
-  <span data-i18n="intro.visual.title1">Jouw merk.</span><br>
-  <span data-i18n="intro.visual.title2">Op het podium.</span>
-</h3>
+            <span data-i18n="intro.visual.title1">Jouw merk.</span><br>
+            <span data-i18n="intro.visual.title2">Op het podium.</span>
+          </h3>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EVENTS -->
+<!-- ══════════ EVENTS ══════════ -->
 <section id="events">
   <div class="events-head reveal" style="padding:0 6vw">
     <p class="label" data-i18n="events.label">Events & experiences</p>
     <h2 class="display">EVENTS THAT<br><span style="color:var(--red)" data-i18n="events.title.sub">CREATE IMPACT</span></h2>
   </div>
 
-  <!-- scroll hint: alleen zichtbaar op mobiel via CSS -->
-  <p class="scroll-hint" data-i18n="events.scroll">Scroll voor meer →</p>
+  <div class="events-hint reveal d1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <span data-i18n="events.hint">Klik op een event voor de fotogalerij</span>
+  </div>
 
-  <div class="event-grid">
-    <div class="event-card reveal">
-     <img src="images/golddryinhand1.jpg" alt="7th Sunday"/>
+  <div class="event-grid" id="eventGrid">
+
+    <!-- 7th Sunday -->
+    <div class="event-card reveal" data-event="7th" role="button" tabindex="0" aria-label="7th Sunday galerij openen">
+      <img src="images/7th/1.jpg" alt="7th Sunday"/>
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
+      <div class="event-gallery-badge">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>15 foto's</span>
+      </div>
       <div class="event-content">
         <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
         <h3>7th Sunday</h3>
-        <p data-i18n="ev1.body">Brand activations, sampling en directe zichtbaarheid op één van de grootste festivals van Nederland.</p>
+        <p data-i18n="ev1.body">Van zonsopgang tot zonsondergang — Gold Dry op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.</p>
+        <div class="event-open-cta">
+          <span data-i18n="events.cta">Bekijk galerij</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
       </div>
     </div>
-    <div class="event-card reveal d1">
-      <img src="images/golddryinhand2.JPG" alt="Harmony of Hardcore"/>
+
+    <!-- Harmony of Hardcore -->
+    <div class="event-card reveal d1" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
+      <img src="images/hoh/1.jpg" alt="Harmony of Hardcore"/>
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
+      <div class="event-gallery-badge">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>15 foto's</span>
+      </div>
       <div class="event-content">
         <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
         <h3>Harmony of Hardcore</h3>
-        <p data-i18n="ev2.body">Hoge energie, hoge traffic en directe merkinteractie met duizenden festivalbezoekers.</p>
+        <p data-i18n="ev2.body">Maximale energie, maximale bereik. Gold Dry pal in het hart van de hardcore scene — direct contact met een loyale, gepassioneerde fanbase.</p>
+        <div class="event-open-cta">
+          <span data-i18n="events.cta">Bekijk galerij</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
       </div>
     </div>
-    <div class="event-card reveal d2">
+
+    <!-- Dauwpop -->
+    <div class="event-card reveal d2" data-event="dauwpop" role="button" tabindex="0" aria-label="Dauwpop galerij openen">
       <img src="https://cdn.prod.website-files.com/6913055cb71d98a2d3194a3d/69412b8733bafc49e0d3baed_Dauwpop_202505312031_BartHeemskerk_BH_4078_Socials.jpg" alt="Dauwpop"/>
       <div class="event-overlay"></div>
       <div class="event-top-line"></div>
+      <div class="event-gallery-badge">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>15 foto's</span>
+      </div>
       <div class="event-content">
         <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
         <h3>Dauwpop</h3>
-        <p data-i18n="ev3.body">Live activaties en branded experiences waar cultuur, muziek en merkbeleving samenkomen.</p>
+        <p data-i18n="ev3.body">Pestum, zomerse sfeer en een publiek dat écht aanwezig is. Gold Dry als onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.</p>
+        <div class="event-open-cta">
+          <span data-i18n="events.cta">Bekijk galerij</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ══════════ LIGHTBOX ══════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotogalerij">
+  <div class="lb-header">
+    <div>
+      <div class="lb-title" id="lbTitle">7th Sunday</div>
+      <div class="lb-meta" id="lbMeta">Festival activatie · Gold Dry</div>
+    </div>
+    <button class="lb-close" id="lbClose" aria-label="Galerij sluiten">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="lb-main">
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Vorige foto">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img class="lb-main-img" id="lbMainImg" src="" alt="Festival foto"/>
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Volgende foto">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="lb-counter" id="lbCounter">1 / 15</div>
+  </div>
+  <div class="lb-thumbs" id="lbThumbs"></div>
+</div>
+
+<!-- ══════════ CTA ══════════ -->
 <section id="cta">
   <div class="cta-wrap reveal">
     <p class="label" style="justify-content:center" data-i18n="cta.label">Work together</p>
     <h2 class="cta-title">
-  READY TO<br>
-  BUILD <span class="red">REAL</span><br>
-  <span class="stroke">ATTENTION?</span>
-</h2>
+      READY TO<br>
+      BUILD <span class="red">REAL</span><br>
+      <span class="stroke">ATTENTION?</span>
+    </h2>
     <p class="cta-copy" data-i18n="cta.copy">Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.</p>
     <a href="index.html#lead" class="btn-red" data-i18n="cta.btn">Start samenwerking</a>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="ft-brand reveal">
     <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
@@ -465,107 +618,212 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 </div>
 
 <script>
-/* ══════════════════════════════════════════════════
+/* ══════════════════════════════════════════════
    TRANSLATIONS
-══════════════════════════════════════════════════ */
+══════════════════════════════════════════════ */
 const TRANSLATIONS = {
   nl: {
-    'nav.retail':           'Retail',
-    'nav.horeca':           'Horeca',
-    'nav.events':           'Evenementen',
-    'nav.team':             'Ons Team',
-    'nav.jobs':             'Vacatures',
-    'nav.cta':              'Samenwerken',
-    'hero.sub':             'BINC International brengt merken niet alleen naar retail, maar ook naar plekken waar cultuur, energie en doelgroep samenkomen. Van festivals tot high-traffic activaties door heel Nederland.',
-    'hero.btn1':            'Bekijk activaties',
-    'hero.btn2':            'Terug naar home',
-    'intro.label':          'Live activations',
-    'intro.body1':          'Retail is belangrijk. Maar echte merkbeleving ontstaat op plekken waar mensen voelen, proeven en ervaren.',
-    'intro.body2':          'Daarom activeert BINC International merken op festivals, evenementen en high-traffic locaties. Van sampling tot complete merkactivaties.',
-    'intro.visual.tag':     'Live in the field',
-    'events.label':         'Events & experiences',
-    'events.title.sub':     'CREATE IMPACT',
-    'events.scroll':        'Scroll voor meer →',
-    'events.tag':           'Festival activatie',
-    'ev1.body':             'Brand activations, sampling en directe zichtbaarheid op één van de grootste festivals van Nederland.',
-    'ev2.body':             'Hoge energie, hoge traffic en directe merkinteractie met duizenden festivalbezoekers.',
-    'ev3.body':             'Live activaties en branded experiences waar cultuur, muziek en merkbeleving samenkomen.',
-    'cta.label':            'Work together',
-    'cta.copy':             'Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.',
-    'cta.btn':              'Start samenwerking',
-    'footer.address.label': 'BINC adres',
-      'intro.visual.title1': 'Jouw merk.',
-  'intro.visual.title2': 'Op het podium.',
-    'footer.email.label':   'E-mailadres',
-    'footer.phone.label':   'Telefoonnummer',
-    'footer.rights':        'Alle rechten voorbehouden.',
-    'footer.tagline.short': 'Full-service B2B voor ambitieuze merken in Nederland.',
+    'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Evenementen',
+    'nav.team':'Ons Team','nav.jobs':'Vacatures','nav.cta':'Samenwerken',
+    'hero.sub':'BINC International brengt merken niet alleen naar retail, maar ook naar plekken waar cultuur, energie en doelgroep samenkomen. Van festivals tot high-traffic activaties door heel Nederland.',
+    'hero.btn1':'Bekijk activaties','hero.btn2':'Terug naar home',
+    'intro.label':'Live activations',
+    'intro.body1':'Retail is belangrijk. Maar echte merkbeleving ontstaat op plekken waar mensen voelen, proeven en ervaren.',
+    'intro.body2':'Daarom activeert BINC International merken op festivals, evenementen en high-traffic locaties. Van sampling tot complete merkactivaties.',
+    'intro.visual.tag':'Live in the field',
+    'intro.visual.title1':'Jouw merk.','intro.visual.title2':'Op het podium.',
+    'events.label':'Events & experiences','events.title.sub':'CREATE IMPACT',
+    'events.hint':'Klik op een event voor de fotogalerij',
+    'events.tag':'Festival activatie','events.cta':'Bekijk galerij',
+    'ev1.body':'Van zonsopgang tot zonsondergang — Gold Dry op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.',
+    'ev2.body':'Maximale energie, maximale bereik. Gold Dry pal in het hart van de hardcore scene — direct contact met een loyale, gepassioneerde fanbase.',
+    'ev3.body':'Pestum, zomerse sfeer en een publiek dat écht aanwezig is. Gold Dry als onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.',
+    'cta.label':'Work together',
+    'cta.copy':'Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.',
+    'cta.btn':'Start samenwerking',
+    'footer.address.label':'BINC adres','footer.email.label':'E-mailadres',
+    'footer.phone.label':'Telefoonnummer','footer.rights':'Alle rechten voorbehouden.',
+    'footer.tagline.short':'Full-service B2B voor ambitieuze merken in Nederland.',
   },
   en: {
-    'nav.retail':           'Retail',
-    'nav.horeca':           'Horeca',
-    'nav.events':           'Events',
-    'nav.team':             'Our Team',
-      'intro.visual.title1': 'Your Brand.',
-  'intro.visual.title2': 'On stage.',
-    'nav.jobs':             'Careers',
-    'nav.cta':              'Work With Us',
-    'hero.sub':             'BINC International brings brands not just to retail, but to places where culture, energy and audience come together. From festivals to high-traffic activations across the Netherlands.',
-    'hero.btn1':            'View activations',
-    'hero.btn2':            'Back to home',
-    'intro.label':          'Live activations',
-    'intro.body1':          'Retail matters. But real brand experience happens where people feel, taste and discover.',
-    'intro.body2':          'That is why BINC International activates brands at festivals, events and high-traffic locations. From sampling to full brand activations.',
-    'intro.visual.tag':     'Live in the field',
-    'events.label':         'Events & experiences',
-    'events.title.sub':     'CREATE IMPACT',
-    'events.scroll':        'Scroll for more →',
-    'events.tag':           'Festival activation',
-    'ev1.body':             'Brand activations, sampling and direct visibility at one of the biggest festivals in the Netherlands.',
-    'ev2.body':             'High energy, high traffic and direct brand interaction with thousands of festival visitors.',
-    'ev3.body':             'Live activations and branded experiences where culture, music and brand experience come together.',
-    'cta.label':            'Work together',
-    'cta.copy':             'From retail to festivals. From first listing to physical activation. BINC International helps brands grow where impact is created.',
-    'cta.btn':              'Start partnership',
-    'footer.address.label': 'BINC address',
-    'footer.email.label':   'Email address',
-    'footer.phone.label':   'Phone number',
-    'footer.rights':        'All rights reserved.',
-    'footer.tagline.short': 'Full-service B2B for ambitious brands across the Netherlands.',
+    'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Events',
+    'nav.team':'Our Team','nav.jobs':'Careers','nav.cta':'Work With Us',
+    'hero.sub':'BINC International brings brands not just to retail, but to places where culture, energy and audience come together. From festivals to high-traffic activations across the Netherlands.',
+    'hero.btn1':'View activations','hero.btn2':'Back to home',
+    'intro.label':'Live activations',
+    'intro.body1':'Retail matters. But real brand experience happens where people feel, taste and discover.',
+    'intro.body2':'That is why BINC International activates brands at festivals, events and high-traffic locations. From sampling to full brand activations.',
+    'intro.visual.tag':'Live in the field',
+    'intro.visual.title1':'Your Brand.','intro.visual.title2':'On stage.',
+    'events.label':'Events & experiences','events.title.sub':'CREATE IMPACT',
+    'events.hint':'Click an event to view the photo gallery',
+    'events.tag':'Festival activation','events.cta':'View gallery',
+    'ev1.body':'From sunrise to sunset — Gold Dry at one of the most iconic dance festivals in the Netherlands. Thousands of hands, one taste.',
+    'ev2.body':'Maximum energy, maximum reach. Gold Dry at the heart of the hardcore scene — direct contact with a loyal, passionate fan base.',
+    'ev3.body':'Summer vibes and an audience that is truly present. Gold Dry as part of the Dauwpop experience — taste, see and remember.',
+    'cta.label':'Work together',
+    'cta.copy':'From retail to festivals. From first listing to physical activation. BINC International helps brands grow where impact is created.',
+    'cta.btn':'Start partnership',
+    'footer.address.label':'BINC address','footer.email.label':'Email address',
+    'footer.phone.label':'Phone number','footer.rights':'All rights reserved.',
+    'footer.tagline.short':'Full-service B2B for ambitious brands across the Netherlands.',
   }
 };
 
-/* ══════════════════════════════════════════════════
+/* ══════════════════════════════════════════════
    LANGUAGE ENGINE
-══════════════════════════════════════════════════ */
+══════════════════════════════════════════════ */
 let currentLang = localStorage.getItem('binc_lang') || 'nl';
-function t(key){ return (TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang][key])||(TRANSLATIONS['nl'][key])||key; }
+function t(k){ return (TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang][k])||(TRANSLATIONS.nl[k])||k; }
+function applyLang(lang){
+  currentLang=lang;localStorage.setItem('binc_lang',lang);document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n'),v=t(k);
+    if(el.children.length===0)el.textContent=v;
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{applyLang(b.dataset.lang);toggleDrawer(false);}));
 
-function applyLang(lang) {
-  currentLang = lang;
-  localStorage.setItem('binc_lang', lang);
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const val = t(key);
-    if (el.children.length === 0) el.textContent = val;
+/* ══════════════════════════════════════════════
+   GALLERY DATA  — 15 images per event
+   Pad filenames: images/7th/1.jpg … 15.jpg etc.
+══════════════════════════════════════════════ */
+const GALLERIES = {
+  '7th': {
+    titleNL:'7th Sunday', titleEN:'7th Sunday',
+    metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
+    imgs: Array.from({length:15},(_,i)=>`images/7th/${i+1}.jpg`)
+  },
+  'hoh': {
+    titleNL:'Harmony of Hardcore', titleEN:'Harmony of Hardcore',
+    metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
+    imgs: Array.from({length:15},(_,i)=>`images/hoh/${i+1}.jpg`)
+  },
+  'dauwpop': {
+    titleNL:'Dauwpop', titleEN:'Dauwpop',
+    metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
+    imgs: Array.from({length:15},(_,i)=>`images/dauwpop/${i+1}.jpg`)
+  }
+};
+
+/* ══════════════════════════════════════════════
+   LIGHTBOX ENGINE
+══════════════════════════════════════════════ */
+const lb       = document.getElementById('lightbox');
+const lbTitle  = document.getElementById('lbTitle');
+const lbMeta   = document.getElementById('lbMeta');
+const lbImg    = document.getElementById('lbMainImg');
+const lbThumbs = document.getElementById('lbThumbs');
+const lbCounter= document.getElementById('lbCounter');
+const lbClose  = document.getElementById('lbClose');
+const lbPrev   = document.getElementById('lbPrev');
+const lbNext   = document.getElementById('lbNext');
+
+let currentGallery = null;
+let currentIndex   = 0;
+
+function openGallery(eventKey){
+  const g = GALLERIES[eventKey];
+  if(!g) return;
+  currentGallery = g;
+  currentIndex   = 0;
+
+  // Set title & meta
+  lbTitle.innerHTML = currentLang==='en' ? g.titleEN : g.titleNL;
+  lbMeta.textContent= currentLang==='en' ? g.metaEN  : g.metaNL;
+
+  // Build thumbnails
+  lbThumbs.innerHTML='';
+  g.imgs.forEach((src,i)=>{
+    const d=document.createElement('div');
+    d.className='lb-thumb'+(i===0?' active':'');
+    d.innerHTML=`<img src="${src}" alt="Foto ${i+1}" loading="lazy"/>`;
+    d.addEventListener('click',()=>goTo(i));
+    lbThumbs.appendChild(d);
   });
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
+
+  // Show first image
+  lbImg.src = g.imgs[0];
+  lbCounter.textContent = `1 / ${g.imgs.length}`;
+
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+
+  // Scroll thumbnail into view
+  scrollThumb(0);
 }
 
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
+function closeGallery(){
+  lb.classList.remove('open');
+  document.body.style.overflow='';
+  currentGallery=null;
+}
+
+function goTo(idx){
+  if(!currentGallery) return;
+  const n=currentGallery.imgs.length;
+  idx=(idx+n)%n;
+  currentIndex=idx;
+
+  lbImg.classList.add('changing');
+  setTimeout(()=>{
+    lbImg.src=currentGallery.imgs[idx];
+    lbImg.onload=()=>lbImg.classList.remove('changing');
+  },140);
+
+  lbCounter.textContent=`${idx+1} / ${n}`;
+
+  // Update active thumb
+  lbThumbs.querySelectorAll('.lb-thumb').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  scrollThumb(idx);
+}
+
+function scrollThumb(idx){
+  const thumb=lbThumbs.querySelectorAll('.lb-thumb')[idx];
+  if(thumb) thumb.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+
+// Card click handlers
+document.querySelectorAll('.event-card').forEach(card=>{
+  card.addEventListener('click',()=>openGallery(card.dataset.event));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGallery(card.dataset.event);}});
 });
 
-/* CURSOR */
+lbClose.addEventListener('click',closeGallery);
+lbPrev.addEventListener('click',()=>goTo(currentIndex-1));
+lbNext.addEventListener('click',()=>goTo(currentIndex+1));
+
+// Keyboard nav
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='Escape') closeGallery();
+  if(e.key==='ArrowLeft') goTo(currentIndex-1);
+  if(e.key==='ArrowRight') goTo(currentIndex+1);
+});
+
+// Close on backdrop click
+lb.addEventListener('click',e=>{if(e.target===lb)closeGallery();});
+
+// Touch swipe support
+let touchStartX=0;
+lbImg.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;},{passive:true});
+lbImg.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].screenX-touchStartX;
+  if(Math.abs(dx)>40) goTo(currentIndex+(dx<0?1:-1));
+},{passive:true});
+
+/* ══════════════════════════════════════════════
+   CURSOR
+══════════════════════════════════════════════ */
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function animRing(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
 
-/* MOBILE NAV */
+/* ══════════════════════════════════════════════
+   MOBILE NAV
+══════════════════════════════════════════════ */
 const hamburger=document.getElementById('navHamburger'),drawer=document.getElementById('mobileDrawer');
 function toggleDrawer(open){hamburger.classList.toggle('open',open);drawer.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
 hamburger.addEventListener('click',()=>toggleDrawer(!drawer.classList.contains('open')));
