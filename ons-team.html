@@ -114,63 +114,15 @@ nav.scrolled{background:rgba(0,0,0,.9);backdrop-filter:blur(20px)}
 .hero-fade{
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,0.42) 0%,transparent 20%,transparent 100%);
+  background:rgba(0,0,0,0.18);
   pointer-events:none;
 }
 
 /* Tekstbalk: zwart, rode bovenlijn */
-.hero-bar{
-  position:relative;
-  z-index:10;
-  background:#0a0a0a;
-  border-top:3px solid var(--red);
-  padding:26px 6vw 30px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:40px;
-}
-
-.hero-bar-left{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  min-width:0;
-}
-
-.hero-eyebrow{
-  font-family:var(--font-ui);
-  font-size:.64rem;
-  font-weight:700;
-  letter-spacing:.42em;
-  text-transform:uppercase;
-  color:var(--red);
-  opacity:0;
-  animation:fadeUp .6s .1s forwards;
-}
-
-.hero-title{
-  font-family:var(--font-display);
-  font-size:clamp(2.8rem,5vw,6rem);
-  font-weight:900;
-  line-height:.88;
-  color:#fff;
-  margin:0;
-  opacity:0;
-  animation:fadeUp .7s .2s forwards;
-}
-.hero-title .red{color:var(--red)}
-
-.hero-sub{
-  font-size:.88rem;
-  line-height:1.72;
-  color:rgba(255,255,255,.6);
-  font-weight:300;
-  max-width:440px;
-  flex-shrink:0;
-  opacity:0;
-  animation:fadeUp .7s .32s forwards;
-}
+.hero-eyebrow{display:none}
+.hero-title{display:none}
+.hero-sub{display:none}
+.hero-bar-left{display:none}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
@@ -473,9 +425,6 @@ footer{
   .mobile-nav-drawer{display:flex}
 
   #hero{height:100svh;min-height:500px}
-  .hero-bar{flex-direction:column;align-items:flex-start;gap:14px;padding:20px 5vw 24px}
-  .hero-title{font-size:clamp(2.4rem,10vw,4.5rem)}
-  .hero-sub{max-width:100%;font-size:.82rem}
 
   .team-section{padding:72px 5vw 80px}
   .team-grid-3{grid-template-columns:1fr;gap:16px;margin-bottom:16px}
@@ -568,13 +517,7 @@ footer{
     <img class="hero-img" src="images/personeel/Groepsfoto1.jpg" alt="BINC International Team"/>
     <div class="hero-fade"></div>
   </div>
-  <div class="hero-bar">
-    <div class="hero-bar-left">
-      <p class="hero-eyebrow" data-i18n="hero.eyebrow">BINC International</p>
-      <h1 class="hero-title" data-i18n="hero.title.html"></h1>
-    </div>
-    <p class="hero-sub" data-i18n="hero.sub"></p>
-  </div>
+
 </section>
 
 <!-- ══ TEAM ══ -->
