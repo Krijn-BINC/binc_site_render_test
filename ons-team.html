@@ -9,7 +9,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-VRHH6551CL');
 </script>
   
@@ -97,9 +96,9 @@
 
     /* HERO */
     #hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
-    .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(192,57,43,.06) 0%,transparent 50%,rgba(192,57,43,.03) 100%)}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 46%,rgba(0,0,0,.18) 100%),linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%)}
-    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
+    .hero-bg-img{position:absolute;inset:0;background-image:url('images/personeel/Groepsfoto1.jpg');background-size:cover;background-position:center top;opacity:.38}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.48) 46%,rgba(0,0,0,.22) 100%),linear-gradient(to bottom,rgba(0,0,0,.4) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.92) 100%)}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.45;animation:gridScroll 25s linear infinite}
     @keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
     .g-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
     .orb-a{width:500px;height:500px;background:rgba(192,57,43,.09);top:-8%;right:8%}
@@ -108,7 +107,7 @@
     .hero-inner{margin-left:clamp(32px,7vw,140px);max-width:1050px}
     .hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,15rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:11ch;margin-bottom:40px;opacity:0;animation:riseUp .9s .25s forwards}
     .hero-title .red{color:var(--red)}
-    .hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.72);font-weight:300;max-width:520px;margin-bottom:48px;opacity:0;animation:riseUp .9s .45s forwards}
+    .hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.82);font-weight:300;max-width:520px;margin-bottom:48px;opacity:0;animation:riseUp .9s .45s forwards}
     @keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
 
     /* SHARED */
@@ -122,30 +121,22 @@
     .team-ghost{font-family:var(--font-display);font-size:clamp(8rem,18vw,26rem);font-weight:900;line-height:.85;-webkit-text-stroke:1px rgba(255,255,255,.035);color:transparent;position:absolute;right:-2vw;top:-2.5rem;pointer-events:none;user-select:none}
     .team-title{font-family:var(--font-display);font-size:clamp(3rem,6vw,7rem);font-weight:900;line-height:.9;color:#fff}
 
-    /* Row 1: 3 cards */
+    /* Row 1 & 2: 3 cards */
     .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;z-index:1;margin-bottom:24px}
 
-    /* Row 2: 2 cards centered */
+    /* Row 3: 2 cards centered */
     .team-grid-bottom{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;position:relative;z-index:1;max-width:calc(66.666% + 8px);margin:0 auto}
 
     .team-card{position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.048),rgba(255,255,255,.012));border:1px solid rgba(192,57,43,.13);transition:.35s;box-shadow:0 30px 80px rgba(0,0,0,.58),inset 0 1px 0 rgba(255,255,255,.06)}
     .team-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.4);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.08),inset 0 1px 0 rgba(255,255,255,.08)}
     .team-card::after{content:'';position:absolute;top:0;left:50%;width:42%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.75),transparent);opacity:.65}
 
-    .team-avatar{position:relative;height:320px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(192,57,43,.07) 0%,rgba(0,0,0,.6) 100%)}
-    .team-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.3) 60%,transparent 100%)}
+    /* PHOTO AVATAR */
+    .team-avatar{position:relative;height:360px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;background:#111}
+    .team-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.18) 55%,transparent 100%)}
 
-    .avatar-monogram{position:relative;z-index:2;width:108px;height:108px;border-radius:50%;border:1.5px solid rgba(192,57,43,.45);background:rgba(192,57,43,.08);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;backdrop-filter:blur(6px)}
-    .avatar-monogram span{font-family:var(--font-display);font-size:2.8rem;font-weight:900;line-height:1;color:rgba(255,255,255,.88);letter-spacing:-.02em}
-    .avatar-monogram small{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.22em;color:rgba(192,57,43,.75);text-transform:uppercase;margin-top:4px}
-
-    .avatar-ring{position:absolute;border-radius:50%;border:1px solid rgba(192,57,43,.1);pointer-events:none;z-index:1}
-    .avatar-ring-1{width:180px;height:180px}
-    .avatar-ring-2{width:240px;height:240px;border-color:rgba(192,57,43,.05)}
-    .team-card:hover .avatar-ring-1{border-color:rgba(192,57,43,.22);transition:.4s}
-    .team-card:hover .avatar-ring-2{border-color:rgba(192,57,43,.1);transition:.4s}
-
-    .photo-badge{position:absolute;bottom:18px;right:18px;z-index:3;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.1);padding:5px 10px;border-radius:2px;background:rgba(0,0,0,.4)}
+    .avatar-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s ease}
+    .team-card:hover .avatar-photo{transform:scale(1.04)}
 
     .team-content{padding:32px 34px 36px}
     .team-role{display:inline-block;margin-bottom:16px;font-family:var(--font-ui);font-size:.57rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.92);border:1px solid rgba(192,57,43,.24);padding:6px 12px;border-radius:2px;background:rgba(192,57,43,.06)}
@@ -220,7 +211,7 @@
       .team-section{padding:80px 5vw 80px}
       .team-grid{grid-template-columns:1fr;gap:20px}
       .team-grid-bottom{grid-template-columns:1fr;max-width:100%}
-      .team-avatar{height:260px}
+      .team-avatar{height:300px}
 
       #cta{padding:80px 5vw 90px}
 
@@ -308,7 +299,7 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg-img"></div>
     <div class="hero-overlay"></div>
     <div class="hero-grid"></div>
     <div class="g-orb orb-a"></div>
@@ -335,10 +326,7 @@
       <!-- Merlijn Stieger -->
       <div class="team-card reveal">
         <div class="team-avatar">
-          <div class="avatar-ring avatar-ring-2"></div>
-          <div class="avatar-ring avatar-ring-1"></div>
-          <div class="avatar-monogram"><span>MS</span></div>
-          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
+          <img class="avatar-photo" src="images/personeel/Merlijn1.jpg" alt="Merlijn Stieger"/>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.merlijn">Director</span>
@@ -359,10 +347,7 @@
       <!-- Jorrit Zwaanswijk -->
       <div class="team-card reveal d1">
         <div class="team-avatar">
-          <div class="avatar-ring avatar-ring-2"></div>
-          <div class="avatar-ring avatar-ring-1"></div>
-          <div class="avatar-monogram"><span>JZ</span></div>
-          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
+          <img class="avatar-photo" src="images/personeel/Jorrit3.jpg" alt="Jorrit Zwaanswijk"/>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.jorrit">Manager Operations &amp; Events</span>
@@ -383,10 +368,7 @@
       <!-- Maud Moolenschot -->
       <div class="team-card reveal d2">
         <div class="team-avatar">
-          <div class="avatar-ring avatar-ring-2"></div>
-          <div class="avatar-ring avatar-ring-1"></div>
-          <div class="avatar-monogram"><span>MM</span></div>
-          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
+          <img class="avatar-photo" src="images/personeel/Maud3.jpg" alt="Maud Moolenschot"/>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.maud">Sales Manager</span>
@@ -412,16 +394,10 @@
       <!-- Tim van Helvoort -->
       <div class="team-card reveal">
         <div class="team-avatar">
-          <div class="avatar-ring avatar-ring-2"></div>
-          <div class="avatar-ring avatar-ring-1"></div>
-          <div class="avatar-monogram"><span>TH</span></div>
-          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
+          <img class="avatar-photo" src="images/personeel/Tim1.jpg" alt="Tim van Helvoort"/>
         </div>
         <div class="team-content">
-         <span class="team-role" data-i18n="role.tim">
-  New Business Development Manager<br>
-  Regiomanager West-Midden Nederland
-</span>
+          <span class="team-role" data-i18n="role.tim">New Business Development Manager<br>Regiomanager West-Midden Nederland</span>
           <h3 class="team-name">Tim van<br>Helvoort</h3>
           <div class="team-info">
             <a href="mailto:Tim@bincinternational.nl">
@@ -439,10 +415,7 @@
       <!-- Krijn van Lankveld -->
       <div class="team-card reveal d1">
         <div class="team-avatar">
-          <div class="avatar-ring avatar-ring-2"></div>
-          <div class="avatar-ring avatar-ring-1"></div>
-          <div class="avatar-monogram"><span>KL</span></div>
-          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
+          <img class="avatar-photo" src="images/personeel/Krijn1.jpg" alt="Krijn van Lankveld"/>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.krijn">Systeem &amp; Data Coordinator</span>
@@ -463,10 +436,7 @@
       <!-- Sebastian Beekhuis -->
       <div class="team-card reveal d2">
         <div class="team-avatar">
-          <div class="avatar-ring avatar-ring-2"></div>
-          <div class="avatar-ring avatar-ring-1"></div>
-          <div class="avatar-monogram"><span>SB</span></div>
-          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
+          <img class="avatar-photo" src="images/personeel/Sebas1.jpg" alt="Sebastian Beekhuis"/>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.sebastian">Regiomanager Oost-Noord Nederland</span>
@@ -489,48 +459,31 @@
     <!-- ROW 3: 2 cards centered -->
     <div class="team-grid-bottom">
 
-      <!-- Martijn — Regiomanager Zuid-Nederland / België -->
-<div class="team-card reveal">
-  <div class="team-avatar">
-    <div class="avatar-ring avatar-ring-2"></div>
-    <div class="avatar-ring avatar-ring-1"></div>
-    <div class="avatar-monogram"><span>MR</span></div>
-    <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
-  </div>
-
-  <div class="team-content">
-    <span class="team-role" data-i18n="role.martijn">
-      Regiomanager Zuid-Nederland &amp; België
-    </span>
-
-   <h3 class="team-name">Martijn<br>Hoeks</h3>
-
-    <div class="team-info">
-      <a href="mailto:Martijn@bincinternational.nl">
-        <svg viewBox="0 0 24 24">
-          <rect x="2" y="4" width="20" height="16" rx="2"/>
-          <path d="m2 7 10 7 10-7"/>
-        </svg>
-        Martijn@bincinternational.nl
-      </a>
-
-      <a href="tel:+31621335252">
-        <svg viewBox="0 0 24 24">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </svg>
-        +31 6 21 33 52 52
-      </a>
-    </div>
-  </div>
-</div>
+      <!-- Martijn Hoeks -->
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <img class="avatar-photo" src="images/personeel/Martijn1.jpg" alt="Martijn Hoeks"/>
+        </div>
+        <div class="team-content">
+          <span class="team-role" data-i18n="role.martijn">Regiomanager Zuid-Nederland &amp; België</span>
+          <h3 class="team-name">Martijn<br>Hoeks</h3>
+          <div class="team-info">
+            <a href="mailto:Martijn@bincinternational.nl">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+              Martijn@bincinternational.nl
+            </a>
+            <a href="tel:+31621335252">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +31 6 21 33 52 52
+            </a>
+          </div>
+        </div>
+      </div>
 
       <!-- Indy Witjes -->
       <div class="team-card reveal d1">
         <div class="team-avatar">
-          <div class="avatar-ring avatar-ring-2"></div>
-          <div class="avatar-ring avatar-ring-1"></div>
-          <div class="avatar-monogram"><span>IW</span></div>
-          <div class="photo-badge" data-i18n="photo.soon">foto volgt</div>
+          <img class="avatar-photo" src="images/personeel/Indy3.jpg" alt="Indy Witjes"/>
         </div>
         <div class="team-content">
           <span class="team-role" data-i18n="role.indy">Marketing &amp; Social Media Manager</span>
@@ -628,7 +581,6 @@ const TRANSLATIONS = {
     'role.sebastian':       'Regiomanager Oost-Noord Nederland',
     'role.martijn':         'Regiomanager Zuid-Nederland & België',
     'role.indy':            'Marketing & Social Media Manager',
-    'photo.soon':           'foto volgt',
     'cta.label':            'Start together',
     'cta.body':             'Van retail tot horeca en activaties. Het team van BINC International staat klaar om jouw merk fysiek te laten groeien.',
     'cta.btn':              'Neem contact op',
@@ -657,7 +609,6 @@ const TRANSLATIONS = {
     'role.sebastian':       'Regional Manager East-North Netherlands',
     'role.martijn':         'Regional Manager South Netherlands & Belgium',
     'role.indy':            'Marketing & Social Media Manager',
-    'photo.soon':           'photo coming soon',
     'cta.label':            'Start together',
     'cta.body':             'From retail to horeca and activations. The BINC International team is ready to grow your brand physically.',
     'cta.btn':              'Get in touch',
@@ -680,11 +631,11 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n');
     const val = T[key];
     if (val !== undefined) {
-if (key.endsWith('.html') || key === 'role.tim') {
-  el.innerHTML = val;
-} else {
-  el.textContent = val;
-}
+      if (key.endsWith('.html') || key === 'role.tim') {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
     }
   });
   document.querySelectorAll('.lang-btn').forEach(btn => {
