@@ -17,6 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -33,14 +34,17 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring,body:has(.event-car
 ::selection{background:var(--red);color:#fff}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
 
+/* ── LANG SWITCH ── */
 .lang-switch{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-left:18px;flex-shrink:0}
 .lang-btn{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);background:transparent;border:none;padding:6px 11px;cursor:pointer;transition:.2s;line-height:1}
 .lang-btn.active{background:var(--red);color:#fff}
 .lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
 
+/* ── LANG FAB ── */
 .lang-fab{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;position:fixed;bottom:28px;right:28px;z-index:600;box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72)}
 .lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
 
+/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
 nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
@@ -55,6 +59,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-right .lang-switch{display:none}
 .nav-hamburger{display:none}
 
+/* ── HERO ── */
 .hero-image{position:absolute;inset:0;width:100%;height:100%;background-image:url('images/Golddrystage.JPG');background-size:cover;background-position:center;background-repeat:no-repeat;opacity:.54}
 #hero{position:relative;min-height:108vh;overflow:hidden;display:flex;align-items:center;background:#000;padding:110px 0 120px}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 46%,rgba(0,0,0,.18) 100%),linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%)}
@@ -76,11 +81,13 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .btn-outline:hover{border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.055)}
 @keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
 
+/* ── SHARED ── */
 .label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:20px}
 .label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
 .display{font-family:var(--font-display);font-size:clamp(3.6rem,5.9vw,8.1rem);font-weight:900;line-height:.9;color:#fff}
 .body-text{font-size:1rem;line-height:1.92;color:var(--dim);font-weight:300;max-width:700px}
 
+/* ── INTRO ── */
 #intro{padding:140px 6vw 120px;background:#000;position:relative;overflow:hidden}
 #intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
 .intro-grid{display:grid;grid-template-columns:minmax(0,780px) minmax(420px,640px);gap:90px;align-items:center;max-width:1400px;margin:0 auto}
@@ -95,45 +102,101 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .visual-title{font-family:var(--font-display);font-size:clamp(2.4rem,3.5vw,4.2rem);font-weight:900;line-height:.88;color:#fff}
 .visual-title span{color:var(--red)}
 
-/* ══ EVENTS SECTION ══ */
+/* ══════════════════════════════════════════════
+   EVENTS SECTION
+══════════════════════════════════════════════ */
 #events{padding:120px 0 140px;background:#000;overflow:hidden}
+
 .events-head{padding:0 6vw;margin-bottom:16px}
-.events-meta-row{display:flex;align-items:center;justify-content:space-between;padding:0 6vw;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+.events-meta-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6vw;margin-bottom:48px;gap:24px;flex-wrap:wrap;
+}
 
-.events-hint{display:flex;align-items:center;gap:12px;background:rgba(192,57,43,.10);border:1px solid rgba(192,57,43,.3);border-radius:6px;padding:12px 20px;width:fit-content}
-.events-hint-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(192,57,43,.18);flex-shrink:0}
+.events-hint{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(192,57,43,.10);
+  border:1px solid rgba(192,57,43,.3);
+  border-radius:6px;
+  padding:12px 20px;
+  width:fit-content;
+}
+.events-hint-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(192,57,43,.18);flex-shrink:0;
+}
 .events-hint-icon svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round}
-.events-hint-text{display:flex;flex-direction:column;gap:2px}
-.events-hint-text strong{font-family:var(--font-ui);font-size:.75rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff}
-.events-hint-text span{font-family:var(--font-body);font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300}
+.events-hint-text{display:flex;flex-direction:column;gap:2px;}
+.events-hint-text strong{font-family:var(--font-ui);font-size:.75rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff;}
+.events-hint-text span{font-family:var(--font-body);font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300;}
 
-.events-scroll-indicator{display:flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);flex-shrink:0}
+.events-scroll-indicator{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);flex-shrink:0;
+}
 .scroll-dots{display:flex;gap:5px;align-items:center}
 .scroll-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);transition:.3s}
 .scroll-dot.active{background:var(--red);width:18px;border-radius:3px}
-.scroll-arrow-anim{display:flex;align-items:center;gap:4px;animation:nudgeRight 2s ease-in-out infinite}
+.scroll-arrow-anim{display:flex;align-items:center;gap:4px;animation:nudgeRight 2s ease-in-out infinite;}
 .scroll-arrow-anim svg{width:16px;height:16px;stroke:rgba(192,57,43,.7);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @keyframes nudgeRight{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
 
-.event-track-wrapper{position:relative}
-.event-track-wrapper::before,.event-track-wrapper::after{content:'';position:absolute;top:0;bottom:24px;width:80px;z-index:10;pointer-events:none}
-.event-track-wrapper::before{left:0;background:linear-gradient(to right,rgba(0,0,0,.9),transparent)}
-.event-track-wrapper::after{right:0;background:linear-gradient(to left,rgba(0,0,0,.9),transparent)}
+/* ── HORIZONTALE SCROLL TRACK ── */
+.event-track-wrapper{position:relative;}
+.event-track-wrapper::after{
+  content:'';position:absolute;top:0;bottom:24px;width:80px;z-index:10;pointer-events:none;
+  right:0;background:linear-gradient(to left,rgba(0,0,0,.9),transparent);
+}
 
-.event-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:8px 6vw 28px;scrollbar-width:none;cursor:grab}
+/* KEY CHANGE: padding-left = 6vw zodat KKC uitlijnt met de rest van de content.
+   scroll-padding-left zorgt dat snap ook op dat zelfde punt stopt. */
+.event-track{
+  display:flex;gap:22px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-padding-left:6vw;
+  -webkit-overflow-scrolling:touch;
+  padding:8px 6vw 28px;
+  scrollbar-width:none;
+  cursor:grab;
+}
 .event-track:active{cursor:grabbing}
 .event-track::-webkit-scrollbar{display:none}
 
-.event-card{position:relative;overflow:hidden;flex:0 0 420px;min-height:560px;border-radius:16px;border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);cursor:pointer;scroll-snap-align:start;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;--shimmer-angle:0deg;outline:none}
-.event-card:focus-visible{outline:2px solid rgba(192,57,43,.7);outline-offset:2px}
-.event-card::before{content:'';position:absolute;inset:-1px;border-radius:17px;background:conic-gradient(from var(--shimmer-angle),transparent 70%,rgba(192,57,43,.7) 80%,rgba(231,76,60,.9) 85%,rgba(192,57,43,.7) 90%,transparent 100%);z-index:0;opacity:0;transition:opacity .4s;animation:shimmerSpin 3s linear infinite paused}
+/* ── EVENT CARDS ── */
+.event-card{
+  position:relative;overflow:hidden;
+  flex:0 0 420px;min-height:560px;
+  border-radius:16px;
+  border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);
+  cursor:pointer;
+  scroll-snap-align:start;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;
+  --shimmer-angle:0deg;
+  outline:none;
+}
+.event-card:focus-visible{outline:2px solid rgba(192,57,43,.7);outline-offset:2px;}
+.event-card::before{
+  content:'';position:absolute;inset:-1px;border-radius:17px;
+  background:conic-gradient(from var(--shimmer-angle),transparent 70%,rgba(192,57,43,.7) 80%,rgba(231,76,60,.9) 85%,rgba(192,57,43,.7) 90%,transparent 100%);
+  z-index:0;opacity:0;transition:opacity .4s;
+  animation:shimmerSpin 3s linear infinite paused;
+}
 @property --shimmer-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
 @keyframes shimmerSpin{to{--shimmer-angle:360deg}}
-.event-card::after{content:'';position:absolute;inset:1px;border-radius:15px;background:#000;z-index:0}
+.event-card::after{content:'';position:absolute;inset:1px;border-radius:15px;background:#000;z-index:0;}
 .event-card:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.15)}
 .event-card:hover::before{opacity:1;animation-play-state:running}
 
-.event-badge-recent{position:absolute;top:20px;left:20px;z-index:4;display:flex;align-items:center;gap:6px;background:var(--red);border-radius:4px;padding:5px 10px;font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#fff}
+.event-badge-recent{
+  position:absolute;top:20px;left:20px;z-index:4;
+  display:flex;align-items:center;gap:6px;
+  background:var(--red);border-radius:4px;padding:5px 10px;
+  font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#fff;
+}
 .event-badge-recent::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.85);animation:blink 1.4s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
@@ -142,52 +205,78 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .event-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.96) 0%,rgba(0,0,0,.38) 54%,rgba(0,0,0,.1) 100%);z-index:2}
 .event-top-line{position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.85),transparent);z-index:3}
 
-.event-gallery-badge{position:absolute;top:20px;right:20px;z-index:4;display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);border:1px solid rgba(192,57,43,.3);border-radius:4px;padding:7px 12px;font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:background .3s,color .3s,border-color .3s}
+.event-gallery-badge{
+  position:absolute;top:20px;right:20px;z-index:4;
+  display:flex;align-items:center;gap:7px;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(10px);
+  border:1px solid rgba(192,57,43,.3);border-radius:4px;
+  padding:7px 12px;
+  font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);transition:background .3s,color .3s,border-color .3s;
+}
 .event-card:hover .event-gallery-badge{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.7);color:#fff}
-.event-gallery-badge svg{width:14px;height:14px;flex-shrink:0;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.event-gallery-badge svg{width:14px;height:14px;flex-shrink:0;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
 .event-content{position:absolute;left:0;right:0;bottom:0;padding:36px;z-index:3}
 .event-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:14px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
 .event-content h3{font-family:var(--font-display);font-size:clamp(2.4rem,3.2vw,4.2rem);font-weight:900;line-height:.9;margin-bottom:14px;transition:color .3s}
 .event-card:hover .event-content h3{color:var(--red)}
 .event-content p{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.62)}
-.event-open-cta{display:flex;align-items:center;gap:10px;margin-top:20px;font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(192,57,43,.7);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,color .2s}
+
+.event-open-cta{
+  display:flex;align-items:center;gap:10px;margin-top:20px;
+  font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(192,57,43,.7);
+  opacity:0;transform:translateY(8px);
+  transition:opacity .3s,transform .3s,color .2s;
+}
 .event-card:hover .event-open-cta{opacity:1;transform:translateY(0)}
 .event-open-cta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
 .event-card:hover .event-open-cta svg{transform:translateX(4px)}
 
-.event-drag-hint{display:flex;align-items:center;justify-content:center;gap:10px;padding:0 6vw;margin-top:8px;font-family:var(--font-ui);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.event-drag-hint{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:0 6vw;margin-top:8px;
+  font-family:var(--font-ui);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);
+}
 .event-drag-hint svg{width:14px;height:14px;opacity:.4;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* ══ LIGHTBOX ══ */
-.lightbox{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s ease}
+/* ── LIGHTBOX ── */
+.lightbox{
+  position:fixed;inset:0;z-index:800;
+  background:rgba(0,0,0,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;transition:opacity .35s ease;
+}
 .lightbox.open{opacity:1;pointer-events:auto}
-.lb-header{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0}
+.lb-header{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;}
 .lb-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,3rem);font-weight:900;letter-spacing:.02em}
 .lb-title span{color:var(--red)}
 .lb-meta{font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
-.lb-close{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);cursor:pointer;color:#fff;flex-shrink:0;transition:.2s}
+.lb-close{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);cursor:pointer;color:#fff;flex-shrink:0;transition:.2s;}
 .lb-close:hover{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.5)}
 .lb-close svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
-.lb-main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:20px 80px;min-height:0}
-.lb-main-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;transition:opacity .28s ease,transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 30px 80px rgba(0,0,0,.8)}
+.lb-main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:20px 80px;min-height:0;}
+.lb-main-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;transition:opacity .28s ease,transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 30px 80px rgba(0,0,0,.8);}
 .lb-main-img.changing{opacity:0;transform:scale(.97)}
-.lb-spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.1);border-top-color:var(--red);animation:spin .7s linear infinite;opacity:0;pointer-events:none;transition:opacity .2s}
+.lb-spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.1);border-top-color:var(--red);animation:spin .7s linear infinite;opacity:0;pointer-events:none;transition:opacity .2s;}
 .lb-spinner.visible{opacity:1}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);cursor:pointer;color:#fff;transition:.2s;z-index:2}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);cursor:pointer;color:#fff;transition:.2s;z-index:2;}
 .lb-arrow:hover{background:rgba(192,57,43,.25);border-color:rgba(192,57,43,.6)}
 .lb-arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .lb-prev{left:12px}.lb-next{right:12px}
-.lb-thumbs{display:flex;gap:8px;overflow-x:auto;padding:16px 32px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0;scrollbar-width:thin;scrollbar-color:rgba(192,57,43,.4) transparent}
+.lb-thumbs{display:flex;gap:8px;overflow-x:auto;padding:16px 32px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0;scrollbar-width:thin;scrollbar-color:rgba(192,57,43,.4) transparent;}
 .lb-thumbs::-webkit-scrollbar{height:3px}
 .lb-thumbs::-webkit-scrollbar-thumb{background:rgba(192,57,43,.4);border-radius:2px}
-.lb-thumb{flex-shrink:0;width:72px;height:52px;border-radius:5px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:.2s;opacity:.5;background:rgba(255,255,255,.04)}
+.lb-thumb{flex-shrink:0;width:72px;height:52px;border-radius:5px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:.2s;opacity:.5;background:rgba(255,255,255,.04);}
 .lb-thumb:hover{opacity:.8}
 .lb-thumb.active{border-color:var(--red);opacity:1}
 .lb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.38);background:rgba(0,0,0,.5);padding:5px 14px;border-radius:20px;pointer-events:none;z-index:2}
+.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.38);background:rgba(0,0,0,.5);padding:5px 14px;border-radius:20px;pointer-events:none;z-index:2;}
 
+/* ── CTA ── */
 #cta{position:relative;overflow:hidden;padding:130px 6vw 140px;border-top:1px solid rgba(192,57,43,.1)}
 #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 60%)}
 .cta-wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px}
@@ -195,6 +284,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .cta-title .red{color:var(--red)}.cta-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
 .cta-copy{max-width:700px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62)}
 
+/* ── FOOTER ── */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
 .ft-logo{width:235px;opacity:.98}
@@ -213,10 +303,12 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .ft-bar-right{display:flex;align-items:center;gap:24px}
 .ft-kvk{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.07);padding:6px 14px;border-radius:2px}
 
+/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.38s}
 
+/* ── MOBILE DRAWER ── */
 .mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0}
 .mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
 .mobile-nav-drawer a{font-family:var(--font-display);font-size:clamp(2.8rem,11vw,5rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;line-height:1.1;display:block;padding:16px 0;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
@@ -229,11 +321,13 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
 .drawer-socials a:hover{color:var(--red)}.drawer-socials svg{width:100%;height:100%;fill:currentColor}
 
+/* ── JUMP OVERLAY ── */
 .jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
 .jump-overlay::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(192,57,43,.28) 0%,rgba(192,57,43,.12) 35%,transparent 72%);filter:blur(50px)}
 .jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
 .jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
 
+/* ─── MOBILE ─── */
 @media(max-width:1000px){
   html,body{cursor:auto}
   #cur,#cur-ring{display:none}
@@ -248,32 +342,38 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
   .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
   .mobile-nav-drawer{display:flex}
+
   #hero{min-height:105vh;padding:110px 0 90px}
   .hero-inner{margin-left:0;padding:0 5vw}
   .hero-title{font-size:clamp(5rem,20vw,10rem)}
+
   #intro{padding:80px 5vw 60px}
   .intro-grid{grid-template-columns:1fr;gap:52px}
   .intro-copy{padding-left:0}
   .intro-visual{max-width:100%;justify-self:stretch;aspect-ratio:4/3}
+
   #events{padding:80px 0 90px}
   .events-head{padding:0 5vw}
   .events-meta-row{padding:0 5vw;flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:28px}
   .events-scroll-indicator{display:none}
-  .event-track{padding:8px 5vw 24px;gap:14px}
+  .event-track{padding:8px 5vw 24px;gap:14px;scroll-padding-left:5vw;}
   .event-card{flex:0 0 78vw;max-width:300px;min-height:460px}
   .event-card::before{display:none}
   .event-content{padding:24px}
   .event-content h3{font-size:clamp(2rem,8vw,3rem)}
   .event-open-cta{opacity:1;transform:translateY(0)}
-  .event-track-wrapper::before,.event-track-wrapper::after{width:30px}
+  .event-track-wrapper::after{width:30px}
+
   .lb-header{padding:16px 20px}
   .lb-main{padding:12px 52px}
   .lb-arrow{width:40px;height:40px}
   .lb-prev{left:6px}.lb-next{right:6px}
   .lb-thumbs{padding:12px 16px}
   .lb-thumb{width:56px;height:40px}
+
   #cta{padding:90px 5vw 100px}
   .cta-title{font-size:clamp(4rem,16vw,7rem)}
+
   footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
   .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
   .ft-logo{width:min(200px,55vw);margin:0 auto}
@@ -284,7 +384,10 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .lang-switch{margin-left:8px}
   .lang-btn{padding:5px 9px;font-size:.62rem}
 }
-@media(min-width:1001px){.nav-links{margin-left:auto;margin-right:20px}}
+
+@media(min-width:1001px){
+  .nav-links{margin-left:auto;margin-right:20px}
+}
 </style>
 </head>
 <body>
@@ -341,6 +444,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </nav>
 
+<!-- ══════════ HERO ══════════ -->
 <section id="hero">
   <div class="hero-image"></div>
   <div class="hero-overlay"></div>
@@ -349,7 +453,10 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="g-orb orb-b"></div>
   <div class="hero-content">
     <div class="hero-inner">
-      <h1 class="hero-title">EVENTS &<br><span class="red">FESTIVALS</span></h1>
+      <h1 class="hero-title">
+        EVENTS &<br>
+        <span class="red">FESTIVALS</span>
+      </h1>
       <p class="hero-sub" data-i18n="hero.sub">BINC International brengt merken niet alleen naar retail, maar ook naar plekken waar cultuur, energie en doelgroep samenkomen. Van festivals tot high-traffic activaties door heel Nederland.</p>
       <div class="hero-btns">
         <a href="#events" class="btn-red" data-i18n="hero.btn1">Bekijk activaties</a>
@@ -359,6 +466,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </section>
 
+<!-- ══════════ INTRO ══════════ -->
 <section id="intro">
   <div class="intro-grid">
     <div class="reveal intro-copy">
@@ -384,6 +492,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </section>
 
+<!-- ══════════ EVENTS ══════════ -->
 <section id="events">
   <div class="events-head reveal">
     <p class="label" data-i18n="events.label">Events & experiences</p>
@@ -393,7 +502,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="events-meta-row reveal d1">
     <div class="events-hint">
       <div class="events-hint-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="var(--red)" stroke="none"/><polyline points="21 15 16 10 5 21"/></svg>
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="var(--red)"/><polyline points="21 15 16 10 5 21"/></svg>
       </div>
       <div class="events-hint-text">
         <strong data-i18n="events.hint.title">Klik op een event</strong>
@@ -418,9 +527,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="event-track-wrapper">
     <div class="event-track" id="eventTrack">
 
-      <!-- 1. Kamping Kitsch Club — NIEUWSTE — 30 foto's -->
+      <!-- 1. Kamping Kitsch Club -->
       <div class="event-card" data-event="kkc" role="button" tabindex="0" aria-label="Kamping Kitsch Club galerij openen">
-        <img src="images/kkc/web/14.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
+        <img src="images/kkc/web/_O2A4099_web.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
         <div class="event-overlay"></div>
         <div class="event-top-line"></div>
         <div class="event-badge-recent" data-i18n="badge.recent">Nieuwste</div>
@@ -431,7 +540,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         <div class="event-content">
           <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
           <h3>Kamping Kitsch Club</h3>
-          <p data-i18n="ev.kkc.body">Kitsch, camp en onversneden feestvreugde. Gold Dry midden in één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers die proeven en blijven.</p>
+          <p data-i18n="ev4.body">Kitsch, camp en onversneden feestvreugde — Gold Dry midden in één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers die proeven en blijven.</p>
           <div class="event-open-cta">
             <span data-i18n="events.cta">Bekijk galerij</span>
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -439,19 +548,19 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         </div>
       </div>
 
-      <!-- 2. Free Your Mind / Verknipt — 30 foto's -->
-      <div class="event-card" data-event="fym" role="button" tabindex="0" aria-label="Free Your Mind Verknipt galerij openen">
-        <img src="images/fym/web/_O2A0168.jpg" alt="Free Your Mind Verknipt" loading="lazy"/>
+      <!-- 2. Free Your Mind / Verknipt -->
+      <div class="event-card" data-event="fym" role="button" tabindex="0" aria-label="Free Your Mind / Verknipt galerij openen">
+        <img src="images/hoh/web/3.jpg" alt="Free Your Mind / Verknipt" loading="lazy"/>
         <div class="event-overlay"></div>
         <div class="event-top-line"></div>
         <div class="event-gallery-badge">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>30 foto's</span>
+          <span data-i18n="ev5.photos">Foto's volgen</span>
         </div>
         <div class="event-content">
           <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
           <h3>Free Your Mind / Verknipt</h3>
-          <p data-i18n="ev.fym.body">Twee namen, één missie: dance in z'n rauwste vorm. Gold Dry activeerde op het snijvlak van underground en mainstream. Waar techno liefhebbers samenkomen en elk contact telt.</p>
+          <p data-i18n="ev5.body">Twee namen, één missie: dance in z'n rauwste vorm. Gold Dry activeerde op het snijvlak van underground en mainstream — waar techno-liefhebbers samenkomen en elk contact telt.</p>
           <div class="event-open-cta">
             <span data-i18n="events.cta">Bekijk galerij</span>
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -459,7 +568,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         </div>
       </div>
 
-      <!-- 3. 7th Sunday — 14 foto's -->
+      <!-- 3. 7th Sunday -->
       <div class="event-card" data-event="7th" role="button" tabindex="0" aria-label="7th Sunday galerij openen">
         <img src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
         <div class="event-overlay"></div>
@@ -471,7 +580,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         <div class="event-content">
           <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
           <h3>7th Sunday</h3>
-          <p data-i18n="ev.7th.body">Van zonsopgang tot zonsondergang. Gold Dry op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.</p>
+          <p data-i18n="ev1.body">Van zonsopgang tot zonsondergang — Gold Dry op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.</p>
           <div class="event-open-cta">
             <span data-i18n="events.cta">Bekijk galerij</span>
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -479,7 +588,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         </div>
       </div>
 
-      <!-- 4. Harmony of Hardcore — 24 foto's -->
+      <!-- 4. Harmony of Hardcore -->
       <div class="event-card" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
         <img src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
         <div class="event-overlay"></div>
@@ -491,7 +600,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         <div class="event-content">
           <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
           <h3>Harmony of Hardcore</h3>
-          <p data-i18n="ev.hoh.body">Maximale energie, maximale bereik. Gold Dry pal in het hart van de hardcore scene. Direct contact met een loyale, gepassioneerde fanbase.</p>
+          <p data-i18n="ev2.body">Maximale energie, maximale bereik. Gold Dry pal in het hart van de hardcore scene — direct contact met een loyale, gepassioneerde fanbase.</p>
           <div class="event-open-cta">
             <span data-i18n="events.cta">Bekijk galerij</span>
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -499,7 +608,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         </div>
       </div>
 
-      <!-- 5. Dauwpop — 29 foto's -->
+      <!-- 5. Dauwpop -->
       <div class="event-card" data-event="dauwpop" role="button" tabindex="0" aria-label="Dauwpop galerij openen">
         <img src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
         <div class="event-overlay"></div>
@@ -511,7 +620,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         <div class="event-content">
           <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
           <h3>Dauwpop</h3>
-          <p data-i18n="ev.dauwpop.body">Pestum, zomerse sfeer en een publiek dat écht aanwezig is. Gold Dry als onderdeel van de Dauwpop beleving. Proeven, zien en onthouden.</p>
+          <p data-i18n="ev3.body">Pestum, zomerse sfeer en een publiek dat écht aanwezig is. Gold Dry als onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.</p>
           <div class="event-open-cta">
             <span data-i18n="events.cta">Bekijk galerij</span>
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -529,12 +638,12 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </p>
 </section>
 
-<!-- LIGHTBOX -->
+<!-- ══════════ LIGHTBOX ══════════ -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotogalerij">
   <div class="lb-header">
     <div>
-      <div class="lb-title" id="lbTitle"></div>
-      <div class="lb-meta" id="lbMeta"></div>
+      <div class="lb-title" id="lbTitle">7th Sunday</div>
+      <div class="lb-meta" id="lbMeta">Festival activatie · Gold Dry</div>
     </div>
     <button class="lb-close" id="lbClose" aria-label="Galerij sluiten">
       <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -549,20 +658,26 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     <button class="lb-arrow lb-next" id="lbNext" aria-label="Volgende foto">
       <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
-    <div class="lb-counter" id="lbCounter"></div>
+    <div class="lb-counter" id="lbCounter">1 / 14</div>
   </div>
   <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
+<!-- ══════════ CTA ══════════ -->
 <section id="cta">
   <div class="cta-wrap reveal">
     <p class="label" style="justify-content:center" data-i18n="cta.label">Work together</p>
-    <h2 class="cta-title">READY TO<br>BUILD <span class="red">REAL</span><br><span class="stroke">ATTENTION?</span></h2>
+    <h2 class="cta-title">
+      READY TO<br>
+      BUILD <span class="red">REAL</span><br>
+      <span class="stroke">ATTENTION?</span>
+    </h2>
     <p class="cta-copy" data-i18n="cta.copy">Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.</p>
     <a href="index.html#lead" class="btn-red" data-i18n="cta.btn">Start samenwerking</a>
   </div>
 </section>
 
+<!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="ft-brand reveal">
     <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
@@ -589,7 +704,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 </div>
 
 <script>
-/* ══ TRANSLATIONS ══ */
 const TRANSLATIONS = {
   nl: {
     'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Evenementen',
@@ -608,11 +722,12 @@ const TRANSLATIONS = {
     'events.drag':'Sleep of swipe om meer events te zien',
     'events.tag':'Festival activatie','events.cta':'Bekijk galerij',
     'badge.recent':'Nieuwste',
-    'ev.kkc.body':'Kitsch, camp en onversneden feestvreugde. Gold Dry midden in één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers die proeven en blijven.',
-    'ev.fym.body':'Twee namen, één missie: dance in z\'n rauwste vorm. Gold Dry activeerde op het snijvlak van underground en mainstream. Waar techno liefhebbers samenkomen en elk contact telt.',
-    'ev.7th.body':'Van zonsopgang tot zonsondergang. Gold Dry op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.',
-    'ev.hoh.body':'Maximale energie, maximale bereik. Gold Dry pal in het hart van de hardcore scene. Direct contact met een loyale, gepassioneerde fanbase.',
-    'ev.dauwpop.body':'Pestum, zomerse sfeer en een publiek dat écht aanwezig is. Gold Dry als onderdeel van de Dauwpop beleving. Proeven, zien en onthouden.',
+    'ev1.body':'Van zonsopgang tot zonsondergang — Gold Dry op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.',
+    'ev2.body':'Maximale energie, maximale bereik. Gold Dry pal in het hart van de hardcore scene — direct contact met een loyale, gepassioneerde fanbase.',
+    'ev3.body':'Pestum, zomerse sfeer en een publiek dat écht aanwezig is. Gold Dry als onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.',
+    'ev4.body':'Kitsch, camp en onversneden feestvreugde — Gold Dry midden in één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers die proeven en blijven.',
+    'ev5.body':'Twee namen, één missie: dance in z\'n rauwste vorm. Gold Dry activeerde op het snijvlak van underground en mainstream — waar techno-liefhebbers samenkomen en elk contact telt.',
+    'ev5.photos':'Foto\'s volgen',
     'cta.label':'Work together',
     'cta.copy':'Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.',
     'cta.btn':'Start samenwerking',
@@ -637,11 +752,12 @@ const TRANSLATIONS = {
     'events.drag':'Drag or swipe to see more events',
     'events.tag':'Festival activation','events.cta':'View gallery',
     'badge.recent':'Latest',
-    'ev.kkc.body':'Kitsch, camp and pure party energy. Gold Dry right in the heart of one of the Netherlands most exuberant festival concepts. Colors, glitter and thousands of festival-goers who taste and stay.',
-    'ev.fym.body':'Two names, one mission: dance in its rawest form. Gold Dry activated at the crossroads of underground and mainstream. Where techno lovers unite and every contact counts.',
-    'ev.7th.body':'From sunrise to sunset. Gold Dry at one of the most iconic dance festivals in the Netherlands. Thousands of hands, one taste.',
-    'ev.hoh.body':'Maximum energy, maximum reach. Gold Dry at the heart of the hardcore scene. Direct contact with a loyal, passionate fan base.',
-    'ev.dauwpop.body':'Summer vibes and an audience that is truly present. Gold Dry as part of the Dauwpop experience. Taste, see and remember.',
+    'ev1.body':'From sunrise to sunset — Gold Dry at one of the most iconic dance festivals in the Netherlands. Thousands of hands, one taste.',
+    'ev2.body':'Maximum energy, maximum reach. Gold Dry at the heart of the hardcore scene — direct contact with a loyal, passionate fan base.',
+    'ev3.body':'Summer vibes and an audience that is truly present. Gold Dry as part of the Dauwpop experience — taste, see and remember.',
+    'ev4.body':'Kitsch, camp and pure party energy — Gold Dry right in the heart of one of the Netherlands\' most exuberant festival concepts. Colors, glitter and thousands of festival-goers who taste and stay.',
+    'ev5.body':'Two names, one mission: dance in its rawest form. Gold Dry activated at the crossroads of underground and mainstream — where techno lovers unite and every contact counts.',
+    'ev5.photos':'Photos coming soon',
     'cta.label':'Work together',
     'cta.copy':'From retail to festivals. From first listing to physical activation. BINC International helps brands grow where impact is created.',
     'cta.btn':'Start partnership',
@@ -651,31 +767,40 @@ const TRANSLATIONS = {
   }
 };
 
-/* ══ GALLERY DATA ══
-   Volgorde: meest recent (links) naar minst recent (rechts)
-   fym bestandsnamen: exacte namen zoals geüpload
-*/
-const FYM_FILES = [
-  '_O2A0038.jpg','_O2A0067.jpg','_O2A0140.jpg','_O2A0168.jpg','_O2A0189.jpg',
-  '_O2A0212.jpg','_O2A0229.jpg','_O2A0239.jpg','_O2A0247.jpg','_O2A0270.jpg',
-  '_O2A0315.jpg','_O2A0460.jpg','_O2A0483.jpg','_O2A0515.jpg','_O2A0530.jpg',
-  '_O2A0555.jpg','_O2A0605.jpg','_O2A0645.jpg','_O2A0664.jpg','_O2A0688.jpg',
-  '_O2A0695.jpg','_O2A0706.jpg','_O2A0725.jpg','_O2A0765.jpg','_O2A0780.jpg',
-  '_O2A0788.jpg','_O2A0802.jpg','_O2A0809.jpg','_O2A0856.jpg','_O2A0903.jpg'
+let currentLang = localStorage.getItem('binc_lang') || 'nl';
+function t(k){ return (TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang][k])||(TRANSLATIONS.nl[k])||k; }
+function applyLang(lang){
+  currentLang=lang;localStorage.setItem('binc_lang',lang);document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n'),v=t(k);
+    if(el.children.length===0)el.textContent=v;
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{applyLang(b.dataset.lang);toggleDrawer(false);}));
+
+/* ── KKC foto's: echte bestandsnamen ── */
+const KKC_FILES = [
+  '_O2A3790','_O2A3801','_O2A3808','_O2A3830','_O2A3852',
+  '_O2A3888-2','_O2A3901','_O2A3924','_O2A3942','_O2A3959',
+  '_O2A3994','_O2A4009','_O2A4043','_O2A4057','_O2A4063',
+  '_O2A4099','_O2A4122','_O2A4165','_O2A4176','_O2A4212',
+  '_O2A4218','_O2A4230','_O2A4243','_O2A4246','_O2A4267',
+  '_O2A4323','_O2A4328','_O2A4368','_O2A4381','_O2A4407'
 ];
 
 const GALLERIES = {
   'kkc': {
     titleNL:'Kamping Kitsch Club', titleEN:'Kamping Kitsch Club',
     metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
-    imgs:      Array.from({length:30},(_,i)=>`images/kkc/web/${i+1}.jpg`),
-    thumbImgs: Array.from({length:30},(_,i)=>`images/kkc/thumbs/${i+1}.jpg`)
+    imgs:      KKC_FILES.map(f=>`images/kkc/web/${f}_web.jpg`),
+    thumbImgs: KKC_FILES.map(f=>`images/kkc/thumbs/${f}_thumb.jpg`)
   },
   'fym': {
     titleNL:'Free Your Mind / Verknipt', titleEN:'Free Your Mind / Verknipt',
     metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
-    imgs:      FYM_FILES.map(f=>`images/fym/web/${f}`),
-    thumbImgs: FYM_FILES.map(f=>`images/fym/thumbs/${f}`)
+    imgs:      Array.from({length:14},(_,i)=>`images/7th2/web/${i+1}.jpg`),
+    thumbImgs: Array.from({length:14},(_,i)=>`images/7th2/thumbs/${i+1}.jpg`)
   },
   '7th': {
     titleNL:'7th Sunday', titleEN:'7th Sunday',
@@ -697,20 +822,7 @@ const GALLERIES = {
   }
 };
 
-/* ══ LANG ENGINE ══ */
-let currentLang = localStorage.getItem('binc_lang') || 'nl';
-function t(k){ return (TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang][k])||(TRANSLATIONS.nl[k])||k; }
-function applyLang(lang){
-  currentLang=lang;localStorage.setItem('binc_lang',lang);document.documentElement.lang=lang;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n'),v=t(k);
-    if(el.children.length===0)el.textContent=v;
-  });
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
-}
-document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{applyLang(b.dataset.lang);toggleDrawer(false);}));
-
-/* ══ LIGHTBOX ══ */
+/* ── LIGHTBOX ── */
 const lb=document.getElementById('lightbox');
 const lbTitle=document.getElementById('lbTitle');
 const lbMeta=document.getElementById('lbMeta');
@@ -721,29 +833,28 @@ const lbClose=document.getElementById('lbClose');
 const lbPrev=document.getElementById('lbPrev');
 const lbNext=document.getElementById('lbNext');
 const lbSpinner=document.getElementById('lbSpinner');
+
 let currentGallery=null,currentIndex=0,loadingTimer=null,lastOpenedCard=null;
 
 function preloadAdjacent(idx){
-  if(!currentGallery)return;
+  if(!currentGallery) return;
   const n=currentGallery.imgs.length;
-  [-1,1].forEach(o=>{const i=new Image();i.src=currentGallery.imgs[(idx+o+n)%n];});
+  [-1,1].forEach(offset=>{const img=new Image();img.src=currentGallery.imgs[(idx+offset+n)%n];});
 }
 function showSpinner(){clearTimeout(loadingTimer);loadingTimer=setTimeout(()=>lbSpinner.classList.add('visible'),150);}
 function hideSpinner(){clearTimeout(loadingTimer);lbSpinner.classList.remove('visible');}
 
-function openGallery(key,card){
-  const g=GALLERIES[key];if(!g)return;
-  currentGallery=g;currentIndex=0;lastOpenedCard=card||null;
+function openGallery(eventKey,triggerCard){
+  const g=GALLERIES[eventKey];if(!g) return;
+  currentGallery=g;currentIndex=0;lastOpenedCard=triggerCard||null;
   lbTitle.textContent=currentLang==='en'?g.titleEN:g.titleNL;
   lbMeta.textContent=currentLang==='en'?g.metaEN:g.metaNL;
   lbThumbs.innerHTML='';
   g.thumbImgs.forEach((src,i)=>{
     const d=document.createElement('div');
     d.className='lb-thumb'+(i===0?' active':'');
-    const img=document.createElement('img');
-    img.src=src;img.alt=`Foto ${i+1}`;img.loading='lazy';
-    d.appendChild(img);d.addEventListener('click',()=>goTo(i));
-    lbThumbs.appendChild(d);
+    const img=document.createElement('img');img.src=src;img.alt=`Foto ${i+1}`;img.loading='lazy';
+    d.appendChild(img);d.addEventListener('click',()=>goTo(i));lbThumbs.appendChild(d);
   });
   showSpinner();lbImg.src='';
   const first=new Image();
@@ -762,9 +873,8 @@ function closeGallery(){
 }
 
 function goTo(idx){
-  if(!currentGallery)return;
-  const n=currentGallery.imgs.length;
-  idx=(idx+n)%n;currentIndex=idx;
+  if(!currentGallery) return;
+  const n=currentGallery.imgs.length;idx=(idx+n)%n;currentIndex=idx;
   lbImg.classList.add('changing');showSpinner();
   const next=new Image();
   next.onload=()=>{lbImg.src=next.src;lbImg.classList.remove('changing');hideSpinner();};
@@ -784,11 +894,12 @@ document.querySelectorAll('.event-card').forEach(card=>{
   card.addEventListener('click',()=>openGallery(card.dataset.event,card));
   card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGallery(card.dataset.event,card);}});
 });
+
 lbClose.addEventListener('click',closeGallery);
 lbPrev.addEventListener('click',()=>goTo(currentIndex-1));
 lbNext.addEventListener('click',()=>goTo(currentIndex+1));
 document.addEventListener('keydown',e=>{
-  if(!lb.classList.contains('open'))return;
+  if(!lb.classList.contains('open')) return;
   if(e.key==='Escape')closeGallery();
   if(e.key==='ArrowLeft')goTo(currentIndex-1);
   if(e.key==='ArrowRight')goTo(currentIndex+1);
@@ -801,28 +912,18 @@ lbImg.addEventListener('touchend',e=>{
   if(Math.abs(dx)>40)goTo(currentIndex+(dx<0?1:-1));
 },{passive:true});
 
-/* ══ DRAG-TO-SCROLL ══ */
+/* ── DRAG-TO-SCROLL ── */
 const track=document.getElementById('eventTrack');
-let isDragging=false,dragStartX=0,scrollStart=0,dragMoved=false;
-track.addEventListener('mousedown',e=>{
-  isDragging=true;dragMoved=false;dragStartX=e.pageX;scrollStart=track.scrollLeft;
-  track.style.userSelect='none';
-});
-window.addEventListener('mousemove',e=>{
-  if(!isDragging)return;
-  const dx=e.pageX-dragStartX;
-  if(Math.abs(dx)>6)dragMoved=true;
-  track.scrollLeft=scrollStart-dx;
-});
+let isDragging=false,dragStartX=0,scrollStart=0;
+track.addEventListener('mousedown',e=>{isDragging=true;dragStartX=e.pageX;scrollStart=track.scrollLeft;track.style.userSelect='none';});
+window.addEventListener('mousemove',e=>{if(!isDragging) return;track.scrollLeft=scrollStart-(e.pageX-dragStartX);});
 window.addEventListener('mouseup',()=>{isDragging=false;track.style.userSelect='';});
-track.addEventListener('click',e=>{
-  if(dragMoved){e.stopPropagation();dragMoved=false;}
-},{capture:true});
+track.addEventListener('click',e=>{if(Math.abs(track.scrollLeft-scrollStart)>8)e.stopPropagation();},{capture:true});
 
-/* ══ SCROLL DOTS ══ */
+/* ── SCROLL DOTS ── */
 const dotsEl=document.getElementById('scrollDots');
 function updateDots(){
-  if(!dotsEl)return;
+  if(!dotsEl) return;
   const dots=dotsEl.querySelectorAll('.scroll-dot');
   const totalScroll=track.scrollWidth-track.offsetWidth;
   const progress=totalScroll>0?track.scrollLeft/totalScroll:0;
@@ -831,13 +932,13 @@ function updateDots(){
 }
 track.addEventListener('scroll',updateDots,{passive:true});
 
-/* ══ CURSOR ══ */
+/* ── CURSOR ── */
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function animRing(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
 
-/* ══ MOBILE NAV ══ */
+/* ── MOBILE NAV ── */
 const hamburger=document.getElementById('navHamburger'),drawer=document.getElementById('mobileDrawer');
 function toggleDrawer(open){hamburger.classList.toggle('open',open);drawer.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
 hamburger.addEventListener('click',()=>toggleDrawer(!drawer.classList.contains('open')));
@@ -846,18 +947,15 @@ drawer.addEventListener('click',e=>{if(e.target===drawer)toggleDrawer(false);});
 
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);},{passive:true});
 
-/* ══ REVEAL ══ */
 const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
 
-/* ══ ORBS ══ */
 window.addEventListener('mousemove',e=>{
   const x=(e.clientX/innerWidth-.5)*18,y=(e.clientY/innerHeight-.5)*18;
   document.querySelector('.orb-a').style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
   document.querySelector('.orb-b').style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
 },{passive:true});
 
-/* ══ JUMP OVERLAY ══ */
 document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
   link.addEventListener('click',e=>{
     e.preventDefault();
@@ -867,7 +965,6 @@ document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
   });
 });
 
-/* INIT */
 applyLang(currentLang);
 updateDots();
 </script>
