@@ -103,7 +103,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .visual-title span{color:var(--red)}
 
 /* ══════════════════════════════════════════════
-   EVENTS SECTION — volledig herschreven
+   EVENTS SECTION
 ══════════════════════════════════════════════ */
 #events{padding:120px 0 140px;background:#000;overflow:hidden}
 
@@ -113,7 +113,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   padding:0 6vw;margin-bottom:48px;gap:24px;flex-wrap:wrap;
 }
 
-/* ── Duidelijkere click-hint ── */
 .events-hint{
   display:flex;align-items:center;gap:12px;
   background:rgba(192,57,43,.10);
@@ -128,55 +127,36 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   background:rgba(192,57,43,.18);flex-shrink:0;
 }
 .events-hint-icon svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round}
-.events-hint-text{
-  display:flex;flex-direction:column;gap:2px;
-}
-.events-hint-text strong{
-  font-family:var(--font-ui);font-size:.75rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
-  color:#fff;
-}
-.events-hint-text span{
-  font-family:var(--font-body);font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300;
-}
+.events-hint-text{display:flex;flex-direction:column;gap:2px;}
+.events-hint-text strong{font-family:var(--font-ui);font-size:.75rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff;}
+.events-hint-text span{font-family:var(--font-body);font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300;}
 
-/* ── Scroll indicator rechts ── */
 .events-scroll-indicator{
   display:flex;align-items:center;gap:10px;
   font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(255,255,255,.3);
-  flex-shrink:0;
+  color:rgba(255,255,255,.3);flex-shrink:0;
 }
 .scroll-dots{display:flex;gap:5px;align-items:center}
 .scroll-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);transition:.3s}
 .scroll-dot.active{background:var(--red);width:18px;border-radius:3px}
-.scroll-arrow-anim{
-  display:flex;align-items:center;gap:4px;
-  animation:nudgeRight 2s ease-in-out infinite;
-}
+.scroll-arrow-anim{display:flex;align-items:center;gap:4px;animation:nudgeRight 2s ease-in-out infinite;}
 .scroll-arrow-anim svg{width:16px;height:16px;stroke:rgba(192,57,43,.7);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @keyframes nudgeRight{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
 
 /* ── HORIZONTALE SCROLL TRACK ── */
-.event-track-wrapper{
-  position:relative;
-}
-.event-track-wrapper::before,
+.event-track-wrapper{position:relative;}
 .event-track-wrapper::after{
   content:'';position:absolute;top:0;bottom:24px;width:80px;z-index:10;pointer-events:none;
-}
-.event-track-wrapper::before{
-  left:0;
-  background:linear-gradient(to right,rgba(0,0,0,.9),transparent);
-}
-.event-track-wrapper::after{
-  right:0;
-  background:linear-gradient(to left,rgba(0,0,0,.9),transparent);
+  right:0;background:linear-gradient(to left,rgba(0,0,0,.9),transparent);
 }
 
+/* KEY CHANGE: padding-left = 6vw zodat KKC uitlijnt met de rest van de content.
+   scroll-padding-left zorgt dat snap ook op dat zelfde punt stopt. */
 .event-track{
   display:flex;gap:22px;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
+  scroll-padding-left:6vw;
   -webkit-overflow-scrolling:touch;
   padding:8px 6vw 28px;
   scrollbar-width:none;
@@ -198,10 +178,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   --shimmer-angle:0deg;
   outline:none;
 }
-.event-card:focus-visible{
-  outline:2px solid rgba(192,57,43,.7);
-  outline-offset:2px;
-}
+.event-card:focus-visible{outline:2px solid rgba(192,57,43,.7);outline-offset:2px;}
 .event-card::before{
   content:'';position:absolute;inset:-1px;border-radius:17px;
   background:conic-gradient(from var(--shimmer-angle),transparent 70%,rgba(192,57,43,.7) 80%,rgba(231,76,60,.9) 85%,rgba(192,57,43,.7) 90%,transparent 100%);
@@ -210,20 +187,15 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 }
 @property --shimmer-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
 @keyframes shimmerSpin{to{--shimmer-angle:360deg}}
-.event-card::after{
-  content:'';position:absolute;inset:1px;border-radius:15px;background:#000;z-index:0;
-}
+.event-card::after{content:'';position:absolute;inset:1px;border-radius:15px;background:#000;z-index:0;}
 .event-card:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.15)}
 .event-card:hover::before{opacity:1;animation-play-state:running}
 
-/* ── RECENT badge ── */
 .event-badge-recent{
   position:absolute;top:20px;left:20px;z-index:4;
   display:flex;align-items:center;gap:6px;
-  background:var(--red);
-  border-radius:4px;padding:5px 10px;
-  font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;
-  color:#fff;
+  background:var(--red);border-radius:4px;padding:5px 10px;
+  font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#fff;
 }
 .event-badge-recent::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.85);animation:blink 1.4s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -240,14 +212,10 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   border:1px solid rgba(192,57,43,.3);border-radius:4px;
   padding:7px 12px;
   font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(255,255,255,.6);
-  transition:background .3s,color .3s,border-color .3s;
+  color:rgba(255,255,255,.6);transition:background .3s,color .3s,border-color .3s;
 }
 .event-card:hover .event-gallery-badge{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.7);color:#fff}
-.event-gallery-badge svg{
-  width:14px;height:14px;flex-shrink:0;
-  stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
-}
+.event-gallery-badge svg{width:14px;height:14px;flex-shrink:0;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
 .event-content{position:absolute;left:0;right:0;bottom:0;padding:36px;z-index:3}
 .event-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:14px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
@@ -266,7 +234,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .event-open-cta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
 .event-card:hover .event-open-cta svg{transform:translateX(4px)}
 
-/* ── DRAG HINT ── */
 .event-drag-hint{
   display:flex;align-items:center;justify-content:center;gap:10px;
   padding:0 6vw;margin-top:8px;
@@ -280,76 +247,34 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   position:fixed;inset:0;z-index:800;
   background:rgba(0,0,0,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   display:flex;flex-direction:column;
-  opacity:0;pointer-events:none;
-  transition:opacity .35s ease;
+  opacity:0;pointer-events:none;transition:opacity .35s ease;
 }
 .lightbox.open{opacity:1;pointer-events:auto}
-.lb-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 32px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;
-}
+.lb-header{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;}
 .lb-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,3rem);font-weight:900;letter-spacing:.02em}
 .lb-title span{color:var(--red)}
 .lb-meta{font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
-.lb-close{
-  display:flex;align-items:center;justify-content:center;
-  width:48px;height:48px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);
-  cursor:pointer;color:#fff;flex-shrink:0;transition:.2s;
-}
+.lb-close{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);cursor:pointer;color:#fff;flex-shrink:0;transition:.2s;}
 .lb-close:hover{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.5)}
 .lb-close svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
-.lb-main{
-  flex:1;display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;padding:20px 80px;min-height:0;
-}
-.lb-main-img{
-  max-width:100%;max-height:100%;object-fit:contain;
-  border-radius:8px;
-  transition:opacity .28s ease,transform .28s cubic-bezier(.22,1,.36,1);
-  box-shadow:0 30px 80px rgba(0,0,0,.8);
-}
+.lb-main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:20px 80px;min-height:0;}
+.lb-main-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;transition:opacity .28s ease,transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 30px 80px rgba(0,0,0,.8);}
 .lb-main-img.changing{opacity:0;transform:scale(.97)}
-.lb-spinner{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:36px;height:36px;border-radius:50%;
-  border:2px solid rgba(255,255,255,.1);border-top-color:var(--red);
-  animation:spin .7s linear infinite;
-  opacity:0;pointer-events:none;transition:opacity .2s;
-}
+.lb-spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.1);border-top-color:var(--red);animation:spin .7s linear infinite;opacity:0;pointer-events:none;transition:opacity .2s;}
 .lb-spinner.visible{opacity:1}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-.lb-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);
-  display:flex;align-items:center;justify-content:center;
-  width:52px;height:52px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);
-  cursor:pointer;color:#fff;transition:.2s;z-index:2;
-}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);cursor:pointer;color:#fff;transition:.2s;z-index:2;}
 .lb-arrow:hover{background:rgba(192,57,43,.25);border-color:rgba(192,57,43,.6)}
 .lb-arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .lb-prev{left:12px}.lb-next{right:12px}
-.lb-thumbs{
-  display:flex;gap:8px;overflow-x:auto;
-  padding:16px 32px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0;
-  scrollbar-width:thin;scrollbar-color:rgba(192,57,43,.4) transparent;
-}
+.lb-thumbs{display:flex;gap:8px;overflow-x:auto;padding:16px 32px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0;scrollbar-width:thin;scrollbar-color:rgba(192,57,43,.4) transparent;}
 .lb-thumbs::-webkit-scrollbar{height:3px}
 .lb-thumbs::-webkit-scrollbar-thumb{background:rgba(192,57,43,.4);border-radius:2px}
-.lb-thumb{
-  flex-shrink:0;width:72px;height:52px;border-radius:5px;overflow:hidden;
-  border:2px solid transparent;cursor:pointer;transition:.2s;opacity:.5;
-  background:rgba(255,255,255,.04);
-}
+.lb-thumb{flex-shrink:0;width:72px;height:52px;border-radius:5px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:.2s;opacity:.5;background:rgba(255,255,255,.04);}
 .lb-thumb:hover{opacity:.8}
 .lb-thumb.active{border-color:var(--red);opacity:1}
 .lb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.lb-counter{
-  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
-  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;
-  color:rgba(255,255,255,.38);background:rgba(0,0,0,.5);padding:5px 14px;border-radius:20px;
-  pointer-events:none;z-index:2;
-}
+.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.38);background:rgba(0,0,0,.5);padding:5px 14px;border-radius:20px;pointer-events:none;z-index:2;}
 
 /* ── CTA ── */
 #cta{position:relative;overflow:hidden;padding:130px 6vw 140px;border-top:1px solid rgba(192,57,43,.1)}
@@ -431,13 +356,13 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .events-head{padding:0 5vw}
   .events-meta-row{padding:0 5vw;flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:28px}
   .events-scroll-indicator{display:none}
-  .event-track{padding:8px 5vw 24px;gap:14px}
+  .event-track{padding:8px 5vw 24px;gap:14px;scroll-padding-left:5vw;}
   .event-card{flex:0 0 78vw;max-width:300px;min-height:460px}
   .event-card::before{display:none}
   .event-content{padding:24px}
   .event-content h3{font-size:clamp(2rem,8vw,3rem)}
   .event-open-cta{opacity:1;transform:translateY(0)}
-  .event-track-wrapper::before,.event-track-wrapper::after{width:30px}
+  .event-track-wrapper::after{width:30px}
 
   .lb-header{padding:16px 20px}
   .lb-main{padding:12px 52px}
@@ -473,13 +398,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
-<!-- LANG FAB -->
 <div class="lang-fab" id="langFab">
   <button class="lang-btn active" data-lang="nl">NL</button>
   <button class="lang-btn" data-lang="en">EN</button>
 </div>
 
-<!-- Mobile drawer -->
 <div class="mobile-nav-drawer" id="mobileDrawer">
   <a href="retail.html" data-i18n="nav.retail">Retail</a>
   <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
@@ -577,7 +500,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 
   <div class="events-meta-row reveal d1">
-    <!-- Duidelijke klik-hint -->
     <div class="events-hint">
       <div class="events-hint-icon">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="var(--red)"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -587,8 +509,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         <span data-i18n="events.hint.sub">om de volledige fotogalerij te openen</span>
       </div>
     </div>
-
-    <!-- Scroll indicator -->
     <div class="events-scroll-indicator">
       <div class="scroll-dots" id="scrollDots">
         <div class="scroll-dot active"></div>
@@ -607,9 +527,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="event-track-wrapper">
     <div class="event-track" id="eventTrack">
 
-      <!-- 1. Kamping Kitsch Club — MEEST RECENT, 30 foto's, badge "Nieuw" -->
+      <!-- 1. Kamping Kitsch Club -->
       <div class="event-card" data-event="kkc" role="button" tabindex="0" aria-label="Kamping Kitsch Club galerij openen">
-        <img src="images/kkc/web/14.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
+        <img src="images/kkc/web/_O2A4043_web.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
         <div class="event-overlay"></div>
         <div class="event-top-line"></div>
         <div class="event-badge-recent" data-i18n="badge.recent">Nieuwste</div>
@@ -648,7 +568,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         </div>
       </div>
 
-      <!-- 3. 7th Sunday — 14 foto's -->
+      <!-- 3. 7th Sunday -->
       <div class="event-card" data-event="7th" role="button" tabindex="0" aria-label="7th Sunday galerij openen">
         <img src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
         <div class="event-overlay"></div>
@@ -668,7 +588,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         </div>
       </div>
 
-      <!-- 4. Harmony of Hardcore — 24 foto's -->
+      <!-- 4. Harmony of Hardcore -->
       <div class="event-card" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
         <img src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
         <div class="event-overlay"></div>
@@ -688,7 +608,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
         </div>
       </div>
 
-      <!-- 5. Dauwpop — 29 foto's -->
+      <!-- 5. Dauwpop -->
       <div class="event-card" data-event="dauwpop" role="button" tabindex="0" aria-label="Dauwpop galerij openen">
         <img src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
         <div class="event-overlay"></div>
@@ -784,9 +704,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 </div>
 
 <script>
-/* ══════════════════════════════════════════════
-   TRANSLATIONS
-══════════════════════════════════════════════ */
 const TRANSLATIONS = {
   nl: {
     'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Evenementen',
@@ -850,9 +767,6 @@ const TRANSLATIONS = {
   }
 };
 
-/* ══════════════════════════════════════════════
-   LANGUAGE ENGINE
-══════════════════════════════════════════════ */
 let currentLang = localStorage.getItem('binc_lang') || 'nl';
 function t(k){ return (TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang][k])||(TRANSLATIONS.nl[k])||k; }
 function applyLang(lang){
@@ -865,21 +779,22 @@ function applyLang(lang){
 }
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{applyLang(b.dataset.lang);toggleDrawer(false);}));
 
-/* ══════════════════════════════════════════════
-   GALLERY DATA
-   Volgorde: meest recent → minst recent (links → rechts)
-   kkc       → images/kkc/    (30 foto's)  — NIEUWSTE
-   fym       → foto's volgen nog
-   7th       → images/7th2/  (14 foto's)
-   hoh       → images/hoh/   (24 foto's)
-   dauwpop   → images/7th/   (29 foto's)
-══════════════════════════════════════════════ */
+/* ── KKC foto's: echte bestandsnamen ── */
+const KKC_FILES = [
+  '_O2A3790','_O2A3801','_O2A3808','_O2A3830','_O2A3852',
+  '_O2A3888-2','_O2A3901','_O2A3924','_O2A3942','_O2A3959',
+  '_O2A3994','_O2A4009','_O2A4043','_O2A4057','_O2A4063',
+  '_O2A4099','_O2A4122','_O2A4165','_O2A4176','_O2A4212',
+  '_O2A4218','_O2A4230','_O2A4243','_O2A4246','_O2A4267',
+  '_O2A4323','_O2A4328','_O2A4368','_O2A4381','_O2A4407'
+];
+
 const GALLERIES = {
   'kkc': {
     titleNL:'Kamping Kitsch Club', titleEN:'Kamping Kitsch Club',
     metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
-    imgs:      Array.from({length:30},(_,i)=>`images/kkc/web/${i+1}.jpg`),
-    thumbImgs: Array.from({length:30},(_,i)=>`images/kkc/thumbs/${i+1}.jpg`)
+    imgs:      KKC_FILES.map(f=>`images/kkc/web/${f}_web.jpg`),
+    thumbImgs: KKC_FILES.map(f=>`images/kkc/thumbs/${f}_thumb.jpg`)
   },
   'fym': {
     titleNL:'Free Your Mind / Verknipt', titleEN:'Free Your Mind / Verknipt',
@@ -907,79 +822,59 @@ const GALLERIES = {
   }
 };
 
-/* ══════════════════════════════════════════════
-   LIGHTBOX ENGINE
-══════════════════════════════════════════════ */
-const lb        = document.getElementById('lightbox');
-const lbTitle   = document.getElementById('lbTitle');
-const lbMeta    = document.getElementById('lbMeta');
-const lbImg     = document.getElementById('lbMainImg');
-const lbThumbs  = document.getElementById('lbThumbs');
-const lbCounter = document.getElementById('lbCounter');
-const lbClose   = document.getElementById('lbClose');
-const lbPrev    = document.getElementById('lbPrev');
-const lbNext    = document.getElementById('lbNext');
-const lbSpinner = document.getElementById('lbSpinner');
+/* ── LIGHTBOX ── */
+const lb=document.getElementById('lightbox');
+const lbTitle=document.getElementById('lbTitle');
+const lbMeta=document.getElementById('lbMeta');
+const lbImg=document.getElementById('lbMainImg');
+const lbThumbs=document.getElementById('lbThumbs');
+const lbCounter=document.getElementById('lbCounter');
+const lbClose=document.getElementById('lbClose');
+const lbPrev=document.getElementById('lbPrev');
+const lbNext=document.getElementById('lbNext');
+const lbSpinner=document.getElementById('lbSpinner');
 
-let currentGallery = null;
-let currentIndex   = 0;
-let loadingTimer   = null;
-let lastOpenedCard = null;
+let currentGallery=null,currentIndex=0,loadingTimer=null,lastOpenedCard=null;
 
 function preloadAdjacent(idx){
   if(!currentGallery) return;
-  const n = currentGallery.imgs.length;
-  [-1,1].forEach(offset=>{
-    const img=new Image();
-    img.src=currentGallery.imgs[(idx+offset+n)%n];
-  });
+  const n=currentGallery.imgs.length;
+  [-1,1].forEach(offset=>{const img=new Image();img.src=currentGallery.imgs[(idx+offset+n)%n];});
 }
 function showSpinner(){clearTimeout(loadingTimer);loadingTimer=setTimeout(()=>lbSpinner.classList.add('visible'),150);}
 function hideSpinner(){clearTimeout(loadingTimer);lbSpinner.classList.remove('visible');}
 
-function openGallery(eventKey, triggerCard){
-  const g=GALLERIES[eventKey];
-  if(!g) return;
-  currentGallery=g;currentIndex=0;
-  lastOpenedCard=triggerCard||null;
-
+function openGallery(eventKey,triggerCard){
+  const g=GALLERIES[eventKey];if(!g) return;
+  currentGallery=g;currentIndex=0;lastOpenedCard=triggerCard||null;
   lbTitle.textContent=currentLang==='en'?g.titleEN:g.titleNL;
-  lbMeta.textContent =currentLang==='en'?g.metaEN :g.metaNL;
-
+  lbMeta.textContent=currentLang==='en'?g.metaEN:g.metaNL;
   lbThumbs.innerHTML='';
   g.thumbImgs.forEach((src,i)=>{
     const d=document.createElement('div');
     d.className='lb-thumb'+(i===0?' active':'');
-    const img=document.createElement('img');
-    img.src=src;img.alt=`Foto ${i+1}`;img.loading='lazy';
-    d.appendChild(img);
-    d.addEventListener('click',()=>goTo(i));
-    lbThumbs.appendChild(d);
+    const img=document.createElement('img');img.src=src;img.alt=`Foto ${i+1}`;img.loading='lazy';
+    d.appendChild(img);d.addEventListener('click',()=>goTo(i));lbThumbs.appendChild(d);
   });
-
   showSpinner();lbImg.src='';
   const first=new Image();
   first.onload=()=>{lbImg.src=first.src;hideSpinner();};
   first.onerror=()=>{hideSpinner();};
   first.src=g.imgs[0];
-
   lbCounter.textContent=`1 / ${g.imgs.length}`;
-  lb.classList.add('open');
-  document.body.style.overflow='hidden';
+  lb.classList.add('open');document.body.style.overflow='hidden';
   scrollThumb(0);preloadAdjacent(0);
 }
 
 function closeGallery(){
-  lb.classList.remove('open');
-  document.body.style.overflow='';
+  lb.classList.remove('open');document.body.style.overflow='';
   currentGallery=null;hideSpinner();
   if(lastOpenedCard){lastOpenedCard.blur();lastOpenedCard=null;}
 }
 
 function goTo(idx){
   if(!currentGallery) return;
-  const n=currentGallery.imgs.length;
-  idx=(idx+n)%n;currentIndex=idx;
+  const n=currentGallery.imgs.length;idx=(idx+n)%n;currentIndex=idx;
   lbImg.classList.add('changing');showSpinner();
   const next=new Image();
   next.onload=()=>{lbImg.src=next.src;lbImg.classList.remove('changing');hideSpinner();};
@@ -995,18 +890,14 @@ function scrollThumb(idx){
   if(thumb)thumb.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
 
-/* ══════════════════════════════════════════════
-   CARD INTERACTIONS
-══════════════════════════════════════════════ */
 document.querySelectorAll('.event-card').forEach(card=>{
-  card.addEventListener('click',()=>openGallery(card.dataset.event, card));
-  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGallery(card.dataset.event, card);}});
+  card.addEventListener('click',()=>openGallery(card.dataset.event,card));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGallery(card.dataset.event,card);}});
 });
 
 lbClose.addEventListener('click',closeGallery);
 lbPrev.addEventListener('click',()=>goTo(currentIndex-1));
 lbNext.addEventListener('click',()=>goTo(currentIndex+1));
-
 document.addEventListener('keydown',e=>{
   if(!lb.classList.contains('open')) return;
   if(e.key==='Escape')closeGallery();
@@ -1014,7 +905,6 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')goTo(currentIndex+1);
 });
 lb.addEventListener('click',e=>{if(e.target===lb)closeGallery();});
-
 let touchStartX=0;
 lbImg.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;},{passive:true});
 lbImg.addEventListener('touchend',e=>{
@@ -1022,77 +912,50 @@ lbImg.addEventListener('touchend',e=>{
   if(Math.abs(dx)>40)goTo(currentIndex+(dx<0?1:-1));
 },{passive:true});
 
-/* ══════════════════════════════════════════════
-   DRAG-TO-SCROLL (desktop)
-══════════════════════════════════════════════ */
-const track = document.getElementById('eventTrack');
+/* ── DRAG-TO-SCROLL ── */
+const track=document.getElementById('eventTrack');
 let isDragging=false,dragStartX=0,scrollStart=0;
-track.addEventListener('mousedown',e=>{
-  isDragging=true;dragStartX=e.pageX;scrollStart=track.scrollLeft;
-  track.style.userSelect='none';
-});
-window.addEventListener('mousemove',e=>{
-  if(!isDragging) return;
-  const dx=e.pageX-dragStartX;
-  track.scrollLeft=scrollStart-dx;
-});
-window.addEventListener('mouseup',()=>{
-  isDragging=false;track.style.userSelect='';
-});
-/* Voorkom dat drag een card click triggert */
-track.addEventListener('click',e=>{
-  if(Math.abs(track.scrollLeft-scrollStart)>8)e.stopPropagation();
-},{capture:true});
+track.addEventListener('mousedown',e=>{isDragging=true;dragStartX=e.pageX;scrollStart=track.scrollLeft;track.style.userSelect='none';});
+window.addEventListener('mousemove',e=>{if(!isDragging) return;track.scrollLeft=scrollStart-(e.pageX-dragStartX);});
+window.addEventListener('mouseup',()=>{isDragging=false;track.style.userSelect='';});
+track.addEventListener('click',e=>{if(Math.abs(track.scrollLeft-scrollStart)>8)e.stopPropagation();},{capture:true});
 
-/* ══════════════════════════════════════════════
-   SCROLL DOTS
-══════════════════════════════════════════════ */
+/* ── SCROLL DOTS ── */
 const dotsEl=document.getElementById('scrollDots');
 function updateDots(){
   if(!dotsEl) return;
   const dots=dotsEl.querySelectorAll('.scroll-dot');
-  const cards=track.querySelectorAll('.event-card');
-  const totalCards=cards.length;
-  const visibleW=track.offsetWidth;
-  const totalScroll=track.scrollWidth-visibleW;
+  const totalScroll=track.scrollWidth-track.offsetWidth;
   const progress=totalScroll>0?track.scrollLeft/totalScroll:0;
   const activeIndex=Math.round(progress*(dots.length-1));
   dots.forEach((d,i)=>d.classList.toggle('active',i===activeIndex));
 }
 track.addEventListener('scroll',updateDots,{passive:true});
 
-/* ══════════════════════════════════════════════
-   CURSOR
-══════════════════════════════════════════════ */
+/* ── CURSOR ── */
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function animRing(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
 
-/* ══════════════════════════════════════════════
-   MOBILE NAV
-══════════════════════════════════════════════ */
+/* ── MOBILE NAV ── */
 const hamburger=document.getElementById('navHamburger'),drawer=document.getElementById('mobileDrawer');
 function toggleDrawer(open){hamburger.classList.toggle('open',open);drawer.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
 hamburger.addEventListener('click',()=>toggleDrawer(!drawer.classList.contains('open')));
 drawer.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleDrawer(false)));
 drawer.addEventListener('click',e=>{if(e.target===drawer)toggleDrawer(false);});
 
-/* NAV SCROLL */
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70);},{passive:true});
 
-/* REVEAL */
 const revIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
 
-/* ORBS */
 window.addEventListener('mousemove',e=>{
   const x=(e.clientX/innerWidth-.5)*18,y=(e.clientY/innerHeight-.5)*18;
   document.querySelector('.orb-a').style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
   document.querySelector('.orb-b').style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
 },{passive:true});
 
-/* JUMP OVERLAY */
 document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
   link.addEventListener('click',e=>{
     e.preventDefault();
@@ -1102,7 +965,6 @@ document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
   });
 });
 
-/* INIT */
 applyLang(currentLang);
 updateDots();
 </script>
