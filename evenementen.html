@@ -102,31 +102,102 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .visual-title{font-family:var(--font-display);font-size:clamp(2.4rem,3.5vw,4.2rem);font-weight:900;line-height:.88;color:#fff}
 .visual-title span{color:var(--red)}
 
-/* ── EVENTS SECTION ── */
-#events{padding:120px 6vw 140px;background:#000}
-.events-head{margin-bottom:24px}
-.events-hint{
-  font-family:var(--font-ui);font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
-  color:rgba(255,255,255,.28);margin-bottom:56px;display:flex;align-items:center;gap:14px;
+/* ══════════════════════════════════════════════
+   EVENTS SECTION — volledig herschreven
+══════════════════════════════════════════════ */
+#events{padding:120px 0 140px;background:#000;overflow:hidden}
+
+.events-head{padding:0 6vw;margin-bottom:16px}
+.events-meta-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6vw;margin-bottom:48px;gap:24px;flex-wrap:wrap;
 }
-.events-hint svg{width:18px;height:18px;opacity:.45;flex-shrink:0}
-.events-hint span{animation:pulseHint 2.4s ease-in-out infinite}
-@keyframes pulseHint{0%,100%{opacity:.28}50%{opacity:.7}}
 
-/* ── EVENT GRID + CARDS ── */
-.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+/* ── Duidelijkere click-hint ── */
+.events-hint{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(192,57,43,.10);
+  border:1px solid rgba(192,57,43,.3);
+  border-radius:6px;
+  padding:12px 20px;
+  width:fit-content;
+}
+.events-hint-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(192,57,43,.18);flex-shrink:0;
+}
+.events-hint-icon svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round}
+.events-hint-text{
+  display:flex;flex-direction:column;gap:2px;
+}
+.events-hint-text strong{
+  font-family:var(--font-ui);font-size:.75rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+  color:#fff;
+}
+.events-hint-text span{
+  font-family:var(--font-body);font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300;
+}
 
+/* ── Scroll indicator rechts ── */
+.events-scroll-indicator{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+  flex-shrink:0;
+}
+.scroll-dots{display:flex;gap:5px;align-items:center}
+.scroll-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);transition:.3s}
+.scroll-dot.active{background:var(--red);width:18px;border-radius:3px}
+.scroll-arrow-anim{
+  display:flex;align-items:center;gap:4px;
+  animation:nudgeRight 2s ease-in-out infinite;
+}
+.scroll-arrow-anim svg{width:16px;height:16px;stroke:rgba(192,57,43,.7);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes nudgeRight{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+
+/* ── HORIZONTALE SCROLL TRACK ── */
+.event-track-wrapper{
+  position:relative;
+}
+.event-track-wrapper::before,
+.event-track-wrapper::after{
+  content:'';position:absolute;top:0;bottom:24px;width:80px;z-index:10;pointer-events:none;
+}
+.event-track-wrapper::before{
+  left:0;
+  background:linear-gradient(to right,rgba(0,0,0,.9),transparent);
+}
+.event-track-wrapper::after{
+  right:0;
+  background:linear-gradient(to left,rgba(0,0,0,.9),transparent);
+}
+
+.event-track{
+  display:flex;gap:22px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding:8px 6vw 28px;
+  scrollbar-width:none;
+  cursor:grab;
+}
+.event-track:active{cursor:grabbing}
+.event-track::-webkit-scrollbar{display:none}
+
+/* ── EVENT CARDS ── */
 .event-card{
-  position:relative;overflow:hidden;min-height:520px;border-radius:16px;
+  position:relative;overflow:hidden;
+  flex:0 0 420px;min-height:560px;
+  border-radius:16px;
   border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);
   cursor:pointer;
+  scroll-snap-align:start;
   transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;
   --shimmer-angle:0deg;
-  /* FIX: verwijder blauwe browser focus-outline */
   outline:none;
 }
-/* Alleen zichtbare focus-ring tonen bij keyboard navigatie, niet bij muisklik */
 .event-card:focus-visible{
   outline:2px solid rgba(192,57,43,.7);
   outline-offset:2px;
@@ -145,12 +216,23 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .event-card:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.15)}
 .event-card:hover::before{opacity:1;animation-play-state:running}
 
+/* ── RECENT badge ── */
+.event-badge-recent{
+  position:absolute;top:20px;left:20px;z-index:4;
+  display:flex;align-items:center;gap:6px;
+  background:var(--red);
+  border-radius:4px;padding:5px 10px;
+  font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;
+  color:#fff;
+}
+.event-badge-recent::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.85);animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
 .event-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;transition:opacity .4s,transform .5s cubic-bezier(.22,1,.36,1);z-index:1}
 .event-card:hover img{opacity:.6;transform:scale(1.04)}
 .event-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.96) 0%,rgba(0,0,0,.38) 54%,rgba(0,0,0,.1) 100%);z-index:2}
 .event-top-line{position:absolute;top:0;left:50%;width:44%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(192,57,43,.85),transparent);z-index:3}
 
-/* FIX: gallery badge met rood icoontje */
 .event-gallery-badge{
   position:absolute;top:20px;right:20px;z-index:4;
   display:flex;align-items:center;gap:7px;
@@ -162,16 +244,10 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   transition:background .3s,color .3s,border-color .3s;
 }
 .event-card:hover .event-gallery-badge{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.7);color:#fff}
-/* Icoontje altijd rood */
 .event-gallery-badge svg{
   width:14px;height:14px;flex-shrink:0;
-  color:var(--red);
-  stroke:var(--red);
-  fill:none;
+  stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
 }
-.event-gallery-badge svg rect{fill:none;stroke:var(--red);stroke-width:2}
-.event-gallery-badge svg circle{fill:var(--red)}
-.event-gallery-badge svg polyline{stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 .event-content{position:absolute;left:0;right:0;bottom:0;padding:36px;z-index:3}
 .event-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:14px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
@@ -187,8 +263,17 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   transition:opacity .3s,transform .3s,color .2s;
 }
 .event-card:hover .event-open-cta{opacity:1;transform:translateY(0)}
-.event-open-cta svg{width:16px;height:16px;fill:currentColor;transition:transform .3s}
+.event-open-cta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
 .event-card:hover .event-open-cta svg{transform:translateX(4px)}
+
+/* ── DRAG HINT ── */
+.event-drag-hint{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:0 6vw;margin-top:8px;
+  font-family:var(--font-ui);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);
+}
+.event-drag-hint svg{width:14px;height:14px;opacity:.4;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* ── LIGHTBOX ── */
 .lightbox{
@@ -199,7 +284,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   transition:opacity .35s ease;
 }
 .lightbox.open{opacity:1;pointer-events:auto}
-
 .lb-header{
   display:flex;align-items:center;justify-content:space-between;
   padding:20px 32px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;
@@ -215,7 +299,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 }
 .lb-close:hover{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.5)}
 .lb-close svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
-
 .lb-main{
   flex:1;display:flex;align-items:center;justify-content:center;
   position:relative;overflow:hidden;padding:20px 80px;min-height:0;
@@ -227,7 +310,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   box-shadow:0 30px 80px rgba(0,0,0,.8);
 }
 .lb-main-img.changing{opacity:0;transform:scale(.97)}
-
 .lb-spinner{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:36px;height:36px;border-radius:50%;
@@ -237,7 +319,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 }
 .lb-spinner.visible{opacity:1}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-
 .lb-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
   display:flex;align-items:center;justify-content:center;
@@ -248,7 +329,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .lb-arrow:hover{background:rgba(192,57,43,.25);border-color:rgba(192,57,43,.6)}
 .lb-arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .lb-prev{left:12px}.lb-next{right:12px}
-
 .lb-thumbs{
   display:flex;gap:8px;overflow-x:auto;
   padding:16px 32px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0;
@@ -264,7 +344,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .lb-thumb:hover{opacity:.8}
 .lb-thumb.active{border-color:var(--red);opacity:1}
 .lb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-
 .lb-counter{
   position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
   font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;
@@ -350,21 +429,15 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
   #events{padding:80px 0 90px}
   .events-head{padding:0 5vw}
-  .events-hint{padding:0 5vw}
-  .event-grid{
-    display:flex;flex-direction:row;gap:16px;overflow-x:auto;
-    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-    padding:0 5vw 24px;scrollbar-width:none;
-  }
-  .event-grid::-webkit-scrollbar{display:none}
-  .event-card{
-    flex:0 0 80vw;max-width:320px;min-height:440px;
-    scroll-snap-align:start;border-radius:14px;
-  }
+  .events-meta-row{padding:0 5vw;flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:28px}
+  .events-scroll-indicator{display:none}
+  .event-track{padding:8px 5vw 24px;gap:14px}
+  .event-card{flex:0 0 78vw;max-width:300px;min-height:460px}
   .event-card::before{display:none}
   .event-content{padding:24px}
   .event-content h3{font-size:clamp(2rem,8vw,3rem)}
   .event-open-cta{opacity:1;transform:translateY(0)}
+  .event-track-wrapper::before,.event-track-wrapper::after{width:30px}
 
   .lb-header{padding:16px 20px}
   .lb-main{padding:12px 52px}
@@ -498,91 +571,151 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
 <!-- ══════════ EVENTS ══════════ -->
 <section id="events">
-  <div class="events-head reveal" style="padding:0 6vw">
+  <div class="events-head reveal">
     <p class="label" data-i18n="events.label">Events & experiences</p>
     <h2 class="display">EVENTS THAT<br><span style="color:var(--red)" data-i18n="events.title.sub">CREATE IMPACT</span></h2>
   </div>
 
-  <div class="events-hint reveal d1">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-    <span data-i18n="events.hint">Klik op een event voor de fotogalerij</span>
+  <div class="events-meta-row reveal d1">
+    <!-- Duidelijke klik-hint -->
+    <div class="events-hint">
+      <div class="events-hint-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="var(--red)"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="events-hint-text">
+        <strong data-i18n="events.hint.title">Klik op een event</strong>
+        <span data-i18n="events.hint.sub">om de volledige fotogalerij te openen</span>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="events-scroll-indicator">
+      <div class="scroll-dots" id="scrollDots">
+        <div class="scroll-dot active"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+      </div>
+      <div class="scroll-arrow-anim">
+        <span data-i18n="events.scroll">Scroll voor meer</span>
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </div>
   </div>
 
-  <div class="event-grid" id="eventGrid">
+  <div class="event-track-wrapper">
+    <div class="event-track" id="eventTrack">
 
-    <!-- 7th Sunday — 14 foto's -->
-    <div class="event-card reveal" data-event="7th" role="button" tabindex="0" aria-label="7th Sunday galerij openen">
-      <img src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
-      <div class="event-overlay"></div>
-      <div class="event-top-line"></div>
-      <div class="event-gallery-badge">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="18" height="18" rx="2"/>
-          <circle cx="8.5" cy="8.5" r="1.5"/>
-          <polyline points="21 15 16 10 5 21"/>
-        </svg>
-        <span>14 foto's</span>
-      </div>
-      <div class="event-content">
-        <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
-        <h3>7th Sunday</h3>
-        <p data-i18n="ev1.body">Van zonsopgang tot zonsondergang — Gold Dry op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.</p>
-        <div class="event-open-cta">
-          <span data-i18n="events.cta">Bekijk galerij</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <!-- 1. Kamping Kitsch Club — MEEST RECENT, 30 foto's, badge "Nieuw" -->
+      <div class="event-card" data-event="kkc" role="button" tabindex="0" aria-label="Kamping Kitsch Club galerij openen">
+        <img src="images/kkc/web/14.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
+        <div class="event-overlay"></div>
+        <div class="event-top-line"></div>
+        <div class="event-badge-recent" data-i18n="badge.recent">Nieuwste</div>
+        <div class="event-gallery-badge">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>30 foto's</span>
+        </div>
+        <div class="event-content">
+          <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
+          <h3>Kamping Kitsch Club</h3>
+          <p data-i18n="ev4.body">Kitsch, camp en onversneden feestvreugde — Gold Dry midden in één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers die proeven en blijven.</p>
+          <div class="event-open-cta">
+            <span data-i18n="events.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Harmony of Hardcore — 24 foto's -->
-    <div class="event-card reveal d1" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
-      <img src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
-      <div class="event-overlay"></div>
-      <div class="event-top-line"></div>
-      <div class="event-gallery-badge">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="18" height="18" rx="2"/>
-          <circle cx="8.5" cy="8.5" r="1.5"/>
-          <polyline points="21 15 16 10 5 21"/>
-        </svg>
-        <span>24 foto's</span>
-      </div>
-      <div class="event-content">
-        <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
-        <h3>Harmony of Hardcore</h3>
-        <p data-i18n="ev2.body">Maximale energie, maximale bereik. Gold Dry pal in het hart van de hardcore scene — direct contact met een loyale, gepassioneerde fanbase.</p>
-        <div class="event-open-cta">
-          <span data-i18n="events.cta">Bekijk galerij</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <!-- 2. Free Your Mind / Verknipt -->
+      <div class="event-card" data-event="fym" role="button" tabindex="0" aria-label="Free Your Mind / Verknipt galerij openen">
+        <img src="images/hoh/web/3.jpg" alt="Free Your Mind / Verknipt" loading="lazy"/>
+        <div class="event-overlay"></div>
+        <div class="event-top-line"></div>
+        <div class="event-gallery-badge">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span data-i18n="ev5.photos">Foto's volgen</span>
+        </div>
+        <div class="event-content">
+          <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
+          <h3>Free Your Mind / Verknipt</h3>
+          <p data-i18n="ev5.body">Twee namen, één missie: dance in z'n rauwste vorm. Gold Dry activeerde op het snijvlak van underground en mainstream — waar techno-liefhebbers samenkomen en elk contact telt.</p>
+          <div class="event-open-cta">
+            <span data-i18n="events.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Dauwpop — 29 foto's (FIX: was 30) -->
-    <div class="event-card reveal d2" data-event="dauwpop" role="button" tabindex="0" aria-label="Dauwpop galerij openen">
-      <img src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
-      <div class="event-overlay"></div>
-      <div class="event-top-line"></div>
-      <div class="event-gallery-badge">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="18" height="18" rx="2"/>
-          <circle cx="8.5" cy="8.5" r="1.5"/>
-          <polyline points="21 15 16 10 5 21"/>
-        </svg>
-        <span>29 foto's</span>
-      </div>
-      <div class="event-content">
-        <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
-        <h3>Dauwpop</h3>
-        <p data-i18n="ev3.body">Pestum, zomerse sfeer en een publiek dat écht aanwezig is. Gold Dry als onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.</p>
-        <div class="event-open-cta">
-          <span data-i18n="events.cta">Bekijk galerij</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <!-- 3. 7th Sunday — 14 foto's -->
+      <div class="event-card" data-event="7th" role="button" tabindex="0" aria-label="7th Sunday galerij openen">
+        <img src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
+        <div class="event-overlay"></div>
+        <div class="event-top-line"></div>
+        <div class="event-gallery-badge">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>14 foto's</span>
+        </div>
+        <div class="event-content">
+          <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
+          <h3>7th Sunday</h3>
+          <p data-i18n="ev1.body">Van zonsopgang tot zonsondergang — Gold Dry op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.</p>
+          <div class="event-open-cta">
+            <span data-i18n="events.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
         </div>
       </div>
-    </div>
 
+      <!-- 4. Harmony of Hardcore — 24 foto's -->
+      <div class="event-card" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
+        <img src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
+        <div class="event-overlay"></div>
+        <div class="event-top-line"></div>
+        <div class="event-gallery-badge">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>24 foto's</span>
+        </div>
+        <div class="event-content">
+          <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
+          <h3>Harmony of Hardcore</h3>
+          <p data-i18n="ev2.body">Maximale energie, maximale bereik. Gold Dry pal in het hart van de hardcore scene — direct contact met een loyale, gepassioneerde fanbase.</p>
+          <div class="event-open-cta">
+            <span data-i18n="events.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Dauwpop — 29 foto's -->
+      <div class="event-card" data-event="dauwpop" role="button" tabindex="0" aria-label="Dauwpop galerij openen">
+        <img src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
+        <div class="event-overlay"></div>
+        <div class="event-top-line"></div>
+        <div class="event-gallery-badge">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>29 foto's</span>
+        </div>
+        <div class="event-content">
+          <span class="event-tag" data-i18n="events.tag">Festival activatie</span>
+          <h3>Dauwpop</h3>
+          <p data-i18n="ev3.body">Pestum, zomerse sfeer en een publiek dat écht aanwezig is. Gold Dry als onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.</p>
+          <div class="event-open-cta">
+            <span data-i18n="events.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <p class="event-drag-hint">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    <span data-i18n="events.drag">Sleep of swipe om meer events te zien</span>
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </p>
 </section>
 
 <!-- ══════════ LIGHTBOX ══════════ -->
@@ -666,11 +799,18 @@ const TRANSLATIONS = {
     'intro.visual.tag':'Live in the field',
     'intro.visual.title1':'Jouw merk.','intro.visual.title2':'Op het podium.',
     'events.label':'Events & experiences','events.title.sub':'CREATE IMPACT',
-    'events.hint':'Klik op een event voor de fotogalerij',
+    'events.hint.title':'Klik op een event',
+    'events.hint.sub':'om de volledige fotogalerij te openen',
+    'events.scroll':'Scroll voor meer',
+    'events.drag':'Sleep of swipe om meer events te zien',
     'events.tag':'Festival activatie','events.cta':'Bekijk galerij',
+    'badge.recent':'Nieuwste',
     'ev1.body':'Van zonsopgang tot zonsondergang — Gold Dry op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.',
     'ev2.body':'Maximale energie, maximale bereik. Gold Dry pal in het hart van de hardcore scene — direct contact met een loyale, gepassioneerde fanbase.',
     'ev3.body':'Pestum, zomerse sfeer en een publiek dat écht aanwezig is. Gold Dry als onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.',
+    'ev4.body':'Kitsch, camp en onversneden feestvreugde — Gold Dry midden in één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers die proeven en blijven.',
+    'ev5.body':'Twee namen, één missie: dance in z\'n rauwste vorm. Gold Dry activeerde op het snijvlak van underground en mainstream — waar techno-liefhebbers samenkomen en elk contact telt.',
+    'ev5.photos':'Foto\'s volgen',
     'cta.label':'Work together',
     'cta.copy':'Van retail tot festivals. Van eerste listing tot fysieke activatie. BINC International helpt merken groeien op plekken waar impact ontstaat.',
     'cta.btn':'Start samenwerking',
@@ -689,11 +829,18 @@ const TRANSLATIONS = {
     'intro.visual.tag':'Live in the field',
     'intro.visual.title1':'Your Brand.','intro.visual.title2':'On stage.',
     'events.label':'Events & experiences','events.title.sub':'CREATE IMPACT',
-    'events.hint':'Click an event to view the photo gallery',
+    'events.hint.title':'Click an event',
+    'events.hint.sub':'to open the full photo gallery',
+    'events.scroll':'Scroll for more',
+    'events.drag':'Drag or swipe to see more events',
     'events.tag':'Festival activation','events.cta':'View gallery',
+    'badge.recent':'Latest',
     'ev1.body':'From sunrise to sunset — Gold Dry at one of the most iconic dance festivals in the Netherlands. Thousands of hands, one taste.',
     'ev2.body':'Maximum energy, maximum reach. Gold Dry at the heart of the hardcore scene — direct contact with a loyal, passionate fan base.',
     'ev3.body':'Summer vibes and an audience that is truly present. Gold Dry as part of the Dauwpop experience — taste, see and remember.',
+    'ev4.body':'Kitsch, camp and pure party energy — Gold Dry right in the heart of one of the Netherlands\' most exuberant festival concepts. Colors, glitter and thousands of festival-goers who taste and stay.',
+    'ev5.body':'Two names, one mission: dance in its rawest form. Gold Dry activated at the crossroads of underground and mainstream — where techno lovers unite and every contact counts.',
+    'ev5.photos':'Photos coming soon',
     'cta.label':'Work together',
     'cta.copy':'From retail to festivals. From first listing to physical activation. BINC International helps brands grow where impact is created.',
     'cta.btn':'Start partnership',
@@ -720,11 +867,26 @@ document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=
 
 /* ══════════════════════════════════════════════
    GALLERY DATA
-   7th Sunday  → images/7th2/  (14 foto's)
-   HoH         → images/hoh/   (24 foto's)
-   Dauwpop     → images/7th/   (29 foto's) — FIX: was 30
+   Volgorde: meest recent → minst recent (links → rechts)
+   kkc       → images/kkc/    (30 foto's)  — NIEUWSTE
+   fym       → foto's volgen nog
+   7th       → images/7th2/  (14 foto's)
+   hoh       → images/hoh/   (24 foto's)
+   dauwpop   → images/7th/   (29 foto's)
 ══════════════════════════════════════════════ */
 const GALLERIES = {
+  'kkc': {
+    titleNL:'Kamping Kitsch Club', titleEN:'Kamping Kitsch Club',
+    metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
+    imgs:      Array.from({length:30},(_,i)=>`images/kkc/web/${i+1}.jpg`),
+    thumbImgs: Array.from({length:30},(_,i)=>`images/kkc/thumbs/${i+1}.jpg`)
+  },
+  'fym': {
+    titleNL:'Free Your Mind / Verknipt', titleEN:'Free Your Mind / Verknipt',
+    metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
+    imgs:      Array.from({length:14},(_,i)=>`images/7th2/web/${i+1}.jpg`),
+    thumbImgs: Array.from({length:14},(_,i)=>`images/7th2/thumbs/${i+1}.jpg`)
+  },
   '7th': {
     titleNL:'7th Sunday', titleEN:'7th Sunday',
     metaNL:'Festival activatie · Gold Dry', metaEN:'Festival activation · Gold Dry',
@@ -811,11 +973,7 @@ function closeGallery(){
   lb.classList.remove('open');
   document.body.style.overflow='';
   currentGallery=null;hideSpinner();
-  /* FIX: verwijder focus van de kaart na sluiten zodat geen blauwe outline verschijnt */
-  if(lastOpenedCard){
-    lastOpenedCard.blur();
-    lastOpenedCard=null;
-  }
+  if(lastOpenedCard){lastOpenedCard.blur();lastOpenedCard=null;}
 }
 
 function goTo(idx){
@@ -837,6 +995,9 @@ function scrollThumb(idx){
   if(thumb)thumb.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
 
+/* ══════════════════════════════════════════════
+   CARD INTERACTIONS
+══════════════════════════════════════════════ */
 document.querySelectorAll('.event-card').forEach(card=>{
   card.addEventListener('click',()=>openGallery(card.dataset.event, card));
   card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGallery(card.dataset.event, card);}});
@@ -860,6 +1021,45 @@ lbImg.addEventListener('touchend',e=>{
   const dx=e.changedTouches[0].screenX-touchStartX;
   if(Math.abs(dx)>40)goTo(currentIndex+(dx<0?1:-1));
 },{passive:true});
+
+/* ══════════════════════════════════════════════
+   DRAG-TO-SCROLL (desktop)
+══════════════════════════════════════════════ */
+const track = document.getElementById('eventTrack');
+let isDragging=false,dragStartX=0,scrollStart=0;
+track.addEventListener('mousedown',e=>{
+  isDragging=true;dragStartX=e.pageX;scrollStart=track.scrollLeft;
+  track.style.userSelect='none';
+});
+window.addEventListener('mousemove',e=>{
+  if(!isDragging) return;
+  const dx=e.pageX-dragStartX;
+  track.scrollLeft=scrollStart-dx;
+});
+window.addEventListener('mouseup',()=>{
+  isDragging=false;track.style.userSelect='';
+});
+/* Voorkom dat drag een card click triggert */
+track.addEventListener('click',e=>{
+  if(Math.abs(track.scrollLeft-scrollStart)>8)e.stopPropagation();
+},{capture:true});
+
+/* ══════════════════════════════════════════════
+   SCROLL DOTS
+══════════════════════════════════════════════ */
+const dotsEl=document.getElementById('scrollDots');
+function updateDots(){
+  if(!dotsEl) return;
+  const dots=dotsEl.querySelectorAll('.scroll-dot');
+  const cards=track.querySelectorAll('.event-card');
+  const totalCards=cards.length;
+  const visibleW=track.offsetWidth;
+  const totalScroll=track.scrollWidth-visibleW;
+  const progress=totalScroll>0?track.scrollLeft/totalScroll:0;
+  const activeIndex=Math.round(progress*(dots.length-1));
+  dots.forEach((d,i)=>d.classList.toggle('active',i===activeIndex));
+}
+track.addEventListener('scroll',updateDots,{passive:true});
 
 /* ══════════════════════════════════════════════
    CURSOR
@@ -904,6 +1104,7 @@ document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
 
 /* INIT */
 applyLang(currentLang);
+updateDots();
 </script>
 </body>
 </html>
