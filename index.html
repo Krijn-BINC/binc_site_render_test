@@ -2,111 +2,32 @@
 <html lang="nl">
 <head>
 <meta name="description" content="BINC International verzorgt de volledige B2B voor ambitieuze merken in Nederland. Van eerste retaillisting tot landelijke dekking bij Jumbo, Albert Heijn, SPAR, PLUS en Sligro."/>
-
-<!-- ═══════════════════════════════════════════════════════
-     PERFORMANCE: Google Tag Manager uitgesteld tot na load
-     (elimineert de 63-207ms main-thread blocking taak)
-═══════════════════════════════════════════════════════ -->
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VRHH6551CL"></script>
 <script>
-// GTM wordt geladen na eerste gebruikersinteractie OF na 3s — whichever first
-(function(){
-  var GTM_ID = 'G-VRHH6551CL';
-  var loaded = false;
-  function loadGTM(){
-    if(loaded) return; loaded = true;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GTM_ID;
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', GTM_ID);
-  }
-  // Na 3 seconden sowieso laden (zodat analytics niet gemist wordt)
-  setTimeout(loadGTM, 3000);
-  // Of direct bij eerste interactie
-  ['mousedown','touchstart','keydown','scroll'].forEach(function(e){
-    window.addEventListener(e, loadGTM, {once:true, passive:true});
-  });
-})();
-</script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-VRHH6551CL');
+</script>
+  
 <link rel="canonical" href="https://bincinternational.nl/" />
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>BINC International</title>
 <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
-
-<!-- ═══════════════════════════════════════════════════════
-     PERFORMANCE: Preconnect voor kritieke origins
-═══════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preconnect" href="https://cdn.shopify.com" crossorigin/>
-
-<!-- ═══════════════════════════════════════════════════════
-     PERFORMANCE: Preload kritieke woff2-fonts die CLS veroorzaken
-     (Barlow Condensed 900 & Barlow 300 zijn above-the-fold)
-═══════════════════════════════════════════════════════ -->
-<link rel="preload" as="font" type="font/woff2" crossorigin
-  href="https://fonts.gstatic.com/s/barlowcondensed/v12/HTxwL3I-JCGChYJ8VI-L6OO_au7B4973.woff2"/>
-<link rel="preload" as="font" type="font/woff2" crossorigin
-  href="https://fonts.gstatic.com/s/barlow/v12/7cHqv4kjgoGqM7EPC8E46HsxnA.woff2"/>
-
-<!-- ═══════════════════════════════════════════════════════
-     PERFORMANCE: Google Fonts met font-display=swap
-     (voorkomt FOIT/CLS — browser gebruikt fallback direct)
-═══════════════════════════════════════════════════════ -->
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap&display=swap" rel="stylesheet"/>
-
-<!-- ═══════════════════════════════════════════════════════
-     PERFORMANCE: Leaflet CSS non-render-blocking laden
-     (media="print" trick — browser laadt maar blokkeert niet)
-═══════════════════════════════════════════════════════ -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"
-  media="print" onload="this.media='all'"/>
-<noscript>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
-</noscript>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
-  media="print" onload="this.media='all'"/>
-<noscript>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
-</noscript>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
-  media="print" onload="this.media='all'"/>
-<noscript>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
-</noscript>
-
-<!-- ═══════════════════════════════════════════════════════
-     PERFORMANCE: Leaflet JS pas laden als kaart in viewport komt
-     (via IntersectionObserver — niet bij pagina-load)
-═══════════════════════════════════════════════════════ -->
-
-<!-- ═══════════════════════════════════════════════════════
-     PERFORMANCE: LCP-afbeelding (logo) preloaden
-═══════════════════════════════════════════════════════ -->
-<link rel="preload" as="image" fetchpriority="high"
-  href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041"/>
-
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" defer></script>
+  
 <style>
-/* ═══════════════════════════════════════════════════════
-   PERFORMANCE: font-size fallback voor CLS-preventie
-   Systeem-fallback fonts lijken meer op Barlow Condensed
-   zodat de layout shift minimaal is bij font-swap
-═══════════════════════════════════════════════════════ */
-@font-face {
-  font-family: 'Barlow Condensed Fallback';
-  src: local('Arial Narrow'), local('Arial');
-  size-adjust: 94%;
-  ascent-override: 92%;
-  descent-override: 22%;
-  line-gap-override: 0%;
-}
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#000;
@@ -114,7 +35,7 @@
   --red2:#e74c3c;
   --white:#fff;
   --dim:rgba(255,255,255,.58);
-  --font-display:'Barlow Condensed','Barlow Condensed Fallback',sans-serif;
+  --font-display:'Barlow Condensed',sans-serif;
   --font-body:'Barlow',sans-serif;
   --font-ui:'Rajdhani',sans-serif;
   --font-bebas:'Bebas Neue',sans-serif;
@@ -151,7 +72,6 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:5
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
 nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
-/* PERFORMANCE: expliciete width/height op logo img */
 .nav-logo img{height:38px;width:auto;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-links a{font-family:var(--font-ui);font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:8px 16px;position:relative}
@@ -182,8 +102,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
 .jump-overlay::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px),radial-gradient(rgba(0,0,0,.08) 1px,transparent 1px);background-size:4px 4px,6px 6px;opacity:.5;mix-blend-mode:overlay}
 .jump-overlay::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(192,57,43,.28) 0%,rgba(192,57,43,.12) 35%,transparent 72%);filter:blur(50px)}
-/* PERFORMANCE: expliciete afmetingen op jump-logo */
-.jump-logo{width:min(420px,68vw);height:auto;opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
+.jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
 .jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
 
 /* HERO */
@@ -197,8 +116,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .orb-b{width:320px;height:320px;background:rgba(192,57,43,.055);bottom:10%;right:30%}
 .hero-content{position:relative;z-index:10;padding:0 6vw;max-width:1500px;width:100%}
 .hero-inner{margin-left:clamp(32px,7vw,140px);max-width:1050px}
-/* PERFORMANCE: min-height reserveert ruimte voor tekst zodat CLS vermeden wordt */
-.hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,15rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:11ch;margin-bottom:40px;opacity:0;animation:riseUp .9s .25s forwards;min-height:2lh}
+.hero-title{font-family:var(--font-display);font-size:clamp(5rem,11vw,15rem);font-weight:900;line-height:.84;letter-spacing:-.01em;max-width:11ch;margin-bottom:40px;opacity:0;animation:riseUp .9s .25s forwards}
 .hero-title .red{color:var(--red)}
 .hero-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
 .hero-sub{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.72);font-weight:300;max-width:520px;margin-bottom:48px;opacity:0;animation:riseUp .9s .45s forwards}
@@ -241,7 +159,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .live-dot::after{content:'';position:absolute;inset:-7px;border-radius:50%;border:1px solid rgba(0,255,157,.28);animation:livePulse 1.2s infinite ease-out}
 @keyframes liveFlicker{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.65;transform:scale(.92)}}
 @keyframes livePulse{0%{opacity:.5;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
-/* PERFORMANCE: vaste hoogte op map zodat er geen layout shift is */
 #storeMap{height:500px;width:100%;background:#0b0b0b}
 .map-touch-overlay{display:none}
 
@@ -279,7 +196,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-bg::after{width:700px;height:700px;opacity:.35}
 .product-progress{position:absolute;top:0;left:0;width:0%;height:2px;z-index:10;background:linear-gradient(90deg,var(--brand),var(--brand2))}
 .product-can-wrap{position:absolute;top:54%;left:50%;width:min(20vw,220px);transform:translate(-50%,-50%);z-index:20;pointer-events:none;will-change:transform;transition:filter .5s ease,opacity .5s ease,transform .7s cubic-bezier(.22,1,.36,1),width .7s cubic-bezier(.22,1,.36,1)}
-/* PERFORMANCE: expliciete width/height op product afbeeldingen zodat browser layout reserveert */
 .product-can-wrap img{width:100%;height:auto;display:block;filter:drop-shadow(0 40px 70px rgba(0,0,0,.95)) drop-shadow(0 0 50px var(--brand-soft))}
 .product-showcase.feelsogood .product-can-wrap{top:54%;width:min(14vw,160px)}
 .product-showcase.beatbox .product-can-wrap{top:54%;width:min(20vw,240px)}
@@ -334,11 +250,13 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .product-showcase[data-reverse="true"] .product-panel.product-kpi-panel{
   align-items:flex-end!important
 }
+
 .product-showcase[data-reverse="true"] .reverse-kpi-wrap{
   width:min(820px,48vw)!important;
   margin-right:6vw;
   text-align:left
 }
+
 .product-showcase[data-reverse="true"] .reverse-kpi-wrap .product-kpis{
   width:100%;
   grid-template-columns:1fr 1fr 1fr 1.4fr;
@@ -373,13 +291,13 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .form-alert.show{display:block}
 .form-alert.success{background:rgba(26,122,74,.18);border:1px solid rgba(26,122,74,.45);color:#4ade80}
 .form-alert.error{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.45);color:#fc8181}
-.lead-title br{display:block;}
-
+.lead-title br{
+  display:block;
+}
 /* FOOTER */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
-/* PERFORMANCE: expliciete width/height op footer logo */
-.ft-logo{width:235px;height:auto;opacity:.98}
+.ft-logo{width:235px;opacity:.98}
 .ft-tagline{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.18em;color:rgba(255,255,255,.32);line-height:1.6;max-width:200px}
 .ft-socials{display:flex;align-items:center;gap:22px}
 .ft-socials a{width:24px;height:24px;color:#fff;opacity:.72;transition:.2s;display:inline-flex;align-items:center;justify-content:center}
@@ -615,7 +533,8 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .stats-wrap{grid-template-columns:repeat(3,1fr)}
 }
 
-@media(max-width:1000px){
+ @media(max-width:1000px){
+
   .product-showcase[data-reverse="true"] .reverse-kpi-wrap{
     width:90vw!important;
     max-width:90vw!important;
@@ -623,14 +542,21 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     margin-right:auto!important;
     padding:24px 18px!important;
   }
+
   .product-showcase[data-reverse="true"] .reverse-kpi-wrap .product-kpis{
     width:100%!important;
     grid-template-columns:repeat(2,1fr)!important;
   }
+
 }
 
 @media(max-width:768px){
-  .lead-title{font-size:clamp(42px,12vw,72px);line-height:.9;}
+
+  .lead-title{
+    font-size:clamp(42px,12vw,72px);
+    line-height:.9;
+  }
+
 }
 
 @media(min-width:1001px){
@@ -648,13 +574,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
 <body>
 <div class="jump-overlay" id="jumpOverlay">
-  <!-- PERFORMANCE: fetchpriority=high op LCP-element, geen lazy loading -->
-  <img class="jump-logo"
-    src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041"
-    alt="BINC International"
-    width="420" height="120"
-    fetchpriority="high"
-    decoding="async"/>
+  <img class="jump-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
 </div>
 <div id="cur"></div>
 <div id="cur-ring"></div>
@@ -692,11 +612,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <!-- PERFORMANCE: width/height zodat browser ruimte reserveert -->
-    <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041"
-      alt="BINC International"
-      width="140" height="38"
-      decoding="async"/>
+    <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
   </a>
   <div class="nav-links">
     <a href="retail.html" data-i18n="nav.retail">Retail</a>
@@ -719,8 +635,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
 <!-- ══ HERO ══ -->
 <section id="hero">
-  <!-- PERFORMANCE: video laadt asynchroon, blokkeert LCP niet -->
-  <video class="hero-video" autoplay muted loop playsinline preload="none">
+  <video class="hero-video" autoplay muted loop playsinline>
     <source src="https://cdn.shopify.com/videos/c/o/v/b97f674e676d4e6190a17f1c078a3e94.mp4" type="video/mp4"/>
   </video>
   <div class="hero-overlay"></div>
@@ -809,13 +724,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
       <div class="product-progress"></div>
       <div class="product-can-wrap">
         <div class="product-glow"></div>
-        <!-- PERFORMANCE: width/height + loading=lazy (onder the fold) -->
-        <img src="images/golddry_pre_original.png" alt="Gold Dry"
-          width="220" height="598"
-          loading="lazy" decoding="async"/>
+        <img src="images/golddry_pre_original.png" alt="Gold Dry"/>
       </div>
       <div class="product-dots"></div>
       <div class="product-panels">
+        <!-- Panel 1: Intro -->
         <div class="product-panel product-left product-active">
           <div class="product-content">
             <span class="product-eyebrow">— Gold Dry</span>
@@ -828,10 +741,12 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             </div>
           </div>
         </div>
+        <!-- Panel 2: KPIs -->
         <div class="product-panel product-left product-kpi-panel" style="flex-direction:column;align-items:flex-start;padding-top:0">
           <div style="position:relative;z-index:30;width:min(880px,88vw)">
             <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="gd.eyebrow2">✦ Groei met BINC</span>
-            <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="gd.kpi.title"></h2>
+       <h2 class="product-section-title" style="margin-bottom:6px" data-i18n="gd.kpi.title">
+</h2>
             <div class="product-line"></div>
             <p class="product-text" style="margin-bottom:0" data-i18n="gd.kpi.body">Van eerste retailer naar landelijke dekking in 10 maanden, gebouwd op sterke rotatie.</p>
             <div class="product-kpis">
@@ -842,6 +757,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             </div>
           </div>
         </div>
+        <!-- Panel 3: Results -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow" data-i18n="gd.results.eyebrow">✦ Resultaten · 3 jaar Gold Dry</span>
@@ -849,13 +765,24 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             <div class="metric-wall gold-wall">
               <div class="metric-cell"><strong>3+</strong><span data-i18n="metric.years.partner">Jaar actieve samenwerking</span></div>
               <div class="metric-cell"><strong>2.500+</strong><span data-i18n="metric.points.national">Verkooppunten landelijk</span></div>
-              <div class="metric-cell"><strong>340%</strong><span data-i18n="metric.growth.y1y2">Omzetgroei jaar 1<br>naar 2</span></div>
+              <div class="metric-cell">
+  <strong>340%</strong>
+  <span data-i18n="metric.growth.y1y2">
+    Omzetgroei jaar 1<br>naar 2
+  </span>
+</div>
               <div class="metric-cell"><strong>8</strong><span data-i18n="metric.chains.live">Retailketens live</span></div>
-              <div class="metric-cell"><strong>10</strong><span>Maanden tot<br>landelijke dekking</span></div>
+              <div class="metric-cell">
+  <strong>10</strong>
+  <span>
+    Maanden tot<br>landelijke dekking
+  </span>
+</div>
               <div class="metric-cell"><strong>100%</strong><span data-i18n="metric.b2b.binc">B2B ontzorgd door BINC</span></div>
             </div>
           </div>
         </div>
+        <!-- Panel 4: Statement -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement" data-i18n="gd.statement">Jouw merk.<br><em>Onze handen.</em><br>Één resultaat.</p>
@@ -876,12 +803,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
       <div class="product-progress"></div>
       <div class="product-can-wrap">
         <div class="product-glow"></div>
-        <img src="images/FeelSoGood_Blueberry.png" alt="FeelSoGood Blueberry"
-          width="160" height="420"
-          loading="lazy" decoding="async"/>
+        <img src="images/FeelSoGood_Blueberry.png" alt="FeelSoGood Blueberry"/>
       </div>
       <div class="product-dots"></div>
       <div class="product-panels">
+        <!-- Panel 1: Intro -->
         <div class="product-panel product-right product-active">
           <div class="product-content">
             <span class="product-eyebrow">— FeelSoGood</span>
@@ -894,6 +820,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             </div>
           </div>
         </div>
+        <!-- Panel 2: KPIs -->
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
           <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
             <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="fsg.eyebrow2">✦ Groei met BINC</span>
@@ -901,19 +828,35 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             <div class="product-line"></div>
             <p class="product-text" style="margin-bottom:0" data-i18n="fsg.kpi.body">Sneller opgeschaald dan verwacht, dankzij directe retailvalidatie en sterke prestaties op de winkelvloer.</p>
             <div class="product-kpis">
-              <div class="product-kpi"><div class="product-kpi-v">2026</div><div class="product-kpi-ghost">26</div><div class="product-kpi-l">Start retailuitrol Nederland</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">1M+</div><div class="product-kpi-ghost">1M</div><div class="product-kpi-l">Winkelaars bereikt</div></div>
+              <div class="product-kpi">
+  <div class="product-kpi-v">2026</div>
+  <div class="product-kpi-ghost">26</div>
+  <div class="product-kpi-l">
+    Start retailuitrol Nederland
+  </div>
+</div>
+<div class="product-kpi">
+  <div class="product-kpi-v">1M+</div>
+  <div class="product-kpi-ghost">1M</div>
+  <div class="product-kpi-l">
+    Winkelaars bereikt
+  </div>
+</div>
               <div class="product-kpi"><div class="product-kpi-v">10M+</div><div class="product-kpi-ghost">10M</div><div class="product-kpi-l" data-i18n="kpi.social.views">Views op social media</div></div>
               <div class="product-kpi"><div class="product-kpi-v">250+</div><div class="product-kpi-ghost">250</div><div class="product-kpi-l" data-i18n="kpi.franchise">Franchisers aangesloten <br>in jaar 1</div></div>
             </div>
           </div>
         </div>
+        <!-- Panel 3: Results -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow" data-i18n="fsg.results.eyebrow">✦ Resultaten · FeelSoGood</span>
             <h2 class="product-section-title results-title" style="margin-bottom:8px" data-i18n="fsg.results.title">FeelSoGood<br>in cijfers.</h2>
             <div class="metric-wall fsg-wall">
-              <div class="metric-cell"><strong>2026</strong><span>Start retailuitrol Nederland</span></div>
+              <div class="metric-cell">
+  <strong>2026</strong>
+  <span>Start retailuitrol Nederland</span>
+</div>
               <div class="metric-cell"><strong>10M+</strong><span data-i18n="kpi.social.views">Views op social media</span></div>
               <div class="metric-cell"><strong>1M+</strong><span data-i18n="metric.shoppers">Winkelaars bereikt</span></div>
               <div class="metric-cell"><strong>250+</strong><span data-i18n="kpi.franchise">Franchisers aangesloten in jaar 1</span></div>
@@ -922,6 +865,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             </div>
           </div>
         </div>
+        <!-- Panel 4: Statement -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement" data-i18n="fsg.statement">Jouw idee.<br><em>Onze uitvoering.</em><br>Eén krachtig resultaat.</p>
@@ -942,12 +886,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
       <div class="product-progress"></div>
       <div class="product-can-wrap">
         <div class="product-glow"></div>
-        <img src="images/beatbox_partypunch.png" alt="BeatBox Party Punch"
-          width="240" height="560"
-          loading="lazy" decoding="async"/>
+        <img src="images/beatbox_partypunch.png" alt="BeatBox Party Punch"/>
       </div>
       <div class="product-dots"></div>
       <div class="product-panels">
+        <!-- Panel 1: Intro -->
         <div class="product-panel product-left product-active">
           <div class="product-content">
             <span class="product-eyebrow">— BeatBox</span>
@@ -960,6 +903,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             </div>
           </div>
         </div>
+        <!-- Panel 2: KPIs -->
         <div class="product-panel product-left product-kpi-panel" style="flex-direction:column;align-items:flex-start;padding-top:0">
           <div style="position:relative;z-index:30;width:min(880px,88vw)">
             <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="bb.eyebrow2">✦ Groei met BINC</span>
@@ -970,10 +914,17 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
               <div class="product-kpi"><div class="product-kpi-v">2026</div><div class="product-kpi-ghost">26</div><div class="product-kpi-l" data-i18n="kpi.bb.start">Start retailuitrol Nederland</div></div>
               <div class="product-kpi"><div class="product-kpi-v">200+</div><div class="product-kpi-ghost">200</div><div class="product-kpi-l" data-i18n="kpi.bb.points">Actieve verkooppunten</div></div>
               <div class="product-kpi"><div class="product-kpi-v">Actief</div><div class="product-kpi-ghost">HT</div><div class="product-kpi-l" data-i18n="kpi.bb.locations">Op strategische locaties</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">2</div><div class="product-kpi-ghost">2</div><div class="product-kpi-l">Retailkanalen live</div></div>
+              <div class="product-kpi">
+  <div class="product-kpi-v">2</div>
+  <div class="product-kpi-ghost">2</div>
+  <div class="product-kpi-l">
+    Retailkanalen live
+  </div>
+</div>
             </div>
           </div>
         </div>
+        <!-- Panel 3: Results -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow" data-i18n="bb.results.eyebrow">✦ Resultaten · BeatBox</span>
@@ -981,13 +932,23 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             <div class="metric-wall bb-wall">
               <div class="metric-cell"><strong>2026</strong><span data-i18n="kpi.bb.start">Start retailuitrol Nederland</span></div>
               <div class="metric-cell"><strong>200+</strong><span data-i18n="kpi.bb.points">Actieve verkooppunten</span></div>
-              <div class="metric-cell"><strong>500K+</strong><span>Winkelaars bereikt</span></div>
-              <div class="metric-cell"><strong>2</strong><span>Retailkanalen live</span></div>
+             <div class="metric-cell">
+  <strong>500K+</strong>
+  <span>Winkelaars bereikt</span>
+</div>
+              <div class="metric-cell">
+  <strong>2</strong>
+  <span>Retailkanalen live</span>
+</div>
               <div class="metric-cell"><strong>actief</strong><span data-i18n="kpi.bb.locations">Op strategische locaties</span></div>
-              <div class="metric-cell"><strong>5M+</strong><span>Views op social media</span></div>
+              <div class="metric-cell">
+  <strong>5M+</strong>
+  <span>Views op social media</span>
+</div>
             </div>
           </div>
         </div>
+        <!-- Panel 4: Statement -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement" data-i18n="bb.statement">Jouw merk.<br><em>Onze passie.</em><br>Eén indruk die blijft.</p>
@@ -1008,12 +969,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
       <div class="product-progress"></div>
       <div class="product-can-wrap">
         <div class="product-glow"></div>
-        <img src="images/cleannutrition_bar.png" alt="Clean Nutrition Golden Bar"
-          width="340" height="340"
-          loading="lazy" decoding="async"/>
+        <img src="images/cleannutrition_bar.png" alt="Clean Nutrition Golden Bar"/>
       </div>
       <div class="product-dots"></div>
       <div class="product-panels">
+        <!-- Panel 1: Intro -->
         <div class="product-panel product-right product-active">
           <div class="product-content">
             <span class="product-eyebrow">— Clean Nutrition</span>
@@ -1026,6 +986,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             </div>
           </div>
         </div>
+        <!-- Panel 2: KPIs -->
         <div class="product-panel product-right product-kpi-panel" style="flex-direction:column;align-items:flex-end;padding-top:0">
           <div class="reverse-kpi-wrap" style="position:relative;z-index:30">
             <span class="product-eyebrow" style="margin-bottom:14px" data-i18n="cn.eyebrow2">✦ Groei met BINC</span>
@@ -1035,11 +996,18 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             <div class="product-kpis">
               <div class="product-kpi"><div class="product-kpi-v">2024</div><div class="product-kpi-ghost">24</div><div class="product-kpi-l" data-i18n="kpi.cn.start">Start samenwerking Nederland</div></div>
               <div class="product-kpi"><div class="product-kpi-v">750+</div><div class="product-kpi-ghost">750</div><div class="product-kpi-l" data-i18n="kpi.cn.stores">Filialen aangesloten</div></div>
-              <div class="product-kpi"><div class="product-kpi-v">1</div><div class="product-kpi-ghost">1</div><div class="product-kpi-l">Retailkanaal live</div></div>
+              <div class="product-kpi">
+  <div class="product-kpi-v">1</div>
+  <div class="product-kpi-ghost">1</div>
+  <div class="product-kpi-l">
+    Retailkanaal live
+  </div>
+</div>
               <div class="product-kpi"><div class="product-kpi-v">Groei</div><div class="product-kpi-ghost">G</div><div class="product-kpi-l" data-i18n="kpi.cn.growth">Doorlopende uitbreiding in retailkanalen</div></div>
             </div>
           </div>
         </div>
+        <!-- Panel 3: Results -->
         <div class="product-panel product-center results-panel">
           <div class="results-panel-inner">
             <span class="results-eyebrow" data-i18n="cn.results.eyebrow">✦ Resultaten · Clean Nutrition</span>
@@ -1047,13 +1015,23 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
             <div class="metric-wall cn-wall">
               <div class="metric-cell"><strong>2024</strong><span data-i18n="kpi.cn.start">Start samenwerking Nederland</span></div>
               <div class="metric-cell"><strong>750+</strong><span data-i18n="kpi.cn.stores">Filialen aangesloten</span></div>
-              <div class="metric-cell"><strong>1M+</strong><span>Winkelaars bereikt</span></div>
+             <div class="metric-cell">
+  <strong>1M+</strong>
+  <span>Winkelaars bereikt</span>
+</div>
               <div class="metric-cell"><strong>Groei</strong><span data-i18n="kpi.cn.growth">Doorlopende uitbreiding in retailkanalen</span></div>
-              <div class="metric-cell"><strong>20M+</strong><span>Views op social media</span></div>
-              <div class="metric-cell"><strong>1</strong><span>Retailkanaal live</span></div>
+              <div class="metric-cell">
+  <strong>20M+</strong>
+  <span>Views op social media</span>
+</div>
+              <div class="metric-cell">
+  <strong>1</strong>
+  <span>Retailkanaal live</span>
+</div>
             </div>
           </div>
         </div>
+        <!-- Panel 4: Statement -->
         <div class="product-panel product-center">
           <div class="product-content">
             <p class="product-statement" data-i18n="cn.statement">Jouw merk.<br><em>Onze expertise.</em><br>Een resultaat dat overtuigt.</p>
@@ -1069,7 +1047,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="lead-wrap">
     <div class="lead-head reveal">
       <p class="label" data-i18n="lead.label">Ready for the next step?</p>
-      <h2 class="lead-title" id="leadTitle">WANT TO <span class="red">GROW</span><br>YOUR BRAND?</h2>
+  <h2 class="lead-title" id="leadTitle">
+  WANT TO <span class="red">GROW</span><br>YOUR BRAND?
+</h2>
       <p class="lead-copy" data-i18n="lead.copy">Wij ontzorgen de volledige B2B voor jouw merk. Van strategie en buyer outreach tot listing, inkoop en accountmanagement.</p>
     </div>
     <div class="lead-form reveal d2">
@@ -1124,19 +1104,15 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="ft-brand reveal">
-    <img class="ft-logo"
-      src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041"
-      alt="BINC International"
-      width="235" height="67"
-      loading="lazy" decoding="async"/>
+    <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
     <div class="ft-socials">
-      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
       </a>
-      <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" rel="noopener" aria-label="TikTok">
+      <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok">
         <svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg>
       </a>
-      <a href="https://www.instagram.com/binc_international/" target="_blank" rel="noopener" aria-label="Instagram">
+      <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram">
         <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
       </a>
     </div>
@@ -1167,158 +1143,315 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     PERFORMANCE: Leaflet JS lazy laden via IntersectionObserver
-     Wordt pas ingeladen als de kaart-sectie in beeld komt
-═══════════════════════════════════════════════════════ -->
-<script>
-(function(){
-  var leafletLoaded = false;
-  function loadLeaflet(callback){
-    if(leafletLoaded){ callback && callback(); return; }
-    leafletLoaded = true;
-    var s1 = document.createElement('script');
-    s1.src = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';
-    s1.onload = function(){
-      var s2 = document.createElement('script');
-      s2.src = 'https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js';
-      s2.onload = callback || function(){};
-      document.head.appendChild(s2);
-    };
-    document.head.appendChild(s1);
-  }
-
-  // Laad Leaflet als de kaart-sectie zichtbaar wordt
-  var mapEl = document.getElementById('storeMap');
-  if(mapEl && 'IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting){
-        io.disconnect();
-        loadLeaflet(function(){ window._leafletReady && window._leafletReady(); });
-      }
-    }, { rootMargin: '200px' }); // 200px voor de vouw alvast laden
-    io.observe(mapEl);
-  } else {
-    // Fallback: direct laden
-    window.addEventListener('load', function(){
-      loadLeaflet(function(){ window._leafletReady && window._leafletReady(); });
-    });
-  }
-})();
-</script>
-
 <script>
 /* ══════════════════════════════════════════════════
    TRANSLATIONS
 ══════════════════════════════════════════════════ */
 const TRANSLATIONS = {
   nl: {
-    'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Evenementen','nav.team':'Ons Team','nav.jobs':'Vacatures','nav.cta':'Samenwerken',
-    'gd.kpi.title':'Van nul\ntot landelijk.',
-    'hero.sub':'Wij ontzorgen de volledige B2B voor ambitieuze merken. Van eerste listing tot landelijke dekking.',
-    'hero.btn1':'Start samenwerking','hero.btn2':'Ontdek aanpak',
-    'tape.words':'Groei Je Merk|B2B Verkoop|Accountmanagement|Retail Listings|Landelijk Netwerk|Strategie & Groei',
-    'approach.label':'Our Approach','approach.title1':'HOW TO GROW','approach.title2':'YOUR BRAND?',
-    'map.heading':'Aangesloten filialen','map.live':'Live netwerk','map.tap':'Tik om de kaart te activeren','map.pop.label':'aangesloten locaties',
-    'approach.body1':'Retail is een spel van relaties, timing en strategie. In enkele jaren heeft BINC International een sterk netwerk opgebouwd binnen de grootste retailers, groothandels en supermarktketens van Nederland.',
-    'approach.body2':'Van foodservice tot sport, van drogisterij tot premium slijterijen: ons netwerk opent deuren waar anderen stoppen.',
-    'stats.partners':'Retailpartners','stats.stores':'Winkels aangesloten','stats.coverage':'Dekking over Nederland','stats.years':'Jaar ervaring in retail',
-    'clients.label':'TRUSTED BY','clients.title':'ONZE PARTNERS',
-    'pill.full':'Volledig','pill.managed':'ontzorgd','pill.national':'Landelijk','pill.network':'netwerk','pill.active':'actief','pill.packaging':'verpakking',
-    'kpi.months.national':'Maanden tot landelijk bereik','kpi.months.rollout':'Maanden tot landelijke uitrol','kpi.points':'Verkooppunten actief',
-    'kpi.growth':'Omzetgroei jaar 1→2','kpi.growth.y1':'Omzetgroei eerste jaar','kpi.chains':'Retailketens actief','kpi.repeat':'Repeat orders na pilot',
-    'kpi.social.views':'Views op social media','kpi.franchise':'Franchisers aangesloten in jaar 1',
-    'kpi.bb.start':'Start retailuitrol Nederland','kpi.bb.points':'Actieve verkooppunten','kpi.bb.locations':'Op strategische locaties','kpi.bb.proven':'Bewezen — sterke rotatie en marktvraag',
-    'kpi.cn.start':'Start samenwerking Nederland','kpi.cn.stores':'Filialen aangesloten','kpi.cn.sport':'Sterke positie in performance nutrition','kpi.cn.growth':'Doorlopende uitbreiding in retailkanalen',
-    'metric.years.partner':'Jaar actieve samenwerking','metric.points.national':'Verkooppunten landelijk','metric.growth.y1y2':'Omzetgroei jaar 1 naar 2',
-    'metric.chains.live':'Retailketens live','metric.months.coverage':'Maanden tot landelijke dekking','metric.b2b.binc':'B2B ontzorgd door BINC',
-    'metric.channels.live':'Retailkanalen live','metric.units.first':'Units eerste retailronde','metric.shoppers':'Winkelaars bereikt',
-    'metric.store.visits':'Winkelbezoeken','metric.trays':'Trays verkocht in jaar 1','metric.bb.multichannel':'Actief binnen retail, horeca en specialty stores',
-    'metric.bb.premium':'Geplaatst bij retailers met hoge merkzichtbaarheid','metric.cn.repeat':'Consistente vraag vanuit retailers','metric.cn.partners':'Retailpartners',
-    'gd.intro':'BINC International verzorgt al meer dan 3 jaar de volledige B2B voor Gold Dry. Van strategie en buyer outreach tot fysieke locatiebezoeken, orderverwerking en accountmanagement.',
-    'gd.pill1':'jaar partner','gd.eyebrow2':'✦ Groei met BINC','gd.kpi.body':'Van eerste retailer naar landelijke dekking in 10 maanden, gebouwd op sterke rotatie.',
-    'gd.results.eyebrow':'✦ Resultaten · 3 jaar Gold Dry','gd.results.title':'Gold Dry\nin cijfers.','gd.statement':'Jouw merk.\nOnze handen.\nEén resultaat.',
-    'fsg.title.sub':'FEELSOGOOD.',
-    'fsg.intro':'BINC International is verantwoordelijk voor de volledige B2B-uitrol van FeelSoGood in Nederland. Van het eerste buyer gesprek tot de schappresentatie en repeat orders.',
-    'fsg.eyebrow2':'✦ Groei met BINC','fsg.kpi.title':'Sneller\ndan verwacht.',
-    'fsg.kpi.body':'Sneller opgeschaald dan verwacht, dankzij directe retailvalidatie en sterke prestaties op de winkelvloer.',
-    'fsg.results.eyebrow':'✦ Resultaten · FeelSoGood','fsg.results.title':'FeelSoGood\nin cijfers.','fsg.statement':'Jouw idee.\nOnze uitvoering.\nEén krachtig resultaat.',
-    'bb.intro':'BINC International verzorgt de volledige B2B voor BeatBox in Nederland. Van de eerste retailpitch tot leveringen, locatiebezoeken en doorlopend accountmanagement.',
-    'bb.eyebrow2':'✦ Groei met BINC','bb.kpi.title':'Slim groeien.\nSnel bewezen.',
-    'bb.kpi.body':'Sinds de start van onze samenwerking in 2026 groeide BeatBox uit van een gerichte retailintroductie naar meer dan 200 actieve verkooppunten in Nederland. Door slim te starten op high-traffic locaties ontstond snel retailvalidatie en schaalbare groei.',
-    'bb.results.eyebrow':'✦ Resultaten · BeatBox','bb.results.title':'BeatBox\nin cijfers.','bb.statement':'Jouw merk.\nOnze passie.\nEén indruk die blijft.',
-    'cn.title.sub':'CLEAN NUTRITION.','cn.intro':'Van sportretail tot supermarkt: BINC International bouwt actief aan de distributie en groei van Clean Nutrition.',
-    'cn.assortment':'Uitgebreid assortiment','cn.channel':'Gebouwd voor retail','cn.eyebrow2':'✦ Groei met BINC','cn.kpi.title':'Slim gebouwd\nop performance.',
-    'cn.kpi.body':'Sinds 2024 ondersteunt BINC International de volledige retailgroei van Clean Nutrition binnen Nederland. Vanuit een eerste retailpartner groeide het merk door naar honderden aangesloten filialen verspreid over meerdere retailkanalen.',
-    'cn.results.eyebrow':'✦ Resultaten · Clean Nutrition','cn.results.title':'Clean Nutrition\nin cijfers.','cn.statement':'Jouw product.\nOnze strategie.\nGroei die zichtbaar wordt.',
-    'lead.label':'Ready for the next step?',
-    'lead.copy':'Wij ontzorgen de volledige B2B voor jouw merk. Van strategie en buyer outreach tot listing, inkoop en accountmanagement.',
-    'form.firstname':'Voornaam *','form.firstname.ph':'Jan','form.lastname':'Achternaam *','form.lastname.ph':'de Vries',
-    'form.company':'Bedrijfsnaam','form.company.ph':'Jouw Merk BV','form.email':'E-mailadres *','form.email.ph':'jan@jouwmerk.nl',
-    'form.phone':'Telefoonnummer','form.category':'Productcategorie','form.category.select':'Selecteer categorie',
-    'form.cat1':'Food & Dranken','form.cat2':'Supplements / Health','form.cat3':'Personal Care / Beauty','form.cat4':'Sport & Outdoor','form.cat5':'Anders',
-    'form.message':'Vertel ons over jouw merk','form.message.ph':'Wat is jouw product en wat zijn jouw ambities in retail?',
-    'form.submit':'Verstuur aanvraag →','form.sending':'Versturen...','form.sent':'✓ Aanvraag verstuurd','form.retry':'Opnieuw proberen →',
-    'form.success.msg':'✓  Aanvraag ontvangen! We nemen zo snel mogelijk contact met je op.',
-    'form.error.required':'✕  Vul minimaal je voornaam, achternaam en e-mailadres in.',
-    'form.error.generic':'✕  Er is iets misgegaan. Probeer het opnieuw of mail naar info@bincinternational.nl',
-    'footer.tagline':'Van eerste listing tot landelijke dekking — wij bouwen jouw merk in retail.',
-    'footer.tagline.short':'Full-service B2B voor ambitieuze merken in Nederland.',
-    'footer.address.label':'BINC adres','footer.email.label':'E-mailadres','footer.phone.label':'Telefoonnummer','footer.rights':'Alle rechten voorbehouden.',
+    /* NAV */
+    'nav.retail':           'Retail',
+    'nav.horeca':           'Horeca',
+    'nav.events':           'Evenementen',
+    'nav.team':             'Ons Team',
+    'nav.jobs':             'Vacatures',
+    'nav.cta':              'Samenwerken',
+    'gd.kpi.title': 'Van nul\ntot landelijk.',
+    /* HERO */
+    'hero.sub':             'Wij ontzorgen de volledige B2B voor ambitieuze merken. Van eerste listing tot landelijke dekking.',
+    'hero.btn1':            'Start samenwerking',
+    'hero.btn2':            'Ontdek aanpak',
+    /* TAPE */
+    'tape.words':           'Groei Je Merk|B2B Verkoop|Accountmanagement|Retail Listings|Landelijk Netwerk|Strategie & Groei',
+    /* APPROACH */
+    'approach.label':       'Our Approach',
+    'approach.title1':      'HOW TO GROW',
+    'approach.title2':      'YOUR BRAND?',
+    /* MAP */
+    'map.heading':          'Aangesloten filialen',
+    'map.live':             'Live netwerk',
+    'map.tap':              'Tik om de kaart te activeren',
+    'map.pop.label':        'aangesloten locaties',
+    /* APPROACH BODY */
+    'approach.body1':       'Retail is een spel van relaties, timing en strategie. In enkele jaren heeft BINC International een sterk netwerk opgebouwd binnen de grootste retailers, groothandels en supermarktketens van Nederland.',
+    'approach.body2':       'Van foodservice tot sport, van drogisterij tot premium slijterijen: ons netwerk opent deuren waar anderen stoppen.',
+    /* STATS */
+    'stats.partners':       'Retailpartners',
+    'stats.stores':         'Winkels aangesloten',
+    'stats.coverage':       'Dekking over Nederland',
+    'stats.years':          'Jaar ervaring in retail',
+    /* CLIENTS */
+    'clients.label':        'TRUSTED BY',
+    'clients.title':        'ONZE PARTNERS',
+    /* SHARED PILLS */
+    'pill.full':            'Volledig',
+    'pill.managed':         'ontzorgd',
+    'pill.national':        'Landelijk',
+    'pill.network':         'netwerk',
+    'pill.active':          'actief',
+    'pill.packaging':       'verpakking',
+    /* SHARED KPI LABELS */
+    'kpi.months.national':  'Maanden tot landelijk bereik',
+    'kpi.months.rollout':   'Maanden tot landelijke uitrol',
+    'kpi.points':           'Verkooppunten actief',
+    'kpi.growth':           'Omzetgroei jaar 1→2',
+    'kpi.growth.y1':        'Omzetgroei eerste jaar',
+    'kpi.chains':           'Retailketens actief',
+    'kpi.repeat':           'Repeat orders na pilot',
+    'kpi.social.views':     'Views op social media',
+    'kpi.franchise':        'Franchisers aangesloten in jaar 1',
+    /* BEATBOX KPIs */
+    'kpi.bb.start':         'Start retailuitrol Nederland',
+    'kpi.bb.points':        'Actieve verkooppunten',
+    'kpi.bb.locations':     'Op strategische locaties',
+    'kpi.bb.proven':        'Bewezen — sterke rotatie en marktvraag',
+    /* CLEAN NUTRITION KPIs */
+    'kpi.cn.start':         'Start samenwerking Nederland',
+    'kpi.cn.stores':        'Filialen aangesloten',
+    'kpi.cn.sport':         'Sterke positie in performance nutrition',
+    'kpi.cn.growth':        'Doorlopende uitbreiding in retailkanalen',
+    /* SHARED METRIC LABELS */
+    'metric.years.partner': 'Jaar actieve samenwerking',
+    'metric.points.national':'Verkooppunten landelijk',
+    'metric.growth.y1y2':   'Omzetgroei jaar 1 naar 2',
+    'metric.chains.live':   'Retailketens live',
+    'metric.months.coverage':'Maanden tot landelijke dekking',
+    'metric.b2b.binc':      'B2B ontzorgd door BINC',
+    'metric.channels.live': 'Retailkanalen live',
+    'metric.units.first':   'Units eerste retailronde',
+    'metric.shoppers':      'Winkelaars bereikt',
+    'metric.store.visits':  'Winkelbezoeken',
+    'metric.trays':         'Trays verkocht in jaar 1',
+    'metric.bb.multichannel':'Actief binnen retail, horeca en specialty stores',
+    'metric.bb.premium':    'Geplaatst bij retailers met hoge merkzichtbaarheid',
+    'metric.cn.repeat':     'Consistente vraag vanuit retailers',
+    'metric.cn.partners':   'Retailpartners',
+    /* GOLD DRY */
+    'gd.intro':             'BINC International verzorgt al meer dan 3 jaar de volledige B2B voor Gold Dry. Van strategie en buyer outreach tot fysieke locatiebezoeken, orderverwerking en accountmanagement.',
+    'gd.pill1':             'jaar partner',
+    'gd.eyebrow2':          '✦ Groei met BINC',
+    'gd.kpi.title':         'Van nul\ntot landelijk.',
+    'gd.kpi.body':          'Van eerste retailer naar landelijke dekking in 10 maanden, gebouwd op sterke rotatie.',
+    'gd.results.eyebrow':   '✦ Resultaten · 3 jaar Gold Dry',
+    'gd.results.title':     'Gold Dry\nin cijfers.',
+    'gd.statement':         'Jouw merk.\nOnze handen.\nEén resultaat.',
+    /* FEELSOGOOD */
+    'fsg.title.sub':        'FEELSOGOOD.',
+    'fsg.intro':            'BINC International is verantwoordelijk voor de volledige B2B-uitrol van FeelSoGood in Nederland. Van het eerste buyer gesprek tot de schappresentatie en repeat orders.',
+    'fsg.eyebrow2':         '✦ Groei met BINC',
+    'fsg.kpi.title':        'Sneller\ndan verwacht.',
+    'fsg.kpi.body':         'Sneller opgeschaald dan verwacht, dankzij directe retailvalidatie en sterke prestaties op de winkelvloer.',
+    'fsg.results.eyebrow':  '✦ Resultaten · FeelSoGood',
+    'fsg.results.title':    'FeelSoGood\nin cijfers.',
+    'fsg.statement':        'Jouw idee.\nOnze uitvoering.\nEén krachtig resultaat.',
+    /* BEATBOX */
+    'bb.intro':             'BINC International verzorgt de volledige B2B voor BeatBox in Nederland. Van de eerste retailpitch tot leveringen, locatiebezoeken en doorlopend accountmanagement.',
+    'bb.eyebrow2':          '✦ Groei met BINC',
+    'bb.kpi.title':         'Slim groeien.\nSnel bewezen.',
+    'bb.kpi.body':          'Sinds de start van onze samenwerking in 2026 groeide BeatBox uit van een gerichte retailintroductie naar meer dan 200 actieve verkooppunten in Nederland. Door slim te starten op high-traffic locaties ontstond snel retailvalidatie en schaalbare groei.',
+    'bb.results.eyebrow':   '✦ Resultaten · BeatBox',
+    'bb.results.title':     'BeatBox\nin cijfers.',
+    'bb.statement':         'Jouw merk.\nOnze passie.\nEén indruk die blijft.',
+    /* CLEAN NUTRITION */
+    'cn.title.sub':         'CLEAN NUTRITION.',
+    'cn.intro':             'Van sportretail tot supermarkt: BINC International bouwt actief aan de distributie en groei van Clean Nutrition.',
+    'cn.assortment':        'Uitgebreid assortiment',
+    'cn.channel':           'Gebouwd voor retail',
+    'cn.eyebrow2':          '✦ Groei met BINC',
+    'cn.kpi.title':         'Slim gebouwd\nop performance.',
+    'cn.kpi.body':          'Sinds 2024 ondersteunt BINC International de volledige retailgroei van Clean Nutrition binnen Nederland. Vanuit een eerste retailpartner groeide het merk door naar honderden aangesloten filialen verspreid over meerdere retailkanalen.',
+    'cn.results.eyebrow':   '✦ Resultaten · Clean Nutrition',
+    'cn.results.title':     'Clean Nutrition\nin cijfers.',
+    'cn.statement':         'Jouw product.\nOnze strategie.\nGroei die zichtbaar wordt.',
+    /* LEAD */
+    'lead.label':           'Ready for the next step?',
+    'lead.copy':            'Wij ontzorgen de volledige B2B voor jouw merk. Van strategie en buyer outreach tot listing, inkoop en accountmanagement.',
+    /* FORM */
+    'form.firstname':       'Voornaam *',
+    'form.firstname.ph':    'Jan',
+    'form.lastname':        'Achternaam *',
+    'form.lastname.ph':     'de Vries',
+    'form.company':         'Bedrijfsnaam',
+    'form.company.ph':      'Jouw Merk BV',
+    'form.email':           'E-mailadres *',
+    'form.email.ph':        'jan@jouwmerk.nl',
+    'form.phone':           'Telefoonnummer',
+    'form.category':        'Productcategorie',
+    'form.category.select': 'Selecteer categorie',
+    'form.cat1':            'Food & Dranken',
+    'form.cat2':            'Supplements / Health',
+    'form.cat3':            'Personal Care / Beauty',
+    'form.cat4':            'Sport & Outdoor',
+    'form.cat5':            'Anders',
+    'form.message':         'Vertel ons over jouw merk',
+    'form.message.ph':      'Wat is jouw product en wat zijn jouw ambities in retail?',
+    'form.submit':          'Verstuur aanvraag →',
+    'form.sending':         'Versturen...',
+    'form.sent':            '✓ Aanvraag verstuurd',
+    'form.retry':           'Opnieuw proberen →',
+    'form.success.msg':     '✓  Aanvraag ontvangen! We nemen zo snel mogelijk contact met je op.',
+    'form.error.required':  '✕  Vul minimaal je voornaam, achternaam en e-mailadres in.',
+    'form.error.generic':   '✕  Er is iets misgegaan. Probeer het opnieuw of mail naar info@bincinternational.nl',
+    /* FOOTER */
+    'footer.tagline':       'Van eerste listing tot landelijke dekking — wij bouwen jouw merk in retail.',
+    'footer.tagline.short': 'Full-service B2B voor ambitieuze merken in Nederland.',
+    'footer.address.label': 'BINC adres',
+    'footer.email.label':   'E-mailadres',
+    'footer.phone.label':   'Telefoonnummer',
+    'footer.rights':        'Alle rechten voorbehouden.',
   },
+
   en: {
-    'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Events','nav.team':'Our Team','nav.jobs':'Careers','nav.cta':'Work With Us',
-    'gd.kpi.title':'From zero\nto nationwide.',
-    'hero.sub':'We handle the full B2B for ambitious brands. From first listing to national coverage.',
-    'hero.btn1':'Start partnership','hero.btn2':'Discover our approach',
-    'tape.words':'Grow Your Brand|B2B Sales|Account Management|Retail Listings|National Network|Strategy & Growth',
-    'approach.label':'Our approach','approach.title1':'HOW TO GROW','approach.title2':'YOUR BRAND?',
-    'map.heading':'Connected locations','map.live':'Live network','map.tap':'Tap to activate the map','map.pop.label':'connected locations',
-    'approach.body1':'Retail is a game of relationships, timing and strategy. In just a few years, BINC International has built a strong network within the largest retailers, wholesalers and supermarket chains in the Netherlands.',
-    'approach.body2':'From foodservice to sports, from pharmacy to premium liquor stores: our network opens doors where others stop.',
-    'stats.partners':'Retail partners','stats.stores':'Stores connected','stats.coverage':'Coverage across the Netherlands','stats.years':'Years of retail experience',
-    'clients.label':'TRUSTED BY','clients.title':'OUR CLIENTS',
-    'pill.full':'Full','pill.managed':'managed','pill.national':'National','pill.network':'network','pill.active':'active','pill.packaging':'packaging',
-    'kpi.months.national':'Months to national reach','kpi.months.rollout':'Months to national rollout','kpi.points':'Active sales points',
-    'kpi.growth':'Revenue growth year 1→2','kpi.growth.y1':'Revenue growth first year','kpi.chains':'Retail chains active','kpi.repeat':'Repeat orders after pilot',
-    'kpi.social.views':'Social media views','kpi.franchise':'Franchisers connected in year 1',
-    'kpi.bb.start':'Start retail rollout Netherlands','kpi.bb.points':'Active sales points','kpi.bb.locations':'Started at strategic locations','kpi.bb.proven':'Proven — strong rotation and market demand',
-    'kpi.cn.start':'Partnership started Netherlands','kpi.cn.stores':'Stores connected','kpi.cn.sport':'Strong position in performance nutrition','kpi.cn.growth':'Ongoing expansion across retail channels',
-    'metric.years.partner':'Years active partnership','metric.points.national':'Sales points nationwide','metric.growth.y1y2':'Revenue growth year 1 to 2',
-    'metric.chains.live':'Retail chains live','metric.months.coverage':'Months to national coverage','metric.b2b.binc':'B2B fully handled by BINC',
-    'metric.channels.live':'Retail channels live','metric.units.first':'Units in first retail round','metric.shoppers':'Shoppers reached',
-    'metric.store.visits':'Store visits','metric.trays':'Trays sold in year 1','metric.bb.multichannel':'Active in retail, horeca and specialty stores',
-    'metric.bb.premium':'Placed at retailers with high brand visibility','metric.cn.repeat':'Consistent demand from retailers','metric.cn.partners':'Retail partners',
-    'gd.intro':'BINC International has been handling the complete B2B for Gold Dry for over 3 years. From strategy and buyer outreach to in-store visits, order processing and account management.',
-    'gd.pill1':'year partner','gd.eyebrow2':'✦ Growth with BINC','gd.kpi.body':'From first retailer to national coverage in 10 months, built on strong shelf rotation.',
-    'gd.results.eyebrow':'✦ Results · 3 years Gold Dry','gd.results.title':'Gold Dry\nby the numbers.','gd.statement':'Your brand.\nOur hands.\nOne result.',
-    'fsg.title.sub':'FEELSOGOOD.',
-    'fsg.intro':'BINC International is responsible for the full B2B rollout of FeelSoGood in the Netherlands. From the first buyer meeting to shelf presentation and repeat orders.',
-    'fsg.eyebrow2':'✦ Growth with BINC','fsg.kpi.title':'Faster\nthan expected.',
-    'fsg.kpi.body':'Scaled faster than expected, thanks to direct retail validation and strong in-store performance.',
-    'fsg.results.eyebrow':'✦ Results · FeelSoGood','fsg.results.title':'FeelSoGood\nby the numbers.','fsg.statement':'Your idea.\nOur execution.\nOne powerful result.',
-    'bb.intro':'BINC International handles the complete B2B for BeatBox in the Netherlands. From the first retail pitch to deliveries, location visits and ongoing account management.',
-    'bb.eyebrow2':'✦ Growth with BINC','bb.kpi.title':'Smart growth.\nQuickly proven.',
-    'bb.kpi.body':'Since the start of our partnership in 2026, BeatBox has grown from a targeted retail introduction to over 200 active sales points in the Netherlands. By starting smart at high-traffic locations, retail validation came quickly and scalable growth followed.',
-    'bb.results.eyebrow':'✦ Results · BeatBox','bb.results.title':'BeatBox\nby the numbers.','bb.statement':'Your brand.\nOur passion.\nOne impression that lasts.',
-    'cn.title.sub':'CLEAN NUTRITION.','cn.intro':'From sports retail to supermarket: BINC International actively builds distribution and growth for Clean Nutrition.',
-    'cn.assortment':'Full assortment','cn.channel':'Built for retail','cn.eyebrow2':'✦ Growth with BINC','cn.kpi.title':'Built smart\nfor performance.',
-    'cn.kpi.body':'Since 2024, BINC International has supported the full retail growth of Clean Nutrition across the Netherlands. From one retail partner, the brand grew to hundreds of connected stores across multiple retail channels.',
-    'cn.results.eyebrow':'✦ Results · Clean Nutrition','cn.results.title':'Clean Nutrition\nby the numbers.','cn.statement':'Your product.\nOur strategy.\nGrowth you can see.',
-    'lead.label':'Ready for the next step?',
-    'lead.copy':'We handle the complete B2B for your brand. From strategy and buyer outreach to listing, purchasing and account management.',
-    'form.firstname':'First name *','form.firstname.ph':'John','form.lastname':'Last name *','form.lastname.ph':'Smith',
-    'form.company':'Company name','form.company.ph':'Your Brand Ltd','form.email':'Email address *','form.email.ph':'john@yourbrand.com',
-    'form.phone':'Phone number','form.category':'Product category','form.category.select':'Select category',
-    'form.cat1':'Food & Beverages','form.cat2':'Supplements / Health','form.cat3':'Personal Care / Beauty','form.cat4':'Sport & Outdoor','form.cat5':'Other',
-    'form.message':'Tell us about your brand','form.message.ph':'What is your product and what are your retail ambitions?',
-    'form.submit':'Send request →','form.sending':'Sending...','form.sent':'✓ Request sent','form.retry':'Try again →',
-    'form.success.msg':'✓  Request received! We will get back to you as soon as possible.',
-    'form.error.required':'✕  Please fill in at least your first name, last name and email address.',
-    'form.error.generic':'✕  Something went wrong. Please try again or email info@bincinternational.nl',
-    'footer.tagline':'From first listing to national coverage — we build your brand in retail.',
-    'footer.tagline.short':'Full-service B2B for ambitious brands across the Netherlands.',
-    'footer.address.label':'BINC address','footer.email.label':'Email address','footer.phone.label':'Phone number','footer.rights':'All rights reserved.',
+    /* NAV */
+    'nav.retail':           'Retail',
+    'nav.horeca':           'Horeca',
+    'nav.events':           'Events',
+    'nav.team':             'Our Team',
+    'nav.jobs':             'Careers',
+    'nav.cta':              'Work With Us',
+    'gd.kpi.title': 'From zero\nto nationwide.',
+    /* HERO */
+    'hero.sub':             'We handle the full B2B for ambitious brands. From first listing to national coverage.',
+    'hero.btn1':            'Start partnership',
+    'hero.btn2':            'Discover our approach',
+    /* TAPE */
+    'tape.words':           'Grow Your Brand|B2B Sales|Account Management|Retail Listings|National Network|Strategy & Growth',
+    /* APPROACH */
+    'approach.label':       'Our approach',
+    'approach.title1':      'HOW TO GROW',
+    'approach.title2':      'YOUR BRAND?',
+    /* MAP */
+    'map.heading':          'Connected locations',
+    'map.live':             'Live network',
+    'map.tap':              'Tap to activate the map',
+    'map.pop.label':        'connected locations',
+    /* APPROACH BODY */
+    'approach.body1':       'Retail is a game of relationships, timing and strategy. In just a few years, BINC International has built a strong network within the largest retailers, wholesalers and supermarket chains in the Netherlands.',
+    'approach.body2':       'From foodservice to sports, from pharmacy to premium liquor stores: our network opens doors where others stop.',
+    /* STATS */
+    'stats.partners':       'Retail partners',
+    'stats.stores':         'Stores connected',
+    'stats.coverage':       'Coverage across the Netherlands',
+    'stats.years':          'Years of retail experience',
+    /* CLIENTS */
+    'clients.label':        'TRUSTED BY',
+    'clients.title':        'OUR CLIENTS',
+    /* SHARED PILLS */
+    'pill.full':            'Full',
+    'pill.managed':         'managed',
+    'pill.national':        'National',
+    'pill.network':         'network',
+    'pill.active':          'active',
+    'pill.packaging':       'packaging',
+    /* SHARED KPI LABELS */
+    'kpi.months.national':  'Months to national reach',
+    'kpi.months.rollout':   'Months to national rollout',
+    'kpi.points':           'Active sales points',
+    'kpi.growth':           'Revenue growth year 1→2',
+    'kpi.growth.y1':        'Revenue growth first year',
+    'kpi.chains':           'Retail chains active',
+    'kpi.repeat':           'Repeat orders after pilot',
+    'kpi.social.views':     'Social media views',
+    'kpi.franchise':        'Franchisers connected in year 1',
+    /* BEATBOX KPIs */
+    'kpi.bb.start':         'Start retail rollout Netherlands',
+    'kpi.bb.points':        'Active sales points',
+    'kpi.bb.locations':     'Started at strategic locations',
+    'kpi.bb.proven':        'Proven — strong rotation and market demand',
+    /* CLEAN NUTRITION KPIs */
+    'kpi.cn.start':         'Partnership started Netherlands',
+    'kpi.cn.stores':        'Stores connected',
+    'kpi.cn.sport':         'Strong position in performance nutrition',
+    'kpi.cn.growth':        'Ongoing expansion across retail channels',
+    /* SHARED METRIC LABELS */
+    'metric.years.partner': 'Years active partnership',
+    'metric.points.national':'Sales points nationwide',
+    'metric.growth.y1y2':   'Revenue growth year 1 to 2',
+    'metric.chains.live':   'Retail chains live',
+    'metric.months.coverage':'Months to national coverage',
+    'metric.b2b.binc':      'B2B fully handled by BINC',
+    'metric.channels.live': 'Retail channels live',
+    'metric.units.first':   'Units in first retail round',
+    'metric.shoppers':      'Shoppers reached',
+    'metric.store.visits':  'Store visits',
+    'metric.trays':         'Trays sold in year 1',
+    'metric.bb.multichannel':'Active in retail, horeca and specialty stores',
+    'metric.bb.premium':    'Placed at retailers with high brand visibility',
+    'metric.cn.repeat':     'Consistent demand from retailers',
+    'metric.cn.partners':   'Retail partners',
+    /* GOLD DRY */
+    'gd.intro':             'BINC International has been handling the complete B2B for Gold Dry for over 3 years. From strategy and buyer outreach to in-store visits, order processing and account management.',
+    'gd.pill1':             'year partner',
+    'gd.eyebrow2':          '✦ Growth with BINC',
+    'gd.kpi.title':         'From zero\nto national.',
+    'gd.kpi.body':          'From first retailer to national coverage in 10 months, built on strong shelf rotation.',
+    'gd.results.eyebrow':   '✦ Results · 3 years Gold Dry',
+    'gd.results.title':     'Gold Dry\nby the numbers.',
+    'gd.statement':         'Your brand.\nOur hands.\nOne result.',
+    /* FEELSOGOOD */
+    'fsg.title.sub':        'FEELSOGOOD.',
+    'fsg.intro':            'BINC International is responsible for the full B2B rollout of FeelSoGood in the Netherlands. From the first buyer meeting to shelf presentation and repeat orders.',
+    'fsg.eyebrow2':         '✦ Growth with BINC',
+    'fsg.kpi.title':        'Faster\nthan expected.',
+    'fsg.kpi.body':         'Scaled faster than expected, thanks to direct retail validation and strong in-store performance.',
+    'fsg.results.eyebrow':  '✦ Results · FeelSoGood',
+    'fsg.results.title':    'FeelSoGood\nby the numbers.',
+    'fsg.statement':        'Your idea.\nOur execution.\nOne powerful result.',
+    /* BEATBOX */
+    'bb.intro':             'BINC International handles the complete B2B for BeatBox in the Netherlands. From the first retail pitch to deliveries, location visits and ongoing account management.',
+    'bb.eyebrow2':          '✦ Growth with BINC',
+    'bb.kpi.title':         'Smart growth.\nQuickly proven.',
+    'bb.kpi.body':          'Since the start of our partnership in 2026, BeatBox has grown from a targeted retail introduction to over 200 active sales points in the Netherlands. By starting smart at high-traffic locations, retail validation came quickly and scalable growth followed.',
+    'bb.results.eyebrow':   '✦ Results · BeatBox',
+    'bb.results.title':     'BeatBox\nby the numbers.',
+    'bb.statement':         'Your brand.\nOur passion.\nOne impression that lasts.',
+    /* CLEAN NUTRITION */
+    'cn.title.sub':         'CLEAN NUTRITION.',
+    'cn.intro':             'From sports retail to supermarket: BINC International actively builds distribution and growth for Clean Nutrition.',
+    'cn.assortment':        'Full assortment',
+    'cn.channel':           'Built for retail',
+    'cn.eyebrow2':          '✦ Growth with BINC',
+    'cn.kpi.title':         'Built smart\nfor performance.',
+    'cn.kpi.body':          'Since 2024, BINC International has supported the full retail growth of Clean Nutrition across the Netherlands. From one retail partner, the brand grew to hundreds of connected stores across multiple retail channels.',
+    'cn.results.eyebrow':   '✦ Results · Clean Nutrition',
+    'cn.results.title':     'Clean Nutrition\nby the numbers.',
+    'cn.statement':         'Your product.\Our strategy.\nGrowth you can see.',
+    /* LEAD */
+    'lead.label':           'Ready for the next step?',
+    'lead.copy':            'We handle the complete B2B for your brand. From strategy and buyer outreach to listing, purchasing and account management.',
+    /* FORM */
+    'form.firstname':       'First name *',
+    'form.firstname.ph':    'John',
+    'form.lastname':        'Last name *',
+    'form.lastname.ph':     'Smith',
+    'form.company':         'Company name',
+    'form.company.ph':      'Your Brand Ltd',
+    'form.email':           'Email address *',
+    'form.email.ph':        'john@yourbrand.com',
+    'form.phone':           'Phone number',
+    'form.category':        'Product category',
+    'form.category.select': 'Select category',
+    'form.cat1':            'Food & Beverages',
+    'form.cat2':            'Supplements / Health',
+    'form.cat3':            'Personal Care / Beauty',
+    'form.cat4':            'Sport & Outdoor',
+    'form.cat5':            'Other',
+    'form.message':         'Tell us about your brand',
+    'form.message.ph':      'What is your product and what are your retail ambitions?',
+    'form.submit':          'Send request →',
+    'form.sending':         'Sending...',
+    'form.sent':            '✓ Request sent',
+    'form.retry':           'Try again →',
+    'form.success.msg':     '✓  Request received! We will get back to you as soon as possible.',
+    'form.error.required':  '✕  Please fill in at least your first name, last name and email address.',
+    'form.error.generic':   '✕  Something went wrong. Please try again or email info@bincinternational.nl',
+    /* FOOTER */
+    'footer.tagline':       'From first listing to national coverage — we build your brand in retail.',
+    'footer.tagline.short': 'Full-service B2B for ambitious brands across the Netherlands.',
+    'footer.address.label': 'BINC address',
+    'footer.email.label':   'Email address',
+    'footer.phone.label':   'Phone number',
+    'footer.rights':        'All rights reserved.',
   }
 };
 
@@ -1326,39 +1459,70 @@ const TRANSLATIONS = {
    LANGUAGE ENGINE
 ══════════════════════════════════════════════════ */
 let currentLang = localStorage.getItem('binc_lang') || 'nl';
-function t(key){ return (TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang][key])||(TRANSLATIONS['nl'][key])||key; }
 
-function updateSpecialElements(lang){
-  const heroTitle = document.getElementById('heroTitle');
-  if(heroTitle) heroTitle.innerHTML = 'GROW <span class="red">YOUR</span><br><span class="stroke">BRAND</span>';
-  const leadTitle = document.getElementById('leadTitle');
-  if(leadTitle) leadTitle.innerHTML = 'WANT TO <span class="red">GROW</span><br>YOUR BRAND?';
+function t(key) {
+  return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) || (TRANSLATIONS['nl'][key]) || key;
 }
 
-function applyLang(lang){
+function updateSpecialElements(lang) {
+  /* Hero title — always English */
+  const heroTitle = document.getElementById('heroTitle');
+  if (heroTitle) {
+    heroTitle.innerHTML = 'GROW <span class="red">YOUR</span><br><span class="stroke">BRAND</span>';
+  }
+
+  /* Lead title */
+  const leadTitle = document.getElementById('leadTitle');
+  if (leadTitle) {
+    if (lang === 'en') {
+      leadTitle.innerHTML = 'WANT TO <span class="red">GROW</span><br>YOUR BRAND?';
+    } else {
+      leadTitle.innerHTML = 'WANT TO <span class="red">GROW</span><br>YOUR BRAND?';
+    }
+  }
+}
+
+function applyLang(lang) {
   currentLang = lang;
   localStorage.setItem('binc_lang', lang);
   document.documentElement.lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const key = el.getAttribute('data-i18n');
-    const val = t(key);
-    if(el.tagName==='P'&&el.classList.contains('product-statement')){
-      const parts = val.split('\n');
-      el.innerHTML = parts.map((p,i)=>i<parts.length-1?p+'<br>':`<em>${p}</em>`).join('');
-    } else {
-      el.innerHTML = val.replace(/\n/g,'<br>');
-    }
+
+document.querySelectorAll('[data-i18n]').forEach(el => {
+  const key = el.getAttribute('data-i18n');
+  const val = t(key);
+
+  if (el.tagName === 'P' && el.classList.contains('product-statement')) {
+    const parts = val.split('\n');
+    el.innerHTML = parts
+      .map((p, i) => i < parts.length - 1 ? p + '<br>' : `<em>${p}</em>`)
+      .join('');
+  } else {
+    el.innerHTML = val.replace(/\n/g, '<br>');
+  }
+});
+
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    el.placeholder = t(el.getAttribute('data-i18n-ph'));
   });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ el.placeholder = t(el.getAttribute('data-i18n-ph')); });
+
   updateSpecialElements(lang);
   buildTape();
-  document.querySelectorAll('.lang-btn').forEach(btn=>{ btn.classList.toggle('active', btn.dataset.lang===lang); });
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
   const formBtn = document.getElementById('formBtn');
-  if(formBtn&&!formBtn.disabled) formBtn.textContent = t('form.submit');
+  if (formBtn && !formBtn.disabled) {
+    formBtn.textContent = t('form.submit');
+  }
 }
 
-document.querySelectorAll('.lang-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{ applyLang(btn.dataset.lang); toggleDrawer(false); });
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    applyLang(btn.dataset.lang);
+    toggleDrawer(false);
+  });
 });
 
 /* ══════════════════════════════════════════════════
@@ -1372,170 +1536,189 @@ const API_URL = 'https://server-medewerker-kpi.onrender.com/api/contact';
 const cur  = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{ mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'; });
-(function animRing(){ rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing); })();
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+(function animRing(){ rx+=(mx-rx)*.11; ry+=(my-ry)*.11; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
 
 /* ══════════════════════════════════════════════════
    MOBILE NAV
 ══════════════════════════════════════════════════ */
 const hamburger = document.getElementById('navHamburger');
 const drawer    = document.getElementById('mobileDrawer');
-function toggleDrawer(open){
-  hamburger.classList.toggle('open',open);
-  drawer.classList.toggle('open',open);
-  document.body.style.overflow = open?'hidden':'';
+function toggleDrawer(open) {
+  hamburger.classList.toggle('open', open);
+  drawer.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
 }
-hamburger.addEventListener('click',()=>toggleDrawer(!drawer.classList.contains('open')));
-drawer.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>toggleDrawer(false)));
-drawer.addEventListener('click',e=>{ if(e.target===drawer) toggleDrawer(false); });
+hamburger.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
+drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', () => toggleDrawer(false)));
+drawer.addEventListener('click', e => { if(e.target===drawer) toggleDrawer(false); });
 
 /* ══════════════════════════════════════════════════
    NAV SCROLL
 ══════════════════════════════════════════════════ */
-window.addEventListener('scroll',()=>{ document.getElementById('nav').classList.toggle('scrolled',window.scrollY>70); },{passive:true});
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 70);
+}, { passive: true });
 
 /* ══════════════════════════════════════════════════
    SMOOTH SCROLL
 ══════════════════════════════════════════════════ */
-document.querySelectorAll('a[href^="#"]').forEach(link=>{
-  link.addEventListener('click',e=>{
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
     const href   = link.getAttribute('href');
     const target = document.querySelector(href);
-    if(!target) return;
+    if (!target) return;
     e.preventDefault();
     const navH = document.getElementById('nav').offsetHeight;
-    const top  = target.getBoundingClientRect().top+window.pageYOffset-navH;
-    if(href==='#lead'){
-      const overlay = document.getElementById('jumpOverlay');
-      overlay.classList.add('active');
-      setTimeout(()=>{
-        window.scrollTo({top,behavior:'auto'});
-        setTimeout(()=>{ overlay.classList.remove('active'); },1050);
-      },250);
-      return;
-    }
-    window.scrollTo({top,behavior:'smooth'});
+    const top  = target.getBoundingClientRect().top + window.pageYOffset - navH;
+    if (href === '#lead') {
+  const overlay = document.getElementById('jumpOverlay');
+  overlay.classList.add('active');
+
+  setTimeout(() => {
+    window.scrollTo({ top, behavior: 'auto' });
+
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 1050);
+
+  }, 250);
+
+  return;
+}
+    window.scrollTo({ top, behavior: 'smooth' });
   });
 });
 
 /* ══════════════════════════════════════════════════
    TAPE
 ══════════════════════════════════════════════════ */
-function buildTape(){
+function buildTape() {
   const words = t('tape.words').split('|');
   const ti    = document.getElementById('tapeInner');
-  const chunk = ()=>words.map(w=>`<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
-  ti.innerHTML = chunk()+chunk();
+  const chunk = () => words.map(w => `<span class="tape-item">${w}<span class="tape-dot"></span></span>`).join('');
+  ti.innerHTML = chunk() + chunk();
 }
 
 /* ══════════════════════════════════════════════════
-   MAP — wacht op Leaflet-load via _leafletReady callback
+   MAP
 ══════════════════════════════════════════════════ */
 let STORES = [];
-const isMobile = ()=>window.innerWidth<=1000;
+const isMobile = () => window.innerWidth <= 1000;
 let mapInstance = null;
 
-async function initMap(){
-  if(typeof L==='undefined') return;
+async function initMap() {
+  if (typeof L === 'undefined') return;
 
-  function createRedIcon(){
+  function createRedIcon() {
     return L.divIcon({
-      className:'',
-      html:`<div style="position:relative;width:16px;height:16px;transform:rotate(-45deg);background:linear-gradient(135deg,#e74c3c 0%,#c0392b 60%,#7f1d1d 100%);border-radius:50% 50% 50% 0;border:1.5px solid rgba(255,255,255,.65);box-shadow:0 0 18px rgba(192,57,43,.55),0 8px 18px rgba(0,0,0,.45);"><div style="position:absolute;width:8px;height:8px;background:#111;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);"></div></div>`,
-      iconSize:[22,22],iconAnchor:[11,22],popupAnchor:[0,-22]
+      className: '',
+      html: `<div style="position:relative;width:16px;height:16px;transform:rotate(-45deg);background:linear-gradient(135deg,#e74c3c 0%,#c0392b 60%,#7f1d1d 100%);border-radius:50% 50% 50% 0;border:1.5px solid rgba(255,255,255,.65);box-shadow:0 0 18px rgba(192,57,43,.55),0 8px 18px rgba(0,0,0,.45);"><div style="position:absolute;width:8px;height:8px;background:#111;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);"></div></div>`,
+      iconSize: [22, 22],
+      iconAnchor: [11, 22],
+      popupAnchor: [0, -22]
     });
   }
 
-  function createClusterIcon(cluster){
-    const n=cluster.getChildCount();
+  function createClusterIcon(cluster) {
+    const n = cluster.getChildCount();
     return L.divIcon({
-      html:`<div style="background:var(--red);color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-size:.75rem;font-weight:700;border:2px solid rgba(255,255,255,.5);box-shadow:0 0 14px rgba(192,57,43,.6);">${n}</div>`,
-      className:'',iconSize:[36,36],iconAnchor:[18,18]
+      html: `<div style="background:var(--red);color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-size:.75rem;font-weight:700;border:2px solid rgba(255,255,255,.5);box-shadow:0 0 14px rgba(192,57,43,.6);">${n}</div>`,
+      className: '',
+      iconSize: [36, 36],
+      iconAnchor: [18, 18]
     });
   }
 
-  try{
-    const response = await fetch(`${API_URL.replace('/api/contact','')}/api/stores`);
+  try {
+    const response = await fetch(`${API_URL.replace('/api/contact', '')}/api/stores`);
     const data = await response.json();
-    if(!data.success) throw new Error('Stores niet beschikbaar');
+    if (!data.success) throw new Error('Stores niet beschikbaar');
     STORES = data.stores;
-  } catch(err){
-    console.error('[map] Stores ophalen mislukt:',err);
+  } catch (err) {
+    console.error('[map] Stores ophalen mislukt:', err);
     STORES = [];
   }
 
-  const map = L.map('storeMap',{
-    center:[52.18,5.30],zoom:7,zoomSnap:.25,
-    scrollWheelZoom:false,dragging:!isMobile(),
-    touchZoom:false,doubleClickZoom:false,zoomControl:true
+  const map = L.map('storeMap', {
+    center: [52.18, 5.30],
+    zoom: 7,
+    zoomSnap: .25,
+    scrollWheelZoom: false,
+    dragging: !isMobile(),
+    touchZoom: false,
+    doubleClickZoom: false,
+    zoomControl: true
   });
+
   mapInstance = map;
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
 
   const clusterGroup = L.markerClusterGroup({
-    maxClusterRadius:30,spiderfyOnMaxZoom:true,
-    showCoverageOnHover:false,zoomToBoundsOnClick:true,
-    iconCreateFunction:createClusterIcon
+    maxClusterRadius: 30,
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true,
+    iconCreateFunction: createClusterIcon
   });
 
-  const bounds=[];
-  STORES.forEach(pin=>{
-    bounds.push([pin.lat,pin.lon]);
+  const bounds = [];
+  STORES.forEach(pin => {
+    bounds.push([pin.lat, pin.lon]);
     clusterGroup.addLayer(
-      L.marker([pin.lat,pin.lon],{icon:createRedIcon()})
+      L.marker([pin.lat, pin.lon], { icon: createRedIcon() })
         .bindPopup(`<div class="pop-name">${pin.name}</div><div class="pop-count">${pin.count}</div><div class="pop-label">${t('map.pop.label')}</div>`)
     );
   });
-  map.addLayer(clusterGroup);
-  if(bounds.length){ map.fitBounds(bounds,{padding:[30,30],maxZoom:10}); }
-}
 
-// Callback die aangeroepen wordt zodra Leaflet geladen is
-window._leafletReady = initMap;
+  map.addLayer(clusterGroup);
+  if (bounds.length) { map.fitBounds(bounds, { padding: [30, 30], maxZoom: 10 }); }
+}
 
 const mapOverlay = document.getElementById('mapOverlay');
-if(mapOverlay){
-  mapOverlay.addEventListener('click',()=>{
+if (mapOverlay) {
+  mapOverlay.addEventListener('click', () => {
     mapOverlay.classList.add('hidden');
-    if(mapInstance){ mapInstance.dragging.enable();mapInstance.touchZoom.enable();mapInstance.doubleClickZoom.enable();mapInstance.scrollWheelZoom.enable(); }
+    if (mapInstance) { mapInstance.dragging.enable(); mapInstance.touchZoom.enable(); mapInstance.doubleClickZoom.enable(); mapInstance.scrollWheelZoom.enable(); }
   });
 }
+if (document.readyState === 'complete') { initMap(); } else { window.addEventListener('load', initMap); }
 
 /* ══════════════════════════════════════════════════
    REVEAL
 ══════════════════════════════════════════════════ */
-const revIO = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on');revIO.unobserve(e.target); } });
-},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
+const revIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revIO.unobserve(e.target); } });
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
 
 /* ══════════════════════════════════════════════════
    COUNT-UP
 ══════════════════════════════════════════════════ */
-function countUp(el,target){
-  const dur=1900,t0=performance.now();
-  const go=now=>{
-    const p=Math.min((now-t0)/dur,1);
-    const eased=1-Math.pow(1-p,3);
-    el.querySelector('.count').textContent=Math.round(eased*target).toLocaleString('nl-NL');
-    if(p<1){ requestAnimationFrame(go); } else { el.querySelector('.count').textContent=target.toLocaleString('nl-NL'); }
+function countUp(el, target) {
+  const dur=1900, t0=performance.now();
+  const go = now => {
+    const p = Math.min((now-t0)/dur, 1);
+    const eased = 1 - Math.pow(1-p, 3);
+    el.querySelector('.count').textContent = Math.round(eased*target).toLocaleString('nl-NL');
+    if (p < 1) { requestAnimationFrame(go); } else { el.querySelector('.count').textContent = target.toLocaleString('nl-NL'); }
   };
   requestAnimationFrame(go);
 }
-const statIO = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ countUp(e.target,+e.target.dataset.target);statIO.unobserve(e.target); } });
-},{threshold:.5});
-document.querySelectorAll('.stat-n[data-target]').forEach(el=>statIO.observe(el));
+const statIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { countUp(e.target, +e.target.dataset.target); statIO.unobserve(e.target); } });
+}, { threshold: .5 });
+document.querySelectorAll('.stat-n[data-target]').forEach(el => statIO.observe(el));
 
 /* ══════════════════════════════════════════════════
    ORBS
 ══════════════════════════════════════════════════ */
-window.addEventListener('mousemove',e=>{
-  const x=(e.clientX/innerWidth-.5)*18,y=(e.clientY/innerHeight-.5)*18;
-  document.querySelector('.orb-a').style.transform=`translate(${x*1.1}px,${y*1.1}px)`;
-  document.querySelector('.orb-b').style.transform=`translate(${-x*.7}px,${-y*.7}px)`;
-},{passive:true});
+window.addEventListener('mousemove', e => {
+  const x = (e.clientX/innerWidth-.5)*18, y = (e.clientY/innerHeight-.5)*18;
+  document.querySelector('.orb-a').style.transform = `translate(${x*1.1}px,${y*1.1}px)`;
+  document.querySelector('.orb-b').style.transform = `translate(${-x*.7}px,${-y*.7}px)`;
+}, { passive: true });
 
 /* ══════════════════════════════════════════════════
    LEAD FORM
@@ -1544,53 +1727,73 @@ const formBtn     = document.getElementById('formBtn');
 const leadSuccess = document.getElementById('leadSuccess');
 const leadError   = document.getElementById('leadError');
 
-function showLeadAlert(type){
+function showLeadAlert(type) {
   leadSuccess.classList.remove('show');
   leadError.classList.remove('show');
-  if(type==='success') leadSuccess.classList.add('show');
-  if(type==='error')   leadError.classList.add('show');
+  if (type === 'success') leadSuccess.classList.add('show');
+  if (type === 'error')   leadError.classList.add('show');
 }
 
-function setLeadBtnState(state){
-  formBtn.disabled=false;
-  formBtn.className='btn-submit';
-  if(state==='loading'){ formBtn.disabled=true;formBtn.classList.add('sending');formBtn.innerHTML=`<span class="spinner"></span>${t('form.sending')}`; }
-  else if(state==='success'){ formBtn.disabled=true;formBtn.classList.add('success');formBtn.textContent=t('form.sent'); }
-  else if(state==='error'){ formBtn.textContent=t('form.retry'); }
-  else { formBtn.textContent=t('form.submit'); }
+function setLeadBtnState(state) {
+  formBtn.disabled  = false;
+  formBtn.className = 'btn-submit';
+  if (state === 'loading') {
+    formBtn.disabled = true;
+    formBtn.classList.add('sending');
+    formBtn.innerHTML = `<span class="spinner"></span>${t('form.sending')}`;
+  } else if (state === 'success') {
+    formBtn.disabled = true;
+    formBtn.classList.add('success');
+    formBtn.textContent = t('form.sent');
+  } else if (state === 'error') {
+    formBtn.textContent = t('form.retry');
+  } else {
+    formBtn.textContent = t('form.submit');
+  }
 }
 
-formBtn.addEventListener('click',async function(){
+formBtn.addEventListener('click', async function () {
   const voornaam   = document.getElementById('lf-voornaam').value.trim();
   const achternaam = document.getElementById('lf-achternaam').value.trim();
   const email      = document.getElementById('lf-email').value.trim();
-  if(!voornaam||!achternaam||!email){
-    leadError.textContent=t('form.error.required');
+
+  if (!voornaam || !achternaam || !email) {
+    leadError.textContent = t('form.error.required');
     showLeadAlert('error');
     return;
   }
-  const payload={
-    voornaam,achternaam,
-    bedrijf:document.getElementById('lf-bedrijf').value.trim(),
-    email,telefoon:document.getElementById('lf-tel').value.trim(),
+
+  const payload = {
+    voornaam, achternaam,
+    bedrijf:  document.getElementById('lf-bedrijf').value.trim(),
+    email,
+    telefoon: document.getElementById('lf-tel').value.trim(),
     categorie:document.getElementById('lf-cat').value,
-    bericht:document.getElementById('lf-bericht').value.trim()
+    bericht:  document.getElementById('lf-bericht').value.trim()
   };
+
   setLeadBtnState('loading');
   showLeadAlert(null);
-  try{
-    const response = await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
     const data = await response.json();
-    if(response.ok&&data.success){
+    if (response.ok && data.success) {
       setLeadBtnState('success');
-      leadSuccess.textContent=t('form.success.msg');
+      leadSuccess.textContent = t('form.success.msg');
       showLeadAlert('success');
-      leadSuccess.scrollIntoView({behavior:'smooth',block:'center'});
-    } else { throw new Error(data.error||'unknown'); }
-  } catch(err){
-    console.error('[contact] Error:',err);
+      leadSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      throw new Error(data.error || 'unknown');
+    }
+  } catch (err) {
+    console.error('[contact] Error:', err);
     setLeadBtnState('error');
-    leadError.textContent=t('form.error.generic');
+    leadError.textContent = t('form.error.generic');
     showLeadAlert('error');
   }
 });
@@ -1598,41 +1801,41 @@ formBtn.addEventListener('click',async function(){
 /* ══════════════════════════════════════════════════
    PRODUCT SHOWCASE ENGINE
 ══════════════════════════════════════════════════ */
-function initProductShowcase(section){
+function initProductShowcase(section) {
   const panels   = [...section.querySelectorAll('.product-panel')];
   const wrapper  = section.querySelector('.product-scroll-wrapper');
   const can      = section.querySelector('.product-can-wrap');
   const progBar  = section.querySelector('.product-progress');
   const dotsWrap = section.querySelector('.product-dots');
-  const reverse  = section.dataset.reverse==='true';
+  const reverse  = section.dataset.reverse === 'true';
   const mobile   = isMobile();
 
-  for(let i=0;i<panels.length;i++){
-    const d=document.createElement('div');
-    d.className='product-dot'+(i===0?' active':'');
+  for (let i=0; i<panels.length; i++) {
+    const d = document.createElement('div');
+    d.className = 'product-dot' + (i===0 ? ' active' : '');
     dotsWrap.appendChild(d);
   }
-  const dots=[...dotsWrap.querySelectorAll('.product-dot')];
+  const dots = [...dotsWrap.querySelectorAll('.product-dot')];
 
   const statesNormal  = [{x:26,y:0,r:-4,s:1.00},{x:22,y:2,r:3,s:.95},{x:24,y:0,r:-2,s:.97},{x:8,y:0,r:-1,s:.95},{x:0,y:0,r:0,s:.84}];
   const statesReverse = [{x:-26,y:0,r:4,s:1.00},{x:-22,y:2,r:-3,s:.95},{x:-24,y:0,r:2,s:.97},{x:-8,y:0,r:1,s:.95},{x:0,y:0,r:0,s:.84}];
   const statesMobile  = [{x:0,y:-6,r:-5,s:1.00},{x:0,y:4,r:4,s:.96},{x:0,y:-3,r:-3,s:.93},{x:0,y:5,r:3,s:.90},{x:0,y:0,r:0,s:.86}];
-  const states = mobile?statesMobile:(reverse?statesReverse:statesNormal);
+  const states = mobile ? statesMobile : (reverse ? statesReverse : statesNormal);
 
-  let mouseX=0,mouseY=0,cs={x:0,y:0,r:0,s:1},activePanel=0;
-  document.addEventListener('mousemove',e=>{ mouseX=(e.clientX/innerWidth-.5)*2;mouseY=(e.clientY/innerHeight-.5)*2; });
+  let mouseX=0, mouseY=0, cs={x:0,y:0,r:0,s:1}, activePanel=0;
+  document.addEventListener('mousemove', e => { mouseX=(e.clientX/innerWidth-.5)*2; mouseY=(e.clientY/innerHeight-.5)*2; });
 
   function lerp(a,b,t){ return a+(b-a)*t; }
   function smooth(t){ return t*t*(3-2*t); }
-  function getT(){ const rect=wrapper.getBoundingClientRect();const total=wrapper.offsetHeight-innerHeight;return total>0?Math.max(0,Math.min(1,-rect.top/total)):0; }
-  function interpState(t){ const raw=t*(states.length-1);const i=Math.min(Math.floor(raw),states.length-2);const loc=smooth(raw-i);const a=states[i],b=states[i+1];return{x:lerp(a.x,b.x,loc),y:lerp(a.y,b.y,loc),r:lerp(a.r,b.r,loc),s:lerp(a.s,b.s,loc)}; }
-  function panelForT(t){ if(t<0.22)return 0;if(t<0.48)return 1;if(t<0.72)return 2;return 3; }
+  function getT(){ const rect=wrapper.getBoundingClientRect(); const total=wrapper.offsetHeight-innerHeight; return total>0?Math.max(0,Math.min(1,-rect.top/total)):0; }
+  function interpState(t){ const raw=t*(states.length-1); const i=Math.min(Math.floor(raw),states.length-2); const loc=smooth(raw-i); const a=states[i],b=states[i+1]; return{x:lerp(a.x,b.x,loc),y:lerp(a.y,b.y,loc),r:lerp(a.r,b.r,loc),s:lerp(a.s,b.s,loc)}; }
+  function panelForT(t){ if(t<0.22)return 0; if(t<0.48)return 1; if(t<0.72)return 2; return 3; }
   function setPanel(idx){
     if(idx===activePanel) return;
     activePanel=idx;
     panels.forEach((p,i)=>p.classList.toggle('product-active',i===idx));
     dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
-    const isResults=panels[idx]&&panels[idx].classList.contains('results-panel');
+    const isResults = panels[idx]&&panels[idx].classList.contains('results-panel');
     can.classList.toggle('blurred',idx===3||idx===4);
     can.classList.toggle('results-bg',isResults);
   }
@@ -1640,9 +1843,9 @@ function initProductShowcase(section){
     requestAnimationFrame(tick);
     const tv=getT();
     const target=interpState(tv);
-    cs.x=lerp(cs.x,target.x,.06);cs.y=lerp(cs.y,target.y,.06);
-    cs.r=lerp(cs.r,target.r,.06);cs.s=lerp(cs.s,target.s,.06);
-    const mx2=mobile?0:mouseX*0.45,my2=mobile?0:mouseY*0.38;
+    cs.x=lerp(cs.x,target.x,.06); cs.y=lerp(cs.y,target.y,.06);
+    cs.r=lerp(cs.r,target.r,.06); cs.s=lerp(cs.s,target.s,.06);
+    const mx2=mobile?0:mouseX*0.45, my2=mobile?0:mouseY*0.38;
     can.style.transform=`translate(calc(-50% + ${cs.x+mx2}vw),calc(-50% + ${cs.y+my2}vh)) rotate(${cs.r+(mobile?0:mouseX*0.6)}deg) scale(${cs.s})`;
     progBar.style.width=(tv*100)+'%';
     setPanel(panelForT(tv));
@@ -1654,18 +1857,18 @@ document.querySelectorAll('.product-showcase').forEach(initProductShowcase);
 /* ══════════════════════════════════════════════════
    JUMP OVERLAY ON HASH #LEAD
 ══════════════════════════════════════════════════ */
-window.addEventListener('load',()=>{
-  if(window.location.hash!=='#lead') return;
-  const overlay=document.getElementById('jumpOverlay');
-  const target=document.querySelector('#lead');
-  const nav=document.getElementById('nav');
-  if(!overlay||!target) return;
+window.addEventListener('load', () => {
+  if (window.location.hash !== '#lead') return;
+  const overlay = document.getElementById('jumpOverlay');
+  const target  = document.querySelector('#lead');
+  const nav     = document.getElementById('nav');
+  if (!overlay || !target) return;
   overlay.classList.add('active');
-  setTimeout(()=>{
-    const navH=nav?nav.offsetHeight:0;
-    window.scrollTo({top:target.getBoundingClientRect().top+window.pageYOffset-navH,behavior:'auto'});
-    setTimeout(()=>{ overlay.classList.remove('active'); },950);
-  },250);
+  setTimeout(() => {
+    const navH = nav ? nav.offsetHeight : 0;
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - navH, behavior: 'auto' });
+    setTimeout(() => { overlay.classList.remove('active'); }, 950);
+  }, 250);
 });
 
 /* ══════════════════════════════════════════════════
