@@ -58,28 +58,173 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
 .jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
 .jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
-
 /* HERO */
-.jobs-hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;background:#000;padding:130px 6vw 90px}
-.jobs-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 68% 42%,rgba(192,57,43,.13),transparent 34%),radial-gradient(circle at 28% 70%,rgba(255,255,255,.045),transparent 28%),linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.92));pointer-events:none}
-.jobs-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);background-size:90px 90px;opacity:.45;animation:gridScroll 25s linear infinite}
-@keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
-.hero-orb{position:absolute;width:520px;height:520px;right:4vw;top:12vh;border-radius:50%;background:rgba(192,57,43,.08);filter:blur(100px);pointer-events:none}
-.jobs-hero-inner{position:relative;z-index:2;width:100%;max-width:1000px;margin:0 auto}
-.label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:22px}
-.label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
-.jobs-title{font-family:var(--font-display);font-size:clamp(4.5rem,10vw,11rem);font-weight:900;line-height:.84;letter-spacing:-.01em;color:#fff;margin-bottom:32px;opacity:0;animation:riseUp .9s .25s forwards}
-.jobs-title .red{color:var(--red)}
-.jobs-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
-.jobs-copy{max-width:680px;font-size:1.08rem;line-height:1.9;color:rgba(255,255,255,.68);font-weight:300;margin-bottom:36px;opacity:0;animation:riseUp .9s .45s forwards}
-.jobs-actions{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:riseUp .9s .65s forwards}
-@keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
-.btn-red,.btn-outline,.btn-submit{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
-.btn-red{color:#fff;background:var(--red);border:none;padding:17px 40px}
-.btn-red:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
-.btn-outline{color:#fff;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.24);padding:16px 40px}
-.btn-outline:hover{border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.055)}
+.jobs-hero{
+  position:relative;
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.78)),
+    url('images/personeel/Groepsfoto2.jpg');
+  background-size:cover;
+  background-position:right center;
+  background-repeat:no-repeat;
+  padding:130px 6vw 90px;
+}
 
+.jobs-hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 68% 42%,rgba(192,57,43,.13),transparent 34%),
+    radial-gradient(circle at 28% 70%,rgba(255,255,255,.035),transparent 28%),
+    linear-gradient(to bottom,rgba(0,0,0,.12),rgba(0,0,0,.82));
+  pointer-events:none;
+  z-index:1;
+}
+
+.jobs-hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);
+  background-size:90px 90px;
+  opacity:.35;
+  animation:gridScroll 25s linear infinite;
+  z-index:1;
+}
+
+@keyframes gridScroll{
+  from{transform:translateY(0)}
+  to{transform:translateY(90px)}
+}
+
+.hero-orb{
+  position:absolute;
+  width:520px;
+  height:520px;
+  right:4vw;
+  top:12vh;
+  border-radius:50%;
+  background:rgba(192,57,43,.08);
+  filter:blur(100px);
+  pointer-events:none;
+  z-index:1;
+}
+
+.jobs-hero-inner{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.label{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-family:var(--font-ui);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.45em;
+  text-transform:uppercase;
+  color:rgba(192,57,43,.9);
+  margin-bottom:22px;
+}
+
+.label::before{
+  content:'';
+  width:24px;
+  height:1px;
+  background:rgba(192,57,43,.75);
+}
+
+.jobs-title{
+  font-family:var(--font-display);
+  font-size:clamp(4.5rem,10vw,11rem);
+  font-weight:900;
+  line-height:.84;
+  letter-spacing:-.01em;
+  color:#fff;
+  margin-bottom:32px;
+  opacity:0;
+  animation:riseUp .9s .25s forwards;
+}
+
+.jobs-title .red{color:var(--red)}
+
+.jobs-title .stroke{
+  -webkit-text-stroke:1.5px rgba(255,255,255,.36);
+  color:transparent;
+}
+
+.jobs-copy{
+  max-width:680px;
+  font-size:1.08rem;
+  line-height:1.9;
+  color:rgba(255,255,255,.68);
+  font-weight:300;
+  margin-bottom:36px;
+  opacity:0;
+  animation:riseUp .9s .45s forwards;
+}
+
+.jobs-actions{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  opacity:0;
+  animation:riseUp .9s .65s forwards;
+}
+
+@keyframes riseUp{
+  from{opacity:0;transform:translateY(44px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.btn-red,.btn-outline,.btn-submit{
+  font-family:var(--font-ui);
+  font-weight:700;
+  font-size:.8rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  border-radius:2px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  transition:.2s;
+}
+
+.btn-red{
+  color:#fff;
+  background:var(--red);
+  border:none;
+  padding:17px 40px;
+}
+
+.btn-red:hover{
+  background:var(--red2);
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(192,57,43,.32);
+}
+
+.btn-outline{
+  color:#fff;
+  background:rgba(0,0,0,.2);
+  border:1px solid rgba(255,255,255,.24);
+  padding:16px 40px;
+}
+
+.btn-outline:hover{
+  border-color:rgba(192,57,43,.65);
+  background:rgba(192,57,43,.055);
+}
 /* ABOUT STRIP */
 .about-strip{background:#000;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:80px 6vw}
 .about-strip-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
