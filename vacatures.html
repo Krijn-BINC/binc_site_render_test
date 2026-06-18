@@ -4,7 +4,7 @@
 <meta name="description" content="Werken bij BINC International? Ambitieuze stagiaires gezocht voor Marketing, Data & ICT en Sales. Bouw mee aan merken in retail."/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRHH6551CL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VRHH6551CL');</script>
-<link rel="canonical" href="https://bincinternational.nl/vacatures.html"/>
+<link rel="canonical" href="https://bincinternational.nl/werken-bij.html"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Werken bij BINC | BINC International</title>
@@ -78,17 +78,22 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .about-heading .red{color:var(--red)}
 .about-body{font-size:1rem;line-height:1.9;color:rgba(255,255,255,.56);font-weight:300;margin-bottom:36px}
 .partners-block{padding-top:32px;border-top:1px solid rgba(255,255,255,.07)}
-.partners-kicker{font-family:var(--font-ui);font-size:.65rem;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:rgba(192,57,43,.8);margin-bottom:10px}
+/* Our Partners kicker — zelfde stijl als .label */
+.partners-kicker{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:10px}
+.partners-kicker::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
 .partners-title{font-family:var(--font-display);font-size:clamp(2rem,3vw,3.2rem);font-weight:900;color:#fff;margin-bottom:16px;line-height:.92}
 .partners-body{font-size:1rem;line-height:1.9;color:rgba(255,255,255,.56);font-weight:300}
-.partners-img-wrap{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:3/4}
+/* Afbeelding kleiner */
+.partners-img-wrap{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/10;max-height:400px}
 .partners-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,1,.36,1)}
 .partners-img-wrap:hover img{transform:scale(1.04)}
-.partners-img-label{position:absolute;bottom:0;left:0;right:0;padding:56px 36px 36px;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,transparent 100%);font-family:var(--font-display);font-size:clamp(2.8rem,4.5vw,4.8rem);font-weight:900;line-height:.95;color:#fff}
+.partners-img-label{position:absolute;bottom:0;left:0;right:0;padding:40px 28px 28px;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,transparent 100%);font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3.6rem);font-weight:900;line-height:.95;color:#fff}
 .partners-img-label .red{color:var(--red)}
 #portfolio{padding:90px 0;background:#000;border-top:1px solid rgba(255,255,255,.05);overflow:hidden}
 .portfolio-header{max-width:1200px;margin:0 auto;padding:0 6vw;margin-bottom:48px;text-align:center}
-.portfolio-kicker{font-family:var(--font-ui);font-size:.65rem;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:rgba(192,57,43,.8);margin-bottom:10px}
+/* Portfolio kicker — zelfde stijl als .label, gecentreerd */
+.portfolio-kicker{display:flex;align-items:center;justify-content:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:10px}
+.portfolio-kicker::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
 .portfolio-title{font-family:var(--font-display);font-size:clamp(2.6rem,5vw,6rem);font-weight:900;line-height:.9;color:#fff}
 .portfolio-title .red{color:var(--red)}
 .portfolio-sub{font-size:1rem;color:rgba(255,255,255,.44);font-weight:300;margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto}
@@ -248,7 +253,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.38s}
-@media(max-width:1100px){.vac-grid{grid-template-columns:1fr 1fr}.about-strip-inner{grid-template-columns:1fr;gap:48px}.partners-img-wrap{aspect-ratio:16/9}}
+@media(max-width:1100px){.vac-grid{grid-template-columns:1fr 1fr}.about-strip-inner{grid-template-columns:1fr;gap:48px}.partners-img-wrap{aspect-ratio:16/9;max-height:340px}}
 @media(max-width:1000px){
 html,body{cursor:auto}#cur,#cur-ring{display:none}.lang-fab{display:none}
 .nav-right .lang-switch{display:flex}nav{height:70px;padding:0 5vw}.nav-logo img{height:32px}
@@ -290,7 +295,7 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 .lang-switch{margin-left:8px}.lang-btn{padding:5px 9px;font-size:.62rem}
 .fest-popup-stats{grid-template-columns:1fr 1fr}
 .fest-popup-body{padding:24px 20px 28px}
-.partners-img-label{font-size:clamp(2rem,6vw,3.2rem)}
+.partners-img-label{font-size:clamp(1.6rem,5vw,2.6rem)}
 }
 @media(max-width:480px){
 .jobs-title{font-size:clamp(3.2rem,16vw,6rem)}
@@ -321,7 +326,7 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 <a href="horeca.html">Horeca</a>
 <a href="evenementen.html">Evenementen</a>
 <a href="ons-team.html">Ons Team</a>
-<a href="vacatures.html" class="active">Werken bij</a>
+<a href="werken-bij.html" class="active">Werken bij</a>
 <a href="index.html#lead" class="drawer-cta" id="drawerCta">Samenwerken</a>
 <div class="drawer-lang">
 <button class="lang-btn active" data-lang="nl">NL</button>
@@ -341,7 +346,7 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 <a href="horeca.html">Horeca</a>
 <a href="evenementen.html">Evenementen</a>
 <a href="ons-team.html">Ons Team</a>
-<a href="vacatures.html" class="active">Werken bij</a>
+<a href="werken-bij.html" class="active">Werken bij</a>
 <a href="index.html#lead" class="nav-cta">Samenwerken</a>
 </div>
 <div class="nav-right">
@@ -625,10 +630,10 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 <script>
 const API_URL='https://server-medewerker-kpi.onrender.com/api/sollicitatie';
 const FEST_DATA={
-kkc:{name:'Kamping Kitsch Club',date:'Zaterdag 13 juni 2026',img:'images/kkc/web/_O2A4099_web.jpg',desc:'Kamping Kitsch Club is \u00e9\u00e9n van de meest kleurrijke en uitbundige festivalconcepten van Nederland. Met het hele BINC-team erop uit voor een dag vol glitter, kitsch en onversneden feestvreugde. Onze merken werden geactiveerd midden in de festival crowd en onze producten waren overal zichtbaar.',stats:[{num:'30.000+',label:'Bezoekers'},{num:'1 dag',label:'Editie'},{num:'2026',label:'Jaar'}],link:'https://www.kampingkitschclub.nl',linkLabel:'kampingkitschclub.nl'},
+kkc:{name:'Kamping Kitsch Club',date:'Zaterdag 13 juni 2026',img:'images/kkc/web/_O2A4099_web.jpg',desc:'Kamping Kitsch Club is één van de meest kleurrijke en uitbundige festivalconcepten van Nederland. Met het hele BINC-team erop uit voor een dag vol glitter, kitsch en onversneden feestvreugde. Onze merken werden geactiveerd midden in de festival crowd en onze producten waren overal zichtbaar.',stats:[{num:'30.000+',label:'Bezoekers'},{num:'1 dag',label:'Editie'},{num:'2026',label:'Jaar'}],link:'https://www.kampingkitschclub.nl',linkLabel:'kampingkitschclub.nl'},
 dauwpop:{name:'Dauwpop',date:'29 & 30 mei 2026',img:'images/7th/web/18.jpg',desc:'Dauwpop is het oudste gratis pop festival van Nederland, gehouden in de mooie omgeving van Hellendoorn. Met het team gingen we twee dagen lang het veld op. Onze merken werden geproefd door duizenden festivalgangers in een ontspannen zomerse sfeer.',stats:[{num:'50.000+',label:'Bezoekers'},{num:'2 dagen',label:'Editie'},{num:'2026',label:'Jaar'}],link:'https://www.dauwpop.nl',linkLabel:'dauwpop.nl'},
 hoh:{name:'Harmony of Hardcore',date:'15 mei 2026',img:'images/hoh/web/12.jpg',desc:'Harmony of Hardcore is een van de grootste hardcore dance festivals ter wereld. Maximale energie, maximaal teamgevoel. BINC was aanwezig pal in het hart van de hardcore scene, naast een loyale en gepassioneerde fanbase die onze merken omarmt.',stats:[{num:'35.000+',label:'Bezoekers'},{num:'1 dag',label:'Editie'},{num:'2026',label:'Jaar'}],link:'https://harmonyofhardcore.nl',linkLabel:'harmonyofhardcore.nl'},
-'7th':{name:'7th Sunday',date:'16 mei 2026',img:'images/7th2/web/8.jpg',desc:'Van zonsopgang tot zonsondergang met het team op \u00e9\u00e9n van de meest iconische dance festivals van Nederland. 7th Sunday brengt het beste van de dance scene bij elkaar, en BINC was er bij van het eerste tot het laatste uur. Duizenden handen, \u00e9\u00e9n smaak.',stats:[{num:'20.000+',label:'Bezoekers'},{num:'1 dag',label:'Editie'},{num:'2026',label:'Jaar'}],link:'https://7thsunday.nl',linkLabel:'7thsunday.nl'}
+'7th':{name:'7th Sunday',date:'16 mei 2026',img:'images/7th2/web/8.jpg',desc:'Van zonsopgang tot zonsondergang met het team op één van de meest iconische dance festivals van Nederland. 7th Sunday brengt het beste van de dance scene bij elkaar, en BINC was er bij van het eerste tot het laatste uur. Duizenden handen, één smaak.',stats:[{num:'20.000+',label:'Bezoekers'},{num:'1 dag',label:'Editie'},{num:'2026',label:'Jaar'}],link:'https://7thsunday.nl',linkLabel:'7thsunday.nl'}
 };
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
