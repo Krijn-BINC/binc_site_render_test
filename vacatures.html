@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta name="description" content="Werken bij BINC International? Loop stage als Marketing, Data & ICT of Sales Stagiaire — of solliciteer open. Wij bouwen merken groter in retail."/>
+<meta name="description" content="Werken bij BINC International? Loop stage als Marketing, Data &amp; ICT of Sales Stagiaire — of solliciteer open. Wij bouwen merken groter in retail."/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRHH6551CL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VRHH6551CL');</script>
 <link rel="canonical" href="https://bincinternational.nl/vacatures.html"/>
@@ -14,33 +14,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --red:#c0392b;--red2:#e74c3c;
-  --font-display:'Barlow Condensed',sans-serif;
-  --font-body:'Barlow',sans-serif;
-  --font-ui:'Rajdhani',sans-serif;
-  --font-bebas:'Bebas Neue',sans-serif;
-  --font-mono:'DM Mono',monospace;
-  --dim:rgba(255,255,255,.58);
-}
+:root{--bg:#000;--red:#c0392b;--red2:#e74c3c;--white:#fff;--dim:rgba(255,255,255,.58);--font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;--font-ui:'Rajdhani',sans-serif;--font-bebas:'Bebas Neue',sans-serif;--font-mono:'DM Mono',monospace;}
 html{scroll-behavior:smooth;cursor:none}
 body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
 #cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
 #cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
-body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:52px}
+body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring,body:has(input:hover) #cur-ring,body:has(textarea:hover) #cur-ring,body:has(select:hover) #cur-ring{width:52px;height:52px}
 ::selection{background:var(--red);color:#fff}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:rgba(192,57,43,.72)}
-
-/* LANG */
 .lang-switch{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-left:18px;flex-shrink:0}
 .lang-btn{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);background:transparent;border:none;padding:6px 11px;cursor:pointer;transition:.2s;line-height:1}
 .lang-btn.active{background:var(--red);color:#fff}
 .lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
-.lang-fab{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;position:fixed;bottom:28px;right:28px;z-index:600;box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);background:rgba(0,0,0,.72)}
+.lang-fab{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;position:fixed;bottom:28px;right:28px;z-index:600;box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72)}
 .lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s}
 nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
@@ -52,13 +40,11 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
 .nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
 .nav-cta::after{display:none!important}
-.nav-cta:hover{background:var(--red2)!important}
+.nav-cta:hover{background:var(--red2)!important;color:#fff!important}
 .nav-right{display:flex;align-items:center;gap:0}
 .nav-right .lang-switch{display:none}
 .nav-hamburger{display:none}
-
-/* MOBILE DRAWER */
-.mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .42s;pointer-events:none;opacity:0}
+.mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .42s;pointer-events:none;opacity:0}
 .mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
 .mobile-nav-drawer a{font-family:var(--font-display);font-size:clamp(2.8rem,11vw,5rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;line-height:1.1;display:block;padding:16px 0;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
 .mobile-nav-drawer a:hover,.mobile-nav-drawer a.active{color:#fff}
@@ -69,188 +55,238 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .drawer-socials{display:flex;gap:28px;margin-top:28px}
 .drawer-socials a{width:26px;height:26px;color:rgba(255,255,255,.5);transition:.2s;display:inline-flex;align-items:center;justify-content:center;border:none!important;padding:0!important;font-size:0!important;background:none!important;border-radius:0!important;margin-top:0!important}
 .drawer-socials a:hover{color:var(--red)}.drawer-socials svg{width:100%;height:100%;fill:currentColor}
-
-/* JUMP OVERLAY */
-.jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15)}
-.jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
+.jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
 .jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
-
 /* HERO */
 .jobs-hero{
-  position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden;
-  background:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.75)),url('images/personeel/Groepsfoto2.jpg');
-  background-size:cover;background-position:center 78%;padding:130px 6vw 110px;
+  position:relative;
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.78)),
+    url('images/personeel/Groepsfoto2.jpg');
+  background-size:cover;
+  background-position:right 78%;
+  background-repeat:no-repeat;
+  padding:130px 6vw 110px;
 }
-.jobs-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 65% 42%,rgba(192,57,43,.13),transparent 34%),linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.42) 55%,rgba(0,0,0,.97) 100%);pointer-events:none;z-index:1}
-.jobs-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.03) 1px,transparent 1px);background-size:90px 90px;opacity:.35;animation:gridScroll 25s linear infinite;z-index:1}
-@keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
-.hero-orb{position:absolute;width:520px;height:520px;right:4vw;top:12vh;border-radius:50%;background:rgba(192,57,43,.08);filter:blur(100px);pointer-events:none;z-index:1}
-.jobs-hero-inner{position:relative;z-index:2;width:100%;max-width:1000px}
-.label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:22px}
-.label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
-.jobs-title{font-family:var(--font-display);font-size:clamp(4.5rem,10vw,11rem);font-weight:900;line-height:.84;color:#fff;margin-bottom:32px;opacity:0;animation:riseUp .9s .25s forwards}
+
+.jobs-hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 68% 42%,rgba(192,57,43,.13),transparent 34%),
+    radial-gradient(circle at 28% 70%,rgba(255,255,255,.035),transparent 28%),
+    linear-gradient(to bottom,rgba(0,0,0,.1) 0%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.96) 100%);
+  pointer-events:none;
+  z-index:1;
+}
+
+.jobs-hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);
+  background-size:90px 90px;
+  opacity:.35;
+  animation:gridScroll 25s linear infinite;
+  z-index:1;
+}
+
+@keyframes gridScroll{
+  from{transform:translateY(0)}
+  to{transform:translateY(90px)}
+}
+
+.hero-orb{
+  position:absolute;
+  width:520px;
+  height:520px;
+  right:4vw;
+  top:12vh;
+  border-radius:50%;
+  background:rgba(192,57,43,.08);
+  filter:blur(100px);
+  pointer-events:none;
+  z-index:1;
+}
+
+.jobs-hero-inner{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.label{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-family:var(--font-ui);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.45em;
+  text-transform:uppercase;
+  color:rgba(192,57,43,.9);
+  margin-bottom:22px;
+}
+
+.label::before{
+  content:'';
+  width:24px;
+  height:1px;
+  background:rgba(192,57,43,.75);
+}
+
+.jobs-title{
+  font-family:var(--font-display);
+  font-size:clamp(4.5rem,10vw,11rem);
+  font-weight:900;
+  line-height:.84;
+  letter-spacing:-.01em;
+  color:#fff;
+  margin-bottom:32px;
+  opacity:0;
+  animation:riseUp .9s .25s forwards;
+}
+
 .jobs-title .red{color:var(--red)}
-.jobs-title .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.36);color:transparent}
-.jobs-copy{max-width:680px;font-size:1.08rem;line-height:1.9;color:rgba(255,255,255,.68);font-weight:300;margin-bottom:36px;opacity:0;animation:riseUp .9s .45s forwards}
-.jobs-actions{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:riseUp .9s .65s forwards}
-@keyframes riseUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
-.btn-red,.btn-outline,.btn-submit{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
-.btn-red{color:#fff;background:var(--red);border:none;padding:17px 40px}
-.btn-red:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
-.btn-outline{color:#fff;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.24);padding:16px 40px}
-.btn-outline:hover{border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.055)}
 
-/* ═══════════════════════
-   WIE ZIJN WIJ
-═══════════════════════ */
-#wie-zijn-wij{background:#000;padding:130px 6vw 120px;position:relative;overflow:hidden;border-top:1px solid rgba(192,57,43,.1)}
-#wie-zijn-wij::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.05),transparent 60%);pointer-events:none}
-.wsw-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:28px}
-.wsw-inner .label{justify-content:center;margin-bottom:0}
-.wsw-title{font-family:var(--font-display);font-size:clamp(3rem,5.8vw,6.8rem);font-weight:900;line-height:.9;color:#fff}
-.wsw-title .red{color:var(--red)}
-.wsw-body{font-size:1.06rem;line-height:1.95;color:rgba(255,255,255,.64);font-weight:300;max-width:740px}
-.wsw-team-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.72);border:1px solid rgba(192,57,43,.3);background:rgba(192,57,43,.07);padding:12px 24px;border-radius:999px;margin-top:8px}
-.wsw-team-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red)}
+.jobs-title .stroke{
+  -webkit-text-stroke:1.5px rgba(255,255,255,.36);
+  color:transparent;
+}
 
-/* ═══════════════════════
-   PORTFOLIO INTRO
-═══════════════════════ */
-#portfolio-intro{background:#000;padding:80px 6vw 0;position:relative}
-.pi-inner{max-width:900px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
-.pi-inner .label{justify-content:center}
-.pi-title{font-family:var(--font-display);font-size:clamp(3rem,5.6vw,7rem);font-weight:900;line-height:.9;color:#fff}
-.pi-title .red{color:var(--red)}
-.pi-body{font-size:.98rem;line-height:1.85;color:rgba(255,255,255,.54);font-weight:300;max-width:620px}
+.jobs-copy{
+  max-width:680px;
+  font-size:1.08rem;
+  line-height:1.9;
+  color:rgba(255,255,255,.68);
+  font-weight:300;
+  margin-bottom:36px;
+  opacity:0;
+  animation:riseUp .9s .45s forwards;
+}
 
-/* ═══════════════════════
-   PRODUCT SHOWCASES (2-panel)
-═══════════════════════ */
-.brand-showcase{position:relative;background:#000;}
-.brand-showcase{--brand:#c0392b;--brand2:#e74c3c;--brand-soft:rgba(192,57,43,.10);--brand-border:rgba(192,57,43,.12);}
-.brand-showcase.gold-dry{--brand:#a89552;--brand2:#c8b66b;--brand-soft:rgba(168,149,82,.10);--brand-border:rgba(168,149,82,.12);}
-.brand-showcase.feelsogood{--brand:#006dff;--brand2:#00d8ff;--brand-soft:rgba(0,166,255,.17);--brand-border:rgba(0,166,255,.22);}
-.brand-showcase.beatbox{--brand:#c0392b;--brand2:#e74c3c;--brand-soft:rgba(192,57,43,.15);--brand-border:rgba(192,57,43,.22);}
-.brand-showcase.cleannutrition{--brand:#a89552;--brand2:#c8b66b;--brand-soft:rgba(168,149,82,.10);--brand-border:rgba(168,149,82,.12);}
+.jobs-actions{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  opacity:0;
+  animation:riseUp .9s .65s forwards;
+}
 
-.brand-scroll-wrapper{position:relative;height:300vh}
-.brand-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.brand-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 60% 44%,var(--brand-soft),transparent 32%),radial-gradient(circle at 38% 70%,rgba(255,255,255,.04),transparent 28%),#000}
-.brand-showcase.feelsogood .brand-bg{background:radial-gradient(circle at 34% 53%,rgba(0,190,255,.17),transparent 30%),radial-gradient(circle at 69% 42%,rgba(21,60,255,.12),transparent 28%),#000}
-.brand-showcase.beatbox .brand-bg{background:radial-gradient(circle at 60% 50%,rgba(192,57,43,.18),transparent 32%),#000}
-.brand-showcase.cleannutrition .brand-bg{background:radial-gradient(circle at 52% 46%,rgba(168,149,82,.16),transparent 34%),#000}
-.brand-bg::before,.brand-bg::after{content:"";position:absolute;border:1px solid var(--brand-border);border-radius:50%;top:54%;left:50%;transform:translate(-50%,-50%)}
-.brand-bg::before{width:440px;height:440px}
-.brand-bg::after{width:700px;height:700px;opacity:.35}
-.brand-progress{position:absolute;top:0;left:0;width:0%;height:2px;z-index:10;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+@keyframes riseUp{
+  from{opacity:0;transform:translateY(44px)}
+  to{opacity:1;transform:translateY(0)}
+}
 
-.brand-can-wrap{position:absolute;top:54%;left:50%;width:min(18vw,200px);transform:translate(-50%,-50%);z-index:20;pointer-events:none;will-change:transform;transition:filter .5s ease,opacity .5s ease}
-.brand-can-wrap img{width:100%;height:auto;display:block;filter:drop-shadow(0 40px 70px rgba(0,0,0,.95)) drop-shadow(0 0 50px var(--brand-soft))}
-.brand-showcase.feelsogood .brand-can-wrap{width:min(13vw,150px)}
-.brand-showcase.cleannutrition .brand-can-wrap{width:min(26vw,320px)}
-.brand-can-wrap.blurred{filter:blur(7px);opacity:.35}
-.brand-glow{position:absolute;inset:10% 0;background:radial-gradient(circle,var(--brand-soft),transparent 68%);filter:blur(32px);z-index:-1}
+.btn-red,.btn-outline,.btn-submit{
+  font-family:var(--font-ui);
+  font-weight:700;
+  font-size:.8rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  border-radius:2px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  transition:.2s;
+}
 
-.brand-panels{position:absolute;inset:0;pointer-events:none}
-.brand-panel{position:absolute;inset:0;display:flex;align-items:center;padding:0 6vw;opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;pointer-events:none}
-.brand-panel.brand-active{opacity:1;transform:translateY(0);pointer-events:auto}
-.brand-panel.brand-left{justify-content:flex-start}
-.brand-panel.brand-right{justify-content:flex-end}
+.btn-red{
+  color:#fff;
+  background:var(--red);
+  border:none;
+  padding:17px 40px;
+}
 
-.brand-content{max-width:420px;position:relative;z-index:30}
-.brand-eyebrow{display:block;color:var(--brand);font-family:var(--font-mono);font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;opacity:.85;margin-bottom:12px}
-.brand-title{font-family:var(--font-bebas);font-size:clamp(56px,7vw,96px);line-height:.88;color:#fff;margin-bottom:20px}
-.brand-title .brand-name{color:var(--brand)}
-.brand-text{font-family:var(--font-mono);font-size:.76rem;line-height:1.92;color:rgba(255,255,255,.44);margin-bottom:22px}
-.brand-pills{display:flex;gap:10px;flex-wrap:wrap}
-.brand-pill{border:1px solid var(--brand-border);background:var(--brand-soft);padding:9px 14px;border-radius:999px;font-family:var(--font-mono);font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
-.brand-pill span{color:var(--brand);font-weight:700}
+.btn-red:hover{
+  background:var(--red2);
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(192,57,43,.32);
+}
 
-/* Panel 2: metrics */
-.brand-metrics-wrap{max-width:520px;position:relative;z-index:30}
-.brand-section-title{font-family:var(--font-bebas);font-size:clamp(44px,5.5vw,80px);line-height:.88;color:#fff;margin-bottom:20px}
-.brand-line{width:40px;height:1px;background:var(--brand);opacity:.55;margin-bottom:20px}
-.brand-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brand-border);border-radius:8px;overflow:hidden;margin-top:10px}
-.brand-metric{background:rgba(0,0,0,.82);padding:22px 20px;position:relative;overflow:hidden}
-.brand-metric::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--brand),transparent);opacity:.45}
-.brand-metric strong{display:block;font-family:var(--font-bebas);font-size:2.6rem;line-height:.9;color:var(--brand)}
-.brand-metric span{display:block;font-family:var(--font-mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:8px;line-height:1.55}
+.btn-outline{
+  color:#fff;
+  background:rgba(0,0,0,.2);
+  border:1px solid rgba(255,255,255,.24);
+  padding:16px 40px;
+}
 
-.brand-separator{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0 6vw}
+.btn-outline:hover{
+  border-color:rgba(192,57,43,.65);
+  background:rgba(192,57,43,.055);
+}
+/* ABOUT STRIP */
+.about-strip{background:#000;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:80px 6vw}
+.about-strip-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text .label{margin-bottom:18px}
+.about-heading{font-family:var(--font-display);font-size:clamp(2.4rem,4vw,4.2rem);font-weight:900;line-height:.92;color:#fff;margin-bottom:24px}
+.about-heading .red{color:var(--red)}
+.about-p{font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62);font-weight:300;margin-bottom:14px}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.stat-box{border:1px solid rgba(192,57,43,.16);border-radius:8px;padding:24px 20px;background:rgba(192,57,43,.04)}
+.stat-num{font-family:var(--font-display);font-size:clamp(2.8rem,4vw,4rem);font-weight:900;color:var(--red);line-height:1;margin-bottom:6px}
+.stat-label{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.44)}
 
-/* ═══════════════════════
-   FESTIVALS CARROUSEL
-═══════════════════════ */
-#team-events{padding:120px 0 130px;background:#000;overflow:hidden;position:relative;border-top:1px solid rgba(255,255,255,.05)}
+/* TEAM EVENTS / FESTIVALS */
+#team-events{padding:110px 0 130px;background:#000;overflow:hidden;position:relative;border-top:1px solid rgba(255,255,255,.05)}
 #team-events::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 0%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
 .te-head{padding:0 6vw;margin-bottom:16px;position:relative;z-index:1}
 .te-title{font-family:var(--font-display);font-size:clamp(3rem,5.6vw,7rem);font-weight:900;line-height:.9;color:#fff}
 .te-title .red{color:var(--red)}
-.te-meta-row{display:flex;align-items:flex-end;justify-content:space-between;padding:0 6vw;margin-bottom:44px;gap:24px;flex-wrap:wrap;position:relative;z-index:1}
-.te-sub{font-size:1rem;color:rgba(255,255,255,.54);font-weight:300;max-width:560px;margin-top:16px}
-.te-hint{display:flex;align-items:center;gap:12px;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);border-radius:6px;padding:12px 20px;width:fit-content;flex-shrink:0}
-.te-hint-icon{width:32px;height:32px;border-radius:50%;background:rgba(192,57,43,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.te-meta-row{display:flex;align-items:center;justify-content:space-between;padding:0 6vw;margin-bottom:44px;gap:24px;flex-wrap:wrap;position:relative;z-index:1}
+.te-sub{font-size:1rem;color:rgba(255,255,255,.54);font-weight:300;max-width:620px;margin-top:18px}
+.te-hint{display:flex;align-items:center;gap:12px;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);border-radius:6px;padding:12px 20px;width:fit-content}
+.te-hint-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(192,57,43,.18);flex-shrink:0}
 .te-hint-icon svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round}
-.te-hint-text strong{font-family:var(--font-ui);font-size:.75rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff;display:block}
-.te-hint-text span{font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300;display:block}
-
-/* CAROUSEL */
-.te-carousel{position:relative}
+.te-hint-text{display:flex;flex-direction:column;gap:2px}
+.te-hint-text strong{font-family:var(--font-ui);font-size:.75rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff}
+.te-hint-text span{font-family:var(--font-body);font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300}
 .te-track-wrapper{position:relative}
-.te-track-wrapper::after{content:'';position:absolute;top:0;bottom:24px;width:80px;right:0;background:linear-gradient(to left,rgba(0,0,0,.9),transparent);pointer-events:none;z-index:10}
+.te-track-wrapper::after{content:'';position:absolute;top:0;bottom:24px;width:80px;z-index:10;pointer-events:none;right:0;background:linear-gradient(to left,rgba(0,0,0,.9),transparent)}
 .te-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:6vw;-webkit-overflow-scrolling:touch;padding:8px 6vw 28px;scrollbar-width:none;cursor:grab}
 .te-track:active{cursor:grabbing}
 .te-track::-webkit-scrollbar{display:none}
-
-/* Carrousel kaarten — perspective 3D effect */
-.te-card{
-  position:relative;overflow:hidden;
-  flex:0 0 380px;min-height:500px;
-  border-radius:16px;border:1px solid rgba(192,57,43,.14);
-  background:rgba(255,255,255,.015);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);
-  cursor:pointer;scroll-snap-align:start;
-  transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;
-  outline:none;
-}
+.te-card{position:relative;overflow:hidden;flex:0 0 400px;min-height:480px;border-radius:16px;border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);cursor:pointer;scroll-snap-align:start;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;outline:none}
 .te-card:focus-visible{outline:2px solid rgba(192,57,43,.7);outline-offset:2px}
 .te-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.4);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.15)}
 .te-card-badge{position:absolute;top:18px;left:18px;z-index:4;display:flex;align-items:center;gap:6px;background:var(--red);border-radius:4px;padding:5px 10px;font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#fff}
 .te-card-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.85);animation:liveBlink 1.4s infinite}
-@keyframes liveBlink{0%,100%{opacity:1}50%{opacity:.2}}
-.te-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.44;transition:opacity .4s,transform .5s cubic-bezier(.22,1,.36,1);z-index:1}
-.te-card:hover img{opacity:.62;transform:scale(1.04)}
-.te-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.96) 0%,rgba(0,0,0,.35) 54%,rgba(0,0,0,.08) 100%);z-index:2}
+.te-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;transition:opacity .4s,transform .5s cubic-bezier(.22,1,.36,1);z-index:1}
+.te-card:hover img{opacity:.6;transform:scale(1.04)}
+.te-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.96) 0%,rgba(0,0,0,.38) 54%,rgba(0,0,0,.1) 100%);z-index:2}
 .te-card-gallery{position:absolute;top:18px;right:18px;z-index:4;display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);border:1px solid rgba(192,57,43,.3);border-radius:4px;padding:7px 12px;font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:.3s}
 .te-card:hover .te-card-gallery{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.7);color:#fff}
 .te-card-gallery svg{width:14px;height:14px;flex-shrink:0;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .te-card-content{position:absolute;left:0;right:0;bottom:0;padding:32px;z-index:3}
 .te-card-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:12px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
-.te-card-content h3{font-family:var(--font-display);font-size:clamp(2.1rem,2.9vw,3.4rem);font-weight:900;line-height:.92;margin-bottom:10px;color:#fff;transition:color .3s}
+.te-card-content h3{font-family:var(--font-display);font-size:clamp(2.1rem,2.9vw,3.6rem);font-weight:900;line-height:.92;margin-bottom:12px;color:#fff;transition:color .3s}
 .te-card:hover .te-card-content h3{color:var(--red)}
-.te-card-content p{font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.58)}
-.te-card-cta{display:flex;align-items:center;gap:10px;margin-top:16px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(192,57,43,.7)}
+.te-card-content p{font-size:.92rem;line-height:1.75;color:rgba(255,255,255,.6)}
+.te-card-cta{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(192,57,43,.7)}
 .te-card-cta svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-/* NAV ARROWS */
-.te-nav-row{display:flex;align-items:center;justify-content:space-between;padding:20px 6vw 0;position:relative;z-index:1}
-.te-drag-hint{display:flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.te-drag-hint{display:flex;align-items:center;justify-content:center;gap:10px;padding:0 6vw;margin-top:4px;font-family:var(--font-ui);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2)}
 .te-drag-hint svg{width:14px;height:14px;opacity:.4;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.te-arrows{display:flex;align-items:center;gap:12px}
-.te-arrow{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.5);cursor:pointer;color:#fff;transition:.2s;backdrop-filter:blur(8px)}
-.te-arrow:hover{background:rgba(192,57,43,.25);border-color:rgba(192,57,43,.6)}
-.te-arrow svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.te-more{display:flex;justify-content:center;margin-top:36px;position:relative;z-index:1}
+.te-more{display:flex;justify-content:center;margin-top:36px;padding:0 6vw;position:relative;z-index:1}
 .te-more a{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);text-decoration:none;border:1px solid rgba(192,57,43,.38);padding:14px 30px;border-radius:2px;transition:.2s;display:inline-flex;align-items:center;gap:10px}
 .te-more a:hover{background:var(--red);color:#fff;border-color:var(--red)}
 .te-more a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
 .te-more a:hover svg{transform:translateX(4px)}
 
-/* LIGHTBOX */
-.lightbox{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.97);backdrop-filter:blur(24px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s ease}
+/* LIGHTBOX (gedeeld met evenementen-pagina) */
+.lightbox{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s ease}
 .lightbox.open{opacity:1;pointer-events:auto}
 .lb-header{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0}
-.lb-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,3rem);font-weight:900}
+.lb-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,3rem);font-weight:900;letter-spacing:.02em}
 .lb-title span{color:var(--red)}
 .lb-meta{font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
 .lb-close{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);cursor:pointer;color:#fff;flex-shrink:0;transition:.2s}
@@ -261,7 +297,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .lb-main-img.changing{opacity:0;transform:scale(.97)}
 .lb-spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.1);border-top-color:var(--red);animation:spin .7s linear infinite;opacity:0;pointer-events:none;transition:opacity .2s}
 .lb-spinner.visible{opacity:1}
-@keyframes spin{to{transform:rotate(360deg)}}
 .lb-arrow{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);cursor:pointer;color:#fff;transition:.2s;z-index:2}
 .lb-arrow:hover{background:rgba(192,57,43,.25);border-color:rgba(192,57,43,.6)}
 .lb-arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -275,22 +310,21 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .lb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.38);background:rgba(0,0,0,.5);padding:5px 14px;border-radius:20px;pointer-events:none;z-index:2}
 
-/* ═══════════════════════
-   VACATURES
-═══════════════════════ */
-#vacatures{padding:110px 6vw 100px;background:#000;position:relative}
+/* VACATURES */
+#vacatures{padding:100px 6vw;background:#000;position:relative}
 #vacatures::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 55%);pointer-events:none}
 .vac-header{text-align:center;margin-bottom:64px;position:relative;z-index:1}
 .vac-title{font-family:var(--font-display);font-size:clamp(3rem,6vw,7rem);font-weight:900;line-height:.88;color:#fff;margin-bottom:20px}
 .vac-title .red{color:var(--red)}
-.vac-sub{font-size:1rem;color:rgba(255,255,255,.54);font-weight:300;max-width:560px;margin:0 auto}
+.vac-sub{font-size:1rem;color:rgba(255,255,255,.54);font-weight:300;max-width:580px;margin:0 auto}
 .vac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1300px;margin:0 auto;position:relative;z-index:1}
 .vac-card{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012));border:1px solid rgba(192,57,43,.18);border-radius:14px;padding:38px 32px;display:flex;flex-direction:column;transition:.3s;position:relative;overflow:hidden}
 .vac-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:0;transition:.3s}
-.vac-card:hover{border-color:rgba(192,57,43,.45);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.vac-card:hover{border-color:rgba(192,57,43,.45);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(192,57,43,.12)}
 .vac-card:hover::after{opacity:1}
 .vac-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-ui);font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red);background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.22);padding:6px 14px;border-radius:999px;margin-bottom:22px;width:fit-content}
 .vac-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--red);animation:liveBlink 1.4s infinite}
+@keyframes liveBlink{0%,100%{opacity:1}50%{opacity:.2}}
 .vac-name{font-family:var(--font-display);font-size:clamp(1.9rem,2.6vw,2.8rem);font-weight:900;line-height:.95;color:#fff;margin-bottom:16px}
 .vac-desc{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.58);font-weight:300;flex:1;margin-bottom:28px}
 .vac-list{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
@@ -299,9 +333,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .vac-btn{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);background:transparent;border:1px solid rgba(192,57,43,.38);padding:13px 24px;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s;text-align:center;width:100%}
 .vac-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
 
-/* ═══════════════════════
-   OPEN SOLLICITATIE
-═══════════════════════ */
+/* OPEN SOLLICITATIE */
 #open-sollicitatie{position:relative;background:#000;padding:120px 6vw 120px;overflow:hidden;border-top:1px solid rgba(192,57,43,.1)}
 #open-sollicitatie::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(192,57,43,.05),transparent 60%);pointer-events:none}
 .form-wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:58px;text-align:center}
@@ -315,7 +347,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:17px}
 .f-field{display:flex;flex-direction:column;gap:7px}
 .f-field label{font-family:var(--font-ui);font-size:.62rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.32)}
-.f-field input,.f-field textarea,.f-field select{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:2px;color:#fff;font-family:var(--font-body);font-size:.92rem;font-weight:300;padding:14px 16px;outline:none;-webkit-appearance:none;appearance:none;width:100%}
+.f-field input,.f-field textarea,.f-field select{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:2px;color:#fff;font-family:var(--font-body);font-size:.92rem;font-weight:300;padding:14px 16px;outline:none;-webkit-appearance:none;appearance:none}
 .f-field input:focus,.f-field textarea:focus,.f-field select:focus{border-color:rgba(192,57,43,.7);background:rgba(192,57,43,.075)}
 .f-field textarea{resize:vertical;min-height:140px}
 .f-field select option{background:#000}
@@ -329,19 +361,19 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .file-main span{display:block;font-size:.9rem;color:rgba(255,255,255,.46);line-height:1.5}
 .file-icon{width:54px;height:54px;border-radius:50%;border:1px solid rgba(192,57,43,.32);display:flex;align-items:center;justify-content:center;color:var(--red);font-family:var(--font-display);font-size:1.8rem;font-weight:900;flex:0 0 auto}
 .file-name{margin-top:12px;font-size:.86rem;color:rgba(255,255,255,.62)}
-.btn-submit{color:#fff;background:var(--red);border:none;padding:18px 44px;align-self:center;border-radius:2px;min-width:240px;text-align:center}
-.btn-submit:hover:not(:disabled){background:var(--red2);transform:translateY(-2px)}
+.btn-submit{color:#fff;background:var(--red);border:none;padding:18px 44px;align-self:center;border-radius:2px;min-width:240px;text-align:center;font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:.2s}
+.btn-submit:hover:not(:disabled){background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(192,57,43,.32)}
 .btn-submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
 .btn-submit.sending{background:rgba(192,57,43,.7)}
 .btn-submit.success{background:#1a7a4a;cursor:default}
 .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
 .form-alert{padding:16px 20px;border-radius:6px;font-family:var(--font-ui);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-align:center;display:none}
 .form-alert.show{display:block}
 .form-alert.success{background:rgba(26,122,74,.18);border:1px solid rgba(26,122,74,.45);color:#4ade80}
 .form-alert.error{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.45);color:#fc8181}
 .privacy-note{font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.36);font-weight:300;text-align:center}
 
-/* FOOTER */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
 .ft-brand{display:flex;flex-direction:column;gap:32px}
 .ft-logo{width:235px;opacity:.98}
@@ -359,15 +391,11 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .ft-copy strong{color:rgba(192,57,43,.8);font-weight:700}
 .ft-bar-right{display:flex;align-items:center;gap:24px}
 .ft-kvk{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.07);padding:6px 14px;border-radius:2px}
-
-/* REVEAL */
 .reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.38s}
 
-/* ═══════════════════════
-   MOBILE
-═══════════════════════ */
+@media(max-width:1100px){.vac-grid{grid-template-columns:1fr 1fr}.about-strip-inner{grid-template-columns:1fr;gap:48px}}
 @media(max-width:1000px){
   html,body{cursor:auto}#cur,#cur-ring{display:none}.lang-fab{display:none}
   .nav-right .lang-switch{display:flex}nav{height:70px;padding:0 5vw}.nav-logo img{height:32px}
@@ -378,38 +406,28 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
   .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
   .mobile-nav-drawer{display:flex}
-  .jobs-hero{min-height:72vh;padding:110px 5vw 70px}
+  .jobs-hero{min-height:70vh;padding:110px 5vw 70px;background-position:center 82%}
   .jobs-title{font-size:clamp(4rem,18vw,8rem);margin-bottom:20px}
-  #wie-zijn-wij{padding:80px 5vw 70px}
-  #portfolio-intro{padding:70px 5vw 0}
-  .brand-scroll-wrapper{height:300vh}
-  .brand-can-wrap{width:48vw!important;max-width:200px!important;opacity:.14!important;filter:blur(4px) drop-shadow(0 0 30px var(--brand-soft))!important}
-  .brand-showcase.feelsogood .brand-can-wrap{width:34vw!important;max-width:140px!important;opacity:.10!important}
-  .brand-showcase.cleannutrition .brand-can-wrap{width:42vw!important;max-width:175px!important;opacity:.10!important}
-  .brand-panel{padding:0 4vw!important;align-items:center!important;justify-content:center!important}
-  .brand-panel.brand-left,.brand-panel.brand-right{justify-content:center!important}
-  .brand-content,.brand-metrics-wrap{max-width:100%;background:rgba(0,0,0,.88);border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:28px 22px;box-shadow:0 0 0 1px rgba(255,255,255,.04),0 16px 40px rgba(0,0,0,.7)}
-  .brand-title{font-size:clamp(48px,13vw,70px)}
-  .brand-section-title{font-size:clamp(30px,8vw,44px)}
-  .brand-text{color:rgba(255,255,255,.8)!important}
-  .brand-metrics{width:100%}
   #team-events{padding:70px 0 80px}
   .te-head,.te-meta-row{padding:0 5vw}
-  .te-meta-row{flex-direction:column;align-items:flex-start;margin-bottom:28px}
+  .te-meta-row{margin-bottom:28px}
   .te-track{padding:8px 5vw 24px;gap:14px;scroll-padding-left:5vw}
   .te-card{flex:0 0 80vw;max-width:300px;min-height:420px}
   .te-card-content{padding:22px}
   .te-card-content h3{font-size:clamp(1.8rem,7.5vw,2.6rem)}
-  .te-nav-row{padding:16px 5vw 0}
-  .lb-header{padding:16px 20px}.lb-main{padding:12px 52px}
-  .lb-arrow{width:40px;height:40px}.lb-prev{left:6px}.lb-next{right:6px}
-  .lb-thumbs{padding:12px 16px}.lb-thumb{width:56px;height:40px}
+  .te-track-wrapper::after{width:30px}
+  .lb-header{padding:16px 20px}
+  .lb-main{padding:12px 52px}
+  .lb-arrow{width:40px;height:40px}
+  .lb-prev{left:6px}.lb-next{right:6px}
+  .lb-thumbs{padding:12px 16px}
+  .lb-thumb{width:56px;height:40px}
   .vac-grid{grid-template-columns:1fr}.vac-card{padding:28px 22px}
-  #vacatures{padding:70px 5vw}
-  #open-sollicitatie{padding:70px 5vw 90px}
-  .form-row{grid-template-columns:1fr}
-  .file-content{flex-direction:column;align-items:flex-start;gap:14px}
-  .btn-submit{width:100%;padding:16px 24px}
+  .about-strip{padding:60px 5vw}#vacatures{padding:70px 5vw}
+  #open-sollicitatie{padding:70px 5vw 90px}.form-row{grid-template-columns:1fr}
+  .lead-form{max-width:100%}.file-content{flex-direction:column;align-items:flex-start;gap:14px}
+  .file-icon{width:44px;height:44px;font-size:1.4rem}
+  .btn-submit{width:100%;text-align:center;padding:16px 24px}
   footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
   .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
   .ft-logo{width:min(200px,55vw);margin:0 auto}.ft-socials{justify-content:center}
@@ -419,11 +437,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .lang-switch{margin-left:8px}.lang-btn{padding:5px 9px;font-size:.62rem}
 }
 @media(min-width:1001px){.nav-links{margin-left:auto;margin-right:20px}}
-@media(max-width:480px){
-  .jobs-title{font-size:clamp(3.2rem,16vw,6rem)}
-  .vac-name{font-size:clamp(1.7rem,7vw,2.4rem)}
-  .wsw-title{font-size:clamp(2.4rem,10vw,4rem)}
-}
+@media(max-width:480px){.jobs-title{font-size:clamp(3.2rem,16vw,6rem)}.vac-name{font-size:clamp(1.7rem,7vw,2.4rem)}}
 </style>
 </head>
 <body>
@@ -480,13 +494,13 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section class="jobs-hero">
   <div class="hero-orb"></div>
   <div class="jobs-hero-inner">
     <p class="label" data-i18n="hero.label">Werken bij BINC</p>
-    <h1 class="jobs-title">GROW<br><span class="red">WITH</span> <span class="stroke">BINC</span></h1>
-    <p class="jobs-copy" data-i18n="hero.copy">Wij groeien snel en daarvoor zoeken we ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, werk je voor merken in de schappen van Albert Heijn en Jumbo, en leer je de retail van binnenuit kennen.</p>
+    <h1 class="jobs-title" data-i18n-html="hero.title">GROW<br><span class="red">WITH</span> <span class="stroke">BINC</span></h1>
+    <p class="jobs-copy" data-i18n="hero.copy">Wij groeien snel — en daarvoor zoeken we ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, werk je voor merken in de schappen van Albert Heijn en Jumbo, en leer je de retail van binnenuit kennen.</p>
     <div class="jobs-actions">
       <a href="#vacatures" class="btn-red" data-i18n="hero.btn.vacatures">Bekijk stageplekken</a>
       <a href="#open-sollicitatie" class="btn-outline" data-i18n="hero.btn.apply">Open solliciteren</a>
@@ -494,313 +508,129 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </section>
 
-<!-- ══ WIE ZIJN WIJ ══ -->
-<section id="wie-zijn-wij">
-  <div class="wsw-inner reveal">
-    <p class="label" data-i18n="wsw.label">Wie zijn wij</p>
-    <h2 class="wsw-title">Full-service B2B voor<br><span class="red">ambitieuze merken.</span></h2>
-    <p class="wsw-body" data-i18n="wsw.body1">BINC International regelt de volledige B2B-distributie voor consumentenmerken in Nederland — van inkoopmeetings bij Albert Heijn en Jumbo tot activaties op festivals en horeca-plaatsingen door heel het land.</p>
-    <p class="wsw-body" data-i18n="wsw.body2">Ons portfolio groeit. Onze merken groeien. Jij groeit mee.</p>
-    <div class="wsw-team-tag" data-i18n="wsw.teamtag">Een team van jonge professionals</div>
-  </div>
-</section>
-
-<!-- ══ PORTFOLIO INTRO ══ -->
-<section id="portfolio-intro" class="reveal">
-  <div class="pi-inner">
-    <p class="label" data-i18n="pi.label">Ons portfolio</p>
-    <h2 class="pi-title">DE MERKEN ACHTER <span class="red">BINC</span></h2>
-    <p class="pi-body" data-i18n="pi.body">Wij werken samen met ambitieuze merken die groot willen groeien in de Nederlandse retail. Scroll om te ontdekken met wie.</p>
-  </div>
-</section>
-
-<!-- ══ GOLD DRY ══ -->
-<section class="brand-showcase gold-dry">
-  <div class="brand-scroll-wrapper">
-    <div class="brand-sticky">
-      <div class="brand-bg"></div>
-      <div class="brand-progress"></div>
-      <div class="brand-can-wrap">
-        <div class="brand-glow"></div>
-        <img src="images/golddry_pre_original.png" alt="Gold Dry"/>
-      </div>
-      <div class="brand-panels">
-        <div class="brand-panel brand-left brand-active">
-          <div class="brand-content">
-            <span class="brand-eyebrow">Gold Dry</span>
-            <h2 class="brand-title">TASTE.<br><span class="brand-name">GOLD DRY.</span></h2>
-            <p class="brand-text" data-i18n="gd.intro">BINC International verzorgt al meer dan 3 jaar de volledige B2B voor Gold Dry. Van strategie en buyer outreach tot fysieke locatiebezoeken, orderverwerking en accountmanagement.</p>
-            <div class="brand-pills">
-              <div class="brand-pill"><span>3+</span> jaar partner</div>
-              <div class="brand-pill">Volledig B2B ontzorgd</div>
-              <div class="brand-pill">Landelijk netwerk</div>
-            </div>
-          </div>
-        </div>
-        <div class="brand-panel brand-left">
-          <div class="brand-metrics-wrap">
-            <span class="brand-eyebrow">Groei met BINC</span>
-            <h2 class="brand-section-title" data-i18n="gd.metrics.title">Van nul<br>tot landelijk.</h2>
-            <div class="brand-line"></div>
-            <div class="brand-metrics">
-              <div class="brand-metric"><strong>10</strong><span>Maanden tot landelijk bereik</span></div>
-              <div class="brand-metric"><strong>2.500+</strong><span>Verkooppunten actief</span></div>
-              <div class="brand-metric"><strong>340%</strong><span>Omzetgroei jaar 1 naar 2</span></div>
-              <div class="brand-metric"><strong>8</strong><span>Retailketens live</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- ABOUT -->
+<section class="about-strip">
+  <div class="about-strip-inner">
+    <div class="about-text reveal">
+      <p class="label" data-i18n="about.label">Wie zijn wij</p>
+      <h2 class="about-heading" data-i18n-html="about.heading">Full-service B2B<br>voor <span class="red">ambitieuze merken.</span></h2>
+      <p class="about-p" data-i18n="about.p1">BINC International regelt de volledige B2B-distributie voor consumentenmerken in Nederland — van inkoopmeetings bij Albert Heijn en Jumbo tot activaties op festivals en horeca-plaatsingen door heel het land.</p>
+      <p class="about-p" data-i18n="about.p2">Ons portfolio groeit. Onze merken groeien. Jij groeit mee.</p>
+    </div>
+    <div class="about-stats reveal d1">
+      <div class="stat-box"><div class="stat-num">4+</div><div class="stat-label" data-i18n="stat.brands">Merken in portfolio</div></div>
+      <div class="stat-box"><div class="stat-num">3</div><div class="stat-label" data-i18n="stat.channels">Kanalen: retail, horeca &amp; events</div></div>
+      <div class="stat-box"><div class="stat-num">100+</div><div class="stat-label" data-i18n="stat.locations">Retaillocaties actief</div></div>
+      <div class="stat-box"><div class="stat-num">NL</div><div class="stat-label" data-i18n="stat.country">Landelijke dekking</div></div>
     </div>
   </div>
 </section>
 
-<div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0 6vw"></div>
-
-<!-- ══ FEELSOGOOD ══ -->
-<section class="brand-showcase feelsogood">
-  <div class="brand-scroll-wrapper">
-    <div class="brand-sticky">
-      <div class="brand-bg"></div>
-      <div class="brand-progress"></div>
-      <div class="brand-can-wrap">
-        <div class="brand-glow"></div>
-        <img src="images/FeelSoGood_Blueberry.png" alt="FeelSoGood"/>
-      </div>
-      <div class="brand-panels">
-        <div class="brand-panel brand-right brand-active">
-          <div class="brand-content">
-            <span class="brand-eyebrow">FeelSoGood</span>
-            <h2 class="brand-title">TASTE.<br><span class="brand-name">FEELSOGOOD.</span></h2>
-            <p class="brand-text" data-i18n="fsg.intro">BINC International is verantwoordelijk voor de volledige B2B-uitrol van FeelSoGood in Nederland. Van het eerste buyer gesprek tot de schappresentatie en repeat orders.</p>
-            <div class="brand-pills">
-              <div class="brand-pill">Volledig B2B beheer</div>
-              <div class="brand-pill"><span>0,6L</span> formaat</div>
-              <div class="brand-pill">Landelijk actief</div>
-            </div>
-          </div>
-        </div>
-        <div class="brand-panel brand-right">
-          <div class="brand-metrics-wrap">
-            <span class="brand-eyebrow">Groei met BINC</span>
-            <h2 class="brand-section-title" data-i18n="fsg.metrics.title">Sneller<br>dan verwacht.</h2>
-            <div class="brand-line"></div>
-            <div class="brand-metrics">
-              <div class="brand-metric"><strong>2026</strong><span>Start retailuitrol Nederland</span></div>
-              <div class="brand-metric"><strong>1M+</strong><span>Winkelaars bereikt</span></div>
-              <div class="brand-metric"><strong>10M+</strong><span>Views op social media</span></div>
-              <div class="brand-metric"><strong>250+</strong><span>Franchisers in jaar 1</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0 6vw"></div>
-
-<!-- ══ BEATBOX ══ -->
-<section class="brand-showcase beatbox">
-  <div class="brand-scroll-wrapper">
-    <div class="brand-sticky">
-      <div class="brand-bg"></div>
-      <div class="brand-progress"></div>
-      <div class="brand-can-wrap">
-        <div class="brand-glow"></div>
-        <img src="images/beatbox_partypunch.png" alt="BeatBox"/>
-      </div>
-      <div class="brand-panels">
-        <div class="brand-panel brand-left brand-active">
-          <div class="brand-content">
-            <span class="brand-eyebrow">BeatBox</span>
-            <h2 class="brand-title">TASTE.<br><span class="brand-name">BEATBOX.</span></h2>
-            <p class="brand-text" data-i18n="bb.intro">BINC International verzorgt de volledige B2B voor BeatBox in Nederland. Van de eerste retailpitch tot leveringen, locatiebezoeken en doorlopend accountmanagement.</p>
-            <div class="brand-pills">
-              <div class="brand-pill"><span>330ml</span> carton</div>
-              <div class="brand-pill">Volledig B2B beheer</div>
-              <div class="brand-pill">Tetra verpakking</div>
-            </div>
-          </div>
-        </div>
-        <div class="brand-panel brand-left">
-          <div class="brand-metrics-wrap">
-            <span class="brand-eyebrow">Groei met BINC</span>
-            <h2 class="brand-section-title" data-i18n="bb.metrics.title">Slim groeien.<br>Snel bewezen.</h2>
-            <div class="brand-line"></div>
-            <div class="brand-metrics">
-              <div class="brand-metric"><strong>2026</strong><span>Start retailuitrol Nederland</span></div>
-              <div class="brand-metric"><strong>200+</strong><span>Actieve verkooppunten</span></div>
-              <div class="brand-metric"><strong>500K+</strong><span>Winkelaars bereikt</span></div>
-              <div class="brand-metric"><strong>2</strong><span>Retailkanalen live</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0 6vw"></div>
-
-<!-- ══ CLEAN NUTRITION ══ -->
-<section class="brand-showcase cleannutrition">
-  <div class="brand-scroll-wrapper">
-    <div class="brand-sticky">
-      <div class="brand-bg"></div>
-      <div class="brand-progress"></div>
-      <div class="brand-can-wrap">
-        <div class="brand-glow"></div>
-        <img src="images/cleannutrition_bar.png" alt="Clean Nutrition"/>
-      </div>
-      <div class="brand-panels">
-        <div class="brand-panel brand-right brand-active">
-          <div class="brand-content">
-            <span class="brand-eyebrow">Clean Nutrition</span>
-            <h2 class="brand-title">TASTE.<br><span class="brand-name">CLEAN.</span></h2>
-            <p class="brand-text" data-i18n="cn.intro">Van sportretail tot supermarkt: BINC International bouwt actief aan de distributie en groei van Clean Nutrition in heel Nederland.</p>
-            <div class="brand-pills">
-              <div class="brand-pill">Uitgebreid assortiment</div>
-              <div class="brand-pill">Volledig B2B beheer</div>
-              <div class="brand-pill">Gebouwd voor retail</div>
-            </div>
-          </div>
-        </div>
-        <div class="brand-panel brand-right">
-          <div class="brand-metrics-wrap">
-            <span class="brand-eyebrow">Groei met BINC</span>
-            <h2 class="brand-section-title" data-i18n="cn.metrics.title">Slim gebouwd<br>op performance.</h2>
-            <div class="brand-line"></div>
-            <div class="brand-metrics">
-              <div class="brand-metric"><strong>2024</strong><span>Start samenwerking</span></div>
-              <div class="brand-metric"><strong>750+</strong><span>Filialen aangesloten</span></div>
-              <div class="brand-metric"><strong>1M+</strong><span>Winkelaars bereikt</span></div>
-              <div class="brand-metric"><strong>Groei</strong><span>Doorlopende uitbreiding</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FESTIVALS MET HET TEAM ══ -->
+<!-- FESTIVALS MET HET TEAM -->
 <section id="team-events">
   <div class="te-head reveal">
-    <p class="label" data-i18n="te.label">Team en cultuur</p>
-    <h2 class="te-title">FESTIVALS MET<br><span class="red">HET TEAM</span></h2>
+    <p class="label" data-i18n="te.label">Team & cultuur</p>
+    <h2 class="te-title" data-i18n-html="te.title">FESTIVALS MET<br><span class="red">HET TEAM</span></h2>
   </div>
   <div class="te-meta-row reveal d1">
     <div>
       <p class="te-sub" data-i18n="te.sub">Werken bij BINC is meer dan een bureau. We gaan samen het veld op — naar de festivals waar onze merken live worden geactiveerd.</p>
-    </div>
-    <div class="te-hint">
-      <div class="te-hint-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="var(--red)"/><polyline points="21 15 16 10 5 21"/></svg>
-      </div>
-      <div class="te-hint-text">
-        <strong data-i18n="te.hint.title">Klik op een festival</strong>
-        <span data-i18n="te.hint.sub">om de fotogalerij te bekijken</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="te-carousel">
-    <div class="te-track-wrapper">
-      <div class="te-track" id="teTrack">
-
-        <div class="te-card" data-event="kkc" role="button" tabindex="0">
-          <img src="images/kkc/web/_O2A4099_web.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
-          <div class="te-card-overlay"></div>
-          <div class="te-card-badge" data-i18n="te.badge.recent">Nieuwste</div>
-          <div class="te-card-gallery">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>30 foto's</span>
-          </div>
-          <div class="te-card-content">
-            <span class="te-card-tag" data-i18n="te.tag">Festival met het team</span>
-            <h3>Kamping Kitsch Club</h3>
-            <p data-i18n="te1.body">Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten.</p>
-            <div class="te-card-cta">
-              <span data-i18n="te.cta">Bekijk galerij</span>
-              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
-          </div>
+      <div class="te-hint" style="margin-top:22px">
+        <div class="te-hint-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="var(--red)"/><polyline points="21 15 16 10 5 21"/></svg>
         </div>
-
-        <div class="te-card" data-event="7th" role="button" tabindex="0">
-          <img src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
-          <div class="te-card-overlay"></div>
-          <div class="te-card-gallery">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>14 foto's</span>
-          </div>
-          <div class="te-card-content">
-            <span class="te-card-tag" data-i18n="te.tag">Festival met het team</span>
-            <h3>7th Sunday</h3>
-            <p data-i18n="te2.body">Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland.</p>
-            <div class="te-card-cta">
-              <span data-i18n="te.cta">Bekijk galerij</span>
-              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
-          </div>
+        <div class="te-hint-text">
+          <strong data-i18n="te.hint.title">Klik op een festival</strong>
+          <span data-i18n="te.hint.sub">om de fotogalerij te bekijken</span>
         </div>
-
-        <div class="te-card" data-event="hoh" role="button" tabindex="0">
-          <img src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
-          <div class="te-card-overlay"></div>
-          <div class="te-card-gallery">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>24 foto's</span>
-          </div>
-          <div class="te-card-content">
-            <span class="te-card-tag" data-i18n="te.tag">Festival met het team</span>
-            <h3>Harmony of Hardcore</h3>
-            <p data-i18n="te3.body">Maximale energie, maximaal teamgevoel. Pal in het hart van de hardcore scene, samen met een loyale en gepassioneerde fanbase.</p>
-            <div class="te-card-cta">
-              <span data-i18n="te.cta">Bekijk galerij</span>
-              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
-          </div>
-        </div>
-
-        <div class="te-card" data-event="dauwpop" role="button" tabindex="0">
-          <img src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
-          <div class="te-card-overlay"></div>
-          <div class="te-card-gallery">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>29 foto's</span>
-          </div>
-          <div class="te-card-content">
-            <span class="te-card-tag" data-i18n="te.tag">Festival met het team</span>
-            <h3>Dauwpop</h3>
-            <p data-i18n="te4.body">Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop beleving — proeven, zien en onthouden.</p>
-            <div class="te-card-cta">
-              <span data-i18n="te.cta">Bekijk galerij</span>
-              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="te-nav-row">
-      <div class="te-drag-hint">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        <span data-i18n="te.drag">Sleep of swipe om meer te zien</span>
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </div>
-      <div class="te-arrows">
-        <button class="te-arrow" id="teArrowPrev" aria-label="Vorige">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="te-arrow" id="teArrowNext" aria-label="Volgende">
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
       </div>
     </div>
   </div>
+
+  <div class="te-track-wrapper">
+    <div class="te-track" id="teTrack">
+
+      <div class="te-card" data-event="kkc" role="button" tabindex="0" aria-label="Kamping Kitsch Club galerij openen">
+        <img src="images/kkc/web/_O2A4099_web.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
+        <div class="te-card-overlay"></div>
+        <div class="te-card-badge" data-i18n="te.badge.recent">Nieuwste</div>
+        <div class="te-card-gallery">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>30 foto's</span>
+        </div>
+        <div class="te-card-content">
+          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3>Kamping Kitsch Club</h3>
+          <p data-i18n="te1.body">Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers.</p>
+          <div class="te-card-cta">
+            <span data-i18n="te.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="te-card" data-event="7th" role="button" tabindex="0" aria-label="7th Sunday galerij openen">
+        <img src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
+        <div class="te-card-overlay"></div>
+        <div class="te-card-gallery">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>14 foto's</span>
+        </div>
+        <div class="te-card-content">
+          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3>7th Sunday</h3>
+          <p data-i18n="te2.body">Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.</p>
+          <div class="te-card-cta">
+            <span data-i18n="te.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="te-card" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
+        <img src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
+        <div class="te-card-overlay"></div>
+        <div class="te-card-gallery">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>24 foto's</span>
+        </div>
+        <div class="te-card-content">
+          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3>Harmony of Hardcore</h3>
+          <p data-i18n="te3.body">Maximale energie, maximaal teamgevoel. Pal in het hart van de hardcore scene, samen met een loyale en gepassioneerde fanbase.</p>
+          <div class="te-card-cta">
+            <span data-i18n="te.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="te-card" data-event="dauwpop" role="button" tabindex="0" aria-label="Dauwpop galerij openen">
+        <img src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
+        <div class="te-card-overlay"></div>
+        <div class="te-card-gallery">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>29 foto's</span>
+        </div>
+        <div class="te-card-content">
+          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3>Dauwpop</h3>
+          <p data-i18n="te4.body">Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.</p>
+          <div class="te-card-cta">
+            <span data-i18n="te.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="te-drag-hint">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    <span data-i18n="te.drag">Sleep of swipe om meer te zien</span>
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </p>
 
   <div class="te-more">
     <a href="evenementen.html">
@@ -811,138 +641,146 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 </section>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotogalerij">
   <div class="lb-header">
     <div>
-      <div class="lb-title" id="lbTitle"></div>
-      <div class="lb-meta" id="lbMeta"></div>
+      <div class="lb-title" id="lbTitle">7th Sunday</div>
+      <div class="lb-meta" id="lbMeta">Festival · met het team</div>
     </div>
-    <button class="lb-close" id="lbClose"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <button class="lb-close" id="lbClose" aria-label="Galerij sluiten">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
   </div>
   <div class="lb-main">
-    <button class="lb-arrow lb-prev" id="lbPrev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Vorige foto">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
     <img class="lb-main-img" id="lbMainImg" src="" alt="Festival foto"/>
     <div class="lb-spinner" id="lbSpinner"></div>
-    <button class="lb-arrow lb-next" id="lbNext"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Volgende foto">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
     <div class="lb-counter" id="lbCounter">1 / 14</div>
   </div>
   <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
-<!-- ══ VACATURES ══ -->
+<!-- VACATURES -->
 <section id="vacatures">
   <div class="vac-header reveal">
     <p class="label" style="justify-content:center" data-i18n="vac.label">Open stageplekken</p>
-    <h2 class="vac-title">3 PLEKKEN,<br><span class="red">1 DOEL.</span></h2>
+    <h2 class="vac-title" data-i18n-html="vac.title">3 PLEKKEN,<br><span class="red">1 DOEL.</span></h2>
     <p class="vac-sub" data-i18n="vac.sub">Drie stageplaatsen, elk met eigen verantwoordelijkheden — maar altijd als volwaardig onderdeel van het BINC-team.</p>
   </div>
   <div class="vac-grid">
+
     <div class="vac-card reveal">
-      <div class="vac-tag" data-i18n="tag.stage">Stage 2025/2026</div>
-      <h3 class="vac-name">Marketing<br>Stagiaire</h3>
-      <p class="vac-desc" data-i18n="vac.marketing.desc">Jij bent het creatieve brein achter onze merkuitingen. Van social content voor Gold Dry en BeatBox tot campagnes die in de schappen én op festivals zichtbaar zijn.</p>
+      <div class="vac-tag" data-i18n="tag.stage">Stage · 2025/2026</div>
+      <h3 class="vac-name" data-i18n-html="vac.marketing.name">Marketing<br>Stagiaire</h3>
+      <p class="vac-desc" data-i18n="vac.marketing.desc">Jij bent het creatieve brein achter onze merkuitingen. Van social content voor Gold Dry en BeatBox tot campagnes die in de schappen én op festivals zichtbaar zijn — jij helpt bouwen aan herkenbare merken die opvallen in een druk schap.</p>
       <ul class="vac-list">
-        <li data-i18n="vac.marketing.li1">Contentstrategie en social media</li>
+        <li data-i18n="vac.marketing.li1">Contentstrategie &amp; social media</li>
         <li data-i18n="vac.marketing.li2">Campagne-uitwerking per merk</li>
-        <li data-i18n="vac.marketing.li3">Retail- en eventcommunicatie</li>
-        <li data-i18n="vac.marketing.li4">Analyse van bereik en performance</li>
+        <li data-i18n="vac.marketing.li3">Retail- &amp; eventcommunicatie</li>
+        <li data-i18n="vac.marketing.li4">Analyse van bereik &amp; performance</li>
       </ul>
-      <a href="#open-sollicitatie" class="vac-btn" data-i18n="vac.btn">Solliciteer nu</a>
+      <a href="#open-sollicitatie" class="vac-btn" data-i18n="vac.btn">Solliciteer nu →</a>
     </div>
+
     <div class="vac-card reveal d1">
-      <div class="vac-tag" data-i18n="tag.stage">Stage 2025/2026</div>
-      <h3 class="vac-name">Data en ICT<br>Stagiaire</h3>
-      <p class="vac-desc" data-i18n="vac.data.desc">Jij maakt data werkbaar. Van dashboards die ons salesteam dagelijks gebruikt tot slimme koppelingen tussen systemen — jij bouwt de tools waarmee BINC sneller en beter beslissingen neemt.</p>
+      <div class="vac-tag" data-i18n="tag.stage">Stage · 2025/2026</div>
+      <h3 class="vac-name" data-i18n-html="vac.data.name">Data &amp; ICT<br>Stagiaire</h3>
+      <p class="vac-desc" data-i18n="vac.data.desc">Jij maakt data werkbaar. Van dashboards die ons salesteam dagelijks gebruikt tot slimme koppelingen tussen systemen — jij bouwt de tools waarmee BINC sneller en beter beslissingen neemt. Technisch denken + commercieel begrip: dát is de combo die wij zoeken.</p>
       <ul class="vac-list">
         <li data-i18n="vac.data.li1">Bouwen van interne webapplicaties</li>
         <li data-i18n="vac.data.li2">Data-integraties (Google Sheets, API's)</li>
-        <li data-i18n="vac.data.li3">KPI-dashboards en rapportages</li>
-        <li data-i18n="vac.data.li4">Procesautomatisering en tooling</li>
+        <li data-i18n="vac.data.li3">KPI-dashboards &amp; rapportages</li>
+        <li data-i18n="vac.data.li4">Procesautomatisering &amp; tooling</li>
       </ul>
-      <a href="#open-sollicitatie" class="vac-btn" data-i18n="vac.btn">Solliciteer nu</a>
+      <a href="#open-sollicitatie" class="vac-btn" data-i18n="vac.btn">Solliciteer nu →</a>
     </div>
+
     <div class="vac-card reveal d2">
-      <div class="vac-tag" data-i18n="tag.stage">Stage 2025/2026</div>
-      <h3 class="vac-name">Sales<br>Stagiaire</h3>
-      <p class="vac-desc" data-i18n="vac.sales.desc">Jij leert het vak van accountmanagement in de snelste omgeving die er is: FMCG retail. Je rijdt mee, voert gesprekken, bezoekt filialen en ziet hoe deals worden gemaakt.</p>
+      <div class="vac-tag" data-i18n="tag.stage">Stage · 2025/2026</div>
+      <h3 class="vac-name" data-i18n-html="vac.sales.name">Sales<br>Stagiaire</h3>
+      <p class="vac-desc" data-i18n="vac.sales.desc">Jij leert het vak van accountmanagement in de snelste omgeving die er is: FMCG retail. Je rijdt mee, voert gesprekken, bezoekt filialen en ziet hoe deals worden gemaakt. Als je wil weten hoe producten in het schap van de Albert Heijn belanden — dan is dit jouw plek.</p>
       <ul class="vac-list">
-        <li data-i18n="vac.sales.li1">Retailbezoeken en filiaalactivaties</li>
+        <li data-i18n="vac.sales.li1">Retailbezoeken &amp; filiaalactivaties</li>
         <li data-i18n="vac.sales.li2">Ondersteuning accountmanagement</li>
-        <li data-i18n="vac.sales.li3">Leadgeneratie en prospecting</li>
-        <li data-i18n="vac.sales.li4">Rapportage en klantopvolging</li>
+        <li data-i18n="vac.sales.li3">Leadgeneratie &amp; prospecting</li>
+        <li data-i18n="vac.sales.li4">Rapportage &amp; klantopvolging</li>
       </ul>
-      <a href="#open-sollicitatie" class="vac-btn" data-i18n="vac.btn">Solliciteer nu</a>
+      <a href="#open-sollicitatie" class="vac-btn" data-i18n="vac.btn">Solliciteer nu →</a>
     </div>
+
   </div>
 </section>
 
-<!-- ══ OPEN SOLLICITATIE ══ -->
+<!-- OPEN SOLLICITATIE -->
 <section id="open-sollicitatie">
   <div class="form-wrap">
     <div class="form-intro reveal">
       <p class="label" data-i18n="form.label">Open sollicitatie</p>
-      <h2 class="form-title">LAAT VAN <span class="red">JE HOREN</span></h2>
+      <h2 class="form-title" data-i18n-html="form.title">LAAT VAN <span class="red">JE HOREN</span></h2>
       <p class="form-copy" data-i18n="form.copy">Geen passende stageplaats gevonden, of wil je gewoon direct van je laten horen? Stuur een open sollicitatie. We bekijken elk profiel en nemen contact op als er een match is.</p>
     </div>
     <div class="lead-form reveal d2">
-      <div class="form-block">
+      <div class="form-block" id="sollicitatieForm">
         <div class="form-row">
           <div class="f-field">
-            <label for="f-voornaam" data-i18n="field.firstName">Voornaam</label>
-            <input id="f-voornaam" type="text" placeholder="Jan" required/>
+            <label for="f-voornaam" data-i18n="field.firstName">Voornaam *</label>
+            <input id="f-voornaam" name="voornaam" type="text" placeholder="Jan" required/>
           </div>
           <div class="f-field">
-            <label for="f-achternaam" data-i18n="field.lastName">Achternaam</label>
-            <input id="f-achternaam" type="text" placeholder="de Vries" required/>
+            <label for="f-achternaam" data-i18n="field.lastName">Achternaam *</label>
+            <input id="f-achternaam" name="achternaam" type="text" placeholder="de Vries" required/>
           </div>
         </div>
         <div class="form-row">
           <div class="f-field">
-            <label for="f-email" data-i18n="field.email">E-mailadres</label>
-            <input id="f-email" type="email" placeholder="jan@email.nl" required/>
+            <label for="f-email" data-i18n="field.email">E-mailadres *</label>
+            <input id="f-email" name="email" type="email" placeholder="jan@email.nl" required/>
           </div>
           <div class="f-field">
             <label for="f-tel" data-i18n="field.phone">Telefoonnummer</label>
-            <input id="f-tel" type="tel" placeholder="+31 6 ..."/>
+            <input id="f-tel" name="telefoon" type="tel" placeholder="+31 6 ..."/>
           </div>
         </div>
         <div class="form-row">
           <div class="f-field">
             <label for="f-woon" data-i18n="field.city">Woonplaats</label>
-            <input id="f-woon" type="text" placeholder="Den Hout"/>
+            <input id="f-woon" name="woonplaats" type="text" placeholder="Den Hout"/>
           </div>
           <div class="f-field">
             <label for="f-li" data-i18n="field.linkedin">LinkedIn profiel</label>
-            <input id="f-li" type="url" placeholder="https://linkedin.com/in/..."/>
+            <input id="f-li" name="linkedin" type="url" placeholder="https://linkedin.com/in/..."/>
           </div>
         </div>
-        <!-- Interessegebied — full width -->
         <div class="f-field">
           <label for="f-int" data-i18n="field.interest">Interessegebied</label>
           <div class="select-wrap">
-            <select id="f-int">
+            <select id="f-int" name="interessegebied">
               <option value="" disabled selected data-i18n="interest.placeholder">Selecteer richting</option>
               <option value="Marketing Stagiaire" data-i18n="interest.marketing">Stage Marketing</option>
-              <option value="Data &amp; ICT Stagiaire" data-i18n="interest.data">Stage Data en ICT</option>
+              <option value="Data &amp; ICT Stagiaire" data-i18n="interest.data">Stage Data &amp; ICT</option>
               <option value="Sales Stagiaire" data-i18n="interest.sales">Stage Sales</option>
               <option value="Open sollicitatie" data-i18n="interest.open">Open sollicitatie</option>
               <option value="Anders" data-i18n="interest.other">Anders</option>
             </select>
           </div>
         </div>
-        <!-- Motivatie — full width -->
         <div class="f-field">
           <label for="f-mot" data-i18n="field.motivation">Motivatie</label>
-          <textarea id="f-mot" placeholder="Vertel kort wie je bent, waar je goed in bent en waarom je bij BINC International wilt werken of stage lopen."></textarea>
+          <textarea id="f-mot" name="motivatie" placeholder="Vertel kort wie je bent, waar je goed in bent en waarom je bij BINC International wilt werken of stage lopen."></textarea>
         </div>
         <div class="f-field">
           <label data-i18n="field.cv">Upload CV</label>
           <div class="file-box" id="fileBox">
-            <input type="file" id="cvUpload" accept=".pdf,.doc,.docx"/>
+            <input type="file" id="cvUpload" name="cv" accept=".pdf,.doc,.docx"/>
             <div class="file-content">
               <div class="file-main">
                 <strong data-i18n="file.title">Sleep je CV hier of klik om te uploaden</strong>
-                <span data-i18n="file.subtitle">PDF, DOC of DOCX max. 10MB</span>
+                <span data-i18n="file.subtitle">PDF, DOC of DOCX · max. 10MB</span>
               </div>
               <div class="file-icon">+</div>
             </div>
@@ -950,9 +788,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
           </div>
         </div>
         <p class="privacy-note" data-i18n="form.privacy">Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw sollicitatie.</p>
-        <div class="form-alert success" id="formSuccess"></div>
-        <div class="form-alert error" id="formError"></div>
-        <button class="btn-submit" id="applyBtn" type="button" data-i18n="btn.submit">Verstuur sollicitatie</button>
+        <div class="form-alert success" id="formSuccess">✓ &nbsp;Je sollicitatie is succesvol verstuurd. We nemen zo snel mogelijk contact met je op!</div>
+        <div class="form-alert error" id="formError">✕ &nbsp;Er is iets misgegaan. Probeer het opnieuw of mail direct naar info@bincinternational.nl</div>
+        <button class="btn-submit" id="applyBtn" type="button" data-i18n="btn.submit">Verstuur sollicitatie →</button>
       </div>
     </div>
   </div>
@@ -968,114 +806,110 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     </div>
   </div>
   <div class="ft-info reveal d1">
-    <div class="ft-item"><p class="ft-h">BINC adres</p><p>Wim Rötherlaan 25,<br>5051 JS Goirle</p></div>
-    <div class="ft-item"><p class="ft-h">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
-    <div class="ft-item"><p class="ft-h">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.address.label">BINC adres</p><p>Wim Rötherlaan 25,<br>5051 JS Goirle</p></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.email.label">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="footer.phone.label">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
   </div>
 </footer>
 
 <div class="ft-bar">
   <div class="ft-bar-left">
-    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — Alle rechten voorbehouden.</span>
-    <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)">Full-service B2B voor ambitieuze merken in Nederland.</span>
+    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+    <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)" data-i18n="footer.tagline.short">Full-service B2B voor ambitieuze merken in Nederland.</span>
   </div>
   <div class="ft-bar-right"><span class="ft-kvk">KVK: 98970887</span></div>
 </div>
 
 <script>
-/* ══════════════════════
-   TRANSLATIONS
-══════════════════════ */
+const API_URL='https://server-medewerker-kpi.onrender.com/api/sollicitatie';
 const T={
   nl:{
     'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Evenementen','nav.team':'Ons Team','nav.jobs':'Werken bij','nav.cta':'Samenwerken',
     'hero.label':'Werken bij BINC',
-    'hero.copy':'Wij groeien snel en daarvoor zoeken we ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, werk je voor merken in de schappen van Albert Heijn en Jumbo, en leer je de retail van binnenuit kennen.',
+    'hero.title':'GROW<br><span class="red">WITH</span> <span class="stroke">BINC</span>',
+    'hero.copy':'Wij groeien snel — en daarvoor zoeken we ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, werk je voor merken in de schappen van Albert Heijn en Jumbo, en leer je de retail van binnenuit kennen.',
     'hero.btn.vacatures':'Bekijk stageplekken','hero.btn.apply':'Open solliciteren',
-    'wsw.label':'Wie zijn wij',
-    'wsw.body1':'BINC International regelt de volledige B2B-distributie voor consumentenmerken in Nederland — van inkoopmeetings bij Albert Heijn en Jumbo tot activaties op festivals en horeca-plaatsingen door heel het land.',
-    'wsw.body2':'Ons portfolio groeit. Onze merken groeien. Jij groeit mee.',
-    'wsw.teamtag':'Een team van jonge professionals',
-    'pi.label':'Ons portfolio','pi.body':'Wij werken samen met ambitieuze merken die groot willen groeien in de Nederlandse retail. Scroll om te ontdekken met wie.',
-    'gd.intro':'BINC International verzorgt al meer dan 3 jaar de volledige B2B voor Gold Dry. Van strategie en buyer outreach tot fysieke locatiebezoeken, orderverwerking en accountmanagement.',
-    'gd.metrics.title':'Van nul\ntot landelijk.',
-    'fsg.intro':'BINC International is verantwoordelijk voor de volledige B2B-uitrol van FeelSoGood in Nederland. Van het eerste buyer gesprek tot de schappresentatie en repeat orders.',
-    'fsg.metrics.title':'Sneller\ndan verwacht.',
-    'bb.intro':'BINC International verzorgt de volledige B2B voor BeatBox in Nederland. Van de eerste retailpitch tot leveringen, locatiebezoeken en doorlopend accountmanagement.',
-    'bb.metrics.title':'Slim groeien.\nSnel bewezen.',
-    'cn.intro':'Van sportretail tot supermarkt: BINC International bouwt actief aan de distributie en groei van Clean Nutrition in heel Nederland.',
-    'cn.metrics.title':'Slim gebouwd\nop performance.',
-    'te.label':'Team en cultuur',
+    'about.label':'Wie zijn wij',
+    'about.heading':'Full-service B2B<br>voor <span class="red">ambitieuze merken.</span>',
+    'about.p1':'BINC International regelt de volledige B2B-distributie voor consumentenmerken in Nederland — van inkoopmeetings bij Albert Heijn en Jumbo tot activaties op festivals en horeca-plaatsingen door heel het land.',
+    'about.p2':'Ons portfolio groeit. Onze merken groeien. Jij groeit mee.',
+    'stat.brands':'Merken in portfolio','stat.channels':'Kanalen: retail, horeca & events','stat.locations':'Retaillocaties actief','stat.country':'Landelijke dekking',
+    'vac.label':'Open stageplekken','vac.title':'3 PLEKKEN,<br><span class="red">1 DOEL.</span>',
+    'vac.sub':'Drie stageplaatsen, elk met eigen verantwoordelijkheden — maar altijd als volwaardig onderdeel van het BINC-team.',
+    'tag.stage':'Stage · 2025/2026',
+    'vac.marketing.name':'Marketing<br>Stagiaire',
+    'vac.marketing.desc':'Jij bent het creatieve brein achter onze merkuitingen. Van social content voor Gold Dry en BeatBox tot campagnes die in de schappen én op festivals zichtbaar zijn — jij helpt bouwen aan herkenbare merken die opvallen in een druk schap.',
+    'vac.marketing.li1':'Contentstrategie & social media','vac.marketing.li2':'Campagne-uitwerking per merk','vac.marketing.li3':'Retail- & eventcommunicatie','vac.marketing.li4':'Analyse van bereik & performance',
+    'vac.data.name':'Data & ICT<br>Stagiaire',
+    'vac.data.desc':'Jij maakt data werkbaar. Van dashboards die ons salesteam dagelijks gebruikt tot slimme koppelingen tussen systemen — jij bouwt de tools waarmee BINC sneller en beter beslissingen neemt. Technisch denken + commercieel begrip: dát is de combo die wij zoeken.',
+    'vac.data.li1':'Bouwen van interne webapplicaties','vac.data.li2':"Data-integraties (Google Sheets, API's)",'vac.data.li3':'KPI-dashboards & rapportages','vac.data.li4':'Procesautomatisering & tooling',
+    'vac.sales.name':'Sales<br>Stagiaire',
+    'vac.sales.desc':'Jij leert het vak van accountmanagement in de snelste omgeving die er is: FMCG retail. Je rijdt mee, voert gesprekken, bezoekt filialen en ziet hoe deals worden gemaakt. Als je wil weten hoe producten in het schap van de Albert Heijn belanden — dan is dit jouw plek.',
+    'vac.sales.li1':'Retailbezoeken & filiaalactivaties','vac.sales.li2':'Ondersteuning accountmanagement','vac.sales.li3':'Leadgeneratie & prospecting','vac.sales.li4':'Rapportage & klantopvolging',
+    'vac.btn':'Solliciteer nu →',
+    'te.label':'Team & cultuur',
+    'te.title':'FESTIVALS MET<br><span class="red">HET TEAM</span>',
     'te.sub':'Werken bij BINC is meer dan een bureau. We gaan samen het veld op — naar de festivals waar onze merken live worden geactiveerd.',
     'te.hint.title':'Klik op een festival','te.hint.sub':'om de fotogalerij te bekijken',
-    'te.tag':'Festival met het team','te.cta':'Bekijk galerij','te.badge.recent':'Nieuwste',
-    'te1.body':'Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten.',
-    'te2.body':'Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland.',
+    'te.tag':'Festival · met het team','te.cta':'Bekijk galerij','te.badge.recent':'Nieuwste',
+    'te1.body':'Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers.',
+    'te2.body':'Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.',
     'te3.body':'Maximale energie, maximaal teamgevoel. Pal in het hart van de hardcore scene, samen met een loyale en gepassioneerde fanbase.',
-    'te4.body':'Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop beleving.',
+    'te4.body':'Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.',
     'te.drag':'Sleep of swipe om meer te zien','te.more.label':'Bekijk alle evenementen',
-    'vac.label':'Open stageplekken','vac.sub':'Drie stageplaatsen, elk met eigen verantwoordelijkheden, maar altijd als volwaardig onderdeel van het BINC-team.',
-    'tag.stage':'Stage 2025/2026',
-    'vac.marketing.desc':'Jij bent het creatieve brein achter onze merkuitingen. Van social content voor Gold Dry en BeatBox tot campagnes die in de schappen én op festivals zichtbaar zijn.',
-    'vac.marketing.li1':'Contentstrategie en social media','vac.marketing.li2':'Campagne-uitwerking per merk','vac.marketing.li3':'Retail- en eventcommunicatie','vac.marketing.li4':'Analyse van bereik en performance',
-    'vac.data.desc':'Jij maakt data werkbaar. Van dashboards die ons salesteam dagelijks gebruikt tot slimme koppelingen tussen systemen — jij bouwt de tools waarmee BINC sneller en beter beslissingen neemt.',
-    'vac.data.li1':'Bouwen van interne webapplicaties','vac.data.li2':"Data-integraties (Google Sheets, API's)",'vac.data.li3':'KPI-dashboards en rapportages','vac.data.li4':'Procesautomatisering en tooling',
-    'vac.sales.desc':'Jij leert het vak van accountmanagement in de snelste omgeving die er is: FMCG retail. Je rijdt mee, voert gesprekken, bezoekt filialen en ziet hoe deals worden gemaakt.',
-    'vac.sales.li1':'Retailbezoeken en filiaalactivaties','vac.sales.li2':'Ondersteuning accountmanagement','vac.sales.li3':'Leadgeneratie en prospecting','vac.sales.li4':'Rapportage en klantopvolging',
-    'vac.btn':'Solliciteer nu',
-    'form.label':'Open sollicitatie',
+    'form.label':'Open sollicitatie','form.title':'LAAT VAN <span class="red">JE HOREN</span>',
     'form.copy':'Geen passende stageplaats gevonden, of wil je gewoon direct van je laten horen? Stuur een open sollicitatie. We bekijken elk profiel en nemen contact op als er een match is.',
     'form.privacy':'Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw sollicitatie.',
-    'field.firstName':'Voornaam','field.lastName':'Achternaam','field.email':'E-mailadres','field.phone':'Telefoonnummer','field.city':'Woonplaats','field.linkedin':'LinkedIn profiel','field.interest':'Interessegebied','field.motivation':'Motivatie','field.cv':'Upload CV',
-    'interest.placeholder':'Selecteer richting','interest.marketing':'Stage Marketing','interest.data':'Stage Data en ICT','interest.sales':'Stage Sales','interest.open':'Open sollicitatie','interest.other':'Anders',
-    'file.title':'Sleep je CV hier of klik om te uploaden','file.subtitle':'PDF, DOC of DOCX max. 10MB','file.none':'Nog geen bestand geselecteerd',
-    'btn.submit':'Verstuur sollicitatie','btn.loading':'Versturen...','btn.success':'Sollicitatie verstuurd','btn.retry':'Opnieuw proberen',
-    'alert.success':'Je sollicitatie is succesvol verstuurd. We nemen zo snel mogelijk contact met je op!','alert.error':'Er is iets misgegaan. Probeer het opnieuw of mail direct naar info@bincinternational.nl','alert.required':'Vul minimaal je voornaam, achternaam en e-mailadres in.'
+    'field.firstName':'Voornaam *','field.lastName':'Achternaam *','field.email':'E-mailadres *','field.phone':'Telefoonnummer','field.city':'Woonplaats','field.linkedin':'LinkedIn profiel','field.interest':'Interessegebied','field.motivation':'Motivatie','field.cv':'Upload CV',
+    'interest.placeholder':'Selecteer richting','interest.marketing':'Stage Marketing','interest.data':'Stage Data & ICT','interest.sales':'Stage Sales','interest.open':'Open sollicitatie','interest.other':'Anders',
+    'file.title':'Sleep je CV hier of klik om te uploaden','file.subtitle':'PDF, DOC of DOCX · max. 10MB','file.none':'Nog geen bestand geselecteerd',
+    'btn.submit':'Verstuur sollicitatie →','btn.loading':'Versturen...','btn.success':'✓ Sollicitatie verstuurd','btn.retry':'Opnieuw proberen →',
+    'alert.success':'✓  Je sollicitatie is succesvol verstuurd. We nemen zo snel mogelijk contact met je op!','alert.error':'✕  Er is iets misgegaan. Probeer het opnieuw of mail direct naar info@bincinternational.nl','alert.required':'✕  Vul minimaal je voornaam, achternaam en e-mailadres in.',
+    'footer.address.label':'BINC adres','footer.email.label':'E-mailadres','footer.phone.label':'Telefoonnummer','footer.rights':'Alle rechten voorbehouden.','footer.tagline.short':'Full-service B2B voor ambitieuze merken in Nederland.'
   },
   en:{
     'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Events','nav.team':'Our Team','nav.jobs':'Careers','nav.cta':'Work With Us',
     'hero.label':'Careers at BINC',
-    'hero.copy':"We're growing fast and we're looking for ambitious interns who want to do more than fetch coffee. At BINC, you work on real projects, support brands in Albert Heijn and Jumbo, and learn retail from the inside out.",
+    'hero.title':'GROW<br><span class="red">WITH</span> <span class="stroke">BINC</span>',
+    'hero.copy':"We're growing fast — and we're looking for ambitious interns who want to do more than fetch coffee. At BINC, you work on real projects, support brands in Albert Heijn and Jumbo, and learn retail from the inside out.",
     'hero.btn.vacatures':'View internships','hero.btn.apply':'Open application',
-    'wsw.label':'Who we are',
-    'wsw.body1':'BINC International manages full B2B distribution for consumer brands across the Netherlands — from buying meetings at Albert Heijn and Jumbo to festival activations and on-trade placements nationwide.',
-    'wsw.body2':'Our portfolio grows. Our brands grow. You grow with us.',
-    'wsw.teamtag':'A team of young professionals',
-    'pi.label':'Our portfolio','pi.body':'We work with ambitious brands looking to grow big in Dutch retail. Scroll to discover who.',
-    'gd.intro':'BINC International has been handling the complete B2B for Gold Dry for over 3 years. From strategy and buyer outreach to in-store visits, order processing and account management.',
-    'gd.metrics.title':'From zero\nto national.',
-    'fsg.intro':'BINC International is responsible for the full B2B rollout of FeelSoGood in the Netherlands. From the first buyer meeting to shelf presentation and repeat orders.',
-    'fsg.metrics.title':'Faster\nthan expected.',
-    'bb.intro':'BINC International handles the complete B2B for BeatBox in the Netherlands. From the first retail pitch to deliveries, location visits and ongoing account management.',
-    'bb.metrics.title':'Smart growth.\nQuickly proven.',
-    'cn.intro':'From sports retail to supermarket: BINC International actively builds distribution and growth for Clean Nutrition across the Netherlands.',
-    'cn.metrics.title':'Built smart\nfor performance.',
-    'te.label':'Team and culture',
+    'about.label':'Who we are',
+    'about.heading':'Full-service B2B<br>for <span class="red">ambitious brands.</span>',
+    'about.p1':'BINC International manages full B2B distribution for consumer brands across the Netherlands — from buying meetings at Albert Heijn and Jumbo to festival activations and on-trade placements nationwide.',
+    'about.p2':'Our portfolio grows. Our brands grow. You grow with us.',
+    'stat.brands':'Brands in portfolio','stat.channels':'Channels: retail, on-trade & events','stat.locations':'Active retail locations','stat.country':'National coverage',
+    'vac.label':'Open internships','vac.title':'3 ROLES,<br><span class="red">1 GOAL.</span>',
+    'vac.sub':'Three internship positions, each with their own responsibilities — but always as a full member of the BINC team.',
+    'tag.stage':'Internship · 2025/2026',
+    'vac.marketing.name':'Marketing<br>Intern',
+    'vac.marketing.desc':"You're the creative force behind our brand communications. From social content for Gold Dry and BeatBox to campaigns visible on shelves and at festivals — you help build recognisable brands that stand out in a crowded aisle.",
+    'vac.marketing.li1':'Content strategy & social media','vac.marketing.li2':'Campaign execution per brand','vac.marketing.li3':'Retail & event communications','vac.marketing.li4':'Reach & performance analysis',
+    'vac.data.name':'Data & IT<br>Intern',
+    'vac.data.desc':"You turn data into action. From dashboards our sales team uses daily to smart system integrations — you build the tools that help BINC make faster, smarter decisions. Technical thinking + commercial understanding: that's the combo we're looking for.",
+    'vac.data.li1':'Building internal web applications','vac.data.li2':'Data integrations (Google Sheets, APIs)','vac.data.li3':'KPI dashboards & reporting','vac.data.li4':'Process automation & tooling',
+    'vac.sales.name':'Sales<br>Intern',
+    'vac.sales.desc':"You learn the trade of account management in the fastest environment there is: FMCG retail. You join calls, visit stores, and see deals happen in real time. If you want to understand how products end up on the shelf at Albert Heijn — this is your spot.",
+    'vac.sales.li1':'Retail visits & store activations','vac.sales.li2':'Account management support','vac.sales.li3':'Lead generation & prospecting','vac.sales.li4':'Reporting & client follow-up',
+    'vac.btn':'Apply now →',
+    'te.label':'Team & culture',
+    'te.title':'FESTIVALS WITH<br><span class="red">THE TEAM</span>',
     'te.sub':"Working at BINC is more than an office job. We hit the field together — at the festivals where our brands come to life.",
     'te.hint.title':'Click a festival','te.hint.sub':'to view the photo gallery',
-    'te.tag':'Festival with the team','te.cta':'View gallery','te.badge.recent':'Latest',
-    'te1.body':'Kitsch, camp and pure party energy. The whole team out at one of the most exuberant festival concepts in the Netherlands.',
-    'te2.body':'From sunrise to sunset with the team at one of the most iconic dance festivals in the Netherlands.',
-    'te3.body':'Maximum energy, maximum team spirit. Right at the heart of the hardcore scene, with a loyal and passionate fan base.',
-    'te4.body':'Summer vibes and a team that goes all in together. Part of the Dauwpop experience.',
+    'te.tag':'Festival · with the team','te.cta':'View gallery','te.badge.recent':'Latest',
+    'te1.body':'Kitsch, camp and pure party energy. The whole team out at one of the most exuberant festival concepts in the Netherlands. Colors, glitter and thousands of festival-goers.',
+    'te2.body':'From sunrise to sunset with the team at one of the most iconic dance festivals in the Netherlands. Thousands of hands, one taste.',
+    'te3.body':'Maximum energy, maximum team spirit. Right at the heart of the hardcore scene, together with a loyal and passionate fan base.',
+    'te4.body':'Summer vibes and a team that goes all in together. Part of the Dauwpop experience — taste, see and remember.',
     'te.drag':'Drag or swipe to see more','te.more.label':'View all events',
-    'vac.label':'Open internships','vac.sub':'Three internship positions, each with their own responsibilities, but always as a full member of the BINC team.',
-    'tag.stage':'Internship 2025/2026',
-    'vac.marketing.desc':"You're the creative force behind our brand communications. From social content for Gold Dry and BeatBox to campaigns visible on shelves and at festivals.",
-    'vac.marketing.li1':'Content strategy and social media','vac.marketing.li2':'Campaign execution per brand','vac.marketing.li3':'Retail and event communications','vac.marketing.li4':'Reach and performance analysis',
-    'vac.data.desc':"You turn data into action. From dashboards our sales team uses daily to smart system integrations — you build the tools that help BINC make faster, smarter decisions.",
-    'vac.data.li1':'Building internal web applications','vac.data.li2':'Data integrations (Google Sheets, APIs)','vac.data.li3':'KPI dashboards and reporting','vac.data.li4':'Process automation and tooling',
-    'vac.sales.desc':"You learn account management in the fastest environment there is: FMCG retail. You join calls, visit stores, and see deals happen in real time.",
-    'vac.sales.li1':'Retail visits and store activations','vac.sales.li2':'Account management support','vac.sales.li3':'Lead generation and prospecting','vac.sales.li4':'Reporting and client follow-up',
-    'vac.btn':'Apply now',
-    'form.label':'Open application',
+    'form.label':'Open application','form.title':'LET US <span class="red">HEAR FROM YOU</span>',
     'form.copy':"Didn't find the right internship, or just want to reach out directly? Send an open application. We review every profile and get in touch when there's a match.",
     'form.privacy':'By submitting your details, you give BINC International permission to contact you about your application.',
-    'field.firstName':'First name','field.lastName':'Last name','field.email':'Email address','field.phone':'Phone number','field.city':'City','field.linkedin':'LinkedIn profile','field.interest':'Area of interest','field.motivation':'Motivation','field.cv':'Upload CV',
-    'interest.placeholder':'Select direction','interest.marketing':'Marketing Internship','interest.data':'Data and IT Internship','interest.sales':'Sales Internship','interest.open':'Open application','interest.other':'Other',
-    'file.title':'Drop your CV here or click to upload','file.subtitle':'PDF, DOC or DOCX max. 10MB','file.none':'No file selected yet',
-    'btn.submit':'Submit application','btn.loading':'Sending...','btn.success':'Application sent','btn.retry':'Try again',
-    'alert.success':"Your application has been sent successfully. We'll be in touch as soon as possible!",'alert.error':'Something went wrong. Please try again or email info@bincinternational.nl directly','alert.required':'Please fill in at least your first name, last name and email address.'
+    'field.firstName':'First name *','field.lastName':'Last name *','field.email':'Email address *','field.phone':'Phone number','field.city':'City','field.linkedin':'LinkedIn profile','field.interest':'Area of interest','field.motivation':'Motivation','field.cv':'Upload CV',
+    'interest.placeholder':'Select direction','interest.marketing':'Marketing Internship','interest.data':'Data & IT Internship','interest.sales':'Sales Internship','interest.open':'Open application','interest.other':'Other',
+    'file.title':'Drop your CV here or click to upload','file.subtitle':'PDF, DOC or DOCX · max. 10MB','file.none':'No file selected yet',
+    'btn.submit':'Submit application →','btn.loading':'Sending...','btn.success':'✓ Application sent','btn.retry':'Try again →',
+    'alert.success':"✓  Your application has been sent successfully. We'll be in touch as soon as possible!",'alert.error':'✕  Something went wrong. Please try again or email info@bincinternational.nl directly','alert.required':'✕  Please fill in at least your first name, last name and email address.',
+    'footer.address.label':'BINC address','footer.email.label':'Email address','footer.phone.label':'Phone number','footer.rights':'All rights reserved.','footer.tagline.short':'Full-service B2B for ambitious brands across the Netherlands.'
   }
 };
 
@@ -1085,7 +919,8 @@ function t(k){return(T[lang]&&T[lang][k])||T.nl[k]||k;}
 function applyLang(l){
   lang=l;localStorage.setItem('binc_lang',l);document.documentElement.lang=l;
   document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.getAttribute('data-i18n')));
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>el.innerHTML=t(el.getAttribute('data-i18n-html')));
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===l));
   const fn=document.getElementById('fileName');if(fn&&!selFile)fn.textContent=t('file.none');
   const ab=document.getElementById('applyBtn');if(ab&&!ab.disabled)ab.textContent=t('btn.submit');
 }
@@ -1105,59 +940,137 @@ drw.addEventListener('click',e=>{if(e.target===drw)tog(false);});
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>70),{passive:true});
 
 /* REVEAL */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:.08});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* LANG BTNS */
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{applyLang(b.dataset.lang);tog(false);}));
 
-/* ══════════════════════════════
-   BRAND SHOWCASE ENGINE (2-panel)
-══════════════════════════════ */
-function initBrandShowcase(section){
-  const panels=[...section.querySelectorAll('.brand-panel')];
-  const wrapper=section.querySelector('.brand-scroll-wrapper');
-  const can=section.querySelector('.brand-can-wrap');
-  const progBar=section.querySelector('.brand-progress');
-  const reverse=section.classList.contains('feelsogood')||section.classList.contains('cleannutrition');
-  const mobile=window.innerWidth<=1000;
-
-  const statesNormal=[{x:24,y:0,r:-4,s:1.0},{x:6,y:0,r:-1,s:.92}];
-  const statesReverse=[{x:-24,y:0,r:4,s:1.0},{x:-6,y:0,r:1,s:.92}];
-  const statesMobile=[{x:0,y:-4,r:-5,s:1.0},{x:0,y:4,r:4,s:.94}];
-  const states=mobile?statesMobile:(reverse?statesReverse:statesNormal);
-
-  let mouseX=0,mouseY=0,cs={x:0,y:0,r:0,s:1},activePanel=0;
-  document.addEventListener('mousemove',e=>{mouseX=(e.clientX/innerWidth-.5)*2;mouseY=(e.clientY/innerHeight-.5)*2;});
-
-  function lerp(a,b,t){return a+(b-a)*t;}
-  function smooth(t){return t*t*(3-2*t);}
-  function getT(){const rect=wrapper.getBoundingClientRect();const total=wrapper.offsetHeight-innerHeight;return total>0?Math.max(0,Math.min(1,-rect.top/total)):0;}
-  function interpState(t){const raw=t*(states.length-1);const i=Math.min(Math.floor(raw),states.length-2);const loc=smooth(raw-i);const a=states[i],b=states[i+1];return{x:lerp(a.x,b.x,loc),y:lerp(a.y,b.y,loc),r:lerp(a.r,b.r,loc),s:lerp(a.s,b.s,loc)};}
-  function panelForT(t){return t<0.5?0:1;}
-  function setPanel(idx){
-    if(idx===activePanel)return;
-    activePanel=idx;
-    panels.forEach((p,i)=>p.classList.toggle('brand-active',i===idx));
-    can.classList.toggle('blurred',idx===1);
+/* TEAM EVENTS GALLERY */
+const KKC_FILES=[
+  '_O2A3790','_O2A3801','_O2A3808','_O2A3830','_O2A3852',
+  '_O2A3888-2','_O2A3901','_O2A3924','_O2A3942','_O2A3959',
+  '_O2A3994','_O2A4009','_O2A4043','_O2A4057','_O2A4063',
+  '_O2A4099','_O2A4122','_O2A4165','_O2A4176','_O2A4212',
+  '_O2A4218','_O2A4230','_O2A4243','_O2A4246','_O2A4267',
+  '_O2A4323','_O2A4328','_O2A4368','_O2A4381','_O2A4407'
+];
+const TE_GALLERIES={
+  'kkc':{
+    titleNL:'Kamping Kitsch Club',titleEN:'Kamping Kitsch Club',
+    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
+    imgs:KKC_FILES.map(f=>`images/kkc/web/${f}_web.jpg`),
+    thumbImgs:KKC_FILES.map(f=>`images/kkc/thumbs/${f}_thumb.jpg`)
+  },
+  '7th':{
+    titleNL:'7th Sunday',titleEN:'7th Sunday',
+    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
+    imgs:Array.from({length:14},(_,i)=>`images/7th2/web/${i+1}.jpg`),
+    thumbImgs:Array.from({length:14},(_,i)=>`images/7th2/thumbs/${i+1}.jpg`)
+  },
+  'hoh':{
+    titleNL:'Harmony of Hardcore',titleEN:'Harmony of Hardcore',
+    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
+    imgs:Array.from({length:24},(_,i)=>`images/hoh/web/${i+1}.jpg`),
+    thumbImgs:Array.from({length:24},(_,i)=>`images/hoh/thumbs/${i+1}.jpg`)
+  },
+  'dauwpop':{
+    titleNL:'Dauwpop',titleEN:'Dauwpop',
+    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
+    imgs:Array.from({length:29},(_,i)=>`images/7th/web/${i+1}.jpg`),
+    thumbImgs:Array.from({length:29},(_,i)=>`images/7th/thumbs/${i+1}.jpg`)
   }
-  function tick(){
-    requestAnimationFrame(tick);
-    const tv=getT();
-    const target=interpState(tv);
-    cs.x=lerp(cs.x,target.x,.06);cs.y=lerp(cs.y,target.y,.06);cs.r=lerp(cs.r,target.r,.06);cs.s=lerp(cs.s,target.s,.06);
-    const mx2=mobile?0:mouseX*0.4,my2=mobile?0:mouseY*0.35;
-    can.style.transform=`translate(calc(-50% + ${cs.x+mx2}vw),calc(-50% + ${cs.y+my2}vh)) rotate(${cs.r+(mobile?0:mouseX*0.5)}deg) scale(${cs.s})`;
-    progBar.style.width=(tv*100)+'%';
-    setPanel(panelForT(tv));
-  }
-  tick();
+};
+
+const lb=document.getElementById('lightbox');
+const lbTitleEl=document.getElementById('lbTitle');
+const lbMetaEl=document.getElementById('lbMeta');
+const lbImgEl=document.getElementById('lbMainImg');
+const lbThumbsEl=document.getElementById('lbThumbs');
+const lbCounterEl=document.getElementById('lbCounter');
+const lbCloseBtn=document.getElementById('lbClose');
+const lbPrevBtn=document.getElementById('lbPrev');
+const lbNextBtn=document.getElementById('lbNext');
+const lbSpinnerEl=document.getElementById('lbSpinner');
+
+let teGallery=null,teIndex=0,teLoadTimer=null,teLastCard=null;
+
+function tePreload(idx){
+  if(!teGallery)return;
+  const n=teGallery.imgs.length;
+  [-1,1].forEach(o=>{const im=new Image();im.src=teGallery.imgs[(idx+o+n)%n];});
 }
-document.querySelectorAll('.brand-showcase').forEach(initBrandShowcase);
+function teShowSpinner(){clearTimeout(teLoadTimer);teLoadTimer=setTimeout(()=>lbSpinnerEl.classList.add('visible'),150);}
+function teHideSpinner(){clearTimeout(teLoadTimer);lbSpinnerEl.classList.remove('visible');}
 
-/* ══════════════════════
-   CAROUSEL DRAG
-══════════════════════ */
+function teOpenGallery(key,card){
+  const g=TE_GALLERIES[key];if(!g)return;
+  teGallery=g;teIndex=0;teLastCard=card||null;
+  lbTitleEl.textContent=lang==='en'?g.titleEN:g.titleNL;
+  lbMetaEl.textContent=lang==='en'?g.metaEN:g.metaNL;
+  lbThumbsEl.innerHTML='';
+  g.thumbImgs.forEach((src,i)=>{
+    const d=document.createElement('div');
+    d.className='lb-thumb'+(i===0?' active':'');
+    const im=document.createElement('img');im.src=src;im.alt=`Foto ${i+1}`;im.loading='lazy';
+    d.appendChild(im);d.addEventListener('click',()=>teGoTo(i));lbThumbsEl.appendChild(d);
+  });
+  teShowSpinner();lbImgEl.src='';
+  const first=new Image();
+  first.onload=()=>{lbImgEl.src=first.src;teHideSpinner();};
+  first.onerror=()=>{teHideSpinner();};
+  first.src=g.imgs[0];
+  lbCounterEl.textContent=`1 / ${g.imgs.length}`;
+  lb.classList.add('open');document.body.style.overflow='hidden';
+  teScrollThumb(0);tePreload(0);
+}
+
+function teCloseGallery(){
+  lb.classList.remove('open');document.body.style.overflow='';
+  teGallery=null;teHideSpinner();
+  if(teLastCard){teLastCard.blur();teLastCard=null;}
+}
+
+function teGoTo(idx){
+  if(!teGallery)return;
+  const n=teGallery.imgs.length;idx=(idx+n)%n;teIndex=idx;
+  lbImgEl.classList.add('changing');teShowSpinner();
+  const next=new Image();
+  next.onload=()=>{lbImgEl.src=next.src;lbImgEl.classList.remove('changing');teHideSpinner();};
+  next.onerror=()=>{lbImgEl.classList.remove('changing');teHideSpinner();};
+  next.src=teGallery.imgs[idx];
+  lbCounterEl.textContent=`${idx+1} / ${n}`;
+  lbThumbsEl.querySelectorAll('.lb-thumb').forEach((th,i)=>th.classList.toggle('active',i===idx));
+  teScrollThumb(idx);tePreload(idx);
+}
+
+function teScrollThumb(idx){
+  const thumb=lbThumbsEl.querySelectorAll('.lb-thumb')[idx];
+  if(thumb)thumb.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+
+document.querySelectorAll('.te-card').forEach(card=>{
+  card.addEventListener('click',()=>teOpenGallery(card.dataset.event,card));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();teOpenGallery(card.dataset.event,card);}});
+});
+
+lbCloseBtn.addEventListener('click',teCloseGallery);
+lbPrevBtn.addEventListener('click',()=>teGoTo(teIndex-1));
+lbNextBtn.addEventListener('click',()=>teGoTo(teIndex+1));
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')teCloseGallery();
+  if(e.key==='ArrowLeft')teGoTo(teIndex-1);
+  if(e.key==='ArrowRight')teGoTo(teIndex+1);
+});
+lb.addEventListener('click',e=>{if(e.target===lb)teCloseGallery();});
+let teTouchStartX=0;
+lbImgEl.addEventListener('touchstart',e=>{teTouchStartX=e.changedTouches[0].screenX;},{passive:true});
+lbImgEl.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].screenX-teTouchStartX;
+  if(Math.abs(dx)>40)teGoTo(teIndex+(dx<0?1:-1));
+},{passive:true});
+
 const teTrack=document.getElementById('teTrack');
 let teDragging=false,teDragStartX=0,teScrollStart=0;
 teTrack.addEventListener('mousedown',e=>{teDragging=true;teDragStartX=e.pageX;teScrollStart=teTrack.scrollLeft;teTrack.style.userSelect='none';});
@@ -1165,67 +1078,14 @@ window.addEventListener('mousemove',e=>{if(!teDragging)return;teTrack.scrollLeft
 window.addEventListener('mouseup',()=>{teDragging=false;teTrack.style.userSelect='';});
 teTrack.addEventListener('click',e=>{if(Math.abs(teTrack.scrollLeft-teScrollStart)>8)e.stopPropagation();},{capture:true});
 
-/* Arrow buttons */
-const cardWidth=()=>(teTrack.querySelector('.te-card')?.offsetWidth||380)+22;
-document.getElementById('teArrowPrev').addEventListener('click',()=>teTrack.scrollBy({left:-cardWidth(),behavior:'smooth'}));
-document.getElementById('teArrowNext').addEventListener('click',()=>teTrack.scrollBy({left:cardWidth(),behavior:'smooth'}));
-
-/* ══════════════════════
-   LIGHTBOX
-══════════════════════ */
-const KKC_FILES=['_O2A3790','_O2A3801','_O2A3808','_O2A3830','_O2A3852','_O2A3888-2','_O2A3901','_O2A3924','_O2A3942','_O2A3959','_O2A3994','_O2A4009','_O2A4043','_O2A4057','_O2A4063','_O2A4099','_O2A4122','_O2A4165','_O2A4176','_O2A4212','_O2A4218','_O2A4230','_O2A4243','_O2A4246','_O2A4267','_O2A4323','_O2A4328','_O2A4368','_O2A4381','_O2A4407'];
-const GALLERIES={
-  'kkc':{titleNL:'Kamping Kitsch Club',titleEN:'Kamping Kitsch Club',metaNL:'Festival met het team',metaEN:'Festival with the team',imgs:KKC_FILES.map(f=>`images/kkc/web/${f}_web.jpg`),thumbs:KKC_FILES.map(f=>`images/kkc/thumbs/${f}_thumb.jpg`)},
-  '7th':{titleNL:'7th Sunday',titleEN:'7th Sunday',metaNL:'Festival met het team',metaEN:'Festival with the team',imgs:Array.from({length:14},(_,i)=>`images/7th2/web/${i+1}.jpg`),thumbs:Array.from({length:14},(_,i)=>`images/7th2/thumbs/${i+1}.jpg`)},
-  'hoh':{titleNL:'Harmony of Hardcore',titleEN:'Harmony of Hardcore',metaNL:'Festival met het team',metaEN:'Festival with the team',imgs:Array.from({length:24},(_,i)=>`images/hoh/web/${i+1}.jpg`),thumbs:Array.from({length:24},(_,i)=>`images/hoh/thumbs/${i+1}.jpg`)},
-  'dauwpop':{titleNL:'Dauwpop',titleEN:'Dauwpop',metaNL:'Festival met het team',metaEN:'Festival with the team',imgs:Array.from({length:29},(_,i)=>`images/7th/web/${i+1}.jpg`),thumbs:Array.from({length:29},(_,i)=>`images/7th/thumbs/${i+1}.jpg`)}
-};
-const lb=document.getElementById('lightbox'),lbTitleEl=document.getElementById('lbTitle'),lbMetaEl=document.getElementById('lbMeta'),lbImgEl=document.getElementById('lbMainImg'),lbThumbsEl=document.getElementById('lbThumbs'),lbCounterEl=document.getElementById('lbCounter'),lbCloseBtn=document.getElementById('lbClose'),lbPrevBtn=document.getElementById('lbPrev'),lbNextBtn=document.getElementById('lbNext'),lbSpinnerEl=document.getElementById('lbSpinner');
-let teGallery=null,teIndex=0,teLoadTimer=null;
-function teShowSpinner(){clearTimeout(teLoadTimer);teLoadTimer=setTimeout(()=>lbSpinnerEl.classList.add('visible'),150);}
-function teHideSpinner(){clearTimeout(teLoadTimer);lbSpinnerEl.classList.remove('visible');}
-function tePreload(idx){if(!teGallery)return;const n=teGallery.imgs.length;[-1,1].forEach(o=>{const im=new Image();im.src=teGallery.imgs[(idx+o+n)%n];});}
-function teOpenGallery(key){
-  const g=GALLERIES[key];if(!g)return;teGallery=g;teIndex=0;
-  lbTitleEl.textContent=lang==='en'?g.titleEN:g.titleNL;
-  lbMetaEl.textContent=lang==='en'?g.metaEN:g.metaNL;
-  lbThumbsEl.innerHTML='';
-  g.thumbs.forEach((src,i)=>{const d=document.createElement('div');d.className='lb-thumb'+(i===0?' active':'');const im=document.createElement('img');im.src=src;im.alt=`Foto ${i+1}`;im.loading='lazy';d.appendChild(im);d.addEventListener('click',()=>teGoTo(i));lbThumbsEl.appendChild(d);});
-  teShowSpinner();lbImgEl.src='';
-  const first=new Image();first.onload=()=>{lbImgEl.src=first.src;teHideSpinner();};first.onerror=()=>teHideSpinner();first.src=g.imgs[0];
-  lbCounterEl.textContent=`1 / ${g.imgs.length}`;
-  lb.classList.add('open');document.body.style.overflow='hidden';
-  teScrollThumb(0);tePreload(0);
-}
-function teCloseGallery(){lb.classList.remove('open');document.body.style.overflow='';teGallery=null;teHideSpinner();}
-function teGoTo(idx){if(!teGallery)return;const n=teGallery.imgs.length;idx=(idx+n)%n;teIndex=idx;lbImgEl.classList.add('changing');teShowSpinner();const next=new Image();next.onload=()=>{lbImgEl.src=next.src;lbImgEl.classList.remove('changing');teHideSpinner();};next.onerror=()=>{lbImgEl.classList.remove('changing');teHideSpinner();};next.src=teGallery.imgs[idx];lbCounterEl.textContent=`${idx+1} / ${n}`;lbThumbsEl.querySelectorAll('.lb-thumb').forEach((th,i)=>th.classList.toggle('active',i===idx));teScrollThumb(idx);tePreload(idx);}
-function teScrollThumb(idx){const thumb=lbThumbsEl.querySelectorAll('.lb-thumb')[idx];if(thumb)thumb.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
-document.querySelectorAll('.te-card').forEach(card=>{
-  card.addEventListener('click',()=>teOpenGallery(card.dataset.event));
-  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();teOpenGallery(card.dataset.event);}});
-});
-lbCloseBtn.addEventListener('click',teCloseGallery);
-lbPrevBtn.addEventListener('click',()=>teGoTo(teIndex-1));
-lbNextBtn.addEventListener('click',()=>teGoTo(teIndex+1));
-document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')teCloseGallery();if(e.key==='ArrowLeft')teGoTo(teIndex-1);if(e.key==='ArrowRight')teGoTo(teIndex+1);});
-lb.addEventListener('click',e=>{if(e.target===lb)teCloseGallery();});
-let teTouchStartX=0;
-lbImgEl.addEventListener('touchstart',e=>{teTouchStartX=e.changedTouches[0].screenX;},{passive:true});
-lbImgEl.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-teTouchStartX;if(Math.abs(dx)>40)teGoTo(teIndex+(dx<0?1:-1));},{passive:true});
-
-/* ══════════════════════
-   FILE UPLOAD
-══════════════════════ */
-const API_URL='https://server-medewerker-kpi.onrender.com/api/sollicitatie';
+/* FILE */
 const cv=document.getElementById('cvUpload'),fn=document.getElementById('fileName'),fb=document.getElementById('fileBox');
 cv.addEventListener('change',function(){selFile=this.files[0]?this.files[0].name:'';fn.textContent=selFile||t('file.none');});
 fb.addEventListener('dragover',e=>{e.preventDefault();fb.style.borderColor='rgba(192,57,43,.8)';fb.style.background='rgba(192,57,43,.12)';});
 fb.addEventListener('dragleave',()=>{fb.style.borderColor='';fb.style.background='';});
 fb.addEventListener('drop',e=>{e.preventDefault();fb.style.borderColor='';fb.style.background='';if(e.dataTransfer.files[0]){const dt=new DataTransfer();dt.items.add(e.dataTransfer.files[0]);cv.files=dt.files;selFile=e.dataTransfer.files[0].name;fn.textContent=selFile;}});
 
-/* ══════════════════════
-   FORM SUBMIT
-══════════════════════ */
+/* FORM */
 const ab=document.getElementById('applyBtn'),fs=document.getElementById('formSuccess'),fe=document.getElementById('formError');
 function showA(type){fs.classList.remove('show');fe.classList.remove('show');if(type==='success')fs.classList.add('show');if(type==='error')fe.classList.add('show');}
 function setBtnState(s){ab.disabled=false;ab.className='btn-submit';if(s==='loading'){ab.disabled=true;ab.classList.add('sending');ab.innerHTML='<span class="spinner"></span>'+t('btn.loading');}else if(s==='success'){ab.disabled=true;ab.classList.add('success');ab.textContent=t('btn.success');}else if(s==='error'){ab.textContent=t('btn.retry');}else{ab.textContent=t('btn.submit');}}
