@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta name="description" content="Werken bij BINC International? Wij zijn altijd op zoek naar gedreven mensen met feeling voor sales, retail en merken. Laat een open sollicitatie achter."/>
+<meta name="description" content="Werken bij BINC International? Ontdek stages in marketing, data & ICT en sales, of stuur een open sollicitatie naar BINC International."/>
   
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRHH6551CL"></script>
@@ -16,7 +16,7 @@
 <link rel="canonical" href="https://bincinternational.nl/" />
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vacatures | BINC International</title>
+  <title>Werken bij BINC | Stages & Vacatures</title>
 
   <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -121,7 +121,26 @@
     .card-list div{display:flex;gap:12px;align-items:flex-start;font-family:var(--font-ui);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.54)}
     .card-list div::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:7px;flex:0 0 auto}
 
-    #open-sollicitatie{position:relative;background:#000;padding:140px 6vw 130px;overflow:hidden}
+
+
+    .vacancies-section{position:relative;background:#000;padding:120px 6vw 20px;overflow:hidden}
+    .vacancies-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 58%);pointer-events:none}
+    .vacancies-wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;text-align:center}
+    .vacancies-wrap .label{justify-content:center}
+    .vacancies-title{font-family:var(--font-display);font-size:clamp(3rem,6.2vw,7.4rem);font-weight:900;line-height:.88;color:#fff;margin-bottom:24px;text-transform:uppercase}
+    .vacancies-title .red{color:var(--red)}
+    .vacancies-copy{max-width:760px;margin:0 auto 46px;font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62);font-weight:300}
+    .vacancy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:left}
+    .vacancy-card{position:relative;min-height:330px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012));border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px;overflow:hidden;transition:.25s;text-decoration:none;color:#fff}
+    .vacancy-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,57,43,.11),transparent 52%);opacity:.8;pointer-events:none}
+    .vacancy-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.55);box-shadow:0 22px 60px rgba(0,0,0,.45)}
+    .vacancy-card>*{position:relative;z-index:1}
+    .vacancy-kicker{font-family:var(--font-ui);font-size:.62rem;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:rgba(192,57,43,.92);margin-bottom:18px}
+    .vacancy-card h3{font-family:var(--font-display);font-size:clamp(2.1rem,2.7vw,3.2rem);line-height:.9;text-transform:uppercase;margin-bottom:18px}
+    .vacancy-card p{font-size:.95rem;line-height:1.75;color:rgba(255,255,255,.62);font-weight:300}
+    .vacancy-arrow{font-family:var(--font-ui);font-size:.76rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+
+    #open-sollicitatie{position:relative;background:#000;padding:115px 6vw 130px;overflow:hidden}
     #open-sollicitatie::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.05),transparent 60%);pointer-events:none}
     .form-wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:58px;text-align:center}
     .form-intro{width:100%;max-width:760px;margin:0 auto}
@@ -210,7 +229,10 @@
       .card-title{font-size:clamp(2.4rem,9vw,4rem)}
       .card-text{font-size:.92rem}
       .card-list div{font-size:.68rem}
-      #open-sollicitatie{padding:80px 5vw 90px}
+      .vacancies-section{padding:78px 5vw 10px}
+      .vacancy-grid{grid-template-columns:1fr;gap:14px}
+      .vacancy-card{min-height:auto;padding:24px}
+      #open-sollicitatie{padding:70px 5vw 90px}
       .form-wrap{gap:40px}
       .form-row{grid-template-columns:1fr}
       .lead-form{max-width:100%}
@@ -230,7 +252,7 @@
     }
 
     @media(min-width:1001px){.nav-links{margin-left:auto;margin-right:20px}}
-    @media(max-width:480px){.jobs-title{font-size:clamp(3.4rem,18vw,7rem)}.form-title{font-size:clamp(2.6rem,12vw,4.5rem)}.jobs-card{padding:22px 18px}.status-pill{font-size:.56rem;padding:9px 12px}}
+    @media(max-width:480px){.jobs-title{font-size:clamp(3.4rem,18vw,7rem)}.form-title,.vacancies-title{font-size:clamp(2.6rem,12vw,4.5rem)}.jobs-card{padding:22px 18px}.status-pill{font-size:.56rem;padding:9px 12px}}
   </style>
 </head>
 <body>
@@ -292,27 +314,69 @@
     <div class="jobs-wrap">
       <div class="jobs-copy-wrap reveal">
         <p class="label" data-i18n="hero.label">Werken bij BINC</p>
-        <h1 class="jobs-title" data-i18n-html="hero.title">BECOME<br><span class="red">A</span> <span class="stroke">BINC</span></h1>
-        <p class="jobs-copy" data-i18n="hero.copy">Wij bouwen merken groter in retail. Daarvoor zoeken we mensen met energie, ownership en gevoel voor sales, strategie en relaties.</p>
+        <h1 class="jobs-title" data-i18n-html="hero.title">WERKEN<br><span class="red">BIJ</span> <span class="stroke">BINC</span></h1>
+        <p class="jobs-copy" data-i18n="hero.copy">Bij BINC International helpen we ambitieuze merken groeien in retail, horeca en events. Je werkt mee aan zichtbaarheid, data, sales en relaties met klanten die er echt toe doen.</p>
         <div class="jobs-actions">
-          <a href="#open-sollicitatie" class="btn-red" data-i18n="hero.btn.apply">Open solliciteren</a>
-          <a href="index.html" class="btn-outline" data-i18n="hero.btn.home">Terug naar home</a>
+          <a href="#vacatures" class="btn-red" data-i18n="hero.btn.apply">Bekijk stages</a>
+          <a href="#open-sollicitatie" class="btn-outline" data-i18n="hero.btn.open">Open solliciteren</a>
         </div>
       </div>
       <div class="jobs-card reveal d1">
         <div class="card-inner">
           <div class="status-pill">
             <span class="status-dot"></span>
-            <span data-i18n="card.status">Geen vacature online</span>
+            <span data-i18n="card.status">3 stages open</span>
           </div>
-          <h2 class="card-title" data-i18n-html="card.title">Altijd plek voor<br><span>talent.</span></h2>
-          <p class="card-text" data-i18n="card.text">Op dit moment staat er geen specifieke vacature online. Wel is het altijd mogelijk om een open sollicitatie achter te laten. Denk jij dat je bij BINC International past? Vertel ons wie je bent, waar je goed in bent en waarom jij ons team sterker maakt.</p>
+          <h2 class="card-title" data-i18n-html="card.title">Word onderdeel van<br><span>onze groei.</span></h2>
+          <p class="card-text" data-i18n="card.text">Zoek je een stage waar je niet alleen meekijkt, maar meebouwt? Bij BINC krijg je ruimte om initiatief te nemen, snel te leren en zichtbaar impact te maken binnen een jong en ambitieus team.</p>
           <div class="card-list">
-            <div data-i18n="card.list.1">Sales &amp; accountmanagement</div>
-            <div data-i18n="card.list.2">Retail, FMCG &amp; brand growth</div>
-            <div data-i18n="card.list.3">Strategie, discipline en doorpakken</div>
+            <div data-i18n="card.list.1">Echte projecten voor echte merken</div>
+            <div data-i18n="card.list.2">Veel verantwoordelijkheid en korte lijnen</div>
+            <div data-i18n="card.list.3">Stage in marketing, data &amp; ICT of sales</div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vacancies-section" id="vacatures">
+    <div class="vacancies-wrap">
+      <p class="label reveal" data-i18n="vacancies.label">Open plekken</p>
+      <h2 class="vacancies-title reveal d1" data-i18n-html="vacancies.title">Kies jouw <span class="red">stage</span></h2>
+      <p class="vacancies-copy reveal d2" data-i18n="vacancies.copy">We zoeken stagiaires die energie krijgen van bouwen, schakelen en resultaat. Hieronder vind je de drie richtingen die nu openstaan. Staat jouw richting er niet tussen? Dan kun je alsnog open solliciteren.</p>
+      <div class="vacancy-grid">
+        <a class="vacancy-card reveal" href="#open-sollicitatie" data-job="Marketing Stagiaire">
+          <div>
+            <p class="vacancy-kicker" data-i18n="job.marketing.kicker">Stage</p>
+            <h3 data-i18n="job.marketing.title">Marketing Stagiaire</h3>
+            <p data-i18n="job.marketing.text">Help onze merken en BINC zelf sterker zichtbaar worden. Je denkt mee over content, campagnes, social media en creatieve acties die aandacht omzetten in groei.</p>
+          </div>
+          <span class="vacancy-arrow" data-i18n="job.cta">Solliciteer →</span>
+        </a>
+        <a class="vacancy-card reveal d1" href="#open-sollicitatie" data-job="Data en ICT Stagiaire">
+          <div>
+            <p class="vacancy-kicker" data-i18n="job.data.kicker">Stage</p>
+            <h3 data-i18n="job.data.title">Data &amp; ICT Stagiaire</h3>
+            <p data-i18n="job.data.text">Duik in dashboards, systemen en slimme processen. Jij helpt data overzichtelijker maken en denkt mee over tools waarmee het team sneller en slimmer werkt.</p>
+          </div>
+          <span class="vacancy-arrow" data-i18n="job.cta">Solliciteer →</span>
+        </a>
+        <a class="vacancy-card reveal d2" href="#open-sollicitatie" data-job="Sales Stagiaire">
+          <div>
+            <p class="vacancy-kicker" data-i18n="job.sales.kicker">Stage</p>
+            <h3 data-i18n="job.sales.title">Sales Stagiaire</h3>
+            <p data-i18n="job.sales.text">Leer hoe merken winkels, horeca en events binnenkomen. Je ondersteunt in leads, klantcontact, pitches en commerciële opvolging.</p>
+          </div>
+          <span class="vacancy-arrow" data-i18n="job.cta">Solliciteer →</span>
+        </a>
+        <a class="vacancy-card reveal d3" href="#open-sollicitatie" data-job="Open sollicitatie">
+          <div>
+            <p class="vacancy-kicker" data-i18n="job.open.kicker">Open</p>
+            <h3 data-i18n="job.open.title">Open sollicitatie</h3>
+            <p data-i18n="job.open.text">Zie jij jezelf bij BINC werken, maar past geen van de stages precies? Stuur ons je verhaal, dan kijken we samen waar jouw talent kan landen.</p>
+          </div>
+          <span class="vacancy-arrow" data-i18n="job.cta.open">Laat van je horen →</span>
+        </a>
       </div>
     </div>
   </section>
@@ -360,13 +424,11 @@
             <label for="f-int" data-i18n="field.interest">Interessegebied</label>
             <div class="select-wrap">
               <select id="f-int" name="interessegebied">
-                <option value="" disabled selected data-i18n="interest.placeholder">Selecteer richting</option>
-                <option data-i18n="interest.sales">Sales / Accountmanagement</option>
-                <option data-i18n="interest.retail">Retail / Buyer contact</option>
-                <option data-i18n="interest.marketing">Marketing / Brand growth</option>
-                <option data-i18n="interest.operations">Operations / Backoffice</option>
-                <option data-i18n="interest.internship">Stage / Afstuderen</option>
-                <option data-i18n="interest.other">Anders</option>
+                <option value="" disabled selected data-i18n="interest.placeholder">Selecteer vacature</option>
+                <option data-i18n="interest.marketing">Marketing Stagiaire</option>
+                <option data-i18n="interest.data">Data en ICT Stagiaire</option>
+                <option data-i18n="interest.sales">Sales Stagiaire</option>
+                <option data-i18n="interest.open">Open sollicitatie</option>
               </select>
             </div>
           </div>
@@ -439,22 +501,40 @@ const TRANSLATIONS = {
     'nav.menu.open': 'Menu openen',
 
     'hero.label': 'Werken bij BINC',
-    'hero.title': 'BECOME<br><span class="red">A</span> <span class="stroke">BINC</span>',
-    'hero.copy': 'Wij bouwen merken groter in retail. Daarvoor zoeken we mensen met energie, ownership en gevoel voor sales, strategie en relaties.',
-    'hero.btn.apply': 'Open solliciteren',
-    'hero.btn.home': 'Terug naar home',
+    'hero.title': 'WERKEN<br><span class="red">BIJ</span> <span class="stroke">BINC</span>',
+    'hero.copy': 'Bij BINC International helpen we ambitieuze merken groeien in retail, horeca en events. Je werkt mee aan zichtbaarheid, data, sales en relaties met klanten die er echt toe doen.',
+    'hero.btn.apply': 'Bekijk stages',
+    'hero.btn.open': 'Open solliciteren',
 
-    'card.status': 'Geen vacature online',
-    'card.title': 'Altijd plek voor<br><span>talent.</span>',
-    'card.text': 'Op dit moment staat er geen specifieke vacature online. Wel is het altijd mogelijk om een open sollicitatie achter te laten. Denk jij dat je bij BINC International past? Vertel ons wie je bent, waar je goed in bent en waarom jij ons team sterker maakt.',
-    'card.list.1': 'Sales & accountmanagement',
-    'card.list.2': 'Retail, FMCG & brand growth',
-    'card.list.3': 'Strategie, discipline en doorpakken',
+    'card.status': '3 stages open',
+    'card.title': 'Word onderdeel van<br><span>onze groei.</span>',
+    'card.text': 'Zoek je een stage waar je niet alleen meekijkt, maar meebouwt? Bij BINC krijg je ruimte om initiatief te nemen, snel te leren en zichtbaar impact te maken binnen een jong en ambitieus team.',
+    'card.list.1': 'Echte projecten voor echte merken',
+    'card.list.2': 'Veel verantwoordelijkheid en korte lijnen',
+    'card.list.3': 'Stage in marketing, data & ICT of sales',
 
-    'form.label': 'Open sollicitatie',
+    'vacancies.label': 'Open plekken',
+    'vacancies.title': 'Kies jouw <span class="red">stage</span>',
+    'vacancies.copy': 'We zoeken stagiaires die energie krijgen van bouwen, schakelen en resultaat. Hieronder vind je de drie richtingen die nu openstaan. Staat jouw richting er niet tussen? Dan kun je alsnog open solliciteren.',
+    'job.cta': 'Solliciteer →',
+    'job.cta.open': 'Laat van je horen →',
+    'job.marketing.kicker': 'Stage',
+    'job.marketing.title': 'Marketing Stagiaire',
+    'job.marketing.text': 'Help onze merken en BINC zelf sterker zichtbaar worden. Je denkt mee over content, campagnes, social media en creatieve acties die aandacht omzetten in groei.',
+    'job.data.kicker': 'Stage',
+    'job.data.title': 'Data & ICT Stagiaire',
+    'job.data.text': 'Duik in dashboards, systemen en slimme processen. Jij helpt data overzichtelijker maken en denkt mee over tools waarmee het team sneller en slimmer werkt.',
+    'job.sales.kicker': 'Stage',
+    'job.sales.title': 'Sales Stagiaire',
+    'job.sales.text': 'Leer hoe merken winkels, horeca en events binnenkomen. Je ondersteunt in leads, klantcontact, pitches en commerciële opvolging.',
+    'job.open.kicker': 'Open',
+    'job.open.title': 'Open sollicitatie',
+    'job.open.text': 'Zie jij jezelf bij BINC werken, maar past geen van de stages precies? Stuur ons je verhaal, dan kijken we samen waar jouw talent kan landen.',
+
+    'form.label': 'Solliciteren',
     'form.title': 'LAAT VAN <span class="red">JE HOREN</span>',
-    'form.copy': 'Vul hieronder je gegevens in en upload je CV. Wij bekijken je profiel en nemen contact op als we mogelijkheden zien die aansluiten bij jouw ervaring, energie en ambitie.',
-    'form.privacy': 'Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw open sollicitatie.',
+    'form.copy': 'Kies de vacature die bij je past, vul kort je gegevens in en upload je CV. Open solliciteren mag natuurlijk ook.',
+    'form.privacy': 'Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw sollicitatie.',
 
     'field.firstName': 'Voornaam *',
     'field.lastName': 'Achternaam *',
@@ -462,7 +542,7 @@ const TRANSLATIONS = {
     'field.phone': 'Telefoonnummer',
     'field.city': 'Woonplaats',
     'field.linkedin': 'LinkedIn profiel',
-    'field.interest': 'Interessegebied',
+    'field.interest': 'Vacature',
     'field.motivation': 'Motivatie',
     'field.cv': 'Upload CV',
 
@@ -470,17 +550,15 @@ const TRANSLATIONS = {
     'placeholder.lastName': 'de Vries',
     'placeholder.email': 'jan@email.nl',
     'placeholder.phone': '+31 6 ...',
-    'placeholder.city': 'Den Hout',
+    'placeholder.city': 'Tilburg',
     'placeholder.linkedin': 'https://linkedin.com/in/...',
-    'placeholder.motivation': 'Vertel kort wie je bent, waar je goed in bent en waarom je bij BINC International wilt werken.',
+    'placeholder.motivation': 'Vertel kort wie je bent, welke stage je zoekt en waarom je bij BINC International wilt werken.',
 
-    'interest.placeholder': 'Selecteer richting',
-    'interest.sales': 'Sales / Accountmanagement',
-    'interest.retail': 'Retail / Buyer contact',
-    'interest.marketing': 'Marketing / Brand growth',
-    'interest.operations': 'Operations / Backoffice',
-    'interest.internship': 'Stage / Afstuderen',
-    'interest.other': 'Anders',
+    'interest.placeholder': 'Selecteer vacature',
+    'interest.marketing': 'Marketing Stagiaire',
+    'interest.data': 'Data en ICT Stagiaire',
+    'interest.sales': 'Sales Stagiaire',
+    'interest.open': 'Open sollicitatie',
 
     'file.title': 'Sleep je CV hier of klik om te uploaden',
     'file.subtitle': 'PDF, DOC of DOCX · max. 10MB',
@@ -503,7 +581,7 @@ const TRANSLATIONS = {
   },
   en: {
     'nav.retail': 'Retail',
-    'nav.horeca': 'Horeca',
+    'nav.horeca': 'Hospitality',
     'nav.events': 'Events',
     'nav.team': 'Our Team',
     'nav.jobs': 'Careers',
@@ -511,22 +589,40 @@ const TRANSLATIONS = {
     'nav.menu.open': 'Open menu',
 
     'hero.label': 'Careers at BINC',
-    'hero.title': 'BECOME<br><span class="red">A</span> <span class="stroke">BINC</span>',
-    'hero.copy': 'We help brands grow in retail. To do that, we look for people with energy, ownership and a strong sense for sales, strategy and relationships.',
-    'hero.btn.apply': 'Open application',
-    'hero.btn.home': 'Back to home',
+    'hero.title': 'WORK<br><span class="red">AT</span> <span class="stroke">BINC</span>',
+    'hero.copy': 'At BINC International, we help ambitious brands grow across retail, hospitality and events. You will work on visibility, data, sales and relationships that truly matter.',
+    'hero.btn.apply': 'View internships',
+    'hero.btn.open': 'Open application',
 
-    'card.status': 'No vacancy online',
-    'card.title': 'Always room for<br><span>talent.</span>',
-    'card.text': 'There is currently no specific vacancy online. However, you can always leave an open application. Do you think you fit BINC International? Tell us who you are, what you are good at and why you would make our team stronger.',
-    'card.list.1': 'Sales & account management',
-    'card.list.2': 'Retail, FMCG & brand growth',
-    'card.list.3': 'Strategy, discipline and execution',
+    'card.status': '3 internships open',
+    'card.title': 'Become part of<br><span>our growth.</span>',
+    'card.text': 'Looking for an internship where you do more than watch from the sidelines? At BINC, you get room to take initiative, learn fast and make visible impact in a young and ambitious team.',
+    'card.list.1': 'Real projects for real brands',
+    'card.list.2': 'Responsibility and short lines',
+    'card.list.3': 'Marketing, data & ICT or sales',
 
-    'form.label': 'Open application',
+    'vacancies.label': 'Open roles',
+    'vacancies.title': 'Choose your <span class="red">internship</span>',
+    'vacancies.copy': 'We are looking for interns who get energy from building, switching fast and creating results. Below are the three directions currently open. If your direction is not listed, you can still send an open application.',
+    'job.cta': 'Apply →',
+    'job.cta.open': 'Reach out →',
+    'job.marketing.kicker': 'Internship',
+    'job.marketing.title': 'Marketing Intern',
+    'job.marketing.text': 'Help our brands and BINC become more visible. You will contribute to content, campaigns, social media and creative actions that turn attention into growth.',
+    'job.data.kicker': 'Internship',
+    'job.data.title': 'Data & ICT Intern',
+    'job.data.text': 'Dive into dashboards, systems and smarter processes. You help make data clearer and think along about tools that help the team work faster and smarter.',
+    'job.sales.kicker': 'Internship',
+    'job.sales.title': 'Sales Intern',
+    'job.sales.text': 'Learn how brands enter stores, hospitality and events. You support leads, client contact, pitches and commercial follow-up.',
+    'job.open.kicker': 'Open',
+    'job.open.title': 'Open application',
+    'job.open.text': 'Can you see yourself working at BINC, but none of the internships fit exactly? Send us your story and we will explore where your talent could land.',
+
+    'form.label': 'Apply',
     'form.title': 'LET US <span class="red">HEAR FROM YOU</span>',
-    'form.copy': 'Fill in your details below and upload your CV. We will review your profile and contact you if we see opportunities that match your experience, energy and ambition.',
-    'form.privacy': 'By submitting your details, you give BINC International permission to contact you about your open application.',
+    'form.copy': 'Choose the role that fits you, fill in your details and upload your CV. Open applications are welcome too.',
+    'form.privacy': 'By submitting your details, you give BINC International permission to contact you about your application.',
 
     'field.firstName': 'First name *',
     'field.lastName': 'Last name *',
@@ -534,7 +630,7 @@ const TRANSLATIONS = {
     'field.phone': 'Phone number',
     'field.city': 'City',
     'field.linkedin': 'LinkedIn profile',
-    'field.interest': 'Area of interest',
+    'field.interest': 'Role',
     'field.motivation': 'Motivation',
     'field.cv': 'Upload CV',
 
@@ -542,17 +638,15 @@ const TRANSLATIONS = {
     'placeholder.lastName': 'Smith',
     'placeholder.email': 'john@email.com',
     'placeholder.phone': '+31 6 ...',
-    'placeholder.city': 'Amsterdam',
+    'placeholder.city': 'Tilburg',
     'placeholder.linkedin': 'https://linkedin.com/in/...',
-    'placeholder.motivation': 'Briefly tell us who you are, what you are good at and why you want to work at BINC International.',
+    'placeholder.motivation': 'Briefly tell us who you are, which internship you are looking for and why you want to work at BINC International.',
 
-    'interest.placeholder': 'Select direction',
-    'interest.sales': 'Sales / Account management',
-    'interest.retail': 'Retail / Buyer contact',
-    'interest.marketing': 'Marketing / Brand growth',
-    'interest.operations': 'Operations / Back office',
-    'interest.internship': 'Internship / Graduation project',
-    'interest.other': 'Other',
+    'interest.placeholder': 'Select role',
+    'interest.marketing': 'Marketing Intern',
+    'interest.data': 'Data and ICT Intern',
+    'interest.sales': 'Sales Intern',
+    'interest.open': 'Open application',
 
     'file.title': 'Drop your CV here or click to upload',
     'file.subtitle': 'PDF, DOC or DOCX · max. 10MB',
@@ -648,6 +742,19 @@ document.querySelectorAll('.reveal').forEach(el => revIO.observe(el));
 /* ── LANG SWITCH ── */
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
+});
+
+
+/* ── VACANCY QUICK SELECT ── */
+document.querySelectorAll('.vacancy-card[data-job]').forEach(card => {
+  card.addEventListener('click', () => {
+    const select = document.getElementById('f-int');
+    if(!select) return;
+    const job = card.dataset.job;
+    [...select.options].forEach(option => {
+      if(option.textContent.trim() === job) select.value = option.value;
+    });
+  });
 });
 
 /* ── FILE UPLOAD ── */
