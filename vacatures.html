@@ -69,9 +69,9 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
     linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.78)),
     url('images/personeel/Groepsfoto2.jpg');
   background-size:cover;
-  background-position:right center;
+  background-position:right 78%;
   background-repeat:no-repeat;
-  padding:130px 6vw 90px;
+  padding:130px 6vw 110px;
 }
 
 .jobs-hero::before{
@@ -81,7 +81,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   background:
     radial-gradient(circle at 68% 42%,rgba(192,57,43,.13),transparent 34%),
     radial-gradient(circle at 28% 70%,rgba(255,255,255,.035),transparent 28%),
-    linear-gradient(to bottom,rgba(0,0,0,.12),rgba(0,0,0,.82));
+    linear-gradient(to bottom,rgba(0,0,0,.1) 0%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.96) 100%);
   pointer-events:none;
   z-index:1;
 }
@@ -237,6 +237,79 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .stat-num{font-family:var(--font-display);font-size:clamp(2.8rem,4vw,4rem);font-weight:900;color:var(--red);line-height:1;margin-bottom:6px}
 .stat-label{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.44)}
 
+/* TEAM EVENTS / FESTIVALS */
+#team-events{padding:110px 0 130px;background:#000;overflow:hidden;position:relative;border-top:1px solid rgba(255,255,255,.05)}
+#team-events::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 0%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
+.te-head{padding:0 6vw;margin-bottom:16px;position:relative;z-index:1}
+.te-title{font-family:var(--font-display);font-size:clamp(3rem,5.6vw,7rem);font-weight:900;line-height:.9;color:#fff}
+.te-title .red{color:var(--red)}
+.te-meta-row{display:flex;align-items:center;justify-content:space-between;padding:0 6vw;margin-bottom:44px;gap:24px;flex-wrap:wrap;position:relative;z-index:1}
+.te-sub{font-size:1rem;color:rgba(255,255,255,.54);font-weight:300;max-width:620px;margin-top:18px}
+.te-hint{display:flex;align-items:center;gap:12px;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);border-radius:6px;padding:12px 20px;width:fit-content}
+.te-hint-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(192,57,43,.18);flex-shrink:0}
+.te-hint-icon svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round}
+.te-hint-text{display:flex;flex-direction:column;gap:2px}
+.te-hint-text strong{font-family:var(--font-ui);font-size:.75rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff}
+.te-hint-text span{font-family:var(--font-body);font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300}
+.te-track-wrapper{position:relative}
+.te-track-wrapper::after{content:'';position:absolute;top:0;bottom:24px;width:80px;z-index:10;pointer-events:none;right:0;background:linear-gradient(to left,rgba(0,0,0,.9),transparent)}
+.te-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:6vw;-webkit-overflow-scrolling:touch;padding:8px 6vw 28px;scrollbar-width:none;cursor:grab}
+.te-track:active{cursor:grabbing}
+.te-track::-webkit-scrollbar{display:none}
+.te-card{position:relative;overflow:hidden;flex:0 0 400px;min-height:480px;border-radius:16px;border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);cursor:pointer;scroll-snap-align:start;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;outline:none}
+.te-card:focus-visible{outline:2px solid rgba(192,57,43,.7);outline-offset:2px}
+.te-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.4);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.15)}
+.te-card-badge{position:absolute;top:18px;left:18px;z-index:4;display:flex;align-items:center;gap:6px;background:var(--red);border-radius:4px;padding:5px 10px;font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#fff}
+.te-card-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.85);animation:liveBlink 1.4s infinite}
+.te-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;transition:opacity .4s,transform .5s cubic-bezier(.22,1,.36,1);z-index:1}
+.te-card:hover img{opacity:.6;transform:scale(1.04)}
+.te-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.96) 0%,rgba(0,0,0,.38) 54%,rgba(0,0,0,.1) 100%);z-index:2}
+.te-card-gallery{position:absolute;top:18px;right:18px;z-index:4;display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);border:1px solid rgba(192,57,43,.3);border-radius:4px;padding:7px 12px;font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:.3s}
+.te-card:hover .te-card-gallery{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.7);color:#fff}
+.te-card-gallery svg{width:14px;height:14px;flex-shrink:0;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.te-card-content{position:absolute;left:0;right:0;bottom:0;padding:32px;z-index:3}
+.te-card-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:12px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
+.te-card-content h3{font-family:var(--font-display);font-size:clamp(2.1rem,2.9vw,3.6rem);font-weight:900;line-height:.92;margin-bottom:12px;color:#fff;transition:color .3s}
+.te-card:hover .te-card-content h3{color:var(--red)}
+.te-card-content p{font-size:.92rem;line-height:1.75;color:rgba(255,255,255,.6)}
+.te-card-cta{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(192,57,43,.7)}
+.te-card-cta svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.te-drag-hint{display:flex;align-items:center;justify-content:center;gap:10px;padding:0 6vw;margin-top:4px;font-family:var(--font-ui);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.te-drag-hint svg{width:14px;height:14px;opacity:.4;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.te-more{display:flex;justify-content:center;margin-top:36px;padding:0 6vw;position:relative;z-index:1}
+.te-more a{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);text-decoration:none;border:1px solid rgba(192,57,43,.38);padding:14px 30px;border-radius:2px;transition:.2s;display:inline-flex;align-items:center;gap:10px}
+.te-more a:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.te-more a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+.te-more a:hover svg{transform:translateX(4px)}
+
+/* LIGHTBOX (gedeeld met evenementen-pagina) */
+.lightbox{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lb-header{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0}
+.lb-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,3rem);font-weight:900;letter-spacing:.02em}
+.lb-title span{color:var(--red)}
+.lb-meta{font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
+.lb-close{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);cursor:pointer;color:#fff;flex-shrink:0;transition:.2s}
+.lb-close:hover{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.5)}
+.lb-close svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.lb-main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:20px 80px;min-height:0}
+.lb-main-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;transition:opacity .28s ease,transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 30px 80px rgba(0,0,0,.8)}
+.lb-main-img.changing{opacity:0;transform:scale(.97)}
+.lb-spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.1);border-top-color:var(--red);animation:spin .7s linear infinite;opacity:0;pointer-events:none;transition:opacity .2s}
+.lb-spinner.visible{opacity:1}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);cursor:pointer;color:#fff;transition:.2s;z-index:2}
+.lb-arrow:hover{background:rgba(192,57,43,.25);border-color:rgba(192,57,43,.6)}
+.lb-arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lb-prev{left:12px}.lb-next{right:12px}
+.lb-thumbs{display:flex;gap:8px;overflow-x:auto;padding:16px 32px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0;scrollbar-width:thin;scrollbar-color:rgba(192,57,43,.4) transparent}
+.lb-thumbs::-webkit-scrollbar{height:3px}
+.lb-thumbs::-webkit-scrollbar-thumb{background:rgba(192,57,43,.4);border-radius:2px}
+.lb-thumb{flex-shrink:0;width:72px;height:52px;border-radius:5px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:.2s;opacity:.5;background:rgba(255,255,255,.04)}
+.lb-thumb:hover{opacity:.8}
+.lb-thumb.active{border-color:var(--red);opacity:1}
+.lb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.38);background:rgba(0,0,0,.5);padding:5px 14px;border-radius:20px;pointer-events:none;z-index:2}
+
 /* VACATURES */
 #vacatures{padding:100px 6vw;background:#000;position:relative}
 #vacatures::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.06),transparent 55%);pointer-events:none}
@@ -333,8 +406,22 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
   .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
   .mobile-nav-drawer{display:flex}
-  .jobs-hero{min-height:70vh;padding:110px 5vw 60px}
+  .jobs-hero{min-height:70vh;padding:110px 5vw 70px;background-position:center 82%}
   .jobs-title{font-size:clamp(4rem,18vw,8rem);margin-bottom:20px}
+  #team-events{padding:70px 0 80px}
+  .te-head,.te-meta-row{padding:0 5vw}
+  .te-meta-row{margin-bottom:28px}
+  .te-track{padding:8px 5vw 24px;gap:14px;scroll-padding-left:5vw}
+  .te-card{flex:0 0 80vw;max-width:300px;min-height:420px}
+  .te-card-content{padding:22px}
+  .te-card-content h3{font-size:clamp(1.8rem,7.5vw,2.6rem)}
+  .te-track-wrapper::after{width:30px}
+  .lb-header{padding:16px 20px}
+  .lb-main{padding:12px 52px}
+  .lb-arrow{width:40px;height:40px}
+  .lb-prev{left:6px}.lb-next{right:6px}
+  .lb-thumbs{padding:12px 16px}
+  .lb-thumb{width:56px;height:40px}
   .vac-grid{grid-template-columns:1fr}.vac-card{padding:28px 22px}
   .about-strip{padding:60px 5vw}#vacatures{padding:70px 5vw}
   #open-sollicitatie{padding:70px 5vw 90px}.form-row{grid-template-columns:1fr}
@@ -438,6 +525,145 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     </div>
   </div>
 </section>
+
+<!-- FESTIVALS MET HET TEAM -->
+<section id="team-events">
+  <div class="te-head reveal">
+    <p class="label" data-i18n="te.label">Team & cultuur</p>
+    <h2 class="te-title" data-i18n-html="te.title">FESTIVALS MET<br><span class="red">HET TEAM</span></h2>
+  </div>
+  <div class="te-meta-row reveal d1">
+    <div>
+      <p class="te-sub" data-i18n="te.sub">Werken bij BINC is meer dan een bureau. We gaan samen het veld op — naar de festivals waar onze merken live worden geactiveerd.</p>
+      <div class="te-hint" style="margin-top:22px">
+        <div class="te-hint-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="var(--red)"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="te-hint-text">
+          <strong data-i18n="te.hint.title">Klik op een festival</strong>
+          <span data-i18n="te.hint.sub">om de fotogalerij te bekijken</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="te-track-wrapper">
+    <div class="te-track" id="teTrack">
+
+      <div class="te-card" data-event="kkc" role="button" tabindex="0" aria-label="Kamping Kitsch Club galerij openen">
+        <img src="images/kkc/web/_O2A4099_web.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
+        <div class="te-card-overlay"></div>
+        <div class="te-card-badge" data-i18n="te.badge.recent">Nieuwste</div>
+        <div class="te-card-gallery">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>30 foto's</span>
+        </div>
+        <div class="te-card-content">
+          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3>Kamping Kitsch Club</h3>
+          <p data-i18n="te1.body">Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers.</p>
+          <div class="te-card-cta">
+            <span data-i18n="te.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="te-card" data-event="7th" role="button" tabindex="0" aria-label="7th Sunday galerij openen">
+        <img src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
+        <div class="te-card-overlay"></div>
+        <div class="te-card-gallery">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>14 foto's</span>
+        </div>
+        <div class="te-card-content">
+          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3>7th Sunday</h3>
+          <p data-i18n="te2.body">Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.</p>
+          <div class="te-card-cta">
+            <span data-i18n="te.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="te-card" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
+        <img src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
+        <div class="te-card-overlay"></div>
+        <div class="te-card-gallery">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>24 foto's</span>
+        </div>
+        <div class="te-card-content">
+          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3>Harmony of Hardcore</h3>
+          <p data-i18n="te3.body">Maximale energie, maximaal teamgevoel. Pal in het hart van de hardcore scene, samen met een loyale en gepassioneerde fanbase.</p>
+          <div class="te-card-cta">
+            <span data-i18n="te.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="te-card" data-event="dauwpop" role="button" tabindex="0" aria-label="Dauwpop galerij openen">
+        <img src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
+        <div class="te-card-overlay"></div>
+        <div class="te-card-gallery">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>29 foto's</span>
+        </div>
+        <div class="te-card-content">
+          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3>Dauwpop</h3>
+          <p data-i18n="te4.body">Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.</p>
+          <div class="te-card-cta">
+            <span data-i18n="te.cta">Bekijk galerij</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="te-drag-hint">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    <span data-i18n="te.drag">Sleep of swipe om meer te zien</span>
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </p>
+
+  <div class="te-more">
+    <a href="evenementen.html">
+      <span data-i18n="te.more.label">Bekijk alle evenementen</span>
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotogalerij">
+  <div class="lb-header">
+    <div>
+      <div class="lb-title" id="lbTitle">7th Sunday</div>
+      <div class="lb-meta" id="lbMeta">Festival · met het team</div>
+    </div>
+    <button class="lb-close" id="lbClose" aria-label="Galerij sluiten">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="lb-main">
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Vorige foto">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img class="lb-main-img" id="lbMainImg" src="" alt="Festival foto"/>
+    <div class="lb-spinner" id="lbSpinner"></div>
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Volgende foto">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="lb-counter" id="lbCounter">1 / 14</div>
+  </div>
+  <div class="lb-thumbs" id="lbThumbs"></div>
+</div>
 
 <!-- VACATURES -->
 <section id="vacatures">
@@ -621,6 +847,16 @@ const T={
     'vac.sales.desc':'Jij leert het vak van accountmanagement in de snelste omgeving die er is: FMCG retail. Je rijdt mee, voert gesprekken, bezoekt filialen en ziet hoe deals worden gemaakt. Als je wil weten hoe producten in het schap van de Albert Heijn belanden — dan is dit jouw plek.',
     'vac.sales.li1':'Retailbezoeken & filiaalactivaties','vac.sales.li2':'Ondersteuning accountmanagement','vac.sales.li3':'Leadgeneratie & prospecting','vac.sales.li4':'Rapportage & klantopvolging',
     'vac.btn':'Solliciteer nu →',
+    'te.label':'Team & cultuur',
+    'te.title':'FESTIVALS MET<br><span class="red">HET TEAM</span>',
+    'te.sub':'Werken bij BINC is meer dan een bureau. We gaan samen het veld op — naar de festivals waar onze merken live worden geactiveerd.',
+    'te.hint.title':'Klik op een festival','te.hint.sub':'om de fotogalerij te bekijken',
+    'te.tag':'Festival · met het team','te.cta':'Bekijk galerij','te.badge.recent':'Nieuwste',
+    'te1.body':'Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers.',
+    'te2.body':'Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.',
+    'te3.body':'Maximale energie, maximaal teamgevoel. Pal in het hart van de hardcore scene, samen met een loyale en gepassioneerde fanbase.',
+    'te4.body':'Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.',
+    'te.drag':'Sleep of swipe om meer te zien','te.more.label':'Bekijk alle evenementen',
     'form.label':'Open sollicitatie','form.title':'LAAT VAN <span class="red">JE HOREN</span>',
     'form.copy':'Geen passende stageplaats gevonden, of wil je gewoon direct van je laten horen? Stuur een open sollicitatie. We bekijken elk profiel en nemen contact op als er een match is.',
     'form.privacy':'Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw sollicitatie.',
@@ -655,6 +891,16 @@ const T={
     'vac.sales.desc':"You learn the trade of account management in the fastest environment there is: FMCG retail. You join calls, visit stores, and see deals happen in real time. If you want to understand how products end up on the shelf at Albert Heijn — this is your spot.",
     'vac.sales.li1':'Retail visits & store activations','vac.sales.li2':'Account management support','vac.sales.li3':'Lead generation & prospecting','vac.sales.li4':'Reporting & client follow-up',
     'vac.btn':'Apply now →',
+    'te.label':'Team & culture',
+    'te.title':'FESTIVALS WITH<br><span class="red">THE TEAM</span>',
+    'te.sub':"Working at BINC is more than an office job. We hit the field together — at the festivals where our brands come to life.",
+    'te.hint.title':'Click a festival','te.hint.sub':'to view the photo gallery',
+    'te.tag':'Festival · with the team','te.cta':'View gallery','te.badge.recent':'Latest',
+    'te1.body':'Kitsch, camp and pure party energy. The whole team out at one of the most exuberant festival concepts in the Netherlands. Colors, glitter and thousands of festival-goers.',
+    'te2.body':'From sunrise to sunset with the team at one of the most iconic dance festivals in the Netherlands. Thousands of hands, one taste.',
+    'te3.body':'Maximum energy, maximum team spirit. Right at the heart of the hardcore scene, together with a loyal and passionate fan base.',
+    'te4.body':'Summer vibes and a team that goes all in together. Part of the Dauwpop experience — taste, see and remember.',
+    'te.drag':'Drag or swipe to see more','te.more.label':'View all events',
     'form.label':'Open application','form.title':'LET US <span class="red">HEAR FROM YOU</span>',
     'form.copy':"Didn't find the right internship, or just want to reach out directly? Send an open application. We review every profile and get in touch when there's a match.",
     'form.privacy':'By submitting your details, you give BINC International permission to contact you about your application.',
@@ -699,6 +945,138 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* LANG BTNS */
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{applyLang(b.dataset.lang);tog(false);}));
+
+/* TEAM EVENTS GALLERY */
+const KKC_FILES=[
+  '_O2A3790','_O2A3801','_O2A3808','_O2A3830','_O2A3852',
+  '_O2A3888-2','_O2A3901','_O2A3924','_O2A3942','_O2A3959',
+  '_O2A3994','_O2A4009','_O2A4043','_O2A4057','_O2A4063',
+  '_O2A4099','_O2A4122','_O2A4165','_O2A4176','_O2A4212',
+  '_O2A4218','_O2A4230','_O2A4243','_O2A4246','_O2A4267',
+  '_O2A4323','_O2A4328','_O2A4368','_O2A4381','_O2A4407'
+];
+const TE_GALLERIES={
+  'kkc':{
+    titleNL:'Kamping Kitsch Club',titleEN:'Kamping Kitsch Club',
+    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
+    imgs:KKC_FILES.map(f=>`images/kkc/web/${f}_web.jpg`),
+    thumbImgs:KKC_FILES.map(f=>`images/kkc/thumbs/${f}_thumb.jpg`)
+  },
+  '7th':{
+    titleNL:'7th Sunday',titleEN:'7th Sunday',
+    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
+    imgs:Array.from({length:14},(_,i)=>`images/7th2/web/${i+1}.jpg`),
+    thumbImgs:Array.from({length:14},(_,i)=>`images/7th2/thumbs/${i+1}.jpg`)
+  },
+  'hoh':{
+    titleNL:'Harmony of Hardcore',titleEN:'Harmony of Hardcore',
+    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
+    imgs:Array.from({length:24},(_,i)=>`images/hoh/web/${i+1}.jpg`),
+    thumbImgs:Array.from({length:24},(_,i)=>`images/hoh/thumbs/${i+1}.jpg`)
+  },
+  'dauwpop':{
+    titleNL:'Dauwpop',titleEN:'Dauwpop',
+    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
+    imgs:Array.from({length:29},(_,i)=>`images/7th/web/${i+1}.jpg`),
+    thumbImgs:Array.from({length:29},(_,i)=>`images/7th/thumbs/${i+1}.jpg`)
+  }
+};
+
+const lb=document.getElementById('lightbox');
+const lbTitleEl=document.getElementById('lbTitle');
+const lbMetaEl=document.getElementById('lbMeta');
+const lbImgEl=document.getElementById('lbMainImg');
+const lbThumbsEl=document.getElementById('lbThumbs');
+const lbCounterEl=document.getElementById('lbCounter');
+const lbCloseBtn=document.getElementById('lbClose');
+const lbPrevBtn=document.getElementById('lbPrev');
+const lbNextBtn=document.getElementById('lbNext');
+const lbSpinnerEl=document.getElementById('lbSpinner');
+
+let teGallery=null,teIndex=0,teLoadTimer=null,teLastCard=null;
+
+function tePreload(idx){
+  if(!teGallery)return;
+  const n=teGallery.imgs.length;
+  [-1,1].forEach(o=>{const im=new Image();im.src=teGallery.imgs[(idx+o+n)%n];});
+}
+function teShowSpinner(){clearTimeout(teLoadTimer);teLoadTimer=setTimeout(()=>lbSpinnerEl.classList.add('visible'),150);}
+function teHideSpinner(){clearTimeout(teLoadTimer);lbSpinnerEl.classList.remove('visible');}
+
+function teOpenGallery(key,card){
+  const g=TE_GALLERIES[key];if(!g)return;
+  teGallery=g;teIndex=0;teLastCard=card||null;
+  lbTitleEl.textContent=lang==='en'?g.titleEN:g.titleNL;
+  lbMetaEl.textContent=lang==='en'?g.metaEN:g.metaNL;
+  lbThumbsEl.innerHTML='';
+  g.thumbImgs.forEach((src,i)=>{
+    const d=document.createElement('div');
+    d.className='lb-thumb'+(i===0?' active':'');
+    const im=document.createElement('img');im.src=src;im.alt=`Foto ${i+1}`;im.loading='lazy';
+    d.appendChild(im);d.addEventListener('click',()=>teGoTo(i));lbThumbsEl.appendChild(d);
+  });
+  teShowSpinner();lbImgEl.src='';
+  const first=new Image();
+  first.onload=()=>{lbImgEl.src=first.src;teHideSpinner();};
+  first.onerror=()=>{teHideSpinner();};
+  first.src=g.imgs[0];
+  lbCounterEl.textContent=`1 / ${g.imgs.length}`;
+  lb.classList.add('open');document.body.style.overflow='hidden';
+  teScrollThumb(0);tePreload(0);
+}
+
+function teCloseGallery(){
+  lb.classList.remove('open');document.body.style.overflow='';
+  teGallery=null;teHideSpinner();
+  if(teLastCard){teLastCard.blur();teLastCard=null;}
+}
+
+function teGoTo(idx){
+  if(!teGallery)return;
+  const n=teGallery.imgs.length;idx=(idx+n)%n;teIndex=idx;
+  lbImgEl.classList.add('changing');teShowSpinner();
+  const next=new Image();
+  next.onload=()=>{lbImgEl.src=next.src;lbImgEl.classList.remove('changing');teHideSpinner();};
+  next.onerror=()=>{lbImgEl.classList.remove('changing');teHideSpinner();};
+  next.src=teGallery.imgs[idx];
+  lbCounterEl.textContent=`${idx+1} / ${n}`;
+  lbThumbsEl.querySelectorAll('.lb-thumb').forEach((th,i)=>th.classList.toggle('active',i===idx));
+  teScrollThumb(idx);tePreload(idx);
+}
+
+function teScrollThumb(idx){
+  const thumb=lbThumbsEl.querySelectorAll('.lb-thumb')[idx];
+  if(thumb)thumb.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+
+document.querySelectorAll('.te-card').forEach(card=>{
+  card.addEventListener('click',()=>teOpenGallery(card.dataset.event,card));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();teOpenGallery(card.dataset.event,card);}});
+});
+
+lbCloseBtn.addEventListener('click',teCloseGallery);
+lbPrevBtn.addEventListener('click',()=>teGoTo(teIndex-1));
+lbNextBtn.addEventListener('click',()=>teGoTo(teIndex+1));
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')teCloseGallery();
+  if(e.key==='ArrowLeft')teGoTo(teIndex-1);
+  if(e.key==='ArrowRight')teGoTo(teIndex+1);
+});
+lb.addEventListener('click',e=>{if(e.target===lb)teCloseGallery();});
+let teTouchStartX=0;
+lbImgEl.addEventListener('touchstart',e=>{teTouchStartX=e.changedTouches[0].screenX;},{passive:true});
+lbImgEl.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].screenX-teTouchStartX;
+  if(Math.abs(dx)>40)teGoTo(teIndex+(dx<0?1:-1));
+},{passive:true});
+
+const teTrack=document.getElementById('teTrack');
+let teDragging=false,teDragStartX=0,teScrollStart=0;
+teTrack.addEventListener('mousedown',e=>{teDragging=true;teDragStartX=e.pageX;teScrollStart=teTrack.scrollLeft;teTrack.style.userSelect='none';});
+window.addEventListener('mousemove',e=>{if(!teDragging)return;teTrack.scrollLeft=teScrollStart-(e.pageX-teDragStartX);});
+window.addEventListener('mouseup',()=>{teDragging=false;teTrack.style.userSelect='';});
+teTrack.addEventListener('click',e=>{if(Math.abs(teTrack.scrollLeft-teScrollStart)>8)e.stopPropagation();},{capture:true});
 
 /* FILE */
 const cv=document.getElementById('cvUpload'),fn=document.getElementById('fileName'),fb=document.getElementById('fileBox');
