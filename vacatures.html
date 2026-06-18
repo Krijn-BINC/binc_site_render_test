@@ -58,8 +58,13 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px)}
 .jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);transition:opacity .55s,transform .8s cubic-bezier(.22,1,.36,1)}
 .jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
-.jobs-hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:url('images/personeel/Groepsfoto2.jpg') center 30%/cover no-repeat;padding:90px 6vw}
-.jobs-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.18) 0%,rgba(0,0,0,.28) 38%,rgba(0,0,0,.74) 72%,rgba(0,0,0,.92) 100%);z-index:1}
+
+/* HERO — desktop shows background image, mobile/tablet is pure black */
+.jobs-hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:90px 6vw;background:#000}
+@media(min-width:1001px){
+  .jobs-hero{background:url('images/personeel/Groepsfoto2.jpg') center 30%/cover no-repeat;}
+  .jobs-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.18) 0%,rgba(0,0,0,.28) 38%,rgba(0,0,0,.74) 72%,rgba(0,0,0,.92) 100%);z-index:1}
+}
 .jobs-hero-inner{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto}
 .label{display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:22px}
 .label::before{content:'';width:24px;height:1px;background:rgba(192,57,43,.75)}
@@ -82,6 +87,8 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .partners-img-wrap:hover img{transform:scale(1.04)}
 .partners-img-label{position:absolute;bottom:0;left:0;right:0;padding:40px 28px 28px;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,transparent 100%);font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3.6rem);font-weight:900;line-height:.95;color:#fff}
 .partners-img-label .red{color:var(--red)}
+
+/* PRODUCT INFINITE SCROLL — no dots, seamless loop */
 #portfolio{padding:90px 0;background:#000;border-top:1px solid rgba(255,255,255,.05);overflow:hidden}
 .portfolio-header{max-width:1200px;margin:0 auto;padding:0 6vw;margin-bottom:48px;text-align:center}
 .portfolio-kicker{display:flex;align-items:center;justify-content:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:10px}
@@ -89,21 +96,15 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .portfolio-title{font-family:var(--font-display);font-size:clamp(2.6rem,5vw,6rem);font-weight:900;line-height:.9;color:#fff}
 .portfolio-title .red{color:var(--red)}
 .portfolio-sub{font-size:1rem;color:rgba(255,255,255,.44);font-weight:300;margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto}
-.prod-slider-wrap{position:relative;max-width:1200px;margin:0 auto;padding:0 6vw}
-.prod-slider-track{display:flex;align-items:center;gap:0;overflow:hidden;padding:20px 0;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%)}
-.prod-slider-inner{display:flex;align-items:center;gap:0;transition:transform .55s cubic-bezier(.22,1,.36,1);will-change:transform}
-.prod-item{flex:0 0 220px;height:360px;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1);}
-.prod-item.center-item{transform:scale(1.18);z-index:5}
-.prod-item.side-item{transform:scale(0.9);opacity:.7;filter:brightness(.75)}
-.prod-item.far-item{transform:scale(0.78);opacity:.4;filter:brightness(.45)}
+
+.prod-scroll-outer{position:relative;width:100%;overflow:hidden;padding:20px 0;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 80px,#000 calc(100% - 80px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 80px,#000 calc(100% - 80px),transparent 100%)}
+.prod-scroll-track{display:flex;align-items:center;gap:0;width:max-content;animation:prodScroll 38s linear infinite}
+.prod-scroll-track:hover{animation-play-state:paused}
+@keyframes prodScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.prod-item{flex:0 0 200px;height:340px;display:flex;align-items:center;justify-content:center;padding:18px;position:relative;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .35s,filter .35s;opacity:.7;filter:brightness(.75)}
+.prod-item:hover{transform:scale(1.12);opacity:1;filter:brightness(1)}
 .prod-item img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
-.prod-nav{display:flex;align-items:center;justify-content:space-between;margin-top:0;position:relative;z-index:10}
-.prod-nav-btn{display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.5);cursor:pointer;color:#fff;transition:.2s}
-.prod-nav-btn:hover{background:rgba(192,57,43,.25);border-color:rgba(192,57,43,.6)}
-.prod-nav-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.prod-dots{display:flex;gap:8px;align-items:center}
-.prod-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18);cursor:pointer;transition:.25s}
-.prod-dot.active{background:var(--red);transform:scale(1.4)}
+
 #team-events{padding:100px 0 90px;background:#000;overflow:hidden;position:relative;border-top:1px solid rgba(255,255,255,.05)}
 #team-events::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 0%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
 .te-section-header{max-width:1200px;margin:0 auto;padding:0 6vw;margin-bottom:52px}
@@ -136,11 +137,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .te-dots{display:flex;gap:8px;align-items:center}
 .te-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18);cursor:pointer;transition:.25s}
 .te-dot.active{background:var(--red);transform:scale(1.4)}
-.te-more{display:flex;justify-content:center;margin-top:36px;max-width:1200px;margin-left:auto;margin-right:auto;padding:0 6vw}
-.te-more a{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);text-decoration:none;border:1px solid rgba(192,57,43,.38);padding:14px 30px;border-radius:2px;transition:.2s;display:inline-flex;align-items:center;gap:10px}
-.te-more a:hover{background:var(--red);color:#fff;border-color:var(--red)}
-.te-more a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
-.te-more a:hover svg{transform:translateX(4px)}
 .fest-popup-backdrop{position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.82);backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:opacity .35s}
 .fest-popup-backdrop.open{opacity:1;pointer-events:auto}
 .fest-popup{position:fixed;top:50%;left:50%;z-index:701;width:min(760px,92vw);max-height:88vh;overflow-y:auto;transform:translate(-50%,-50%) scale(.96);background:#0e0e0e;border:1px solid rgba(192,57,43,.3);border-radius:18px;opacity:0;pointer-events:none;transition:opacity .35s,transform .35s cubic-bezier(.22,1,.36,1);scrollbar-width:thin;scrollbar-color:rgba(192,57,43,.35) transparent}
@@ -245,62 +241,83 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 .reveal{opacity:0;transform:translateY(52px);transition:opacity .9s,transform .9s}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.38s}
-@media(max-width:1100px){.vac-grid{grid-template-columns:1fr 1fr}.about-strip-inner{grid-template-columns:1fr;gap:48px}.partners-img-wrap{aspect-ratio:16/9;max-height:340px}}
+
+/* Responsive */
+@media(max-width:1100px){
+  .vac-grid{grid-template-columns:1fr 1fr}
+  .about-strip-inner{grid-template-columns:1fr;gap:48px}
+  .partners-img-wrap{aspect-ratio:16/9;max-height:340px}
+}
 @media(max-width:1000px){
-html,body{cursor:auto}#cur,#cur-ring{display:none}.lang-fab{display:none}
-.nav-right .lang-switch{display:flex}nav{height:70px;padding:0 5vw}.nav-logo img{height:32px}
-nav .nav-links{display:none}
-.nav-hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;cursor:pointer;background:none;border:none;padding:0;position:relative;z-index:510}
-.nav-hamburger span{display:block;width:26px;height:1.5px;background:#fff;border-radius:2px;transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .22s;transform-origin:center}
-.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--red)}
-.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
-.mobile-nav-drawer{display:flex}
-.jobs-hero{min-height:100vh;padding:90px 5vw 60px}
-.jobs-title{font-size:clamp(4rem,18vw,8rem);margin-bottom:20px}
-.about-strip{padding:70px 5vw}
-#portfolio{padding:70px 0}.portfolio-header{padding:0 5vw}
-.prod-slider-wrap{padding:0 5vw}
-.prod-item{flex:0 0 180px;height:300px}
-#team-events{padding:70px 0 80px}
-.te-section-header{padding:0 5vw;margin-bottom:36px}
-.te-carousel-wrap{padding:10px 5vw}
-.te-carousel{height:460px}
-.te-slide{width:240px;height:340px}
-.te-slide.is-active{width:270px;height:380px}
-.te-slide.is-far-left{transform:translate(-230px,0) scale(.8)}
-.te-slide.is-left{transform:translate(-190px,0) scale(.86)}
-.te-slide.is-right{transform:translate(calc(-100% + 190px),0) scale(.86)}
-.te-slide.is-far-right{transform:translate(calc(-100% + 230px),0) scale(.8)}
-.te-more{padding:0 5vw;margin-top:28px}
-#vacatures{padding:70px 5vw}
-.vac-grid{grid-template-columns:1fr}.vac-card{padding:28px 22px}
-#open-sollicitatie{padding:70px 5vw 90px}.form-row{grid-template-columns:1fr}
-.lead-form{max-width:100%}.file-content{flex-direction:column;align-items:flex-start;gap:14px}
-.file-icon{width:44px;height:44px;font-size:1.4rem}
-.btn-submit{width:100%;padding:16px 24px}
-footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
-.ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
-.ft-logo{width:min(200px,55vw);margin:0 auto}.ft-socials{justify-content:center}
-.ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
-.ft-bar{flex-direction:column;align-items:center;gap:12px;padding:20px 5vw;text-align:center}
-.lang-switch{margin-left:8px}.lang-btn{padding:5px 9px;font-size:.62rem}
-.fest-popup-stats{grid-template-columns:1fr 1fr}
-.fest-popup-body{padding:24px 20px 28px}
-.partners-img-label{font-size:clamp(1.6rem,5vw,2.6rem)}
+  html,body{cursor:auto}#cur,#cur-ring{display:none}.lang-fab{display:none}
+  .nav-right .lang-switch{display:flex}nav{height:70px;padding:0 5vw}.nav-logo img{height:32px}
+  nav .nav-links{display:none}
+  .nav-hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;cursor:pointer;background:none;border:none;padding:0;position:relative;z-index:510}
+  .nav-hamburger span{display:block;width:26px;height:1.5px;background:#fff;border-radius:2px;transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .22s;transform-origin:center}
+  .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--red)}
+  .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
+  .mobile-nav-drawer{display:flex}
+
+  /* Mobile hero: black, no image, compact copy */
+  .jobs-hero{min-height:100svh;padding:90px 5vw 60px;background:#000 !important}
+  .jobs-hero::before{display:none}
+  .jobs-copy{font-size:.95rem;max-width:100%}
+  .jobs-title{font-size:clamp(4rem,18vw,8rem);margin-bottom:20px}
+
+  /* About strip: hide image on tablet/mobile */
+  .about-strip{padding:70px 5vw}
+  .about-strip-inner{grid-template-columns:1fr}
+  .partners-img-wrap{display:none}
+
+  #portfolio{padding:70px 0}.portfolio-header{padding:0 5vw}
+  .prod-item{flex:0 0 160px;height:280px}
+
+  #team-events{padding:70px 0 80px}
+  .te-section-header{padding:0 5vw;margin-bottom:36px}
+  .te-carousel-wrap{padding:10px 5vw}
+  .te-carousel{height:460px}
+  .te-slide{width:240px;height:340px}
+  .te-slide.is-active{width:270px;height:380px}
+  .te-slide.is-far-left{transform:translate(-230px,0) scale(.8)}
+  .te-slide.is-left{transform:translate(-190px,0) scale(.86)}
+  .te-slide.is-right{transform:translate(calc(-100% + 190px),0) scale(.86)}
+  .te-slide.is-far-right{transform:translate(calc(-100% + 230px),0) scale(.8)}
+
+  #vacatures{padding:70px 5vw}
+  .vac-grid{grid-template-columns:1fr}.vac-card{padding:28px 22px}
+  #open-sollicitatie{padding:70px 5vw 90px}.form-row{grid-template-columns:1fr}
+  .lead-form{max-width:100%}.file-content{flex-direction:column;align-items:flex-start;gap:14px}
+  .file-icon{width:44px;height:44px;font-size:1.4rem}
+  .btn-submit{width:100%;padding:16px 24px}
+  footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
+  .ft-brand{align-items:center;text-align:center;gap:20px;padding-bottom:36px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:36px}
+  .ft-logo{width:min(200px,55vw);margin:0 auto}.ft-socials{justify-content:center}
+  .ft-info{grid-template-columns:1fr;gap:20px;text-align:center}
+  .ft-bar{flex-direction:column;align-items:center;gap:12px;padding:20px 5vw;text-align:center}
+  .lang-switch{margin-left:8px}.lang-btn{padding:5px 9px;font-size:.62rem}
+  .fest-popup-stats{grid-template-columns:1fr 1fr}
+  .fest-popup-body{padding:24px 20px 28px}
+  .partners-img-label{font-size:clamp(1.6rem,5vw,2.6rem)}
 }
 @media(max-width:480px){
-.jobs-title{font-size:clamp(3.2rem,16vw,6rem)}
-.vac-name{font-size:clamp(2rem,8vw,2.8rem)}
-.prod-item{flex:0 0 150px;height:260px}
-.te-carousel{height:400px}
-.te-slide{width:200px;height:290px}
-.te-slide.is-active{width:230px;height:330px}
-.te-slide.is-far-left{transform:translate(-190px,0) scale(.78)}
-.te-slide.is-left{transform:translate(-155px,0) scale(.84)}
-.te-slide.is-right{transform:translate(calc(-100% + 155px),0) scale(.84)}
-.te-slide.is-far-right{transform:translate(calc(-100% + 190px),0) scale(.78)}
-.fest-popup-stats{grid-template-columns:1fr}
+  .jobs-title{font-size:clamp(3.2rem,16vw,6rem)}
+  .jobs-copy{font-size:.9rem}
+  .vac-name{font-size:clamp(2rem,8vw,2.8rem)}
+  .prod-item{flex:0 0 140px;height:240px}
+  .te-carousel{height:400px}
+  .te-slide{width:200px;height:290px}
+  .te-slide.is-active{width:230px;height:330px}
+  .te-slide.is-far-left{transform:translate(-190px,0) scale(.78)}
+  .te-slide.is-left{transform:translate(-155px,0) scale(.84)}
+  .te-slide.is-right{transform:translate(calc(-100% + 155px),0) scale(.84)}
+  .te-slide.is-far-right{transform:translate(calc(-100% + 190px),0) scale(.78)}
+  .fest-popup-stats{grid-template-columns:1fr}
+}
+
+/* Respect reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .prod-scroll-track{animation:none}
 }
 </style>
 </head>
@@ -351,16 +368,18 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 </button>
 </div>
 </nav>
+
 <section class="jobs-hero">
 <div class="jobs-hero-inner">
 <h1 class="jobs-title">GROW<br><span class="red">WITH</span> <span class="stroke">BINC</span></h1>
-<p class="jobs-copy">Wij groeien snel en daarvoor zoeken we ambitieuze medewerkers en stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, werk je voor ambitieuze merken, en leer je de retail van binnenuit kennen.</p>
+<p class="jobs-copy">Ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, voor merken die groeien.</p>
 <div class="jobs-actions">
 <a href="#vacatures" class="btn-red">Bekijk stageplekken</a>
 <a href="#open-sollicitatie" class="btn-outline">Open solliciteren</a>
 </div>
 </div>
 </section>
+
 <section class="about-strip">
 <div class="about-strip-inner">
 <div class="about-text reveal">
@@ -374,45 +393,59 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 </div>
 </div>
 </section>
+
 <section id="portfolio">
 <div class="portfolio-header reveal">
 <p class="portfolio-kicker">Ons portfolio</p>
 <h2 class="portfolio-title">MERKEN DIE<br><span class="red">OPVALLEN.</span></h2>
 <p class="portfolio-sub">BINC vertegenwoordigt merken die zichzelf laten zien van schappen tot en met festivals.</p>
 </div>
-<div class="prod-slider-wrap">
-<div class="prod-slider-track">
-<div class="prod-slider-inner" id="prodInner">
-<div class="prod-item" data-prod="0"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Original-Single.png" alt="Gold Dry Original Premix" loading="lazy"/></div>
-<div class="prod-item" data-prod="1"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Dream-Single.png" alt="Gold Dry Dream Premix" loading="lazy"/></div>
-<div class="prod-item" data-prod="2"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Sky-800px_New-1-e1718819567635.png" alt="Gold Dry Sky Premix" loading="lazy"/></div>
-<div class="prod-item" data-prod="3"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Mindset-Single.png" alt="Gold Dry Mindset Premix" loading="lazy"/></div>
-<div class="prod-item" data-prod="4"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2025/06/golddry_250_eclipse_premix-scaled-e1750337392792.png" alt="Gold Dry Eclipse Premix" loading="lazy"/></div>
-<div class="prod-item" data-prod="5"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2025/12/Gold-Dry-250ml-Premix-Unite-Web.png" alt="Gold Dry Unite Premix" loading="lazy"/></div>
-<div class="prod-item" data-prod="6"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/FP61-330-Camera%2034%20(2).png" alt="FeelSoGood Fruit Punch" loading="lazy"/></div>
-<div class="prod-item" data-prod="7"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/BR6.1-330-Camera%2034%20(4).png" alt="FeelSoGood Berry" loading="lazy"/></div>
-<div class="prod-item" data-prod="8"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/Orangeblast.png" alt="FeelSoGood Orange Blast" loading="lazy"/></div>
-<div class="prod-item" data-prod="9"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/JM61-330-Camera%2034%20(2).png" alt="FeelSoGood" loading="lazy"/></div>
-<div class="prod-item" data-prod="10"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Original-Single.png" alt="Gold Dry Original Soda" loading="lazy"/></div>
-<div class="prod-item" data-prod="11"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Dream-Single.png" alt="Gold Dry Dream Soda" loading="lazy"/></div>
-<div class="prod-item" data-prod="12"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Sky-Single.png" alt="Gold Dry Sky Soda" loading="lazy"/></div>
-<div class="prod-item" data-prod="13"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Mindset-Single.png" alt="Gold Dry Mindset Soda" loading="lazy"/></div>
-<div class="prod-item" data-prod="14"><img src="https://golddry.nl/wp-content/uploads/2025/06/Gold-Dry-Eclipse-Web-1.png" alt="Gold Dry Eclipse Soda" loading="lazy"/></div>
-<div class="prod-item" data-prod="15"><img src="https://golddry.nl/wp-content/uploads/2025/12/Gold-Dry-250ml-Premium-Soda-Unite-Web.png" alt="Gold Dry Unite Soda" loading="lazy"/></div>
-<div class="prod-item" data-prod="16"><img src="https://cnsupplements.com/cdn/shop/files/WorkoutV5-500Gram-CherryBomb_7217eb76-bf56-4fcd-9449-781f0246320b.webp?v=1777423631&width=1920" alt="Clean Nutrition Workout Cherry Bomb 500g" loading="lazy"/></div>
-<div class="prod-item" data-prod="17"><img src="https://cnsupplements.com/cdn/shop/files/WorkoutV4-500Gram-MiamiGoldnobg.webp?v=1777423721&width=1920" alt="Clean Nutrition Workout Miami Gold 500g" loading="lazy"/></div>
-<div class="prod-item" data-prod="18"><img src="https://cnsupplements.com/cdn/shop/files/WorkoutV3-300Gram-TropicalGold.webp?v=1777423894&width=1920" alt="Clean Nutrition Workout Tropical Gold 300g" loading="lazy"/></div>
-<div class="prod-item" data-prod="19"><img src="https://cnsupplements.com/cdn/shop/files/WorkoutV2-300Gram-CherryBomb_56620cea-e3bd-4af9-9e09-18056d1fb9a3.webp?v=1777078191&width=1920" alt="Clean Nutrition Workout Cherry Bomb 300g" loading="lazy"/></div>
-<div class="prod-item" data-prod="20"><img src="https://cnsupplements.com/cdn/shop/files/PompApparaat-300Gram-FlaneerFruitnobg_0a2d23cf-393f-45c8-899b-4d16e71bfc1b.webp?v=1777077684&width=1920" alt="Clean Nutrition Pomp Apparaat Flaneer Fruit 300g" loading="lazy"/></div>
-</div>
-</div>
-<div class="prod-nav">
-<button class="prod-nav-btn" id="prodPrev" aria-label="Vorige"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-<div class="prod-dots" id="prodDots"></div>
-<button class="prod-nav-btn" id="prodNext" aria-label="Volgende"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+<div class="prod-scroll-outer">
+<div class="prod-scroll-track" id="prodTrack">
+<!-- Set A -->
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Original-Single.png" alt="Gold Dry Original Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Dream-Single.png" alt="Gold Dry Dream Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Sky-800px_New-1-e1718819567635.png" alt="Gold Dry Sky Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Mindset-Single.png" alt="Gold Dry Mindset Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2025/06/golddry_250_eclipse_premix-scaled-e1750337392792.png" alt="Gold Dry Eclipse Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2025/12/Gold-Dry-250ml-Premix-Unite-Web.png" alt="Gold Dry Unite Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/FP61-330-Camera%2034%20(2).png" alt="FeelSoGood Fruit Punch" loading="lazy"/></div>
+<div class="prod-item"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/BR6.1-330-Camera%2034%20(4).png" alt="FeelSoGood Berry" loading="lazy"/></div>
+<div class="prod-item"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/Orangeblast.png" alt="FeelSoGood Orange Blast" loading="lazy"/></div>
+<div class="prod-item"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/JM61-330-Camera%2034%20(2).png" alt="FeelSoGood" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Original-Single.png" alt="Gold Dry Original Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Dream-Single.png" alt="Gold Dry Dream Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Sky-Single.png" alt="Gold Dry Sky Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Mindset-Single.png" alt="Gold Dry Mindset Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://golddry.nl/wp-content/uploads/2025/06/Gold-Dry-Eclipse-Web-1.png" alt="Gold Dry Eclipse Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://golddry.nl/wp-content/uploads/2025/12/Gold-Dry-250ml-Premium-Soda-Unite-Web.png" alt="Gold Dry Unite Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://feelsogoodwater.nl/wp-content/uploads/2026/04/FeelSoGoodWater-Blueberry.webp" alt="FeelSoGood Water Blueberry" loading="lazy"/></div>
+<div class="prod-item"><img src="https://feelsogoodwater.nl/wp-content/uploads/2026/04/FeelSoGoodWater-Lemon.webp" alt="FeelSoGood Water Lemon" loading="lazy"/></div>
+<div class="prod-item"><img src="https://feelsogoodwater.nl/wp-content/uploads/2026/04/FeelSoGoodWater-Watermelon.webp" alt="FeelSoGood Water Watermelon" loading="lazy"/></div>
+<!-- Set B (exact duplicate for seamless loop) -->
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Original-Single.png" alt="Gold Dry Original Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Dream-Single.png" alt="Gold Dry Dream Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Sky-800px_New-1-e1718819567635.png" alt="Gold Dry Sky Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/02/Gold-Dry-250ml-Premix-Mindset-Single.png" alt="Gold Dry Mindset Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2025/06/golddry_250_eclipse_premix-scaled-e1750337392792.png" alt="Gold Dry Eclipse Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2025/12/Gold-Dry-250ml-Premix-Unite-Web.png" alt="Gold Dry Unite Premix" loading="lazy"/></div>
+<div class="prod-item"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/FP61-330-Camera%2034%20(2).png" alt="FeelSoGood Fruit Punch" loading="lazy"/></div>
+<div class="prod-item"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/BR6.1-330-Camera%2034%20(4).png" alt="FeelSoGood Berry" loading="lazy"/></div>
+<div class="prod-item"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/Orangeblast.png" alt="FeelSoGood Orange Blast" loading="lazy"/></div>
+<div class="prod-item"><img src="https://raw.githubusercontent.com/Krijnvl/feelsogoodproductem/refs/heads/main/JM61-330-Camera%2034%20(2).png" alt="FeelSoGood" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Original-Single.png" alt="Gold Dry Original Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Dream-Single.png" alt="Gold Dry Dream Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Sky-Single.png" alt="Gold Dry Sky Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/golddry.nl/wp-content/uploads/2024/01/Gold-Dry-250ml-Premium-Soda-Mindset-Single.png" alt="Gold Dry Mindset Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://golddry.nl/wp-content/uploads/2025/06/Gold-Dry-Eclipse-Web-1.png" alt="Gold Dry Eclipse Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://golddry.nl/wp-content/uploads/2025/12/Gold-Dry-250ml-Premium-Soda-Unite-Web.png" alt="Gold Dry Unite Soda" loading="lazy"/></div>
+<div class="prod-item"><img src="https://feelsogoodwater.nl/wp-content/uploads/2026/04/FeelSoGoodWater-Blueberry.webp" alt="FeelSoGood Water Blueberry" loading="lazy"/></div>
+<div class="prod-item"><img src="https://feelsogoodwater.nl/wp-content/uploads/2026/04/FeelSoGoodWater-Lemon.webp" alt="FeelSoGood Water Lemon" loading="lazy"/></div>
+<div class="prod-item"><img src="https://feelsogoodwater.nl/wp-content/uploads/2026/04/FeelSoGoodWater-Watermelon.webp" alt="FeelSoGood Water Watermelon" loading="lazy"/></div>
 </div>
 </div>
 </section>
+
 <div class="fest-popup-backdrop" id="festBackdrop">
 <div class="fest-popup" id="festPopup">
 <div class="fest-popup-hero">
@@ -436,6 +469,7 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 </div>
 </div>
 </div>
+
 <section id="team-events">
 <div class="te-section-header reveal">
 <p class="label">Team &amp; cultuur</p>
@@ -496,10 +530,8 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 <button class="te-nav-btn" id="teNext" aria-label="Volgende"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
 </div>
 </div>
-<div class="te-more">
-<a href="evenementen.html">Bekijk alle evenementen<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-</div>
 </section>
+
 <section id="vacatures">
 <div class="vac-header reveal">
 <p class="label" style="justify-content:center">Open stageplekken</p>
@@ -545,6 +577,7 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 </div>
 </div>
 </section>
+
 <section id="open-sollicitatie">
 <div class="form-wrap">
 <div class="form-intro reveal">
@@ -607,6 +640,7 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 </div>
 </div>
 </section>
+
 <footer>
 <div class="ft-brand reveal">
 <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
@@ -628,6 +662,7 @@ footer{grid-template-columns:1fr;gap:0;padding:56px 5vw 40px}
 </div>
 <div class="ft-bar-right"><span class="ft-kvk">KVK: 98970887</span></div>
 </div>
+
 <script>
 const API_URL='https://server-medewerker-kpi.onrender.com/api/sollicitatie';
 const FEST_DATA={
@@ -636,38 +671,31 @@ dauwpop:{name:'Dauwpop',date:'29 & 30 mei 2026',img:'images/7th/web/18.jpg',desc
 hoh:{name:'Harmony of Hardcore',date:'15 mei 2026',img:'images/hoh/web/12.jpg',desc:'Harmony of Hardcore is een van de grootste hardcore dance festivals ter wereld. Maximale energie, maximaal teamgevoel. BINC was aanwezig pal in het hart van de hardcore scene, naast een loyale en gepassioneerde fanbase die onze merken omarmt.',stats:[{num:'35.000+',label:'Bezoekers'},{num:'1 dag',label:'Editie'},{num:'2026',label:'Jaar'}],link:'https://harmonyofhardcore.nl',linkLabel:'harmonyofhardcore.nl'},
 '7th':{name:'7th Sunday',date:'16 mei 2026',img:'images/7th2/web/8.jpg',desc:'Van zonsopgang tot zonsondergang met het team op één van de meest iconische dance festivals van Nederland. 7th Sunday brengt het beste van de dance scene bij elkaar, en BINC was er bij van het eerste tot het laatste uur. Duizenden handen, één smaak.',stats:[{num:'20.000+',label:'Bezoekers'},{num:'1 dag',label:'Editie'},{num:'2026',label:'Jaar'}],link:'https://7thsunday.nl',linkLabel:'7thsunday.nl'}
 };
+
+/* Custom cursor */
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function tick(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+
+/* Mobile nav */
 const hbg=document.getElementById('navHamburger'),drw=document.getElementById('mobileDrawer');
 function tog(o){hbg.classList.toggle('open',o);drw.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';}
 hbg.addEventListener('click',()=>tog(!drw.classList.contains('open')));
 drw.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>tog(false)));
 drw.addEventListener('click',e=>{if(e.target===drw)tog(false);});
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>70),{passive:true});
+
+/* Scroll reveal */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Lang switch */
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{
 document.querySelectorAll('.lang-btn').forEach(x=>x.classList.toggle('active',x.dataset.lang===b.dataset.lang));tog(false);
 }));
-const prodInner=document.getElementById('prodInner');
-const originalProdItems=Array.from(prodInner.children);
-const prodCount=originalProdItems.length;
-const cloneSetBefore=originalProdItems.map(n=>n.cloneNode(true));
-const cloneSetAfter=originalProdItems.map(n=>n.cloneNode(true));
-cloneSetBefore.reverse().forEach(n=>prodInner.insertBefore(n,prodInner.firstChild));
-cloneSetAfter.forEach(n=>prodInner.appendChild(n));
-const prodItems=Array.from(document.querySelectorAll('.prod-item'));
-let prodIdx=prodCount;
-function buildProdDots(){const dotsEl=document.getElementById('prodDots');dotsEl.innerHTML='';for(let i=0;i<prodCount;i++){const d=document.createElement('div');d.className='prod-dot'+(i===0?' active':'');d.addEventListener('click',()=>goProd(prodCount+i));dotsEl.appendChild(d);}}
-function goProd(idx){prodIdx=idx;const inner=prodInner;const itemW=prodItems[0].offsetWidth;const trackW=inner.parentElement.offsetWidth;const offset=prodIdx*itemW-trackW/2+itemW/2;inner.style.transform=`translateX(${-offset}px)`;prodItems.forEach((item,i)=>{item.classList.remove('center-item','side-item','far-item');const dist=Math.abs(i-prodIdx);if(dist===0)item.classList.add('center-item');else if(dist===1)item.classList.add('side-item');else item.classList.add('far-item');});const activeDot=((prodIdx%prodCount)+prodCount)%prodCount;document.querySelectorAll('.prod-dot').forEach((d,i)=>d.classList.toggle('active',i===activeDot));if(prodIdx<=Math.floor(prodCount/2)||prodIdx>=prodItems.length-Math.floor(prodCount/2)){clearTimeout(window._prodJumpTimer);window._prodJumpTimer=setTimeout(()=>{const inner2=prodInner;inner2.style.transition='none';prodIdx=((prodIdx%prodCount)+prodCount)%prodCount+prodCount;const offset2=prodIdx*itemW-trackW/2+itemW/2;inner2.style.transform=`translateX(${-offset2}px)`;requestAnimationFrame(()=>{inner2.style.transition='transform .55s cubic-bezier(.22,1,.36,1)';});},600);}}
-document.getElementById('prodPrev').addEventListener('click',()=>goProd(prodIdx-1));
-document.getElementById('prodNext').addEventListener('click',()=>goProd(prodIdx+1));
-prodItems.forEach((item,i)=>item.addEventListener('click',()=>goProd(i)));
-buildProdDots();
-window.addEventListener('load',()=>goProd(prodIdx));
-window.addEventListener('resize',()=>goProd(prodIdx));
+
+/* Festival carousel */
 const teSlides=Array.from(document.querySelectorAll('.te-slide'));
 const teDots=Array.from(document.querySelectorAll('.te-dot'));
 let teIdx=0;
@@ -680,21 +708,29 @@ let swX=0;
 document.getElementById('teCarousel').addEventListener('touchstart',e=>{swX=e.changedTouches[0].screenX;},{passive:true});
 document.getElementById('teCarousel').addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-swX;if(Math.abs(dx)>50)updateTeCarousel(teIdx+(dx<0?1:-1));},{passive:true});
 updateTeCarousel(0);
+
+/* Popup */
 const festBackdrop=document.getElementById('festBackdrop');
 function openPopup(key){const d=FEST_DATA[key];if(!d)return;document.getElementById('popupImg').src=d.img;document.getElementById('popupImg').alt=d.name;document.getElementById('popupName').textContent=d.name;document.getElementById('popupDate').textContent=d.date;document.getElementById('popupDesc').textContent=d.desc;document.getElementById('popupStats').innerHTML=d.stats.map(s=>`<div class="popup-stat"><div class="popup-stat-num">${s.num}</div><div class="popup-stat-label">${s.label}</div></div>`).join('');document.getElementById('popupLink').href=d.link;document.getElementById('popupLinkText').textContent=d.linkLabel;festBackdrop.classList.add('open');document.body.style.overflow='hidden';}
 function closePopup(){festBackdrop.classList.remove('open');document.body.style.overflow='';}
 document.getElementById('festPopupClose').addEventListener('click',closePopup);
 festBackdrop.addEventListener('click',e=>{if(e.target===festBackdrop)closePopup();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&festBackdrop.classList.contains('open'))closePopup();});
+
+/* CV upload */
 const cv=document.getElementById('cvUpload'),fn=document.getElementById('fileName'),fb=document.getElementById('fileBox');
 cv.addEventListener('change',function(){fn.textContent=this.files[0]?this.files[0].name:'Nog geen bestand geselecteerd';});
 fb.addEventListener('dragover',e=>{e.preventDefault();fb.style.borderColor='rgba(192,57,43,.8)';fb.style.background='rgba(192,57,43,.12)';});
 fb.addEventListener('dragleave',()=>{fb.style.borderColor='';fb.style.background='';});
 fb.addEventListener('drop',e=>{e.preventDefault();fb.style.borderColor='';fb.style.background='';if(e.dataTransfer.files[0]){const dt=new DataTransfer();dt.items.add(e.dataTransfer.files[0]);cv.files=dt.files;fn.textContent=e.dataTransfer.files[0].name;}});
+
+/* Form submit */
 const ab=document.getElementById('applyBtn'),fs=document.getElementById('formSuccess'),fe=document.getElementById('formError');
 function showA(type){fs.classList.remove('show');fe.classList.remove('show');if(type==='success')fs.classList.add('show');if(type==='error')fe.classList.add('show');}
 function setBtnState(s){ab.disabled=false;ab.className='btn-submit';if(s==='loading'){ab.disabled=true;ab.classList.add('sending');ab.innerHTML='<span class="spinner"></span>Versturen...';}else if(s==='success'){ab.disabled=true;ab.classList.add('success');ab.textContent='Sollicitatie verstuurd';}else if(s==='error'){ab.textContent='Opnieuw proberen';}else{ab.textContent='Verstuur sollicitatie';}}
 ab.addEventListener('click',async()=>{const v=document.getElementById('f-voornaam').value.trim(),a=document.getElementById('f-achternaam').value.trim(),e=document.getElementById('f-email').value.trim();if(!v||!a||!e){fe.textContent='Vul minimaal je voornaam, achternaam en e-mailadres in.';showA('error');return;}const fd=new FormData();fd.append('voornaam',v);fd.append('achternaam',a);fd.append('email',e);fd.append('telefoon',document.getElementById('f-tel').value.trim());fd.append('woonplaats',document.getElementById('f-woon').value.trim());fd.append('linkedin',document.getElementById('f-li').value.trim());fd.append('interessegebied',document.getElementById('f-int').value);fd.append('motivatie',document.getElementById('f-mot').value.trim());if(cv.files&&cv.files[0])fd.append('cv',cv.files[0]);setBtnState('loading');showA(null);try{const r=await fetch(API_URL,{method:'POST',body:fd});const d=await r.json();if(r.ok&&d.success){setBtnState('success');fs.textContent='Je sollicitatie is succesvol verstuurd. We nemen zo snel mogelijk contact met je op!';showA('success');fs.scrollIntoView({behavior:'smooth',block:'center'});}else throw new Error(d.error||'Unknown');}catch(err){setBtnState('error');fe.textContent='Er is iets misgegaan. Probeer het opnieuw of mail info@bincinternational.nl';showA('error');}});
+
+/* Page transition */
 document.querySelectorAll('a[href="index.html#lead"]').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();const o=document.getElementById('jumpOverlay');o.classList.add('active');setTimeout(()=>window.location.href='index.html#lead',900);}));
 </script>
 </body>
