@@ -137,7 +137,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .te-sub{font-size:1rem;color:rgba(255,255,255,.52);font-weight:300;margin-top:16px;max-width:640px}
 
 /* Festival carousel — centered "hero card" style matching the reference screenshot */
-.te-carousel-wrap{position:relative;max-width:1800px;margin:0 auto;padding:10px 4vw}
+.te-carousel-wrap{position:relative;max-width:1800px;margin:0 auto;padding:10px 4vw;overflow:hidden}
 .te-carousel{
   display:flex;
   align-items:center;
@@ -145,6 +145,8 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   gap:24px;
   position:relative;
   height:680px;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 90px,#000 calc(100% - 90px),transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0,#000 90px,#000 calc(100% - 90px),transparent 100%);
 }
 .te-slide{
   flex:0 0 auto;
@@ -156,7 +158,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   pointer-events:none;
   filter:brightness(.5);
 }
-.te-slide.is-far-left{left:50%;transform:translate(-660px,0) scale(.82);opacity:.55;z-index:1;pointer-events:auto}
+.te-slide.is-far-left{left:50%;transform:translate(-720px,0) scale(.82);opacity:.4;z-index:1;pointer-events:auto}
 .te-slide.is-left{left:50%;transform:translate(-540px,0) scale(.88);opacity:.85;z-index:2;pointer-events:auto}
 .te-slide.is-active{
   left:50%;
@@ -170,7 +172,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   pointer-events:auto;
 }
 .te-slide.is-right{left:50%;transform:translate(calc(-100% + 540px),0) scale(.88);opacity:.85;z-index:2;pointer-events:auto}
-.te-slide.is-far-right{left:50%;transform:translate(calc(-100% + 660px),0) scale(.82);opacity:.55;z-index:1;pointer-events:auto}
+.te-slide.is-far-right{left:50%;transform:translate(calc(-100% + 720px),0) scale(.82);opacity:.4;z-index:1;pointer-events:auto}
 .te-slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;transition:opacity .4s}
 .te-slide.is-active .te-slide-img{opacity:.6}
 .te-slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.97) 0%,rgba(0,0,0,.35) 48%,rgba(0,0,0,.05) 100%);z-index:2}
@@ -263,7 +265,8 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .f-field input:focus,.f-field textarea:focus,.f-field select:focus{border-color:rgba(192,57,43,.7);background:rgba(192,57,43,.075)}
 .f-field textarea{resize:vertical;min-height:140px}
 .f-field select option{background:#000}
-.select-wrap{position:relative}
+.select-wrap{position:relative;width:100%}
+.select-wrap select{width:100%}
 .select-wrap::after{content:'▾';position:absolute;right:16px;top:50%;transform:translateY(-50%);color:rgba(192,57,43,.7);pointer-events:none;font-size:.8rem}
 .file-box{position:relative;border:1px dashed rgba(192,57,43,.38);background:rgba(192,57,43,.055);border-radius:6px;padding:24px;transition:.2s}
 .file-box:hover{background:rgba(192,57,43,.085);border-color:rgba(192,57,43,.62)}
@@ -620,10 +623,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="vac-grid">
 
     <div class="vac-card reveal">
-      <div class="vac-tag">Stage · 2025/2026</div>
       <p class="vac-role">Creatief & Communicatie</p>
       <h3 class="vac-name">Marketing<br><span class="red">Stagiaire</span></h3>
-      <p class="vac-body">Jij vertaalt de identiteit van onze merken naar content die mensen echt raakt. Of het nu gaat om een productlancering in het schap of een activatie midden op een festival, jij zet het neer. Je werkt direct mee aan Gold Dry, BeatBox, FeelSoGood en Clean Nutrition, en leert hoe merkopbouw in de praktijk werkt.</p>
+      <p class="vac-body">Jij vertaalt onze merken naar content die raakt, van schap tot festival.</p>
       <div class="vac-highlights">
         <div class="vac-highlight">Social media strategie en contentcreatie</div>
         <div class="vac-highlight">Campagnes per merk uitwerken en bewaken</div>
@@ -634,10 +636,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     </div>
 
     <div class="vac-card reveal d1">
-      <div class="vac-tag">Stage · 2025/2026</div>
       <p class="vac-role">Tech & Analyse</p>
       <h3 class="vac-name">Data &amp; ICT<br><span class="red">Stagiaire</span></h3>
-      <p class="vac-body">Jij maakt data bruikbaar. Van dashboards die ons salesteam dagelijks gebruikt tot slimme koppelingen tussen systemen, jij bouwt de tools waarmee BINC sneller beslissingen neemt. Je werkt zelfstandig aan echte vraagstukken, niet aan oefenprojecten.</p>
+      <p class="vac-body">Jij bouwt de tools en dashboards waarmee BINC sneller beslist.</p>
       <div class="vac-highlights">
         <div class="vac-highlight">Interne webapplicaties bouwen en beheren</div>
         <div class="vac-highlight">Data-integraties opzetten (Sheets, API's)</div>
@@ -648,10 +649,9 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     </div>
 
     <div class="vac-card reveal d2">
-      <div class="vac-tag">Stage · 2025/2026</div>
       <p class="vac-role">Commercieel & Retail</p>
       <h3 class="vac-name">Sales<br><span class="red">Stagiaire</span></h3>
-      <p class="vac-body">Jij leert het vak door gewoon mee te doen. Je rijdt mee met accountmanagers, voert gesprekken met inkopers, bezoekt filialen en ziet hoe producten hun plek in het schap verdienen. Geen theorie, maar praktijk. Dit is hoe retail echt werkt.</p>
+      <p class="vac-body">Jij leert het vak in de praktijk, gewoon door mee te doen.</p>
       <div class="vac-highlights">
         <div class="vac-highlight">Meerijden bij retailbezoeken en filiaalactivaties</div>
         <div class="vac-highlight">Accountmanagers ondersteunen in het veld</div>
@@ -762,7 +762,7 @@ const FEST_DATA={
     link:'https://www.kampingkitschclub.nl',linkLabel:'kampingkitschclub.nl'},
   dauwpop:{name:'Dauwpop',date:'29 & 30 mei 2026',img:'images/7th/web/18.jpg',
     desc:'Dauwpop is het oudste gratis pop festival van Nederland, gehouden in de mooie omgeving van Hellendoorn. Met het team gingen we twee dagen lang het veld op. Onze merken werden geproefd door duizenden festivalgangers in een ontspannen zomerse sfeer.',
-    stats:[{num:'50.000+',label:'Bezoekers'},{num:'2 dagen',label:'Editie'},{num:'Gratis',label:'Festival'}],
+    stats:[{num:'50.000+',label:'Bezoekers'},{num:'2 dagen',label:'Editie'},{num:'2026',label:'Jaar'}],
     link:'https://www.dauwpop.nl',linkLabel:'dauwpop.nl'},
   hoh:{name:'Harmony of Hardcore',date:'15 mei 2026',img:'images/hoh/web/12.jpg',
     desc:'Harmony of Hardcore is een van de grootste hardcore dance festivals ter wereld. Maximale energie, maximaal teamgevoel. BINC was aanwezig pal in het hart van de hardcore scene, naast een loyale en gepassioneerde fanbase die onze merken omarmt.',
