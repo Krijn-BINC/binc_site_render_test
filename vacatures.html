@@ -58,50 +58,25 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .jump-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(circle at center,rgba(28,10,10,.92) 0%,rgba(12,5,5,.96) 55%,rgba(0,0,0,.985) 100%);backdrop-filter:blur(42px) saturate(1.15);-webkit-backdrop-filter:blur(42px) saturate(1.15);overflow:hidden}
 .jump-logo{width:min(420px,68vw);opacity:0;transform:scale(.92);filter:drop-shadow(0 0 30px rgba(192,57,43,.22)) drop-shadow(0 0 80px rgba(192,57,43,.14));transition:opacity .55s ease,transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2}
 .jump-overlay.active{opacity:1}.jump-overlay.active .jump-logo{opacity:1;transform:scale(1)}
+
 /* HERO */
 .jobs-hero{
   position:relative;
-  min-height:80vh;
+  min-height:100vh;
   display:flex;
-  align-items:center;
+  align-items:flex-end;
   overflow:hidden;
-  background:
-    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.78)),
-    url('images/personeel/Groepsfoto2.jpg');
-  background-size:cover;
-  background-position:right 78%;
-  background-repeat:no-repeat;
-  padding:130px 6vw 110px;
+  background: url('images/personeel/Groepsfoto2.jpg') center 30% / cover no-repeat;
+  padding:130px 6vw 100px;
 }
 
 .jobs-hero::before{
   content:'';
   position:absolute;
   inset:0;
-  background:
-    radial-gradient(circle at 68% 42%,rgba(192,57,43,.13),transparent 34%),
-    radial-gradient(circle at 28% 70%,rgba(255,255,255,.035),transparent 28%),
-    linear-gradient(to bottom,rgba(0,0,0,.1) 0%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.96) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,.15) 0%, rgba(0,0,0,.3) 40%, rgba(0,0,0,.82) 75%, rgba(0,0,0,.96) 100%);
   pointer-events:none;
   z-index:1;
-}
-
-.jobs-hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(192,57,43,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(192,57,43,.035) 1px,transparent 1px);
-  background-size:90px 90px;
-  opacity:.35;
-  animation:gridScroll 25s linear infinite;
-  z-index:1;
-}
-
-@keyframes gridScroll{
-  from{transform:translateY(0)}
-  to{transform:translateY(90px)}
 }
 
 .hero-orb{
@@ -111,7 +86,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   right:4vw;
   top:12vh;
   border-radius:50%;
-  background:rgba(192,57,43,.08);
+  background:rgba(192,57,43,.05);
   filter:blur(100px);
   pointer-events:none;
   z-index:1;
@@ -225,90 +200,249 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
   border-color:rgba(192,57,43,.65);
   background:rgba(192,57,43,.055);
 }
-/* ABOUT STRIP */
+
+/* ABOUT STRIP — PARTNERS SECTION */
 .about-strip{background:#000;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:80px 6vw}
 .about-strip-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .about-text .label{margin-bottom:18px}
-.about-heading{font-family:var(--font-display);font-size:clamp(2.4rem,4vw,4.2rem);font-weight:900;line-height:.92;color:#fff;margin-bottom:24px}
+.about-heading{font-family:var(--font-display);font-size:clamp(2.4rem,4vw,4.2rem);font-weight:900;line-height:.92;color:#fff;margin-bottom:8px}
 .about-heading .red{color:var(--red)}
+.partners-label{font-family:var(--font-display);font-size:clamp(1.6rem,2.8vw,2.8rem);font-weight:900;color:#fff;margin-bottom:18px;margin-top:28px}
 .about-p{font-size:1rem;line-height:1.9;color:rgba(255,255,255,.62);font-weight:300;margin-bottom:14px}
-.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.stat-box{border:1px solid rgba(192,57,43,.16);border-radius:8px;padding:24px 20px;background:rgba(192,57,43,.04)}
-.stat-num{font-family:var(--font-display);font-size:clamp(2.8rem,4vw,4rem);font-weight:900;color:var(--red);line-height:1;margin-bottom:6px}
-.stat-label{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.44)}
 
-/* TEAM EVENTS / FESTIVALS */
+/* Partners image block */
+.partners-img-wrap{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+.partners-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.partners-img-label{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:32px 28px 24px;
+  background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 100%);
+  font-family:var(--font-display);
+  font-size:clamp(1.6rem,3vw,2.8rem);
+  font-weight:900;
+  line-height:1.05;
+  color:var(--red);
+}
+
+/* TEAM EVENTS / FESTIVALS — NEW 3D CAROUSEL */
 #team-events{padding:110px 0 130px;background:#000;overflow:hidden;position:relative;border-top:1px solid rgba(255,255,255,.05)}
 #team-events::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 0%,rgba(192,57,43,.05),transparent 55%);pointer-events:none}
 .te-head{padding:0 6vw;margin-bottom:16px;position:relative;z-index:1}
 .te-title{font-family:var(--font-display);font-size:clamp(3rem,5.6vw,7rem);font-weight:900;line-height:.9;color:#fff}
 .te-title .red{color:var(--red)}
-.te-meta-row{display:flex;align-items:center;justify-content:space-between;padding:0 6vw;margin-bottom:44px;gap:24px;flex-wrap:wrap;position:relative;z-index:1}
+.te-meta-row{display:flex;align-items:flex-start;justify-content:space-between;padding:0 6vw;margin-bottom:60px;gap:24px;flex-wrap:wrap;position:relative;z-index:1}
 .te-sub{font-size:1rem;color:rgba(255,255,255,.54);font-weight:300;max-width:620px;margin-top:18px}
-.te-hint{display:flex;align-items:center;gap:12px;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);border-radius:6px;padding:12px 20px;width:fit-content}
-.te-hint-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(192,57,43,.18);flex-shrink:0}
-.te-hint-icon svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round}
-.te-hint-text{display:flex;flex-direction:column;gap:2px}
-.te-hint-text strong{font-family:var(--font-ui);font-size:.75rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff}
-.te-hint-text span{font-family:var(--font-body);font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300}
-.te-track-wrapper{position:relative}
-.te-track-wrapper::after{content:'';position:absolute;top:0;bottom:24px;width:80px;z-index:10;pointer-events:none;right:0;background:linear-gradient(to left,rgba(0,0,0,.9),transparent)}
-.te-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:6vw;-webkit-overflow-scrolling:touch;padding:8px 6vw 28px;scrollbar-width:none;cursor:grab}
-.te-track:active{cursor:grabbing}
-.te-track::-webkit-scrollbar{display:none}
-.te-card{position:relative;overflow:hidden;flex:0 0 400px;min-height:480px;border-radius:16px;border:1px solid rgba(192,57,43,.14);background:rgba(255,255,255,.015);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.52);cursor:pointer;scroll-snap-align:start;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;outline:none}
-.te-card:focus-visible{outline:2px solid rgba(192,57,43,.7);outline-offset:2px}
-.te-card:hover{transform:translateY(-6px);border-color:rgba(192,57,43,.4);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.15)}
-.te-card-badge{position:absolute;top:18px;left:18px;z-index:4;display:flex;align-items:center;gap:6px;background:var(--red);border-radius:4px;padding:5px 10px;font-family:var(--font-ui);font-size:.55rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#fff}
-.te-card-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.85);animation:liveBlink 1.4s infinite}
-.te-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;transition:opacity .4s,transform .5s cubic-bezier(.22,1,.36,1);z-index:1}
-.te-card:hover img{opacity:.6;transform:scale(1.04)}
-.te-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.96) 0%,rgba(0,0,0,.38) 54%,rgba(0,0,0,.1) 100%);z-index:2}
-.te-card-gallery{position:absolute;top:18px;right:18px;z-index:4;display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);border:1px solid rgba(192,57,43,.3);border-radius:4px;padding:7px 12px;font-family:var(--font-ui);font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:.3s}
-.te-card:hover .te-card-gallery{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.7);color:#fff}
-.te-card-gallery svg{width:14px;height:14px;flex-shrink:0;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.te-card-content{position:absolute;left:0;right:0;bottom:0;padding:32px;z-index:3}
-.te-card-tag{display:inline-block;font-family:var(--font-ui);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:12px;padding:6px 12px;border:1px solid rgba(192,57,43,.28);border-radius:2px;background:rgba(192,57,43,.07)}
-.te-card-content h3{font-family:var(--font-display);font-size:clamp(2.1rem,2.9vw,3.6rem);font-weight:900;line-height:.92;margin-bottom:12px;color:#fff;transition:color .3s}
-.te-card:hover .te-card-content h3{color:var(--red)}
-.te-card-content p{font-size:.92rem;line-height:1.75;color:rgba(255,255,255,.6)}
-.te-card-cta{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(192,57,43,.7)}
-.te-card-cta svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.te-drag-hint{display:flex;align-items:center;justify-content:center;gap:10px;padding:0 6vw;margin-top:4px;font-family:var(--font-ui);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2)}
-.te-drag-hint svg{width:14px;height:14px;opacity:.4;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.te-more{display:flex;justify-content:center;margin-top:36px;padding:0 6vw;position:relative;z-index:1}
+
+/* 3D Carousel */
+.te-carousel-wrap{
+  position:relative;
+  width:100%;
+  padding:20px 0 40px;
+  overflow:hidden;
+}
+.te-carousel{
+  position:relative;
+  width:100%;
+  height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  perspective:1200px;
+}
+.te-slide{
+  position:absolute;
+  width:360px;
+  height:460px;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:all .55s cubic-bezier(.22,1,.36,1);
+  transform-style:preserve-3d;
+  border:1px solid rgba(192,57,43,.14);
+  background:#0a0a0a;
+}
+
+/* Active / center card */
+.te-slide.active{
+  transform:translateX(0) scale(1) rotateY(0deg);
+  z-index:10;
+  box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 40px rgba(192,57,43,.18);
+  border-color:rgba(192,57,43,.5);
+}
+/* prev card */
+.te-slide.prev{
+  transform:translateX(-380px) scale(.82) rotateY(18deg);
+  z-index:5;
+  opacity:.7;
+  filter:brightness(.65);
+}
+/* next card */
+.te-slide.next{
+  transform:translateX(380px) scale(.82) rotateY(-18deg);
+  z-index:5;
+  opacity:.7;
+  filter:brightness(.65);
+}
+/* far prev */
+.te-slide.far-prev{
+  transform:translateX(-620px) scale(.68) rotateY(28deg);
+  z-index:2;
+  opacity:.35;
+  filter:brightness(.4);
+}
+/* far next */
+.te-slide.far-next{
+  transform:translateX(620px) scale(.68) rotateY(-28deg);
+  z-index:2;
+  opacity:.35;
+  filter:brightness(.4);
+}
+.te-slide.hidden{
+  opacity:0;
+  pointer-events:none;
+  z-index:0;
+}
+
+.te-slide-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.5;
+  transition:opacity .4s;
+}
+.te-slide.active .te-slide-img{opacity:.55;}
+.te-slide-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.98) 0%,rgba(0,0,0,.4) 45%,rgba(0,0,0,.1) 100%);
+  z-index:2;
+}
+.te-slide-content{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  padding:28px 28px 32px;
+  z-index:3;
+}
+.te-slide-tag{
+  display:inline-block;
+  font-family:var(--font-ui);
+  font-size:.55rem;
+  font-weight:700;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:rgba(192,57,43,.9);
+  margin-bottom:10px;
+  padding:5px 10px;
+  border:1px solid rgba(192,57,43,.28);
+  border-radius:2px;
+  background:rgba(192,57,43,.07);
+}
+.te-slide-name{
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem,2.8vw,2.8rem);
+  font-weight:900;
+  line-height:.95;
+  color:#fff;
+  margin-bottom:12px;
+}
+.te-slide-date{
+  font-family:var(--font-ui);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(192,57,43,.8);
+  margin-bottom:14px;
+}
+
+/* Info panel shown on click */
+.te-slide-info{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s cubic-bezier(.22,1,.36,1);
+}
+.te-slide.active.expanded .te-slide-info{
+  max-height:200px;
+}
+.te-slide-info p{
+  font-size:.88rem;
+  line-height:1.75;
+  color:rgba(255,255,255,.62);
+  margin-top:4px;
+}
+.te-slide-cta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  font-family:var(--font-ui);
+  font-size:.65rem;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(192,57,43,.7);
+  transition:.2s;
+}
+.te-slide.active .te-slide-cta{color:var(--red);}
+.te-slide-cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+.te-slide.active .te-slide-cta:hover svg{transform:translateX(3px)}
+
+/* Carousel nav */
+.te-carousel-nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  margin-top:8px;
+  position:relative;
+  z-index:10;
+}
+.te-nav-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(8px);
+  cursor:pointer;
+  color:#fff;
+  transition:.2s;
+}
+.te-nav-btn:hover{
+  background:rgba(192,57,43,.25);
+  border-color:rgba(192,57,43,.6);
+}
+.te-nav-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.te-dots{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.te-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:rgba(255,255,255,.2);
+  cursor:pointer;
+  transition:.25s;
+}
+.te-dot.active{
+  background:var(--red);
+  transform:scale(1.3);
+}
+
+.te-more{display:flex;justify-content:center;margin-top:40px;padding:0 6vw;position:relative;z-index:1}
 .te-more a{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);text-decoration:none;border:1px solid rgba(192,57,43,.38);padding:14px 30px;border-radius:2px;transition:.2s;display:inline-flex;align-items:center;gap:10px}
 .te-more a:hover{background:var(--red);color:#fff;border-color:var(--red)}
 .te-more a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
 .te-more a:hover svg{transform:translateX(4px)}
-
-/* LIGHTBOX (gedeeld met evenementen-pagina) */
-.lightbox{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s ease}
-.lightbox.open{opacity:1;pointer-events:auto}
-.lb-header{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0}
-.lb-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,3rem);font-weight:900;letter-spacing:.02em}
-.lb-title span{color:var(--red)}
-.lb-meta{font-family:var(--font-ui);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
-.lb-close{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);cursor:pointer;color:#fff;flex-shrink:0;transition:.2s}
-.lb-close:hover{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.5)}
-.lb-close svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
-.lb-main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:20px 80px;min-height:0}
-.lb-main-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;transition:opacity .28s ease,transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 30px 80px rgba(0,0,0,.8)}
-.lb-main-img.changing{opacity:0;transform:scale(.97)}
-.lb-spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.1);border-top-color:var(--red);animation:spin .7s linear infinite;opacity:0;pointer-events:none;transition:opacity .2s}
-.lb-spinner.visible{opacity:1}
-.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);cursor:pointer;color:#fff;transition:.2s;z-index:2}
-.lb-arrow:hover{background:rgba(192,57,43,.25);border-color:rgba(192,57,43,.6)}
-.lb-arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.lb-prev{left:12px}.lb-next{right:12px}
-.lb-thumbs{display:flex;gap:8px;overflow-x:auto;padding:16px 32px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0;scrollbar-width:thin;scrollbar-color:rgba(192,57,43,.4) transparent}
-.lb-thumbs::-webkit-scrollbar{height:3px}
-.lb-thumbs::-webkit-scrollbar-thumb{background:rgba(192,57,43,.4);border-radius:2px}
-.lb-thumb{flex-shrink:0;width:72px;height:52px;border-radius:5px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:.2s;opacity:.5;background:rgba(255,255,255,.04)}
-.lb-thumb:hover{opacity:.8}
-.lb-thumb.active{border-color:var(--red);opacity:1}
-.lb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.38);background:rgba(0,0,0,.5);padding:5px 14px;border-radius:20px;pointer-events:none;z-index:2}
 
 /* VACATURES */
 #vacatures{padding:100px 6vw;background:#000;position:relative}
@@ -406,22 +540,17 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
   .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
   .mobile-nav-drawer{display:flex}
-  .jobs-hero{min-height:70vh;padding:110px 5vw 70px;background-position:center 82%}
+  .jobs-hero{min-height:100vh;padding:110px 5vw 80px;align-items:flex-end}
   .jobs-title{font-size:clamp(4rem,18vw,8rem);margin-bottom:20px}
   #team-events{padding:70px 0 80px}
   .te-head,.te-meta-row{padding:0 5vw}
-  .te-meta-row{margin-bottom:28px}
-  .te-track{padding:8px 5vw 24px;gap:14px;scroll-padding-left:5vw}
-  .te-card{flex:0 0 80vw;max-width:300px;min-height:420px}
-  .te-card-content{padding:22px}
-  .te-card-content h3{font-size:clamp(1.8rem,7.5vw,2.6rem)}
-  .te-track-wrapper::after{width:30px}
-  .lb-header{padding:16px 20px}
-  .lb-main{padding:12px 52px}
-  .lb-arrow{width:40px;height:40px}
-  .lb-prev{left:6px}.lb-next{right:6px}
-  .lb-thumbs{padding:12px 16px}
-  .lb-thumb{width:56px;height:40px}
+  .te-meta-row{margin-bottom:36px}
+  .te-carousel{height:420px}
+  .te-slide{width:280px;height:360px}
+  .te-slide.prev,.te-slide.next{transform:translateX(0) scale(1) rotateY(0deg);opacity:0;pointer-events:none}
+  .te-slide.far-prev,.te-slide.far-next{opacity:0;pointer-events:none}
+  .te-slide.prev{transform:translateX(-300px) scale(.82) rotateY(18deg);opacity:.6;pointer-events:auto}
+  .te-slide.next{transform:translateX(300px) scale(.82) rotateY(-18deg);opacity:.6;pointer-events:auto}
   .vac-grid{grid-template-columns:1fr}.vac-card{padding:28px 22px}
   .about-strip{padding:60px 5vw}#vacatures{padding:70px 5vw}
   #open-sollicitatie{padding:70px 5vw 90px}.form-row{grid-template-columns:1fr}
@@ -437,7 +566,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .lang-switch{margin-left:8px}.lang-btn{padding:5px 9px;font-size:.62rem}
 }
 @media(min-width:1001px){.nav-links{margin-left:auto;margin-right:20px}}
-@media(max-width:480px){.jobs-title{font-size:clamp(3.2rem,16vw,6rem)}.vac-name{font-size:clamp(1.7rem,7vw,2.4rem)}}
+@media(max-width:480px){.jobs-title{font-size:clamp(3.2rem,16vw,6rem)}.vac-name{font-size:clamp(1.7rem,7vw,2.4rem)}.te-slide{width:260px;height:340px}}
 </style>
 </head>
 <body>
@@ -500,7 +629,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   <div class="jobs-hero-inner">
     <p class="label" data-i18n="hero.label">Werken bij BINC</p>
     <h1 class="jobs-title" data-i18n-html="hero.title">GROW<br><span class="red">WITH</span> <span class="stroke">BINC</span></h1>
-    <p class="jobs-copy" data-i18n="hero.copy">Wij groeien snel — en daarvoor zoeken we ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, werk je voor merken in de schappen van Albert Heijn en Jumbo, en leer je de retail van binnenuit kennen.</p>
+    <p class="jobs-copy" data-i18n="hero.copy">Wij groeien snel en daarvoor zoeken we ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, werk je voor ambitieuze merken, en leer je de retail van binnenuit kennen.</p>
     <div class="jobs-actions">
       <a href="#vacatures" class="btn-red" data-i18n="hero.btn.vacatures">Bekijk stageplekken</a>
       <a href="#open-sollicitatie" class="btn-outline" data-i18n="hero.btn.apply">Open solliciteren</a>
@@ -508,129 +637,127 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT / PARTNERS -->
 <section class="about-strip">
   <div class="about-strip-inner">
     <div class="about-text reveal">
       <p class="label" data-i18n="about.label">Wie zijn wij</p>
       <h2 class="about-heading" data-i18n-html="about.heading">Full-service B2B<br>voor <span class="red">ambitieuze merken.</span></h2>
       <p class="about-p" data-i18n="about.p1">BINC International regelt de volledige B2B-distributie voor consumentenmerken in Nederland — van inkoopmeetings bij Albert Heijn en Jumbo tot activaties op festivals en horeca-plaatsingen door heel het land.</p>
-      <p class="about-p" data-i18n="about.p2">Ons portfolio groeit. Onze merken groeien. Jij groeit mee.</p>
+
+      <h3 class="partners-label" data-i18n="partners.title">Our Partners</h3>
+      <p class="about-p" data-i18n="partners.desc">Wij werken voor ambitieuze merken die willen groeien. Merken zoals Gold Dry, Clean Nutrition, FeelSoGood en BeatBox vertrouwen op BINC om hun groei binnen en buiten de retail te realiseren. Met momenteel meer dan 4.000 aangesloten winkels over alle vier de merken gecombineerd, bouwen we elke dag aan meer zichtbaarheid op de schappen die ertoe doen.</p>
     </div>
-    <div class="about-stats reveal d1">
-      <div class="stat-box"><div class="stat-num">4+</div><div class="stat-label" data-i18n="stat.brands">Merken in portfolio</div></div>
-      <div class="stat-box"><div class="stat-num">3</div><div class="stat-label" data-i18n="stat.channels">Kanalen: retail, horeca &amp; events</div></div>
-      <div class="stat-box"><div class="stat-num">100+</div><div class="stat-label" data-i18n="stat.locations">Retaillocaties actief</div></div>
-      <div class="stat-box"><div class="stat-num">NL</div><div class="stat-label" data-i18n="stat.country">Landelijke dekking</div></div>
+    <div class="partners-img-wrap reveal d1">
+      <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?q=80&w=1400&auto=format&fit=crop" alt="Merken in de schappen" loading="lazy"/>
+      <div class="partners-img-label" data-i18n="partners.img.label">Jouw merk.<br>In het schap.</div>
     </div>
   </div>
 </section>
 
-<!-- FESTIVALS MET HET TEAM -->
+<!-- FESTIVALS MET HET TEAM — 3D CAROUSEL -->
 <section id="team-events">
   <div class="te-head reveal">
-    <p class="label" data-i18n="te.label">Team & cultuur</p>
+    <p class="label" data-i18n="te.label">Team &amp; cultuur</p>
     <h2 class="te-title" data-i18n-html="te.title">FESTIVALS MET<br><span class="red">HET TEAM</span></h2>
   </div>
   <div class="te-meta-row reveal d1">
     <div>
       <p class="te-sub" data-i18n="te.sub">Werken bij BINC is meer dan een bureau. We gaan samen het veld op — naar de festivals waar onze merken live worden geactiveerd.</p>
-      <div class="te-hint" style="margin-top:22px">
-        <div class="te-hint-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="var(--red)"/><polyline points="21 15 16 10 5 21"/></svg>
-        </div>
-        <div class="te-hint-text">
-          <strong data-i18n="te.hint.title">Klik op een festival</strong>
-          <span data-i18n="te.hint.sub">om de fotogalerij te bekijken</span>
-        </div>
-      </div>
     </div>
   </div>
 
-  <div class="te-track-wrapper">
-    <div class="te-track" id="teTrack">
+  <div class="te-carousel-wrap">
+    <div class="te-carousel" id="teCarousel">
 
-      <div class="te-card" data-event="kkc" role="button" tabindex="0" aria-label="Kamping Kitsch Club galerij openen">
-        <img src="images/kkc/web/_O2A4099_web.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
-        <div class="te-card-overlay"></div>
-        <div class="te-card-badge" data-i18n="te.badge.recent">Nieuwste</div>
-        <div class="te-card-gallery">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>30 foto's</span>
-        </div>
-        <div class="te-card-content">
-          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
-          <h3>Kamping Kitsch Club</h3>
-          <p data-i18n="te1.body">Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers.</p>
-          <div class="te-card-cta">
-            <span data-i18n="te.cta">Bekijk galerij</span>
+      <!-- Sorted nieuw naar oud: KKC (13 jun 2026), Dauwpop (29-30 mei 2026), HOH (15 mei 2027*), 7th (16 mei 2027*) -->
+      <!-- For upcoming 2027 events sorted by month -->
+
+      <div class="te-slide active" data-idx="0">
+        <img class="te-slide-img" src="images/kkc/web/_O2A4099_web.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
+        <div class="te-slide-overlay"></div>
+        <div class="te-slide-content">
+          <span class="te-slide-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3 class="te-slide-name">Kamping Kitsch Club</h3>
+          <div class="te-slide-date">Zaterdag 13 juni 2026</div>
+          <div class="te-slide-info">
+            <p data-i18n="te1.info">Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers die onze merken proefden.</p>
+          </div>
+          <div class="te-slide-cta">
+            <span data-i18n="te.cta.expand">Klik voor meer info</span>
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
       </div>
 
-      <div class="te-card" data-event="7th" role="button" tabindex="0" aria-label="7th Sunday galerij openen">
-        <img src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
-        <div class="te-card-overlay"></div>
-        <div class="te-card-gallery">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>14 foto's</span>
-        </div>
-        <div class="te-card-content">
-          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
-          <h3>7th Sunday</h3>
-          <p data-i18n="te2.body">Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.</p>
-          <div class="te-card-cta">
-            <span data-i18n="te.cta">Bekijk galerij</span>
+      <div class="te-slide next" data-idx="1">
+        <img class="te-slide-img" src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
+        <div class="te-slide-overlay"></div>
+        <div class="te-slide-content">
+          <span class="te-slide-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3 class="te-slide-name">Dauwpop</h3>
+          <div class="te-slide-date">29 &amp; 30 mei 2026</div>
+          <div class="te-slide-info">
+            <p data-i18n="te4.info">Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.</p>
+          </div>
+          <div class="te-slide-cta">
+            <span data-i18n="te.cta.expand">Klik voor meer info</span>
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
       </div>
 
-      <div class="te-card" data-event="hoh" role="button" tabindex="0" aria-label="Harmony of Hardcore galerij openen">
-        <img src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
-        <div class="te-card-overlay"></div>
-        <div class="te-card-gallery">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>24 foto's</span>
-        </div>
-        <div class="te-card-content">
-          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
-          <h3>Harmony of Hardcore</h3>
-          <p data-i18n="te3.body">Maximale energie, maximaal teamgevoel. Pal in het hart van de hardcore scene, samen met een loyale en gepassioneerde fanbase.</p>
-          <div class="te-card-cta">
-            <span data-i18n="te.cta">Bekijk galerij</span>
+      <div class="te-slide far-next" data-idx="2">
+        <img class="te-slide-img" src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
+        <div class="te-slide-overlay"></div>
+        <div class="te-slide-content">
+          <span class="te-slide-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3 class="te-slide-name">Harmony of Hardcore</h3>
+          <div class="te-slide-date">15 mei 2027</div>
+          <div class="te-slide-info">
+            <p data-i18n="te3.info">Maximale energie, maximaal teamgevoel. Pal in het hart van de hardcore scene, samen met een loyale en gepassioneerde fanbase.</p>
+          </div>
+          <div class="te-slide-cta">
+            <span data-i18n="te.cta.expand">Klik voor meer info</span>
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
       </div>
 
-      <div class="te-card" data-event="dauwpop" role="button" tabindex="0" aria-label="Dauwpop galerij openen">
-        <img src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
-        <div class="te-card-overlay"></div>
-        <div class="te-card-gallery">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>29 foto's</span>
-        </div>
-        <div class="te-card-content">
-          <span class="te-card-tag" data-i18n="te.tag">Festival · met het team</span>
-          <h3>Dauwpop</h3>
-          <p data-i18n="te4.body">Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.</p>
-          <div class="te-card-cta">
-            <span data-i18n="te.cta">Bekijk galerij</span>
+      <div class="te-slide hidden" data-idx="3">
+        <img class="te-slide-img" src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
+        <div class="te-slide-overlay"></div>
+        <div class="te-slide-content">
+          <span class="te-slide-tag" data-i18n="te.tag">Festival · met het team</span>
+          <h3 class="te-slide-name">7th Sunday</h3>
+          <div class="te-slide-date">16 mei 2027</div>
+          <div class="te-slide-info">
+            <p data-i18n="te2.info">Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.</p>
+          </div>
+          <div class="te-slide-cta">
+            <span data-i18n="te.cta.expand">Klik voor meer info</span>
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
       </div>
 
     </div>
-  </div>
 
-  <p class="te-drag-hint">
-    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    <span data-i18n="te.drag">Sleep of swipe om meer te zien</span>
-    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-  </p>
+    <div class="te-carousel-nav">
+      <button class="te-nav-btn" id="tePrev" aria-label="Vorige">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="te-dots" id="teDots">
+        <div class="te-dot active" data-dot="0"></div>
+        <div class="te-dot" data-dot="1"></div>
+        <div class="te-dot" data-dot="2"></div>
+        <div class="te-dot" data-dot="3"></div>
+      </div>
+      <button class="te-nav-btn" id="teNext" aria-label="Volgende">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
 
   <div class="te-more">
     <a href="evenementen.html">
@@ -639,31 +766,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
     </a>
   </div>
 </section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotogalerij">
-  <div class="lb-header">
-    <div>
-      <div class="lb-title" id="lbTitle">7th Sunday</div>
-      <div class="lb-meta" id="lbMeta">Festival · met het team</div>
-    </div>
-    <button class="lb-close" id="lbClose" aria-label="Galerij sluiten">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="lb-main">
-    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Vorige foto">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <img class="lb-main-img" id="lbMainImg" src="" alt="Festival foto"/>
-    <div class="lb-spinner" id="lbSpinner"></div>
-    <button class="lb-arrow lb-next" id="lbNext" aria-label="Volgende foto">
-      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <div class="lb-counter" id="lbCounter">1 / 14</div>
-  </div>
-  <div class="lb-thumbs" id="lbThumbs"></div>
-</div>
 
 <!-- VACATURES -->
 <section id="vacatures">
@@ -827,13 +929,14 @@ const T={
     'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Evenementen','nav.team':'Ons Team','nav.jobs':'Werken bij','nav.cta':'Samenwerken',
     'hero.label':'Werken bij BINC',
     'hero.title':'GROW<br><span class="red">WITH</span> <span class="stroke">BINC</span>',
-    'hero.copy':'Wij groeien snel — en daarvoor zoeken we ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, werk je voor merken in de schappen van Albert Heijn en Jumbo, en leer je de retail van binnenuit kennen.',
+    'hero.copy':'Wij groeien snel en daarvoor zoeken we ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, werk je voor ambitieuze merken, en leer je de retail van binnenuit kennen.',
     'hero.btn.vacatures':'Bekijk stageplekken','hero.btn.apply':'Open solliciteren',
     'about.label':'Wie zijn wij',
     'about.heading':'Full-service B2B<br>voor <span class="red">ambitieuze merken.</span>',
     'about.p1':'BINC International regelt de volledige B2B-distributie voor consumentenmerken in Nederland — van inkoopmeetings bij Albert Heijn en Jumbo tot activaties op festivals en horeca-plaatsingen door heel het land.',
-    'about.p2':'Ons portfolio groeit. Onze merken groeien. Jij groeit mee.',
-    'stat.brands':'Merken in portfolio','stat.channels':'Kanalen: retail, horeca & events','stat.locations':'Retaillocaties actief','stat.country':'Landelijke dekking',
+    'partners.title':'Our Partners',
+    'partners.desc':'Wij werken voor ambitieuze merken die willen groeien. Merken zoals Gold Dry, Clean Nutrition, FeelSoGood en BeatBox vertrouwen op BINC om hun groei binnen en buiten de retail te realiseren. Met momenteel meer dan 4.000 aangesloten winkels over alle vier de merken gecombineerd, bouwen we elke dag aan meer zichtbaarheid op de schappen die ertoe doen.',
+    'partners.img.label':'Jouw merk.<br>In het schap.',
     'vac.label':'Open stageplekken','vac.title':'3 PLEKKEN,<br><span class="red">1 DOEL.</span>',
     'vac.sub':'Drie stageplaatsen, elk met eigen verantwoordelijkheden — maar altijd als volwaardig onderdeel van het BINC-team.',
     'tag.stage':'Stage · 2025/2026',
@@ -850,13 +953,13 @@ const T={
     'te.label':'Team & cultuur',
     'te.title':'FESTIVALS MET<br><span class="red">HET TEAM</span>',
     'te.sub':'Werken bij BINC is meer dan een bureau. We gaan samen het veld op — naar de festivals waar onze merken live worden geactiveerd.',
-    'te.hint.title':'Klik op een festival','te.hint.sub':'om de fotogalerij te bekijken',
-    'te.tag':'Festival · met het team','te.cta':'Bekijk galerij','te.badge.recent':'Nieuwste',
-    'te1.body':'Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers.',
-    'te2.body':'Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.',
-    'te3.body':'Maximale energie, maximaal teamgevoel. Pal in het hart van de hardcore scene, samen met een loyale en gepassioneerde fanbase.',
-    'te4.body':'Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.',
-    'te.drag':'Sleep of swipe om meer te zien','te.more.label':'Bekijk alle evenementen',
+    'te.tag':'Festival · met het team',
+    'te.cta.expand':'Klik voor meer info',
+    'te1.info':'Kitsch, camp en onversneden feestvreugde. Met het hele team erop uit op één van Nederlands meest uitbundige festivalconcepten. Kleuren, glitter en duizenden festivalgangers die onze merken proefden.',
+    'te2.info':'Van zonsopgang tot zonsondergang met het team op één van de meest iconische dancefestivals van Nederland. Duizenden handen, één smaak.',
+    'te3.info':'Maximale energie, maximaal teamgevoel. Pal in het hart van de hardcore scene, samen met een loyale en gepassioneerde fanbase.',
+    'te4.info':'Zomerse sfeer en een team dat er samen helemaal voor gaat. Onderdeel van de Dauwpop-beleving — proeven, zien en onthouden.',
+    'te.more.label':'Bekijk alle evenementen',
     'form.label':'Open sollicitatie','form.title':'LAAT VAN <span class="red">JE HOREN</span>',
     'form.copy':'Geen passende stageplaats gevonden, of wil je gewoon direct van je laten horen? Stuur een open sollicitatie. We bekijken elk profiel en nemen contact op als er een match is.',
     'form.privacy':'Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw sollicitatie.',
@@ -871,13 +974,14 @@ const T={
     'nav.retail':'Retail','nav.horeca':'Horeca','nav.events':'Events','nav.team':'Our Team','nav.jobs':'Careers','nav.cta':'Work With Us',
     'hero.label':'Careers at BINC',
     'hero.title':'GROW<br><span class="red">WITH</span> <span class="stroke">BINC</span>',
-    'hero.copy':"We're growing fast — and we're looking for ambitious interns who want to do more than fetch coffee. At BINC, you work on real projects, support brands in Albert Heijn and Jumbo, and learn retail from the inside out.",
+    'hero.copy':"We're growing fast and we're looking for ambitious interns who want to do more than fetch coffee. At BINC, you work on real projects, support ambitious brands, and learn retail from the inside out.",
     'hero.btn.vacatures':'View internships','hero.btn.apply':'Open application',
     'about.label':'Who we are',
     'about.heading':'Full-service B2B<br>for <span class="red">ambitious brands.</span>',
     'about.p1':'BINC International manages full B2B distribution for consumer brands across the Netherlands — from buying meetings at Albert Heijn and Jumbo to festival activations and on-trade placements nationwide.',
-    'about.p2':'Our portfolio grows. Our brands grow. You grow with us.',
-    'stat.brands':'Brands in portfolio','stat.channels':'Channels: retail, on-trade & events','stat.locations':'Active retail locations','stat.country':'National coverage',
+    'partners.title':'Our Partners',
+    'partners.desc':'We work for ambitious brands that want to grow. Brands like Gold Dry, Clean Nutrition, FeelSoGood and BeatBox trust BINC to drive their growth inside and outside retail. With over 4,000 connected stores across all four brands combined, we build visibility every day on the shelves that matter.',
+    'partners.img.label':'Your brand.<br>On the shelf.',
     'vac.label':'Open internships','vac.title':'3 ROLES,<br><span class="red">1 GOAL.</span>',
     'vac.sub':'Three internship positions, each with their own responsibilities — but always as a full member of the BINC team.',
     'tag.stage':'Internship · 2025/2026',
@@ -894,13 +998,13 @@ const T={
     'te.label':'Team & culture',
     'te.title':'FESTIVALS WITH<br><span class="red">THE TEAM</span>',
     'te.sub':"Working at BINC is more than an office job. We hit the field together — at the festivals where our brands come to life.",
-    'te.hint.title':'Click a festival','te.hint.sub':'to view the photo gallery',
-    'te.tag':'Festival · with the team','te.cta':'View gallery','te.badge.recent':'Latest',
-    'te1.body':'Kitsch, camp and pure party energy. The whole team out at one of the most exuberant festival concepts in the Netherlands. Colors, glitter and thousands of festival-goers.',
-    'te2.body':'From sunrise to sunset with the team at one of the most iconic dance festivals in the Netherlands. Thousands of hands, one taste.',
-    'te3.body':'Maximum energy, maximum team spirit. Right at the heart of the hardcore scene, together with a loyal and passionate fan base.',
-    'te4.body':'Summer vibes and a team that goes all in together. Part of the Dauwpop experience — taste, see and remember.',
-    'te.drag':'Drag or swipe to see more','te.more.label':'View all events',
+    'te.tag':'Festival · with the team',
+    'te.cta.expand':'Click for more info',
+    'te1.info':'Kitsch, camp and pure party energy. The whole team out at one of the most exuberant festival concepts in the Netherlands. Colors, glitter and thousands of festival-goers experiencing our brands.',
+    'te2.info':'From sunrise to sunset with the team at one of the most iconic dance festivals in the Netherlands. Thousands of hands, one taste.',
+    'te3.info':'Maximum energy, maximum team spirit. Right at the heart of the hardcore scene, together with a loyal and passionate fan base.',
+    'te4.info':'Summer vibes and a team that goes all in together. Part of the Dauwpop experience — taste, see and remember.',
+    'te.more.label':'View all events',
     'form.label':'Open application','form.title':'LET US <span class="red">HEAR FROM YOU</span>',
     'form.copy':"Didn't find the right internship, or just want to reach out directly? Send an open application. We review every profile and get in touch when there's a match.",
     'form.privacy':'By submitting your details, you give BINC International permission to contact you about your application.',
@@ -946,137 +1050,84 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 /* LANG BTNS */
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{applyLang(b.dataset.lang);tog(false);}));
 
-/* TEAM EVENTS GALLERY */
-const KKC_FILES=[
-  '_O2A3790','_O2A3801','_O2A3808','_O2A3830','_O2A3852',
-  '_O2A3888-2','_O2A3901','_O2A3924','_O2A3942','_O2A3959',
-  '_O2A3994','_O2A4009','_O2A4043','_O2A4057','_O2A4063',
-  '_O2A4099','_O2A4122','_O2A4165','_O2A4176','_O2A4212',
-  '_O2A4218','_O2A4230','_O2A4243','_O2A4246','_O2A4267',
-  '_O2A4323','_O2A4328','_O2A4368','_O2A4381','_O2A4407'
-];
-const TE_GALLERIES={
-  'kkc':{
-    titleNL:'Kamping Kitsch Club',titleEN:'Kamping Kitsch Club',
-    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
-    imgs:KKC_FILES.map(f=>`images/kkc/web/${f}_web.jpg`),
-    thumbImgs:KKC_FILES.map(f=>`images/kkc/thumbs/${f}_thumb.jpg`)
-  },
-  '7th':{
-    titleNL:'7th Sunday',titleEN:'7th Sunday',
-    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
-    imgs:Array.from({length:14},(_,i)=>`images/7th2/web/${i+1}.jpg`),
-    thumbImgs:Array.from({length:14},(_,i)=>`images/7th2/thumbs/${i+1}.jpg`)
-  },
-  'hoh':{
-    titleNL:'Harmony of Hardcore',titleEN:'Harmony of Hardcore',
-    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
-    imgs:Array.from({length:24},(_,i)=>`images/hoh/web/${i+1}.jpg`),
-    thumbImgs:Array.from({length:24},(_,i)=>`images/hoh/thumbs/${i+1}.jpg`)
-  },
-  'dauwpop':{
-    titleNL:'Dauwpop',titleEN:'Dauwpop',
-    metaNL:'Festival · met het team',metaEN:'Festival · with the team',
-    imgs:Array.from({length:29},(_,i)=>`images/7th/web/${i+1}.jpg`),
-    thumbImgs:Array.from({length:29},(_,i)=>`images/7th/thumbs/${i+1}.jpg`)
+/* 3D CAROUSEL */
+const slides = Array.from(document.querySelectorAll('.te-slide'));
+const dots = Array.from(document.querySelectorAll('.te-dot'));
+const total = slides.length;
+let currentIdx = 0;
+let expandedIdx = -1;
+
+const CLASSES = ['far-prev','prev','active','next','far-next','hidden'];
+
+function getClass(relPos) {
+  if (relPos === 0) return 'active';
+  if (relPos === 1 || relPos === -(total-1)) return 'next';
+  if (relPos === -1 || relPos === (total-1)) return 'prev';
+  if (relPos === 2 || relPos === -(total-2)) return 'far-next';
+  if (relPos === -2 || relPos === (total-2)) return 'far-prev';
+  return 'hidden';
+}
+
+function updateCarousel(newIdx, clickedSlide) {
+  // If clicking the active slide, toggle expand
+  if (newIdx === currentIdx && clickedSlide) {
+    const slide = slides[currentIdx];
+    slide.classList.toggle('expanded');
+    const cta = slide.querySelector('.te-slide-cta span');
+    if (cta) {
+      if (slide.classList.contains('expanded')) {
+        cta.textContent = lang === 'en' ? 'Less info' : 'Minder info';
+      } else {
+        cta.textContent = t('te.cta.expand');
+      }
+    }
+    return;
   }
-};
 
-const lb=document.getElementById('lightbox');
-const lbTitleEl=document.getElementById('lbTitle');
-const lbMetaEl=document.getElementById('lbMeta');
-const lbImgEl=document.getElementById('lbMainImg');
-const lbThumbsEl=document.getElementById('lbThumbs');
-const lbCounterEl=document.getElementById('lbCounter');
-const lbCloseBtn=document.getElementById('lbClose');
-const lbPrevBtn=document.getElementById('lbPrev');
-const lbNextBtn=document.getElementById('lbNext');
-const lbSpinnerEl=document.getElementById('lbSpinner');
-
-let teGallery=null,teIndex=0,teLoadTimer=null,teLastCard=null;
-
-function tePreload(idx){
-  if(!teGallery)return;
-  const n=teGallery.imgs.length;
-  [-1,1].forEach(o=>{const im=new Image();im.src=teGallery.imgs[(idx+o+n)%n];});
-}
-function teShowSpinner(){clearTimeout(teLoadTimer);teLoadTimer=setTimeout(()=>lbSpinnerEl.classList.add('visible'),150);}
-function teHideSpinner(){clearTimeout(teLoadTimer);lbSpinnerEl.classList.remove('visible');}
-
-function teOpenGallery(key,card){
-  const g=TE_GALLERIES[key];if(!g)return;
-  teGallery=g;teIndex=0;teLastCard=card||null;
-  lbTitleEl.textContent=lang==='en'?g.titleEN:g.titleNL;
-  lbMetaEl.textContent=lang==='en'?g.metaEN:g.metaNL;
-  lbThumbsEl.innerHTML='';
-  g.thumbImgs.forEach((src,i)=>{
-    const d=document.createElement('div');
-    d.className='lb-thumb'+(i===0?' active':'');
-    const im=document.createElement('img');im.src=src;im.alt=`Foto ${i+1}`;im.loading='lazy';
-    d.appendChild(im);d.addEventListener('click',()=>teGoTo(i));lbThumbsEl.appendChild(d);
+  // Close any expanded slide
+  slides.forEach(s => {
+    s.classList.remove('expanded');
+    const cta = s.querySelector('.te-slide-cta span');
+    if (cta) cta.textContent = t('te.cta.expand');
   });
-  teShowSpinner();lbImgEl.src='';
-  const first=new Image();
-  first.onload=()=>{lbImgEl.src=first.src;teHideSpinner();};
-  first.onerror=()=>{teHideSpinner();};
-  first.src=g.imgs[0];
-  lbCounterEl.textContent=`1 / ${g.imgs.length}`;
-  lb.classList.add('open');document.body.style.overflow='hidden';
-  teScrollThumb(0);tePreload(0);
+
+  currentIdx = ((newIdx % total) + total) % total;
+
+  slides.forEach((slide, i) => {
+    let rel = i - currentIdx;
+    // Wrap around
+    if (rel > total/2) rel -= total;
+    if (rel < -total/2) rel += total;
+    CLASSES.forEach(c => slide.classList.remove(c));
+    slide.classList.add(getClass(rel));
+  });
+
+  dots.forEach((d, i) => d.classList.toggle('active', i === currentIdx));
 }
 
-function teCloseGallery(){
-  lb.classList.remove('open');document.body.style.overflow='';
-  teGallery=null;teHideSpinner();
-  if(teLastCard){teLastCard.blur();teLastCard=null;}
-}
-
-function teGoTo(idx){
-  if(!teGallery)return;
-  const n=teGallery.imgs.length;idx=(idx+n)%n;teIndex=idx;
-  lbImgEl.classList.add('changing');teShowSpinner();
-  const next=new Image();
-  next.onload=()=>{lbImgEl.src=next.src;lbImgEl.classList.remove('changing');teHideSpinner();};
-  next.onerror=()=>{lbImgEl.classList.remove('changing');teHideSpinner();};
-  next.src=teGallery.imgs[idx];
-  lbCounterEl.textContent=`${idx+1} / ${n}`;
-  lbThumbsEl.querySelectorAll('.lb-thumb').forEach((th,i)=>th.classList.toggle('active',i===idx));
-  teScrollThumb(idx);tePreload(idx);
-}
-
-function teScrollThumb(idx){
-  const thumb=lbThumbsEl.querySelectorAll('.lb-thumb')[idx];
-  if(thumb)thumb.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
-}
-
-document.querySelectorAll('.te-card').forEach(card=>{
-  card.addEventListener('click',()=>teOpenGallery(card.dataset.event,card));
-  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();teOpenGallery(card.dataset.event,card);}});
+// Click on non-active slides: navigate; on active: expand
+slides.forEach((slide, i) => {
+  slide.addEventListener('click', () => updateCarousel(i, true));
+  slide.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); updateCarousel(i, true); }
+  });
+  slide.setAttribute('role', 'button');
+  slide.setAttribute('tabindex', '0');
 });
 
-lbCloseBtn.addEventListener('click',teCloseGallery);
-lbPrevBtn.addEventListener('click',()=>teGoTo(teIndex-1));
-lbNextBtn.addEventListener('click',()=>teGoTo(teIndex+1));
-document.addEventListener('keydown',e=>{
-  if(!lb.classList.contains('open'))return;
-  if(e.key==='Escape')teCloseGallery();
-  if(e.key==='ArrowLeft')teGoTo(teIndex-1);
-  if(e.key==='ArrowRight')teGoTo(teIndex+1);
-});
-lb.addEventListener('click',e=>{if(e.target===lb)teCloseGallery();});
-let teTouchStartX=0;
-lbImgEl.addEventListener('touchstart',e=>{teTouchStartX=e.changedTouches[0].screenX;},{passive:true});
-lbImgEl.addEventListener('touchend',e=>{
-  const dx=e.changedTouches[0].screenX-teTouchStartX;
-  if(Math.abs(dx)>40)teGoTo(teIndex+(dx<0?1:-1));
-},{passive:true});
+document.getElementById('tePrev').addEventListener('click', () => updateCarousel(currentIdx - 1, false));
+document.getElementById('teNext').addEventListener('click', () => updateCarousel(currentIdx + 1, false));
 
-const teTrack=document.getElementById('teTrack');
-let teDragging=false,teDragStartX=0,teScrollStart=0;
-teTrack.addEventListener('mousedown',e=>{teDragging=true;teDragStartX=e.pageX;teScrollStart=teTrack.scrollLeft;teTrack.style.userSelect='none';});
-window.addEventListener('mousemove',e=>{if(!teDragging)return;teTrack.scrollLeft=teScrollStart-(e.pageX-teDragStartX);});
-window.addEventListener('mouseup',()=>{teDragging=false;teTrack.style.userSelect='';});
-teTrack.addEventListener('click',e=>{if(Math.abs(teTrack.scrollLeft-teScrollStart)>8)e.stopPropagation();},{capture:true});
+dots.forEach((dot, i) => dot.addEventListener('click', () => updateCarousel(i, false)));
+
+// Swipe support on carousel
+let swipeStartX = 0;
+const carousel = document.getElementById('teCarousel');
+carousel.addEventListener('touchstart', e => { swipeStartX = e.changedTouches[0].screenX; }, {passive:true});
+carousel.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].screenX - swipeStartX;
+  if (Math.abs(dx) > 50) updateCarousel(currentIdx + (dx < 0 ? 1 : -1), false);
+}, {passive:true});
 
 /* FILE */
 const cv=document.getElementById('cvUpload'),fn=document.getElementById('fileName'),fb=document.getElementById('fileBox');
