@@ -119,18 +119,59 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .prod-item:hover{transform:scale(1.12);opacity:1;filter:brightness(1)}
 .prod-item img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6));background:transparent}
 
-/* ── Mobiel: pijl-carousel ── */
-.prod-mobile-carousel{display:none;flex-direction:column;align-items:center;padding:0 0 16px}
-.prod-mobile-stage{position:relative;width:100%;height:260px;overflow:hidden}
-.prod-mobile-track{display:flex;align-items:center;height:100%;transition:transform .38s cubic-bezier(.22,1,.36,1)}
-.prod-mobile-item{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;padding:12px 60px}
-.prod-mobile-item img{max-width:100%;max-height:220px;object-fit:contain;display:block;filter:drop-shadow(0 12px 28px rgba(0,0,0,.7))}
-/* Pijlknoppen — gepositioneerd op de stage */
-.prod-mobile-nav{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:20px}
-.prod-mobile-btn{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);cursor:pointer;color:#fff;transition:.2s;-webkit-tap-highlight-color:transparent}
-.prod-mobile-btn:active{background:rgba(192,57,43,.22);border-color:rgba(192,57,43,.6)}
-.prod-mobile-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.prod-mobile-counter{font-family:var(--font-mono);font-size:.65rem;color:rgba(255,255,255,.32);letter-spacing:.12em;min-width:48px;text-align:center}
+/* ── Mobiel: depth carousel ── */
+.prod-mobile-carousel{display:none;flex-direction:column;align-items:center;padding:0 0 32px}
+.prod-mobile-stage{
+  position:relative;
+  width:100%;
+  height:300px;
+  overflow:hidden;
+  /* fade edges */
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 18%,#000 82%,transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0%,#000 18%,#000 82%,transparent 100%);
+}
+/* Elk item absoluut gepositioneerd, JS stuurt transform + opacity */
+.prod-mobile-item{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .42s cubic-bezier(.22,1,.36,1), opacity .42s, filter .42s;
+  will-change:transform,opacity,filter;
+  pointer-events:none;
+}
+.prod-mobile-item.is-active{pointer-events:auto}
+.prod-mobile-item img{
+  max-width:160px;max-height:240px;
+  object-fit:contain;display:block;
+  filter:drop-shadow(0 16px 32px rgba(0,0,0,.7));
+  width:100%;height:100%;
+}
+/* Nav: alleen de twee pijlen, strak en minimaal */
+.prod-mobile-nav{
+  display:flex;align-items:center;justify-content:center;
+  gap:28px;margin-top:22px;
+}
+.prod-mobile-btn{
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  cursor:pointer;color:rgba(255,255,255,.7);
+  transition:background .2s,border-color .2s,color .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.prod-mobile-btn:active{background:rgba(192,57,43,.18);border-color:rgba(192,57,43,.5);color:#fff}
+.prod-mobile-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* Dot indicators */
+.prod-mobile-dots{display:flex;gap:6px;align-items:center}
+.prod-mobile-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  transition:background .25s, transform .25s, width .25s;
+  flex-shrink:0;
+}
+.prod-mobile-dot.active{background:var(--red);width:16px;border-radius:2px}
 
 /* ─── TEAM & EVENTS ─── */
 #team-events{padding:100px 0 90px;background:#000;overflow:hidden;position:relative;border-top:1px solid rgba(255,255,255,.05)}
@@ -512,18 +553,16 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   </div>
 </div>
 
-<!-- ── MOBIEL: pijl-carousel ── -->
+<!-- ── MOBIEL: depth carousel ── -->
 <div class="prod-mobile-carousel" id="prodMobileCarousel">
-  <div class="prod-mobile-stage">
-    <div class="prod-mobile-track" id="prodMobileTrack">
-      <!-- items worden door JS ingevuld -->
-    </div>
+  <div class="prod-mobile-stage" id="prodMobileStage">
+    <!-- items worden door JS ingevuld -->
   </div>
   <div class="prod-mobile-nav">
     <button class="prod-mobile-btn" id="prodMobilePrev" aria-label="Vorige">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-    <span class="prod-mobile-counter" id="prodMobileCounter">1 / 19</span>
+    <div class="prod-mobile-dots" id="prodMobileDots"></div>
     <button class="prod-mobile-btn" id="prodMobileNext" aria-label="Volgende">
       <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
@@ -844,11 +883,11 @@ document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', 
 })();
 
 /* ══════════════════════════════════════════
-   MOBIEL: product pijl-carousel
+   MOBIEL: depth carousel (like te-carousel)
    ══════════════════════════════════════════ */
 (function initMobileCarousel(){
-  const track   = document.getElementById('prodMobileTrack');
-  const counter = document.getElementById('prodMobileCounter');
+  const stage   = document.getElementById('prodMobileStage');
+  const dotsWrap= document.getElementById('prodMobileDots');
   const btnPrev = document.getElementById('prodMobilePrev');
   const btnNext = document.getElementById('prodMobileNext');
   const total   = PROD_IMGS.length;
@@ -859,32 +898,91 @@ document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', 
     const div = document.createElement('div');
     div.className = 'prod-mobile-item';
     const img = document.createElement('img');
-    img.src     = p.src;
-    img.alt     = p.alt;
-    img.loading = i === 0 ? 'eager' : 'lazy';
+    img.src      = p.src;
+    img.alt      = p.alt;
+    img.loading  = i === 0 ? 'eager' : 'lazy';
     img.decoding = 'async';
     div.appendChild(img);
-    track.appendChild(div);
+    stage.appendChild(div);
   });
+
+  /* Dots — groepeer per 5 om ruimte te besparen (19 dots = te veel) */
+  /* Simpele dot per item, maar toon max 7 zichtbare dots via clip */
+  const MAX_DOTS = 7; // toon altijd een venster van 7
+  for(let i = 0; i < Math.min(total, MAX_DOTS); i++){
+    const d = document.createElement('div');
+    d.className = 'prod-mobile-dot' + (i===0?' active':'');
+    dotsWrap.appendChild(d);
+  }
+
+  const items = Array.from(stage.querySelectorAll('.prod-mobile-item'));
+  const dots  = Array.from(dotsWrap.querySelectorAll('.prod-mobile-dot'));
+
+  function render(){
+    const n = total;
+    items.forEach((el, i) => {
+      let diff = i - idx;
+      if(diff >  n/2) diff -= n;
+      if(diff < -n/2) diff += n;
+      const abs = Math.abs(diff);
+
+      if(abs === 0){
+        el.style.transform  = 'translateX(0) scale(1)';
+        el.style.opacity    = '1';
+        el.style.filter     = 'brightness(1)';
+        el.style.zIndex     = '5';
+        el.classList.add('is-active');
+      } else if(abs === 1){
+        const dir = diff > 0 ? 1 : -1;
+        el.style.transform  = `translateX(${dir * 62}%) scale(.72)`;
+        el.style.opacity    = '.45';
+        el.style.filter     = 'brightness(.55)';
+        el.style.zIndex     = '2';
+        el.classList.remove('is-active');
+      } else if(abs === 2){
+        const dir = diff > 0 ? 1 : -1;
+        el.style.transform  = `translateX(${dir * 95}%) scale(.52)`;
+        el.style.opacity    = '.15';
+        el.style.filter     = 'brightness(.35)';
+        el.style.zIndex     = '1';
+        el.classList.remove('is-active');
+      } else {
+        // buiten beeld
+        const dir = diff > 0 ? 1 : -1;
+        el.style.transform  = `translateX(${dir * 120}%) scale(.4)`;
+        el.style.opacity    = '0';
+        el.style.filter     = 'brightness(.2)';
+        el.style.zIndex     = '0';
+        el.classList.remove('is-active');
+      }
+    });
+
+    /* Dots: schuivend venster */
+    const half  = Math.floor(MAX_DOTS / 2);
+    const start = Math.max(0, Math.min(idx - half, total - MAX_DOTS));
+    dots.forEach((d, i) => {
+      const realIdx = start + i;
+      d.classList.toggle('active', realIdx === idx);
+    });
+  }
 
   function go(n){
     idx = ((n % total) + total) % total;
-    track.style.transform = `translateX(-${idx * 100}%)`;
-    counter.textContent = `${idx+1} / ${total}`;
+    render();
   }
 
   btnPrev.addEventListener('click', () => go(idx - 1));
   btnNext.addEventListener('click', () => go(idx + 1));
 
-  /* Swipe ondersteuning */
+  /* Swipe */
   let swX = 0;
-  track.parentElement.addEventListener('touchstart', e => { swX = e.changedTouches[0].screenX; }, {passive:true});
-  track.parentElement.addEventListener('touchend',   e => {
+  stage.addEventListener('touchstart', e => { swX = e.changedTouches[0].screenX; }, {passive:true});
+  stage.addEventListener('touchend',   e => {
     const dx = e.changedTouches[0].screenX - swX;
-    if(Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
+    if(Math.abs(dx) > 36) go(idx + (dx < 0 ? 1 : -1));
   }, {passive:true});
 
-  go(0);
+  render();
 })();
 
 /* ── FESTIVAL CAROUSEL ── */
