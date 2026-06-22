@@ -90,10 +90,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .partners-img-label{position:absolute;bottom:0;left:0;right:0;padding:40px 28px 28px;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,transparent 100%);font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3.6rem);font-weight:900;line-height:.95;color:#fff}
 .partners-img-label .red{color:var(--red)}
 
-/* ═══════════════════════════════════════════════
-   PORTFOLIO — desktop: loader + auto-scroll
-                mobiel:  pijl-navigatie
-   ═══════════════════════════════════════════════ */
+/* ─── PORTFOLIO ─── */
 #portfolio{padding:90px 0;background:#000;border-top:1px solid rgba(255,255,255,.05);overflow:hidden}
 .portfolio-header{max-width:1200px;margin:0 auto;padding:0 6vw;margin-bottom:48px;text-align:center}
 .portfolio-kicker{display:flex;align-items:center;justify-content:center;gap:14px;font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:10px}
@@ -101,8 +98,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .portfolio-title{font-family:var(--font-display);font-size:clamp(2.6rem,5vw,6rem);font-weight:900;line-height:.9;color:#fff}
 .portfolio-title .red{color:var(--red)}
 .portfolio-sub{font-size:1rem;color:rgba(255,255,255,.44);font-weight:300;margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto}
-
-/* ── Desktop: loader + scroll-track ── */
 .prod-loader-wrap{position:relative;width:100%}
 .prod-loader{display:flex;flex-direction:column;align-items:center;gap:14px;padding:48px 0 52px;opacity:1;transition:opacity .4s ease}
 .prod-loader.hidden{opacity:0;pointer-events:none;height:0;padding:0;overflow:hidden}
@@ -118,59 +113,17 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .prod-item{flex:0 0 200px;height:340px;display:flex;align-items:center;justify-content:center;padding:18px;position:relative;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .35s,filter .35s;opacity:.7;filter:brightness(.75)}
 .prod-item:hover{transform:scale(1.12);opacity:1;filter:brightness(1)}
 .prod-item img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6));background:transparent}
-
-/* ── Mobiel: depth carousel ── */
 .prod-mobile-carousel{display:none;flex-direction:column;align-items:center;padding:0 0 32px}
-.prod-mobile-stage{
-  position:relative;
-  width:100%;
-  height:300px;
-  overflow:hidden;
-  /* fade edges */
-  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 18%,#000 82%,transparent 100%);
-  mask-image:linear-gradient(to right,transparent 0%,#000 18%,#000 82%,transparent 100%);
-}
-/* Elk item absoluut gepositioneerd, JS stuurt transform + opacity */
-.prod-mobile-item{
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  display:flex;align-items:center;justify-content:center;
-  transition:transform .42s cubic-bezier(.22,1,.36,1), opacity .42s, filter .42s;
-  will-change:transform,opacity,filter;
-  pointer-events:none;
-}
+.prod-mobile-stage{position:relative;width:100%;height:300px;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 18%,#000 82%,transparent 100%)}
+.prod-mobile-item{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .42s,filter .42s;will-change:transform,opacity,filter;pointer-events:none}
 .prod-mobile-item.is-active{pointer-events:auto}
-.prod-mobile-item img{
-  max-width:160px;max-height:240px;
-  object-fit:contain;display:block;
-  filter:drop-shadow(0 16px 32px rgba(0,0,0,.7));
-  width:100%;height:100%;
-}
-/* Nav: alleen de twee pijlen, strak en minimaal */
-.prod-mobile-nav{
-  display:flex;align-items:center;justify-content:center;
-  gap:28px;margin-top:22px;
-}
-.prod-mobile-btn{
-  display:flex;align-items:center;justify-content:center;
-  width:40px;height:40px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.04);
-  cursor:pointer;color:rgba(255,255,255,.7);
-  transition:background .2s,border-color .2s,color .2s;
-  -webkit-tap-highlight-color:transparent;
-}
+.prod-mobile-item img{max-width:160px;max-height:240px;object-fit:contain;display:block;filter:drop-shadow(0 16px 32px rgba(0,0,0,.7));width:100%;height:100%}
+.prod-mobile-nav{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:22px}
+.prod-mobile-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);cursor:pointer;color:rgba(255,255,255,.7);transition:background .2s,border-color .2s,color .2s;-webkit-tap-highlight-color:transparent}
 .prod-mobile-btn:active{background:rgba(192,57,43,.18);border-color:rgba(192,57,43,.5);color:#fff}
 .prod-mobile-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-/* Dot indicators */
 .prod-mobile-dots{display:flex;gap:6px;align-items:center}
-.prod-mobile-dot{
-  width:4px;height:4px;border-radius:50%;
-  background:rgba(255,255,255,.18);
-  transition:background .25s, transform .25s, width .25s;
-  flex-shrink:0;
-}
+.prod-mobile-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.18);transition:background .25s,transform .25s,width .25s;flex-shrink:0}
 .prod-mobile-dot.active{background:var(--red);width:16px;border-radius:2px}
 
 /* ─── TEAM & EVENTS ─── */
@@ -327,7 +280,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .about-strip-inner{grid-template-columns:1fr;gap:48px}
   .partners-img-wrap{aspect-ratio:16/9;max-height:340px}
 }
-
 @media(max-width:1000px){
   html,body{cursor:auto}#cur,#cur-ring{display:none}.lang-fab{display:none}
   .nav-right .lang-switch{display:flex}nav{height:70px;padding:0 5vw}.nav-logo img{height:32px}
@@ -338,21 +290,16 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
   .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
   .mobile-nav-drawer{display:flex}
-
   .jobs-hero{min-height:100svh;padding:90px 5vw 60px;background:#000!important}
   .jobs-hero::before{display:none}
   .jobs-copy{font-size:.95rem;max-width:100%}
   .jobs-title{font-size:clamp(4rem,18vw,8rem);margin-bottom:20px}
-
   .about-strip{padding:70px 5vw}
   .about-strip-inner{grid-template-columns:1fr}
   .partners-img-wrap{display:none}
-
-  /* Portfolio mobiel: verberg desktop, toon mobiel */
   #portfolio{padding:70px 0}.portfolio-header{padding:0 5vw}
-  .prod-loader-wrap{display:none}           /* loader + scroll-track weg */
-  .prod-mobile-carousel{display:flex}       /* pijl-carousel aan */
-
+  .prod-loader-wrap{display:none}
+  .prod-mobile-carousel{display:flex}
   #team-events{padding:70px 0 80px}
   .te-section-header{padding:0 5vw;margin-bottom:36px}
   .te-carousel-wrap{padding:10px 5vw}
@@ -364,14 +311,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .te-slide.is-left{transform:translate(-190px,0) scale(.86)}
   .te-slide.is-right{transform:translate(calc(-100% + 190px),0) scale(.86)}
   .te-slide.is-far-right{transform:translate(calc(-100% + 230px),0) scale(.8)}
-
-  .fest-popup{
-    top:auto;bottom:0;left:0;right:0;width:100%;max-height:72vh;
-    border-radius:20px 20px 0 0;
-    transform:translateY(100%);
-    transition:transform .38s cubic-bezier(.22,1,.36,1),opacity .38s;
-    overflow-y:auto;-webkit-overflow-scrolling:touch;
-  }
+  .fest-popup{top:auto;bottom:0;left:0;right:0;width:100%;max-height:72vh;border-radius:20px 20px 0 0;transform:translateY(100%);transition:transform .38s cubic-bezier(.22,1,.36,1),opacity .38s;overflow-y:auto;-webkit-overflow-scrolling:touch}
   .fest-popup-backdrop.open .fest-popup{transform:translateY(0);opacity:1;pointer-events:auto}
   .fest-popup-hero{height:160px}
   .fest-popup-hero-text{bottom:16px;left:20px;right:60px}
@@ -382,7 +322,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .popup-stat-num{font-size:1.6rem}
   .fest-popup-close{top:12px;right:12px;width:38px;height:38px}
   .fest-popup-desc{font-size:.9rem;margin-bottom:18px}
-
   #vacatures{padding:70px 5vw}
   .vac-grid{grid-template-columns:1fr}.vac-card{padding:28px 22px}
   #open-sollicitatie{padding:70px 5vw 90px}.form-row{grid-template-columns:1fr}
@@ -398,7 +337,6 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .fest-popup-stats{grid-template-columns:1fr 1fr}
   .partners-img-label{font-size:clamp(1.6rem,5vw,2.6rem)}
 }
-
 @media(max-width:480px){
   .jobs-title{font-size:clamp(3.2rem,16vw,6rem)}
   .jobs-copy{font-size:.9rem}
@@ -413,413 +351,810 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
   .fest-popup-stats{grid-template-columns:1fr}
   .fest-popup{max-height:80vh}
 }
-
 @media(prefers-reduced-motion:reduce){
   .prod-scroll-track{animation:none!important}
 }
 </style>
 </head>
 <body>
+
+<!-- ══════════════════════════════════════════
+     i18n DATA
+     ══════════════════════════════════════════ -->
+<script>
+const I18N = {
+  nl: {
+    /* <html lang> */
+    htmlLang: 'nl',
+    /* <title> */
+    pageTitle: 'Werken bij BINC | BINC International',
+
+    /* NAV */
+    navRetail: 'Retail',
+    navHoreca: 'Horeca',
+    navEvents: 'Evenementen',
+    navTeam: 'Ons Team',
+    navJobs: 'Werken bij',
+    navCta: 'Samenwerken',
+
+    /* MOBILE DRAWER */
+    drawerCta: 'Samenwerken',
+
+    /* HERO */
+    heroTitle1: 'GROW',
+    heroTitle2: 'WITH',
+    heroTitle3: 'BINC',
+    heroCopy: 'Ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, voor merken die groeien.',
+    heroBtnJobs: 'Bekijk stageplekken',
+    heroBtnOpen: 'Open solliciteren',
+
+    /* ABOUT */
+    aboutLabel: 'Wie zijn wij',
+    aboutHeading1: 'Full-service B2B',
+    aboutHeading2: 'voor',
+    aboutHeading3: 'ambitieuze merken.',
+    aboutBody: 'BINC International regelt de volledige B2B-distributie voor consumentenmerken in Nederland. Van inkoopmeetings bij Albert Heijn en Jumbo tot activaties op festivals en horeca-plaatsingen door heel het land. Wij zijn de brug tussen ambitieuze merken en de schappen.',
+    imgLabel1: 'Wij helpen merken.',
+    imgLabel2: 'Groeien.',
+
+    /* PORTFOLIO */
+    portfolioKicker: 'Ons portfolio',
+    portfolioTitle1: 'MERKEN DIE',
+    portfolioTitle2: 'OPVALLEN.',
+    portfolioSub: 'BINC vertegenwoordigt merken die zichzelf laten zien van schappen tot en met festivals.',
+    portfolioLoading: 'Producten laden',
+
+    /* TEAM & FESTIVALS */
+    teamLabel: 'Team & cultuur',
+    teamTitle1: 'FESTIVALS MET',
+    teamTitle2: 'HET TEAM',
+    teamSub: 'Werken bij BINC is meer dan werken achter het bureau. We gaan samen het veld op, naar de festivals waar onze merken live worden geactiveerd.',
+    slideTag: 'Festival met het team',
+    slideMoreInfo: 'Meer info',
+
+    /* FESTIVAL DATES */
+    festKKCDate: 'Zaterdag 13 juni 2026',
+    festDauwpopDate: '29 & 30 mei 2026',
+    festHOHDate: '15 mei 2026',
+    fest7thDate: '16 mei 2026',
+
+    /* FESTIVAL POPUP */
+    popupKKCDesc: 'Kamping Kitsch Club is één van de meest kleurrijke en uitbundige festivalconcepten van Nederland. Met het hele BINC-team erop uit voor een dag vol glitter, kitsch en onversneden feestvreugde. Onze merken werden geactiveerd midden in de festival crowd en onze producten waren overal zichtbaar.',
+    popupDauwpopDesc: 'Dauwpop is het oudste gratis pop festival van Nederland, gehouden in de mooie omgeving van Hellendoorn. Met het team gingen we twee dagen lang het veld op. Onze merken werden geproefd door duizenden festivalgangers in een ontspannen zomerse sfeer.',
+    popupHOHDesc: 'Harmony of Hardcore is een van de grootste hardcore dance festivals ter wereld. Maximale energie, maximaal teamgevoel. BINC was aanwezig pal in het hart van de hardcore scene, naast een loyale en gepassioneerde fanbase die onze merken omarmt.',
+    popup7thDesc: 'Van zonsopgang tot zonsondergang met het team op één van de meest iconische dance festivals van Nederland. 7th Sunday brengt het beste van de dance scene bij elkaar, en BINC was er bij van het eerste tot het laatste uur. Duizenden handen, één smaak.',
+    popupStatVisitors: 'Bezoekers',
+    popupStatEdition: 'Editie',
+    popupStatYear: 'Jaar',
+    popupStatDays1: '1 dag',
+    popupStatDays2: '2 dagen',
+    popupLinkLabel: 'Website festival',
+
+    /* VACATURES */
+    vacLabel: 'Open stageplekken',
+    vacTitle1: '3 ROLLEN,',
+    vacTitle2: '1 DOEL.',
+    vacSub: 'Drie stageplaatsen, elk met eigen verantwoordelijkheden. Altijd als volwaardig lid van het team.',
+
+    vac1Role: 'Creatief & Communicatie',
+    vac1Name1: 'Marketing',
+    vac1Name2: 'Stagiaire',
+    vac1Body: 'Jij vertaalt onze merken naar content die raakt, van schap tot festival.',
+    vac1H1: 'Social media strategie en contentcreatie',
+    vac1H2: 'Campagnes per merk uitwerken en bewaken',
+    vac1H3: 'Communicatie voor retail en festivals',
+    vac1H4: 'Prestaties analyseren en optimaliseren',
+    vac1Btn: 'Solliciteer nu →',
+
+    vac2Role: 'Tech & Analyse',
+    vac2Name1: 'Data & ICT',
+    vac2Name2: 'Stagiaire',
+    vac2Body: 'Jij bouwt de tools en dashboards waarmee BINC sneller beslist.',
+    vac2H1: 'Interne webapplicaties bouwen en beheren',
+    vac2H2: "Data-integraties opzetten (Sheets, API's)",
+    vac2H3: 'KPI-dashboards en rapportages inrichten',
+    vac2H4: 'Werkprocessen automatiseren met slimme tooling',
+    vac2Btn: 'Solliciteer nu →',
+
+    vac3Role: 'Commercieel & Retail',
+    vac3Name1: 'Sales',
+    vac3Name2: 'Stagiaire',
+    vac3Body: 'Jij leert het vak in de praktijk, gewoon door mee te doen.',
+    vac3H1: 'Meerijden bij retailbezoeken en filiaalactivaties',
+    vac3H2: 'Accountmanagers ondersteunen in het veld',
+    vac3H3: 'Nieuwe leads zoeken en benaderen',
+    vac3H4: 'Klantopvolging en rapportages bijhouden',
+    vac3Btn: 'Solliciteer nu →',
+
+    /* FORM */
+    formLabel: 'Open sollicitatie',
+    formTitle1: 'LAAT VAN',
+    formTitle2: 'JE HOREN',
+    formCopy: 'Geen passende stageplaats gevonden, of wil je gewoon direct van je laten horen? Stuur een open sollicitatie. We bekijken elk profiel en nemen contact op als er een match is.',
+    fLabelFirst: 'Voornaam *',
+    fPlaceholderFirst: 'Jan',
+    fLabelLast: 'Achternaam *',
+    fPlaceholderLast: 'de Vries',
+    fLabelEmail: 'E-mailadres *',
+    fPlaceholderEmail: 'jan@email.nl',
+    fLabelPhone: 'Telefoonnummer',
+    fPlaceholderPhone: '+31 6 ...',
+    fLabelCity: 'Woonplaats',
+    fPlaceholderCity: 'Den Hout',
+    fLabelLI: 'LinkedIn profiel',
+    fLabelInterest: 'Interessegebied',
+    fSelectDefault: 'Selecteer richting',
+    fOpt1: 'Stage Marketing',
+    fOpt2: 'Stage Data & ICT',
+    fOpt3: 'Stage Sales',
+    fOpt4: 'Open sollicitatie',
+    fOpt5: 'Anders',
+    fLabelMot: 'Motivatie',
+    fPlaceholderMot: 'Vertel kort wie je bent, waar je goed in bent en waarom je bij BINC International wilt werken of stage lopen.',
+    fLabelCV: 'Upload CV',
+    fCVStrong: 'Sleep je CV hier of klik om te uploaden',
+    fCVSpan: 'PDF, DOC of DOCX · max. 10MB',
+    fCVNone: 'Nog geen bestand geselecteerd',
+    privacyNote: 'Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw sollicitatie.',
+    btnSubmit: 'Verstuur sollicitatie →',
+    btnSending: 'Versturen...',
+    btnSent: 'Sollicitatie verstuurd',
+    btnRetry: 'Opnieuw proberen',
+    alertSuccess: 'Je sollicitatie is succesvol verstuurd. We nemen zo snel mogelijk contact met je op!',
+    alertError: 'Er is iets misgegaan. Probeer het opnieuw of mail info@bincinternational.nl',
+    alertValidation: 'Vul minimaal je voornaam, achternaam en e-mailadres in.',
+
+    /* FOOTER */
+    ftAddress: 'BINC adres',
+    ftEmail: 'E-mailadres',
+    ftPhone: 'Telefoonnummer',
+    ftCopyright: '© 2025 BINC International B.V. Alle rechten voorbehouden.',
+    ftTagline: 'Full-service B2B voor ambitieuze merken in Nederland.',
+  },
+
+  en: {
+    htmlLang: 'en',
+    pageTitle: 'Work at BINC | BINC International',
+
+    navRetail: 'Retail',
+    navHoreca: 'Hospitality',
+    navEvents: 'Events',
+    navTeam: 'Our Team',
+    navJobs: 'Work at BINC',
+    navCta: 'Partner up',
+
+    drawerCta: 'Partner up',
+
+    heroTitle1: 'GROW',
+    heroTitle2: 'WITH',
+    heroTitle3: 'BINC',
+    heroCopy: 'Ambitious interns who want more than making coffee. At BINC you work on real projects, for brands that are growing.',
+    heroBtnJobs: 'View internships',
+    heroBtnOpen: 'Open application',
+
+    aboutLabel: 'Who we are',
+    aboutHeading1: 'Full-service B2B',
+    aboutHeading2: 'for',
+    aboutHeading3: 'ambitious brands.',
+    aboutBody: 'BINC International handles full B2B distribution for consumer brands in the Netherlands. From buying meetings at Albert Heijn and Jumbo to festival activations and hospitality placements across the country. We are the bridge between ambitious brands and the shelves.',
+    imgLabel1: 'We help brands.',
+    imgLabel2: 'Grow.',
+
+    portfolioKicker: 'Our portfolio',
+    portfolioTitle1: 'BRANDS THAT',
+    portfolioTitle2: 'STAND OUT.',
+    portfolioSub: 'BINC represents brands that make themselves seen — from supermarket shelves to festival stages.',
+    portfolioLoading: 'Loading products',
+
+    teamLabel: 'Team & culture',
+    teamTitle1: 'FESTIVALS WITH',
+    teamTitle2: 'THE TEAM',
+    teamSub: 'Working at BINC is about more than sitting behind a desk. We head out together to the festivals where our brands come to life.',
+    slideTag: 'Festival with the team',
+    slideMoreInfo: 'More info',
+
+    festKKCDate: 'Saturday, 13 June 2026',
+    festDauwpopDate: '29 & 30 May 2026',
+    festHOHDate: '15 May 2026',
+    fest7thDate: '16 May 2026',
+
+    popupKKCDesc: 'Kamping Kitsch Club is one of the most colourful and exuberant festival concepts in the Netherlands. The whole BINC team headed out for a day full of glitter, kitsch and pure party spirit. Our brands were activated right in the middle of the festival crowd and our products were visible everywhere.',
+    popupDauwpopDesc: "Dauwpop is the oldest free pop festival in the Netherlands, held in the beautiful surroundings of Hellendoorn. The team hit the field for two days straight. Our brands were tasted by thousands of festival-goers in a relaxed summer atmosphere.",
+    popupHOHDesc: 'Harmony of Hardcore is one of the biggest hardcore dance festivals in the world. Maximum energy, maximum team spirit. BINC was present right at the heart of the hardcore scene, next to a loyal and passionate fanbase that embraces our brands.',
+    popup7thDesc: 'From sunrise to sunset with the team at one of the most iconic dance festivals in the Netherlands. 7th Sunday brings together the best of the dance scene, and BINC was there from the very first to the very last hour. Thousands of hands, one taste.',
+    popupStatVisitors: 'Visitors',
+    popupStatEdition: 'Edition',
+    popupStatYear: 'Year',
+    popupStatDays1: '1 day',
+    popupStatDays2: '2 days',
+    popupLinkLabel: 'Festival website',
+
+    vacLabel: 'Open internships',
+    vacTitle1: '3 ROLES,',
+    vacTitle2: '1 GOAL.',
+    vacSub: 'Three internship positions, each with their own responsibilities. Always as a full member of the team.',
+
+    vac1Role: 'Creative & Communications',
+    vac1Name1: 'Marketing',
+    vac1Name2: 'Intern',
+    vac1Body: 'You translate our brands into content that resonates — from supermarket shelf to festival stage.',
+    vac1H1: 'Social media strategy and content creation',
+    vac1H2: 'Developing and managing campaigns per brand',
+    vac1H3: 'Communications for retail and festivals',
+    vac1H4: 'Analysing and optimising performance',
+    vac1Btn: 'Apply now →',
+
+    vac2Role: 'Tech & Analytics',
+    vac2Name1: 'Data & IT',
+    vac2Name2: 'Intern',
+    vac2Body: 'You build the tools and dashboards that help BINC make faster decisions.',
+    vac2H1: 'Building and maintaining internal web applications',
+    vac2H2: "Setting up data integrations (Sheets, APIs)",
+    vac2H3: 'Creating KPI dashboards and reports',
+    vac2H4: 'Automating workflows with smart tooling',
+    vac2Btn: 'Apply now →',
+
+    vac3Role: 'Commercial & Retail',
+    vac3Name1: 'Sales',
+    vac3Name2: 'Intern',
+    vac3Body: 'You learn the trade hands-on, simply by doing.',
+    vac3H1: 'Joining retail visits and in-store activations',
+    vac3H2: 'Supporting account managers in the field',
+    vac3H3: 'Finding and approaching new leads',
+    vac3H4: 'Managing follow-ups and reporting',
+    vac3Btn: 'Apply now →',
+
+    formLabel: 'Open application',
+    formTitle1: 'GET IN',
+    formTitle2: 'TOUCH',
+    formCopy: "Didn't find a matching internship, or do you just want to reach out directly? Send an open application. We review every profile and get in touch if there's a match.",
+    fLabelFirst: 'First name *',
+    fPlaceholderFirst: 'John',
+    fLabelLast: 'Last name *',
+    fPlaceholderLast: 'Smith',
+    fLabelEmail: 'Email address *',
+    fPlaceholderEmail: 'john@email.com',
+    fLabelPhone: 'Phone number',
+    fPlaceholderPhone: '+31 6 ...',
+    fLabelCity: 'City',
+    fPlaceholderCity: 'Amsterdam',
+    fLabelLI: 'LinkedIn profile',
+    fLabelInterest: 'Area of interest',
+    fSelectDefault: 'Select direction',
+    fOpt1: 'Marketing Internship',
+    fOpt2: 'Data & IT Internship',
+    fOpt3: 'Sales Internship',
+    fOpt4: 'Open application',
+    fOpt5: 'Other',
+    fLabelMot: 'Motivation',
+    fPlaceholderMot: 'Tell us briefly who you are, what you are good at and why you want to work or intern at BINC International.',
+    fLabelCV: 'Upload CV',
+    fCVStrong: 'Drag your CV here or click to upload',
+    fCVSpan: 'PDF, DOC or DOCX · max. 10 MB',
+    fCVNone: 'No file selected yet',
+    privacyNote: 'By submitting your details you give BINC International permission to contact you regarding your application.',
+    btnSubmit: 'Send application →',
+    btnSending: 'Sending...',
+    btnSent: 'Application sent',
+    btnRetry: 'Try again',
+    alertSuccess: 'Your application has been sent successfully. We will get back to you as soon as possible!',
+    alertError: 'Something went wrong. Please try again or email info@bincinternational.nl',
+    alertValidation: 'Please fill in at least your first name, last name and email address.',
+
+    ftAddress: 'BINC address',
+    ftEmail: 'Email address',
+    ftPhone: 'Phone number',
+    ftCopyright: '© 2025 BINC International B.V. All rights reserved.',
+    ftTagline: 'Full-service B2B for ambitious brands in the Netherlands.',
+  }
+};
+</script>
+
 <div class="jump-overlay" id="jumpOverlay">
-<img class="jump-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
+  <img class="jump-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
 </div>
 <div id="cur"></div><div id="cur-ring"></div>
+
 <div class="lang-fab" id="langFab">
-<button class="lang-btn active" data-lang="nl">NL</button>
-<button class="lang-btn" data-lang="en">EN</button>
+  <button class="lang-btn active" data-lang="nl">NL</button>
+  <button class="lang-btn" data-lang="en">EN</button>
 </div>
+
 <div class="mobile-nav-drawer" id="mobileDrawer">
-<a href="retail.html">Retail</a>
-<a href="horeca.html">Horeca</a>
-<a href="evenementen.html">Evenementen</a>
-<a href="ons-team.html">Ons Team</a>
-<a href="werken-bij.html" class="active">Werken bij</a>
-<a href="index.html#lead" class="drawer-cta" id="drawerCta">Samenwerken</a>
-<div class="drawer-lang">
-<button class="lang-btn active" data-lang="nl">NL</button>
-<button class="lang-btn" data-lang="en">EN</button>
+  <a href="retail.html" data-i18n="navRetail">Retail</a>
+  <a href="horeca.html" data-i18n="navHoreca">Horeca</a>
+  <a href="evenementen.html" data-i18n="navEvents">Evenementen</a>
+  <a href="ons-team.html" data-i18n="navTeam">Ons Team</a>
+  <a href="werken-bij.html" class="active" data-i18n="navJobs">Werken bij</a>
+  <a href="index.html#lead" class="drawer-cta" id="drawerCta" data-i18n="drawerCta">Samenwerken</a>
+  <div class="drawer-lang">
+    <button class="lang-btn active" data-lang="nl">NL</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+  <div class="drawer-socials">
+    <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
+    <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+  </div>
 </div>
-<div class="drawer-socials">
-<a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
-<a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
-</div>
-</div>
+
 <nav id="nav">
-<a href="index.html" class="nav-logo">
-<img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
-</a>
-<div class="nav-links">
-<a href="retail.html">Retail</a>
-<a href="horeca.html">Horeca</a>
-<a href="evenementen.html">Evenementen</a>
-<a href="ons-team.html">Ons Team</a>
-<a href="werken-bij.html" class="active">Werken bij</a>
-<a href="index.html#lead" class="nav-cta">Samenwerken</a>
-</div>
-<div class="nav-right">
-<div class="lang-switch">
-<button class="lang-btn active" data-lang="nl">NL</button>
-<button class="lang-btn" data-lang="en">EN</button>
-</div>
-<button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
-<span></span><span></span><span></span>
-</button>
-</div>
+  <a href="index.html" class="nav-logo">
+    <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
+  </a>
+  <div class="nav-links">
+    <a href="retail.html" data-i18n="navRetail">Retail</a>
+    <a href="horeca.html" data-i18n="navHoreca">Horeca</a>
+    <a href="evenementen.html" data-i18n="navEvents">Evenementen</a>
+    <a href="ons-team.html" data-i18n="navTeam">Ons Team</a>
+    <a href="werken-bij.html" class="active" data-i18n="navJobs">Werken bij</a>
+    <a href="index.html#lead" class="nav-cta" data-i18n="navCta">Samenwerken</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="nl">NL</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
+<!-- ─── HERO ─── -->
 <section class="jobs-hero">
-<div class="jobs-hero-inner">
-<h1 class="jobs-title">GROW<br><span class="red">WITH</span> <span class="stroke">BINC</span></h1>
-<p class="jobs-copy">Ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, voor merken die groeien.</p>
-<div class="jobs-actions">
-<a href="#vacatures" class="btn-red">Bekijk stageplekken</a>
-<a href="#open-sollicitatie" class="btn-outline">Open solliciteren</a>
-</div>
-</div>
+  <div class="jobs-hero-inner">
+    <h1 class="jobs-title">
+      <span data-i18n="heroTitle1">GROW</span><br>
+      <span class="red" data-i18n="heroTitle2">WITH</span> <span class="stroke" data-i18n="heroTitle3">BINC</span>
+    </h1>
+    <p class="jobs-copy" data-i18n="heroCopy">Ambitieuze stagiaires die meer willen dan koffie halen. Bij BINC draai je mee in echte projecten, voor merken die groeien.</p>
+    <div class="jobs-actions">
+      <a href="#vacatures" class="btn-red" data-i18n="heroBtnJobs">Bekijk stageplekken</a>
+      <a href="#open-sollicitatie" class="btn-outline" data-i18n="heroBtnOpen">Open solliciteren</a>
+    </div>
+  </div>
 </section>
 
+<!-- ─── ABOUT ─── -->
 <section class="about-strip">
-<div class="about-strip-inner">
-<div class="about-text reveal">
-<p class="label">Wie zijn wij</p>
-<h2 class="about-heading">Full-service B2B<br>voor <span class="red">ambitieuze merken.</span></h2>
-<p class="about-body">BINC International regelt de volledige B2B-distributie voor consumentenmerken in Nederland. Van inkoopmeetings bij Albert Heijn en Jumbo tot activaties op festivals en horeca-plaatsingen door heel het land. Wij zijn de brug tussen ambitieuze merken en de schappen.</p>
-</div>
-<div class="partners-img-wrap reveal d1">
-<img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?q=80&w=1400&auto=format&fit=crop" alt="Merken in de schappen" loading="lazy"/>
-<div class="partners-img-label">Wij helpen merken.<br><span class="red">Groeien.</span></div>
-</div>
-</div>
+  <div class="about-strip-inner">
+    <div class="about-text reveal">
+      <p class="label" data-i18n="aboutLabel">Wie zijn wij</p>
+      <h2 class="about-heading">
+        <span data-i18n="aboutHeading1">Full-service B2B</span><br>
+        <span data-i18n="aboutHeading2">voor</span> <span class="red" data-i18n="aboutHeading3">ambitieuze merken.</span>
+      </h2>
+      <p class="about-body" data-i18n="aboutBody">BINC International regelt de volledige B2B-distributie voor consumentenmerken in Nederland. Van inkoopmeetings bij Albert Heijn en Jumbo tot activaties op festivals en horeca-plaatsingen door heel het land. Wij zijn de brug tussen ambitieuze merken en de schappen.</p>
+    </div>
+    <div class="partners-img-wrap reveal d1">
+      <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?q=80&w=1400&auto=format&fit=crop" alt="Merken in de schappen" loading="lazy"/>
+      <div class="partners-img-label">
+        <span data-i18n="imgLabel1">Wij helpen merken.</span><br>
+        <span class="red" data-i18n="imgLabel2">Groeien.</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ─── PORTFOLIO ─── -->
 <section id="portfolio">
-<div class="portfolio-header reveal">
-<p class="portfolio-kicker">Ons portfolio</p>
-<h2 class="portfolio-title">MERKEN DIE<br><span class="red">OPVALLEN.</span></h2>
-<p class="portfolio-sub">BINC vertegenwoordigt merken die zichzelf laten zien van schappen tot en met festivals.</p>
-</div>
+  <div class="portfolio-header reveal">
+    <p class="portfolio-kicker" data-i18n="portfolioKicker">Ons portfolio</p>
+    <h2 class="portfolio-title">
+      <span data-i18n="portfolioTitle1">MERKEN DIE</span><br>
+      <span class="red" data-i18n="portfolioTitle2">OPVALLEN.</span>
+    </h2>
+    <p class="portfolio-sub" data-i18n="portfolioSub">BINC vertegenwoordigt merken die zichzelf laten zien van schappen tot en met festivals.</p>
+  </div>
 
-<!-- ── DESKTOP: loader + auto-scroll ── -->
-<div class="prod-loader-wrap">
-  <div class="prod-loader" id="prodLoader">
-    <span class="prod-loader-label">Producten laden</span>
-    <div class="prod-loader-bar-track">
-      <div class="prod-loader-bar-fill" id="prodLoaderFill"></div>
+  <!-- Desktop scroll -->
+  <div class="prod-loader-wrap">
+    <div class="prod-loader" id="prodLoader">
+      <span class="prod-loader-label" data-i18n="portfolioLoading">Producten laden</span>
+      <div class="prod-loader-bar-track"><div class="prod-loader-bar-fill" id="prodLoaderFill"></div></div>
+    </div>
+    <div class="prod-scroll-outer" id="prodScrollOuter">
+      <div class="prod-scroll-track" id="prodTrack">
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/original.png" alt="Gold Dry Original Premix" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/dream.png" alt="Gold Dry Dream Premix" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/sky.png" alt="Gold Dry Sky Premix" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/mindset.png" alt="Gold Dry Mindset Premix" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/eclipse.png" alt="Gold Dry Eclipse Premix" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/unite.png" alt="Gold Dry Unite Premix" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/fruit-punch.png" alt="BeatBox Fruit Punch" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/berry-razzberry.png" alt="BeatBox Berry" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/orange-blast.png" alt="BeatBox Orange Blast" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/juicy-mango.png" alt="BeatBox Juicy Mango" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/original.png" alt="Gold Dry Original Soda" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/dream.png" alt="Gold Dry Dream Soda" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/sky.png" alt="Gold Dry Sky Soda" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/mindset.png" alt="Gold Dry Mindset Soda" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/eclipse.png" alt="Gold Dry Eclipse Soda" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/unite.png" alt="Gold Dry Unite Soda" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/blueberry.png" alt="FeelSoGood Blueberry" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/lemon.png" alt="FeelSoGood Lemon" loading="eager" decoding="async" data-prod/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/watermelon.png" alt="FeelSoGood Watermelon" loading="eager" decoding="async" data-prod/></div>
+        <!-- Set B (duplicate for seamless loop) -->
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/original.png" alt="Gold Dry Original Premix" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/dream.png" alt="Gold Dry Dream Premix" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/sky.png" alt="Gold Dry Sky Premix" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/mindset.png" alt="Gold Dry Mindset Premix" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/eclipse.png" alt="Gold Dry Eclipse Premix" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/unite.png" alt="Gold Dry Unite Premix" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/fruit-punch.png" alt="BeatBox Fruit Punch" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/berry-razzberry.png" alt="BeatBox Berry" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/orange-blast.png" alt="BeatBox Orange Blast" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/juicy-mango.png" alt="BeatBox Juicy Mango" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/original.png" alt="Gold Dry Original Soda" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/dream.png" alt="Gold Dry Dream Soda" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/sky.png" alt="Gold Dry Sky Soda" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/mindset.png" alt="Gold Dry Mindset Soda" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/eclipse.png" alt="Gold Dry Eclipse Soda" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/unite.png" alt="Gold Dry Unite Soda" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/blueberry.png" alt="FeelSoGood Blueberry" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/lemon.png" alt="FeelSoGood Lemon" loading="lazy" decoding="async"/></div>
+        <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/watermelon.png" alt="FeelSoGood Watermelon" loading="lazy" decoding="async"/></div>
+      </div>
     </div>
   </div>
-  <div class="prod-scroll-outer" id="prodScrollOuter">
-    <div class="prod-scroll-track" id="prodTrack">
-      <!-- Set A -->
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/original.png"    alt="Gold Dry Original Premix"  loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/dream.png"      alt="Gold Dry Dream Premix"    loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/sky.png"        alt="Gold Dry Sky Premix"      loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/mindset.png"    alt="Gold Dry Mindset Premix"  loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/eclipse.png"    alt="Gold Dry Eclipse Premix"  loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/unite.png"      alt="Gold Dry Unite Premix"    loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/fruit-punch.png"        alt="BeatBox Fruit Punch"      loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/berry-razzberry.png"    alt="BeatBox Berry"            loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/orange-blast.png"       alt="BeatBox Orange Blast"     loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/juicy-mango.png"        alt="BeatBox Juicy Mango"      loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/original.png"     alt="Gold Dry Original Soda"   loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/dream.png"        alt="Gold Dry Dream Soda"      loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/sky.png"          alt="Gold Dry Sky Soda"        loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/mindset.png"      alt="Gold Dry Mindset Soda"    loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/eclipse.png"      alt="Gold Dry Eclipse Soda"    loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/unite.png"        alt="Gold Dry Unite Soda"      loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/blueberry.png" alt="FeelSoGood Blueberry"     loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/lemon.png"     alt="FeelSoGood Lemon"         loading="eager" decoding="async" data-prod/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/watermelon.png" alt="FeelSoGood Watermelon"   loading="eager" decoding="async" data-prod/></div>
-      <!-- Set B -->
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/original.png"    alt="Gold Dry Original Premix"  loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/dream.png"      alt="Gold Dry Dream Premix"    loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/sky.png"        alt="Gold Dry Sky Premix"      loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/mindset.png"    alt="Gold Dry Mindset Premix"  loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/eclipse.png"    alt="Gold Dry Eclipse Premix"  loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/unite.png"      alt="Gold Dry Unite Premix"    loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/fruit-punch.png"        alt="BeatBox Fruit Punch"      loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/berry-razzberry.png"    alt="BeatBox Berry"            loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/orange-blast.png"       alt="BeatBox Orange Blast"     loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/juicy-mango.png"        alt="BeatBox Juicy Mango"      loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/original.png"     alt="Gold Dry Original Soda"   loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/dream.png"        alt="Gold Dry Dream Soda"      loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/sky.png"          alt="Gold Dry Sky Soda"        loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/mindset.png"      alt="Gold Dry Mindset Soda"    loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/eclipse.png"      alt="Gold Dry Eclipse Soda"    loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/unite.png"        alt="Gold Dry Unite Soda"      loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/blueberry.png" alt="FeelSoGood Blueberry"     loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/lemon.png"     alt="FeelSoGood Lemon"         loading="lazy" decoding="async"/></div>
-      <div class="prod-item"><img src="https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/watermelon.png" alt="FeelSoGood Watermelon"   loading="lazy" decoding="async"/></div>
+
+  <!-- Mobile carousel -->
+  <div class="prod-mobile-carousel" id="prodMobileCarousel">
+    <div class="prod-mobile-stage" id="prodMobileStage"></div>
+    <div class="prod-mobile-nav">
+      <button class="prod-mobile-btn" id="prodMobilePrev" aria-label="Vorige"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="prod-mobile-dots" id="prodMobileDots"></div>
+      <button class="prod-mobile-btn" id="prodMobileNext" aria-label="Volgende"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
     </div>
   </div>
-</div>
-
-<!-- ── MOBIEL: depth carousel ── -->
-<div class="prod-mobile-carousel" id="prodMobileCarousel">
-  <div class="prod-mobile-stage" id="prodMobileStage">
-    <!-- items worden door JS ingevuld -->
-  </div>
-  <div class="prod-mobile-nav">
-    <button class="prod-mobile-btn" id="prodMobilePrev" aria-label="Vorige">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <div class="prod-mobile-dots" id="prodMobileDots"></div>
-    <button class="prod-mobile-btn" id="prodMobileNext" aria-label="Volgende">
-      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-  </div>
-</div>
 </section>
 
 <!-- Festival popup -->
 <div class="fest-popup-backdrop" id="festBackdrop">
-<div class="fest-popup" id="festPopup">
-<div class="fest-popup-hero">
-<img id="popupImg" src="" alt=""/>
-<div class="fest-popup-hero-overlay"></div>
-<div class="fest-popup-hero-text">
-<h2 id="popupName"></h2>
-<div class="popup-date" id="popupDate"></div>
-</div>
-<button class="fest-popup-close" id="festPopupClose" aria-label="Sluiten">
-<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-</button>
-</div>
-<div class="fest-popup-body">
-<div class="fest-popup-stats" id="popupStats"></div>
-<p class="fest-popup-desc" id="popupDesc"></p>
-<a class="fest-popup-link" id="popupLink" href="#" target="_blank" rel="noopener">
-<span id="popupLinkText">Website festival</span>
-<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-</a>
-</div>
-</div>
+  <div class="fest-popup" id="festPopup">
+    <div class="fest-popup-hero">
+      <img id="popupImg" src="" alt=""/>
+      <div class="fest-popup-hero-overlay"></div>
+      <div class="fest-popup-hero-text">
+        <h2 id="popupName"></h2>
+        <div class="popup-date" id="popupDate"></div>
+      </div>
+      <button class="fest-popup-close" id="festPopupClose" aria-label="Sluiten">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="fest-popup-body">
+      <div class="fest-popup-stats" id="popupStats"></div>
+      <p class="fest-popup-desc" id="popupDesc"></p>
+      <a class="fest-popup-link" id="popupLink" href="#" target="_blank" rel="noopener">
+        <span id="popupLinkText"></span>
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
 </div>
 
+<!-- ─── TEAM & EVENTS ─── -->
 <section id="team-events">
-<div class="te-section-header reveal">
-<p class="label">Team &amp; cultuur</p>
-<h2 class="te-title">FESTIVALS MET<br><span class="red">HET TEAM</span></h2>
-<p class="te-sub">Werken bij BINC is meer dan werken achter het bureau. We gaan samen het veld op, naar de festivals waar onze merken live worden geactiveerd.</p>
-</div>
-<div class="te-carousel-wrap">
-<div class="te-carousel" id="teCarousel">
-<div class="te-slide is-active" data-key="kkc">
-<img class="te-slide-img" src="images/kkc/web/_O2A4099_web.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
-<div class="te-slide-overlay"></div>
-<div class="te-slide-content">
-<span class="te-slide-tag">Festival met het team</span>
-<h3 class="te-slide-name">Kamping Kitsch Club</h3>
-<div class="te-slide-date">Zaterdag 13 juni 2026</div>
-<div class="te-slide-cta"><span>Meer info</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-</div>
-</div>
-<div class="te-slide" data-key="dauwpop">
-<img class="te-slide-img" src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
-<div class="te-slide-overlay"></div>
-<div class="te-slide-content">
-<span class="te-slide-tag">Festival met het team</span>
-<h3 class="te-slide-name">Dauwpop</h3>
-<div class="te-slide-date">29 &amp; 30 mei 2026</div>
-<div class="te-slide-cta"><span>Meer info</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-</div>
-</div>
-<div class="te-slide" data-key="hoh">
-<img class="te-slide-img" src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
-<div class="te-slide-overlay"></div>
-<div class="te-slide-content">
-<span class="te-slide-tag">Festival met het team</span>
-<h3 class="te-slide-name">Harmony of Hardcore</h3>
-<div class="te-slide-date">15 mei 2026</div>
-<div class="te-slide-cta"><span>Meer info</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-</div>
-</div>
-<div class="te-slide" data-key="7th">
-<img class="te-slide-img" src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
-<div class="te-slide-overlay"></div>
-<div class="te-slide-content">
-<span class="te-slide-tag">Festival met het team</span>
-<h3 class="te-slide-name">7th Sunday</h3>
-<div class="te-slide-date">16 mei 2026</div>
-<div class="te-slide-cta"><span>Meer info</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-</div>
-</div>
-</div>
-<div class="te-carousel-nav">
-<button class="te-nav-btn" id="tePrev" aria-label="Vorige"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-<div class="te-dots" id="teDots">
-<div class="te-dot active" data-dot="0"></div>
-<div class="te-dot" data-dot="1"></div>
-<div class="te-dot" data-dot="2"></div>
-<div class="te-dot" data-dot="3"></div>
-</div>
-<button class="te-nav-btn" id="teNext" aria-label="Volgende"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
-</div>
-</div>
+  <div class="te-section-header reveal">
+    <p class="label" data-i18n="teamLabel">Team &amp; cultuur</p>
+    <h2 class="te-title">
+      <span data-i18n="teamTitle1">FESTIVALS MET</span><br>
+      <span class="red" data-i18n="teamTitle2">HET TEAM</span>
+    </h2>
+    <p class="te-sub" data-i18n="teamSub">Werken bij BINC is meer dan werken achter het bureau. We gaan samen het veld op, naar de festivals waar onze merken live worden geactiveerd.</p>
+  </div>
+  <div class="te-carousel-wrap">
+    <div class="te-carousel" id="teCarousel">
+      <div class="te-slide is-active" data-key="kkc">
+        <img class="te-slide-img" src="images/kkc/web/_O2A4099_web.jpg" alt="Kamping Kitsch Club" loading="lazy"/>
+        <div class="te-slide-overlay"></div>
+        <div class="te-slide-content">
+          <span class="te-slide-tag" data-i18n="slideTag">Festival met het team</span>
+          <h3 class="te-slide-name">Kamping Kitsch Club</h3>
+          <div class="te-slide-date" data-i18n="festKKCDate">Zaterdag 13 juni 2026</div>
+          <div class="te-slide-cta"><span data-i18n="slideMoreInfo">Meer info</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </div>
+      <div class="te-slide" data-key="dauwpop">
+        <img class="te-slide-img" src="images/7th/web/18.jpg" alt="Dauwpop" loading="lazy"/>
+        <div class="te-slide-overlay"></div>
+        <div class="te-slide-content">
+          <span class="te-slide-tag" data-i18n="slideTag">Festival met het team</span>
+          <h3 class="te-slide-name">Dauwpop</h3>
+          <div class="te-slide-date" data-i18n="festDauwpopDate">29 &amp; 30 mei 2026</div>
+          <div class="te-slide-cta"><span data-i18n="slideMoreInfo">Meer info</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </div>
+      <div class="te-slide" data-key="hoh">
+        <img class="te-slide-img" src="images/hoh/web/12.jpg" alt="Harmony of Hardcore" loading="lazy"/>
+        <div class="te-slide-overlay"></div>
+        <div class="te-slide-content">
+          <span class="te-slide-tag" data-i18n="slideTag">Festival met het team</span>
+          <h3 class="te-slide-name">Harmony of Hardcore</h3>
+          <div class="te-slide-date" data-i18n="festHOHDate">15 mei 2026</div>
+          <div class="te-slide-cta"><span data-i18n="slideMoreInfo">Meer info</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </div>
+      <div class="te-slide" data-key="7th">
+        <img class="te-slide-img" src="images/7th2/web/8.jpg" alt="7th Sunday" loading="lazy"/>
+        <div class="te-slide-overlay"></div>
+        <div class="te-slide-content">
+          <span class="te-slide-tag" data-i18n="slideTag">Festival met het team</span>
+          <h3 class="te-slide-name">7th Sunday</h3>
+          <div class="te-slide-date" data-i18n="fest7thDate">16 mei 2026</div>
+          <div class="te-slide-cta"><span data-i18n="slideMoreInfo">Meer info</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="te-carousel-nav">
+      <button class="te-nav-btn" id="tePrev" aria-label="Vorige"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="te-dots" id="teDots">
+        <div class="te-dot active" data-dot="0"></div>
+        <div class="te-dot" data-dot="1"></div>
+        <div class="te-dot" data-dot="2"></div>
+        <div class="te-dot" data-dot="3"></div>
+      </div>
+      <button class="te-nav-btn" id="teNext" aria-label="Volgende"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+  </div>
 </section>
 
+<!-- ─── VACATURES ─── -->
 <section id="vacatures">
-<div class="vac-header reveal">
-<p class="label" style="justify-content:center">Open stageplekken</p>
-<h2 class="vac-title">3 ROLLEN,<br><span class="red">1 DOEL.</span></h2>
-<p class="vac-sub">Drie stageplaatsen, elk met eigen verantwoordelijkheden. Altijd als volwaardig lid van het team.</p>
-</div>
-<div class="vac-grid">
-<div class="vac-card reveal">
-<p class="vac-role">Creatief &amp; Communicatie</p>
-<h3 class="vac-name">Marketing<br><span class="red">Stagiaire</span></h3>
-<p class="vac-body">Jij vertaalt onze merken naar content die raakt, van schap tot festival.</p>
-<div class="vac-highlights">
-<div class="vac-highlight">Social media strategie en contentcreatie</div>
-<div class="vac-highlight">Campagnes per merk uitwerken en bewaken</div>
-<div class="vac-highlight">Communicatie voor retail en festivals</div>
-<div class="vac-highlight">Prestaties analyseren en optimaliseren</div>
-</div>
-<a href="#open-sollicitatie" class="vac-btn">Solliciteer nu &rarr;</a>
-</div>
-<div class="vac-card reveal d1">
-<p class="vac-role">Tech &amp; Analyse</p>
-<h3 class="vac-name">Data &amp; ICT<br><span class="red">Stagiaire</span></h3>
-<p class="vac-body">Jij bouwt de tools en dashboards waarmee BINC sneller beslist.</p>
-<div class="vac-highlights">
-<div class="vac-highlight">Interne webapplicaties bouwen en beheren</div>
-<div class="vac-highlight">Data-integraties opzetten (Sheets, API's)</div>
-<div class="vac-highlight">KPI-dashboards en rapportages inrichten</div>
-<div class="vac-highlight">Werkprocessen automatiseren met slimme tooling</div>
-</div>
-<a href="#open-sollicitatie" class="vac-btn">Solliciteer nu &rarr;</a>
-</div>
-<div class="vac-card reveal d2">
-<p class="vac-role">Commercieel &amp; Retail</p>
-<h3 class="vac-name">Sales<br><span class="red">Stagiaire</span></h3>
-<p class="vac-body">Jij leert het vak in de praktijk, gewoon door mee te doen.</p>
-<div class="vac-highlights">
-<div class="vac-highlight">Meerijden bij retailbezoeken en filiaalactivaties</div>
-<div class="vac-highlight">Accountmanagers ondersteunen in het veld</div>
-<div class="vac-highlight">Nieuwe leads zoeken en benaderen</div>
-<div class="vac-highlight">Klantopvolging en rapportages bijhouden</div>
-</div>
-<a href="#open-sollicitatie" class="vac-btn">Solliciteer nu &rarr;</a>
-</div>
-</div>
+  <div class="vac-header reveal">
+    <p class="label" style="justify-content:center" data-i18n="vacLabel">Open stageplekken</p>
+    <h2 class="vac-title">
+      <span data-i18n="vacTitle1">3 ROLLEN,</span><br>
+      <span class="red" data-i18n="vacTitle2">1 DOEL.</span>
+    </h2>
+    <p class="vac-sub" data-i18n="vacSub">Drie stageplaatsen, elk met eigen verantwoordelijkheden. Altijd als volwaardig lid van het team.</p>
+  </div>
+  <div class="vac-grid">
+    <!-- Card 1 -->
+    <div class="vac-card reveal">
+      <p class="vac-role" data-i18n="vac1Role">Creatief &amp; Communicatie</p>
+      <h3 class="vac-name"><span data-i18n="vac1Name1">Marketing</span><br><span class="red" data-i18n="vac1Name2">Stagiaire</span></h3>
+      <p class="vac-body" data-i18n="vac1Body">Jij vertaalt onze merken naar content die raakt, van schap tot festival.</p>
+      <div class="vac-highlights">
+        <div class="vac-highlight" data-i18n="vac1H1">Social media strategie en contentcreatie</div>
+        <div class="vac-highlight" data-i18n="vac1H2">Campagnes per merk uitwerken en bewaken</div>
+        <div class="vac-highlight" data-i18n="vac1H3">Communicatie voor retail en festivals</div>
+        <div class="vac-highlight" data-i18n="vac1H4">Prestaties analyseren en optimaliseren</div>
+      </div>
+      <a href="#open-sollicitatie" class="vac-btn" data-i18n="vac1Btn">Solliciteer nu →</a>
+    </div>
+    <!-- Card 2 -->
+    <div class="vac-card reveal d1">
+      <p class="vac-role" data-i18n="vac2Role">Tech &amp; Analyse</p>
+      <h3 class="vac-name"><span data-i18n="vac2Name1">Data &amp; ICT</span><br><span class="red" data-i18n="vac2Name2">Stagiaire</span></h3>
+      <p class="vac-body" data-i18n="vac2Body">Jij bouwt de tools en dashboards waarmee BINC sneller beslist.</p>
+      <div class="vac-highlights">
+        <div class="vac-highlight" data-i18n="vac2H1">Interne webapplicaties bouwen en beheren</div>
+        <div class="vac-highlight" data-i18n="vac2H2">Data-integraties opzetten (Sheets, API's)</div>
+        <div class="vac-highlight" data-i18n="vac2H3">KPI-dashboards en rapportages inrichten</div>
+        <div class="vac-highlight" data-i18n="vac2H4">Werkprocessen automatiseren met slimme tooling</div>
+      </div>
+      <a href="#open-sollicitatie" class="vac-btn" data-i18n="vac2Btn">Solliciteer nu →</a>
+    </div>
+    <!-- Card 3 -->
+    <div class="vac-card reveal d2">
+      <p class="vac-role" data-i18n="vac3Role">Commercieel &amp; Retail</p>
+      <h3 class="vac-name"><span data-i18n="vac3Name1">Sales</span><br><span class="red" data-i18n="vac3Name2">Stagiaire</span></h3>
+      <p class="vac-body" data-i18n="vac3Body">Jij leert het vak in de praktijk, gewoon door mee te doen.</p>
+      <div class="vac-highlights">
+        <div class="vac-highlight" data-i18n="vac3H1">Meerijden bij retailbezoeken en filiaalactivaties</div>
+        <div class="vac-highlight" data-i18n="vac3H2">Accountmanagers ondersteunen in het veld</div>
+        <div class="vac-highlight" data-i18n="vac3H3">Nieuwe leads zoeken en benaderen</div>
+        <div class="vac-highlight" data-i18n="vac3H4">Klantopvolging en rapportages bijhouden</div>
+      </div>
+      <a href="#open-sollicitatie" class="vac-btn" data-i18n="vac3Btn">Solliciteer nu →</a>
+    </div>
+  </div>
 </section>
 
+<!-- ─── FORM ─── -->
 <section id="open-sollicitatie">
-<div class="form-wrap">
-<div class="form-intro reveal">
-<p class="label" style="justify-content:center">Open sollicitatie</p>
-<h2 class="form-title">LAAT VAN <span class="red">JE HOREN</span></h2>
-<p class="form-copy">Geen passende stageplaats gevonden, of wil je gewoon direct van je laten horen? Stuur een open sollicitatie. We bekijken elk profiel en nemen contact op als er een match is.</p>
-</div>
-<div class="lead-form reveal d2">
-<div class="form-block">
-<div class="form-row">
-<div class="f-field"><label for="f-voornaam">Voornaam *</label><input id="f-voornaam" name="voornaam" type="text" placeholder="Jan" required/></div>
-<div class="f-field"><label for="f-achternaam">Achternaam *</label><input id="f-achternaam" name="achternaam" type="text" placeholder="de Vries" required/></div>
-</div>
-<div class="form-row">
-<div class="f-field"><label for="f-email">E-mailadres *</label><input id="f-email" name="email" type="email" placeholder="jan@email.nl" required/></div>
-<div class="f-field"><label for="f-tel">Telefoonnummer</label><input id="f-tel" name="telefoon" type="tel" placeholder="+31 6 ..."/></div>
-</div>
-<div class="form-row">
-<div class="f-field"><label for="f-woon">Woonplaats</label><input id="f-woon" name="woonplaats" type="text" placeholder="Den Hout"/></div>
-<div class="f-field"><label for="f-li">LinkedIn profiel</label><input id="f-li" name="linkedin" type="url" placeholder="https://linkedin.com/in/..."/></div>
-</div>
-<div class="form-row">
-<div class="f-field">
-<label for="f-int">Interessegebied</label>
-<div class="select-wrap">
-<select id="f-int" name="interessegebied">
-<option value="" disabled selected>Selecteer richting</option>
-<option value="Marketing Stagiaire">Stage Marketing</option>
-<option value="Data &amp; ICT Stagiaire">Stage Data &amp; ICT</option>
-<option value="Sales Stagiaire">Stage Sales</option>
-<option value="Open sollicitatie">Open sollicitatie</option>
-<option value="Anders">Anders</option>
-</select>
-</div>
-</div>
-</div>
-<div class="f-field">
-<label for="f-mot">Motivatie</label>
-<textarea id="f-mot" name="motivatie" placeholder="Vertel kort wie je bent, waar je goed in bent en waarom je bij BINC International wilt werken of stage lopen."></textarea>
-</div>
-<div class="f-field">
-<label>Upload CV</label>
-<div class="file-box" id="fileBox">
-<input type="file" id="cvUpload" name="cv" accept=".pdf,.doc,.docx"/>
-<div class="file-content">
-<div class="file-main">
-<strong>Sleep je CV hier of klik om te uploaden</strong>
-<span>PDF, DOC of DOCX &middot; max. 10MB</span>
-</div>
-<div class="file-icon">+</div>
-</div>
-<div class="file-name" id="fileName">Nog geen bestand geselecteerd</div>
-</div>
-</div>
-<p class="privacy-note">Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw sollicitatie.</p>
-<div class="form-alert success" id="formSuccess"></div>
-<div class="form-alert error" id="formError"></div>
-<button class="btn-submit" id="applyBtn" type="button">Verstuur sollicitatie &rarr;</button>
-</div>
-</div>
-</div>
+  <div class="form-wrap">
+    <div class="form-intro reveal">
+      <p class="label" style="justify-content:center" data-i18n="formLabel">Open sollicitatie</p>
+      <h2 class="form-title">
+        <span data-i18n="formTitle1">LAAT VAN</span> <span class="red" data-i18n="formTitle2">JE HOREN</span>
+      </h2>
+      <p class="form-copy" data-i18n="formCopy">Geen passende stageplaats gevonden, of wil je gewoon direct van je laten horen? Stuur een open sollicitatie. We bekijken elk profiel en nemen contact op als er een match is.</p>
+    </div>
+    <div class="lead-form reveal d2">
+      <div class="form-block">
+        <div class="form-row">
+          <div class="f-field">
+            <label for="f-voornaam" data-i18n="fLabelFirst">Voornaam *</label>
+            <input id="f-voornaam" name="voornaam" type="text" data-i18n-placeholder="fPlaceholderFirst" placeholder="Jan" required/>
+          </div>
+          <div class="f-field">
+            <label for="f-achternaam" data-i18n="fLabelLast">Achternaam *</label>
+            <input id="f-achternaam" name="achternaam" type="text" data-i18n-placeholder="fPlaceholderLast" placeholder="de Vries" required/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label for="f-email" data-i18n="fLabelEmail">E-mailadres *</label>
+            <input id="f-email" name="email" type="email" data-i18n-placeholder="fPlaceholderEmail" placeholder="jan@email.nl" required/>
+          </div>
+          <div class="f-field">
+            <label for="f-tel" data-i18n="fLabelPhone">Telefoonnummer</label>
+            <input id="f-tel" name="telefoon" type="tel" data-i18n-placeholder="fPlaceholderPhone" placeholder="+31 6 ..."/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label for="f-woon" data-i18n="fLabelCity">Woonplaats</label>
+            <input id="f-woon" name="woonplaats" type="text" data-i18n-placeholder="fPlaceholderCity" placeholder="Den Hout"/>
+          </div>
+          <div class="f-field">
+            <label for="f-li" data-i18n="fLabelLI">LinkedIn profiel</label>
+            <input id="f-li" name="linkedin" type="url" placeholder="https://linkedin.com/in/..."/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label for="f-int" data-i18n="fLabelInterest">Interessegebied</label>
+            <div class="select-wrap">
+              <select id="f-int" name="interessegebied">
+                <option value="" disabled selected data-i18n="fSelectDefault">Selecteer richting</option>
+                <option value="Marketing Stagiaire" data-i18n="fOpt1">Stage Marketing</option>
+                <option value="Data &amp; ICT Stagiaire" data-i18n="fOpt2">Stage Data &amp; ICT</option>
+                <option value="Sales Stagiaire" data-i18n="fOpt3">Stage Sales</option>
+                <option value="Open sollicitatie" data-i18n="fOpt4">Open sollicitatie</option>
+                <option value="Anders" data-i18n="fOpt5">Anders</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="f-field">
+          <label for="f-mot" data-i18n="fLabelMot">Motivatie</label>
+          <textarea id="f-mot" name="motivatie" data-i18n-placeholder="fPlaceholderMot" placeholder="Vertel kort wie je bent..."></textarea>
+        </div>
+        <div class="f-field">
+          <label data-i18n="fLabelCV">Upload CV</label>
+          <div class="file-box" id="fileBox">
+            <input type="file" id="cvUpload" name="cv" accept=".pdf,.doc,.docx"/>
+            <div class="file-content">
+              <div class="file-main">
+                <strong data-i18n="fCVStrong">Sleep je CV hier of klik om te uploaden</strong>
+                <span data-i18n="fCVSpan">PDF, DOC of DOCX &middot; max. 10MB</span>
+              </div>
+              <div class="file-icon">+</div>
+            </div>
+            <div class="file-name" id="fileName" data-i18n="fCVNone">Nog geen bestand geselecteerd</div>
+          </div>
+        </div>
+        <p class="privacy-note" data-i18n="privacyNote">Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw sollicitatie.</p>
+        <div class="form-alert success" id="formSuccess"></div>
+        <div class="form-alert error" id="formError"></div>
+        <button class="btn-submit" id="applyBtn" type="button" data-i18n="btnSubmit">Verstuur sollicitatie →</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
-<div class="ft-brand reveal">
-<img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
-<div class="ft-socials">
-<a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
-<a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
-</div>
-</div>
-<div class="ft-info reveal d1">
-<div class="ft-item"><p class="ft-h">BINC adres</p><p>Wim R&ouml;therlaan 25,<br>5051 JS Goirle</p></div>
-<div class="ft-item"><p class="ft-h">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
-<div class="ft-item"><p class="ft-h">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
-</div>
+  <div class="ft-brand reveal">
+    <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
+    <div class="ft-socials">
+      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg></a>
+      <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+    </div>
+  </div>
+  <div class="ft-info reveal d1">
+    <div class="ft-item"><p class="ft-h" data-i18n="ftAddress">BINC adres</p><p>Wim R&ouml;therlaan 25,<br>5051 JS Goirle</p></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="ftEmail">E-mailadres</p><a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a></div>
+    <div class="ft-item"><p class="ft-h" data-i18n="ftPhone">Telefoonnummer</p><a href="tel:+31132032643">013 203 2643</a></div>
+  </div>
 </footer>
 <div class="ft-bar">
-<div class="ft-bar-left">
-<span class="ft-copy">&copy; 2025 <strong>BINC International B.V.</strong> Alle rechten voorbehouden.</span>
-<span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)">Full-service B2B voor ambitieuze merken in Nederland.</span>
-</div>
-<div class="ft-bar-right"><span class="ft-kvk">KVK: 98970887</span></div>
+  <div class="ft-bar-left">
+    <span class="ft-copy" data-i18n="ftCopyright">&copy; 2025 <strong>BINC International B.V.</strong> Alle rechten voorbehouden.</span>
+    <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)" data-i18n="ftTagline">Full-service B2B voor ambitieuze merken in Nederland.</span>
+  </div>
+  <div class="ft-bar-right"><span class="ft-kvk">KVK: 98970887</span></div>
 </div>
 
 <script>
-/* ── CONST ── */
-const API_URL = 'https://server-medewerker-kpi.onrender.com/api/sollicitatie';
+/* ══════════════════════════════════════════════════
+   i18n ENGINE
+   ══════════════════════════════════════════════════ */
+let currentLang = 'nl';
 
+function applyLang(lang) {
+  currentLang = lang;
+  const t = I18N[lang];
+
+  /* html lang attr + page title */
+  document.documentElement.lang = t.htmlLang;
+  document.title = t.pageTitle;
+
+  /* text content */
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  /* placeholders */
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  /* select options */
+  document.querySelectorAll('select option[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  /* The copyright span contains a <strong>, rebuild it */
+  const copyEl = document.querySelector('[data-i18n="ftCopyright"]');
+  if (copyEl) {
+    if (lang === 'nl') {
+      copyEl.innerHTML = '&copy; 2025 <strong>BINC International B.V.</strong> Alle rechten voorbehouden.';
+    } else {
+      copyEl.innerHTML = '&copy; 2025 <strong>BINC International B.V.</strong> All rights reserved.';
+    }
+  }
+
+  /* update all lang buttons active state */
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+
+  /* persist */
+  try { localStorage.setItem('binc_lang', lang); } catch(e) {}
+}
+
+/* lang button clicks — covers nav, fab, drawer */
+document.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    applyLang(b.dataset.lang);
+    tog(false); /* close drawer if open */
+  });
+});
+
+/* restore saved preference */
+try {
+  const saved = localStorage.getItem('binc_lang');
+  if (saved && I18N[saved]) applyLang(saved);
+} catch(e) {}
+
+/* ══════════════════════════════════════════════════
+   FESTIVAL DATA (keyed; desc/date pulled from i18n)
+   ══════════════════════════════════════════════════ */
 const FEST_DATA = {
-  kkc:    {name:'Kamping Kitsch Club',  date:'Zaterdag 13 juni 2026', img:'images/kkc/web/_O2A4099_web.jpg',  desc:'Kamping Kitsch Club is één van de meest kleurrijke en uitbundige festivalconcepten van Nederland. Met het hele BINC-team erop uit voor een dag vol glitter, kitsch en onversneden feestvreugde. Onze merken werden geactiveerd midden in de festival crowd en onze producten waren overal zichtbaar.', stats:[{num:'30.000+',label:'Bezoekers'},{num:'1 dag',label:'Editie'},{num:'2026',label:'Jaar'}], link:'https://www.kampingkitschclub.nl', linkLabel:'kampingkitschclub.nl'},
-  dauwpop:{name:'Dauwpop',             date:'29 & 30 mei 2026',       img:'images/7th/web/18.jpg',            desc:'Dauwpop is het oudste gratis pop festival van Nederland, gehouden in de mooie omgeving van Hellendoorn. Met het team gingen we twee dagen lang het veld op. Onze merken werden geproefd door duizenden festivalgangers in een ontspannen zomerse sfeer.',           stats:[{num:'50.000+',label:'Bezoekers'},{num:'2 dagen',label:'Editie'},{num:'2026',label:'Jaar'}], link:'https://www.dauwpop.nl',          linkLabel:'dauwpop.nl'},
-  hoh:    {name:'Harmony of Hardcore', date:'15 mei 2026',            img:'images/hoh/web/12.jpg',            desc:'Harmony of Hardcore is een van de grootste hardcore dance festivals ter wereld. Maximale energie, maximaal teamgevoel. BINC was aanwezig pal in het hart van de hardcore scene, naast een loyale en gepassioneerde fanbase die onze merken omarmt.',               stats:[{num:'35.000+',label:'Bezoekers'},{num:'1 dag', label:'Editie'},{num:'2026',label:'Jaar'}], link:'https://harmonyofhardcore.nl',    linkLabel:'harmonyofhardcore.nl'},
-  '7th':  {name:'7th Sunday',          date:'16 mei 2026',            img:'images/7th2/web/8.jpg',            desc:'Van zonsopgang tot zonsondergang met het team op één van de meest iconische dance festivals van Nederland. 7th Sunday brengt het beste van de dance scene bij elkaar, en BINC was er bij van het eerste tot het laatste uur. Duizenden handen, één smaak.',      stats:[{num:'20.000+',label:'Bezoekers'},{num:'1 dag', label:'Editie'},{num:'2026',label:'Jaar'}], link:'https://7thsunday.nl',            linkLabel:'7thsunday.nl'}
+  kkc:     { name:'Kamping Kitsch Club',  img:'images/kkc/web/_O2A4099_web.jpg',  stats:[{num:'30.000+',labelKey:'popupStatVisitors'},{num:'1',labelKey:'popupStatEdition'},{num:'2026',labelKey:'popupStatYear'}], daysKey:'popupStatDays1', descKey:'popupKKCDesc',     dateKey:'festKKCDate',     link:'https://www.kampingkitschclub.nl', linkKey:'popupLinkLabel' },
+  dauwpop: { name:'Dauwpop',              img:'images/7th/web/18.jpg',            stats:[{num:'50.000+',labelKey:'popupStatVisitors'},{num:'2',labelKey:'popupStatEdition'},{num:'2026',labelKey:'popupStatYear'}], daysKey:'popupStatDays2', descKey:'popupDauwpopDesc', dateKey:'festDauwpopDate', link:'https://www.dauwpop.nl',          linkKey:'popupLinkLabel' },
+  hoh:     { name:'Harmony of Hardcore',  img:'images/hoh/web/12.jpg',            stats:[{num:'35.000+',labelKey:'popupStatVisitors'},{num:'1',labelKey:'popupStatEdition'},{num:'2026',labelKey:'popupStatYear'}], daysKey:'popupStatDays1', descKey:'popupHOHDesc',     dateKey:'festHOHDate',     link:'https://harmonyofhardcore.nl',    linkKey:'popupLinkLabel' },
+  '7th':   { name:'7th Sunday',           img:'images/7th2/web/8.jpg',            stats:[{num:'20.000+',labelKey:'popupStatVisitors'},{num:'1',labelKey:'popupStatEdition'},{num:'2026',labelKey:'popupStatYear'}], daysKey:'popupStatDays1', descKey:'popup7thDesc',     dateKey:'fest7thDate',     link:'https://7thsunday.nl',            linkKey:'popupLinkLabel' }
 };
 
-/* Product images lijst (Set A — 19 producten) */
+/* ── PRODUCT IMAGES ── */
 const PROD_IMGS = [
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/original.png',  alt:'Gold Dry Original Premix'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/dream.png',    alt:'Gold Dry Dream Premix'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/sky.png',      alt:'Gold Dry Sky Premix'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/mindset.png',  alt:'Gold Dry Mindset Premix'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/eclipse.png',  alt:'Gold Dry Eclipse Premix'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/unite.png',    alt:'Gold Dry Unite Premix'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/fruit-punch.png',      alt:'BeatBox Fruit Punch'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/berry-razzberry.png',  alt:'BeatBox Berry'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/orange-blast.png',     alt:'BeatBox Orange Blast'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/juicy-mango.png',      alt:'BeatBox Juicy Mango'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/original.png',   alt:'Gold Dry Original Soda'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/dream.png',      alt:'Gold Dry Dream Soda'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/sky.png',        alt:'Gold Dry Sky Soda'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/mindset.png',    alt:'Gold Dry Mindset Soda'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/eclipse.png',    alt:'Gold Dry Eclipse Soda'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/unite.png',      alt:'Gold Dry Unite Soda'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/original.png',    alt:'Gold Dry Original Premix'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/dream.png',      alt:'Gold Dry Dream Premix'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/sky.png',        alt:'Gold Dry Sky Premix'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/mindset.png',    alt:'Gold Dry Mindset Premix'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/eclipse.png',    alt:'Gold Dry Eclipse Premix'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/premix/unite.png',      alt:'Gold Dry Unite Premix'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/fruit-punch.png',        alt:'BeatBox Fruit Punch'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/berry-razzberry.png',    alt:'BeatBox Berry'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/orange-blast.png',       alt:'BeatBox Orange Blast'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/beatbox/juicy-mango.png',        alt:'BeatBox Juicy Mango'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/original.png',     alt:'Gold Dry Original Soda'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/dream.png',        alt:'Gold Dry Dream Soda'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/sky.png',          alt:'Gold Dry Sky Soda'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/mindset.png',      alt:'Gold Dry Mindset Soda'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/eclipse.png',      alt:'Gold Dry Eclipse Soda'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/gold-dry/soda/unite.png',        alt:'Gold Dry Unite Soda'},
   {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/blueberry.png', alt:'FeelSoGood Blueberry'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/lemon.png',   alt:'FeelSoGood Lemon'},
-  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/watermelon.png', alt:'FeelSoGood Watermelon'}
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/lemon.png',     alt:'FeelSoGood Lemon'},
+  {src:'https://raw.githubusercontent.com/Krijn-BINC/binc_site_render_test/refs/heads/main/images/feelsogood-water/watermelon.png',alt:'FeelSoGood Watermelon'}
 ];
 
 /* ── CUSTOM CURSOR ── */
@@ -840,15 +1175,7 @@ window.addEventListener('scroll', () => document.getElementById('nav').classList
 const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }), {threshold:.1});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ── LANG BUTTONS ── */
-document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
-  document.querySelectorAll('.lang-btn').forEach(x => x.classList.toggle('active', x.dataset.lang === b.dataset.lang));
-  tog(false);
-}));
-
-/* ══════════════════════════════════════════
-   DESKTOP: product scroll met loader
-   ══════════════════════════════════════════ */
+/* ── DESKTOP PRODUCT SCROLL ── */
 (function initProdScroll(){
   const track    = document.getElementById('prodTrack');
   const outer    = document.getElementById('prodScrollOuter');
@@ -857,131 +1184,50 @@ document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', 
   const prodImgs = Array.from(track.querySelectorAll('img[data-prod]'));
   const total    = prodImgs.length;
   let loaded = 0, started = false;
-
-  function onAllLoaded(){
-    if(started) return; started = true;
-    fill.style.width = '100%';
-    setTimeout(() => {
-      loader.classList.add('hidden');
-      outer.classList.add('visible');
-      track.classList.add('running');
-    }, 280);
-  }
-  function onImgLoad(){ loaded++; fill.style.width = Math.round((loaded/total)*100)+'%'; if(loaded>=total) onAllLoaded(); }
+  function onAllLoaded(){ if(started) return; started = true; fill.style.width='100%'; setTimeout(() => { loader.classList.add('hidden'); outer.classList.add('visible'); track.classList.add('running'); }, 280); }
+  function onImgLoad(){ loaded++; fill.style.width=Math.round((loaded/total)*100)+'%'; if(loaded>=total) onAllLoaded(); }
   const safe = setTimeout(() => { if(!started) onAllLoaded(); }, 6000);
-
-  prodImgs.forEach(img => {
-    if(img.complete && img.naturalWidth > 0){ onImgLoad(); }
-    else { img.addEventListener('load', onImgLoad, {once:true}); img.addEventListener('error', onImgLoad, {once:true}); }
-  });
-  if(loaded >= total){ clearTimeout(safe); onAllLoaded(); }
-
-  const visObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(started) track.style.animationPlayState = e.isIntersecting ? '' : 'paused'; });
-  }, {threshold:0});
+  prodImgs.forEach(img => { if(img.complete && img.naturalWidth>0){ onImgLoad(); } else { img.addEventListener('load',onImgLoad,{once:true}); img.addEventListener('error',onImgLoad,{once:true}); } });
+  if(loaded>=total){ clearTimeout(safe); onAllLoaded(); }
+  const visObs = new IntersectionObserver(entries => { entries.forEach(e => { if(started) track.style.animationPlayState = e.isIntersecting ? '' : 'paused'; }); },{threshold:0});
   visObs.observe(outer);
 })();
 
-/* ══════════════════════════════════════════
-   MOBIEL: depth carousel (like te-carousel)
-   ══════════════════════════════════════════ */
+/* ── MOBILE PRODUCT CAROUSEL ── */
 (function initMobileCarousel(){
-  const stage   = document.getElementById('prodMobileStage');
-  const dotsWrap= document.getElementById('prodMobileDots');
-  const btnPrev = document.getElementById('prodMobilePrev');
-  const btnNext = document.getElementById('prodMobileNext');
-  const total   = PROD_IMGS.length;
+  const stage    = document.getElementById('prodMobileStage');
+  const dotsWrap = document.getElementById('prodMobileDots');
+  const btnPrev  = document.getElementById('prodMobilePrev');
+  const btnNext  = document.getElementById('prodMobileNext');
+  const total    = PROD_IMGS.length;
   let idx = 0;
-
-  /* Bouw items */
-  PROD_IMGS.forEach((p, i) => {
-    const div = document.createElement('div');
-    div.className = 'prod-mobile-item';
-    const img = document.createElement('img');
-    img.src      = p.src;
-    img.alt      = p.alt;
-    img.loading  = i === 0 ? 'eager' : 'lazy';
-    img.decoding = 'async';
-    div.appendChild(img);
-    stage.appendChild(div);
+  PROD_IMGS.forEach((p,i) => {
+    const div = document.createElement('div'); div.className='prod-mobile-item';
+    const img = document.createElement('img'); img.src=p.src; img.alt=p.alt; img.loading=i===0?'eager':'lazy'; img.decoding='async';
+    div.appendChild(img); stage.appendChild(div);
   });
-
-  /* Dots — groepeer per 5 om ruimte te besparen (19 dots = te veel) */
-  /* Simpele dot per item, maar toon max 7 zichtbare dots via clip */
-  const MAX_DOTS = 7; // toon altijd een venster van 7
-  for(let i = 0; i < Math.min(total, MAX_DOTS); i++){
-    const d = document.createElement('div');
-    d.className = 'prod-mobile-dot' + (i===0?' active':'');
-    dotsWrap.appendChild(d);
-  }
-
+  const MAX_DOTS = 7;
+  for(let i=0;i<Math.min(total,MAX_DOTS);i++){ const d=document.createElement('div'); d.className='prod-mobile-dot'+(i===0?' active':''); dotsWrap.appendChild(d); }
   const items = Array.from(stage.querySelectorAll('.prod-mobile-item'));
   const dots  = Array.from(dotsWrap.querySelectorAll('.prod-mobile-dot'));
-
   function render(){
-    const n = total;
-    items.forEach((el, i) => {
-      let diff = i - idx;
-      if(diff >  n/2) diff -= n;
-      if(diff < -n/2) diff += n;
-      const abs = Math.abs(diff);
-
-      if(abs === 0){
-        el.style.transform  = 'translateX(0) scale(1)';
-        el.style.opacity    = '1';
-        el.style.filter     = 'brightness(1)';
-        el.style.zIndex     = '5';
-        el.classList.add('is-active');
-      } else if(abs === 1){
-        const dir = diff > 0 ? 1 : -1;
-        el.style.transform  = `translateX(${dir * 62}%) scale(.72)`;
-        el.style.opacity    = '.45';
-        el.style.filter     = 'brightness(.55)';
-        el.style.zIndex     = '2';
-        el.classList.remove('is-active');
-      } else if(abs === 2){
-        const dir = diff > 0 ? 1 : -1;
-        el.style.transform  = `translateX(${dir * 95}%) scale(.52)`;
-        el.style.opacity    = '.15';
-        el.style.filter     = 'brightness(.35)';
-        el.style.zIndex     = '1';
-        el.classList.remove('is-active');
-      } else {
-        // buiten beeld
-        const dir = diff > 0 ? 1 : -1;
-        el.style.transform  = `translateX(${dir * 120}%) scale(.4)`;
-        el.style.opacity    = '0';
-        el.style.filter     = 'brightness(.2)';
-        el.style.zIndex     = '0';
-        el.classList.remove('is-active');
-      }
+    const n=total;
+    items.forEach((el,i) => {
+      let diff=i-idx; if(diff>n/2) diff-=n; if(diff<-n/2) diff+=n; const abs=Math.abs(diff);
+      if(abs===0){ el.style.transform='translateX(0) scale(1)'; el.style.opacity='1'; el.style.filter='brightness(1)'; el.style.zIndex='5'; el.classList.add('is-active'); }
+      else if(abs===1){ const dir=diff>0?1:-1; el.style.transform=`translateX(${dir*62}%) scale(.72)`; el.style.opacity='.45'; el.style.filter='brightness(.55)'; el.style.zIndex='2'; el.classList.remove('is-active'); }
+      else if(abs===2){ const dir=diff>0?1:-1; el.style.transform=`translateX(${dir*95}%) scale(.52)`; el.style.opacity='.15'; el.style.filter='brightness(.35)'; el.style.zIndex='1'; el.classList.remove('is-active'); }
+      else { const dir=diff>0?1:-1; el.style.transform=`translateX(${dir*120}%) scale(.4)`; el.style.opacity='0'; el.style.filter='brightness(.2)'; el.style.zIndex='0'; el.classList.remove('is-active'); }
     });
-
-    /* Dots: schuivend venster */
-    const half  = Math.floor(MAX_DOTS / 2);
-    const start = Math.max(0, Math.min(idx - half, total - MAX_DOTS));
-    dots.forEach((d, i) => {
-      const realIdx = start + i;
-      d.classList.toggle('active', realIdx === idx);
-    });
+    const half=Math.floor(MAX_DOTS/2), start=Math.max(0,Math.min(idx-half,total-MAX_DOTS));
+    dots.forEach((d,i) => { const realIdx=start+i; d.classList.toggle('active',realIdx===idx); });
   }
-
-  function go(n){
-    idx = ((n % total) + total) % total;
-    render();
-  }
-
-  btnPrev.addEventListener('click', () => go(idx - 1));
-  btnNext.addEventListener('click', () => go(idx + 1));
-
-  /* Swipe */
-  let swX = 0;
-  stage.addEventListener('touchstart', e => { swX = e.changedTouches[0].screenX; }, {passive:true});
-  stage.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].screenX - swX;
-    if(Math.abs(dx) > 36) go(idx + (dx < 0 ? 1 : -1));
-  }, {passive:true});
-
+  function go(n){ idx=((n%total)+total)%total; render(); }
+  btnPrev.addEventListener('click',()=>go(idx-1));
+  btnNext.addEventListener('click',()=>go(idx+1));
+  let swX=0;
+  stage.addEventListener('touchstart',e=>{ swX=e.changedTouches[0].screenX; },{passive:true});
+  stage.addEventListener('touchend',  e=>{ const dx=e.changedTouches[0].screenX-swX; if(Math.abs(dx)>36) go(idx+(dx<0?1:-1)); },{passive:true});
   render();
 })();
 
@@ -989,87 +1235,80 @@ document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', 
 const teSlides = Array.from(document.querySelectorAll('.te-slide'));
 const teDots   = Array.from(document.querySelectorAll('.te-dot'));
 let teIdx = 0;
-
 function updateTeCarousel(newIdx){
   teIdx = ((newIdx % teSlides.length) + teSlides.length) % teSlides.length;
   const n = teSlides.length;
-  teSlides.forEach((s, i) => {
+  teSlides.forEach((s,i) => {
     s.classList.remove('is-active','is-left','is-right','is-far-left','is-far-right');
-    let diff = i - teIdx;
-    if(diff >  n/2) diff -= n;
-    if(diff < -n/2) diff += n;
-    if     (diff ===  0) s.classList.add('is-active');
-    else if(diff === -1) s.classList.add('is-left');
-    else if(diff ===  1) s.classList.add('is-right');
-    else if(diff  <  -1) s.classList.add('is-far-left');
-    else                 s.classList.add('is-far-right');
+    let diff=i-teIdx; if(diff>n/2) diff-=n; if(diff<-n/2) diff+=n;
+    if(diff===0) s.classList.add('is-active');
+    else if(diff===-1) s.classList.add('is-left');
+    else if(diff===1)  s.classList.add('is-right');
+    else if(diff<-1)   s.classList.add('is-far-left');
+    else               s.classList.add('is-far-right');
   });
-  teDots.forEach((d, i) => d.classList.toggle('active', i === teIdx));
+  teDots.forEach((d,i) => d.classList.toggle('active', i===teIdx));
 }
-
-teSlides.forEach((slide, i) => {
-  slide.addEventListener('click', () => {
-    if(i === teIdx) openPopup(slide.dataset.key);
-    else            updateTeCarousel(i);
-  });
-  slide.setAttribute('role','button');
-  slide.setAttribute('tabindex','0');
-  slide.addEventListener('keydown', e => {
-    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); if(i===teIdx) openPopup(slide.dataset.key); else updateTeCarousel(i); }
-  });
+teSlides.forEach((slide,i) => {
+  slide.addEventListener('click', () => { if(i===teIdx) openPopup(slide.dataset.key); else updateTeCarousel(i); });
+  slide.setAttribute('role','button'); slide.setAttribute('tabindex','0');
+  slide.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); if(i===teIdx) openPopup(slide.dataset.key); else updateTeCarousel(i); } });
 });
-document.getElementById('tePrev').addEventListener('click', () => updateTeCarousel(teIdx - 1));
-document.getElementById('teNext').addEventListener('click', () => updateTeCarousel(teIdx + 1));
-teDots.forEach((d, i) => d.addEventListener('click', () => updateTeCarousel(i)));
-
-let swX = 0;
-document.getElementById('teCarousel').addEventListener('touchstart', e => { swX = e.changedTouches[0].screenX; }, {passive:true});
-document.getElementById('teCarousel').addEventListener('touchend',   e => { const dx = e.changedTouches[0].screenX - swX; if(Math.abs(dx)>50) updateTeCarousel(teIdx + (dx<0?1:-1)); }, {passive:true});
+document.getElementById('tePrev').addEventListener('click', () => updateTeCarousel(teIdx-1));
+document.getElementById('teNext').addEventListener('click', () => updateTeCarousel(teIdx+1));
+teDots.forEach((d,i) => d.addEventListener('click', () => updateTeCarousel(i)));
+let swX=0;
+document.getElementById('teCarousel').addEventListener('touchstart',e=>{ swX=e.changedTouches[0].screenX; },{passive:true});
+document.getElementById('teCarousel').addEventListener('touchend',  e=>{ const dx=e.changedTouches[0].screenX-swX; if(Math.abs(dx)>50) updateTeCarousel(teIdx+(dx<0?1:-1)); },{passive:true});
 updateTeCarousel(0);
 
 /* ── FESTIVAL POPUP ── */
 const festBackdrop = document.getElementById('festBackdrop');
 function openPopup(key){
   const d = FEST_DATA[key]; if(!d) return;
+  const t = I18N[currentLang];
   document.getElementById('popupImg').src          = d.img;
   document.getElementById('popupImg').alt          = d.name;
   document.getElementById('popupName').textContent = d.name;
-  document.getElementById('popupDate').textContent = d.date;
-  document.getElementById('popupDesc').textContent = d.desc;
-  document.getElementById('popupStats').innerHTML  = d.stats.map(s=>`<div class="popup-stat"><div class="popup-stat-num">${s.num}</div><div class="popup-stat-label">${s.label}</div></div>`).join('');
+  document.getElementById('popupDate').textContent = t[d.dateKey] || '';
+  document.getElementById('popupDesc').textContent = t[d.descKey] || '';
+  document.getElementById('popupStats').innerHTML  = d.stats.map(s => `<div class="popup-stat"><div class="popup-stat-num">${s.num}</div><div class="popup-stat-label">${t[s.labelKey]||s.labelKey}</div></div>`).join('');
   document.getElementById('popupLink').href        = d.link;
-  document.getElementById('popupLinkText').textContent = d.linkLabel;
+  document.getElementById('popupLinkText').textContent = t[d.linkKey] || '';
   festBackdrop.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closePopup(){ festBackdrop.classList.remove('open'); document.body.style.overflow = ''; }
+function closePopup(){ festBackdrop.classList.remove('open'); document.body.style.overflow=''; }
 document.getElementById('festPopupClose').addEventListener('click', closePopup);
 festBackdrop.addEventListener('click', e => { if(e.target===festBackdrop) closePopup(); });
-document.addEventListener('keydown', e => { if(e.key==='Escape' && festBackdrop.classList.contains('open')) closePopup(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape'&&festBackdrop.classList.contains('open')) closePopup(); });
 
 /* ── FILE UPLOAD ── */
-const cv = document.getElementById('cvUpload'), fn = document.getElementById('fileName'), fb = document.getElementById('fileBox');
-cv.addEventListener('change', function(){ fn.textContent = this.files[0] ? this.files[0].name : 'Nog geen bestand geselecteerd'; });
-fb.addEventListener('dragover',  e => { e.preventDefault(); fb.style.borderColor='rgba(192,57,43,.8)'; fb.style.background='rgba(192,57,43,.12)'; });
-fb.addEventListener('dragleave', () => { fb.style.borderColor=''; fb.style.background=''; });
-fb.addEventListener('drop', e => {
+const cv=document.getElementById('cvUpload'), fn=document.getElementById('fileName'), fb=document.getElementById('fileBox');
+cv.addEventListener('change', function(){ fn.textContent = this.files[0] ? this.files[0].name : I18N[currentLang].fCVNone; });
+fb.addEventListener('dragover',  e=>{ e.preventDefault(); fb.style.borderColor='rgba(192,57,43,.8)'; fb.style.background='rgba(192,57,43,.12)'; });
+fb.addEventListener('dragleave', ()=>{ fb.style.borderColor=''; fb.style.background=''; });
+fb.addEventListener('drop', e=>{
   e.preventDefault(); fb.style.borderColor=''; fb.style.background='';
   if(e.dataTransfer.files[0]){ const dt=new DataTransfer(); dt.items.add(e.dataTransfer.files[0]); cv.files=dt.files; fn.textContent=e.dataTransfer.files[0].name; }
 });
 
-/* ── SOLLICITATIE FORM ── */
-const ab = document.getElementById('applyBtn'), fs = document.getElementById('formSuccess'), fe = document.getElementById('formError');
+/* ── FORM SUBMIT ── */
+const API_URL = 'https://server-medewerker-kpi.onrender.com/api/sollicitatie';
+const ab=document.getElementById('applyBtn'), fs=document.getElementById('formSuccess'), fe=document.getElementById('formError');
 function showA(type){ fs.classList.remove('show'); fe.classList.remove('show'); if(type==='success') fs.classList.add('show'); if(type==='error') fe.classList.add('show'); }
 function setBtnState(s){
-  ab.disabled = false; ab.className = 'btn-submit';
-  if(s==='loading'){ ab.disabled=true; ab.classList.add('sending'); ab.innerHTML='<span class="spinner"></span>Versturen...'; }
-  else if(s==='success'){ ab.disabled=true; ab.classList.add('success'); ab.textContent='Sollicitatie verstuurd'; }
-  else if(s==='error'){ ab.textContent='Opnieuw proberen'; }
-  else { ab.textContent='Verstuur sollicitatie'; }
+  const t=I18N[currentLang];
+  ab.disabled=false; ab.className='btn-submit';
+  if(s==='loading'){ ab.disabled=true; ab.classList.add('sending'); ab.innerHTML=`<span class="spinner"></span>${t.btnSending}`; }
+  else if(s==='success'){ ab.disabled=true; ab.classList.add('success'); ab.textContent=t.btnSent; }
+  else if(s==='error'){ ab.textContent=t.btnRetry; }
+  else { ab.textContent=t.btnSubmit; }
 }
 ab.addEventListener('click', async () => {
+  const t=I18N[currentLang];
   const v=document.getElementById('f-voornaam').value.trim(), a=document.getElementById('f-achternaam').value.trim(), e=document.getElementById('f-email').value.trim();
-  if(!v||!a||!e){ fe.textContent='Vul minimaal je voornaam, achternaam en e-mailadres in.'; showA('error'); return; }
+  if(!v||!a||!e){ fe.textContent=t.alertValidation; showA('error'); return; }
   const fd=new FormData();
   fd.append('voornaam',v); fd.append('achternaam',a); fd.append('email',e);
   fd.append('telefoon',document.getElementById('f-tel').value.trim());
@@ -1077,22 +1316,21 @@ ab.addEventListener('click', async () => {
   fd.append('linkedin',document.getElementById('f-li').value.trim());
   fd.append('interessegebied',document.getElementById('f-int').value);
   fd.append('motivatie',document.getElementById('f-mot').value.trim());
-  if(cv.files && cv.files[0]) fd.append('cv',cv.files[0]);
+  if(cv.files&&cv.files[0]) fd.append('cv',cv.files[0]);
   setBtnState('loading'); showA(null);
   try{
     const r=await fetch(API_URL,{method:'POST',body:fd});
     const d=await r.json();
-    if(r.ok && d.success){ setBtnState('success'); fs.textContent='Je sollicitatie is succesvol verstuurd. We nemen zo snel mogelijk contact met je op!'; showA('success'); fs.scrollIntoView({behavior:'smooth',block:'center'}); }
+    if(r.ok&&d.success){ setBtnState('success'); fs.textContent=t.alertSuccess; showA('success'); fs.scrollIntoView({behavior:'smooth',block:'center'}); }
     else throw new Error(d.error||'Unknown');
-  }catch(err){ setBtnState('error'); fe.textContent='Er is iets misgegaan. Probeer het opnieuw of mail info@bincinternational.nl'; showA('error'); }
+  }catch(err){ setBtnState('error'); fe.textContent=t.alertError; showA('error'); }
 });
 
 /* ── JUMP OVERLAY ── */
 document.querySelectorAll('a[href="index.html#lead"]').forEach(l => l.addEventListener('click', e => {
   e.preventDefault();
-  const o = document.getElementById('jumpOverlay');
-  o.classList.add('active');
-  setTimeout(() => window.location.href='index.html#lead', 900);
+  const o=document.getElementById('jumpOverlay'); o.classList.add('active');
+  setTimeout(()=>window.location.href='index.html#lead', 900);
 }));
 </script>
 </body>
