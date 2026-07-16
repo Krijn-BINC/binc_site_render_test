@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta name="description" content="Maak kennis met het team achter BINC International. Een jong en gedreven team van 8 professionals dat merken helpt groeien in retail, horeca en evenementen door heel Nederland."/>
+<meta name="description" content="Maak kennis met het team achter BINC International. Een jong en gedreven team van 7 professionals dat merken helpt groeien in retail, horeca en evenementen door heel Nederland."/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRHH6551CL"></script>
 <script>
@@ -525,7 +525,7 @@ footer{
 
 <!-- ══ TEAM ══ -->
 <section class="team-section">
-  <div class="ghost-num">8</div>
+  <div class="ghost-num">7</div>
 
   <div class="section-header reveal">
     <p class="section-label" data-i18n="team.label">Meet the team</p>
@@ -598,29 +598,9 @@ footer{
   </div>
 
   <!-- Rij 2 -->
-  <div class="team-grid-3">
+  <div class="team-grid-2">
 
     <div class="card reveal">
-      <div class="card-photo">
-        <img src="images/personeel/Tim1.jpg" alt="Tim van Helvoort"/>
-      </div>
-      <div class="card-divider"></div><div class="card-body">
-        <span class="card-role" data-i18n="role.tim">New Business Development Manager</span>
-        <h3 class="card-name">Tim van<br>Helvoort</h3>
-        <div class="card-contacts">
-          <a href="mailto:Tim@bincinternational.nl">
-            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-            Tim@bincinternational.nl
-          </a>
-          <a href="tel:+31645476200">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            +31 6 45476200
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card reveal d1">
       <div class="card-photo">
         <img src="images/personeel/Krijn3.jpg" alt="Krijn van Lankveld"/>
       </div>
@@ -640,7 +620,7 @@ footer{
       </div>
     </div>
 
-    <div class="card reveal d2">
+    <div class="card reveal d1">
       <div class="card-photo">
         <img src="images/personeel/Sebas1.jpg" alt="Sebastian Beekhuis"/>
       </div>
@@ -677,9 +657,9 @@ footer{
             <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
             Martijn@bincinternational.nl
           </a>
-          <a href="tel:+31621335252">
+          <a href="tel:+31645476200">
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            +31 6 21 33 52 52
+            +31 6 45476200
           </a>
         </div>
       </div>
@@ -776,7 +756,6 @@ const TRANSLATIONS = {
     'role.merlijn':'Director',
     'role.jorrit':'Manager Operations & Events',
     'role.maud':'Sales Manager',
-    'role.tim':'New Business Development Manager — Regiomanager West-Midden Nederland',
     'role.krijn':'Systems & Data Coordinator',
     'role.sebastian':'Regiomanager Oost-Noord Nederland',
     'role.martijn':'Regiomanager Zuid-Nederland & België',
@@ -798,7 +777,6 @@ const TRANSLATIONS = {
     'role.merlijn':'Director',
     'role.jorrit':'Manager Operations & Events',
     'role.maud':'Sales Manager',
-    'role.tim':'New Business Development Manager — Regional Manager West-Central Netherlands',
     'role.krijn':'Systems & Data Coordinator',
     'role.sebastian':'Regional Manager East-North Netherlands',
     'role.martijn':'Regional Manager South Netherlands & Belgium',
@@ -822,7 +800,7 @@ function applyLang(l) {
     const k = el.getAttribute('data-i18n');
     const v = T[k];
     if (v === undefined) return;
-    if (k.endsWith('.html') || k === 'role.tim') el.innerHTML = v;
+    if (k.endsWith('.html')) el.innerHTML = v;
     else el.textContent = v;
   });
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
