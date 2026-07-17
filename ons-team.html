@@ -318,6 +318,29 @@ to{opacity:1}}
   opacity:.6;
 }
 
+/* Provincie-tags bij regiomanagers */
+.card-provinces{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.province-tag{
+  font-family:var(--font-ui);
+  font-size:.6rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+  background:rgba(192,57,43,.08);
+  border:1px solid rgba(192,57,43,.28);
+  padding:4px 10px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+
 /* ══════════════════════════════
    CTA
 ══════════════════════════════ */
@@ -532,7 +555,7 @@ footer{
     <h2 class="section-title" data-i18n="team.title.html"></h2>
   </div>
 
-  <!-- Rij 1 -->
+  <!-- Rij 1: Merlijn, Jorrit, Maud -->
   <div class="team-grid-3">
 
     <div class="card reveal">
@@ -597,7 +620,54 @@ footer{
 
   </div>
 
-  <!-- Rij 2 -->
+  <!-- Rij 2: Regiomanagers naast elkaar — Sebastian, Martijn -->
+  <div class="team-grid-2">
+
+    <div class="card reveal">
+      <div class="card-photo">
+        <img src="images/personeel/Sebas1.jpg" alt="Sebastian Beekhuis"/>
+      </div>
+      <div class="card-divider"></div><div class="card-body">
+        <span class="card-role" data-i18n="role.sebastian">Regiomanager Oost-Noord Nederland</span>
+        <h3 class="card-name">Sebastian<br>Beekhuis</h3>
+        <div class="card-contacts">
+          <a href="mailto:Sebastian@bincinternational.nl">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            Sebastian@bincinternational.nl
+          </a>
+          <a href="tel:+31613208512">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +31 6 13208512
+          </a>
+        </div>
+        <div class="card-provinces" data-i18n="province.sebastian.html"></div>
+      </div>
+    </div>
+
+    <div class="card reveal d1">
+      <div class="card-photo">
+        <img src="images/personeel/Martijn1.jpg" alt="Martijn Hoeks"/>
+      </div>
+      <div class="card-divider"></div><div class="card-body">
+        <span class="card-role" data-i18n="role.martijn">Regiomanager Zuid-Nederland & België</span>
+        <h3 class="card-name">Martijn<br>Hoeks</h3>
+        <div class="card-contacts">
+          <a href="mailto:Martijn@bincinternational.nl">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            Martijn@bincinternational.nl
+          </a>
+          <a href="tel:+31645476200">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +31 6 45476200
+          </a>
+        </div>
+        <div class="card-provinces" data-i18n="province.martijn.html"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Rij 3: Krijn, Indy -->
   <div class="team-grid-2">
 
     <div class="card reveal">
@@ -615,51 +685,6 @@ footer{
           <a href="tel:+31633031903">
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             +31 6 33031903
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card reveal d1">
-      <div class="card-photo">
-        <img src="images/personeel/Sebas1.jpg" alt="Sebastian Beekhuis"/>
-      </div>
-      <div class="card-divider"></div><div class="card-body">
-        <span class="card-role" data-i18n="role.sebastian">Regiomanager Oost-Noord Nederland</span>
-        <h3 class="card-name">Sebastian<br>Beekhuis</h3>
-        <div class="card-contacts">
-          <a href="mailto:Sebastian@bincinternational.nl">
-            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-            Sebastian@bincinternational.nl
-          </a>
-          <a href="tel:+31613208512">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            +31 6 13208512
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Rij 3: 2 kaarten -->
-  <div class="team-grid-2">
-
-    <div class="card reveal">
-      <div class="card-photo">
-        <img src="images/personeel/Martijn1.jpg" alt="Martijn Hoeks"/>
-      </div>
-      <div class="card-divider"></div><div class="card-body">
-        <span class="card-role" data-i18n="role.martijn">Regiomanager Zuid-Nederland & België</span>
-        <h3 class="card-name">Martijn<br>Hoeks</h3>
-        <div class="card-contacts">
-          <a href="mailto:Martijn@bincinternational.nl">
-            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-            Martijn@bincinternational.nl
-          </a>
-          <a href="tel:+31645476200">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            +31 6 45476200
           </a>
         </div>
       </div>
@@ -760,6 +785,8 @@ const TRANSLATIONS = {
     'role.sebastian':'Regiomanager Oost-Noord Nederland',
     'role.martijn':'Regiomanager Zuid-Nederland & België',
     'role.indy':'Marketing & Social Media Manager',
+    'province.sebastian.html':'<span class="province-tag">Drenthe</span><span class="province-tag">Flevoland</span><span class="province-tag">Friesland</span><span class="province-tag">Gelderland</span><span class="province-tag">Groningen</span><span class="province-tag">Noord-Holland</span><span class="province-tag">Overijssel</span>',
+    'province.martijn.html':'<span class="province-tag">België</span><span class="province-tag">Limburg</span><span class="province-tag">Noord-Brabant</span><span class="province-tag">Utrecht</span><span class="province-tag">Zeeland</span><span class="province-tag">Zuid-Holland</span>',
     'cta.label':'Start together',
     'cta.body':'Van retail tot horeca en activaties. Het team van BINC International staat klaar om jouw merk fysiek te laten groeien.',
     'cta.btn':'Neem contact op',
@@ -781,6 +808,8 @@ const TRANSLATIONS = {
     'role.sebastian':'Regional Manager East-North Netherlands',
     'role.martijn':'Regional Manager South Netherlands & Belgium',
     'role.indy':'Marketing & Social Media Manager',
+    'province.sebastian.html':'<span class="province-tag">Drenthe</span><span class="province-tag">Flevoland</span><span class="province-tag">Friesland</span><span class="province-tag">Gelderland</span><span class="province-tag">Groningen</span><span class="province-tag">Noord-Holland</span><span class="province-tag">Overijssel</span>',
+    'province.martijn.html':'<span class="province-tag">Belgium</span><span class="province-tag">Limburg</span><span class="province-tag">Noord-Brabant</span><span class="province-tag">Utrecht</span><span class="province-tag">Zeeland</span><span class="province-tag">Zuid-Holland</span>',
     'cta.label':'Start together',
     'cta.body':'From retail to horeca and activations. The BINC International team is ready to grow your brand physically.',
     'cta.btn':'Get in touch',
