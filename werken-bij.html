@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Werken bij BINC | BINC International</title>
 <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -251,7 +250,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
 .form-alert.success{background:rgba(26,122,74,.18);border:1px solid rgba(26,122,74,.45);color:#4ade80}
 .form-alert.error{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.45);color:#fc8181}
 .privacy-note{font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.36);font-weight:300;text-align:center}
-.turnstile-wrap{display:flex;justify-content:center;margin:4px 0}
 
 /* ─── FOOTER ─── */
 footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw 60px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start}
@@ -1035,9 +1033,6 @@ const I18N = {
           <input id="f-check" name="checkAntwoord" type="text" inputmode="numeric" autocomplete="off" placeholder="Antwoord"/>
         </div>
         <p class="privacy-note" data-i18n="privacyNote">Door je gegevens te versturen geef je BINC International toestemming om contact met je op te nemen over jouw sollicitatie.</p>
-        <div class="turnstile-wrap">
-          <div class="cf-turnstile" id="turnstileWidget" data-sitekey="0x00000000000000000000AA" data-theme="dark" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired" data-error-callback="onTurnstileExpired"></div>
-        </div>
         <div class="form-alert error" id="formCaptchaError"></div>
         <div class="form-alert success" id="formSuccess"></div>
         <div class="form-alert error" id="formError"></div>
@@ -1303,26 +1298,18 @@ fb.addEventListener('drop', e=>{
   if(e.dataTransfer.files[0]){ const dt=new DataTransfer(); dt.items.add(e.dataTransfer.files[0]); cv.files=dt.files; fn.textContent=e.dataTransfer.files[0].name; }
 });
 
-/* ── TURNSTILE CAPTCHA ── */
-let turnstileToken = '';
+/* ── SPAMCONTROLE (2 + 1) ── */
 const fce = document.getElementById('formCaptchaError');
 const checkInput = document.getElementById('f-check');
 function refreshSubmitAvailability(){
   const ab=document.getElementById('applyBtn');
   if(ab.classList.contains('success')) return; /* al verstuurd, niet opnieuw activeren */
   const sumOk = checkInput.value.trim() === '3';
-  ab.disabled = !turnstileToken || !sumOk;
+  ab.disabled = !sumOk;
+  if(sumOk) fce.classList.remove('show');
 }
 checkInput.addEventListener('input', refreshSubmitAvailability);
-window.onTurnstileSuccess = function(token){
-  turnstileToken = token;
-  fce.classList.remove('show');
-  refreshSubmitAvailability();
-};
-window.onTurnstileExpired = function(){
-  turnstileToken = '';
-  refreshSubmitAvailability();
-};
+refreshSubmitAvailability();
 
 /* ── FORM SUBMIT ── */
 const API_URL = 'https://server-medewerker-kpi.onrender.com/api/sollicitatie';
@@ -1340,7 +1327,6 @@ ab.addEventListener('click', async () => {
   const t=I18N[currentLang];
   const v=document.getElementById('f-voornaam').value.trim(), a=document.getElementById('f-achternaam').value.trim(), e=document.getElementById('f-email').value.trim();
   if(!v||!a||!e){ fe.textContent=t.alertValidation; showA('error'); return; }
-  if(!turnstileToken){ fce.textContent='Los eerst de verificatie hierboven op voordat je verstuurt.'; fce.classList.add('show'); return; }
   if(checkInput.value.trim() !== '3'){ fce.textContent='Vul het juiste antwoord in bij "Wat is 2 + 1?"'; fce.classList.add('show'); return; }
   const fd=new FormData();
   fd.append('voornaam',v); fd.append('achternaam',a); fd.append('email',e);
@@ -1350,7 +1336,6 @@ ab.addEventListener('click', async () => {
   fd.append('interessegebied',document.getElementById('f-int').value);
   fd.append('motivatie',document.getElementById('f-mot').value.trim());
   fd.append('checkAntwoord', checkInput.value.trim());
-  fd.append('cf-turnstile-response', turnstileToken);
   if(cv.files&&cv.files[0]) fd.append('cv',cv.files[0]);
   setBtnState('loading'); showA(null);
   try{
@@ -1360,7 +1345,6 @@ ab.addEventListener('click', async () => {
     else throw new Error(d.error||'Unknown');
   }catch(err){
     setBtnState('error'); fe.textContent=t.alertError; showA('error');
-    if(window.turnstile){ turnstile.reset('#turnstileWidget'); turnstileToken=''; }
   }
 });
 
