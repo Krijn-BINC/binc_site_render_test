@@ -477,21 +477,21 @@ const I18N = {
     fPlaceholderLast: 'de Vries',
     fLabelEmail: 'E-mailadres *',
     fPlaceholderEmail: 'jan@email.nl',
-    fLabelPhone: 'Telefoonnummer',
+    fLabelPhone: 'Telefoonnummer *',
     fPlaceholderPhone: '+31 6 ...',
-    fLabelCity: 'Woonplaats',
+    fLabelCity: 'Woonplaats *',
     fPlaceholderCity: 'Den Hout',
-    fLabelLI: 'LinkedIn profiel',
-    fLabelInterest: 'Interessegebied',
+    fLabelLI: 'LinkedIn profiel *',
+    fLabelInterest: 'Interessegebied *',
     fSelectDefault: 'Selecteer richting',
     fOpt1: 'Stage Marketing',
     fOpt2: 'Stage Data & ICT',
     fOpt3: 'Stage Sales',
     fOpt4: 'Open sollicitatie',
     fOpt5: 'Anders',
-    fLabelMot: 'Motivatie',
+    fLabelMot: 'Motivatie *',
     fPlaceholderMot: 'Vertel kort wie je bent, waar je goed in bent en waarom je bij BINC International wilt werken of stage lopen.',
-    fLabelCV: 'Upload CV',
+    fLabelCV: 'Upload CV *',
     fCVStrong: 'Sleep je CV hier of klik om te uploaden',
     fCVSpan: 'PDF, DOC of DOCX · max. 10MB',
     fCVNone: 'Nog geen bestand geselecteerd',
@@ -502,7 +502,7 @@ const I18N = {
     btnRetry: 'Opnieuw proberen',
     alertSuccess: 'Je sollicitatie is succesvol verstuurd. We nemen zo snel mogelijk contact met je op!',
     alertError: 'Er is iets misgegaan. Probeer het opnieuw of mail info@bincinternational.nl',
-    alertValidation: 'Vul minimaal je voornaam, achternaam en e-mailadres in.',
+    alertValidation: 'Vul alle velden in en upload je CV.',
 
     /* FOOTER */
     ftAddress: 'BINC adres',
@@ -614,21 +614,21 @@ const I18N = {
     fPlaceholderLast: 'Smith',
     fLabelEmail: 'Email address *',
     fPlaceholderEmail: 'john@email.com',
-    fLabelPhone: 'Phone number',
+    fLabelPhone: 'Phone number *',
     fPlaceholderPhone: '+31 6 ...',
-    fLabelCity: 'City',
+    fLabelCity: 'City *',
     fPlaceholderCity: 'Amsterdam',
-    fLabelLI: 'LinkedIn profile',
-    fLabelInterest: 'Area of interest',
+    fLabelLI: 'LinkedIn profile *',
+    fLabelInterest: 'Area of interest *',
     fSelectDefault: 'Select direction',
     fOpt1: 'Marketing Internship',
     fOpt2: 'Data & IT Internship',
     fOpt3: 'Sales Internship',
     fOpt4: 'Open application',
     fOpt5: 'Other',
-    fLabelMot: 'Motivation',
+    fLabelMot: 'Motivation *',
     fPlaceholderMot: 'Tell us briefly who you are, what you are good at and why you want to work or intern at BINC International.',
-    fLabelCV: 'Upload CV',
+    fLabelCV: 'Upload CV *',
     fCVStrong: 'Drag your CV here or click to upload',
     fCVSpan: 'PDF, DOC or DOCX · max. 10 MB',
     fCVNone: 'No file selected yet',
@@ -639,7 +639,7 @@ const I18N = {
     btnRetry: 'Try again',
     alertSuccess: 'Your application has been sent successfully. We will get back to you as soon as possible!',
     alertError: 'Something went wrong. Please try again or email info@bincinternational.nl',
-    alertValidation: 'Please fill in at least your first name, last name and email address.',
+    alertValidation: 'Please fill in all fields and upload your CV.',
 
     ftAddress: 'BINC address',
     ftEmail: 'Email address',
@@ -981,25 +981,25 @@ const I18N = {
             <input id="f-email" name="email" type="email" data-i18n-placeholder="fPlaceholderEmail" placeholder="jan@email.nl" required/>
           </div>
           <div class="f-field">
-            <label for="f-tel" data-i18n="fLabelPhone">Telefoonnummer</label>
-            <input id="f-tel" name="telefoon" type="tel" data-i18n-placeholder="fPlaceholderPhone" placeholder="+31 6 ..."/>
+            <label for="f-tel" data-i18n="fLabelPhone">Telefoonnummer *</label>
+            <input id="f-tel" name="telefoon" type="tel" data-i18n-placeholder="fPlaceholderPhone" placeholder="+31 6 ..." required/>
           </div>
         </div>
         <div class="form-row">
           <div class="f-field">
-            <label for="f-woon" data-i18n="fLabelCity">Woonplaats</label>
-            <input id="f-woon" name="woonplaats" type="text" data-i18n-placeholder="fPlaceholderCity" placeholder="Den Hout"/>
+            <label for="f-woon" data-i18n="fLabelCity">Woonplaats *</label>
+            <input id="f-woon" name="woonplaats" type="text" data-i18n-placeholder="fPlaceholderCity" placeholder="Den Hout" required/>
           </div>
           <div class="f-field">
-            <label for="f-li" data-i18n="fLabelLI">LinkedIn profiel</label>
-            <input id="f-li" name="linkedin" type="url" placeholder="https://linkedin.com/in/..."/>
+            <label for="f-li" data-i18n="fLabelLI">LinkedIn profiel *</label>
+            <input id="f-li" name="linkedin" type="url" placeholder="https://linkedin.com/in/..." required/>
           </div>
         </div>
         <div class="form-row">
           <div class="f-field">
-            <label for="f-int" data-i18n="fLabelInterest">Interessegebied</label>
+            <label for="f-int" data-i18n="fLabelInterest">Interessegebied *</label>
             <div class="select-wrap">
-              <select id="f-int" name="interessegebied">
+              <select id="f-int" name="interessegebied" required>
                 <option value="" disabled selected data-i18n="fSelectDefault">Selecteer richting</option>
                 <option value="Marketing Stagiair" data-i18n="fOpt1">Stage Marketing</option>
                 <option value="Data &amp; ICT Stagiair" data-i18n="fOpt2">Stage Data &amp; ICT</option>
@@ -1011,13 +1011,13 @@ const I18N = {
           </div>
         </div>
         <div class="f-field">
-          <label for="f-mot" data-i18n="fLabelMot">Motivatie</label>
-          <textarea id="f-mot" name="motivatie" data-i18n-placeholder="fPlaceholderMot" placeholder="Vertel kort wie je bent..."></textarea>
+          <label for="f-mot" data-i18n="fLabelMot">Motivatie *</label>
+          <textarea id="f-mot" name="motivatie" data-i18n-placeholder="fPlaceholderMot" placeholder="Vertel kort wie je bent..." required></textarea>
         </div>
         <div class="f-field">
-          <label data-i18n="fLabelCV">Upload CV</label>
+          <label data-i18n="fLabelCV">Upload CV *</label>
           <div class="file-box" id="fileBox">
-            <input type="file" id="cvUpload" name="cv" accept=".pdf,.doc,.docx"/>
+            <input type="file" id="cvUpload" name="cv" accept=".pdf,.doc,.docx" required/>
             <div class="file-content">
               <div class="file-main">
                 <strong data-i18n="fCVStrong">Sleep je CV hier of klik om te uploaden</strong>
@@ -1326,17 +1326,20 @@ function setBtnState(s){
 ab.addEventListener('click', async () => {
   const t=I18N[currentLang];
   const v=document.getElementById('f-voornaam').value.trim(), a=document.getElementById('f-achternaam').value.trim(), e=document.getElementById('f-email').value.trim();
-  if(!v||!a||!e){ fe.textContent=t.alertValidation; showA('error'); return; }
+  const tel=document.getElementById('f-tel').value.trim(), woon=document.getElementById('f-woon').value.trim(), li=document.getElementById('f-li').value.trim();
+  const interesse=document.getElementById('f-int').value, mot=document.getElementById('f-mot').value.trim();
+  const heeftCV = cv.files && cv.files[0];
+  if(!v||!a||!e||!tel||!woon||!li||!interesse||!mot||!heeftCV){ fe.textContent=t.alertValidation; showA('error'); return; }
   if(checkInput.value.trim() !== '3'){ fce.textContent='Vul het juiste antwoord in bij "Wat is 2 + 1?"'; fce.classList.add('show'); return; }
   const fd=new FormData();
   fd.append('voornaam',v); fd.append('achternaam',a); fd.append('email',e);
-  fd.append('telefoon',document.getElementById('f-tel').value.trim());
-  fd.append('woonplaats',document.getElementById('f-woon').value.trim());
-  fd.append('linkedin',document.getElementById('f-li').value.trim());
-  fd.append('interessegebied',document.getElementById('f-int').value);
-  fd.append('motivatie',document.getElementById('f-mot').value.trim());
+  fd.append('telefoon',tel);
+  fd.append('woonplaats',woon);
+  fd.append('linkedin',li);
+  fd.append('interessegebied',interesse);
+  fd.append('motivatie',mot);
   fd.append('checkAntwoord', checkInput.value.trim());
-  if(cv.files&&cv.files[0]) fd.append('cv',cv.files[0]);
+  fd.append('cv',cv.files[0]);
   setBtnState('loading'); showA(null);
   try{
     const r=await fetch(API_URL,{method:'POST',body:fd});
