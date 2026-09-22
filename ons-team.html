@@ -761,7 +761,7 @@ footer{
 
 <div class="ft-bar">
   <div>
-    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+    <span class="ft-copy">© <span id="ft-year">2025</span> <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
   </div>
   <div style="display:flex;align-items:center;gap:24px">
     <span class="ft-kvk">KVK: 98970887</span>
@@ -867,5 +867,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 applyLang(lang);
 </script>
+<script>document.getElementById("ft-year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

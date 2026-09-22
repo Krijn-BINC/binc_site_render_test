@@ -1135,7 +1135,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 
 <div class="ft-bar">
   <div class="ft-bar-left">
-    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+    <span class="ft-copy">© <span id="ft-year">2025</span> <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
     <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)" data-i18n="footer.tagline.short">Full-service B2B voor ambitieuze merken in Nederland.</span>
   </div>
   <div class="ft-bar-right">
@@ -1653,7 +1653,7 @@ async function initMap() {
 
   mapInstance = map;
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=cb1_3n35_1_5f18165af1b101539136e0e4', { maxZoom: 19, attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
 
   const clusterGroup = L.markerClusterGroup({
     maxClusterRadius: 30,
@@ -1876,5 +1876,6 @@ window.addEventListener('load', () => {
 ══════════════════════════════════════════════════ */
 applyLang(currentLang);
 </script>
+<script>document.getElementById("ft-year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

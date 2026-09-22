@@ -693,7 +693,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:80px 6vw
 </footer>
 <div class="ft-bar">
   <div class="ft-bar-left">
-    <span class="ft-copy">© 2025 <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+    <span class="ft-copy">© <span id="ft-year">2025</span> <strong>BINC International B.V.</strong> — <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
     <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)" data-i18n="footer.tagline.short">Full-service B2B voor ambitieuze merken in Nederland.</span>
   </div>
   <div class="ft-bar-right">
@@ -974,5 +974,6 @@ document.querySelectorAll('a[href="index.html#lead"]').forEach(link=>{
 applyLang(currentLang);
 updateDots();
 </script>
+<script>document.getElementById("ft-year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

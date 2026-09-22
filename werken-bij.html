@@ -508,7 +508,7 @@ const I18N = {
     ftAddress: 'BINC adres',
     ftEmail: 'E-mailadres',
     ftPhone: 'Telefoonnummer',
-    ftCopyright: '© 2025 BINC International B.V. Alle rechten voorbehouden.',
+    ftCopyright: '© BINC International B.V. Alle rechten voorbehouden.', // year injected dynamically
     ftTagline: 'Full-service B2B voor ambitieuze merken in Nederland.',
   },
 
@@ -644,7 +644,7 @@ const I18N = {
     ftAddress: 'BINC address',
     ftEmail: 'Email address',
     ftPhone: 'Phone number',
-    ftCopyright: '© 2025 BINC International B.V. All rights reserved.',
+    ftCopyright: '© BINC International B.V. All rights reserved.', // year injected dynamically
     ftTagline: 'Full-service B2B for ambitious brands in the Netherlands.',
   }
 };
@@ -1058,7 +1058,7 @@ const I18N = {
 </footer>
 <div class="ft-bar">
   <div class="ft-bar-left">
-    <span class="ft-copy" data-i18n="ftCopyright">&copy; 2025 <strong>BINC International B.V.</strong> Alle rechten voorbehouden.</span>
+    <span class="ft-copy" data-i18n="ftCopyright">&copy; <span id="ft-year">2025</span> <strong>BINC International B.V.</strong> Alle rechten voorbehouden.</span>
     <span class="ft-copy" style="font-size:.6rem;color:rgba(255,255,255,.16)" data-i18n="ftTagline">Full-service B2B voor ambitieuze merken in Nederland.</span>
   </div>
   <div class="ft-bar-right"><span class="ft-kvk">KVK: 98970887</span></div>
@@ -1100,9 +1100,9 @@ function applyLang(lang) {
   const copyEl = document.querySelector('[data-i18n="ftCopyright"]');
   if (copyEl) {
     if (lang === 'nl') {
-      copyEl.innerHTML = '&copy; 2025 <strong>BINC International B.V.</strong> Alle rechten voorbehouden.';
+      copyEl.innerHTML = '&copy; ' + new Date().getFullYear() + ' <strong>BINC International B.V.</strong> Alle rechten voorbehouden.';
     } else {
-      copyEl.innerHTML = '&copy; 2025 <strong>BINC International B.V.</strong> All rights reserved.';
+      copyEl.innerHTML = '&copy; ' + new Date().getFullYear() + ' <strong>BINC International B.V.</strong> All rights reserved.';
     }
   }
 
