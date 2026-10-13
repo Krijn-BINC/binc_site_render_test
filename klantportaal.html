@@ -399,6 +399,21 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 
 .p-price{color:var(--red2)}
 @media(max-width:1000px){.brand{width:168px}.brand-b{width:40px;min-width:40px}}
+
+/* ── ROUND 6: knoppen gelijk, meer lucht, aanpasbare aantallen in mand ── */
+.top .btn-ghost.site,.top .logout.top-out{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0 14px;font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.14em;line-height:1;text-transform:uppercase;border-radius:3px;border-width:1px;border-style:solid}
+.top .logout.top-out svg{width:15px;height:15px}
+.page-h{margin-bottom:26px}
+.brands{margin-top:4px}
+.brand{margin-right:36px}
+.brand-b{margin:0 0 0 8px}
+.cl{grid-template-columns:58px minmax(0,1fr) auto 16px;align-items:center}
+.cl-q{display:flex;align-items:center;gap:3px;color:var(--faint)}
+.cl-qi{width:40px;box-sizing:border-box;padding:4px 0;text-align:center;background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:4px;color:#fff;font:inherit;font-size:.84rem;font-weight:600;outline:none;-moz-appearance:textfield;cursor:text;transition:border-color .15s,background .15s}
+.cl-qi::-webkit-outer-spin-button,.cl-qi::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.cl-qi:hover{border-color:rgba(255,255,255,.4)}
+.cl-qi:focus{border-color:var(--red);background:rgba(255,255,255,.1)}
+@media(max-width:1000px){.brand{margin-right:24px}.cl-qi{font-size:16px;width:46px;padding:6px 0}.cl{grid-template-columns:64px minmax(0,1fr) auto 16px}.top .btn-ghost.site,.top .logout.top-out{height:34px;padding:0 10px;font-size:.66rem}}
 </style>
 </head>
 <body>
@@ -596,6 +611,8 @@ document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click
 /* ═══════════ CATALOGUS ═══════════ */
 const brand = () => S.catalog.brands.find(b => b.id === S.brandId);
 const cardRefs = new Map(); // id -> { sync(qty) }
+const CAT_LABELS = { 'frisdrank':'Sportwater', 'energy drink':'Party Punch', 'energydrink':'Party Punch', 'energy drinks':'Party Punch' };
+const catLabel = c => CAT_LABELS[String(c || '').trim().toLowerCase()] || c;
 const unitLabel = b => b.minQtyUnit === 'trays' ? t('unit.trays') : t('unit.stuks');
 
 // kleur voor producten zonder eigen foto/kleur
@@ -641,7 +658,7 @@ function renderChips(){
   const cats = [...new Set(brand().items.map(i => i.category))];
   if (cats.length < 2) return;
   box.append(h('button', { class:'chip' + (S.cat === '' ? ' on' : ''), type:'button', text:t('order.all'), onclick:() => { S.cat = ''; renderChips(); renderProducts(); } }));
-  cats.forEach(c => box.append(h('button', { class:'chip' + (S.cat === c ? ' on' : ''), type:'button', text:c, onclick:() => { S.cat = c; renderChips(); renderProducts(); } })));
+  cats.forEach(c => box.append(h('button', { class:'chip' + (S.cat === c ? ' on' : ''), type:'button', text:catLabel(c), onclick:() => { S.cat = c; renderChips(); renderProducts(); } })));
 }
 function makeRow(it, withThumb){
   const unit = it.unit && it.unit !== 'stuk' ? it.unit : t('unit.stuks').replace(/s$/, '');
@@ -667,12 +684,12 @@ function renderProducts(){
   const box = $('products'); box.replaceChildren(); cardRefs.clear();
   const needle = S.q.trim().toLowerCase();
   const pool = needle ? S.catalog.brands.flatMap(b => b.items) : brand().items;
-  const list = pool.filter(i => (!S.cat || needle || i.category === S.cat) && (!needle || (i.name + ' ' + i.category + ' ' + (i.sku || '')).toLowerCase().includes(needle)));
+  const list = pool.filter(i => (!S.cat || needle || i.category === S.cat) && (!needle || (i.name + ' ' + i.category + ' ' + catLabel(i.category) + ' ' + (i.sku || '')).toLowerCase().includes(needle)));
   if (!list.length) { box.append(h('div', { class:'empty', text:t('order.none') })); return; }
   const groups = new Map(); list.forEach(i => { const k = needle ? (S.items.get(i.id) || {}).brandName : i.category; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(i); });
   const head = wt => h('div', { class:'phead' + (wt ? '' : ' nothumb') }, wt ? h('span') : null, h('span', { text:t('th.product') }), h('span', { text:t('th.price') }), h('span', { text:t('th.qty') }), h('span', { text:t('th.sub') }));
   groups.forEach((items, key) => {
-    box.append(h('div', { class:'group-h', text:key }), h('div', { class:'plist' }, head(items.some(i => i.img)), items.map(i => makeRow(i, items.some(x => x.img)))));
+    box.append(h('div', { class:'group-h', text:needle ? key : catLabel(key) }), h('div', { class:'plist' }, head(items.some(i => i.img)), items.map(i => makeRow(i, items.some(x => x.img)))));
   });
 }
 $('q').addEventListener('input', e => { S.q = e.target.value; renderProducts(); });
@@ -746,7 +763,13 @@ function renderCart(){
     wrap.append(h('button', { class:'cbrand-h' + (folded ? ' folded' : ''), type:'button', 'aria-expanded':String(!folded), onclick:() => { folded ? S.fold.delete(b.id) : S.fold.add(b.id); renderCart(); } },
       svgIcon('M6 9l6 6 6-6'), h('span', { class:'cbrand-n', text:b.name }), h('span', { class:'cbrand-s', text:money(round2(sub + dep)) })));
     if (!folded) ls.forEach(l => wrap.append(h('div', { class:'cl' },
-      h('span', { class:'cl-q', text:l.qty + '×' }),
+      h('span', { class:'cl-q' }, (() => {
+        const inp = h('input', { class:'cl-qi', type:'number', min:'0', max:'999', inputmode:'numeric', value:l.qty, title:'Aantal aanpassen', 'aria-label':l.it.name });
+        inp.addEventListener('focus', () => inp.select());
+        inp.addEventListener('change', () => setQty(l.it.id, inp.value));
+        inp.addEventListener('keydown', e => { if (e.key === 'Enter') inp.blur(); });
+        return inp;
+      })(), '×'),
       h('span', { class:'cl-n', text:l.it.name.replace(new RegExp('^' + b.name + '\\s+', 'i'), '') }),
       h('span', { class:'cl-t', text:money(round2(l.it.price * l.qty)) }),
       h('button', { class:'cl-x', type:'button', title:t('cart.remove'), 'aria-label':t('cart.remove'), text:'×', onclick:() => setQty(l.it.id, 0) }))));
