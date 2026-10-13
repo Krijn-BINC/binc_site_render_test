@@ -59,8 +59,19 @@ a{color:inherit}
 .nav-i:hover{color:#fff;background:rgba(255,255,255,.05)}
 .nav-i.on{color:#fff;background:rgba(192,57,43,.16);box-shadow:inset 3px 0 0 var(--red)}
 .nav-badge{margin-left:auto;background:var(--red);color:#fff;border-radius:10px;font-size:.7rem;min-width:20px;height:20px;line-height:20px;text-align:center;padding:0 6px;letter-spacing:0}
-.side-foot{margin-top:auto;padding:14px;border-top:1px solid var(--line);font-size:.8rem;color:var(--faint);line-height:1.6}
-.side-foot a{color:var(--dim);text-decoration:none}.side-foot a:hover{color:#fff}
+.side-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+/* Hulp-blok: volledig rood, valt op */
+.help{background:linear-gradient(160deg,#d44332,#a52e22);border:1px solid #e74c3c;border-radius:8px;padding:16px 14px;box-shadow:0 6px 22px rgba(192,57,43,.35)}
+.help-h{font-family:var(--font-display);font-weight:800;font-size:1.25rem;line-height:1.1;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.help-l{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:.84rem;padding:7px 0;overflow:hidden}
+.help-l span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.help-l svg,.logout svg{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.help-l svg{color:#fff}
+.help-l:hover span{text-decoration:underline}
+/* Uitlogknop: echte knop */
+.logout{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:13px 16px;border-radius:6px;border:1px solid var(--line2);background:#fff;font-family:var(--font-ui);font-weight:700;font-size:.84rem;letter-spacing:.14em;text-transform:uppercase;color:#000;box-shadow:0 2px 0 rgba(255,255,255,.12);transition:.15s}
+.logout:hover{background:var(--red);border-color:var(--red);color:#fff;transform:translateY(-1px)}
+.logout:active{transform:none}
 .main{min-width:0}
 .view{display:none}.view.on{display:block}
 
@@ -197,13 +208,13 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
   .cartbar{display:flex;position:fixed;left:12px;right:12px;bottom:74px;z-index:55;align-items:center;justify-content:space-between;gap:12px;background:var(--red);color:#fff;border-radius:6px;padding:13px 16px;box-shadow:0 8px 28px rgba(0,0,0,.55);font-weight:600}
   .cartbar .cb-tot{font-family:var(--font-display);font-weight:800;font-size:1.25rem}
   .cartbar.zero{display:none}
-  .who,.top-tag{display:none}
+  .who{display:none}
   .toast{bottom:150px}
 }
 @media(max-width:560px){
   .top{padding:0 12px;gap:8px}
   .top .btn-ghost.site{padding:7px 9px;font-size:.66rem}
-  .top .btn-ghost.out{display:none}
+  .top .logout.top-out span{display:none}.top .logout.top-out{padding:8px 10px}
   .cards{grid-template-columns:1fr}
   .card{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
   .card-main{flex:1;min-width:0}
@@ -214,18 +225,19 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
   .f-grid{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.logout.top-out{width:auto;padding:8px 14px;background:var(--red);border-color:var(--red);color:#fff}
+.logout.top-out:hover{background:var(--red2);border-color:var(--red2)}
 </style>
 </head>
 <body>
 
 <header class="top">
   <a class="top-logo" href="index.html" aria-label="BINC International"><img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/></a>
-  <span class="top-tag" data-i18n="top.tag">B2B Bestelportaal</span>
   <span class="top-space"></span>
   <span class="who" id="who"></span>
   <div class="lang"><button data-lang="nl" class="on">NL</button><button data-lang="en">EN</button></div>
   <a class="btn-ghost site" href="index.html" data-i18n="top.site">&larr; Website</a>
-  <button class="btn-ghost out" id="logoutTop" data-i18n="nav.logout">Uitloggen</button>
+  <button class="logout top-out" id="logoutTop" type="button"><svg viewBox="0 0 24 24"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="M16 8l4 4-4 4M20 12H9"/></svg><span data-i18n="nav.logout">Uitloggen</span></button>
 </header>
 
 <div class="shell">
@@ -243,10 +255,12 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
       <span data-i18n="nav.account">Mijn account</span>
     </button>
     <div class="side-foot">
-      <div data-i18n="side.help">Hulp nodig met een bestelling?</div>
-      <a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a><br/>
-      <a href="tel:+31132032643">013 203 2643</a><br/><br/>
-      <a href="#" id="logoutSide" data-i18n="nav.logout">Uitloggen</a>
+      <div class="help">
+        <div class="help-h" data-i18n="side.help">Hulp nodig met een bestelling?</div>
+        <a class="help-l" href="mailto:info@bincinternational.nl"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 7 8.5-7"/></svg><span>info@bincinternational.nl</span></a>
+        <a class="help-l" href="tel:+31132032643"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>013 203 2643</span></a>
+      </div>
+      <button class="logout" id="logoutSide" type="button"><svg viewBox="0 0 24 24"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="M16 8l4 4-4 4M20 12H9"/></svg><span data-i18n="nav.logout">Uitloggen</span></button>
     </div>
   </nav>
 
