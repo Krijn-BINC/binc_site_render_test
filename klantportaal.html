@@ -389,6 +389,16 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .cbrand-h .cbrand-n{flex:1}
 .cbrand-h.folded svg{transform:rotate(-90deg)}
 .cbrand{padding:8px 0}
+
+/* ── ROUND 5: vaste tab-posities, rode prijs ── */
+.brands{gap:0}
+.brand{flex:0 0 auto;width:196px;margin-right:12px;padding:10px 0 10px 2px;justify-content:space-between}
+.brand-t{flex:1;min-width:0}
+.brand-n{overflow:hidden;text-overflow:ellipsis}
+.brand-b{flex:none;width:46px;min-width:46px;padding:0;text-align:center;margin:0 6px 0 0}
+
+.p-price{color:var(--red2)}
+@media(max-width:1000px){.brand{width:168px}.brand-b{width:40px;min-width:40px}}
 </style>
 </head>
 <body>
@@ -614,7 +624,7 @@ function renderBrands(){
     seg.append(h('button', { class:'brand' + (b.id === S.brandId ? ' on' : ''), type:'button', role:'tab', 'aria-selected':String(b.id === S.brandId),
       onclick:() => { S.brandId = b.id; S.cat = ''; renderBrands(); renderChips(); renderProducts(); } },
       h('span', { class:'brand-t' }, h('span', { class:'brand-n', text:b.name }), h('span', { class:'brand-m', text:meta })),
-      n ? h('span', { class:'brand-b', text:n, 'aria-label':t('brand.inCart', { n }) }) : null));
+      h('span', { class:'brand-b', text:n || '', style:n ? '' : 'visibility:hidden;display:inline-block', 'aria-label':n ? t('brand.inCart', { n }) : null })));
   });
   renderBrandInfo();
 }
