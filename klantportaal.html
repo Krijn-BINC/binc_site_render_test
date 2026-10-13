@@ -373,27 +373,22 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .total{margin:6px 0 2px}
 .total strong{font-size:1.6rem}
 
-/* navigatie als tabs in de bovenbalk (desktop) */
-.hulp{position:relative}
-.hulp summary{list-style:none;cursor:pointer;color:var(--faint);font-size:.84rem;padding:6px 8px}
-.hulp summary::-webkit-details-marker{display:none}
-.hulp summary:hover,.hulp[open] summary{color:#fff}
-.hulp-m{position:absolute;right:0;top:100%;margin-top:6px;background:var(--panel2);border:1px solid var(--line2);border-radius:6px;padding:10px 14px;display:flex;flex-direction:column;gap:6px;white-space:nowrap;font-size:.86rem;z-index:80}
-.hulp-m a{color:var(--dim);text-decoration:none}.hulp-m a:hover{color:#fff}
-@media(min-width:1001px){
-  :root{--side:0px}
-  .shell{display:block}
-  .side{position:fixed;top:0;left:200px;height:var(--top);width:auto;padding:0;border:none;background:none;flex-direction:row;align-items:stretch;gap:4px;z-index:55}
-  .side-foot{display:none}
-  .nav-i{width:auto;padding:0 16px;border-radius:0;font-size:.86rem;letter-spacing:.08em;box-shadow:none;border-bottom:2px solid transparent;margin-top:2px}
-  .nav-i svg{display:none}
-  .nav-i:hover{background:none;color:#fff}
-  .nav-i.on{background:none;box-shadow:none;border-bottom-color:var(--red);color:#fff}
-  .nav-badge{margin-left:8px}
-  .cart,.order-grid{min-height:0}
-}
-@media(max-width:1000px){.hulp{display:none}}
-@media(max-width:560px){.top .btn-ghost.site{display:none}}
+
+/* ── ROUND 4 ── */
+.prow{border-radius:8px;border-bottom:1px solid var(--line);padding-top:7px;padding-bottom:7px}
+.prow.in{background:#1d1d22;box-shadow:none;border-bottom-color:transparent}
+.prow.in + .prow,.prow:has(+ .prow.in){border-bottom-color:transparent}
+.plist{border-bottom:none;display:flex;flex-direction:column;gap:2px}
+.phead{margin-bottom:2px}
+.brand-info{padding:8px 0 10px;font-size:.8rem;color:var(--faint)}
+.cart-fold{width:30px;height:30px;border-radius:4px;color:var(--dim);display:grid;place-items:center;margin-left:auto}
+.cart-fold:hover{background:rgba(255,255,255,.07);color:#fff}
+.cart-fold svg,.cbrand-h svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;transition:transform .15s}
+.cart-h{gap:8px}.cart-close{margin-left:4px}
+.cbrand-h{width:100%;text-align:left;display:flex;align-items:center;gap:6px;margin-bottom:2px;color:#fff}
+.cbrand-h .cbrand-n{flex:1}
+.cbrand-h.folded svg{transform:rotate(-90deg)}
+.cbrand{padding:8px 0}
 </style>
 </head>
 <body>
@@ -401,8 +396,6 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 <header class="top">
   <a class="top-logo" href="index.html" aria-label="BINC International"><img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/></a>
   <span class="top-space"></span>
-  <details class="hulp"><summary data-i18n="help.short">Hulp</summary>
-    <div class="hulp-m"><a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a><a href="tel:+31132032643">013 203 2643</a></div></details>
   <span class="who" id="who"></span>
   <div class="lang"><button data-lang="nl" class="on">NL</button><button data-lang="en">EN</button></div>
   <a class="btn-ghost site" href="index.html" data-i18n="top.site">&larr; Website</a>
@@ -441,7 +434,7 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
       <div class="order-grid">
         <div class="catalog">
           <h1 class="page-h"><span data-i18n="order.title">Nieuwe bestelling</span><span class="acc">.</span></h1>
-          <p class="page-sub" data-i18n="order.sub">Kies een merk, vul de aantallen in en plaats je bestelling direct bij BINC. Prijzen zijn je B2B-prijzen, exclusief btw.</p>
+          
           <div class="brands" id="brandSeg" role="tablist"></div>
           <div class="brand-info" id="brandInfo"></div>
           <div class="filters">
@@ -455,7 +448,7 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
         </div>
 
         <aside class="cart" id="cart" aria-label="Winkelmand">
-          <div class="cart-h"><h2><span data-i18n="cart.title">Winkelmand</span><small id="cartCount"></small></h2><button class="cart-close" id="cartClose" aria-label="Sluiten">&times;</button></div>
+          <div class="cart-h"><h2><span data-i18n="cart.title">Winkelmand</span><small id="cartCount"></small></h2><button class="cart-fold" id="cartFold" type="button" aria-label="Inklappen" title="Alles in-/uitklappen"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><button class="cart-close" id="cartClose" aria-label="Sluiten">&times;</button></div>
           <div class="cart-body" id="cartBody"></div>
           <div class="cart-foot" id="cartFoot"></div>
         </aside>
@@ -491,7 +484,7 @@ const TR = {
   'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.add':'Toevoegen','order.per':'per',
   'cart.title':'Winkelmand','cart.empty':'Je winkelmand is leeg. Voeg producten toe om te bestellen.','cart.remove':'Verwijderen',
   'cart.branch':'Filiaal','cart.date':'Gewenste leverdatum','cart.ref':'Eigen referentie','cart.refPh':'bijv. inkoopnummer','cart.notes':'Opmerking','cart.notesPh':'Bijzonderheden voor levering',
-  'cart.total':'Totaal','cart.vat':'Excl. btw. Facturatie via de bij BINC bekende gegevens.','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
+  'cart.total':'Totaal','cart.vat':'Alle prijzen excl. btw','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
   'cart.min':'Minimale orderwaarde {brand}: {min} (nog {left} te gaan)','cart.items':'{n} artikel(en)','cart.view':'Bekijk winkelmand','cart.count':'{n} stuks',
   'done.title':'Bestelling ontvangen','done.text':'Bedankt! Je ontvangt een bevestiging per e-mail.','done.again':'Nieuwe bestelling','done.view':'Bekijk mijn bestellingen',
   'orders.title':'Mijn bestellingen','orders.sub':'Alles wat je via het portaal hebt besteld. Zo bestel je een eerdere bestelling met één klik opnieuw.',
@@ -501,9 +494,9 @@ const TR = {
   'err.load':'Laden mislukt:','err.generic':'Er ging iets mis. Probeer het opnieuw.','err.network':'Geen verbinding met de server.','err.retry':'Opnieuw proberen',
   'toast.added':'Toegevoegd',
   'brand.min':'Min. {n} {unit}','brand.deposit':'Statiegeld {amt} per tray komt er automatisch bij','brand.minInfo':'Minimale bestelling: {n} {unit}','brand.minVal':'Minimale orderwaarde: {amt}','brand.inCart':'{n} in mand',
-  'unit.trays':'trays','unit.stuks':'stuks','help.short':'Hulp','th.product':'Product','th.price':'Prijs','th.qty':'Aantal','th.sub':'Subtotaal','brand.minAmt':'Min. {amt}','cart.fixMin':'Haal per merk eerst het minimum om te kunnen bestellen.','order.price':'per {u}',
-  'cart.sub':'Subtotaal','cart.deposit':'Statiegeld','cart.delivery':'Levering & opmerking','cart.optional':'optioneel',
-  'cart.minQty':'{brand}: nog {left} {unit} tot het minimum van {min}','cart.minOk':'Minimum gehaald','cart.minVal':'{brand}: nog {left} tot het minimum van {min}','cart.emptyHint':'Kies een merk en vul aantallen in. Je bestelling verschijnt hier.',
+  'unit.trays':'trays','unit.stuks':'stuks','th.product':'Product','th.price':'Prijs','th.qty':'Aantal','th.sub':'Subtotaal','brand.minAmt':'Min. {amt}','brand.depShort':'Statiegeld {amt} per tray extra','cart.fixMin':'Haal per merk eerst het minimum om te kunnen bestellen.','order.price':'per {u}',
+  'cart.sub':'Subtotaal','cart.deposit':'Statiegeld','cart.delivery':'Levering & opmerking','cart.optional':'',
+  'cart.minQty':'{brand}: nog {left} {unit} nodig (min. {min})','cart.minOk':'Minimum gehaald','cart.minVal':'{brand}: nog {left} nodig (min. {min})','cart.emptyHint':'Kies een merk en vul aantallen in. Je bestelling verschijnt hier.',
   'cart.itemsN':'{n} stuks'
  },
  en:{
@@ -513,7 +506,7 @@ const TR = {
   'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.add':'Add','order.per':'per',
   'cart.title':'Basket','cart.empty':'Your basket is empty. Add products to place an order.','cart.remove':'Remove',
   'cart.branch':'Branch','cart.date':'Preferred delivery date','cart.ref':'Your reference','cart.refPh':'e.g. purchase number','cart.notes':'Note','cart.notesPh':'Delivery instructions',
-  'cart.total':'Total','cart.vat':'Excl. VAT. Invoiced using the details BINC has on file.','cart.place':'Place order','cart.placing':'Placing…',
+  'cart.total':'Total','cart.vat':'All prices excl. VAT','cart.place':'Place order','cart.placing':'Placing…',
   'cart.min':'Minimum order value {brand}: {min} ({left} to go)','cart.items':'{n} item(s)','cart.view':'View basket','cart.count':'{n} items',
   'done.title':'Order received','done.text':'Thank you! You will receive a confirmation by email.','done.again':'New order','done.view':'View my orders',
   'orders.title':'My orders','orders.sub':'Everything you ordered through the portal. Reorder a previous order with one click.',
@@ -523,9 +516,9 @@ const TR = {
   'err.load':'Loading failed:','err.generic':'Something went wrong. Please try again.','err.network':'Can’t reach the server.','err.retry':'Try again',
   'toast.added':'Added',
   'brand.min':'Min. {n} {unit}','brand.deposit':'Deposit {amt} per tray is added automatically','brand.minInfo':'Minimum order: {n} {unit}','brand.minVal':'Minimum order value: {amt}','brand.inCart':'{n} in basket',
-  'unit.trays':'trays','unit.stuks':'items','help.short':'Help','th.product':'Product','th.price':'Price','th.qty':'Quantity','th.sub':'Subtotal','brand.minAmt':'Min. {amt}','cart.fixMin':'Reach the minimum for each brand to place your order.','order.price':'per {u}',
+  'unit.trays':'trays','unit.stuks':'items','th.product':'Product','th.price':'Price','th.qty':'Quantity','th.sub':'Subtotal','brand.minAmt':'Min. {amt}','brand.depShort':'Deposit {amt} per tray extra','cart.fixMin':'Reach the minimum for each brand to place your order.','order.price':'per {u}',
   'cart.sub':'Subtotal','cart.deposit':'Deposit','cart.delivery':'Delivery & note','cart.optional':'optional',
-  'cart.minQty':'{brand}: {left} more {unit} to reach the minimum of {min}','cart.minOk':'Minimum reached','cart.minVal':'{brand}: {left} more to reach the minimum of {min}','cart.emptyHint':'Pick a brand and enter quantities. Your order shows up here.',
+  'cart.minQty':'{brand}: {left} more {unit} needed (min. {min})','cart.minOk':'Minimum reached','cart.minVal':'{brand}: {left} more needed (min. {min})','cart.emptyHint':'Pick a brand and enter quantities. Your order shows up here.',
   'cart.itemsN':'{n} items'
  }
 };
@@ -561,7 +554,7 @@ async function api(path, opt){
 }
 
 /* ═══════════ STATE ═══════════ */
-const S = { view:'order', catalog:null, items:new Map(), brandId:null, cat:'', q:'', cart:{}, klant:null, orders:null, branch:'', date:'', ref:'', notes:'', placing:false, error:'', done:null, expanded:new Set(), cartOpen:false, dtlOpen:false };
+const S = { view:'order', catalog:null, items:new Map(), brandId:null, cat:'', q:'', cart:{}, klant:null, orders:null, branch:'', date:'', ref:'', notes:'', placing:false, error:'', done:null, expanded:new Set(), cartOpen:false, dtlOpen:false, fold:new Set() };
 try { S.cart = JSON.parse(sessionStorage.getItem(CART_KEY) || '{}') || {}; } catch(_){}
 const saveCart = () => { try { sessionStorage.setItem(CART_KEY, JSON.stringify(S.cart)); } catch(_){} };
 const cartLines = () => Object.keys(S.cart).filter(id => S.cart[id] > 0 && S.items.has(id)).map(id => ({ it:S.items.get(id), qty:S.cart[id] }));
@@ -627,11 +620,11 @@ function renderBrands(){
 }
 function renderBrandInfo(){
   const box = $('brandInfo'); box.replaceChildren(); const b = brand(); if (!b) return;
-  const infoIc = ['M12 8v.01M11 12h1v5h1', 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z'];
-  const add = txt => box.append(h('span', {}, svgIcon(infoIc), txt));
-  if (b.minQty) add(t('brand.minInfo', { n:b.minQty, unit:unitLabel(b) }));
-  if (b.minOrder) add(t('brand.minVal', { amt:money(b.minOrder) }));
-  if (b.deposit > 0) add(t('brand.deposit', { amt:money(b.deposit) }));
+  const parts = [];
+  if (b.minQty) parts.push(t('brand.min', { n:b.minQty, unit:unitLabel(b) }));
+  if (b.minOrder) parts.push(t('brand.minAmt', { amt:money(b.minOrder).replace(/,00$/, '') }));
+  if (b.deposit > 0) parts.push(t('brand.depShort', { amt:money(b.deposit) }));
+  box.textContent = parts.join('  ·  ');
 }
 function renderChips(){
   const box = $('chips'); box.replaceChildren();
@@ -739,13 +732,15 @@ function renderCart(){
     if (b.minQty && qty < b.minQty) need = t('cart.minQty', { brand:b.name, left:b.minQty - qty, unit:unitLabel(b), min:b.minQty }).replace(b.name + ': ', '');
     else if (b.minOrder && sub < b.minOrder) need = t('cart.minVal', { brand:b.name, left:money(round2(b.minOrder - sub)), min:money(b.minOrder) }).replace(b.name + ': ', '');
     if (need) warnings.push(need);
-    wrap.append(h('div', { class:'cbrand-h' }, h('span', { class:'cbrand-n', text:b.name }), h('span', { class:'cbrand-s', text:money(round2(sub + dep)) })));
-    ls.forEach(l => wrap.append(h('div', { class:'cl' },
+    const folded = S.fold.has(b.id);
+    wrap.append(h('button', { class:'cbrand-h' + (folded ? ' folded' : ''), type:'button', 'aria-expanded':String(!folded), onclick:() => { folded ? S.fold.delete(b.id) : S.fold.add(b.id); renderCart(); } },
+      svgIcon('M6 9l6 6 6-6'), h('span', { class:'cbrand-n', text:b.name }), h('span', { class:'cbrand-s', text:money(round2(sub + dep)) })));
+    if (!folded) ls.forEach(l => wrap.append(h('div', { class:'cl' },
       h('span', { class:'cl-q', text:l.qty + '×' }),
       h('span', { class:'cl-n', text:l.it.name.replace(new RegExp('^' + b.name + '\\s+', 'i'), '') }),
       h('span', { class:'cl-t', text:money(round2(l.it.price * l.qty)) }),
       h('button', { class:'cl-x', type:'button', title:t('cart.remove'), 'aria-label':t('cart.remove'), text:'×', onclick:() => setQty(l.it.id, 0) }))));
-    if (dep > 0) wrap.append(h('div', { class:'cl dep' }, h('span'), h('span', { class:'cl-n', text:t('cart.deposit') }), h('span', { class:'cl-t', text:money(dep) }), h('span')));
+    if (dep > 0 && !folded) wrap.append(h('div', { class:'cl dep' }, h('span'), h('span', { class:'cl-n', text:t('cart.deposit') }), h('span', { class:'cl-t', text:money(dep) }), h('span')));
     if (need) wrap.append(h('div', { class:'cneed', text:need }));
     body.append(wrap);
   });
@@ -758,7 +753,7 @@ function renderCart(){
     branches.map(b => h('option', { value:b.id, selected:b.id === S.branch, text:(b.name ? b.name + ' · ' : '') + b.id })));
   if (branches.length > 1) foot.append(h('div', { class:'f-full' }, h('label', { class:'f-lab', for:'fBranch', text:t('cart.branch') }), sel));
   const dtl = h('details', { class:'dtl', open:S.dtlOpen || !!(S.date || S.ref || S.notes) },
-    h('summary', {}, h('div', {}, t('cart.delivery') + ' ', h('span', { text:'(' + t('cart.optional') + ')' }))),
+    h('summary', {}, h('div', {}, t('cart.delivery'))),
     h('div', { class:'dtl-b' },
       h('div', { class:'f-grid' },
         h('div', {}, h('label', { class:'f-lab', for:'fDate', text:t('cart.date') }), h('input', { class:'f-in', id:'fDate', type:'date', min:minDate, value:S.date, onchange:e => { S.date = e.target.value; } })),
@@ -771,12 +766,13 @@ function renderCart(){
     h('div', { class:'total' }, h('span', { text:t('cart.total') }), h('strong', { text:money(total) })),
     h('div', { class:'vat', text:t('cart.vat') }),
     h('button', { class:'btn-red', id:'placeBtn', type:'button', disabled:S.placing || warnings.length > 0, text:S.placing ? t('cart.placing') : t('cart.place'), onclick:placeOrder }),
-    warnings.length ? h('div', { class:'cfix', text:t('cart.fixMin') }) : null].flat().filter(Boolean));
+    null].flat().filter(Boolean));
 }
 function svgCheck(){ const ns = 'http://www.w3.org/2000/svg'; const s = document.createElementNS(ns, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); const p = document.createElementNS(ns, 'path'); p.setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5'); s.append(p); return s; }
 const openCart = () => { S.cartOpen = true; $('cart').classList.add('open'); document.body.style.overflow = 'hidden'; };
 const closeCart = () => { S.cartOpen = false; $('cart').classList.remove('open'); document.body.style.overflow = ''; };
 $('cartbar').addEventListener('click', openCart);
+$('cartFold').addEventListener('click', () => { const ids = S.catalog.brands.filter(b => brandQty(b) > 0).map(b => b.id); if (ids.every(i => S.fold.has(i))) ids.forEach(i => S.fold.delete(i)); else ids.forEach(i => S.fold.add(i)); renderCart(); });
 $('cartClose').addEventListener('click', closeCart);
 
 async function placeOrder(){
