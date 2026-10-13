@@ -279,6 +279,70 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 .logout.top-out{width:auto;padding:8px 14px;background:var(--red);border:1px solid var(--red);color:#fff;font-family:var(--font-ui);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
 .logout.top-out:hover{background:var(--red2);border-color:var(--red2);color:#fff}
+
+/* ── ZAKELIJK / STRAK / VOLLEDIGE BREEDTE ── */
+:root{--cart:clamp(380px,27vw,500px);--r:4px}
+.catalog{max-width:none;padding:22px 28px 80px}
+.page-h{font-size:1.7rem;letter-spacing:0}
+.page-sub{margin:4px 0 16px;font-size:.88rem;max-width:none}
+.brands{display:flex;gap:0;border-bottom:1px solid var(--line);margin-bottom:0}
+.brand{flex:none;border:none;border-bottom:2px solid transparent;border-radius:0;background:none;padding:10px 18px 10px 4px;margin-right:20px;box-shadow:none;gap:10px}
+.brand:hover{background:none;border-color:var(--line2)}
+.brand.on{background:none;box-shadow:none;border-color:var(--red)}
+.brand-art{width:30px;height:30px;border-radius:4px}
+.brand-art b{font-size:1rem}
+.brand-n{font-size:1.05rem;white-space:nowrap}
+.brand-m{display:none}
+.brand-b{position:static;margin-left:2px;min-width:20px;height:20px;line-height:20px;font-size:.72rem;border-radius:3px;box-shadow:none}
+.brand-info{padding:10px 0 12px;font-size:.82rem;gap:4px 22px}
+.filters{margin:0 -28px;padding:8px 28px;background:var(--bg)}
+.search input{border-radius:var(--r);padding:8px 12px 8px 36px;background:var(--panel)}
+.chip{border-radius:var(--r);padding:5px 12px}
+.group-h{font-family:var(--font-ui);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin:20px 0 4px;color:var(--faint)}
+.group-h::after{display:none}
+.phead,.prow{grid-template-columns:44px minmax(0,1fr) 110px 142px 110px}
+.thumb{width:36px;height:36px;border-radius:4px}
+.prow{padding-top:6px;padding-bottom:6px}
+.prow.in{background:rgba(255,255,255,.04);box-shadow:inset 2px 0 0 var(--gold)}
+.step,.step button:first-child{border-radius:var(--r)}
+.step{border-color:var(--line2)}
+.add,.btn-red,.btn-line,.f-in,.warn,.dtl{border-radius:var(--r)}
+.btn-red{font-size:.86rem;letter-spacing:.12em;padding:13px}
+
+/* winkelmand: platte secties per merk */
+.cart{background:var(--panel)}
+.cart-h{padding:16px 20px 12px;border-bottom:1px solid var(--line)}
+.cart-h h2{font-size:1.2rem}
+.cart-body{padding:0 20px 8px}
+.cbrand{margin:0;padding:14px 0 10px;background:none;border:none;border-bottom:1px solid var(--line2);border-radius:0}
+.cbrand:last-child{border-bottom:none}
+.cbrand-h{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:baseline}
+.cbrand-n{font-family:var(--font-display);font-weight:700;font-size:1.1rem}
+.cbrand-q{color:var(--faint);font-size:.8rem}
+.cbrand-s{font-weight:700;font-size:.98rem;min-width:84px;text-align:right}
+.cmin{display:flex;align-items:center;gap:10px;font-size:.76rem;margin:6px 0 4px}
+.cmin .meter{flex:none;width:64px;height:4px;margin:0}
+.cmin.bad{color:#ff9d92}.cmin.ok{color:var(--ok)}
+.cmin.bad .meter i{background:var(--red2)}.cmin.ok .meter i{background:var(--ok)}
+.cl{display:grid;grid-template-columns:minmax(0,1fr) auto 78px 18px;gap:10px;align-items:center;padding:6px 0;border-top:1px solid var(--line)}
+.cbrand-h + .cl,.cmin + .cl{border-top:none}
+.cl-n{font-size:.88rem;line-height:1.25}
+.cl-t{text-align:right;font-size:.9rem;font-weight:600;white-space:nowrap}
+.cl-x{color:var(--faint);font-size:1.1rem;line-height:1;padding:0}.cl-x:hover{color:var(--red2)}
+.cl .step button{width:26px;font-size:.95rem}.cl .step input{width:36px;padding:4px 0;font-size:.86rem}
+.cl.dep .cl-n,.cl.dep .cl-t{color:var(--dim);font-weight:400;font-size:.82rem}
+.cart-foot{padding:12px 20px 18px}
+.total strong{font-size:1.7rem}
+@media(max-width:1000px){
+  .catalog{padding:16px 14px 150px}.filters{margin:0 -14px;padding:8px 14px}
+  .brands{overflow-x:auto;scrollbar-width:none}.brand{margin-right:14px;padding-right:2px}
+  .brand-n{font-size:1rem}
+  .cart-body{padding:0 16px 8px}
+}
+@media(max-width:560px){
+  .prow{grid-template-columns:36px minmax(0,1fr) auto}
+  .brands{display:flex}
+}
 </style>
 </head>
 <body>
@@ -626,27 +690,28 @@ function renderCart(){
   S.catalog.brands.forEach(b => {
     const ls = brandLines(b); if (!ls.length) return;
     const sub = brandSub(b), dep = brandDep(b), qty = brandQty(b);
-    const wrap = h('div', { class:'cbrand' }, h('div', { class:'cbrand-h' }, h('span', { class:'cbrand-n', text:b.name }), h('span', { class:'cbrand-s', text:money(round2(sub + dep)) })));
-    let need = null;                                   // { have, min, text }
-    if (b.minQty && qty < b.minQty) { need = { have:qty, min:b.minQty, w:t('cart.minQty', { brand:b.name, left:b.minQty - qty, unit:unitLabel(b), min:b.minQty }) }; }
-    else if (b.minOrder && sub < b.minOrder) { need = { have:sub, min:b.minOrder, w:t('cart.minVal', { brand:b.name, left:money(round2(b.minOrder - sub)), min:money(b.minOrder) }) }; }
-    if (b.minQty || b.minOrder) {
-      const have = b.minQty ? qty : sub, min = b.minQty || b.minOrder, ok = !need;
-      wrap.append(h('div', { class:'meter' + (ok ? ' ok' : '') }, h('i', { style:'width:' + Math.min(100, Math.round(have / min * 100)) + '%' })),
-        h('div', { class:'meter-t' + (ok ? ' ok' : ''), text: ok ? t('cart.minOk') : need.w }));
-    }
-    if (need) warnings.push(need.w);
-    ls.forEach(l => wrap.append(h('div', { class:'line' },
-      h('div', { class:'line-n', text:l.it.name }),
-      h('div', { class:'line-t', text:money(round2(l.it.price * l.qty)) }),
-      h('div', { class:'line-sub' },
-        h('div', { class:'step' },
-          h('button', { type:'button', text:'−', 'aria-label':'-', onclick:() => setQty(l.it.id, l.qty - 1) }),
-          h('input', { type:'number', min:'0', max:'999', value:l.qty, inputmode:'numeric', 'aria-label':l.it.name, onchange:e => setQty(l.it.id, e.target.value) }),
-          h('button', { type:'button', text:'+', 'aria-label':'+', onclick:() => setQty(l.it.id, l.qty + 1) })),
-        h('span', { text:'× ' + money(l.it.price) })),
-      h('div', { style:'text-align:right' }, h('button', { class:'line-x', type:'button', text:t('cart.remove'), onclick:() => setQty(l.it.id, 0) })))));
-    if (dep > 0) wrap.append(h('div', { class:'line dep' }, h('div', { class:'line-n', text:t('cart.deposit') + ' (' + qty + ' × ' + money(b.deposit) + ')' }), h('div', { class:'line-t', text:money(dep) })));
+    const wrap = h('section', { class:'cbrand' });
+    let need = null;
+    if (b.minQty && qty < b.minQty) need = t('cart.minQty', { brand:b.name, left:b.minQty - qty, unit:unitLabel(b), min:b.minQty });
+    else if (b.minOrder && sub < b.minOrder) need = t('cart.minVal', { brand:b.name, left:money(round2(b.minOrder - sub)), min:money(b.minOrder) });
+    if (need) warnings.push(need);
+    const hasMin = b.minQty || b.minOrder;
+    wrap.append(h('div', { class:'cbrand-h' },
+      h('span', { class:'cbrand-n', text:b.name }),
+      h('span', { class:'cbrand-q', text:b.minQty ? qty + ' ' + unitLabel(b) : t('cart.itemsN', { n:qty }) }),
+      h('span', { class:'cbrand-s', text:money(round2(sub + dep)) })));
+    if (hasMin) wrap.append(h('div', { class:'cmin' + (need ? ' bad' : ' ok') },
+      h('span', { class:'meter' }, h('i', { style:'width:' + Math.min(100, Math.round((b.minQty ? qty / b.minQty : sub / b.minOrder) * 100)) + '%' })),
+      h('span', { text: need ? need.replace(b.name + ': ', '') : t('cart.minOk') })));
+    ls.forEach(l => wrap.append(h('div', { class:'cl' },
+      h('div', { class:'cl-n', text:l.it.name.replace(new RegExp('^' + b.name + '\\s+', 'i'), '') }),
+      h('div', { class:'step' },
+        h('button', { type:'button', text:'−', 'aria-label':'-', onclick:() => setQty(l.it.id, l.qty - 1) }),
+        h('input', { type:'number', min:'0', max:'999', value:l.qty, inputmode:'numeric', 'aria-label':l.it.name, onchange:e => setQty(l.it.id, e.target.value) }),
+        h('button', { type:'button', text:'+', 'aria-label':'+', onclick:() => setQty(l.it.id, l.qty + 1) })),
+      h('div', { class:'cl-t', text:money(round2(l.it.price * l.qty)) }),
+      h('button', { class:'cl-x', type:'button', title:t('cart.remove'), 'aria-label':t('cart.remove'), text:'×', onclick:() => setQty(l.it.id, 0) }))));
+    if (dep > 0) wrap.append(h('div', { class:'cl dep' }, h('div', { class:'cl-n', text:t('cart.deposit') + ' · ' + qty + ' × ' + money(b.deposit) }), h('span'), h('div', { class:'cl-t', text:money(dep) }), h('span')));
     body.append(wrap);
   });
 
