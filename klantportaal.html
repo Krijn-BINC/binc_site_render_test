@@ -3,424 +3,626 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mijn account — BINC Klantenportaal</title>
+<title>Bestelportaal — BINC B2B</title>
 <meta name="robots" content="noindex"/>
 <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#000;
+  --bg:#0a0a0b;
+  --panel:#121214;
+  --panel2:#18181b;
+  --line:rgba(255,255,255,.09);
+  --line2:rgba(255,255,255,.16);
   --red:#c0392b;
   --red2:#e74c3c;
-  --white:#fff;
-  --dim:rgba(255,255,255,.58);
+  --ok:#3fb27f;
+  --text:#f4f4f5;
+  --dim:rgba(255,255,255,.62);
+  --faint:rgba(255,255,255,.4);
   --font-display:'Barlow Condensed',sans-serif;
   --font-body:'Barlow',sans-serif;
   --font-ui:'Rajdhani',sans-serif;
+  --top:60px;
+  --side:240px;
+  --cart:380px;
 }
-html{cursor:none}
-body{background:#000;color:#fff;font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
-#cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
-#cur{width:8px;height:8px;background:#fff;transform:translate(-50%,-50%)}
-#cur-ring{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.45);transform:translate(-50%,-50%);transition:width .3s,height .3s}
-body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:52px;height:52px}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
+input,select,textarea{font:inherit;color:var(--text)}
+a{color:inherit}
 ::selection{background:var(--red);color:#fff}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;transition:.4s;background:rgba(0,0,0,.88);backdrop-filter:blur(20px)}
-.nav-logo{display:flex;align-items:center;text-decoration:none}
-.nav-logo img{height:38px;width:auto;object-fit:contain}
-.nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{font-family:var(--font-ui);font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:8px 16px;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:4px;left:16px;right:16px;height:1px;background:rgba(192,57,43,.85);transform:scaleX(0);transform-origin:left;transition:.3s}
-.nav-links a:hover{color:#fff}
-.nav-links a:hover::after{transform:scaleX(1)}
-.nav-cta{color:#fff!important;background:var(--red)!important;padding:10px 26px!important;font-weight:700;border-radius:2px}
-.nav-cta::after{display:none!important}
-.nav-cta:hover{background:var(--red2)!important;color:#fff!important}
-.nav-right{display:flex;align-items:center;gap:0}
-.nav-right .lang-switch{display:none}
-.nav-hamburger{display:none}
-
-/* ── LANG SWITCH ── */
-.lang-switch{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-left:18px;flex-shrink:0}
-.lang-btn{font-family:var(--font-ui);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);background:transparent;border:none;padding:6px 11px;cursor:pointer;transition:.2s;line-height:1}
-.lang-btn.active{background:var(--red);color:#fff}
-.lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.08)}
-
-/* ── LANG FAB ── */
-.lang-fab{
-  display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:4px;overflow:hidden;
-  position:fixed;bottom:28px;right:28px;z-index:600;
-  box-shadow:0 4px 24px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(0,0,0,.72);
-}
-.lang-fab .lang-btn{font-size:.7rem;padding:9px 15px}
-
-.drawer-lang{display:flex;align-items:center;justify-content:center;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin-top:24px}
-.drawer-lang .lang-btn{font-size:.8rem;padding:10px 22px}
-
-@media(min-width:1001px){
-  .nav-links{margin-left:auto;margin-right:20px}
-}
-
-/* MOBILE DRAWER */
-.mobile-nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;align-items:center;justify-content:center;padding:100px 6vw 60px;transform:translateY(-100%);transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0}
-.mobile-nav-drawer.open{transform:translateY(0);pointer-events:auto;opacity:1}
-.mobile-nav-drawer a{font-family:var(--font-display);font-size:clamp(2.4rem,10vw,3.6rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;line-height:1.1;display:block;padding:14px 0;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
-.mobile-nav-drawer a:hover{color:#fff}
-.mobile-nav-drawer a.drawer-cta{color:#fff;background:var(--red);border-radius:4px;margin-top:24px;border-bottom:none;font-size:clamp(1.3rem,5vw,1.8rem);padding:16px 0;letter-spacing:.14em}
-.mobile-nav-drawer a.drawer-cta:hover{background:var(--red2)}
-
-/* ══ KLANTENPORTAAL ══ */
-main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;padding:150px 6vw 90px;overflow:hidden}
-.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(192,57,43,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.05) 1px,transparent 1px);background-size:90px 90px;opacity:.55;animation:gridScroll 25s linear infinite}
-@keyframes gridScroll{from{transform:translateY(0)}to{transform:translateY(90px)}}
-.orb{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none;background:rgba(192,57,43,.10);width:520px;height:520px;top:-10%;right:6%}
-@keyframes riseUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.auth-wrap{position:relative;z-index:5;width:100%;max-width:520px;opacity:0;animation:riseUp .9s .1s forwards}
-.auth-eyebrow{font-family:var(--font-ui);font-size:.78rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:flex;align-items:center;gap:12px}
-.auth-eyebrow::before{content:'';width:34px;height:1px;background:var(--red)}
-.auth-title{font-family:var(--font-display);font-weight:900;font-size:clamp(2.6rem,7vw,4.2rem);line-height:.95;text-transform:uppercase;margin-bottom:16px}
-.auth-title .acc{color:var(--red)}
-.auth-sub{font-size:1.02rem;line-height:1.8;color:rgba(255,255,255,.68);font-weight:300;margin-bottom:30px}
-.auth-sub strong{color:#fff;font-weight:600;word-break:break-all}
-.auth-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);border-top:2px solid var(--red);border-radius:4px;padding:34px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.auth-form{display:flex;flex-direction:column;gap:20px}
-.field-label{display:block;font-family:var(--font-ui);font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
-.field-input{width:100%;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2);border-radius:2px;color:#fff;font-family:var(--font-body);font-size:1rem;padding:15px 16px;outline:none;transition:.25s;cursor:text}
-.field-input::placeholder{color:rgba(255,255,255,.32)}
-.field-input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.22)}
-.btn-red,.btn-outline{font-family:var(--font-ui);font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;display:inline-block;text-align:center;transition:.25s;cursor:pointer}
-.btn-red{color:#fff;background:var(--red);border:none;padding:17px 40px;border-radius:2px;width:100%}
-.btn-red:hover{background:var(--red2)}
-.btn-red:disabled{opacity:.55;cursor:not-allowed}
-.btn-outline{color:#fff;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.24);padding:16px 40px;border-radius:2px}
-.btn-outline:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
-.link-btn{background:none;border:none;font-family:var(--font-ui);font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);cursor:pointer;padding:6px 0;transition:.2s}
-.link-btn:hover:not(:disabled){color:#fff}
-.link-btn:disabled{opacity:.4;cursor:not-allowed}
-.links{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px}
-.msg-box{padding:14px 16px;border-radius:2px;font-size:.92rem;line-height:1.6;margin-bottom:20px;border:1px solid transparent}
-.msg-error{background:rgba(192,57,43,.14);border-color:rgba(231,76,60,.45);color:#ffb4aa}
-.msg-info{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.88)}
 .hidden{display:none!important}
-.code-row{display:flex;gap:12px;justify-content:center}
-.code-box{width:66px;height:78px;text-align:center;font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:#fff;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2);border-radius:2px;outline:none;transition:.25s;cursor:text}
-.code-box:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.22)}
-.code-row.shake{animation:shake .35s}
-@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
-.auth-foot{margin-top:24px;font-size:.92rem;color:rgba(255,255,255,.5);font-weight:300}
-.auth-foot a{color:#fff;text-decoration:none;border-bottom:1px solid var(--red);padding-bottom:1px}
-.auth-foot a:hover{color:var(--red)}
+:focus-visible{outline:2px solid var(--red2);outline-offset:2px}
 
-/* portaal */
-main.portal-main{align-items:flex-start}
-.portal-wrap{position:relative;z-index:5;width:100%;max-width:920px;opacity:0;animation:riseUp .9s .1s forwards}
-.card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);border-top:2px solid var(--red);border-radius:4px;padding:30px;margin-bottom:20px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.card h2{font-family:var(--font-display);font-size:1.9rem;font-weight:800;text-transform:uppercase;line-height:1.05}
-.card .tab{font-family:var(--font-ui);font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin:6px 0 20px}
-.card .empty{color:rgba(255,255,255,.6);font-weight:300;margin-top:10px}
-dl{display:grid;grid-template-columns:minmax(130px,230px) 1fr}
-dt,dd{padding:12px 0;border-top:1px solid rgba(255,255,255,.08);font-size:.98rem}
-dt{font-family:var(--font-ui);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);padding-right:16px;padding-top:15px}
-dd{color:#fff;font-weight:400;word-break:break-word}
+/* ── TOPBAR ── */
+.top{position:fixed;inset:0 0 auto 0;height:var(--top);z-index:50;display:flex;align-items:center;gap:14px;padding:0 20px;background:rgba(10,10,11,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.top-logo img{height:26px;display:block}
+.top-tag{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--red2);padding-left:14px;border-left:1px solid var(--line2);white-space:nowrap}
+.top-space{flex:1}
+.who{font-size:.85rem;color:var(--dim);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-ghost{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:8px 12px;border:1px solid var(--line2);border-radius:3px;text-decoration:none;white-space:nowrap;transition:.15s;display:inline-block}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05)}
+.lang{display:flex;border:1px solid var(--line2);border-radius:3px;overflow:hidden}
+.lang button{font-family:var(--font-ui);font-weight:700;font-size:.7rem;letter-spacing:.16em;padding:7px 10px;color:var(--faint);line-height:1}
+.lang button.on{background:var(--red);color:#fff}
+
+/* ── SHELL ── */
+.shell{display:grid;grid-template-columns:var(--side) minmax(0,1fr);padding-top:var(--top);min-height:100vh}
+.side{position:sticky;top:var(--top);height:calc(100vh - var(--top));padding:22px 14px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px;background:var(--bg)}
+.nav-i{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 14px;border-radius:4px;font-family:var(--font-ui);font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);transition:.15s;position:relative;white-space:nowrap}
+.nav-i svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav-i:hover{color:#fff;background:rgba(255,255,255,.05)}
+.nav-i.on{color:#fff;background:rgba(192,57,43,.16);box-shadow:inset 3px 0 0 var(--red)}
+.nav-badge{margin-left:auto;background:var(--red);color:#fff;border-radius:10px;font-size:.7rem;min-width:20px;height:20px;line-height:20px;text-align:center;padding:0 6px;letter-spacing:0}
+.side-foot{margin-top:auto;padding:14px;border-top:1px solid var(--line);font-size:.8rem;color:var(--faint);line-height:1.6}
+.side-foot a{color:var(--dim);text-decoration:none}.side-foot a:hover{color:#fff}
+.main{min-width:0}
+.view{display:none}.view.on{display:block}
+
+/* ── BESTELLEN ── */
+.order-grid{display:grid;grid-template-columns:minmax(0,1fr) var(--cart);align-items:start}
+.catalog{padding:26px 28px 90px;min-width:0}
+.page-h{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(1.9rem,3vw,2.5rem);line-height:1;letter-spacing:.01em}
+.page-h .acc{color:var(--red)}
+.page-sub{color:var(--dim);margin:8px 0 22px;max-width:60ch}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+.seg button{font-family:var(--font-ui);font-weight:700;font-size:.84rem;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px;color:var(--dim);transition:.15s}
+.seg button.on{background:var(--red);color:#fff}
+.seg button:not(.on):hover{background:rgba(255,255,255,.06);color:#fff}
+.search{flex:1;min-width:180px;position:relative}
+.search input{width:100%;background:var(--panel);border:1px solid var(--line2);border-radius:4px;padding:11px 14px 11px 38px;outline:none;transition:.15s}
+.search input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.2)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--faint);fill:none;stroke-width:2;stroke-linecap:round}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;margin-bottom:6px;scrollbar-width:thin}
+.chip{flex:none;font-size:.82rem;font-weight:500;padding:6px 13px;border:1px solid var(--line2);border-radius:99px;color:var(--dim);white-space:nowrap;transition:.15s}
+.chip:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.chip.on{background:#fff;color:#000;border-color:#fff}
+.group-h{font-family:var(--font-ui);font-weight:700;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red2);margin:22px 0 10px;display:flex;align-items:center;gap:12px}
+.group-h::after{content:'';flex:1;height:1px;background:var(--line)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:12px;transition:border-color .15s,background .15s}
+.card:hover{border-color:var(--line2)}
+.card.in{border-color:rgba(192,57,43,.7);background:linear-gradient(180deg,rgba(192,57,43,.1),var(--panel) 70%)}
+.card-name{font-weight:600;line-height:1.3}
+.card-cat{color:var(--faint);font-size:.78rem;margin-top:2px}
+.card-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.price{font-family:var(--font-display);font-weight:700;font-size:1.35rem;letter-spacing:.01em}
+.price small{font-family:var(--font-body);font-weight:400;font-size:.72rem;color:var(--faint);margin-left:4px}
+.add{font-family:var(--font-ui);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;background:var(--red);color:#fff;padding:9px 16px;border-radius:3px;transition:.15s}
+.add:hover{background:var(--red2)}
+.step{display:inline-flex;align-items:stretch;border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:var(--bg)}
+.step button{width:34px;font-size:1.2rem;line-height:1;color:var(--dim);transition:.15s}
+.step button:hover{background:var(--red);color:#fff}
+.step input{width:46px;text-align:center;background:transparent;border:none;border-left:1px solid var(--line);border-right:1px solid var(--line);outline:none;font-weight:600;-moz-appearance:textfield;padding:7px 0}
+.step input::-webkit-outer-spin-button,.step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.step input:focus{background:rgba(255,255,255,.06)}
+.empty{padding:50px 10px;text-align:center;color:var(--dim)}
+.spin{width:28px;height:28px;margin:0 auto 14px;border:3px solid rgba(192,57,43,.25);border-top-color:var(--red);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ── WINKELMAND ── */
+.cart{position:sticky;top:var(--top);height:calc(100vh - var(--top));border-left:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;min-width:0}
+.cart-h{display:flex;align-items:center;justify-content:space-between;padding:20px 22px 14px}
+.cart-h h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.5rem;line-height:1}
+.cart-close{display:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line2);font-size:1.2rem;line-height:1}
+.cart-body{flex:1;overflow-y:auto;padding:0 22px}
+.cart-empty{color:var(--dim);padding:26px 0;text-align:center}
+.cart-brand{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red2);margin:14px 0 4px;display:flex;justify-content:space-between;gap:8px}
+.cart-brand span:last-child{color:var(--dim);letter-spacing:.04em;text-transform:none;font-family:var(--font-body);font-weight:500;font-size:.8rem}
+.line{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:11px 0;border-bottom:1px solid var(--line)}
+.line-n{font-size:.92rem;font-weight:500;line-height:1.3}
+.line-t{font-weight:600;text-align:right;white-space:nowrap}
+.line .step button{width:28px;font-size:1rem}.line .step input{width:38px;padding:5px 0;font-size:.88rem}
+.line-sub{display:flex;align-items:center;gap:10px;color:var(--faint);font-size:.8rem}
+.line-x{color:var(--faint);font-size:.78rem;text-decoration:underline;padding:0}.line-x:hover{color:var(--red2)}
+.warn{margin:0 0 10px;padding:9px 12px;border-radius:4px;background:rgba(192,57,43,.14);border:1px solid rgba(231,76,60,.4);color:#ffb4aa;font-size:.84rem}
+.cart-foot{border-top:1px solid var(--line);padding:16px 22px 20px;background:var(--panel2)}
+.f-lab{display:block;font-family:var(--font-ui);font-weight:700;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 5px}
+.f-in{width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:4px;padding:9px 11px;outline:none;font-size:.9rem;transition:.15s;color-scheme:dark}
+.f-in:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.2)}
+textarea.f-in{resize:vertical;min-height:54px}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.f-full{margin-bottom:10px}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 4px}
+.total strong{font-family:var(--font-display);font-size:1.9rem;font-weight:800;line-height:1}
+.total span{color:var(--dim);font-size:.85rem}
+.vat{color:var(--faint);font-size:.76rem;margin-bottom:12px}
+.btn-red{width:100%;font-family:var(--font-ui);font-weight:700;font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;background:var(--red);color:#fff;padding:15px;border-radius:3px;transition:.15s}
+.btn-red:hover:not(:disabled){background:var(--red2)}
+.btn-red:disabled{opacity:.45;cursor:not-allowed}
+.btn-line{width:100%;font-family:var(--font-ui);font-weight:700;font-size:.84rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line2);padding:12px;border-radius:3px;color:var(--dim);transition:.15s;margin-top:8px}
+.btn-line:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+
+.done{padding:34px 22px;text-align:center}
+.done-ic{width:58px;height:58px;border-radius:50%;background:rgba(63,178,127,.15);border:1px solid rgba(63,178,127,.5);margin:0 auto 16px;display:grid;place-items:center}
+.done-ic svg{width:28px;height:28px;stroke:var(--ok);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.done h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.7rem;line-height:1.05;margin-bottom:8px}
+.done p{color:var(--dim);margin-bottom:6px}
+.done .oid{font-family:var(--font-ui);font-weight:700;letter-spacing:.14em;color:#fff;font-size:1.05rem;margin:10px 0 18px;display:block}
+
+/* mobiele winkelmandbalk */
+.cartbar{display:none}
+
+/* ── LIJSTEN (bestellingen / account) ── */
+.pad{padding:26px 28px 90px;max-width:980px}
+.ord{background:var(--panel);border:1px solid var(--line);border-radius:6px;margin-bottom:10px;overflow:hidden}
+.ord-h{display:grid;grid-template-columns:1fr auto auto;gap:6px 18px;align-items:center;padding:16px 18px;width:100%;text-align:left}
+.ord-h:hover{background:rgba(255,255,255,.03)}
+.ord-id{font-family:var(--font-ui);font-weight:700;letter-spacing:.1em}
+.ord-meta{color:var(--dim);font-size:.84rem}
+.ord-tot{font-family:var(--font-display);font-weight:700;font-size:1.3rem}
+.pill{font-family:var(--font-ui);font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:99px;background:rgba(63,178,127,.14);color:var(--ok);border:1px solid rgba(63,178,127,.4)}
+.ord-d{border-top:1px solid var(--line);padding:6px 18px 16px}
+.ord-d table{width:100%;border-collapse:collapse;font-size:.9rem}
+.ord-d td,.ord-d th{padding:8px 4px;border-bottom:1px solid var(--line);text-align:left}
+.ord-d th{font-family:var(--font-ui);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.ord-d td.r,.ord-d th.r{text-align:right}
+.ord-note{color:var(--dim);font-size:.86rem;margin:12px 0 0}
+.ord-act{margin-top:14px;display:flex;gap:10px}
+.ord-act .btn-red,.ord-act .btn-line{width:auto;padding:10px 18px;margin:0}
+.acc-card{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--red);border-radius:6px;padding:22px 24px;margin-bottom:14px}
+.acc-card h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.6rem;line-height:1.05}
+.acc-card .sub{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red2);margin:4px 0 14px}
+dl{display:grid;grid-template-columns:minmax(120px,220px) 1fr}
+dt,dd{padding:10px 0;border-top:1px solid var(--line);font-size:.93rem}
+dt{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding-right:14px;padding-top:12px}
+dd{word-break:break-word}
 dl>:nth-child(1),dl>:nth-child(2){border-top:none}
-.state{text-align:center;padding:50px 20px;color:rgba(255,255,255,.6);font-weight:300}
-.spinner{width:28px;height:28px;margin:0 auto 14px;border:3px solid rgba(192,57,43,.25);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.portal-actions{margin-top:10px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#fff;color:#000;padding:11px 18px;border-radius:4px;font-weight:600;font-size:.9rem;z-index:200;transition:.25s;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.loading{display:grid;place-items:center;min-height:60vh;color:var(--dim)}
 
-/* FOOTER */
-footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:60px 6vw 40px;display:grid;grid-template-columns:1.1fr 2fr;gap:60px;align-items:start;position:relative;z-index:5}
-.ft-brand{display:flex;flex-direction:column;gap:24px}
-.ft-logo{width:200px;opacity:.98}
-.ft-socials{display:flex;align-items:center;gap:22px}
-.ft-socials a{width:22px;height:22px;color:#fff;opacity:.72;transition:.2s;display:inline-flex;align-items:center;justify-content:center}
-.ft-socials a:hover{color:var(--red);opacity:1;transform:translateY(-2px)}
-.ft-socials svg{width:100%;height:100%;fill:currentColor}
-.ft-info{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.ft-item p,.ft-item a{font-size:1rem;line-height:1.75;color:rgba(255,255,255,.74);text-decoration:none;font-weight:400}
-.ft-h{font-family:var(--font-ui);font-size:.82rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,1);margin-bottom:12px}
-.ft-item a:hover{color:var(--red)}
-
+/* ── RESPONSIVE ── */
+@media(max-width:1180px){:root{--cart:340px}}
 @media(max-width:1000px){
-  html,body{cursor:auto}
-  #cur,#cur-ring{display:none}
-  .lang-fab{display:none}
-  .nav-right .lang-switch{display:flex}
-  nav{height:70px;padding:0 5vw}
-  .nav-logo img{height:32px}
-  nav .nav-links{display:none}
-  .nav-hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;cursor:pointer;background:none;border:none;padding:0;position:relative;z-index:510}
-  .nav-hamburger span{display:block;width:26px;height:1.5px;background:#fff;border-radius:2px;transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .22s,background .22s;transform-origin:center}
-  .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--red)}
-  .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-  .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--red)}
-  .mobile-nav-drawer{display:flex}
-  main{padding:130px 6vw 70px}
-  footer{grid-template-columns:1fr;gap:36px;padding:48px 6vw 32px}
-  .ft-brand{align-items:center;text-align:center;gap:18px;padding-bottom:32px;border-bottom:1px solid rgba(192,57,43,.12);margin-bottom:8px}
-  .ft-logo{width:min(180px,55vw);margin:0 auto}
-  .ft-socials{justify-content:center}
-  .ft-info{grid-template-columns:1fr;gap:18px;text-align:center}
-}
-@media(max-width:1000px){
-  .auth-card{padding:28px 22px}
+  :root{--side:0px}
+  .shell{display:block;padding-bottom:64px}
+  .side{position:fixed;inset:auto 0 0 0;top:auto;height:62px;width:100%;flex-direction:row;padding:0;border-right:none;border-top:1px solid var(--line);background:rgba(10,10,11,.96);backdrop-filter:blur(14px);z-index:60;gap:0}
+  .side-foot{display:none}
+  .nav-i{flex:1;flex-direction:column;justify-content:center;gap:3px;padding:6px 4px;font-size:.66rem;letter-spacing:.08em;border-radius:0;text-align:center}
+  .nav-i.on{box-shadow:inset 0 3px 0 var(--red);background:rgba(192,57,43,.12)}
+  .nav-badge{position:absolute;top:4px;right:calc(50% - 22px);margin:0}
+  .order-grid{display:block}
+  .catalog{padding:20px 16px 150px}
+  .pad{padding:20px 16px 90px}
+  .cart{position:fixed;inset:0;height:auto;z-index:90;border-left:none;transform:translateY(102%);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+  .cart.open{transform:none}
+  .cart-close{display:block}
+  .cartbar{display:flex;position:fixed;left:12px;right:12px;bottom:74px;z-index:55;align-items:center;justify-content:space-between;gap:12px;background:var(--red);color:#fff;border-radius:6px;padding:13px 16px;box-shadow:0 8px 28px rgba(0,0,0,.55);font-weight:600}
+  .cartbar .cb-tot{font-family:var(--font-display);font-weight:800;font-size:1.25rem}
+  .cartbar.zero{display:none}
+  .who,.top-tag{display:none}
+  .toast{bottom:150px}
 }
 @media(max-width:560px){
-  .code-box{width:56px;height:68px;font-size:2.2rem}
-  .code-row{gap:9px}
-  dl{grid-template-columns:1fr}
-  dt{padding-bottom:0}
-  dd{border-top:none;padding-top:2px}
-  dl>:nth-child(1){border-top:none}
+  .top{padding:0 12px;gap:8px}
+  .top .btn-ghost.site{padding:7px 9px;font-size:.66rem}
+  .top .btn-ghost.out{display:none}
+  .cards{grid-template-columns:1fr}
+  .card{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .card-main{flex:1;min-width:0}
+  .card-row{flex-direction:column;align-items:flex-end;gap:8px;flex:none}
+  .ord-h{grid-template-columns:1fr auto}
+  .ord-h .pill{display:none}
+  dl{grid-template-columns:1fr}dt{padding-bottom:0}dd{border-top:none;padding-top:2px}
+  .f-grid{grid-template-columns:1fr}
 }
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-ring"></div>
+<header class="top">
+  <a class="top-logo" href="index.html" aria-label="BINC International"><img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/></a>
+  <span class="top-tag" data-i18n="top.tag">B2B Bestelportaal</span>
+  <span class="top-space"></span>
+  <span class="who" id="who"></span>
+  <div class="lang"><button data-lang="nl" class="on">NL</button><button data-lang="en">EN</button></div>
+  <a class="btn-ghost site" href="index.html" data-i18n="top.site">&larr; Website</a>
+  <button class="btn-ghost out" id="logoutTop" data-i18n="nav.logout">Uitloggen</button>
+</header>
 
-<!-- LANG FAB -->
-<div class="lang-fab" id="langFab">
-  <button class="lang-btn active" data-lang="nl">NL</button>
-  <button class="lang-btn" data-lang="en">EN</button>
-</div>
-
-<!-- Mobile nav drawer -->
-<div class="mobile-nav-drawer" id="mobileDrawer">
-  <a href="retail.html" data-i18n="nav.retail">Retail</a>
-  <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
-  <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
-  <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
-  <a href="werken-bij.html" data-i18n="nav.jobs">Werken bij</a>
-  <a href="#" id="drawerLogout" data-i18n="nav.logout">Uitloggen</a>
-  <a href="index.html#lead" class="drawer-cta" data-i18n="nav.cta">Samenwerken</a>
-  <div class="drawer-lang">
-    <button class="lang-btn active" data-lang="nl">NL</button>
-    <button class="lang-btn" data-lang="en">EN</button>
-  </div>
-</div>
-
-<nav id="nav">
-  <a href="index.html" class="nav-logo">
-    <img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
-  </a>
-  <div class="nav-links">
-    <a href="retail.html" data-i18n="nav.retail">Retail</a>
-    <a href="horeca.html" data-i18n="nav.horeca">Horeca</a>
-    <a href="evenementen.html" data-i18n="nav.events">Evenementen</a>
-    <a href="ons-team.html" data-i18n="nav.team">Ons Team</a>
-    <a href="werken-bij.html" data-i18n="nav.jobs">Werken bij</a>
-    <a href="#" id="navLogout" data-i18n="nav.logout">Uitloggen</a>
-    <a href="index.html#lead" class="nav-cta" data-i18n="nav.cta">Samenwerken</a>
-  </div>
-  <div class="nav-right">
-    <div class="lang-switch">
-      <button class="lang-btn active" data-lang="nl">NL</button>
-      <button class="lang-btn" data-lang="en">EN</button>
-    </div>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen">
-      <span></span><span></span><span></span>
+<div class="shell">
+  <nav class="side" aria-label="Portaal">
+    <button class="nav-i on" data-view="order">
+      <svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.76L20 8H6.2"/><circle cx="9" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg>
+      <span data-i18n="nav.order">Bestellen</span><span class="nav-badge hidden" id="navBadge">0</span>
     </button>
-  </div>
-</nav>
+    <button class="nav-i" data-view="orders">
+      <svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>
+      <span data-i18n="nav.orders">Mijn bestellingen</span>
+    </button>
+    <button class="nav-i" data-view="account">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.9-3.6 3.8-5.4 7.5-5.4s6.6 1.8 7.5 5.4"/></svg>
+      <span data-i18n="nav.account">Mijn account</span>
+    </button>
+    <div class="side-foot">
+      <div data-i18n="side.help">Hulp nodig met een bestelling?</div>
+      <a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a><br/>
+      <a href="tel:+31132032643">013 203 2643</a><br/><br/>
+      <a href="#" id="logoutSide" data-i18n="nav.logout">Uitloggen</a>
+    </div>
+  </nav>
 
-<main class="portal-main">
-  <div class="grid-bg"></div>
-  <div class="orb"></div>
-  <div class="portal-wrap">
-    <div class="auth-eyebrow" data-i18n="portal.eyebrow">Klantenportaal</div>
-    <h1 class="auth-title" data-i18n="portal.title">Mijn account<span class="acc">.</span></h1>
-    <p class="auth-sub" id="whoLine"></p>
-    <div id="state" class="state"><div class="spinner"></div><span data-i18n="portal.loading">Gegevens laden…</span></div>
-    <div id="content"></div>
-    <div class="portal-actions"><button class="btn-outline" id="logoutBtn" data-i18n="nav.logout">Uitloggen</button></div>
-  </div>
-</main>
+  <main class="main">
+    <div class="loading" id="boot"><div><div class="spin"></div><span data-i18n="loading">Portaal laden…</span></div></div>
 
-<footer>
-  <div class="ft-brand">
-    <img class="ft-logo" src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/>
-    <div class="ft-socials">
-      <a href="https://www.linkedin.com/company/bincinternationalbv/" target="_blank" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.35 8h4.3v15H.35V8zM8.1 8h4.12v2.05h.06c.57-1.08 1.98-2.22 4.08-2.22 4.36 0 5.17 2.87 5.17 6.6V23h-4.3v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4.01V23H8.1V8z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@bincinternational?lang=en" target="_blank" aria-label="TikTok">
-        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a5.82 5.82 0 0 1-3.77-1.39A5.9 5.9 0 0 1 13.75 1h-3.42v14.18a2.95 2.95 0 1 1-2.01-2.8V8.9a6.39 6.39 0 1 0 5.43 6.28V8.02a9.18 9.18 0 0 0 5.84 2.1V6.69z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/binc_international/" target="_blank" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.41a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
-      </a>
-    </div>
-  </div>
-  <div class="ft-info">
-    <div class="ft-item">
-      <p class="ft-h" data-i18n="footer.address.label">BINC adres</p>
-      <p>De Hemeltjes 3,<br>5051 JR Goirle</p>
-    </div>
-    <div class="ft-item">
-      <p class="ft-h" data-i18n="footer.email.label">E-mailadres</p>
-      <a href="mailto:info@bincinternational.nl">Info@bincinternational.nl</a>
-    </div>
-    <div class="ft-item">
-      <p class="ft-h" data-i18n="footer.phone.label">Telefoonnummer</p>
-      <a href="tel:+31132032643">013 203 2643</a>
-    </div>
-  </div>
-</footer>
+    <!-- BESTELLEN -->
+    <section class="view" id="v-order">
+      <div class="order-grid">
+        <div class="catalog">
+          <h1 class="page-h"><span data-i18n="order.title">Nieuwe bestelling</span><span class="acc">.</span></h1>
+          <p class="page-sub" data-i18n="order.sub">Kies je producten en plaats je bestelling direct bij BINC. Prijzen zijn je B2B-prijzen, exclusief btw.</p>
+          <div class="toolbar">
+            <div class="seg" id="brandSeg" role="tablist"></div>
+            <div class="search">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              <input type="search" id="q" data-i18n-ph="order.search" placeholder="Zoek een product…" autocomplete="off"/>
+            </div>
+          </div>
+          <div class="chips" id="chips"></div>
+          <div id="products"></div>
+        </div>
+
+        <aside class="cart" id="cart" aria-label="Winkelmand">
+          <div class="cart-h"><h2 data-i18n="cart.title">Winkelmand</h2><button class="cart-close" id="cartClose" aria-label="Sluiten">&times;</button></div>
+          <div class="cart-body" id="cartBody"></div>
+          <div class="cart-foot" id="cartFoot"></div>
+        </aside>
+      </div>
+      <button class="cartbar zero" id="cartbar"><span id="cbText"></span><span class="cb-tot" id="cbTot"></span></button>
+    </section>
+
+    <!-- MIJN BESTELLINGEN -->
+    <section class="view" id="v-orders"><div class="pad">
+      <h1 class="page-h"><span data-i18n="orders.title">Mijn bestellingen</span><span class="acc">.</span></h1>
+      <p class="page-sub" data-i18n="orders.sub">Alles wat je via het portaal hebt besteld. Zo bestel je een eerdere bestelling met één klik opnieuw.</p>
+      <div id="ordersList"></div>
+    </div></section>
+
+    <!-- MIJN ACCOUNT -->
+    <section class="view" id="v-account"><div class="pad">
+      <h1 class="page-h"><span data-i18n="account.title">Mijn account</span><span class="acc">.</span></h1>
+      <p class="page-sub" id="accSub"></p>
+      <div id="accList"></div>
+    </div></section>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
 
 <script>
-/* ══════════════════════════════════════════════════
-   TRANSLATIONS (zelfde sleutels & binc_lang opslag als de rest van de site)
-══════════════════════════════════════════════════ */
-const TRANSLATIONS = {
-  nl: {
-    'nav.retail': 'Retail',
-    'nav.horeca': 'Horeca',
-    'nav.events': 'Evenementen',
-    'nav.team':   'Ons Team',
-    'nav.jobs':   'Werken bij',
-    'nav.login':  'Inloggen',
-    'nav.logout': 'Uitloggen',
-    'nav.cta':    'Samenwerken',
-    'footer.address.label': 'BINC adres',
-    'footer.email.label':   'E-mailadres',
-    'footer.phone.label':   'Telefoonnummer',
-    'portal.eyebrow':  'Klantenportaal',
-    'portal.title':    'Mijn account<span class="acc">.</span>',
-    'portal.loading':  'Gegevens laden\u2026',
-    'portal.loggedin': 'Ingelogd op',
-    'portal.filiaal':  'Filiaal',
-    'portal.filiaalId':'Filiaal ID',
-    'portal.empty':    'Er zijn nog geen gegevens gevonden voor dit filiaal.',
-    'portal.failed':   'Gegevens laden mislukt:'
-  },
-  en: {
-    'nav.retail': 'Retail',
-    'nav.horeca': 'Horeca',
-    'nav.events': 'Events',
-    'nav.team':   'Our Team',
-    'nav.jobs':   'Work at BINC',
-    'nav.login':  'Log in',
-    'nav.logout': 'Log out',
-    'nav.cta':    'Work With Us',
-    'footer.address.label': 'BINC address',
-    'footer.email.label':   'Email address',
-    'footer.phone.label':   'Phone number',
-    'portal.eyebrow':  'Customer portal',
-    'portal.title':    'My account<span class="acc">.</span>',
-    'portal.loading':  'Loading data\u2026',
-    'portal.loggedin': 'Logged in on',
-    'portal.filiaal':  'Branch',
-    'portal.filiaalId':'Branch ID',
-    'portal.empty':    'No data has been found for this branch yet.',
-    'portal.failed':   'Loading failed:'
-  }
+/* ═══════════ TEKSTEN ═══════════ */
+const TR = {
+ nl:{
+  'top.tag':'B2B Bestelportaal','top.site':'← Website','nav.logout':'Uitloggen','loading':'Portaal laden…',
+  'nav.order':'Bestellen','nav.orders':'Mijn bestellingen','nav.account':'Mijn account','side.help':'Hulp nodig met een bestelling?',
+  'order.title':'Nieuwe bestelling','order.sub':'Kies je producten en plaats je bestelling direct bij BINC. Prijzen zijn je B2B-prijzen, exclusief btw.',
+  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.add':'Toevoegen','order.per':'per',
+  'cart.title':'Winkelmand','cart.empty':'Je winkelmand is leeg. Voeg producten toe om te bestellen.','cart.remove':'Verwijderen',
+  'cart.branch':'Filiaal','cart.date':'Gewenste leverdatum','cart.ref':'Eigen referentie','cart.refPh':'bijv. inkoopnummer','cart.notes':'Opmerking','cart.notesPh':'Bijzonderheden voor levering',
+  'cart.total':'Totaal','cart.vat':'Excl. btw. Facturatie via de bij BINC bekende gegevens.','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
+  'cart.min':'Minimale orderwaarde {brand}: {min} (nog {left} te gaan)','cart.items':'{n} artikel(en)','cart.view':'Bekijk winkelmand','cart.count':'{n} stuks',
+  'done.title':'Bestelling ontvangen','done.text':'Bedankt! Je ontvangt een bevestiging per e-mail.','done.again':'Nieuwe bestelling','done.view':'Bekijk mijn bestellingen',
+  'orders.title':'Mijn bestellingen','orders.sub':'Alles wat je via het portaal hebt besteld. Zo bestel je een eerdere bestelling met één klik opnieuw.',
+  'orders.empty':'Je hebt nog niets besteld via het portaal.','orders.product':'Product','orders.qty':'Aantal','orders.price':'Prijs','orders.sum':'Totaal',
+  'orders.status':'Ontvangen','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelmand',
+  'account.title':'Mijn account','account.empty':'Er zijn nog geen gegevens gevonden voor dit filiaal.','account.id':'Filiaal ID','account.branch':'Filiaal','account.last':'Ingelogd op',
+  'err.load':'Laden mislukt:','err.generic':'Er ging iets mis. Probeer het opnieuw.','err.network':'Geen verbinding met de server.','err.retry':'Opnieuw proberen',
+  'toast.added':'Toegevoegd'
+ },
+ en:{
+  'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
+  'nav.order':'Order','nav.orders':'My orders','nav.account':'My account','side.help':'Need help with an order?',
+  'order.title':'New order','order.sub':'Pick your products and place your order directly with BINC. Prices are your B2B prices, excluding VAT.',
+  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.add':'Add','order.per':'per',
+  'cart.title':'Basket','cart.empty':'Your basket is empty. Add products to place an order.','cart.remove':'Remove',
+  'cart.branch':'Branch','cart.date':'Preferred delivery date','cart.ref':'Your reference','cart.refPh':'e.g. purchase number','cart.notes':'Note','cart.notesPh':'Delivery instructions',
+  'cart.total':'Total','cart.vat':'Excl. VAT. Invoiced using the details BINC has on file.','cart.place':'Place order','cart.placing':'Placing…',
+  'cart.min':'Minimum order value {brand}: {min} ({left} to go)','cart.items':'{n} item(s)','cart.view':'View basket','cart.count':'{n} items',
+  'done.title':'Order received','done.text':'Thank you! You will receive a confirmation by email.','done.again':'New order','done.view':'View my orders',
+  'orders.title':'My orders','orders.sub':'Everything you ordered through the portal. Reorder a previous order with one click.',
+  'orders.empty':'You have not ordered through the portal yet.','orders.product':'Product','orders.qty':'Qty','orders.price':'Price','orders.sum':'Total',
+  'orders.status':'Received','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your basket',
+  'account.title':'My account','account.empty':'No data has been found for this branch yet.','account.id':'Branch ID','account.branch':'Branch','account.last':'Logged in on',
+  'err.load':'Loading failed:','err.generic':'Something went wrong. Please try again.','err.network':'Can’t reach the server.','err.retry':'Try again',
+  'toast.added':'Added'
+ }
 };
-
-let currentLang = localStorage.getItem('binc_lang') || 'nl';
-function t(key){ return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) || TRANSLATIONS['nl'][key] || key; }
-function applyLang(lang){
-  currentLang = lang;
-  localStorage.setItem('binc_lang', lang);
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.getAttribute('data-i18n')); });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.getAttribute('data-i18n-ph')); });
-  document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); });
-}
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => { applyLang(btn.dataset.lang); toggleDrawer(false); });
-});
-
-/* CURSOR */
-const cur  = document.getElementById('cur');
-const ring = document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-(function animRing(){ rx+=(mx-rx)*.11; ry+=(my-ry)*.11; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
-
-/* MOBILE NAV DRAWER */
-const hamburger = document.getElementById('navHamburger');
-const drawer    = document.getElementById('mobileDrawer');
-function toggleDrawer(open){
-  hamburger.classList.toggle('open', open);
-  drawer.classList.toggle('open', open);
-  document.body.style.overflow = open ? 'hidden' : '';
-}
-hamburger.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
-drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', () => toggleDrawer(false)));
-
-/* ══════════════ PORTAAL ══════════════ */
-const API_BASE  = 'https://server-medewerker-kpi.onrender.com';
-const TOKEN_KEY = 'klantToken';
+let lang = 'nl'; try { lang = localStorage.getItem('binc_lang') || 'nl'; } catch(_){}
+if (!TR[lang]) lang = 'nl';
+const t = (k, v) => { let s = (TR[lang] && TR[lang][k]) || TR.nl[k] || k; if (v) for (const x in v) s = s.replace('{' + x + '}', v[x]); return s; };
 const $ = id => document.getElementById(id);
-let token = null;
-try { token = sessionStorage.getItem(TOKEN_KEY); } catch (_) {}
-
-function logout(){
-  try { sessionStorage.removeItem(TOKEN_KEY); sessionStorage.removeItem('klantData'); } catch (_) {}
-  location.replace('inloggen.html');
+function h(tag, attrs, ...kids){
+  const el = document.createElement(tag);
+  for (const k in (attrs || {})) {
+    const v = attrs[k]; if (v == null || v === false) continue;
+    if (k === 'class') el.className = v; else if (k === 'text') el.textContent = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v); else el.setAttribute(k, v === true ? '' : v);
+  }
+  kids.flat().forEach(c => { if (c != null && c !== false) el.append(c.nodeType ? c : document.createTextNode(c)); });
+  return el;
 }
-['logoutBtn','navLogout','drawerLogout'].forEach(id => { const el = $(id); if (el) el.addEventListener('click', e => { e.preventDefault(); logout(); }); });
+const money = n => new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-GB', { style:'currency', currency:'EUR' }).format(n);
+const round2 = n => Math.round(n * 100) / 100;
+
+/* ═══════════ SESSIE ═══════════ */
+const API = 'https://server-medewerker-kpi.onrender.com';
+const TOKEN_KEY = 'klantToken', CART_KEY = 'klantCart';
+let token = null; try { token = sessionStorage.getItem(TOKEN_KEY); } catch(_){}
+function logout(){ try { sessionStorage.removeItem(TOKEN_KEY); sessionStorage.removeItem('klantData'); sessionStorage.removeItem(CART_KEY); } catch(_){} location.replace('inloggen.html'); }
 if (!token) logout();
+async function api(path, opt){
+  const r = await fetch(API + path, Object.assign({}, opt, { headers: Object.assign({ Authorization:'Bearer ' + token }, (opt && opt.body) ? { 'Content-Type':'application/json' } : {}) }));
+  if (r.status === 401) { logout(); throw new Error('401'); }
+  let d = {}; try { d = await r.json(); } catch(_){}
+  if (!r.ok || d.success === false) throw new Error(d.error || t('err.generic'));
+  return d;
+}
 
-let lastKlant = null, lastError = null;
-function renderAll(){
-  const box = $('content'); box.innerHTML = '';
-  if (lastError) { $('state').classList.remove('hidden'); $('state').textContent = t('portal.failed') + ' ' + lastError; return; }
-  if (!lastKlant) return;
-  const klant = lastKlant;
-  let who = klant.email || '';
-  if (klant.laatstIngelogd) who += ' \u00b7 ' + t('portal.loggedin') + ' ' + klant.laatstIngelogd;
-  $('whoLine').textContent = who;
+/* ═══════════ STATE ═══════════ */
+const S = { view:'order', catalog:null, items:new Map(), brandId:null, cat:'', q:'', cart:{}, klant:null, orders:null, branch:'', date:'', ref:'', notes:'', placing:false, error:'', done:null, expanded:new Set(), cartOpen:false };
+try { S.cart = JSON.parse(sessionStorage.getItem(CART_KEY) || '{}') || {}; } catch(_){}
+const saveCart = () => { try { sessionStorage.setItem(CART_KEY, JSON.stringify(S.cart)); } catch(_){} };
+const cartLines = () => Object.keys(S.cart).filter(id => S.cart[id] > 0 && S.items.has(id)).map(id => ({ it:S.items.get(id), qty:S.cart[id] }));
+const cartCount = () => cartLines().reduce((s, l) => s + l.qty, 0);
+const cartTotal = () => round2(cartLines().reduce((s, l) => s + l.it.price * l.qty, 0));
+const clampQty = v => Math.max(0, Math.min(999, Math.floor(Number(v) || 0)));
 
-  (klant.filialen || []).forEach(f => {
-    if (!f.gevonden) {
-      const c = document.createElement('div'); c.className = 'card';
-      const h = document.createElement('h2'); h.textContent = t('portal.filiaal') + ' ' + f.filiaalId;
-      const p = document.createElement('p'); p.className = 'empty'; p.textContent = t('portal.empty');
-      c.append(h, p); box.appendChild(c); return;
+let toastT;
+function toast(msg){ const el = $('toast'); el.textContent = msg; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('on'), 1800); }
+
+/* ═══════════ NAVIGATIE ═══════════ */
+function show(view){
+  S.view = view;
+  document.querySelectorAll('.view').forEach(v => v.classList.toggle('on', v.id === 'v-' + view));
+  document.querySelectorAll('.nav-i').forEach(b => b.classList.toggle('on', b.dataset.view === view));
+  if (view === 'orders') loadOrders();
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll('.nav-i').forEach(b => b.addEventListener('click', () => show(b.dataset.view)));
+['logoutTop', 'logoutSide'].forEach(id => $(id).addEventListener('click', e => { e.preventDefault(); logout(); }));
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => {
+  lang = b.dataset.lang; try { localStorage.setItem('binc_lang', lang); } catch(_){} applyLang();
+}));
+
+/* ═══════════ CATALOGUS ═══════════ */
+const brand = () => S.catalog.brands.find(b => b.id === S.brandId);
+const cardRefs = new Map(); // id -> { sync(qty) }
+
+function renderBrands(){
+  const seg = $('brandSeg'); seg.replaceChildren();
+  S.catalog.brands.forEach(b => seg.append(h('button', { class: b.id === S.brandId ? 'on' : '', role:'tab', text:b.name, onclick:() => { S.brandId = b.id; S.cat = ''; renderBrands(); renderChips(); renderProducts(); } })));
+}
+function renderChips(){
+  const box = $('chips'); box.replaceChildren();
+  const cats = [...new Set(brand().items.map(i => i.category))];
+  if (cats.length < 2) return;
+  box.append(h('button', { class:'chip' + (S.cat === '' ? ' on' : ''), text:t('order.all'), onclick:() => { S.cat = ''; renderChips(); renderProducts(); } }));
+  cats.forEach(c => box.append(h('button', { class:'chip' + (S.cat === c ? ' on' : ''), text:c, onclick:() => { S.cat = c; renderChips(); renderProducts(); } })));
+}
+function makeCard(it){
+  const unit = it.unit && it.unit !== 'stuk' ? it.unit : '';
+  const input = h('input', { type:'number', min:'0', max:'999', inputmode:'numeric', 'aria-label':it.name });
+  const stepper = h('div', { class:'step' },
+    h('button', { type:'button', 'aria-label':'-', text:'−', onclick:() => setQty(it.id, (S.cart[it.id] || 0) - 1) }),
+    input,
+    h('button', { type:'button', 'aria-label':'+', text:'+', onclick:() => setQty(it.id, (S.cart[it.id] || 0) + 1) }));
+  const addBtn = h('button', { class:'add', type:'button', text:t('order.add'), onclick:() => { setQty(it.id, 1); input.focus(); input.select(); } });
+  input.addEventListener('change', () => setQty(it.id, input.value));
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') input.blur(); });
+  const slot = h('div');
+  const card = h('div', { class:'card' },
+    h('div', { class:'card-main' }, h('div', { class:'card-name', text:it.name }), h('div', { class:'card-cat', text:it.category + (unit ? ' \u00b7 ' + t('order.per') + ' ' + unit : '') })),
+    h('div', { class:'card-row' }, h('div', { class:'price', text:money(it.price) }), slot));
+  const sync = qty => { card.classList.toggle('in', qty > 0); input.value = qty; const want = qty > 0 ? stepper : addBtn; if (slot.firstChild !== want) slot.replaceChildren(want); };
+  cardRefs.set(it.id, { sync }); sync(S.cart[it.id] || 0);
+  return card;
+}
+function renderProducts(){
+  const box = $('products'); box.replaceChildren(); cardRefs.clear();
+  const needle = S.q.trim().toLowerCase();
+  let list = brand().items.filter(i => (!S.cat || i.category === S.cat) && (!needle || (i.name + ' ' + i.category).toLowerCase().includes(needle)));
+  if (!list.length) { box.append(h('div', { class:'empty', text:t('order.none') })); return; }
+  const groups = new Map(); list.forEach(i => { if (!groups.has(i.category)) groups.set(i.category, []); groups.get(i.category).push(i); });
+  groups.forEach((items, cat) => {
+    box.append(h('div', { class:'group-h', text:cat }), h('div', { class:'cards' }, items.map(makeCard)));
+  });
+}
+$('q').addEventListener('input', e => { S.q = e.target.value; renderProducts(); });
+
+let qtyBusy = false;
+function setQty(id, v){
+  if (qtyBusy) return;                 // verwijderen van een focus-veld vuurt 'change'/'blur': negeren
+  const q = clampQty(v);
+  if ((S.cart[id] || 0) === q) { const r = cardRefs.get(id); if (r) r.sync(q); return; }   // niets veranderd (bv. ongeldige invoer)
+  qtyBusy = true;
+  try {
+    if (q > 0) S.cart[id] = q; else delete S.cart[id];
+    saveCart(); S.done = null; S.error = '';
+    const ref = cardRefs.get(id); if (ref) ref.sync(q);
+    renderCart();
+  } finally { qtyBusy = false; }
+}
+
+/* ═══════════ WINKELMAND ═══════════ */
+function branchOptions(){
+  const list = [];
+  (S.klant.filialen || []).forEach(f => {
+    let name = '';
+    if (f.gevonden) for (const b of f.bronnen) { const v = (b.velden.find(x => /^(naam|filiaal ?naam|bedrijfsnaam|winkel)/i.test(x.label)) || {}).waarde; if (v) { name = v; break; } }
+    list.push({ id:f.filiaalId, name });
+  });
+  return list;
+}
+const branchName = id => (branchOptions().find(b => b.id === id) || {}).name || '';
+
+function renderCart(){
+  const lines = cartLines(), count = cartCount(), total = cartTotal();
+  // badges + mobiele balk
+  const nb = $('navBadge'); nb.textContent = count; nb.classList.toggle('hidden', !count);
+  $('cartbar').classList.toggle('zero', !count);
+  $('cbText').textContent = t('cart.view') + ' · ' + t('cart.count', { n:count });
+  $('cbTot').textContent = money(total);
+
+  const body = $('cartBody'), foot = $('cartFoot'); body.replaceChildren(); foot.replaceChildren();
+
+  if (S.done) {
+    body.append(h('div', { class:'done' },
+      h('div', { class:'done-ic' }, svgCheck()),
+      h('h3', { text:t('done.title') }),
+      h('p', { text:t('done.text') }),
+      h('span', { class:'oid', text:S.done.id }),
+      h('p', { text:money(S.done.total) }),
+    ));
+    foot.append(
+      h('button', { class:'btn-red', text:t('done.again'), onclick:() => { S.done = null; closeCart(); renderCart(); } }),
+      h('button', { class:'btn-line', text:t('done.view'), onclick:() => { S.done = null; closeCart(); renderCart(); show('orders'); } }));
+    return;
+  }
+  if (!lines.length) { body.append(h('div', { class:'cart-empty', text:t('cart.empty') })); return; }
+
+  // per merk groeperen
+  const warnings = [];
+  S.catalog.brands.forEach(b => {
+    const ls = lines.filter(l => l.it.brandId === b.id); if (!ls.length) return;
+    const sub = round2(ls.reduce((s, l) => s + l.it.price * l.qty, 0));
+    body.append(h('div', { class:'cart-brand' }, h('span', { text:b.name }), h('span', { text:money(sub) })));
+    ls.forEach(l => body.append(h('div', { class:'line' },
+      h('div', { class:'line-n', text:l.it.name }),
+      h('div', { class:'line-t', text:money(round2(l.it.price * l.qty)) }),
+      h('div', { class:'line-sub' },
+        h('div', { class:'step' },
+          h('button', { type:'button', text:'−', 'aria-label':'-', onclick:() => setQty(l.it.id, l.qty - 1) }),
+          h('input', { type:'number', min:'0', max:'999', value:l.qty, inputmode:'numeric', 'aria-label':l.it.name, onchange:e => setQty(l.it.id, e.target.value) }),
+          h('button', { type:'button', text:'+', 'aria-label':'+', onclick:() => setQty(l.it.id, l.qty + 1) })),
+        h('span', { text:'× ' + money(l.it.price) })),
+      h('div', { style:'text-align:right' }, h('button', { class:'line-x', type:'button', text:t('cart.remove'), onclick:() => setQty(l.it.id, 0) })))));
+    if (b.minOrder && sub < b.minOrder) {
+      warnings.push(t('cart.min', { brand:b.name, min:money(b.minOrder), left:money(round2(b.minOrder - sub)) }));
     }
+  });
+
+  // afrekenen
+  const branches = branchOptions();
+  if (!S.branch || !branches.some(b => b.id === S.branch)) S.branch = (branches[0] || {}).id || '';
+  const tomorrow = new Date(Date.now() + 864e5); const minDate = tomorrow.getFullYear() + '-' + String(tomorrow.getMonth() + 1).padStart(2, '0') + '-' + String(tomorrow.getDate()).padStart(2, '0');
+  const sel = h('select', { class:'f-in', id:'fBranch', onchange:e => { S.branch = e.target.value; } },
+    branches.map(b => h('option', { value:b.id, selected:b.id === S.branch, text:(b.name ? b.name + ' · ' : '') + b.id })));
+  if (branches.length > 1) foot.append(h('div', { class:'f-full' }, h('label', { class:'f-lab', for:'fBranch', text:t('cart.branch') }), sel));
+  foot.append(...[
+    warnings.map(w => h('div', { class:'warn', text:w })),
+    h('div', { class:'f-grid' },
+      h('div', {}, h('label', { class:'f-lab', for:'fDate', text:t('cart.date') }), h('input', { class:'f-in', id:'fDate', type:'date', min:minDate, value:S.date, onchange:e => { S.date = e.target.value; } })),
+      h('div', {}, h('label', { class:'f-lab', for:'fRef', text:t('cart.ref') }), h('input', { class:'f-in', id:'fRef', maxlength:'80', placeholder:t('cart.refPh'), value:S.ref, oninput:e => { S.ref = e.target.value; } }))),
+    h('div', { class:'f-full' }, h('label', { class:'f-lab', for:'fNotes', text:t('cart.notes') }), h('textarea', { class:'f-in', id:'fNotes', maxlength:'500', rows:'2', placeholder:t('cart.notesPh'), oninput:e => { S.notes = e.target.value; } }, S.notes)),
+    S.error ? h('div', { class:'warn err', role:'alert', text:S.error }) : null,
+    h('div', { class:'total' }, h('span', { text:t('cart.total') + ' · ' + t('cart.items', { n:count }) }), h('strong', { text:money(total) })),
+    h('div', { class:'vat', text:t('cart.vat') }),
+    h('button', { class:'btn-red', id:'placeBtn', type:'button', disabled:S.placing || warnings.length > 0, text:S.placing ? t('cart.placing') : t('cart.place'), onclick:placeOrder })].flat().filter(Boolean));
+}
+function svgCheck(){ const ns = 'http://www.w3.org/2000/svg'; const s = document.createElementNS(ns, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); const p = document.createElementNS(ns, 'path'); p.setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5'); s.append(p); return s; }
+const openCart = () => { S.cartOpen = true; $('cart').classList.add('open'); document.body.style.overflow = 'hidden'; };
+const closeCart = () => { S.cartOpen = false; $('cart').classList.remove('open'); document.body.style.overflow = ''; };
+$('cartbar').addEventListener('click', openCart);
+$('cartClose').addEventListener('click', closeCart);
+
+async function placeOrder(){
+  if (S.placing) return;
+  S.placing = true; S.error = ''; renderCart();
+  try {
+    const d = await api('/api/klant/orders', { method:'POST', body:JSON.stringify({
+      filiaalId:S.branch, filiaalNaam:branchName(S.branch),
+      items:cartLines().map(l => ({ id:l.it.id, qty:l.qty })),
+      deliveryDate:S.date, reference:S.ref, notes:S.notes }) });
+    S.done = d.order; S.cart = {}; saveCart(); S.date = ''; S.ref = ''; S.notes = ''; S.orders = null;
+    cardRefs.forEach(r => r.sync(0));
+  } catch (e) {
+    if (e.message !== '401') S.error = (e instanceof TypeError) ? t('err.network') : e.message;
+  } finally { S.placing = false; renderCart(); }
+}
+
+/* ═══════════ BESTELLINGEN ═══════════ */
+const fmtDate = iso => { try { return new Date(iso).toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-GB', { dateStyle:'medium', timeStyle:'short' }); } catch(_) { return iso; } };
+async function loadOrders(){
+  const box = $('ordersList');
+  if (!S.orders) { box.replaceChildren(h('div', { class:'empty' }, h('div', { class:'spin' }), t('loading'))); try { S.orders = (await api('/api/klant/orders')).orders; } catch (e) { if (e.message !== '401') box.replaceChildren(h('div', { class:'warn', text:t('err.load') + ' ' + e.message })); return; } }
+  renderOrders();
+}
+function renderOrders(){
+  const box = $('ordersList'); box.replaceChildren();
+  if (!S.orders || !S.orders.length) { box.append(h('div', { class:'empty', text:t('orders.empty') })); return; }
+  S.orders.forEach(o => {
+    const open = S.expanded.has(o.id);
+    const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { open ? S.expanded.delete(o.id) : S.expanded.add(o.id); renderOrders(); } },
+      h('div', {}, h('div', { class:'ord-id', text:o.id }), h('div', { class:'ord-meta', text:fmtDate(o.createdAt) + (o.filiaalNaam ? ' · ' + o.filiaalNaam : '') + ' · ' + t('cart.count', { n:o.items.reduce((s, i) => s + i.qty, 0) }) })),
+      h('span', { class:'pill', text:t('orders.status') }), h('div', { class:'ord-tot', text:money(o.total) }));
+    const card = h('div', { class:'ord' }, head);
+    if (open) {
+      const det = h('div', { class:'ord-d' },
+        h('table', {}, h('thead', {}, h('tr', {}, h('th', { text:t('orders.product') }), h('th', { class:'r', text:t('orders.qty') }), h('th', { class:'r', text:t('orders.price') }), h('th', { class:'r', text:t('orders.sum') }))),
+          h('tbody', {}, o.items.map(i => h('tr', {}, h('td', { text:i.brandName + ' — ' + i.name }), h('td', { class:'r', text:i.qty }), h('td', { class:'r', text:money(i.price) }), h('td', { class:'r', text:money(i.lineTotal) }))))));
+      [['orders.delivery', o.deliveryDate], ['orders.ref', o.reference], ['orders.notes', o.notes]].forEach(([k, v]) => { if (v) det.append(h('p', { class:'ord-note' }, h('strong', { text:t(k) + ': ' }), v)); });
+      det.append(h('div', { class:'ord-act' }, h('button', { class:'btn-red', type:'button', text:t('orders.reorder'), onclick:() => {
+        o.items.forEach(i => { if (S.items.has(i.id)) S.cart[i.id] = clampQty((S.cart[i.id] || 0) + i.qty); });
+        saveCart(); S.done = null; renderProducts(); renderCart(); show('order'); toast(t('orders.reordered')); } })));
+      card.append(det);
+    }
+    box.append(card);
+  });
+}
+
+/* ═══════════ ACCOUNT ═══════════ */
+function renderAccount(){
+  const k = S.klant; if (!k) return;
+  let cached = {}; try { cached = JSON.parse(sessionStorage.getItem('klantData') || '{}'); } catch(_){}
+  $('accSub').textContent = k.email + (cached.laatstIngelogd ? ' · ' + t('account.last') + ' ' + cached.laatstIngelogd : '');
+  $('who').textContent = k.email;
+  const box = $('accList'); box.replaceChildren();
+  (k.filialen || []).forEach(f => {
+    if (!f.gevonden) { box.append(h('div', { class:'acc-card' }, h('h2', { text:t('account.branch') + ' ' + f.filiaalId }), h('p', { style:'color:var(--dim);margin-top:8px', text:t('account.empty') }))); return; }
     f.bronnen.forEach(b => {
-      const c = document.createElement('div'); c.className = 'card';
       const naam = (b.velden.find(v => /^(naam|filiaal ?naam|bedrijfsnaam|winkel)/i.test(v.label)) || {}).waarde;
-      const h = document.createElement('h2'); h.textContent = naam || (t('portal.filiaal') + ' ' + f.filiaalId);
-      const tab = document.createElement('div'); tab.className = 'tab'; tab.textContent = t('portal.filiaalId') + ' ' + f.filiaalId;
-      const dl = document.createElement('dl');
-      b.velden.forEach(v => {
-        const dt = document.createElement('dt'); dt.textContent = v.label;    // textContent: nooit HTML uit de sheet uitvoeren
-        const dd = document.createElement('dd'); dd.textContent = v.waarde;
-        dl.append(dt, dd);
-      });
-      c.append(h, tab, dl); box.appendChild(c);
+      box.append(h('div', { class:'acc-card' },
+        h('h2', { text:naam || (t('account.branch') + ' ' + f.filiaalId) }),
+        h('div', { class:'sub', text:t('account.id') + ' ' + f.filiaalId }),
+        h('dl', {}, b.velden.flatMap(v => [h('dt', { text:v.label }), h('dd', { text:v.waarde })]))));   // textContent: nooit HTML uit de sheet uitvoeren
     });
   });
-  $('state').classList.add('hidden');
 }
 
-// taalwissel: ook de dynamisch opgebouwde kaarten opnieuw tekenen
-const _applyLang = applyLang;
-applyLang = function(lang){ _applyLang(lang); renderAll(); };
-applyLang(currentLang);
-
-// Altijd verse gegevens ophalen; de sessie wordt hiermee ook gecontroleerd.
-if (token) {
-  fetch(API_BASE + '/api/klant/me', { headers: { Authorization: 'Bearer ' + token } })
-    .then(async r => {
-      if (r.status === 401) return logout();
-      const d = await r.json();
-      if (!d.success) throw new Error(d.error || '');
-      let cached = {}; try { cached = JSON.parse(sessionStorage.getItem('klantData') || '{}'); } catch (_) {}
-      lastKlant = Object.assign({}, d.klant, { laatstIngelogd: cached.laatstIngelogd });
-      renderAll();
-    })
-    .catch(e => { lastError = e.message || ''; renderAll(); });
+/* ═══════════ TAAL + OPSTART ═══════════ */
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+  if (S.catalog) { renderBrands(); renderChips(); renderProducts(); renderCart(); renderAccount(); if (S.orders) renderOrders(); }
 }
+
+(async function init(){
+  applyLang();
+  try {
+    const [cat, me] = await Promise.all([api('/api/klant/catalog'), api('/api/klant/me')]);
+    S.catalog = cat; S.klant = me.klant;
+    cat.brands.forEach(b => b.items.forEach(i => S.items.set(i.id, Object.assign({}, i, { brandId:b.id, brandName:b.name }))));
+    S.brandId = cat.brands[0].id;
+    Object.keys(S.cart).forEach(id => { if (!S.items.has(id)) delete S.cart[id]; });
+    $('boot').classList.add('hidden');
+    applyLang(); show('order');
+  } catch (e) {
+    if (e.message === '401') return;
+    $('boot').replaceChildren(h('div', { style:'text-align:center' },
+      h('p', { text:(e instanceof TypeError ? t('err.network') : t('err.load') + ' ' + e.message), style:'margin-bottom:14px' }),
+      h('button', { class:'btn-ghost', text:t('err.retry'), onclick:() => location.reload() })));
+  }
+})();
 </script>
 </body>
 </html>
