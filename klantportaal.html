@@ -416,6 +416,39 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .cl-qi::-webkit-outer-spin-button,.cl-qi::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .cl-qi:focus{width:3.2ch;color:#fff;border-color:var(--red);background:rgba(255,255,255,.08);text-align:center}
 @media(max-width:1000px){.brand{margin-right:24px}.cl-qi,.cl-qi:focus{font-size:16px}.top .btn-ghost.site,.top .logout.top-out{height:34px;padding:0 10px;font-size:.66rem}}
+
+/* ── ROUND 7: slim bestellen (voortgang, aanvullen, herbestellen, vertrouwen) ── */
+:root{--ok:#3fb27f}
+.hidden{display:none!important}
+.p-price,.cl-t,.total strong,.cbrand-s,.cb-tot,.ord-tot,.sumrows{font-variant-numeric:tabular-nums}
+.quick{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;margin:-8px 0 20px;background:var(--panel);border:1px solid var(--line2);border-left:3px solid var(--red);border-radius:6px}
+.quick-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.quick-t strong{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.04em;font-size:1rem}
+.quick-t span{color:var(--dim);font-size:.84rem}
+.quick-b{width:auto;flex:none;padding:9px 18px;font-size:.8rem}
+.brand-b.ok{background:var(--ok)}
+.cbrand .meter{margin:8px 0 4px}
+.cbrand .meter-t{margin:0 0 2px}
+.cfill{display:block;width:100%;margin-top:8px;padding:8px 10px;border:1px dashed rgba(255,255,255,.28);border-radius:4px;color:#fff;font-size:.8rem;font-weight:600;text-align:center;transition:.15s}
+.cfill:hover{border-color:var(--red);background:rgba(192,57,43,.14)}
+.xsell{padding:14px 0 6px}
+.xsell-h{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.xsell-i{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:10px 12px;margin-bottom:6px;border:1px solid var(--line2);border-radius:6px;text-align:left;transition:.15s}
+.xsell-i:hover{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.04)}
+.xsell-t{display:flex;flex-direction:column;min-width:0}
+.xsell-n{font-weight:600;font-size:.92rem}
+.xsell-m{font-size:.76rem;color:var(--faint)}
+.xsell-go{font-size:.78rem;font-weight:600;color:var(--red2);white-space:nowrap}
+.sumrows{display:flex;flex-direction:column;gap:2px;margin:2px 0 4px;font-size:.84rem;color:var(--dim)}
+.sumrows div{display:flex;justify-content:space-between}
+.total{align-items:baseline}
+.total span{font-size:.9rem}
+.cfix{margin:8px 0 0;font-size:.78rem;color:#ff9d92;text-align:center}
+.btn-red:disabled{opacity:.45;cursor:not-allowed}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 14px;margin-top:10px;font-size:.74rem;color:var(--faint)}
+.trust a{color:var(--faint);text-decoration:none}.trust a:hover{color:#fff}
+@media(max-width:700px){.quick{flex-direction:column;align-items:stretch}.quick-b{width:100%}}
+@media(max-width:900px){.prow.nothumb{grid-template-columns:minmax(0,1fr) auto}.prow.nothumb .p-price{grid-column:1}.prow.nothumb .p-act{grid-column:2}}
 </style>
 </head>
 <body>
@@ -461,7 +494,7 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
       <div class="order-grid">
         <div class="catalog">
           <h1 class="page-h"><span data-i18n="order.title">Nieuwe bestelling</span><span class="acc">.</span></h1>
-          
+          <div class="quick hidden" id="quick"></div>
           <div class="brands" id="brandSeg" role="tablist"></div>
           <div class="brand-info" id="brandInfo"></div>
           <div class="filters">
@@ -524,7 +557,10 @@ const TR = {
   'unit.trays':'trays','unit.stuks':'stuks','th.product':'Product','th.price':'Prijs','th.qty':'Aantal','th.sub':'Subtotaal','brand.minAmt':'Min. {amt}','brand.depShort':'Statiegeld {amt} per tray extra','cart.fixMin':'Haal per merk eerst het minimum om te kunnen bestellen.','order.price':'per {u}',
   'cart.sub':'Subtotaal','cart.deposit':'Statiegeld','cart.delivery':'Levering & opmerking','cart.optional':'',
   'cart.minQty':'{brand}: nog {left} {unit} nodig (min. {min})','cart.minOk':'Minimum gehaald','cart.minVal':'{brand}: nog {left} nodig (min. {min})','cart.emptyHint':'Kies een merk en vul aantallen in. Je bestelling verschijnt hier.',
-  'cart.itemsN':'{n} stuks'
+  'cart.itemsN':'{n} stuks',
+  'cart.fill':'Vul aan tot minimum (+{n})','cart.xsell':'Nog niet in je bestelling','cart.xsellGo':'Bekijk','cart.subtotal':'Producten','cart.exVat':'excl. btw',
+  'quick.title':'Laatste bestelling','quick.sub':'{date} · {n} stuks · {total}','quick.btn':'Opnieuw bestellen',
+  'trust.mail':'Bevestiging per e-mail','trust.help':'Vragen? Bel 013 203 2643'
  },
  en:{
   'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
@@ -546,7 +582,10 @@ const TR = {
   'unit.trays':'trays','unit.stuks':'items','th.product':'Product','th.price':'Price','th.qty':'Quantity','th.sub':'Subtotal','brand.minAmt':'Min. {amt}','brand.depShort':'Deposit {amt} per tray extra','cart.fixMin':'Reach the minimum for each brand to place your order.','order.price':'per {u}',
   'cart.sub':'Subtotal','cart.deposit':'Deposit','cart.delivery':'Delivery & note','cart.optional':'optional',
   'cart.minQty':'{brand}: {left} more {unit} needed (min. {min})','cart.minOk':'Minimum reached','cart.minVal':'{brand}: {left} more needed (min. {min})','cart.emptyHint':'Pick a brand and enter quantities. Your order shows up here.',
-  'cart.itemsN':'{n} items'
+  'cart.itemsN':'{n} items',
+  'cart.fill':'Fill to minimum (+{n})','cart.xsell':'Not in your order yet','cart.xsellGo':'View','cart.subtotal':'Products','cart.exVat':'excl. VAT',
+  'quick.title':'Last order','quick.sub':'{date} · {n} items · {total}','quick.btn':'Reorder',
+  'trust.mail':'Confirmation by email','trust.help':'Questions? Call 013 203 2643'
  }
 };
 let lang = 'nl'; try { lang = localStorage.getItem('binc_lang') || 'nl'; } catch(_){}
@@ -591,6 +630,12 @@ const brandQty = b => brandLines(b).reduce((s, l) => s + l.qty, 0);
 const brandSub = b => round2(brandLines(b).reduce((s, l) => s + l.it.price * l.qty, 0));
 const brandDep = b => round2((b.deposit || 0) * brandQty(b));
 const cartTotal = () => S.catalog ? round2(S.catalog.brands.reduce((s, b) => s + brandSub(b) + brandDep(b), 0)) : 0;
+const brandProg = b => {
+  const qty = brandQty(b), sub = brandSub(b);
+  if (b.minQty) return { kind:'qty', have:qty, min:b.minQty, ok:qty >= b.minQty, left:Math.max(0, b.minQty - qty) };
+  if (b.minOrder) return { kind:'val', have:sub, min:b.minOrder, ok:sub >= b.minOrder, left:Math.max(0, round2(b.minOrder - sub)) };
+  return { kind:null, have:qty, min:0, ok:qty > 0, left:0 };
+};
 const clampQty = v => Math.max(0, Math.min(999, Math.floor(Number(v) || 0)));
 
 let toastT;
@@ -643,7 +688,7 @@ function renderBrands(){
     seg.append(h('button', { class:'brand' + (b.id === S.brandId ? ' on' : ''), type:'button', role:'tab', 'aria-selected':String(b.id === S.brandId),
       onclick:() => { S.brandId = b.id; S.cat = ''; renderBrands(); renderChips(); renderProducts(); } },
       h('span', { class:'brand-t' }, h('span', { class:'brand-n', text:b.name }), h('span', { class:'brand-m', text:meta })),
-      h('span', { class:'brand-b', text:n || '', style:n ? '' : 'visibility:hidden;display:inline-block', 'aria-label':n ? t('brand.inCart', { n }) : null })));
+      h('span', { class:'brand-b' + (n && brandProg(b).ok ? ' ok' : ''), text:n || '', style:n ? '' : 'visibility:hidden;display:inline-block', 'aria-label':n ? t('brand.inCart', { n }) : null })));
   });
   renderBrandInfo();
 }
@@ -722,6 +767,25 @@ function branchOptions(){
 }
 const branchName = id => (branchOptions().find(b => b.id === id) || {}).name || '';
 
+const brandMeta = b => b.minQty ? t('brand.min', { n:b.minQty, unit:unitLabel(b) }) : (b.minOrder ? t('brand.minAmt', { amt:money(b.minOrder).replace(/,00$/, '') }) : b.items.length + ' ' + (b.items.length === 1 ? 'product' : (lang === 'nl' ? 'producten' : 'products')));
+function goBrand(id){
+  S.brandId = id; S.cat = ''; S.q = ''; $('q').value = '';
+  renderBrands(); renderChips(); renderProducts(); closeCart(); show('order');
+}
+function reorder(o){
+  o.items.forEach(i => { if (S.items.has(i.id)) S.cart[i.id] = clampQty((S.cart[i.id] || 0) + i.qty); });
+  saveCart(); S.done = null; renderProducts(); renderCart(); show('order'); toast(t('orders.reordered'));
+}
+function renderQuick(){
+  const box = $('quick'); if (!box) return;
+  const o = S.orders && S.orders[0];
+  const show_ = o && !S.done && !cartCount() && o.items.some(i => S.items.has(i.id));
+  box.classList.toggle('hidden', !show_); box.replaceChildren(); if (!show_) return;
+  box.append(h('div', { class:'quick-t' }, h('strong', { text:t('quick.title') }),
+      h('span', { text:t('quick.sub', { date:fmtDate(o.createdAt).split(',')[0], n:o.items.reduce((s, i) => s + i.qty, 0), total:money(o.total) }) })),
+    h('button', { class:'btn-red quick-b', type:'button', text:t('quick.btn'), onclick:() => reorder(o) }));
+}
+async function loadOrdersQuiet(){ try { S.orders = (await api('/api/klant/orders')).orders; renderQuick(); } catch(_){} }
 function renderCart(){
   const lines = cartLines(), count = cartCount(), total = cartTotal();
   const nb = $('navBadge'); nb.textContent = count; nb.classList.toggle('hidden', !count);
@@ -730,6 +794,7 @@ function renderCart(){
   $('cbTot').textContent = money(total);
   $('cartCount').textContent = count ? t('cart.itemsN', { n:count }) : '';
   if (S.catalog) renderBrands();   // aantal-badges op de merk-tegels
+  renderQuick();
 
   const body = $('cartBody'), foot = $('cartFoot'); body.replaceChildren(); foot.replaceChildren();
 
@@ -776,9 +841,28 @@ function renderCart(){
       h('span', { class:'cl-t', text:money(round2(l.it.price * l.qty)) }),
       h('button', { class:'cl-x', type:'button', title:t('cart.remove'), 'aria-label':t('cart.remove'), text:'×', onclick:() => setQty(l.it.id, 0) }))));
     if (dep > 0 && !folded) wrap.append(h('div', { class:'cl dep' }, h('span'), h('span', { class:'cl-n', text:t('cart.deposit') }), h('span', { class:'cl-t', text:money(dep) }), h('span')));
-    if (need) wrap.append(h('div', { class:'cneed', text:need }));
+    const pg = brandProg(b);
+    if (pg.kind && !folded) {
+      const pct = Math.min(100, Math.round(pg.have / pg.min * 100));
+      wrap.append(h('div', { class:'meter' + (pg.ok ? ' ok' : '') }, h('i', { style:'width:' + pct + '%' })));
+      if (pg.ok) wrap.append(h('div', { class:'meter-t ok', text:'✓ ' + t('cart.minOk') }));
+      else {
+        wrap.append(h('div', { class:'cneed', text:need }));
+        if (pg.kind === 'qty') {
+          const top = ls.reduce((m, l) => l.qty > m.qty ? l : m, ls[0]);
+          wrap.append(h('button', { class:'cfill', type:'button', text:t('cart.fill', { n:pg.left }), onclick:() => setQty(top.it.id, top.qty + pg.left) }));
+        }
+      }
+    } else if (need) wrap.append(h('div', { class:'cneed', text:need }));
     body.append(wrap);
   });
+
+  // merken die nog niet in de bestelling zitten
+  const missing = S.catalog.brands.filter(b => b.items.length && !brandQty(b));
+  if (missing.length) body.append(h('section', { class:'xsell' }, h('div', { class:'xsell-h', text:t('cart.xsell') }),
+    missing.map(b => h('button', { class:'xsell-i', type:'button', onclick:() => goBrand(b.id) },
+      h('span', { class:'xsell-t' }, h('span', { class:'xsell-n', text:b.name }), h('span', { class:'xsell-m', text:brandMeta(b) })),
+      h('span', { class:'xsell-go', text:t('cart.xsellGo') + ' →' })))));
 
   // afrekenen
   const branches = branchOptions();
@@ -798,9 +882,13 @@ function renderCart(){
   foot.append(...[
     dtl,
     S.error ? h('div', { class:'warn err', role:'alert', text:S.error }) : null,
-    h('div', { class:'total' }, h('span', { text:t('cart.total') }), h('strong', { text:money(total) })),
-    h('div', { class:'vat', text:t('cart.vat') }),
+    h('div', { class:'sumrows' },
+      h('div', {}, h('span', { text:t('cart.subtotal') }), h('span', { text:money(S.catalog.brands.reduce((a, b) => a + brandSub(b), 0)) })),
+      S.catalog.brands.some(b => brandDep(b) > 0) ? h('div', {}, h('span', { text:t('cart.deposit') }), h('span', { text:money(S.catalog.brands.reduce((a, b) => a + brandDep(b), 0)) })) : null),
+    h('div', { class:'total' }, h('span', { text:t('cart.total') + ' ' + t('cart.exVat') }), h('strong', { text:money(total) })),
     h('button', { class:'btn-red', id:'placeBtn', type:'button', disabled:S.placing || warnings.length > 0, text:S.placing ? t('cart.placing') : t('cart.place'), onclick:placeOrder }),
+    warnings.length ? h('div', { class:'cfix', text:t('cart.fixMin') }) : null,
+    h('div', { class:'trust' }, h('span', { text:'✓ ' + t('trust.mail') }), h('a', { href:'tel:+31132032643', text:'✓ ' + t('trust.help') })),
     null].flat().filter(Boolean));
 }
 function svgCheck(){ const ns = 'http://www.w3.org/2000/svg'; const s = document.createElementNS(ns, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); const p = document.createElementNS(ns, 'path'); p.setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5'); s.append(p); return s; }
@@ -818,7 +906,7 @@ async function placeOrder(){
       filiaalId:S.branch, filiaalNaam:branchName(S.branch),
       items:cartLines().map(l => ({ id:l.it.id, qty:l.qty })),
       deliveryDate:S.date, reference:S.ref, notes:S.notes }) });
-    S.done = d.order; S.cart = {}; saveCart(); S.date = ''; S.ref = ''; S.notes = ''; S.orders = null;
+    S.done = d.order; S.cart = {}; saveCart(); S.date = ''; S.ref = ''; S.notes = ''; S.orders = null; loadOrdersQuiet();
     cardRefs.forEach(r => r.sync(0));
   } catch (e) {
     if (e.message !== '401') S.error = (e instanceof TypeError) ? t('err.network') : e.message;
@@ -846,9 +934,7 @@ function renderOrders(){
         h('table', {}, h('thead', {}, h('tr', {}, h('th', { text:t('orders.product') }), h('th', { class:'r', text:t('orders.qty') }), h('th', { class:'r', text:t('orders.price') }), h('th', { class:'r', text:t('orders.sum') }))),
           h('tbody', {}, o.items.map(i => h('tr', {}, h('td', { text:i.brandName + ' — ' + i.name }), h('td', { class:'r', text:i.qty }), h('td', { class:'r', text:money(i.price) }), h('td', { class:'r', text:money(i.lineTotal) }))))));
       [['orders.delivery', o.deliveryDate], ['orders.ref', o.reference], ['orders.notes', o.notes]].forEach(([k, v]) => { if (v) det.append(h('p', { class:'ord-note' }, h('strong', { text:t(k) + ': ' }), v)); });
-      det.append(h('div', { class:'ord-act' }, h('button', { class:'btn-red', type:'button', text:t('orders.reorder'), onclick:() => {
-        o.items.forEach(i => { if (S.items.has(i.id)) S.cart[i.id] = clampQty((S.cart[i.id] || 0) + i.qty); });
-        saveCart(); S.done = null; renderProducts(); renderCart(); show('order'); toast(t('orders.reordered')); } })));
+      det.append(h('div', { class:'ord-act' }, h('button', { class:'btn-red', type:'button', text:t('orders.reorder'), onclick:() => reorder(o) })));
       card.append(det);
     }
     box.append(card);
@@ -892,7 +978,7 @@ function applyLang(){
     S.brandId = cat.brands[0].id;
     Object.keys(S.cart).forEach(id => { if (!S.items.has(id)) delete S.cart[id]; });
     $('boot').classList.add('hidden');
-    applyLang(); show('order');
+    applyLang(); show('order'); loadOrdersQuiet();
   } catch (e) {
     if (e.message === '401') return;
     $('boot').replaceChildren(h('div', { style:'text-align:center' },
