@@ -547,7 +547,7 @@ const TR = {
   'cart.branch':'Filiaal','cart.date':'Gewenste leverdatum','cart.ref':'Eigen referentie','cart.refPh':'bijv. inkoopnummer','cart.notes':'Opmerking','cart.notesPh':'Bijzonderheden voor levering',
   'cart.total':'Totaal','cart.vat':'Alle prijzen excl. btw','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
   'cart.min':'Minimale orderwaarde {brand}: {min} (nog {left} te gaan)','cart.items':'{n} artikel(en)','cart.view':'Bekijk winkelwagen','cart.count':'{n} stuks',
-  'done.title':'Bestelling ontvangen','done.text':'Bedankt! Je ontvangt een bevestiging per e-mail.','done.again':'Nieuwe bestelling','done.view':'Bekijk mijn bestellingen',
+  'done.title':'Bestelling ontvangen','done.text':'Bedankt! Je bestelling wacht op goedkeuring door BINC. Je ontvangt een ontvangstbevestiging per e-mail.','done.again':'Nieuwe bestelling','done.view':'Bekijk mijn bestellingen',
   'orders.title':'Mijn bestellingen','orders.sub':'Je bestellingen, ook die van vóór het portaal. Bestel een eerdere bestelling met één klik opnieuw.',
   'orders.empty':'Je hebt nog niets besteld via het portaal.','orders.product':'Product','orders.qty':'Aantal','orders.price':'Prijs','orders.sum':'Totaal',
   'orders.status':'Ontvangen','orders.earlier':'Eerder besteld','orders.earlierTitle':'Eerdere bestelling','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelwagen',
@@ -572,7 +572,7 @@ const TR = {
   'cart.branch':'Branch','cart.date':'Preferred delivery date','cart.ref':'Your reference','cart.refPh':'e.g. purchase number','cart.notes':'Note','cart.notesPh':'Delivery instructions',
   'cart.total':'Total','cart.vat':'All prices excl. VAT','cart.place':'Place order','cart.placing':'Placing…',
   'cart.min':'Minimum order value {brand}: {min} ({left} to go)','cart.items':'{n} item(s)','cart.view':'View cart','cart.count':'{n} items',
-  'done.title':'Order received','done.text':'Thank you! You will receive a confirmation by email.','done.again':'New order','done.view':'View my orders',
+  'done.title':'Order received','done.text':'Thank you! Your order is awaiting approval by BINC. You will receive an acknowledgement by email.','done.again':'New order','done.view':'View my orders',
   'orders.title':'My orders','orders.sub':'Your orders, including those from before the portal. Reorder a previous order with one click.',
   'orders.empty':'You have not ordered through the portal yet.','orders.product':'Product','orders.qty':'Qty','orders.price':'Price','orders.sum':'Total',
   'orders.status':'Received','orders.earlier':'Earlier order','orders.earlierTitle':'Earlier order','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your cart',
@@ -901,12 +901,17 @@ $('cartClose').addEventListener('click', closeCart);
 
 async function placeOrder(){
   if (S.placing) return;
+  const fingerprint = JSON.stringify([S.branch, S.cart, S.date, S.ref, S.notes]);
+  let request = {}; try { request = JSON.parse(sessionStorage.getItem('portalOrderRequest') || '{}'); } catch(_){}
+  if (request.fingerprint !== fingerprint) request = {fingerprint, id:crypto.randomUUID()};
+  sessionStorage.setItem('portalOrderRequest', JSON.stringify(request));
   S.placing = true; S.error = ''; renderCart();
   try {
     const d = await api('/api/klant/orders', { method:'POST', body:JSON.stringify({
-      filiaalId:S.branch, filiaalNaam:branchName(S.branch),
+      requestId:request.id, filiaalId:S.branch, filiaalNaam:branchName(S.branch),
       items:cartLines().map(l => ({ id:l.it.id, qty:l.qty })),
       deliveryDate:S.date, reference:S.ref, notes:S.notes }) });
+    sessionStorage.removeItem('portalOrderRequest');
     S.done = d.order; S.cart = {}; saveCart(); S.date = ''; S.ref = ''; S.notes = ''; S.orders = null; loadOrdersQuiet();
     cardRefs.forEach(r => r.sync(0));
   } catch (e) {
@@ -922,6 +927,7 @@ async function loadOrders(){
   if (!S.orders) { box.replaceChildren(h('div', { class:'empty' }, h('div', { class:'spin' }), t('loading'))); try { S.orders = (await api('/api/klant/orders')).orders; } catch (e) { if (e.message !== '401') box.replaceChildren(h('div', { class:'warn', text:t('err.load') + ' ' + e.message })); return; } }
   renderOrders();
 }
+function portalStatus(status){ const texts = {nl:{wacht_op_goedkeuring:'Wacht op goedkeuring',goedgekeurd:'Goedgekeurd',afgewezen:'Afgewezen',controle_nodig:'In beoordeling',in_verwerking:'In verwerking'},en:{wacht_op_goedkeuring:'Awaiting approval',goedgekeurd:'Approved',afgewezen:'Declined',controle_nodig:'Under review',in_verwerking:'Processing'}}; return (texts[lang] || texts.nl)[status] || t('orders.status'); }
 function renderOrders(){
   const box = $('ordersList'); box.replaceChildren();
   if (!S.orders || !S.orders.length) { box.append(h('div', { class:'empty', text:t('orders.empty') })); return; }
@@ -929,7 +935,7 @@ function renderOrders(){
     const open = S.expanded.has(o.id);
     const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { open ? S.expanded.delete(o.id) : S.expanded.add(o.id); renderOrders(); } },
       h('div', {}, h('div', { class:'ord-id', text:o.historic ? t('orders.earlierTitle') + ' · ' + [...new Set(o.items.map(i => i.brandName))].join(', ') : o.id }), h('div', { class:'ord-meta', text:fmtDate(o.createdAt, o.historic) + (o.filiaalNaam ? ' · ' + o.filiaalNaam : '') + ' · ' + t('cart.count', { n:o.items.reduce((s, i) => s + i.qty, 0) }) })),
-      h('span', { class:'pill' + (o.historic ? ' pill-old' : ''), text:o.historic ? t('orders.earlier') : t('orders.status') }), h('div', { class:'ord-tot', text:o.total == null ? dash : money(o.total) }));
+      h('span', { class:'pill' + (o.historic ? ' pill-old' : ''), text:o.historic ? t('orders.earlier') : portalStatus(o.status) }), h('div', { class:'ord-tot', text:o.total == null ? dash : money(o.total) }));
     const card = h('div', { class:'ord' }, head);
     if (open) {
       const det = h('div', { class:'ord-d' },
