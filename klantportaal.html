@@ -928,7 +928,7 @@ function renderOrders(){
   S.orders.forEach(o => {
     const open = S.expanded.has(o.id);
     const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { open ? S.expanded.delete(o.id) : S.expanded.add(o.id); renderOrders(); } },
-      h('div', {}, h('div', { class:'ord-id', text:o.historic ? t('orders.earlierTitle') : o.id }), h('div', { class:'ord-meta', text:fmtDate(o.createdAt, o.historic) + (o.filiaalNaam ? ' · ' + o.filiaalNaam : '') + ' · ' + t('cart.count', { n:o.items.reduce((s, i) => s + i.qty, 0) }) })),
+      h('div', {}, h('div', { class:'ord-id', text:o.historic ? t('orders.earlierTitle') + ' · ' + [...new Set(o.items.map(i => i.brandName))].join(', ') : o.id }), h('div', { class:'ord-meta', text:fmtDate(o.createdAt, o.historic) + (o.filiaalNaam ? ' · ' + o.filiaalNaam : '') + ' · ' + t('cart.count', { n:o.items.reduce((s, i) => s + i.qty, 0) }) })),
       h('span', { class:'pill' + (o.historic ? ' pill-old' : ''), text:o.historic ? t('orders.earlier') : t('orders.status') }), h('div', { class:'ord-tot', text:o.total == null ? dash : money(o.total) }));
     const card = h('div', { class:'ord' }, head);
     if (open) {
