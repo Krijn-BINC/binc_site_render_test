@@ -203,7 +203,7 @@ textarea.f-in{resize:vertical;min-height:54px}
 .done p{color:var(--dim);margin-bottom:6px}
 .done .oid{font-family:var(--font-ui);font-weight:700;letter-spacing:.14em;color:#fff;font-size:1.05rem;margin:10px 0 18px;display:block}
 
-/* mobiele winkelmandbalk */
+/* mobiele winkelwagenbalk */
 .cartbar{display:none}
 
 /* ── LIJSTEN (bestellingen / account) ── */
@@ -309,7 +309,7 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .add,.btn-red,.btn-line,.f-in,.warn,.dtl{border-radius:var(--r)}
 .btn-red{font-size:.86rem;letter-spacing:.12em;padding:13px}
 
-/* winkelmand: platte secties per merk */
+/* winkelwagen: platte secties per merk */
 .cart{background:var(--panel)}
 .cart-h{padding:16px 20px 12px;border-bottom:1px solid var(--line)}
 .cart-h h2{font-size:1.2rem}
@@ -354,7 +354,7 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .prow.in + .prow{border-top:none}
 .brand{padding-left:2px}
 
-/* winkelmand */
+/* winkelwagen */
 .cbrand{padding:12px 0 12px;border-bottom:1px solid var(--line)}
 .cbrand-h{display:flex;justify-content:space-between;margin-bottom:4px}
 .cbrand-n{font-size:1rem}
@@ -449,6 +449,7 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .trust a{color:var(--faint);text-decoration:none}.trust a:hover{color:#fff}
 @media(max-width:700px){.quick{flex-direction:column;align-items:stretch}.quick-b{width:100%}}
 @media(max-width:900px){.prow.nothumb{grid-template-columns:minmax(0,1fr) auto}.prow.nothumb .p-price{grid-column:1}.prow.nothumb .p-act{grid-column:2}}
+.pill-old{background:rgba(255,255,255,.08);color:var(--dim);border-color:var(--line2)}
 </style>
 </head>
 <body>
@@ -507,8 +508,8 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
           <div id="products"></div>
         </div>
 
-        <aside class="cart" id="cart" aria-label="Winkelmand">
-          <div class="cart-h"><h2><span data-i18n="cart.title">Winkelmand</span><small id="cartCount"></small></h2><button class="cart-fold" id="cartFold" type="button" aria-label="Inklappen" title="Alles in-/uitklappen"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><button class="cart-close" id="cartClose" aria-label="Sluiten">&times;</button></div>
+        <aside class="cart" id="cart" aria-label="Winkelwagen">
+          <div class="cart-h"><h2><span data-i18n="cart.title">Winkelwagen</span><small id="cartCount"></small></h2><button class="cart-fold" id="cartFold" type="button" aria-label="Inklappen" title="Alles in-/uitklappen"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><button class="cart-close" id="cartClose" aria-label="Sluiten">&times;</button></div>
           <div class="cart-body" id="cartBody"></div>
           <div class="cart-foot" id="cartFoot"></div>
         </aside>
@@ -519,7 +520,7 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
     <!-- MIJN BESTELLINGEN -->
     <section class="view" id="v-orders"><div class="pad">
       <h1 class="page-h"><span data-i18n="orders.title">Mijn bestellingen</span><span class="acc">.</span></h1>
-      <p class="page-sub" data-i18n="orders.sub">Alles wat je via het portaal hebt besteld. Zo bestel je een eerdere bestelling met één klik opnieuw.</p>
+      <p class="page-sub" data-i18n="orders.sub">Je bestellingen, ook die van vóór het portaal. Bestel een eerdere bestelling met één klik opnieuw.</p>
       <div id="ordersList"></div>
     </div></section>
 
@@ -542,18 +543,18 @@ const TR = {
   'nav.order':'Bestellen','nav.orders':'Mijn bestellingen','nav.account':'Mijn account','side.help':'Hulp nodig met een bestelling?',
   'order.title':'Nieuwe bestelling','order.sub':'Kies een merk, vul de aantallen in en plaats je bestelling direct bij BINC. Prijzen zijn je B2B-prijzen, exclusief btw.',
   'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.add':'Toevoegen','order.per':'per',
-  'cart.title':'Winkelmand','cart.empty':'Je winkelmand is leeg. Voeg producten toe om te bestellen.','cart.remove':'Verwijderen',
+  'cart.title':'Winkelwagen','cart.empty':'Je winkelwagen is leeg. Voeg producten toe om te bestellen.','cart.remove':'Verwijderen',
   'cart.branch':'Filiaal','cart.date':'Gewenste leverdatum','cart.ref':'Eigen referentie','cart.refPh':'bijv. inkoopnummer','cart.notes':'Opmerking','cart.notesPh':'Bijzonderheden voor levering',
   'cart.total':'Totaal','cart.vat':'Alle prijzen excl. btw','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
-  'cart.min':'Minimale orderwaarde {brand}: {min} (nog {left} te gaan)','cart.items':'{n} artikel(en)','cart.view':'Bekijk winkelmand','cart.count':'{n} stuks',
+  'cart.min':'Minimale orderwaarde {brand}: {min} (nog {left} te gaan)','cart.items':'{n} artikel(en)','cart.view':'Bekijk winkelwagen','cart.count':'{n} stuks',
   'done.title':'Bestelling ontvangen','done.text':'Bedankt! Je ontvangt een bevestiging per e-mail.','done.again':'Nieuwe bestelling','done.view':'Bekijk mijn bestellingen',
-  'orders.title':'Mijn bestellingen','orders.sub':'Alles wat je via het portaal hebt besteld. Zo bestel je een eerdere bestelling met één klik opnieuw.',
+  'orders.title':'Mijn bestellingen','orders.sub':'Je bestellingen, ook die van vóór het portaal. Bestel een eerdere bestelling met één klik opnieuw.',
   'orders.empty':'Je hebt nog niets besteld via het portaal.','orders.product':'Product','orders.qty':'Aantal','orders.price':'Prijs','orders.sum':'Totaal',
-  'orders.status':'Ontvangen','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelmand',
+  'orders.status':'Ontvangen','orders.earlier':'Eerder besteld','orders.earlierTitle':'Eerdere bestelling','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelwagen',
   'account.title':'Mijn account','account.empty':'Er zijn nog geen gegevens gevonden voor dit filiaal.','account.id':'Filiaal ID','account.branch':'Filiaal','account.last':'Ingelogd op',
   'err.load':'Laden mislukt:','err.generic':'Er ging iets mis. Probeer het opnieuw.','err.network':'Geen verbinding met de server.','err.retry':'Opnieuw proberen',
   'toast.added':'Toegevoegd',
-  'brand.min':'Min. {n} {unit}','brand.deposit':'Statiegeld {amt} per tray komt er automatisch bij','brand.minInfo':'Minimale bestelling: {n} {unit}','brand.minVal':'Minimale orderwaarde: {amt}','brand.inCart':'{n} in mand',
+  'brand.min':'Min. {n} {unit}','brand.deposit':'Statiegeld {amt} per tray komt er automatisch bij','brand.minInfo':'Minimale bestelling: {n} {unit}','brand.minVal':'Minimale orderwaarde: {amt}','brand.inCart':'{n} in wagen',
   'unit.trays':'trays','unit.stuks':'stuks','th.product':'Product','th.price':'Prijs','th.qty':'Aantal','th.sub':'Subtotaal','brand.minAmt':'Min. {amt}','brand.depShort':'Statiegeld {amt} per tray extra','cart.fixMin':'Haal per merk eerst het minimum om te kunnen bestellen.','order.price':'per {u}',
   'cart.sub':'Subtotaal','cart.deposit':'Statiegeld','cart.delivery':'Levering & opmerking','cart.optional':'',
   'cart.minQty':'{brand}: nog {left} {unit} nodig (min. {min})','cart.minOk':'Minimum gehaald','cart.minVal':'{brand}: nog {left} nodig (min. {min})','cart.emptyHint':'Kies een merk en vul aantallen in. Je bestelling verschijnt hier.',
@@ -567,18 +568,18 @@ const TR = {
   'nav.order':'Order','nav.orders':'My orders','nav.account':'My account','side.help':'Need help with an order?',
   'order.title':'New order','order.sub':'Pick a brand, enter quantities and place your order directly with BINC. Prices are your B2B prices, excluding VAT.',
   'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.add':'Add','order.per':'per',
-  'cart.title':'Basket','cart.empty':'Your basket is empty. Add products to place an order.','cart.remove':'Remove',
+  'cart.title':'Cart','cart.empty':'Your cart is empty. Add products to place an order.','cart.remove':'Remove',
   'cart.branch':'Branch','cart.date':'Preferred delivery date','cart.ref':'Your reference','cart.refPh':'e.g. purchase number','cart.notes':'Note','cart.notesPh':'Delivery instructions',
   'cart.total':'Total','cart.vat':'All prices excl. VAT','cart.place':'Place order','cart.placing':'Placing…',
-  'cart.min':'Minimum order value {brand}: {min} ({left} to go)','cart.items':'{n} item(s)','cart.view':'View basket','cart.count':'{n} items',
+  'cart.min':'Minimum order value {brand}: {min} ({left} to go)','cart.items':'{n} item(s)','cart.view':'View cart','cart.count':'{n} items',
   'done.title':'Order received','done.text':'Thank you! You will receive a confirmation by email.','done.again':'New order','done.view':'View my orders',
-  'orders.title':'My orders','orders.sub':'Everything you ordered through the portal. Reorder a previous order with one click.',
+  'orders.title':'My orders','orders.sub':'Your orders, including those from before the portal. Reorder a previous order with one click.',
   'orders.empty':'You have not ordered through the portal yet.','orders.product':'Product','orders.qty':'Qty','orders.price':'Price','orders.sum':'Total',
-  'orders.status':'Received','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your basket',
+  'orders.status':'Received','orders.earlier':'Earlier order','orders.earlierTitle':'Earlier order','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your cart',
   'account.title':'My account','account.empty':'No data has been found for this branch yet.','account.id':'Branch ID','account.branch':'Branch','account.last':'Logged in on',
   'err.load':'Loading failed:','err.generic':'Something went wrong. Please try again.','err.network':'Can’t reach the server.','err.retry':'Try again',
   'toast.added':'Added',
-  'brand.min':'Min. {n} {unit}','brand.deposit':'Deposit {amt} per tray is added automatically','brand.minInfo':'Minimum order: {n} {unit}','brand.minVal':'Minimum order value: {amt}','brand.inCart':'{n} in basket',
+  'brand.min':'Min. {n} {unit}','brand.deposit':'Deposit {amt} per tray is added automatically','brand.minInfo':'Minimum order: {n} {unit}','brand.minVal':'Minimum order value: {amt}','brand.inCart':'{n} in cart',
   'unit.trays':'trays','unit.stuks':'items','th.product':'Product','th.price':'Price','th.qty':'Quantity','th.sub':'Subtotal','brand.minAmt':'Min. {amt}','brand.depShort':'Deposit {amt} per tray extra','cart.fixMin':'Reach the minimum for each brand to place your order.','order.price':'per {u}',
   'cart.sub':'Subtotal','cart.deposit':'Deposit','cart.delivery':'Delivery & note','cart.optional':'optional',
   'cart.minQty':'{brand}: {left} more {unit} needed (min. {min})','cart.minOk':'Minimum reached','cart.minVal':'{brand}: {left} more needed (min. {min})','cart.emptyHint':'Pick a brand and enter quantities. Your order shows up here.',
@@ -782,7 +783,7 @@ function renderQuick(){
   const show_ = o && !S.done && !cartCount() && o.items.some(i => S.items.has(i.id));
   box.classList.toggle('hidden', !show_); box.replaceChildren(); if (!show_) return;
   box.append(h('div', { class:'quick-t' }, h('strong', { text:t('quick.title') }),
-      h('span', { text:t('quick.sub', { date:fmtDate(o.createdAt).split(',')[0], n:o.items.reduce((s, i) => s + i.qty, 0), total:money(o.total) }) })),
+      h('span', { text:t('quick.sub', { date:fmtDate(o.createdAt, true), n:o.items.reduce((s, i) => s + i.qty, 0), total:o.total == null ? dash : money(o.total) }) })),
     h('button', { class:'btn-red quick-b', type:'button', text:t('quick.btn'), onclick:() => reorder(o) }));
 }
 async function loadOrdersQuiet(){ try { S.orders = (await api('/api/klant/orders')).orders; renderQuick(); } catch(_){} }
@@ -812,7 +813,7 @@ function renderCart(){
     return;
   }
   if (!lines.length) {
-    body.append(h('div', { class:'cart-empty' }, svgIcon(['M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.76L20 8H6.2']), t('cart.emptyHint')));
+    body.append(h('div', { class:'cart-empty' }, svgIcon(['M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.76L20 8H6.2','M9 20h.01M17 20h.01']), t('cart.emptyHint')));
     return;
   }
 
@@ -914,7 +915,8 @@ async function placeOrder(){
 }
 
 /* ═══════════ BESTELLINGEN ═══════════ */
-const fmtDate = iso => { try { return new Date(iso).toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-GB', { dateStyle:'medium', timeStyle:'short' }); } catch(_) { return iso; } };
+const dash = '—';
+const fmtDate = (iso, dateOnly) => { try { return new Date(iso).toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-GB', dateOnly ? { dateStyle:'medium' } : { dateStyle:'medium', timeStyle:'short' }); } catch(_) { return iso; } };
 async function loadOrders(){
   const box = $('ordersList');
   if (!S.orders) { box.replaceChildren(h('div', { class:'empty' }, h('div', { class:'spin' }), t('loading'))); try { S.orders = (await api('/api/klant/orders')).orders; } catch (e) { if (e.message !== '401') box.replaceChildren(h('div', { class:'warn', text:t('err.load') + ' ' + e.message })); return; } }
@@ -926,13 +928,13 @@ function renderOrders(){
   S.orders.forEach(o => {
     const open = S.expanded.has(o.id);
     const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { open ? S.expanded.delete(o.id) : S.expanded.add(o.id); renderOrders(); } },
-      h('div', {}, h('div', { class:'ord-id', text:o.id }), h('div', { class:'ord-meta', text:fmtDate(o.createdAt) + (o.filiaalNaam ? ' · ' + o.filiaalNaam : '') + ' · ' + t('cart.count', { n:o.items.reduce((s, i) => s + i.qty, 0) }) })),
-      h('span', { class:'pill', text:t('orders.status') }), h('div', { class:'ord-tot', text:money(o.total) }));
+      h('div', {}, h('div', { class:'ord-id', text:o.historic ? t('orders.earlierTitle') : o.id }), h('div', { class:'ord-meta', text:fmtDate(o.createdAt, o.historic) + (o.filiaalNaam ? ' · ' + o.filiaalNaam : '') + ' · ' + t('cart.count', { n:o.items.reduce((s, i) => s + i.qty, 0) }) })),
+      h('span', { class:'pill' + (o.historic ? ' pill-old' : ''), text:o.historic ? t('orders.earlier') : t('orders.status') }), h('div', { class:'ord-tot', text:o.total == null ? dash : money(o.total) }));
     const card = h('div', { class:'ord' }, head);
     if (open) {
       const det = h('div', { class:'ord-d' },
         h('table', {}, h('thead', {}, h('tr', {}, h('th', { text:t('orders.product') }), h('th', { class:'r', text:t('orders.qty') }), h('th', { class:'r', text:t('orders.price') }), h('th', { class:'r', text:t('orders.sum') }))),
-          h('tbody', {}, o.items.map(i => h('tr', {}, h('td', { text:i.brandName + ' — ' + i.name }), h('td', { class:'r', text:i.qty }), h('td', { class:'r', text:money(i.price) }), h('td', { class:'r', text:money(i.lineTotal) }))))));
+          h('tbody', {}, o.items.map(i => h('tr', {}, h('td', { text:i.brandName + ' — ' + i.name }), h('td', { class:'r', text:i.qty }), h('td', { class:'r', text:i.price == null ? dash : money(i.price) }), h('td', { class:'r', text:i.lineTotal == null ? dash : money(i.lineTotal) }))))));
       [['orders.delivery', o.deliveryDate], ['orders.ref', o.reference], ['orders.notes', o.notes]].forEach(([k, v]) => { if (v) det.append(h('p', { class:'ord-note' }, h('strong', { text:t(k) + ': ' }), v)); });
       det.append(h('div', { class:'ord-act' }, h('button', { class:'btn-red', type:'button', text:t('orders.reorder'), onclick:() => reorder(o) })));
       card.append(det);
