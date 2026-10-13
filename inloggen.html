@@ -108,7 +108,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;position:rela
 .msg-info{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.88)}
 .hidden{display:none!important}
 .code-row{display:flex;gap:12px;justify-content:center}
-.code-box{width:66px;height:78px;text-align:center;font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:#fff;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2);border-radius:2px;outline:none;transition:.25s;cursor:text}
+.code-box{width:56px;height:72px;text-align:center;font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:#fff;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2);border-radius:2px;outline:none;transition:.25s;cursor:text}
 .code-box:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.22)}
 .code-row.shake{animation:shake .35s}
 @keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
@@ -171,8 +171,8 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:60px 6vw
   .auth-card{padding:28px 22px}
 }
 @media(max-width:560px){
-  .code-box{width:56px;height:68px;font-size:2.2rem}
-  .code-row{gap:9px}
+  .code-box{width:44px;height:60px;font-size:1.9rem}
+  .code-row{gap:6px}
   dl{grid-template-columns:1fr}
   dt{padding-bottom:0}
   dd{border-top:none;padding-top:2px}
@@ -190,7 +190,7 @@ footer{background:#000;border-top:1px solid rgba(192,57,43,.16);padding:60px 6vw
 .pfoot{position:relative;z-index:5;text-align:center;padding:22px 16px 28px;font-size:.82rem;color:rgba(255,255,255,.4)}
 .pfoot a{color:rgba(255,255,255,.6);text-decoration:none}.pfoot a:hover{color:#fff}
 main{padding-top:110px!important;padding-bottom:50px!important}
-@media(max-width:700px){.ptop-tag{display:none}.ptop-back{padding:8px 10px;font-size:.7rem}.ptop-right{gap:10px}}
+@media(max-width:700px){.ptop-tag{display:none}.ptop-back{padding:8px 8px;font-size:.62rem;letter-spacing:.05em}.ptop-right{gap:8px}.ptop-logo img{height:26px}}
 @media(max-width:1000px){html,body{cursor:auto}}
 </style>
 </head>
@@ -219,11 +219,11 @@ main{padding-top:110px!important;padding-bottom:50px!important}
 
     <div id="head1">
       <h1 class="auth-title" data-i18n="login.title">Inloggen<span class="acc">.</span></h1>
-      <p class="auth-sub" data-i18n="login.sub">Vul je e-mailadres in. Je ontvangt een 4-cijferige code om in te loggen.</p>
+      <p class="auth-sub" data-i18n="login.sub">Vul je e-mailadres in. Je ontvangt een 6-cijferige code om in te loggen.</p>
     </div>
     <div id="head2" class="hidden">
       <h1 class="auth-title" data-i18n="login.title2">Vul je code in<span class="acc">.</span></h1>
-      <p class="auth-sub"><span data-i18n="login.sent">We hebben een 4-cijferige code gestuurd naar</span> <strong id="sentTo"></strong>. <span data-i18n="login.spam">Check ook je spam.</span></p>
+      <p class="auth-sub"><span data-i18n="login.sent">We hebben een 6-cijferige code gestuurd naar</span> <strong id="sentTo"></strong>. <span data-i18n="login.spam">Check ook je spam.</span></p>
     </div>
 
     <div class="auth-card">
@@ -245,6 +245,8 @@ main{padding-top:110px!important;padding-bottom:50px!important}
           <input class="code-box" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="2" />
           <input class="code-box" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="3" />
           <input class="code-box" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="4" />
+          <input class="code-box" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="5" />
+          <input class="code-box" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="6" />
         </div>
         <button type="submit" class="btn-red" id="codeBtn" data-i18n="login.verify">Inloggen</button>
         <div class="links">
@@ -280,9 +282,9 @@ const TRANSLATIONS = {
     'footer.phone.label':   'Telefoonnummer',
     'login.eyebrow':  'Klantenportaal',
     'login.title':    'Inloggen<span class="acc">.</span>',
-    'login.sub':      'Vul je e-mailadres in. Je ontvangt een 4-cijferige code om in te loggen.',
+    'login.sub':      'Vul je e-mailadres in. Je ontvangt een 6-cijferige code om in te loggen.',
     'login.title2':   'Vul je code in<span class="acc">.</span>',
-    'login.sent':     'We hebben een 4-cijferige code gestuurd naar',
+    'login.sent':     'We hebben een 6-cijferige code gestuurd naar',
     'login.spam':     'Check ook je spam.',
     'login.emailLabel':'E-mailadres',
     'login.emailPh':  'naam@bedrijf.nl',
@@ -296,7 +298,7 @@ const TRANSLATIONS = {
     'login.resent':   'Er is een nieuwe code verstuurd.',
     'login.help':     'Nog geen toegang? <a href="index.html#lead">Neem contact op</a>',
     'err.email':      'Vul je e-mailadres in.',
-    'err.digits':     'Vul alle 4 cijfers in.',
+    'err.digits':     'Vul alle 6 cijfers in.',
     'err.network':    'Geen verbinding met de server. Probeer het opnieuw.',
     'err.generic':    'Er ging iets mis. Probeer het later opnieuw.',
     'err.loginfail':  'Inloggen mislukt.',
@@ -322,9 +324,9 @@ const TRANSLATIONS = {
     'footer.phone.label':   'Phone number',
     'login.eyebrow':  'Customer portal',
     'login.title':    'Log in<span class="acc">.</span>',
-    'login.sub':      'Enter your email address. You\u2019ll receive a 4-digit code to log in.',
+    'login.sub':      'Enter your email address. You\u2019ll receive a 6-digit code to log in.',
     'login.title2':   'Enter your code<span class="acc">.</span>',
-    'login.sent':     'We\u2019ve sent a 4-digit code to',
+    'login.sent':     'We\u2019ve sent a 6-digit code to',
     'login.spam':     'Please also check your spam folder.',
     'login.emailLabel':'Email address',
     'login.emailPh':  'name@company.com',
@@ -338,7 +340,7 @@ const TRANSLATIONS = {
     'login.resent':   'A new code has been sent.',
     'login.help':     'No access yet? <a href="index.html#lead">Get in touch</a>',
     'err.email':      'Please enter your email address.',
-    'err.digits':     'Please enter all 4 digits.',
+    'err.digits':     'Please enter all 6 digits.',
     'err.network':    'Can\u2019t reach the server. Please try again.',
     'err.generic':    'Something went wrong. Please try again later.',
     'err.loginfail':  'Login failed.',
@@ -463,7 +465,7 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
     emailForm.classList.remove('hidden'); $('head1').classList.remove('hidden'); $('email').focus();
   });
 
-  // 4 aparte vakjes: automatisch doorspringen, plakken en backspace werken
+  // 6 aparte vakjes: automatisch doorspringen, plakken en backspace werken
   boxes.forEach((box, i) => {
     box.addEventListener('input', () => {
       box.value = box.value.replace(/\D/g, '').slice(-1);
@@ -476,12 +478,12 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
       if (e.key === 'ArrowRight' && i < boxes.length - 1) boxes[i + 1].focus();
     });
     box.addEventListener('paste', e => {
-      const digits = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 4);
+      const digits = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 6);
       if (!digits) return;
       e.preventDefault();
       digits.split('').forEach((d, k) => (boxes[k].value = d));
-      (boxes[digits.length] || boxes[3]).focus();
-      if (digits.length === 4) codeForm.requestSubmit();
+      (boxes[digits.length] || boxes[boxes.length - 1]).focus();
+      if (digits.length === 6) codeForm.requestSubmit();
     });
   });
 
@@ -490,7 +492,7 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
     e.preventDefault();
     if (verifying) return;
     const code = boxes.map(b => b.value).join('');
-    if (code.length !== 4) return showMsg(t('err.digits'));
+    if (code.length !== 6) return showMsg(t('err.digits'));
     verifying = true; hideMsg();
     const btn = $('codeBtn'); setBtn(btn, 'login.verifying', true);
     try {
