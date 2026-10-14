@@ -516,8 +516,13 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .cfix{margin:8px 0 0;font-size:.78rem;color:#ff9d92;text-align:center}
 .btn-red:disabled{opacity:.45;cursor:not-allowed}
 .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 14px;margin-top:10px;font-size:.74rem;color:var(--faint)}
-.confirm{display:flex;align-items:flex-start;gap:10px;margin:12px 0 10px;font-size:.82rem;line-height:1.45;color:var(--dim);cursor:pointer}
-.confirm input{flex:none;width:18px;height:18px;margin:1px 0 0;accent-color:var(--red);cursor:pointer}
+.confirm{display:flex;align-items:flex-start;gap:12px;margin:14px 0 12px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.78rem;line-height:1.5;color:var(--dim);cursor:pointer;transition:color .15s}
+.confirm:has(input:checked){color:var(--text)}
+.confirm:has(input:focus-visible) input{outline:2px solid var(--red2);outline-offset:2px}
+.confirm input{appearance:none;-webkit-appearance:none;flex:none;width:18px;height:18px;margin:1px 0 0;border:1.5px solid rgba(255,255,255,.45);border-radius:3px;background:transparent center/12px no-repeat;cursor:pointer;transition:background-color .15s,border-color .15s}
+.confirm input:hover{border-color:#fff}
+.confirm input:checked{background-color:var(--red);border-color:var(--red);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")}
+.confirm input:focus{outline:none}
 .p-sku.ean{display:flex;flex-wrap:wrap;gap:0 12px;font-variant-numeric:tabular-nums}
 .trust a{color:var(--faint);text-decoration:none}.trust a:hover{color:#fff}
 @media(max-width:700px){.quick{flex-direction:column;align-items:stretch}.quick-b{width:100%}}
@@ -753,7 +758,7 @@ const EANS = {
 };
 const skuLine = it => {
   const e = EANS[it.id];
-  if (e) return h('div', { class:'p-sku ean' }, h('span', { text:'EAN CE ' + e.ce }), h('span', { text:'EAN HE ' + e.he }));
+  if (e) return h('div', { class:'p-sku ean', text:'EAN: ' + e.he });
   if (String(it.id).startsWith('fsg:')) return null;
   return it.sku ? h('div', { class:'p-sku', text:it.sku }) : null;
 };
@@ -830,7 +835,7 @@ function renderProducts(){
   const box = $('products'); box.replaceChildren(); cardRefs.clear();
   const needle = S.q.trim().toLowerCase();
   const pool = needle ? S.catalog.brands.flatMap(b => b.items) : brand().items;
-  const list = pool.filter(i => (!S.cat || needle || i.category === S.cat) && (!needle || (i.name + ' ' + i.category + ' ' + catLabel(i.category) + ' ' + (EANS[i.id] ? EANS[i.id].ce + ' ' + EANS[i.id].he : (String(i.id).startsWith('fsg:') ? '' : (i.sku || '')))).toLowerCase().includes(needle)));
+  const list = pool.filter(i => (!S.cat || needle || i.category === S.cat) && (!needle || (i.name + ' ' + i.category + ' ' + catLabel(i.category) + ' ' + (EANS[i.id] ? EANS[i.id].he : (String(i.id).startsWith('fsg:') ? '' : (i.sku || '')))).toLowerCase().includes(needle)));
   if (!list.length) { box.append(h('div', { class:'empty', text:t('order.none') })); return; }
   const groups = new Map(); list.forEach(i => { const k = needle ? (S.items.get(i.id) || {}).brandName : i.category; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(i); });
   const head = wt => h('div', { class:'phead' + (wt ? '' : ' nothumb') }, wt ? h('span') : null, h('span', { text:t('th.product') }), h('span', { text:t('th.price') }), h('span', { text:t('th.qty') }), h('span', { text:t('th.sub') }));
