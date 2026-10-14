@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bestelportaal — BINC B2B</title>
+<meta name="robots" content="noindex"/>
+<link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0b;
+  --panel:#121214;
+  --panel2:#18181b;
+  --line:rgba(255,255,255,.09);
+  --line2:rgba(255,255,255,.16);
+  --red:#c0392b;
+  --red2:#e74c3c;
+  --gold:#d6b45a;
+  --ok:#3fb27f;
+  --text:#f4f4f5;
+  --dim:rgba(255,255,255,.62);
+  --faint:rgba(255,255,255,.4);
+  --font-display:'Barlow Condensed',sans-serif;
+  --font-body:'Barlow',sans-serif;
+  --font-ui:'Rajdhani',sans-serif;
+  --top:60px;
+  --bar:0px;
+  --side:240px;
+  --cart:380px;
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
+input,select,textarea{font:inherit;color:var(--text)}
+a{color:inherit}
+::selection{background:var(--red);color:#fff}
+.hidden{display:none!important}
+:focus-visible{outline:2px solid var(--red2);outline-offset:2px}
+
+/* ── TOPBAR ── */
+.top{position:fixed;inset:var(--bar) 0 auto 0;height:var(--top);z-index:50;display:flex;align-items:center;gap:14px;padding:0 20px;background:rgba(10,10,11,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.top-logo img{height:26px;display:block}
+.top-tag{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--red2);padding-left:14px;border-left:1px solid var(--line2);white-space:nowrap}
+.top-space{flex:1}
+.who{font-size:.85rem;color:var(--dim);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-ghost{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:8px 12px;border:1px solid var(--line2);border-radius:3px;text-decoration:none;white-space:nowrap;transition:.15s;display:inline-block}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05)}
+.lang{display:flex;border:1px solid var(--line2);border-radius:3px;overflow:hidden}
+.lang button{font-family:var(--font-ui);font-weight:700;font-size:.7rem;letter-spacing:.16em;padding:7px 10px;color:var(--faint);line-height:1}
+.lang button.on{background:var(--red);color:#fff}
+
+/* ── SHELL ── */
+.shell{display:grid;grid-template-columns:var(--side) minmax(0,1fr);padding-top:calc(var(--top) + var(--bar));min-height:100vh}
+.side{position:sticky;top:calc(var(--top) + var(--bar));height:calc(100vh - var(--top) - var(--bar));padding:22px 14px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px;background:var(--bg)}
+.nav-i{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 14px;border-radius:4px;font-family:var(--font-ui);font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);transition:.15s;position:relative;white-space:nowrap}
+.nav-i svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav-i:hover{color:#fff;background:rgba(255,255,255,.05)}
+.nav-i.on{color:#fff;background:rgba(192,57,43,.16);box-shadow:inset 3px 0 0 var(--red)}
+.nav-badge{margin-left:auto;background:var(--red);color:#fff;border-radius:10px;font-size:.7rem;min-width:20px;height:20px;line-height:20px;text-align:center;padding:0 6px;letter-spacing:0}
+.side-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+/* Hulp + uitloggen: bewust rustig */
+.help{padding:0 14px 4px;border-top:1px solid var(--line);padding-top:14px}
+.help-h{font-size:.8rem;color:var(--faint);margin-bottom:6px}
+.help-l{display:flex;align-items:center;gap:9px;color:var(--dim);text-decoration:none;font-size:.82rem;padding:4px 0;overflow:hidden}
+.help-l span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.help-l svg,.logout svg{width:15px;height:15px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.help-l:hover{color:#fff}
+.logout{display:flex;align-items:center;gap:9px;width:100%;padding:8px 14px;border-radius:4px;color:var(--faint);font-size:.82rem;transition:.15s}
+.logout:hover{color:#fff;background:rgba(255,255,255,.05)}
+.main{min-width:0}
+.view{display:none}.view.on{display:block}
+
+/* ── BESTELLEN ── */
+.order-grid{display:grid;grid-template-columns:minmax(0,1fr) var(--cart);align-items:start}
+.catalog{padding:28px 32px 90px;min-width:0;max-width:980px}
+.page-h{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(1.9rem,3vw,2.5rem);line-height:1;letter-spacing:.01em}
+.page-h .acc{color:var(--red)}
+.page-sub{color:var(--dim);margin:8px 0 24px;max-width:60ch}
+
+/* merk-tegels */
+.brands{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.brand{position:relative;display:flex;align-items:center;gap:10px;text-align:left;padding:11px 12px;background:var(--panel);border:1px solid var(--line);border-radius:8px;transition:border-color .15s,background .15s;min-width:0}
+.brand:hover{border-color:var(--line2);background:var(--panel2)}
+.brand.on{border-color:var(--red);background:linear-gradient(180deg,rgba(192,57,43,.16),var(--panel));box-shadow:inset 0 -3px 0 var(--red)}
+.brand-art{flex:none;width:42px;height:42px;border-radius:8px;display:grid;place-items:center;background:var(--tone,#333);overflow:hidden;position:relative}
+.brand-art img{width:100%;height:100%;object-fit:contain;padding:3px;position:relative;z-index:1}
+.brand-art::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.28),transparent 60%)}
+.brand-art b{position:relative;z-index:1;font-family:var(--font-display);font-weight:800;font-size:1.25rem;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.brand-t{min-width:0}
+.brand-n{display:block;font-family:var(--font-display);font-weight:700;font-size:1.08rem;line-height:1.05;overflow-wrap:normal;word-break:normal}
+.brand-m{display:block;font-size:.76rem;color:var(--faint);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-b{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--red);color:#fff;font-size:.74rem;font-weight:600;line-height:22px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+.brand-info{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--dim);font-size:.85rem;padding:2px 2px 16px}
+.brand-info span{display:inline-flex;align-items:center;gap:7px}
+.brand-info svg{width:15px;height:15px;stroke:var(--red2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* zoeken + categorie */
+.filters{position:sticky;top:calc(var(--top) + var(--bar));z-index:20;background:rgba(10,10,11,.94);backdrop-filter:blur(10px);margin:0 -32px;padding:10px 32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search{flex:1;min-width:190px;position:relative}
+.search input{width:100%;background:var(--panel);border:1px solid var(--line2);border-radius:6px;padding:10px 14px 10px 38px;outline:none;transition:.15s}
+.search input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.2)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--faint);fill:none;stroke-width:2;stroke-linecap:round}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.chips::-webkit-scrollbar{display:none}
+.chips:empty{display:none}
+.chip{flex:none;font-size:.82rem;font-weight:500;padding:6px 13px;border:1px solid var(--line2);border-radius:99px;color:var(--dim);white-space:nowrap;transition:.15s}
+.chip:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.chip.on{background:#fff;color:#000;border-color:#fff}
+
+/* productlijst */
+.group-h{font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:.02em;color:var(--dim);margin:24px 0 8px;display:flex;align-items:center;gap:12px}
+.group-h::after{content:'';flex:1;height:1px;background:var(--line)}
+.plist{border-bottom:1px solid var(--line)}
+.phead,.prow{display:grid;grid-template-columns:56px minmax(0,1fr) 100px 142px 100px;align-items:center;gap:6px 16px;padding:0 14px 0 10px}
+.phead{padding-top:8px;padding-bottom:8px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-family:var(--font-ui);font-weight:700;border-bottom:1px solid var(--line)}
+.phead span:nth-child(n+3){text-align:right}
+.prow{padding-top:9px;padding-bottom:9px;border-bottom:1px solid var(--line);transition:background .15s}
+.prow:last-child{border-bottom:none}
+.prow:hover{background:rgba(255,255,255,.03)}
+.prow.in{background:rgba(214,180,90,.07)}
+.thumb{width:44px;height:44px;border-radius:6px;background:var(--tone,#2a2a2e);display:grid;place-items:center;overflow:hidden;position:relative;margin-left:2px}
+.thumb img{width:100%;height:100%;object-fit:contain;padding:3px;position:relative;z-index:1}
+.thumb svg{width:22px;height:22px;stroke:rgba(255,255,255,.85);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.p-name{font-weight:500;line-height:1.25;font-size:.92rem}
+.p-sku{color:var(--faint);font-size:.72rem;margin-top:1px;letter-spacing:.02em}
+.p-price{text-align:right;color:var(--gold);font-size:.92rem;white-space:nowrap}
+.p-price small{display:none;color:var(--faint);font-size:.74rem}
+.p-act{display:flex;justify-content:flex-end}
+.p-sum{text-align:right;color:var(--dim);font-size:.92rem;white-space:nowrap}
+.prow.in .p-sum{color:var(--text);font-weight:600}
+.empty{padding:50px 10px;text-align:center;color:var(--dim)}
+.spin{width:28px;height:28px;margin:0 auto 14px;border:3px solid rgba(192,57,43,.25);border-top-color:var(--red);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.step{display:inline-flex;align-items:stretch;border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:var(--bg)}
+.step button{width:32px;font-size:1.25rem;line-height:1;color:var(--dim);transition:.15s}
+.step button:hover{background:var(--red);color:#fff}
+.step input{width:44px;text-align:center;background:transparent;border:none;border-left:1px solid var(--line);border-right:1px solid var(--line);outline:none;font-weight:600;-moz-appearance:textfield;padding:8px 0}
+.step input::-webkit-outer-spin-button,.step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.step input:focus{background:rgba(255,255,255,.06)}
+.empty{padding:50px 10px;text-align:center;color:var(--dim)}
+.spin{width:28px;height:28px;margin:0 auto 14px;border:3px solid rgba(192,57,43,.25);border-top-color:var(--red);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ── WINKELMAND ── */
+.cart{position:sticky;top:calc(var(--top) + var(--bar));height:calc(100vh - var(--top) - var(--bar));border-left:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;min-width:0}
+.cart-h{display:flex;align-items:center;justify-content:space-between;padding:20px 22px 14px}
+.cart-h h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.5rem;line-height:1}
+.cart-h small{color:var(--faint);font-size:.82rem;margin-left:8px;font-family:var(--font-body);font-weight:400;text-transform:none}
+.cart-close{display:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line2);font-size:1.2rem;line-height:1}
+.cart-body{flex:1;overflow-y:auto;padding:0 22px 8px}
+.cart-empty{color:var(--dim);padding:34px 8px;text-align:center}
+.cart-empty svg{display:block;margin:0 auto 12px;width:34px;height:34px;stroke:var(--faint);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cbrand{margin:6px 0 14px;padding:12px 14px 4px;background:var(--panel2);border:1px solid var(--line);border-radius:8px}
+.cbrand-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.cbrand-n{font-family:var(--font-display);font-weight:700;font-size:1.15rem}
+.cbrand-s{color:var(--dim);font-size:.86rem;font-weight:600}
+.meter{height:5px;border-radius:3px;background:rgba(255,255,255,.1);margin:9px 0 3px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--red);border-radius:3px;transition:width .25s}
+.meter.ok i{background:var(--ok)}
+.meter-t{font-size:.78rem;color:var(--faint);margin-bottom:4px}
+.meter-t.ok{color:var(--ok)}
+.line{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:11px 0;border-top:1px solid var(--line)}
+.line-n{font-size:.9rem;font-weight:500;line-height:1.3}
+.line-t{font-weight:600;text-align:right;white-space:nowrap;font-size:.92rem}
+.line .step{border-color:var(--line2)}
+.line .step button{width:28px;font-size:1rem}.line .step input{width:38px;padding:5px 0;font-size:.88rem}
+.line-sub{display:flex;align-items:center;gap:10px;color:var(--faint);font-size:.8rem}
+.line-x{color:var(--faint);font-size:.78rem;text-decoration:underline;padding:0}.line-x:hover{color:var(--red2)}
+.line.dep{color:var(--dim);font-size:.85rem}.line.dep .line-n{font-weight:400;font-size:.85rem}.line.dep .line-t{font-weight:500;font-size:.85rem}
+.warn{margin:0 0 10px;padding:9px 12px;border-radius:6px;background:rgba(192,57,43,.14);border:1px solid rgba(231,76,60,.4);color:#ffb4aa;font-size:.84rem}
+.cart-foot{border-top:1px solid var(--line);padding:14px 22px 20px;background:var(--panel2)}
+.dtl{margin-bottom:12px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.dtl summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:10px 12px;font-size:.88rem;font-weight:600}
+.dtl summary::-webkit-details-marker{display:none}
+.dtl summary span{color:var(--faint);font-weight:400;font-size:.78rem}
+.dtl summary::after{content:'+';color:var(--dim);font-size:1.1rem;margin-left:10px}
+.dtl[open] summary::after{content:'−'}
+.dtl-b{padding:2px 12px 12px}
+.f-lab{display:block;font-size:.78rem;font-weight:600;color:var(--dim);margin:0 0 5px}
+.f-in{width:100%;background:var(--panel);border:1px solid var(--line2);border-radius:5px;padding:9px 11px;outline:none;font-size:.9rem;transition:.15s;color-scheme:dark}
+.f-in:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.2)}
+textarea.f-in{resize:vertical;min-height:54px}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.f-full{margin-bottom:10px}
+.sumrow{display:flex;justify-content:space-between;color:var(--dim);font-size:.86rem;margin-top:4px}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin:10px 0 2px}
+.total strong{font-family:var(--font-display);font-size:2rem;font-weight:800;line-height:1}
+.total span{font-weight:600}
+.vat{color:var(--faint);font-size:.76rem;margin-bottom:12px}
+.btn-red{width:100%;font-family:var(--font-ui);font-weight:700;font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;background:var(--red);color:#fff;padding:15px;border-radius:6px;transition:.15s}
+.btn-red:hover:not(:disabled){background:var(--red2)}
+.btn-red:disabled{opacity:.45;cursor:not-allowed}
+.btn-line{width:100%;font-family:var(--font-ui);font-weight:700;font-size:.84rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line2);padding:12px;border-radius:6px;color:var(--dim);transition:.15s;margin-top:8px}
+.btn-line:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+
+.done{padding:34px 22px;text-align:center}
+.done-ic{width:58px;height:58px;border-radius:50%;background:rgba(63,178,127,.15);border:1px solid rgba(63,178,127,.5);margin:0 auto 16px;display:grid;place-items:center}
+.done-ic svg{width:28px;height:28px;stroke:var(--ok);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.done h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.7rem;line-height:1.05;margin-bottom:8px}
+.done p{color:var(--dim);margin-bottom:6px}
+.done .oid{font-family:var(--font-ui);font-weight:700;letter-spacing:.14em;color:#fff;font-size:1.05rem;margin:10px 0 18px;display:block}
+
+/* mobiele winkelwagenbalk */
+.cartbar{display:none}
+
+/* ── LIJSTEN (bestellingen / account) ── */
+.pad{padding:26px 28px 90px;max-width:980px}
+.ord{background:var(--panel);border:1px solid var(--line);border-radius:6px;margin-bottom:10px;overflow:hidden}
+.ord-h{display:grid;grid-template-columns:1fr auto auto;gap:6px 18px;align-items:center;padding:16px 18px;width:100%;text-align:left}
+.ord-h:hover{background:rgba(255,255,255,.03)}
+.ord-id{font-family:var(--font-ui);font-weight:700;letter-spacing:.1em}
+.ord-meta{color:var(--dim);font-size:.84rem}
+.ord-tot{font-family:var(--font-display);font-weight:700;font-size:1.3rem}
+.pill{font-family:var(--font-ui);font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:99px;background:rgba(63,178,127,.14);color:var(--ok);border:1px solid rgba(63,178,127,.4)}
+.ord-d{border-top:1px solid var(--line);padding:6px 18px 16px}
+.ord-d table{width:100%;border-collapse:collapse;font-size:.9rem}
+.ord-d td,.ord-d th{padding:8px 4px;border-bottom:1px solid var(--line);text-align:left}
+.ord-d th{font-family:var(--font-ui);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.ord-d td.r,.ord-d th.r{text-align:right}
+.ord-note{color:var(--dim);font-size:.86rem;margin:12px 0 0}
+.ord-act{margin-top:14px;display:flex;gap:10px}
+.ord-act .btn-red,.ord-act .btn-line{width:auto;padding:10px 18px;margin:0}
+
+/* ── ADMIN-BALK (inloggen als klant) ── */
+.adminbar{position:fixed;inset:0 0 auto 0;height:42px;z-index:60;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 16px;background:linear-gradient(90deg,#2b2312,#1a1a1d 55%,#2b2312);border-bottom:1px solid rgba(214,180,90,.55);font-size:.84rem;color:var(--dim)}
+.adminbar .ab-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.adminbar .ab-tag svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.adminbar .ab-txt{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.adminbar button{flex:none;padding:5px 14px;border:1px solid rgba(214,180,90,.6);border-radius:3px;background:transparent;color:var(--gold);font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:.15s}
+.adminbar button:hover{background:var(--gold);color:#111}
+@media(max-width:700px){.adminbar .ab-txt{display:none}}
+
+/* ── BESTELLINGEN (zakelijk overzicht) ── */
+#v-orders .pad{max-width:none;padding:28px 36px 90px}
+.ostats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:4px;background:var(--panel);margin:0 0 32px}
+.ostats>div{padding:22px 26px;border-left:1px solid var(--line)}
+.ostats>div:first-child{border-left:0}
+.ostats small{display:block;font-family:var(--font-ui);font-weight:700;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.ostats b{display:block;margin-top:6px;font-family:var(--font-display);font-weight:700;font-size:1.7rem;line-height:1;font-variant-numeric:tabular-nums}
+.ofil{display:inline-flex;margin:0;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+.ofil button{padding:8px 18px;border:0;border-left:1px solid var(--line2);background:transparent;color:var(--dim);font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;transition:.15s}
+.ofil button:first-child{border-left:0}
+.ofil button:hover{color:#fff;background:rgba(255,255,255,.05)}
+.ofil button.on{background:var(--red);color:#fff}
+.ofrow{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:0 0 28px}
+.ofrow .ofil{margin:0}
+.osel{height:36px;padding:0 34px 0 14px;border:1px solid var(--line2);border-radius:4px;background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23999' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 13px center;color:var(--text);font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;appearance:none;-webkit-appearance:none;cursor:pointer;max-width:100%}
+.osel:hover{border-color:rgba(255,255,255,.35)}
+.ometa{margin:-4px 0 24px;font-size:.9rem;color:var(--dim)}
+.ometa b{color:var(--text);font-weight:600}
+.otable{border:0;border-top:1px solid var(--line);background:transparent;overflow:visible}
+.ot-head,.ord-h{display:grid;grid-template-columns:var(--oc);gap:0 28px;align-items:center}
+.ot-head{padding:14px 24px;border-bottom:1px solid var(--line);font-family:var(--font-ui);font-weight:700;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.ot-head .r,.ord-h .r{text-align:right}
+.ord{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;margin:0;overflow:visible;position:relative}
+.ord.open::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--red)}
+.ord-h{padding:19px 24px;width:100%;text-align:left;font-size:.9rem;color:var(--text);transition:background .12s}
+.ord-h:hover{background:rgba(255,255,255,.03)}
+.ord-h .c-date{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--dim)}
+.ord-h .c-brand{font-weight:500;min-width:0}
+.ord-h .c-brand small{display:block;margin-top:5px;font-weight:400;font-size:.74rem;color:var(--faint);letter-spacing:.02em}
+.ord-h .c-fil{color:var(--dim);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ord-h .c-qty{color:var(--red2);font-weight:600;font-variant-numeric:tabular-nums}
+.ord-tot{font-family:var(--font-body);font-weight:600;font-size:.92rem;font-variant-numeric:tabular-nums}
+.ord-chev{width:6px;height:6px;border-right:1.5px solid var(--faint);border-bottom:1.5px solid var(--faint);transform:rotate(45deg);margin:-3px 4px 0 auto;transition:transform .2s}
+.ord.open .ord-chev{transform:rotate(-135deg);margin-top:3px}
+.pill{white-space:nowrap}
+.ord-d{border:0;padding:2px 24px 28px;background:transparent}
+.oi-list{max-width:480px;margin:0;padding:4px 0 4px 20px;border-left:1px solid var(--line2)}
+.oi{display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px;align-items:baseline;padding:8px 0;border:0}
+.oi-list.priced .oi{grid-template-columns:40px minmax(0,1fr) 90px 100px}
+.oi .n{font-family:var(--font-body);font-weight:600;font-size:.84rem;color:var(--red2);font-variant-numeric:tabular-nums}
+.oi .p{font-size:.86rem;color:var(--text)}
+.oi .pr,.oi .lt{text-align:right;font-variant-numeric:tabular-nums;color:var(--faint);font-size:.84rem}
+.oi .lt{color:var(--dim);font-weight:500}
+.ord-foot{display:flex;margin-top:22px}
+.ord-foot .ord-act{margin:0}
+.ord-foot .btn-red{padding:10px 18px;background:transparent;border:1px solid var(--line2);color:var(--dim);font-size:.7rem;letter-spacing:.14em;transition:.15s}
+.ord-foot .btn-red:hover{background:var(--red);border-color:var(--red);color:#fff}
+@media(max-width:900px){
+  .ord-h{padding:16px 16px}.ord-d{padding:2px 16px 22px}
+  #v-orders .pad{padding:20px 16px 90px}
+  .ostats b{font-size:1.3rem}.ostats>div{padding:12px 14px}
+  .ot-head{display:none}
+  .ord-h{grid-template-columns:minmax(0,1fr) auto 14px;gap:2px 12px;padding:16px 16px}
+  .ord-h .c-fil,.ord-h .c-qty,.ord-h .pill{display:none}
+  .ord-h .c-date{grid-column:1;grid-row:2;color:var(--dim);font-size:.82rem}
+  .ord-h .c-brand{grid-column:1;grid-row:1}
+  .ord-h .ord-tot{grid-column:2;grid-row:1 / span 2}
+  .ord-h .ord-chev{grid-column:3;grid-row:1 / span 2}
+  .ord-d{padding:4px 14px 14px}
+}
+.acc-card{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--red);border-radius:6px;padding:22px 24px;margin-bottom:14px}
+.acc-card h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.6rem;line-height:1.05}
+.acc-card .sub{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red2);margin:4px 0 14px}
+dl{display:grid;grid-template-columns:minmax(120px,220px) 1fr}
+dt,dd{padding:10px 0;border-top:1px solid var(--line);font-size:.93rem}
+dt{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding-right:14px;padding-top:12px}
+dd{word-break:break-word}
+dl>:nth-child(1),dl>:nth-child(2){border-top:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#fff;color:#000;padding:11px 18px;border-radius:4px;font-weight:600;font-size:.9rem;z-index:200;transition:.25s;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.loading{display:grid;place-items:center;min-height:60vh;color:var(--dim)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1180px){:root{--cart:340px}}
+@media(max-width:1000px){
+  :root{--side:0px}
+  .shell{display:block;padding-bottom:64px}
+  .side{position:fixed;inset:auto 0 0 0;top:auto;height:62px;width:100%;flex-direction:row;padding:0;border-right:none;border-top:1px solid var(--line);background:rgba(10,10,11,.96);backdrop-filter:blur(14px);z-index:60;gap:0}
+  .side-foot{display:none}
+  .nav-i{flex:1;flex-direction:column;justify-content:center;gap:3px;padding:6px 4px;font-size:.66rem;letter-spacing:.08em;border-radius:0;text-align:center}
+  .nav-i.on{box-shadow:inset 0 3px 0 var(--red);background:rgba(192,57,43,.12)}
+  .nav-badge{position:absolute;top:4px;right:calc(50% - 22px);margin:0}
+  .order-grid{display:block}
+  .catalog{padding:20px 16px 150px;max-width:none}
+  .filters{margin:0 -16px;padding:10px 16px;top:calc(var(--top) + var(--bar))}
+  .pad{padding:20px 16px 90px}
+  .cart{position:fixed;inset:0;height:auto;z-index:90;border-left:none;transform:translateY(102%);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+  .cart.open{transform:none}
+  .cart-close{display:block}
+  .cartbar{display:flex;position:fixed;left:12px;right:12px;bottom:74px;z-index:55;align-items:center;justify-content:space-between;gap:12px;background:var(--red);color:#fff;border-radius:6px;padding:13px 16px;box-shadow:0 8px 28px rgba(0,0,0,.55);font-weight:600}
+  .cartbar .cb-tot{font-family:var(--font-display);font-weight:800;font-size:1.25rem}
+  .cartbar.zero{display:none}
+  .who{display:none}
+  .toast{bottom:150px}
+}
+@media(max-width:560px){
+  .top{padding:0 12px;gap:8px}
+  .top .btn-ghost.site{padding:7px 9px;font-size:.66rem}
+  .top .logout.top-out span{display:none}.top .logout.top-out{padding:8px 10px}
+  .brands{grid-template-columns:1fr 1fr}
+  .brand{padding:10px}.brand-art{width:40px;height:40px}.brand-n{font-size:1.05rem}
+  .phead{display:none}
+  .prow{grid-template-columns:44px minmax(0,1fr) auto;padding:9px 10px;gap:2px 12px}
+  .thumb{grid-row:span 2}
+  .p-act{grid-column:3;grid-row:1 / span 2}
+  .p-price{grid-column:2;text-align:left}
+  .p-price small{display:inline}
+  .p-sum{display:none}
+  .ord-h{grid-template-columns:1fr auto}
+  .ord-h .pill{display:none}
+  dl{grid-template-columns:1fr}dt{padding-bottom:0}dd{border-top:none;padding-top:2px}
+  .f-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.logout.top-out{width:auto;padding:8px 14px;background:var(--red);border:1px solid var(--red);color:#fff;font-family:var(--font-ui);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
+.logout.top-out:hover{background:var(--red2);border-color:var(--red2);color:#fff}
+
+/* ── ZAKELIJK / STRAK / VOLLEDIGE BREEDTE ── */
+:root{--cart:clamp(380px,27vw,500px);--r:4px}
+.catalog{max-width:none;padding:22px 28px 80px}
+.page-h{font-size:1.7rem;letter-spacing:0}
+.page-sub{margin:4px 0 16px;font-size:.88rem;max-width:none}
+.brands{display:flex;gap:0;border-bottom:1px solid var(--line);margin-bottom:0}
+.brand{flex:none;border:none;border-bottom:2px solid transparent;border-radius:0;background:none;padding:10px 18px 10px 4px;margin-right:20px;box-shadow:none;gap:10px}
+.brand:hover{background:none;border-color:var(--line2)}
+.brand.on{background:none;box-shadow:none;border-color:var(--red)}
+.brand-art{width:30px;height:30px;border-radius:4px}
+.brand-art b{font-size:1rem}
+.brand-n{font-size:1.05rem;white-space:nowrap}
+.brand-m{display:none}
+.brand-b{position:static;margin-left:2px;min-width:20px;height:20px;line-height:20px;font-size:.72rem;border-radius:3px;box-shadow:none}
+.brand-info{padding:10px 0 12px;font-size:.82rem;gap:4px 22px}
+.filters{margin:0 -28px;padding:8px 28px;background:var(--bg)}
+.search input{border-radius:var(--r);padding:8px 12px 8px 36px;background:var(--panel)}
+.chip{border-radius:var(--r);padding:5px 12px}
+.group-h{font-family:var(--font-ui);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin:20px 0 4px;color:var(--faint)}
+.group-h::after{display:none}
+.phead,.prow{grid-template-columns:44px minmax(0,1fr) 110px 142px 110px}
+.thumb{width:36px;height:36px;border-radius:4px}
+.prow{padding-top:6px;padding-bottom:6px}
+.prow.in{background:rgba(255,255,255,.04);box-shadow:inset 2px 0 0 var(--gold)}
+.step,.step button:first-child{border-radius:var(--r)}
+.step{border-color:var(--line2)}
+.add,.btn-red,.btn-line,.f-in,.warn,.dtl{border-radius:var(--r)}
+.btn-red{font-size:.86rem;letter-spacing:.12em;padding:13px}
+
+/* winkelwagen: platte secties per merk */
+.cart{background:var(--panel)}
+.cart-h{padding:16px 20px 12px;border-bottom:1px solid var(--line)}
+.cart-h h2{font-size:1.2rem}
+.cart-body{padding:0 20px 8px}
+.cbrand{margin:0;padding:14px 0 10px;background:none;border:none;border-bottom:1px solid var(--line2);border-radius:0}
+.cbrand:last-child{border-bottom:none}
+.cbrand-h{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:baseline}
+.cbrand-n{font-family:var(--font-display);font-weight:700;font-size:1.1rem}
+.cbrand-q{color:var(--faint);font-size:.8rem}
+.cbrand-s{font-weight:700;font-size:.98rem;min-width:84px;text-align:right}
+.cmin{display:flex;align-items:center;gap:10px;font-size:.76rem;margin:6px 0 4px}
+.cmin .meter{flex:none;width:64px;height:4px;margin:0}
+.cmin.bad{color:#ff9d92}.cmin.ok{color:var(--ok)}
+.cmin.bad .meter i{background:var(--red2)}.cmin.ok .meter i{background:var(--ok)}
+.cl{display:grid;grid-template-columns:minmax(0,1fr) auto 78px 18px;gap:10px;align-items:center;padding:6px 0;border-top:1px solid var(--line)}
+.cbrand-h + .cl,.cmin + .cl{border-top:none}
+.cl-n{font-size:.88rem;line-height:1.25}
+.cl-t{text-align:right;font-size:.9rem;font-weight:600;white-space:nowrap}
+.cl-x{color:var(--faint);font-size:1.1rem;line-height:1;padding:0}.cl-x:hover{color:var(--red2)}
+.cl .step button{width:26px;font-size:.95rem}.cl .step input{width:36px;padding:4px 0;font-size:.86rem}
+.cl.dep .cl-n,.cl.dep .cl-t{color:var(--dim);font-weight:400;font-size:.82rem}
+.cart-foot{padding:12px 20px 18px}
+.total strong{font-size:1.7rem}
+@media(max-width:1000px){
+  .catalog{padding:16px 14px 150px}.filters{margin:0 -14px;padding:8px 14px}
+  .brands{overflow-x:auto;scrollbar-width:none}.brand{margin-right:14px;padding-right:2px}
+  .brand-n{font-size:1rem}
+  .cart-body{padding:0 16px 8px}
+}
+@media(max-width:560px){
+  .prow{grid-template-columns:36px minmax(0,1fr) auto}
+  .brands{display:flex}
+}
+
+/* ── ROUND 3: rustiger ── */
+.thumb{background:none;width:40px;height:40px;margin-left:0}
+.thumb::after{display:none}
+.thumb img{padding:0}
+.phead.nothumb,.prow.nothumb{grid-template-columns:minmax(0,1fr) 110px 142px 110px;padding-left:14px}
+.prow{border-radius:6px;border-bottom-color:var(--line)}
+.prow.in{background:#1a1a1e;box-shadow:inset 0 0 0 1px rgba(214,180,90,.38);border-bottom-color:transparent}
+.prow.in + .prow{border-top:none}
+.brand{padding-left:2px}
+
+/* winkelwagen */
+.cbrand{padding:12px 0 12px;border-bottom:1px solid var(--line)}
+.cbrand-h{display:flex;justify-content:space-between;margin-bottom:4px}
+.cbrand-n{font-size:1rem}
+.cbrand-s{font-weight:600;font-size:.92rem;min-width:0}
+.cl{grid-template-columns:30px minmax(0,1fr) auto 16px;gap:8px;padding:3px 0;border:none;font-size:.84rem}
+.cl-q{color:var(--faint);font-size:.82rem}
+.cl-n{color:var(--dim);font-size:.84rem}
+.cl-t{font-weight:500;font-size:.84rem;color:var(--dim)}
+.cl.dep .cl-n,.cl.dep .cl-t{color:var(--faint)}
+.cl-x{opacity:0;transition:.15s}.cl:hover .cl-x,.cl-x:focus-visible{opacity:1}
+.cneed{margin-top:6px;font-size:.78rem;color:#ff9d92}
+.cfix{margin-top:8px;font-size:.78rem;color:var(--faint);text-align:center}
+.cart-foot{padding:12px 20px 16px}
+.dtl{margin-bottom:10px}
+.dtl summary{padding:8px 12px;font-size:.84rem}
+.total{margin:6px 0 2px}
+.total strong{font-size:1.6rem}
+
+
+/* ── ROUND 4 ── */
+.prow{border-radius:8px;border-bottom:1px solid var(--line);padding-top:7px;padding-bottom:7px}
+.prow.in{background:#1d1d22;box-shadow:none;border-bottom-color:transparent}
+.prow.in + .prow,.prow:has(+ .prow.in){border-bottom-color:transparent}
+.plist{border-bottom:none;display:flex;flex-direction:column;gap:2px}
+.phead{margin-bottom:2px}
+.brand-info{padding:8px 0 10px;font-size:.8rem;color:var(--faint)}
+.cart-fold{width:30px;height:30px;border-radius:4px;color:var(--dim);display:grid;place-items:center;margin-left:auto}
+.cart-fold:hover{background:rgba(255,255,255,.07);color:#fff}
+.cart-fold svg,.cbrand-h svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;transition:transform .15s}
+.cart-h{gap:8px}.cart-close{margin-left:4px}
+.cbrand-h{width:100%;text-align:left;display:flex;align-items:center;gap:6px;margin-bottom:2px;color:#fff}
+.cbrand-h .cbrand-n{flex:1}
+.cbrand-h.folded svg{transform:rotate(-90deg)}
+.cbrand{padding:8px 0}
+
+/* ── ROUND 5: vaste tab-posities, rode prijs ── */
+.brands{gap:0}
+.brand{flex:0 0 auto;width:196px;margin-right:12px;padding:10px 0 10px 2px;justify-content:space-between}
+.brand-t{flex:1;min-width:0}
+.brand-n{overflow:hidden;text-overflow:ellipsis}
+.brand-b{flex:none;width:46px;min-width:46px;padding:0;text-align:center;margin:0 6px 0 0}
+
+.p-price{color:var(--red2)}
+@media(max-width:1000px){.brand{width:168px}.brand-b{width:40px;min-width:40px}}
+
+.help-h{color:var(--red2);font-weight:600}
+#logoutSide{color:#fff;background:rgba(192,57,43,.22);border:1px solid var(--red);font-weight:700;justify-content:center;padding:10px 14px}
+#logoutSide:hover{background:var(--red);border-color:var(--red);color:#fff}
+/* ── ROUND 6: knoppen gelijk, meer lucht, aanpasbare aantallen in mand ── */
+.top .btn-ghost.site,.top .logout.top-out{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0 14px;font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.14em;line-height:1;text-transform:uppercase;border-radius:3px;border-width:1px;border-style:solid}
+.top .logout.top-out svg{width:15px;height:15px}
+.page-h{margin-bottom:26px}
+.brands{margin-top:4px}
+.brand{margin-right:36px}
+.brand-b{margin:0 0 0 8px}
+.cl{grid-template-columns:34px minmax(0,1fr) auto 16px;align-items:center}
+.cl-q{display:flex;align-items:center;gap:0;color:var(--faint);font-size:.82rem}
+.cl-qi{width:2.2ch;min-width:0;box-sizing:content-box;padding:2px 3px;margin:0 0 0 -3px;text-align:right;background:transparent;border:1px solid transparent;border-radius:4px;color:var(--faint);font:inherit;font-size:.82rem;outline:none;-moz-appearance:textfield;cursor:text;transition:border-color .15s,background .15s,color .15s}
+.cl-qi::-webkit-outer-spin-button,.cl-qi::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.cl-qi:focus{width:3.2ch;color:#fff;border-color:var(--red);background:rgba(255,255,255,.08);text-align:center}
+@media(max-width:1000px){.brand{margin-right:24px}.cl-qi,.cl-qi:focus{font-size:16px}.top .btn-ghost.site,.top .logout.top-out{height:34px;padding:0 10px;font-size:.66rem}}
+
+/* ── ROUND 7: slim bestellen (voortgang, aanvullen, herbestellen, vertrouwen) ── */
+:root{--ok:#3fb27f}
+.hidden{display:none!important}
+.p-price,.cl-t,.total strong,.cbrand-s,.cb-tot,.ord-tot,.sumrows{font-variant-numeric:tabular-nums}
+.quick{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;margin:-8px 0 20px;background:var(--panel);border:1px solid var(--line2);border-left:3px solid var(--red);border-radius:6px}
+.quick-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.quick-t strong{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.04em;font-size:1rem}
+.quick-t span{color:var(--dim);font-size:.84rem}
+.quick-b{width:auto;flex:none;padding:9px 18px;font-size:.8rem}
+.brand-b.ok{background:var(--ok)}
+.cbrand .meter{margin:8px 0 4px}
+.cbrand .meter-t{margin:0 0 2px}
+.cfill{display:block;width:100%;margin-top:8px;padding:8px 10px;border:1px dashed rgba(255,255,255,.28);border-radius:4px;color:#fff;font-size:.8rem;font-weight:600;text-align:center;transition:.15s}
+.cfill:hover{border-color:var(--red);background:rgba(192,57,43,.14)}
+.xsell{padding:14px 0 6px}
+.xsell-h{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.xsell-i{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:10px 12px;margin-bottom:6px;border:1px solid var(--line2);border-radius:6px;text-align:left;transition:.15s}
+.xsell-i:hover{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.04)}
+.xsell-t{display:flex;flex-direction:column;min-width:0}
+.xsell-n{font-weight:600;font-size:.92rem}
+.xsell-m{font-size:.76rem;color:var(--faint)}
+.xsell-go{font-size:.78rem;font-weight:600;color:var(--red2);white-space:nowrap}
+.sumrows{display:flex;flex-direction:column;gap:2px;margin:2px 0 4px;font-size:.84rem;color:var(--dim)}
+.sumrows div{display:flex;justify-content:space-between}
+.total{align-items:baseline}
+.total span{font-size:.9rem}
+.cfix{margin:8px 0 0;font-size:.78rem;color:#ff9d92;text-align:center}
+.btn-red:disabled{opacity:.45;cursor:not-allowed}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 14px;margin-top:10px;font-size:.74rem;color:var(--faint)}
+.trust a{color:var(--faint);text-decoration:none}.trust a:hover{color:#fff}
+@media(max-width:700px){.quick{flex-direction:column;align-items:stretch}.quick-b{width:100%}}
+@media(max-width:900px){.prow.nothumb{grid-template-columns:minmax(0,1fr) auto}.prow.nothumb .p-price{grid-column:1}.prow.nothumb .p-act{grid-column:2}}
+.pill-old{background:rgba(255,255,255,.08);color:var(--dim);border-color:var(--line2)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="top-logo" href="index.html" aria-label="BINC International"><img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/></a>
+  <span class="top-space"></span>
+  <span class="who" id="who"></span>
+  <div class="lang"><button data-lang="nl" class="on">NL</button><button data-lang="en">EN</button></div>
+  <a class="btn-ghost site" href="index.html" data-i18n="top.site">&larr; Website</a>
+  <button class="logout top-out" id="logoutTop" type="button"><svg viewBox="0 0 24 24"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="M16 8l4 4-4 4M20 12H9"/></svg><span data-i18n="nav.logout">Uitloggen</span></button>
+</header>
+
+<div class="shell">
+  <nav class="side" aria-label="Portaal">
+    <button class="nav-i on" data-view="order">
+      <svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.76L20 8H6.2"/><circle cx="9" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg>
+      <span data-i18n="nav.order">Bestellen</span><span class="nav-badge hidden" id="navBadge">0</span>
+    </button>
+    <button class="nav-i" data-view="orders">
+      <svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>
+      <span data-i18n="nav.orders">Mijn bestellingen</span>
+    </button>
+    <button class="nav-i" data-view="account">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.9-3.6 3.8-5.4 7.5-5.4s6.6 1.8 7.5 5.4"/></svg>
+      <span data-i18n="nav.account">Mijn account</span>
+    </button>
+    <div class="side-foot">
+      <div class="help">
+        <div class="help-h" data-i18n="side.help">Hulp nodig met een bestelling?</div>
+        <a class="help-l" href="mailto:info@bincinternational.nl"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 7 8.5-7"/></svg><span>info@bincinternational.nl</span></a>
+        <a class="help-l" href="tel:+31132032643"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>013 203 2643</span></a>
+      </div>
+      <button class="logout" id="logoutSide" type="button"><svg viewBox="0 0 24 24"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="M16 8l4 4-4 4M20 12H9"/></svg><span data-i18n="nav.logout">Uitloggen</span></button>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="loading" id="boot"><div><div class="spin"></div><span data-i18n="loading">Portaal laden…</span></div></div>
+
+    <!-- BESTELLEN -->
+    <section class="view" id="v-order">
+      <div class="order-grid">
+        <div class="catalog">
+          <h1 class="page-h"><span data-i18n="order.title">Nieuwe bestelling</span><span class="acc">.</span></h1>
+          <div class="quick hidden" id="quick"></div>
+          <div class="brands" id="brandSeg" role="tablist"></div>
+          <div class="brand-info" id="brandInfo"></div>
+          <div class="filters">
+            <div class="search">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              <input type="search" id="q" data-i18n-ph="order.search" placeholder="Zoek een product…" autocomplete="off"/>
+            </div>
+            <div class="chips" id="chips"></div>
+          </div>
+          <div id="products"></div>
+        </div>
+
+        <aside class="cart" id="cart" aria-label="Winkelwagen">
+          <div class="cart-h"><h2><span data-i18n="cart.title">Winkelwagen</span><small id="cartCount"></small></h2><button class="cart-fold" id="cartFold" type="button" aria-label="Inklappen" title="Alles in-/uitklappen"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><button class="cart-close" id="cartClose" aria-label="Sluiten">&times;</button></div>
+          <div class="cart-body" id="cartBody"></div>
+          <div class="cart-foot" id="cartFoot"></div>
+        </aside>
+      </div>
+      <button class="cartbar zero" id="cartbar"><span id="cbText"></span><span class="cb-tot" id="cbTot"></span></button>
+    </section>
+
+    <!-- MIJN BESTELLINGEN -->
+    <section class="view" id="v-orders"><div class="pad">
+      <h1 class="page-h"><span data-i18n="orders.title">Mijn bestellingen</span><span class="acc">.</span></h1>
+      <p class="page-sub" data-i18n="orders.sub">Ook van vóór het portaal. Opnieuw bestellen kan met één klik.</p>
+      <div id="ordersList"></div>
+    </div></section>
+
+    <!-- MIJN ACCOUNT -->
+    <section class="view" id="v-account"><div class="pad">
+      <h1 class="page-h"><span data-i18n="account.title">Mijn account</span><span class="acc">.</span></h1>
+      <p class="page-sub" id="accSub"></p>
+      <div id="accList"></div>
+    </div></section>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="portal-session.js"></script>
+<script>
+/* ═══════════ TEKSTEN ═══════════ */
+const TR = {
+ nl:{
+  'top.tag':'B2B Bestelportaal','top.site':'← Website','nav.logout':'Uitloggen','loading':'Portaal laden…',
+  'nav.order':'Bestellen','nav.orders':'Mijn bestellingen','nav.account':'Mijn account','side.help':'Hulp nodig met een bestelling?',
+  'order.title':'Nieuwe bestelling','order.sub':'Kies een merk, vul de aantallen in en plaats je bestelling direct bij BINC. Prijzen zijn je B2B-prijzen, exclusief btw.',
+  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.add':'Toevoegen','order.per':'per',
+  'cart.title':'Winkelwagen','cart.empty':'Je winkelwagen is leeg. Voeg producten toe om te bestellen.','cart.remove':'Verwijderen',
+  'cart.branch':'Filiaal','cart.date':'Gewenste leverdatum','cart.ref':'Eigen referentie','cart.refPh':'bijv. inkoopnummer','cart.notes':'Opmerking','cart.notesPh':'Bijzonderheden voor levering',
+  'cart.total':'Totaal','cart.vat':'Alle prijzen excl. btw','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
+  'cart.min':'Minimale orderwaarde {brand}: {min} (nog {left} te gaan)','cart.items':'{n} artikel(en)','cart.view':'Bekijk winkelwagen','cart.count':'{n} stuks',
+  'done.title':'Bestelling ontvangen','done.text':'Bedankt! Je bestelling wacht op goedkeuring door BINC. Je ontvangt een ontvangstbevestiging per e-mail.','done.again':'Nieuwe bestelling','done.view':'Bekijk mijn bestellingen',
+  'orders.title':'Mijn bestellingen','orders.sub':'Ook van vóór het portaal. Opnieuw bestellen kan met één klik.',
+  'orders.empty':'Je hebt nog niets besteld via het portaal.','orders.product':'Product','orders.qty':'Aantal','orders.price':'Prijs','orders.sum':'Totaal',
+  'orders.status':'Ontvangen','orders.all':'Alles','orders.allBranches':'Alle filialen','orders.cnt':'Bestellingen','orders.pcs':'Stuks','orders.total':'Totaal besteld','orders.date':'Datum','orders.brand':'Merk','orders.branch':'Filiaal','orders.statusCol':'Status','orders.amount':'Bedrag','orders.earlier':'Eerder besteld','orders.earlierTitle':'Eerdere bestelling','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelwagen',
+  'account.title':'Mijn account','account.empty':'Er zijn nog geen gegevens gevonden voor dit filiaal.','account.id':'Filiaal ID','account.branch':'Filiaal','account.last':'Ingelogd op',
+  'err.load':'Laden mislukt:','err.generic':'Er ging iets mis. Probeer het opnieuw.','err.network':'Geen verbinding met de server.','err.retry':'Opnieuw proberen',
+  'toast.added':'Toegevoegd',
+  'brand.min':'Min. {n} {unit}','brand.deposit':'Statiegeld {amt} per tray komt er automatisch bij','brand.minInfo':'Minimale bestelling: {n} {unit}','brand.minVal':'Minimale orderwaarde: {amt}','brand.inCart':'{n} in wagen',
+  'unit.trays':'trays','unit.stuks':'stuks','th.product':'Product','th.price':'Prijs','th.qty':'Aantal','th.sub':'Subtotaal','brand.minAmt':'Min. {amt}','brand.depShort':'Statiegeld {amt} per tray extra','cart.fixMin':'Haal per merk eerst het minimum om te kunnen bestellen.','order.price':'per {u}',
+  'cart.sub':'Subtotaal','cart.deposit':'Statiegeld','cart.delivery':'Levering & opmerking','cart.optional':'',
+  'cart.minQty':'{brand}: nog {left} {unit} nodig (min. {min})','cart.minOk':'Minimum gehaald','cart.minVal':'{brand}: nog {left} nodig (min. {min})','cart.emptyHint':'Kies een merk en vul aantallen in. Je bestelling verschijnt hier.',
+  'cart.itemsN':'{n} stuks',
+  'cart.fill':'Vul aan tot minimum (+{n})','cart.xsell':'Nog niet in je bestelling','cart.xsellGo':'Bekijk','cart.subtotal':'Producten','cart.exVat':'excl. btw',
+  'quick.title':'Laatste bestelling','quick.sub':'{date} · {n} stuks · {total}','quick.btn':'Opnieuw bestellen',
+  'trust.mail':'Bevestiging per e-mail','trust.help':'Vragen? Bel 013 203 2643'
+ },
+ en:{
+  'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
+  'nav.order':'Order','nav.orders':'My orders','nav.account':'My account','side.help':'Need help with an order?',
+  'order.title':'New order','order.sub':'Pick a brand, enter quantities and place your order directly with BINC. Prices are your B2B prices, excluding VAT.',
+  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.add':'Add','order.per':'per',
+  'cart.title':'Cart','cart.empty':'Your cart is empty. Add products to place an order.','cart.remove':'Remove',
+  'cart.branch':'Branch','cart.date':'Preferred delivery date','cart.ref':'Your reference','cart.refPh':'e.g. purchase number','cart.notes':'Note','cart.notesPh':'Delivery instructions',
+  'cart.total':'Total','cart.vat':'All prices excl. VAT','cart.place':'Place order','cart.placing':'Placing…',
+  'cart.min':'Minimum order value {brand}: {min} ({left} to go)','cart.items':'{n} item(s)','cart.view':'View cart','cart.count':'{n} items',
+  'done.title':'Order received','done.text':'Thank you! Your order is awaiting approval by BINC. You will receive an acknowledgement by email.','done.again':'New order','done.view':'View my orders',
+  'orders.title':'My orders','orders.sub':'Including orders from before the portal. Reorder with one click.',
+  'orders.empty':'You have not ordered through the portal yet.','orders.product':'Product','orders.qty':'Qty','orders.price':'Price','orders.sum':'Total',
+  'orders.status':'Received','orders.all':'All','orders.allBranches':'All branches','orders.cnt':'Orders','orders.pcs':'Items','orders.total':'Total ordered','orders.date':'Date','orders.brand':'Brand','orders.branch':'Branch','orders.statusCol':'Status','orders.amount':'Amount','orders.earlier':'Earlier order','orders.earlierTitle':'Earlier order','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your cart',
+  'account.title':'My account','account.empty':'No data has been found for this branch yet.','account.id':'Branch ID','account.branch':'Branch','account.last':'Logged in on',
+  'err.load':'Loading failed:','err.generic':'Something went wrong. Please try again.','err.network':'Can’t reach the server.','err.retry':'Try again',
+  'toast.added':'Added',
+  'brand.min':'Min. {n} {unit}','brand.deposit':'Deposit {amt} per tray is added automatically','brand.minInfo':'Minimum order: {n} {unit}','brand.minVal':'Minimum order value: {amt}','brand.inCart':'{n} in cart',
+  'unit.trays':'trays','unit.stuks':'items','th.product':'Product','th.price':'Price','th.qty':'Quantity','th.sub':'Subtotal','brand.minAmt':'Min. {amt}','brand.depShort':'Deposit {amt} per tray extra','cart.fixMin':'Reach the minimum for each brand to place your order.','order.price':'per {u}',
+  'cart.sub':'Subtotal','cart.deposit':'Deposit','cart.delivery':'Delivery & note','cart.optional':'optional',
+  'cart.minQty':'{brand}: {left} more {unit} needed (min. {min})','cart.minOk':'Minimum reached','cart.minVal':'{brand}: {left} more needed (min. {min})','cart.emptyHint':'Pick a brand and enter quantities. Your order shows up here.',
+  'cart.itemsN':'{n} items',
+  'cart.fill':'Fill to minimum (+{n})','cart.xsell':'Not in your order yet','cart.xsellGo':'View','cart.subtotal':'Products','cart.exVat':'excl. VAT',
+  'quick.title':'Last order','quick.sub':'{date} · {n} items · {total}','quick.btn':'Reorder',
+  'trust.mail':'Confirmation by email','trust.help':'Questions? Call 013 203 2643'
+ }
+};
+let lang = 'nl'; try { lang = localStorage.getItem('binc_lang') || 'nl'; } catch(_){}
+if (!TR[lang]) lang = 'nl';
+const t = (k, v) => { let s = (TR[lang] && TR[lang][k]) || TR.nl[k] || k; if (v) for (const x in v) s = s.replace('{' + x + '}', v[x]); return s; };
+const $ = id => document.getElementById(id);
+function h(tag, attrs, ...kids){
+  const el = document.createElement(tag);
+  for (const k in (attrs || {})) {
+    const v = attrs[k]; if (v == null || v === false) continue;
+    if (k === 'class') el.className = v; else if (k === 'text') el.textContent = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v); else el.setAttribute(k, v === true ? '' : v);
+  }
+  kids.flat().forEach(c => { if (c != null && c !== false) el.append(c.nodeType ? c : document.createTextNode(c)); });
+  return el;
+}
+const money = n => new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-GB', { style:'currency', currency:'EUR' }).format(n);
+const round2 = n => Math.round(n * 100) / 100;
+
+/* ═══════════ SESSIE ═══════════ */
+const API = 'https://server-medewerker-kpi.onrender.com';
+const TOKEN_KEY = 'klantToken', CART_KEY = 'klantCart';
+let token = PortalSession.get(TOKEN_KEY);
+function logout(){ PortalSession.logout(); }
+if (!token) logout(); else PortalSession.watchPortal();
+// Admin kijkt mee als klant: duidelijke balk bovenaan (bestellen staat dan uit)
+try {
+  const kd = JSON.parse(PortalSession.get('klantData') || '{}');
+  if (kd.impersonatedBy) {
+    const bar = document.createElement('div');
+    bar.className = 'adminbar';
+    bar.innerHTML = '<span class="ab-tag"><svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>Admin-weergave</span><span class="ab-txt"></span>';
+    bar.querySelector('.ab-txt').textContent = 'Je bekijkt het portaal als ' + kd.email + ' · alleen kijken';
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = 'Stoppen';
+    b.onclick = () => logout(); bar.append(b); document.body.prepend(bar);
+    document.documentElement.style.setProperty('--bar', '42px');
+  }
+} catch(_){}
+async function api(path, opt){
+  const r = await fetch(API + path, Object.assign({}, opt, { headers: Object.assign({ Authorization:'Bearer ' + token }, (opt && opt.body) ? { 'Content-Type':'application/json' } : {}) }));
+  if (r.status === 401) { logout(); throw new Error('401'); }
+  let d = {}; try { d = await r.json(); } catch(_){}
+  if (!r.ok || d.success === false) throw new Error(d.error || t('err.generic'));
+  return d;
+}
+
+/* ═══════════ STATE ═══════════ */
+const S = { view:'order', catalog:null, items:new Map(), brandId:null, cat:'', q:'', cart:{}, klant:null, orders:null, branch:'', date:'', ref:'', notes:'', placing:false, error:'', done:null, expanded:new Set(), cartOpen:false, dtlOpen:false, fold:new Set() };
+try { S.cart = JSON.parse(PortalSession.get(CART_KEY) || '{}') || {}; } catch(_){}
+const saveCart = () => { try { PortalSession.set(CART_KEY, JSON.stringify(S.cart)); } catch(_){} try { if (window.PortalTrack) PortalTrack.cart(cartCount(), cartTotal()); } catch(_){} };
+const cartLines = () => Object.keys(S.cart).filter(id => S.cart[id] > 0 && S.items.has(id)).map(id => ({ it:S.items.get(id), qty:S.cart[id] }));
+const cartCount = () => cartLines().reduce((s, l) => s + l.qty, 0);
+const brandLines = b => cartLines().filter(l => l.it.brandId === b.id);
+const brandQty = b => brandLines(b).reduce((s, l) => s + l.qty, 0);
+const brandSub = b => round2(brandLines(b).reduce((s, l) => s + l.it.price * l.qty, 0));
+const brandDep = b => round2((b.deposit || 0) * brandQty(b));
+const cartTotal = () => S.catalog ? round2(S.catalog.brands.reduce((s, b) => s + brandSub(b) + brandDep(b), 0)) : 0;
+const brandProg = b => {
+  const qty = brandQty(b), sub = brandSub(b);
+  if (b.minQty) return { kind:'qty', have:qty, min:b.minQty, ok:qty >= b.minQty, left:Math.max(0, b.minQty - qty) };
+  if (b.minOrder) return { kind:'val', have:sub, min:b.minOrder, ok:sub >= b.minOrder, left:Math.max(0, round2(b.minOrder - sub)) };
+  return { kind:null, have:qty, min:0, ok:qty > 0, left:0 };
+};
+const clampQty = v => Math.max(0, Math.min(999, Math.floor(Number(v) || 0)));
+
+let toastT;
+function toast(msg){ const el = $('toast'); el.textContent = msg; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('on'), 1800); }
+
+/* ═══════════ NAVIGATIE ═══════════ */
+function show(view){
+  S.view = view;
+  try { if (window.PortalTrack) PortalTrack.setPage('klantportaal/' + view); } catch(_){}
+  document.querySelectorAll('.view').forEach(v => v.classList.toggle('on', v.id === 'v-' + view));
+  document.querySelectorAll('.nav-i').forEach(b => b.classList.toggle('on', b.dataset.view === view));
+  if (view === 'orders') loadOrders();
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll('.nav-i').forEach(b => b.addEventListener('click', () => show(b.dataset.view)));
+['logoutTop', 'logoutSide'].forEach(id => $(id).addEventListener('click', e => { e.preventDefault(); logout(); }));
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => {
+  lang = b.dataset.lang; try { localStorage.setItem('binc_lang', lang); } catch(_){} applyLang();
+}));
+
+/* ═══════════ CATALOGUS ═══════════ */
+const brand = () => S.catalog.brands.find(b => b.id === S.brandId);
+const cardRefs = new Map(); // id -> { sync(qty) }
+const CAT_LABELS = { 'frisdrank':'Sportwater', 'energy drink':'Party Punch', 'energydrink':'Party Punch', 'energy drinks':'Party Punch' };
+const catLabel = c => CAT_LABELS[String(c || '').trim().toLowerCase()] || c;
+const unitLabel = b => b.minQtyUnit === 'trays' ? t('unit.trays') : t('unit.stuks');
+
+// kleur voor producten zonder eigen foto/kleur
+const TONES = [[/lemon|citroen/i,'#d9b92a'],[/blueberry|blue|blauw/i,'#3f5fd0'],[/water ?mel/i,'#e0506a'],[/orange/i,'#e8801a'],[/mango/i,'#e6a91f'],[/punch/i,'#d22f46'],
+  [/sky/i,'#4aa7e0'],[/dream/i,'#9a6fd0'],[/mindset/i,'#379879'],[/eclipse/i,'#3d4272'],[/unite/i,'#c9993a'],[/original/i,'#b83a2c'],[/vodka/i,'#62758a'],[/gin/i,'#468a74']];
+function toneFor(it){
+  if (it.tone) return it.tone;
+  for (const [re, c] of TONES) if (re.test(it.name)) return c;
+  let h = 0; for (const ch of it.name + it.category) h = (h * 31 + ch.charCodeAt(0)) % 360;
+  return 'hsl(' + h + ' 38% 36%)';
+}
+const SVG_NS = 'http://www.w3.org/2000/svg';
+function svgIcon(d, extra){ const s = document.createElementNS(SVG_NS, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); (Array.isArray(d) ? d : [d]).forEach(x => { const p = document.createElementNS(SVG_NS, 'path'); p.setAttribute('d', x); s.append(p); }); return s; }
+const ICON_BOX = ['M4 8l8-4 8 4v8l-8 4-8-4z', 'M4 8l8 4 8-4M12 12v8'];
+function makeThumb(it){
+  const box = h('div', { class:'thumb' });
+  if (it.img) { const img = h('img', { src:it.img, alt:'', loading:'lazy' }); img.addEventListener('error', () => img.remove()); box.append(img); }
+  return box;
+}
+
+function renderBrands(){
+  const seg = $('brandSeg'); seg.replaceChildren();
+  S.catalog.brands.forEach(b => {
+    const n = brandQty(b);
+    const meta = b.minQty ? t('brand.min', { n:b.minQty, unit:unitLabel(b) }) : (b.minOrder ? t('brand.minAmt', { amt:money(b.minOrder).replace(/,00$/, '') }) : b.items.length + ' ' + t('unit.stuks'));
+    seg.append(h('button', { class:'brand' + (b.id === S.brandId ? ' on' : ''), type:'button', role:'tab', 'aria-selected':String(b.id === S.brandId),
+      onclick:() => { S.brandId = b.id; S.cat = ''; renderBrands(); renderChips(); renderProducts(); } },
+      h('span', { class:'brand-t' }, h('span', { class:'brand-n', text:b.name }), h('span', { class:'brand-m', text:meta })),
+      h('span', { class:'brand-b' + (n && brandProg(b).ok ? ' ok' : ''), text:n || '', style:n ? '' : 'visibility:hidden;display:inline-block', 'aria-label':n ? t('brand.inCart', { n }) : null })));
+  });
+  renderBrandInfo();
+}
+function renderBrandInfo(){
+  const box = $('brandInfo'); box.replaceChildren(); const b = brand(); if (!b) return;
+  const parts = [];
+  if (b.minQty) parts.push(t('brand.min', { n:b.minQty, unit:unitLabel(b) }));
+  if (b.minOrder) parts.push(t('brand.minAmt', { amt:money(b.minOrder).replace(/,00$/, '') }));
+  if (b.deposit > 0) parts.push(t('brand.depShort', { amt:money(b.deposit) }));
+  box.textContent = parts.join('  ·  ');
+}
+function renderChips(){
+  const box = $('chips'); box.replaceChildren();
+  const cats = [...new Set(brand().items.map(i => i.category))];
+  if (cats.length < 2) return;
+  box.append(h('button', { class:'chip' + (S.cat === '' ? ' on' : ''), type:'button', text:t('order.all'), onclick:() => { S.cat = ''; renderChips(); renderProducts(); } }));
+  cats.forEach(c => box.append(h('button', { class:'chip' + (S.cat === c ? ' on' : ''), type:'button', text:catLabel(c), onclick:() => { S.cat = c; renderChips(); renderProducts(); } })));
+}
+function makeRow(it, withThumb){
+  const unit = it.unit && it.unit !== 'stuk' ? it.unit : t('unit.stuks').replace(/s$/, '');
+  const input = h('input', { type:'number', min:'0', max:'999', inputmode:'numeric', 'aria-label':it.name });
+  const stepper = h('div', { class:'step' },
+    h('button', { type:'button', 'aria-label':'-', text:'−', onclick:() => setQty(it.id, (S.cart[it.id] || 0) - 1) }),
+    input,
+    h('button', { type:'button', 'aria-label':'+', text:'+', onclick:() => setQty(it.id, (S.cart[it.id] || 0) + 1) }));
+  input.addEventListener('focus', () => input.select());
+  input.addEventListener('change', () => setQty(it.id, input.value));
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') input.blur(); });
+  const sum = h('div', { class:'p-sum' });
+  const row = h('div', { class:'prow' + (withThumb ? '' : ' nothumb') },
+    withThumb ? makeThumb(it) : null,
+    h('div', { class:'p-main' }, h('div', { class:'p-name', text:it.name }), it.sku ? h('div', { class:'p-sku', text:it.sku }) : null),
+    h('div', { class:'p-price' }, money(it.price), h('small', { text:' ' + t('order.price', { u:unit }) })),
+    h('div', { class:'p-act' }, stepper), sum);
+  const sync = qty => { row.classList.toggle('in', qty > 0); input.value = qty; sum.textContent = money(round2(it.price * qty)); };
+  cardRefs.set(it.id, { sync }); sync(S.cart[it.id] || 0);
+  return row;
+}
+function renderProducts(){
+  const box = $('products'); box.replaceChildren(); cardRefs.clear();
+  const needle = S.q.trim().toLowerCase();
+  const pool = needle ? S.catalog.brands.flatMap(b => b.items) : brand().items;
+  const list = pool.filter(i => (!S.cat || needle || i.category === S.cat) && (!needle || (i.name + ' ' + i.category + ' ' + catLabel(i.category) + ' ' + (i.sku || '')).toLowerCase().includes(needle)));
+  if (!list.length) { box.append(h('div', { class:'empty', text:t('order.none') })); return; }
+  const groups = new Map(); list.forEach(i => { const k = needle ? (S.items.get(i.id) || {}).brandName : i.category; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(i); });
+  const head = wt => h('div', { class:'phead' + (wt ? '' : ' nothumb') }, wt ? h('span') : null, h('span', { text:t('th.product') }), h('span', { text:t('th.price') }), h('span', { text:t('th.qty') }), h('span', { text:t('th.sub') }));
+  groups.forEach((items, key) => {
+    box.append(h('div', { class:'group-h', text:needle ? key : catLabel(key) }), h('div', { class:'plist' }, head(items.some(i => i.img)), items.map(i => makeRow(i, items.some(x => x.img)))));
+  });
+}
+$('q').addEventListener('input', e => { S.q = e.target.value; renderProducts(); });
+
+let qtyBusy = false;
+function setQty(id, v){
+  if (qtyBusy) return;                 // verwijderen van een focus-veld vuurt 'change'/'blur': negeren
+  const q = clampQty(v);
+  if ((S.cart[id] || 0) === q) { const r = cardRefs.get(id); if (r) r.sync(q); return; }   // niets veranderd (bv. ongeldige invoer)
+  qtyBusy = true;
+  try {
+    if (q > 0) S.cart[id] = q; else delete S.cart[id];
+    saveCart(); S.done = null; S.error = '';
+    const ref = cardRefs.get(id); if (ref) ref.sync(q);
+    renderCart();
+  } finally { qtyBusy = false; }
+}
+
+/* ═══════════ WINKELMAND ═══════════ */
+function branchOptions(){
+  const list = [];
+  (S.klant.filialen || []).forEach(f => {
+    let name = '';
+    if (f.gevonden) for (const b of f.bronnen) { const v = (b.velden.find(x => /^(naam|filiaal ?naam|bedrijfsnaam|winkel)/i.test(x.label)) || {}).waarde; if (v) { name = v; break; } }
+    list.push({ id:f.filiaalId, name });
+  });
+  return list;
+}
+const branchName = id => (branchOptions().find(b => b.id === id) || {}).name || '';
+
+const brandMeta = b => b.minQty ? t('brand.min', { n:b.minQty, unit:unitLabel(b) }) : (b.minOrder ? t('brand.minAmt', { amt:money(b.minOrder).replace(/,00$/, '') }) : b.items.length + ' ' + (b.items.length === 1 ? 'product' : (lang === 'nl' ? 'producten' : 'products')));
+function goBrand(id){
+  S.brandId = id; S.cat = ''; S.q = ''; $('q').value = '';
+  renderBrands(); renderChips(); renderProducts(); closeCart(); show('order');
+}
+function reorder(o){
+  o.items.forEach(i => { if (S.items.has(i.id)) S.cart[i.id] = clampQty((S.cart[i.id] || 0) + i.qty); });
+  saveCart(); S.done = null; renderProducts(); renderCart(); show('order'); toast(t('orders.reordered'));
+}
+function renderQuick(){
+  const box = $('quick'); if (!box) return;
+  const o = S.orders && S.orders[0];
+  const show_ = o && !S.done && !cartCount() && o.items.some(i => S.items.has(i.id));
+  box.classList.toggle('hidden', !show_); box.replaceChildren(); if (!show_) return;
+  box.append(h('div', { class:'quick-t' }, h('strong', { text:t('quick.title') }),
+      h('span', { text:t('quick.sub', { date:fmtDate(o.createdAt, true), n:o.items.reduce((s, i) => s + i.qty, 0), total:o.total == null ? dash : money(o.total) }) })),
+    h('button', { class:'btn-red quick-b', type:'button', text:t('quick.btn'), onclick:() => reorder(o) }));
+}
+async function loadOrdersQuiet(){ try { S.orders = (await api('/api/klant/orders')).orders; renderQuick(); } catch(_){} }
+function renderCart(){
+  const lines = cartLines(), count = cartCount(), total = cartTotal();
+  const nb = $('navBadge'); nb.textContent = count; nb.classList.toggle('hidden', !count);
+  $('cartbar').classList.toggle('zero', !count);
+  $('cbText').textContent = t('cart.view') + ' · ' + t('cart.count', { n:count });
+  $('cbTot').textContent = money(total);
+  $('cartCount').textContent = count ? t('cart.itemsN', { n:count }) : '';
+  if (S.catalog) renderBrands();   // aantal-badges op de merk-tegels
+  renderQuick();
+
+  const body = $('cartBody'), foot = $('cartFoot'); body.replaceChildren(); foot.replaceChildren();
+
+  if (S.done) {
+    body.append(h('div', { class:'done' },
+      h('div', { class:'done-ic' }, svgCheck()),
+      h('h3', { text:t('done.title') }),
+      h('p', { text:t('done.text') }),
+      h('span', { class:'oid', text:S.done.id }),
+      h('p', { text:money(S.done.total) }),
+    ));
+    foot.append(
+      h('button', { class:'btn-red', text:t('done.again'), onclick:() => { S.done = null; closeCart(); renderCart(); } }),
+      h('button', { class:'btn-line', text:t('done.view'), onclick:() => { S.done = null; closeCart(); renderCart(); show('orders'); } }));
+    return;
+  }
+  if (!lines.length) {
+    body.append(h('div', { class:'cart-empty' }, svgIcon(['M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.76L20 8H6.2','M9 20h.01M17 20h.01']), t('cart.emptyHint')));
+    return;
+  }
+
+  // per merk groeperen, met voortgang richting het minimum
+  const warnings = [];
+  S.catalog.brands.forEach(b => {
+    const ls = brandLines(b); if (!ls.length) return;
+    const sub = brandSub(b), dep = brandDep(b), qty = brandQty(b);
+    const wrap = h('section', { class:'cbrand' });
+    let need = null;
+    if (b.minQty && qty < b.minQty) need = t('cart.minQty', { brand:b.name, left:b.minQty - qty, unit:unitLabel(b), min:b.minQty }).replace(b.name + ': ', '');
+    else if (b.minOrder && sub < b.minOrder) need = t('cart.minVal', { brand:b.name, left:money(round2(b.minOrder - sub)), min:money(b.minOrder) }).replace(b.name + ': ', '');
+    if (need) warnings.push(need);
+    const folded = S.fold.has(b.id);
+    wrap.append(h('button', { class:'cbrand-h' + (folded ? ' folded' : ''), type:'button', 'aria-expanded':String(!folded), onclick:() => { folded ? S.fold.delete(b.id) : S.fold.add(b.id); renderCart(); } },
+      svgIcon('M6 9l6 6 6-6'), h('span', { class:'cbrand-n', text:b.name }), h('span', { class:'cbrand-s', text:money(round2(sub + dep)) })));
+    if (!folded) ls.forEach(l => wrap.append(h('div', { class:'cl' },
+      h('span', { class:'cl-q' }, (() => {
+        const inp = h('input', { class:'cl-qi', type:'number', min:'0', max:'999', inputmode:'numeric', value:l.qty, title:'Aantal aanpassen', 'aria-label':l.it.name });
+        inp.addEventListener('focus', () => inp.select());
+        inp.addEventListener('change', () => setQty(l.it.id, inp.value));
+        inp.addEventListener('keydown', e => { if (e.key === 'Enter') inp.blur(); });
+        return inp;
+      })(), '×'),
+      h('span', { class:'cl-n', text:l.it.name.replace(new RegExp('^' + b.name + '\\s+', 'i'), '') }),
+      h('span', { class:'cl-t', text:money(round2(l.it.price * l.qty)) }),
+      h('button', { class:'cl-x', type:'button', title:t('cart.remove'), 'aria-label':t('cart.remove'), text:'×', onclick:() => setQty(l.it.id, 0) }))));
+    if (dep > 0 && !folded) wrap.append(h('div', { class:'cl dep' }, h('span'), h('span', { class:'cl-n', text:t('cart.deposit') }), h('span', { class:'cl-t', text:money(dep) }), h('span')));
+    const pg = brandProg(b);
+    if (pg.kind && !folded) {
+      const pct = Math.min(100, Math.round(pg.have / pg.min * 100));
+      wrap.append(h('div', { class:'meter' + (pg.ok ? ' ok' : '') }, h('i', { style:'width:' + pct + '%' })));
+      if (pg.ok) wrap.append(h('div', { class:'meter-t ok', text:'✓ ' + t('cart.minOk') }));
+      else {
+        wrap.append(h('div', { class:'cneed', text:need }));
+        if (pg.kind === 'qty') {
+          const top = ls.reduce((m, l) => l.qty > m.qty ? l : m, ls[0]);
+          wrap.append(h('button', { class:'cfill', type:'button', text:t('cart.fill', { n:pg.left }), onclick:() => setQty(top.it.id, top.qty + pg.left) }));
+        }
+      }
+    } else if (need) wrap.append(h('div', { class:'cneed', text:need }));
+    body.append(wrap);
+  });
+
+  // merken die nog niet in de bestelling zitten
+  const missing = S.catalog.brands.filter(b => b.items.length && !brandQty(b));
+  if (missing.length) body.append(h('section', { class:'xsell' }, h('div', { class:'xsell-h', text:t('cart.xsell') }),
+    missing.map(b => h('button', { class:'xsell-i', type:'button', onclick:() => goBrand(b.id) },
+      h('span', { class:'xsell-t' }, h('span', { class:'xsell-n', text:b.name }), h('span', { class:'xsell-m', text:brandMeta(b) })),
+      h('span', { class:'xsell-go', text:t('cart.xsellGo') + ' →' })))));
+
+  // afrekenen
+  const branches = branchOptions();
+  if (!S.branch || !branches.some(b => b.id === S.branch)) S.branch = (branches[0] || {}).id || '';
+  const tomorrow = new Date(Date.now() + 864e5); const minDate = tomorrow.getFullYear() + '-' + String(tomorrow.getMonth() + 1).padStart(2, '0') + '-' + String(tomorrow.getDate()).padStart(2, '0');
+  const sel = h('select', { class:'f-in', id:'fBranch', onchange:e => { S.branch = e.target.value; } },
+    branches.map(b => h('option', { value:b.id, selected:b.id === S.branch, text:(b.name ? b.name + ' · ' : '') + b.id })));
+  if (branches.length > 1) foot.append(h('div', { class:'f-full' }, h('label', { class:'f-lab', for:'fBranch', text:t('cart.branch') }), sel));
+  const dtl = h('details', { class:'dtl', open:S.dtlOpen || !!(S.date || S.ref || S.notes) },
+    h('summary', {}, h('div', {}, t('cart.delivery'))),
+    h('div', { class:'dtl-b' },
+      h('div', { class:'f-grid' },
+        h('div', {}, h('label', { class:'f-lab', for:'fDate', text:t('cart.date') }), h('input', { class:'f-in', id:'fDate', type:'date', min:minDate, value:S.date, onchange:e => { S.date = e.target.value; } })),
+        h('div', {}, h('label', { class:'f-lab', for:'fRef', text:t('cart.ref') }), h('input', { class:'f-in', id:'fRef', maxlength:'80', placeholder:t('cart.refPh'), value:S.ref, oninput:e => { S.ref = e.target.value; } }))),
+      h('div', {}, h('label', { class:'f-lab', for:'fNotes', text:t('cart.notes') }), h('textarea', { class:'f-in', id:'fNotes', maxlength:'500', rows:'2', placeholder:t('cart.notesPh'), oninput:e => { S.notes = e.target.value; } }, S.notes))));
+  dtl.addEventListener('toggle', () => { S.dtlOpen = dtl.open; });
+  foot.append(...[
+    dtl,
+    S.error ? h('div', { class:'warn err', role:'alert', text:S.error }) : null,
+    h('div', { class:'sumrows' },
+      h('div', {}, h('span', { text:t('cart.subtotal') }), h('span', { text:money(S.catalog.brands.reduce((a, b) => a + brandSub(b), 0)) })),
+      S.catalog.brands.some(b => brandDep(b) > 0) ? h('div', {}, h('span', { text:t('cart.deposit') }), h('span', { text:money(S.catalog.brands.reduce((a, b) => a + brandDep(b), 0)) })) : null),
+    h('div', { class:'total' }, h('span', { text:t('cart.total') + ' ' + t('cart.exVat') }), h('strong', { text:money(total) })),
+    h('button', { class:'btn-red', id:'placeBtn', type:'button', disabled:S.placing || warnings.length > 0, text:S.placing ? t('cart.placing') : t('cart.place'), onclick:placeOrder }),
+    warnings.length ? h('div', { class:'cfix', text:t('cart.fixMin') }) : null,
+    h('div', { class:'trust' }, h('span', { text:'✓ ' + t('trust.mail') }), h('a', { href:'tel:+31132032643', text:'✓ ' + t('trust.help') })),
+    null].flat().filter(Boolean));
+}
+function svgCheck(){ const ns = 'http://www.w3.org/2000/svg'; const s = document.createElementNS(ns, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); const p = document.createElementNS(ns, 'path'); p.setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5'); s.append(p); return s; }
+const openCart = () => { S.cartOpen = true; $('cart').classList.add('open'); document.body.style.overflow = 'hidden'; };
+const closeCart = () => { S.cartOpen = false; $('cart').classList.remove('open'); document.body.style.overflow = ''; };
+$('cartbar').addEventListener('click', openCart);
+$('cartFold').addEventListener('click', () => { const ids = S.catalog.brands.filter(b => brandQty(b) > 0).map(b => b.id); if (ids.every(i => S.fold.has(i))) ids.forEach(i => S.fold.delete(i)); else ids.forEach(i => S.fold.add(i)); renderCart(); });
+$('cartClose').addEventListener('click', closeCart);
+
+async function placeOrder(){
+  if (S.placing) return;
+  const fingerprint = JSON.stringify([S.branch, S.cart, S.date, S.ref, S.notes]);
+  let request = {}; try { request = JSON.parse(PortalSession.get('portalOrderRequest') || '{}'); } catch(_){}
+  if (request.fingerprint !== fingerprint) request = {fingerprint, id:crypto.randomUUID()};
+  PortalSession.set('portalOrderRequest', JSON.stringify(request));
+  S.placing = true; S.error = ''; renderCart();
+  try {
+    const d = await api('/api/klant/orders', { method:'POST', body:JSON.stringify({
+      requestId:request.id, filiaalId:S.branch, filiaalNaam:branchName(S.branch),
+      items:cartLines().map(l => ({ id:l.it.id, qty:l.qty })),
+      deliveryDate:S.date, reference:S.ref, notes:S.notes }) });
+    PortalSession.remove('portalOrderRequest');
+    S.done = d.order; S.cart = {}; saveCart(); S.date = ''; S.ref = ''; S.notes = ''; S.orders = null; loadOrdersQuiet();
+    cardRefs.forEach(r => r.sync(0));
+  } catch (e) {
+    if (e.message !== '401') S.error = (e instanceof TypeError) ? t('err.network') : e.message;
+  } finally { S.placing = false; renderCart(); }
+}
+
+/* ═══════════ BESTELLINGEN ═══════════ */
+const dash = '—';
+const fmtDate = (iso, dateOnly) => { try { return new Date(iso).toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-GB', dateOnly ? { dateStyle:'medium' } : { dateStyle:'medium', timeStyle:'short' }); } catch(_) { return iso; } };
+async function loadOrders(){
+  const box = $('ordersList');
+  if (!S.orders) { box.replaceChildren(h('div', { class:'empty' }, h('div', { class:'spin' }), t('loading'))); try { S.orders = (await api('/api/klant/orders')).orders; } catch (e) { if (e.message !== '401') box.replaceChildren(h('div', { class:'warn', text:t('err.load') + ' ' + e.message })); return; } }
+  renderOrders();
+}
+function portalStatus(status){ const texts = {nl:{wacht_op_goedkeuring:'Wacht op goedkeuring',goedgekeurd:'Goedgekeurd',afgewezen:'Afgewezen',controle_nodig:'In beoordeling',in_verwerking:'In verwerking'},en:{wacht_op_goedkeuring:'Awaiting approval',goedgekeurd:'Approved',afgewezen:'Declined',controle_nodig:'Under review',in_verwerking:'Processing'}}; return (texts[lang] || texts.nl)[status] || t('orders.status'); }
+function renderOrders(){
+  const box = $('ordersList'); box.replaceChildren();
+  if (!S.orders || !S.orders.length) { box.append(h('div', { class:'empty', text:t('orders.empty') })); return; }
+  const brandsOf = o => [...new Set(o.items.map(i => i.brandName))];
+  const pcs = o => o.items.reduce((s, i) => s + i.qty, 0);
+  const allBrands = [...new Set(S.orders.flatMap(brandsOf))].sort();
+  if (S.ordBrand && !allBrands.includes(S.ordBrand)) S.ordBrand = '';
+  const fils = [...new Set(S.orders.map(o => o.filiaalNaam).filter(Boolean))].sort();
+  const multiFil = fils.length > 1;
+  if (S.ordFil && !fils.includes(S.ordFil)) S.ordFil = '';
+  const list = S.orders.filter(o => (!S.ordBrand || brandsOf(o).includes(S.ordBrand)) && (!S.ordFil || o.filiaalNaam === S.ordFil));
+  const nf = new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-GB');
+  const frow = h('div', { class:'ofrow' });
+  if (multiFil) {
+    const sel = h('select', { class:'osel', 'aria-label':t('orders.branch'), onchange:e => { S.ordFil = e.target.value; renderOrders(); } },
+      [h('option', { value:'', text:t('orders.allBranches') })].concat(fils.map(f => h('option', { value:f, text:f, selected:f === S.ordFil ? true : null }))));
+    frow.append(sel);
+  }
+  if (allBrands.length > 1) {
+    frow.append(h('div', { class:'ofil' }, [''].concat(allBrands).map(b => h('button', { type:'button', class:b === (S.ordBrand || '') ? 'on' : '', text:b || t('orders.all'), onclick:() => { S.ordBrand = b; renderOrders(); } }))));
+  }
+  if (frow.children.length) box.append(frow);
+  const hasStatus = list.some(o => !o.historic);
+  const cols = '120px minmax(200px,1fr) 90px 130px 16px';
+  const table = h('div', { class:'otable', style:'--oc:' + cols });
+  table.append(h('div', { class:'ot-head' }, h('span', { text:t('orders.date') }), h('span', { text:t('orders.brand') }), h('span', { text:t('orders.pcs') }),
+    h('span', { class:'r', text:t('orders.amount') }), h('span', {})));
+  list.forEach(o => {
+    const open = S.expanded.has(o.id), brands = brandsOf(o), multi = brands.length > 1;
+    const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { S.expanded.clear(); if (!open) S.expanded.add(o.id); renderOrders(); } },
+      h('span', { class:'c-date', text:fmtDate(o.createdAt, true) }),
+      h('span', { class:'c-brand' }, brands.join(' · '), o.historic ? null : h('small', { text:[o.id, portalStatus(o.status)].join(' · ') })),
+      h('span', { class:'c-qty', text:nf.format(pcs(o)) }),
+      h('span', { class:'ord-tot r', text:o.total == null ? dash : money(o.total) }),
+      h('span', { class:'ord-chev' }));
+    const card = h('div', { class:'ord' + (open ? ' open' : '') }, head);
+    if (open) {
+      const priced = o.items.some(i => i.price != null || i.lineTotal != null);
+      const nm = i => i.name.toLowerCase().startsWith(i.brandName.toLowerCase()) ? i.name : i.brandName + ' — ' + i.name;
+      const det = h('div', { class:'ord-d' }, h('div', { class:'oi-list' + (priced ? ' priced' : '') },
+        o.items.map(i => h('div', { class:'oi' }, h('span', { class:'n', text:nf.format(i.qty) + '×' }), h('span', { class:'p', text:nm(i) }),
+          priced ? [h('span', { class:'pr', text:i.price == null ? dash : money(i.price) }), h('span', { class:'lt', text:i.lineTotal == null ? dash : money(i.lineTotal) })] : null))));
+      [['orders.delivery', o.deliveryDate], ['orders.ref', o.reference], ['orders.notes', o.notes]].forEach(([k, v]) => { if (v) det.append(h('p', { class:'ord-note' }, h('strong', { text:t(k) + ': ' }), v)); });
+      det.append(h('div', { class:'ord-foot' }, h('div', { class:'ord-act' }, h('button', { class:'btn-red', type:'button', text:t('orders.reorder'), onclick:() => reorder(o) }))));
+      card.append(det);
+    }
+    table.append(card);
+  });
+  box.append(table);
+}
+
+/* ═══════════ ACCOUNT ═══════════ */
+function renderAccount(){
+  const k = S.klant; if (!k) return;
+  let cached = {}; try { cached = JSON.parse(PortalSession.get('klantData') || '{}'); } catch(_){}
+  $('accSub').textContent = k.email + (cached.laatstIngelogd ? ' · ' + t('account.last') + ' ' + cached.laatstIngelogd : '');
+  $('who').textContent = k.email;
+  const box = $('accList'); box.replaceChildren();
+  (k.filialen || []).forEach(f => {
+    if (!f.gevonden) { box.append(h('div', { class:'acc-card' }, h('h2', { text:t('account.branch') + ' ' + f.filiaalId }), h('p', { style:'color:var(--dim);margin-top:8px', text:t('account.empty') }))); return; }
+    f.bronnen.forEach(b => {
+      const naam = (b.velden.find(v => /^(naam|filiaal ?naam|bedrijfsnaam|winkel)/i.test(v.label)) || {}).waarde;
+      box.append(h('div', { class:'acc-card' },
+        h('h2', { text:naam || (t('account.branch') + ' ' + f.filiaalId) }),
+        h('div', { class:'sub', text:t('account.id') + ' ' + f.filiaalId }),
+        h('dl', {}, b.velden.flatMap(v => [h('dt', { text:v.label }), h('dd', { text:v.waarde })]))));   // textContent: nooit HTML uit de sheet uitvoeren
+    });
+  });
+}
+
+/* ═══════════ TAAL + OPSTART ═══════════ */
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+  if (S.catalog) { renderBrands(); renderChips(); renderProducts(); renderCart(); renderAccount(); if (S.orders) renderOrders(); }
+}
+
+(async function init(){
+  applyLang();
+  try {
+    const [cat, me] = await Promise.all([api('/api/klant/catalog'), api('/api/klant/me')]);
+    S.catalog = cat; S.klant = me.klant;
+    cat.brands.forEach(b => b.items.forEach(i => S.items.set(i.id, Object.assign({}, i, { brandId:b.id, brandName:b.name }))));
+    S.brandId = cat.brands[0].id;
+    Object.keys(S.cart).forEach(id => { if (!S.items.has(id)) delete S.cart[id]; });
+    $('boot').classList.add('hidden');
+    applyLang(); show('order'); loadOrdersQuiet();
+  } catch (e) {
+    if (e.message === '401') return;
+    $('boot').replaceChildren(h('div', { style:'text-align:center' },
+      h('p', { text:(e instanceof TypeError ? t('err.network') : t('err.load') + ' ' + e.message), style:'margin-bottom:14px' }),
+      h('button', { class:'btn-ghost', text:t('err.retry'), onclick:() => location.reload() })));
+  }
+})();
+</script>
+<script src="track.js" defer></script>
+</body>
+</html>

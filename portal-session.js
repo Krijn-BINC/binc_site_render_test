@@ -12,7 +12,7 @@
   var IDLE_MS = 30 * 60 * 1000, WARN_MS = 5 * 60 * 1000;
   var TOKEN_KEY = 'klantToken', ACTIVE_KEY = 'klantActive', IMP_KEY = 'klantImp';
   var OWN = ['klantToken', 'klantData', 'klantCart', 'portalOrderRequest'];
-  var LOGIN = 'inloggen.html', PORTAL = 'klantportaal.html';
+  var LOGIN = 'inloggen.html', PORTAL = 'klanten-portaal.html';
 
   function ss(fn) { try { return fn(sessionStorage); } catch (e) { return null; } }
   function ls(fn) { try { return fn(localStorage); } catch (e) { return null; } }
