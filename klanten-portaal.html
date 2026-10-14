@@ -497,7 +497,6 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .quick-t strong{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.04em;font-size:1rem}
 .quick-t span{color:var(--dim);font-size:.84rem}
 .quick-b{width:auto;flex:none;padding:9px 18px;font-size:.8rem}
-.brand-b.ok{background:var(--ok)}
 .cbrand .meter{margin:8px 0 4px}
 .cbrand .meter-t{margin:0 0 2px}
 .cfill{display:block;width:100%;margin-top:8px;padding:8px 10px;border:1px dashed rgba(255,255,255,.28);border-radius:4px;color:#fff;font-size:.8rem;font-weight:600;text-align:center;transition:.15s}
@@ -517,6 +516,9 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .cfix{margin:8px 0 0;font-size:.78rem;color:#ff9d92;text-align:center}
 .btn-red:disabled{opacity:.45;cursor:not-allowed}
 .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 14px;margin-top:10px;font-size:.74rem;color:var(--faint)}
+.confirm{display:flex;align-items:flex-start;gap:10px;margin:12px 0 10px;font-size:.82rem;line-height:1.45;color:var(--dim);cursor:pointer}
+.confirm input{flex:none;width:18px;height:18px;margin:1px 0 0;accent-color:var(--red);cursor:pointer}
+.p-sku.ean{display:flex;flex-wrap:wrap;gap:0 12px;font-variant-numeric:tabular-nums}
 .trust a{color:var(--faint);text-decoration:none}.trust a:hover{color:#fff}
 @media(max-width:700px){.quick{flex-direction:column;align-items:stretch}.quick-b{width:100%}}
 @media(max-width:900px){.prow.nothumb{grid-template-columns:minmax(0,1fr) auto}.prow.nothumb .p-price{grid-column:1}.prow.nothumb .p-act{grid-column:2}}
@@ -566,7 +568,6 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
       <div class="order-grid">
         <div class="catalog">
           <h1 class="page-h"><span data-i18n="order.title">Nieuwe bestelling</span><span class="acc">.</span></h1>
-          <div class="quick hidden" id="quick"></div>
           <div class="brands" id="brandSeg" role="tablist"></div>
           <div class="brand-info" id="brandInfo"></div>
           <div class="filters">
@@ -633,7 +634,7 @@ const TR = {
   'cart.itemsN':'{n} stuks',
   'cart.fill':'Vul aan tot minimum (+{n})','cart.xsell':'Nog niet in je bestelling','cart.xsellGo':'Bekijk','cart.subtotal':'Producten','cart.exVat':'excl. btw',
   'quick.title':'Laatste bestelling','quick.sub':'{date} · {n} stuks · {total}','quick.btn':'Opnieuw bestellen',
-  'trust.mail':'Bevestiging per e-mail','trust.help':'Vragen? Bel 013 203 2643'
+  'trust.help':'Vragen? Bel 013 203 2643','cart.confirm':'Hierbij verklaar ik dat deze bestelling juist is geplaatst en dat ik de producten en aantallen heb gecontroleerd.'
  },
  en:{
   'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
@@ -658,7 +659,7 @@ const TR = {
   'cart.itemsN':'{n} items',
   'cart.fill':'Fill to minimum (+{n})','cart.xsell':'Not in your order yet','cart.xsellGo':'View','cart.subtotal':'Products','cart.exVat':'excl. VAT',
   'quick.title':'Last order','quick.sub':'{date} · {n} items · {total}','quick.btn':'Reorder',
-  'trust.mail':'Confirmation by email','trust.help':'Questions? Call 013 203 2643'
+  'trust.help':'Questions? Call 013 203 2643','cart.confirm':'I hereby declare that this order has been placed correctly and that I have checked the products and quantities.'
  }
 };
 let lang = 'nl'; try { lang = localStorage.getItem('binc_lang') || 'nl'; } catch(_){}
@@ -706,7 +707,7 @@ async function api(path, opt){
 }
 
 /* ═══════════ STATE ═══════════ */
-const S = { view:'order', catalog:null, items:new Map(), brandId:null, cat:'', q:'', cart:{}, klant:null, orders:null, branch:'', date:'', ref:'', notes:'', placing:false, error:'', done:null, expanded:new Set(), cartOpen:false, dtlOpen:false, fold:new Set() };
+const S = { confirm:false, view:'order', catalog:null, items:new Map(), brandId:null, cat:'', q:'', cart:{}, klant:null, orders:null, branch:'', date:'', ref:'', notes:'', placing:false, error:'', done:null, expanded:new Set(), cartOpen:false, dtlOpen:false, fold:new Set() };
 try { S.cart = JSON.parse(PortalSession.get(CART_KEY) || '{}') || {}; } catch(_){}
 const saveCart = () => { try { PortalSession.set(CART_KEY, JSON.stringify(S.cart)); } catch(_){} try { if (window.PortalTrack) PortalTrack.cart(cartCount(), cartTotal()); } catch(_){} };
 const cartLines = () => Object.keys(S.cart).filter(id => S.cart[id] > 0 && S.items.has(id)).map(id => ({ it:S.items.get(id), qty:S.cart[id] }));
@@ -745,6 +746,17 @@ document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click
 /* ═══════════ CATALOGUS ═══════════ */
 const brand = () => S.catalog.brands.find(b => b.id === S.brandId);
 const cardRefs = new Map(); // id -> { sync(qty) }
+const EANS = {
+  'fsg:lemon':      { ce:'8719327068632', he:'8719327524411' },
+  'fsg:blueberry':  { ce:'8719327068649', he:'8719327524428' },
+  'fsg:watermelon': { ce:'8719327068625', he:'8719327524404' }
+};
+const skuLine = it => {
+  const e = EANS[it.id];
+  if (e) return h('div', { class:'p-sku ean' }, h('span', { text:'EAN CE ' + e.ce }), h('span', { text:'EAN HE ' + e.he }));
+  if (String(it.id).startsWith('fsg:')) return null;
+  return it.sku ? h('div', { class:'p-sku', text:it.sku }) : null;
+};
 const CAT_LABELS = { 'frisdrank':'Sportwater', 'energy drink':'Party Punch', 'energydrink':'Party Punch', 'energy drinks':'Party Punch' };
 const catLabel = c => CAT_LABELS[String(c || '').trim().toLowerCase()] || c;
 const unitLabel = b => b.minQtyUnit === 'trays' ? t('unit.trays') : t('unit.stuks');
@@ -807,7 +819,7 @@ function makeRow(it, withThumb){
   const sum = h('div', { class:'p-sum' });
   const row = h('div', { class:'prow' + (withThumb ? '' : ' nothumb') },
     withThumb ? makeThumb(it) : null,
-    h('div', { class:'p-main' }, h('div', { class:'p-name', text:it.name }), it.sku ? h('div', { class:'p-sku', text:it.sku }) : null),
+    h('div', { class:'p-main' }, h('div', { class:'p-name', text:it.name }), skuLine(it)),
     h('div', { class:'p-price' }, money(it.price), h('small', { text:' ' + t('order.price', { u:unit }) })),
     h('div', { class:'p-act' }, stepper), sum);
   const sync = qty => { row.classList.toggle('in', qty > 0); input.value = qty; sum.textContent = money(round2(it.price * qty)); };
@@ -818,7 +830,7 @@ function renderProducts(){
   const box = $('products'); box.replaceChildren(); cardRefs.clear();
   const needle = S.q.trim().toLowerCase();
   const pool = needle ? S.catalog.brands.flatMap(b => b.items) : brand().items;
-  const list = pool.filter(i => (!S.cat || needle || i.category === S.cat) && (!needle || (i.name + ' ' + i.category + ' ' + catLabel(i.category) + ' ' + (i.sku || '')).toLowerCase().includes(needle)));
+  const list = pool.filter(i => (!S.cat || needle || i.category === S.cat) && (!needle || (i.name + ' ' + i.category + ' ' + catLabel(i.category) + ' ' + (EANS[i.id] ? EANS[i.id].ce + ' ' + EANS[i.id].he : (String(i.id).startsWith('fsg:') ? '' : (i.sku || '')))).toLowerCase().includes(needle)));
   if (!list.length) { box.append(h('div', { class:'empty', text:t('order.none') })); return; }
   const groups = new Map(); list.forEach(i => { const k = needle ? (S.items.get(i.id) || {}).brandName : i.category; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(i); });
   const head = wt => h('div', { class:'phead' + (wt ? '' : ' nothumb') }, wt ? h('span') : null, h('span', { text:t('th.product') }), h('span', { text:t('th.price') }), h('span', { text:t('th.qty') }), h('span', { text:t('th.sub') }));
@@ -836,7 +848,7 @@ function setQty(id, v){
   qtyBusy = true;
   try {
     if (q > 0) S.cart[id] = q; else delete S.cart[id];
-    saveCart(); S.done = null; S.error = '';
+    saveCart(); S.done = null; S.error = ''; S.confirm = false;
     const ref = cardRefs.get(id); if (ref) ref.sync(q);
     renderCart();
   } finally { qtyBusy = false; }
@@ -935,21 +947,10 @@ function renderCart(){
       if (pg.ok) wrap.append(h('div', { class:'meter-t ok', text:'✓ ' + t('cart.minOk') }));
       else {
         wrap.append(h('div', { class:'cneed', text:need }));
-        if (pg.kind === 'qty') {
-          const top = ls.reduce((m, l) => l.qty > m.qty ? l : m, ls[0]);
-          wrap.append(h('button', { class:'cfill', type:'button', text:t('cart.fill', { n:pg.left }), onclick:() => setQty(top.it.id, top.qty + pg.left) }));
-        }
       }
     } else if (need) wrap.append(h('div', { class:'cneed', text:need }));
     body.append(wrap);
   });
-
-  // merken die nog niet in de bestelling zitten
-  const missing = S.catalog.brands.filter(b => b.items.length && !brandQty(b));
-  if (missing.length) body.append(h('section', { class:'xsell' }, h('div', { class:'xsell-h', text:t('cart.xsell') }),
-    missing.map(b => h('button', { class:'xsell-i', type:'button', onclick:() => goBrand(b.id) },
-      h('span', { class:'xsell-t' }, h('span', { class:'xsell-n', text:b.name }), h('span', { class:'xsell-m', text:brandMeta(b) })),
-      h('span', { class:'xsell-go', text:t('cart.xsellGo') + ' →' })))));
 
   // afrekenen
   const branches = branchOptions();
@@ -973,9 +974,12 @@ function renderCart(){
       h('div', {}, h('span', { text:t('cart.subtotal') }), h('span', { text:money(S.catalog.brands.reduce((a, b) => a + brandSub(b), 0)) })),
       S.catalog.brands.some(b => brandDep(b) > 0) ? h('div', {}, h('span', { text:t('cart.deposit') }), h('span', { text:money(S.catalog.brands.reduce((a, b) => a + brandDep(b), 0)) })) : null),
     h('div', { class:'total' }, h('span', { text:t('cart.total') + ' ' + t('cart.exVat') }), h('strong', { text:money(total) })),
-    h('button', { class:'btn-red', id:'placeBtn', type:'button', disabled:S.placing || warnings.length > 0, text:S.placing ? t('cart.placing') : t('cart.place'), onclick:placeOrder }),
+    h('label', { class:'confirm' },
+      h('input', { type:'checkbox', id:'fConfirm', checked:S.confirm, onchange:e => { S.confirm = e.target.checked; const b = $('placeBtn'); if (b) b.disabled = S.placing || warnings.length > 0 || !S.confirm; } }),
+      h('span', { text:t('cart.confirm') })),
+    h('button', { class:'btn-red', id:'placeBtn', type:'button', disabled:S.placing || warnings.length > 0 || !S.confirm, text:S.placing ? t('cart.placing') : t('cart.place'), onclick:placeOrder }),
     warnings.length ? h('div', { class:'cfix', text:t('cart.fixMin') }) : null,
-    h('div', { class:'trust' }, h('span', { text:'✓ ' + t('trust.mail') }), h('a', { href:'tel:+31132032643', text:'✓ ' + t('trust.help') })),
+    h('div', { class:'trust' }, h('a', { href:'tel:+31132032643', text:t('trust.help') })),
     null].flat().filter(Boolean));
 }
 function svgCheck(){ const ns = 'http://www.w3.org/2000/svg'; const s = document.createElementNS(ns, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); const p = document.createElementNS(ns, 'path'); p.setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5'); s.append(p); return s; }
@@ -986,7 +990,7 @@ $('cartFold').addEventListener('click', () => { const ids = S.catalog.brands.fil
 $('cartClose').addEventListener('click', closeCart);
 
 async function placeOrder(){
-  if (S.placing) return;
+  if (S.placing || !S.confirm) return;
   const fingerprint = JSON.stringify([S.branch, S.cart, S.date, S.ref, S.notes]);
   let request = {}; try { request = JSON.parse(PortalSession.get('portalOrderRequest') || '{}'); } catch(_){}
   if (request.fingerprint !== fingerprint) request = {fingerprint, id:crypto.randomUUID()};
@@ -998,7 +1002,7 @@ async function placeOrder(){
       items:cartLines().map(l => ({ id:l.it.id, qty:l.qty })),
       deliveryDate:S.date, reference:S.ref, notes:S.notes }) });
     PortalSession.remove('portalOrderRequest');
-    S.done = d.order; S.cart = {}; saveCart(); S.date = ''; S.ref = ''; S.notes = ''; S.orders = null; loadOrdersQuiet();
+    S.done = d.order; S.confirm = false; S.cart = {}; saveCart(); S.date = ''; S.ref = ''; S.notes = ''; S.orders = null; loadOrdersQuiet();
     cardRefs.forEach(r => r.sync(0));
   } catch (e) {
     if (e.message !== '401') S.error = (e instanceof TypeError) ? t('err.network') : e.message;
