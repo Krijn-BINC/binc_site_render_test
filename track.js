@@ -13,7 +13,7 @@
   var page = (location.pathname.replace(/^\/+|\.html$/g, '') || 'home');
   var pending = 0, lastTick = Date.now(), lastActive = Date.now(), errCount = 0, seen = {};
 
-  function token() { try { return sessionStorage.getItem('klantToken'); } catch (e) { return null; } }
+  function token() { try { return window.PortalSession ? PortalSession.get('klantToken') : sessionStorage.getItem('klantToken'); } catch (e) { return null; } }
   function send(type, extra) {
     var body = { sid: sid, type: type, page: page, title: document.title, lang: navigator.language, width: window.innerWidth };
     for (var k in extra) body[k] = extra[k];

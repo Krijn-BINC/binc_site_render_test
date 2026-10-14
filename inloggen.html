@@ -260,6 +260,7 @@ main{padding-top:110px!important;padding-bottom:50px!important}
 
 <div class="pfoot">&copy; BINC International &middot; <a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a> &middot; <a href="tel:+31132032643">013 203 2643</a></div>
 
+<script src="portal-session.js"></script>
 <script>
 /* ══════════════════════════════════════════════════
    TRANSLATIONS (zelfde sleutels & binc_lang opslag als de rest van de site)
@@ -383,13 +384,13 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
   const impM = /^#imp=([a-f0-9]{16,80})$/.exec(location.hash);
   if (impM) {
     history.replaceState(null, '', location.pathname);
-    try { sessionStorage.clear(); } catch (_) {}
+    PortalSession.startImpersonation();
     fetch(API_BASE + '/api/klant/impersonate-exchange', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ code: impM[1] }) })
       .then(r => r.json().then(d => ({ ok: r.ok, d })))
       .then(({ ok, d }) => {
         if (!ok || !d.token) { alert((d && d.error) || 'Inloggen als klant mislukt.'); return; }
-        sessionStorage.setItem(TOKEN_KEY, d.token);
-        sessionStorage.setItem('klantData', JSON.stringify(d.klant || {}));
+        PortalSession.set(TOKEN_KEY, d.token);
+        PortalSession.set('klantData', JSON.stringify(d.klant || {}));
         location.replace(PORTAL);
       })
       .catch(() => alert('Inloggen als klant mislukt.'));
@@ -397,7 +398,8 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
   }
 
   // Al ingelogd? Direct door naar het portaal.
-  try { if (sessionStorage.getItem(TOKEN_KEY)) { location.replace(PORTAL); return; } } catch (_) {}
+  if (PortalSession.get(TOKEN_KEY)) { location.replace(PORTAL); return; }
+  PortalSession.watchLogin();
 
   const $ = id => document.getElementById(id);
   const emailForm = $('emailForm'), codeForm = $('codeForm'), msgBox = $('msgBox');
@@ -513,8 +515,7 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
     try {
       const { ok, status, data } = await post('/api/klant/verify-code', { email, code });
       if (ok && data.token) {
-        sessionStorage.setItem(TOKEN_KEY, data.token);
-        sessionStorage.setItem('klantData', JSON.stringify(data.klant || {}));
+        PortalSession.login(data.token, data.klant);
         location.replace(PORTAL);
         return;
       }
