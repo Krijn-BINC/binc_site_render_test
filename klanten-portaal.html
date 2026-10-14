@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bestelportaal — BINC B2B</title>
+<title>Bestelportaal</title>
 <meta name="robots" content="noindex"/>
 <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -548,6 +548,14 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .cart::-webkit-scrollbar,.cart-body::-webkit-scrollbar{display:none;width:0;height:0}
 html,body,*{scrollbar-width:none;-ms-overflow-style:none}
 html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{display:none;width:0;height:0}
+
+/* ── ROUND 7: merk-tabs passen altijd, badge heeft vaste breedte (99+) ── */
+.brand-b{width:38px;min-width:38px;height:20px;line-height:20px;padding:0;text-align:center;overflow:hidden;white-space:nowrap;margin:0 0 0 8px;flex:none}
+@media(min-width:1001px){
+  .brands{overflow:visible}
+  .brand{flex:1 1 0;width:auto;min-width:0;margin-right:16px}
+  .brand:last-child{margin-right:0}
+}
 </style>
 </head>
 <body>
@@ -812,7 +820,7 @@ function renderBrands(){
     seg.append(h('button', { class:'brand' + (b.id === S.brandId ? ' on' : ''), type:'button', role:'tab', 'aria-selected':String(b.id === S.brandId),
       onclick:() => { S.brandId = b.id; S.cat = ''; renderBrands(); renderChips(); renderProducts(); } },
       h('span', { class:'brand-t' }, h('span', { class:'brand-n', text:b.name }), h('span', { class:'brand-m', text:meta })),
-      h('span', { class:'brand-b' + (n && brandProg(b).ok ? ' ok' : ''), text:n || '', style:n ? '' : 'visibility:hidden;display:inline-block', 'aria-label':n ? t('brand.inCart', { n }) : null })));
+      h('span', { class:'brand-b' + (n && brandProg(b).ok ? ' ok' : ''), text:n > 99 ? '99+' : (n || ''), style:n ? '' : 'visibility:hidden;display:inline-block', 'aria-label':n ? t('brand.inCart', { n }) : null })));
   });
   renderBrandInfo();
 }
@@ -912,7 +920,7 @@ function renderQuick(){
 async function loadOrdersQuiet(){ try { S.orders = (await api('/api/klant/orders')).orders; renderQuick(); } catch(_){} }
 function renderCart(){
   const lines = cartLines(), count = cartCount(), total = cartTotal();
-  const nb = $('navBadge'); nb.textContent = count; nb.classList.toggle('hidden', !count);
+  const nb = $('navBadge'); nb.textContent = count > 99 ? '99+' : count; nb.classList.toggle('hidden', !count);
   $('cartbar').classList.toggle('zero', !count);
   $('cbText').textContent = t('cart.view') + ' · ' + t('cart.count', { n:count });
   $('cbTot').textContent = money(total);
