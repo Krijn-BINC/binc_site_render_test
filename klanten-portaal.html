@@ -947,8 +947,6 @@ function renderCart(){
     if (dep > 0 && !folded) wrap.append(h('div', { class:'cl dep' }, h('span'), h('span', { class:'cl-n', text:t('cart.deposit') }), h('span', { class:'cl-t', text:money(dep) }), h('span')));
     const pg = brandProg(b);
     if (pg.kind && !folded) {
-      const pct = Math.min(100, Math.round(pg.have / pg.min * 100));
-      wrap.append(h('div', { class:'meter' + (pg.ok ? ' ok' : '') }, h('i', { style:'width:' + pct + '%' })));
       if (pg.ok) wrap.append(h('div', { class:'meter-t ok', text:'✓ ' + t('cart.minOk') }));
       else {
         wrap.append(h('div', { class:'cneed', text:need }));
