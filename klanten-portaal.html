@@ -528,7 +528,9 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 @media(max-width:700px){.quick{flex-direction:column;align-items:stretch}.quick-b{width:100%}}
 @media(max-width:900px){.prow.nothumb{grid-template-columns:minmax(0,1fr) auto}.prow.nothumb .p-price{grid-column:1}.prow.nothumb .p-act{grid-column:2}}
 .pill-old{background:rgba(255,255,255,.08);color:var(--dim);border-color:var(--line2)}
-.pill-pending{background:rgba(240,173,50,.14);color:#f0ad32;border-color:rgba(240,173,50,.4)}
+.pill-done,.pill-pending{display:inline-flex;align-items:center;gap:8px;padding:0;background:transparent;border:0;border-radius:0;color:var(--dim);font-weight:600;letter-spacing:.1em}
+.pill-done::before,.pill-pending::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(63,178,127,.7)}
+.pill-pending::before{background:rgba(240,173,50,.7)}
 .pill-declined{background:rgba(229,72,77,.14);color:#e5484d;border-color:rgba(229,72,77,.4)}
 .ord-h .c-status{min-width:0}
 </style>
@@ -1050,17 +1052,17 @@ function renderOrders(){
     frow.append(h('div', { class:'ofil' }, [''].concat(allBrands).map(b => h('button', { type:'button', class:b === (S.ordBrand || '') ? 'on' : '', text:b || t('orders.all'), onclick:() => { S.ordBrand = b; renderOrders(); } }))));
   }
   if (frow.children.length) box.append(frow);
-  const cols = '120px minmax(200px,1fr) 90px 150px 130px 16px';
+  const cols = '120px minmax(200px,1fr) 150px 90px 130px 16px';
   const table = h('div', { class:'otable', style:'--oc:' + cols });
-  table.append(h('div', { class:'ot-head' }, h('span', { text:t('orders.date') }), h('span', { text:t('orders.brand') }), h('span', { text:t('orders.pcs') }), h('span', { text:t('orders.statusCol') }),
+  table.append(h('div', { class:'ot-head' }, h('span', { text:t('orders.date') }), h('span', { text:t('orders.brand') }), h('span', { text:t('orders.statusCol') }), h('span', { text:t('orders.pcs') }),
     h('span', { class:'r', text:t('orders.amount') }), h('span', {})));
   list.forEach(o => {
     const open = S.expanded.has(o.id), brands = brandsOf(o), multi = brands.length > 1;
     const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { S.expanded.clear(); if (!open) S.expanded.add(o.id); renderOrders(); } },
       h('span', { class:'c-date', text:fmtDate(o.createdAt, true) }),
-      h('span', { class:'c-brand' }, brands.join(' · '), (o.historic || o.status === 'eerder') ? null : h('small', { text:o.id })),
-      h('span', { class:'c-qty', text:nf.format(pcs(o)) }),
+      h('span', { class:'c-brand' }, brands.join(' · ')),
       h('span', { class:'c-status' }, h('span', { class:'pill pill-' + portalStatusKey(o.status), text:portalStatus(o.status) })),
+      h('span', { class:'c-qty', text:nf.format(pcs(o)) }),
       h('span', { class:'ord-tot r', text:o.total == null ? dash : money(o.total) }),
       h('span', { class:'ord-chev' }));
     const card = h('div', { class:'ord' + (open ? ' open' : '') }, head);
