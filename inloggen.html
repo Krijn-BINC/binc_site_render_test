@@ -379,6 +379,23 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
   const TOKEN_KEY = 'klantToken';
   const PORTAL    = 'klantportaal.html';
 
+  // Admin opent het portaal als klant: eenmalige code uit de URL inwisselen voor een token.
+  const impM = /^#imp=([a-f0-9]{16,80})$/.exec(location.hash);
+  if (impM) {
+    history.replaceState(null, '', location.pathname);
+    try { sessionStorage.clear(); } catch (_) {}
+    fetch(API_BASE + '/api/klant/impersonate-exchange', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ code: impM[1] }) })
+      .then(r => r.json().then(d => ({ ok: r.ok, d })))
+      .then(({ ok, d }) => {
+        if (!ok || !d.token) { alert((d && d.error) || 'Inloggen als klant mislukt.'); return; }
+        sessionStorage.setItem(TOKEN_KEY, d.token);
+        sessionStorage.setItem('klantData', JSON.stringify(d.klant || {}));
+        location.replace(PORTAL);
+      })
+      .catch(() => alert('Inloggen als klant mislukt.'));
+    return;
+  }
+
   // Al ingelogd? Direct door naar het portaal.
   try { if (sessionStorage.getItem(TOKEN_KEY)) { location.replace(PORTAL); return; } } catch (_) {}
 
@@ -515,5 +532,6 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
 
 applyLang(currentLang);
 </script>
+<script src="track.js" defer></script>
 </body>
 </html>
