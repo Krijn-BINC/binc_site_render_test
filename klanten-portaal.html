@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bestelportaal</title>
+<title>Bestelportaal — BINC B2B</title>
 <meta name="robots" content="noindex"/>
 <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -602,7 +602,7 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
     <!-- MIJN BESTELLINGEN -->
     <section class="view" id="v-orders"><div class="pad">
       <h1 class="page-h"><span data-i18n="orders.title">Mijn bestellingen</span><span class="acc">.</span></h1>
-      <p class="page-sub" data-i18n="orders.sub">Ook van vóór het portaal. Opnieuw bestellen kan met één klik.</p>
+      <p class="page-sub" data-i18n="orders.sub">Hier zie je je eerdere bestellingen. Bestel gemakkelijk opnieuw met één klik.</p>
       <div id="ordersList"></div>
     </div></section>
 
@@ -631,7 +631,7 @@ const TR = {
   'cart.total':'Totaal','cart.vat':'Alle prijzen excl. btw','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
   'cart.min':'Minimale orderwaarde {brand}: {min} (nog {left} te gaan)','cart.items':'{n} artikel(en)','cart.view':'Bekijk winkelwagen','cart.count':'{n} stuks',
   'done.title':'Bestelling ontvangen','done.text':'Bedankt! Je bestelling wacht op goedkeuring door BINC. Je ontvangt een ontvangstbevestiging per e-mail.','done.again':'Nieuwe bestelling','done.view':'Bekijk mijn bestellingen',
-  'orders.title':'Mijn bestellingen','orders.sub':'Ook van vóór het portaal. Opnieuw bestellen kan met één klik.',
+  'orders.title':'Mijn bestellingen','orders.sub':'Hier zie je je eerdere bestellingen. Bestel gemakkelijk opnieuw met één klik.',
   'orders.empty':'Je hebt nog niets besteld via het portaal.','orders.product':'Product','orders.qty':'Aantal','orders.price':'Prijs','orders.sum':'Totaal',
   'orders.status':'Ontvangen','orders.all':'Alles','orders.allBranches':'Alle filialen','orders.cnt':'Bestellingen','orders.pcs':'Stuks','orders.total':'Totaal besteld','orders.date':'Datum','orders.brand':'Merk','orders.branch':'Filiaal','orders.statusCol':'Status','orders.st.done':'Voltooid','orders.st.pending':'In behandeling','orders.st.declined':'Afgewezen','orders.amount':'Bedrag','orders.earlier':'Eerder besteld','orders.earlierTitle':'Eerdere bestelling','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelwagen',
   'account.title':'Mijn account','account.empty':'Er zijn nog geen gegevens gevonden voor dit filiaal.','account.id':'Filiaal ID','account.branch':'Filiaal','account.last':'Ingelogd op',
@@ -656,7 +656,7 @@ const TR = {
   'cart.total':'Total','cart.vat':'All prices excl. VAT','cart.place':'Place order','cart.placing':'Placing…',
   'cart.min':'Minimum order value {brand}: {min} ({left} to go)','cart.items':'{n} item(s)','cart.view':'View cart','cart.count':'{n} items',
   'done.title':'Order received','done.text':'Thank you! Your order is awaiting approval by BINC. You will receive an acknowledgement by email.','done.again':'New order','done.view':'View my orders',
-  'orders.title':'My orders','orders.sub':'Including orders from before the portal. Reorder with one click.',
+  'orders.title':'My orders','orders.sub':'Here you can see your previous orders. Reorder easily with one click.',
   'orders.empty':'You have not ordered through the portal yet.','orders.product':'Product','orders.qty':'Qty','orders.price':'Price','orders.sum':'Total',
   'orders.status':'Received','orders.all':'All','orders.allBranches':'All branches','orders.cnt':'Orders','orders.pcs':'Items','orders.total':'Total ordered','orders.date':'Date','orders.brand':'Brand','orders.branch':'Branch','orders.statusCol':'Status','orders.st.done':'Completed','orders.st.pending':'In progress','orders.st.declined':'Declined','orders.amount':'Amount','orders.earlier':'Earlier order','orders.earlierTitle':'Earlier order','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your cart',
   'account.title':'My account','account.empty':'No data has been found for this branch yet.','account.id':'Branch ID','account.branch':'Branch','account.last':'Logged in on',
@@ -1037,17 +1037,9 @@ function renderOrders(){
   const pcs = o => o.items.reduce((s, i) => s + i.qty, 0);
   const allBrands = [...new Set(S.orders.flatMap(brandsOf))].sort();
   if (S.ordBrand && !allBrands.includes(S.ordBrand)) S.ordBrand = '';
-  const fils = [...new Set(S.orders.map(o => o.filiaalNaam).filter(Boolean))].sort();
-  const multiFil = fils.length > 1;
-  if (S.ordFil && !fils.includes(S.ordFil)) S.ordFil = '';
-  const list = S.orders.filter(o => (!S.ordBrand || brandsOf(o).includes(S.ordBrand)) && (!S.ordFil || o.filiaalNaam === S.ordFil));
+  const list = S.orders.filter(o => (!S.ordBrand || brandsOf(o).includes(S.ordBrand)));
   const nf = new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-GB');
   const frow = h('div', { class:'ofrow' });
-  if (multiFil) {
-    const sel = h('select', { class:'osel', 'aria-label':t('orders.branch'), onchange:e => { S.ordFil = e.target.value; renderOrders(); } },
-      [h('option', { value:'', text:t('orders.allBranches') })].concat(fils.map(f => h('option', { value:f, text:f, selected:f === S.ordFil ? true : null }))));
-    frow.append(sel);
-  }
   if (allBrands.length > 1) {
     frow.append(h('div', { class:'ofil' }, [''].concat(allBrands).map(b => h('button', { type:'button', class:b === (S.ordBrand || '') ? 'on' : '', text:b || t('orders.all'), onclick:() => { S.ordBrand = b; renderOrders(); } }))));
   }
