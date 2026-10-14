@@ -265,8 +265,13 @@ textarea.f-in{resize:vertical;min-height:54px}
 .ord.open .ord-chev{transform:rotate(-135deg);margin-top:4px}
 .pill{white-space:nowrap}
 .ord-d{border-top:1px solid var(--line);padding:6px 20px 18px;background:rgba(0,0,0,.18)}
-.ord-d table{max-width:760px}
-.ord-d td.q{white-space:nowrap}
+.oi-list{max-width:720px;margin-top:6px}
+.oi{display:grid;grid-template-columns:56px minmax(0,1fr);gap:0 16px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line)}
+.oi-list.priced .oi{grid-template-columns:56px minmax(0,1fr) 100px 110px}
+.oi .n{font-family:var(--font-display);font-weight:700;font-size:1.25rem;line-height:1;font-variant-numeric:tabular-nums}
+.oi .p{font-size:.94rem}
+.oi .pr,.oi .lt{text-align:right;font-variant-numeric:tabular-nums;color:var(--dim);font-size:.9rem}
+.oi .lt{color:var(--text);font-weight:600}
 .ord-foot{display:flex;margin-top:14px}
 .ord-foot .ord-act{margin:0}
 @media(max-width:900px){
@@ -1025,7 +1030,7 @@ function renderOrders(){
     hasStatus ? h('span', { text:t('orders.statusCol') }) : null, h('span', { class:'r', text:t('orders.amount') }), h('span', {})));
   list.forEach(o => {
     const open = S.expanded.has(o.id), brands = brandsOf(o), multi = brands.length > 1;
-    const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { open ? S.expanded.delete(o.id) : S.expanded.add(o.id); renderOrders(); } },
+    const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { S.expanded.clear(); if (!open) S.expanded.add(o.id); renderOrders(); } },
       h('span', { class:'c-date', text:fmtDate(o.createdAt, true) }),
       h('span', { class:'c-brand' }, brands.join(' · '), o.historic ? null : h('small', { text:o.id })),
       h('span', { class:'c-fil', text:o.filiaalNaam || dash }),
@@ -1036,12 +1041,10 @@ function renderOrders(){
     const card = h('div', { class:'ord' + (open ? ' open' : '') }, head);
     if (open) {
       const priced = o.items.some(i => i.price != null || i.lineTotal != null);
-      const cells = i => [h('td', { text:i.name.toLowerCase().startsWith(i.brandName.toLowerCase()) ? i.name : i.brandName + ' — ' + i.name }), h('td', { class:'r q', text:nf.format(i.qty) + '×' })]
-        .concat(priced ? [h('td', { class:'r', text:i.price == null ? dash : money(i.price) }), h('td', { class:'r', text:i.lineTotal == null ? dash : money(i.lineTotal) })] : []);
-      const det = h('div', { class:'ord-d' },
-        h('table', {}, h('thead', {}, h('tr', {}, [h('th', { text:t('orders.product') }), h('th', { class:'r', text:t('orders.qty') })]
-            .concat(priced ? [h('th', { class:'r', text:t('orders.price') }), h('th', { class:'r', text:t('orders.sum') })] : []))),
-          h('tbody', {}, o.items.map(i => h('tr', {}, cells(i))))));
+      const nm = i => i.name.toLowerCase().startsWith(i.brandName.toLowerCase()) ? i.name : i.brandName + ' — ' + i.name;
+      const det = h('div', { class:'ord-d' }, h('div', { class:'oi-list' + (priced ? ' priced' : '') },
+        o.items.map(i => h('div', { class:'oi' }, h('span', { class:'n', text:nf.format(i.qty) + '×' }), h('span', { class:'p', text:nm(i) }),
+          priced ? [h('span', { class:'pr', text:i.price == null ? dash : money(i.price) }), h('span', { class:'lt', text:i.lineTotal == null ? dash : money(i.lineTotal) })] : null))));
       [['orders.delivery', o.deliveryDate], ['orders.ref', o.reference], ['orders.notes', o.notes]].forEach(([k, v]) => { if (v) det.append(h('p', { class:'ord-note' }, h('strong', { text:t(k) + ': ' }), v)); });
       det.append(h('div', { class:'ord-foot' }, h('div', { class:'ord-act' }, h('button', { class:'btn-red', type:'button', text:t('orders.reorder'), onclick:() => reorder(o) }))));
       card.append(det);
