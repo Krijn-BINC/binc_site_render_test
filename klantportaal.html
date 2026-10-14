@@ -246,34 +246,37 @@ textarea.f-in{resize:vertical;min-height:54px}
 .ofil button:first-child{border-left:0}
 .ofil button:hover{color:#fff;background:rgba(255,255,255,.05)}
 .ofil button.on{background:var(--red);color:#fff}
-.otable{border:1px solid var(--line);border-radius:4px;background:var(--panel);overflow:hidden}
+.ometa{margin:-6px 0 16px;font-size:.9rem;color:var(--dim)}
+.ometa b{color:var(--text);font-weight:600}
+.otable{border:0;border-top:1px solid var(--line);background:transparent;overflow:visible}
 .ot-head,.ord-h{display:grid;grid-template-columns:var(--oc);gap:0 20px;align-items:center}
-.ot-head{padding:11px 20px;background:var(--panel2);border-bottom:1px solid var(--line);font-family:var(--font-ui);font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.ot-head{padding:10px 20px;border-bottom:1px solid var(--line);font-family:var(--font-ui);font-weight:700;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
 .ot-head .r,.ord-h .r{text-align:right}
-.ord{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;margin:0;overflow:visible}
-.ord:last-child{border-bottom:0}
-.ord.open{background:rgba(255,255,255,.025)}
-.ord-h{padding:14px 20px;width:100%;text-align:left;font-size:.92rem;color:var(--text);transition:background .12s}
-.ord-h:hover{background:rgba(255,255,255,.04)}
-.ord-h .c-date{font-variant-numeric:tabular-nums;white-space:nowrap}
-.ord-h .c-brand{font-weight:600;min-width:0}
-.ord-h .c-brand small{display:block;margin-top:2px;font-weight:400;font-size:.76rem;color:var(--faint);letter-spacing:.02em}
+.ord{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;margin:0;overflow:visible;position:relative}
+.ord.open::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--red)}
+.ord-h{padding:13px 20px;width:100%;text-align:left;font-size:.9rem;color:var(--text);transition:background .12s}
+.ord-h:hover{background:rgba(255,255,255,.03)}
+.ord-h .c-date{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--dim)}
+.ord-h .c-brand{font-weight:500;min-width:0}
+.ord-h .c-brand small{display:block;margin-top:2px;font-weight:400;font-size:.74rem;color:var(--faint);letter-spacing:.02em}
 .ord-h .c-fil{color:var(--dim);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ord-h .c-qty{color:var(--dim);font-variant-numeric:tabular-nums}
-.ord-tot{font-family:var(--font-ui);font-weight:700;font-size:1.02rem;letter-spacing:.02em}
-.ord-chev{width:7px;height:7px;border-right:2px solid var(--faint);border-bottom:2px solid var(--faint);transform:rotate(45deg);margin:-3px 4px 0 auto;transition:transform .2s}
-.ord.open .ord-chev{transform:rotate(-135deg);margin-top:4px}
+.ord-tot{font-family:var(--font-body);font-weight:600;font-size:.92rem;font-variant-numeric:tabular-nums}
+.ord-chev{width:6px;height:6px;border-right:1.5px solid var(--faint);border-bottom:1.5px solid var(--faint);transform:rotate(45deg);margin:-3px 4px 0 auto;transition:transform .2s}
+.ord.open .ord-chev{transform:rotate(-135deg);margin-top:3px}
 .pill{white-space:nowrap}
-.ord-d{border-top:1px solid var(--line);padding:6px 20px 18px;background:rgba(0,0,0,.18)}
-.oi-list{max-width:720px;margin-top:6px}
-.oi{display:grid;grid-template-columns:56px minmax(0,1fr);gap:0 16px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line)}
-.oi-list.priced .oi{grid-template-columns:56px minmax(0,1fr) 100px 110px}
-.oi .n{font-family:var(--font-display);font-weight:700;font-size:1.25rem;line-height:1;font-variant-numeric:tabular-nums}
-.oi .p{font-size:.94rem}
-.oi .pr,.oi .lt{text-align:right;font-variant-numeric:tabular-nums;color:var(--dim);font-size:.9rem}
-.oi .lt{color:var(--text);font-weight:600}
-.ord-foot{display:flex;margin-top:14px}
+.ord-d{border:0;padding:0 20px 16px;background:transparent}
+.oi-list{max-width:440px;margin:0 0 0 0;padding-left:14px;border-left:1px solid var(--line2)}
+.oi{display:grid;grid-template-columns:40px minmax(0,1fr);gap:0 10px;align-items:baseline;padding:4px 0;border:0}
+.oi-list.priced .oi{grid-template-columns:40px minmax(0,1fr) 90px 100px}
+.oi .n{font-family:var(--font-body);font-weight:600;font-size:.84rem;color:var(--faint);font-variant-numeric:tabular-nums}
+.oi .p{font-size:.86rem;color:var(--text)}
+.oi .pr,.oi .lt{text-align:right;font-variant-numeric:tabular-nums;color:var(--faint);font-size:.84rem}
+.oi .lt{color:var(--dim);font-weight:500}
+.ord-foot{display:flex;margin-top:12px}
 .ord-foot .ord-act{margin:0}
+.ord-foot .btn-red{padding:7px 14px;background:transparent;border:1px solid var(--line2);color:var(--dim);font-size:.7rem;letter-spacing:.14em;transition:.15s}
+.ord-foot .btn-red:hover{background:var(--red);border-color:var(--red);color:#fff}
 @media(max-width:900px){
   #v-orders .pad{padding:20px 16px 90px}
   .ostats b{font-size:1.3rem}.ostats>div{padding:12px 14px}
@@ -1024,16 +1027,19 @@ function renderOrders(){
     box.append(h('div', { class:'ofil' }, [''].concat(allBrands).map(b => h('button', { type:'button', class:b === (S.ordBrand || '') ? 'on' : '', text:b || t('orders.all'), onclick:() => { S.ordBrand = b; renderOrders(); } }))));
   }
   const hasStatus = list.some(o => !o.historic);
-  const cols = '112px minmax(150px,1.3fr) minmax(170px,1.7fr) 80px ' + (hasStatus ? '190px ' : '') + '120px 16px';
+  const fils = [...new Set(S.orders.map(o => o.filiaalNaam).filter(Boolean))];
+  const multiFil = fils.length > 1;
+  if (fils.length === 1) box.insertBefore(h('div', { class:'ometa' }, h('span', { text:t('orders.branch') + ': ' }), h('b', { text:fils[0] })), box.firstChild);
+  const cols = '112px minmax(150px,1.3fr) ' + (multiFil ? 'minmax(170px,1.7fr) ' : '') + '80px ' + (hasStatus ? '190px ' : '') + '120px 16px';
   const table = h('div', { class:'otable', style:'--oc:' + cols });
-  table.append(h('div', { class:'ot-head' }, h('span', { text:t('orders.date') }), h('span', { text:t('orders.brand') }), h('span', { text:t('orders.branch') }), h('span', { text:t('orders.pcs') }),
+  table.append(h('div', { class:'ot-head' }, h('span', { text:t('orders.date') }), h('span', { text:t('orders.brand') }), multiFil ? h('span', { text:t('orders.branch') }) : null, h('span', { text:t('orders.pcs') }),
     hasStatus ? h('span', { text:t('orders.statusCol') }) : null, h('span', { class:'r', text:t('orders.amount') }), h('span', {})));
   list.forEach(o => {
     const open = S.expanded.has(o.id), brands = brandsOf(o), multi = brands.length > 1;
     const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { S.expanded.clear(); if (!open) S.expanded.add(o.id); renderOrders(); } },
       h('span', { class:'c-date', text:fmtDate(o.createdAt, true) }),
       h('span', { class:'c-brand' }, brands.join(' · '), o.historic ? null : h('small', { text:o.id })),
-      h('span', { class:'c-fil', text:o.filiaalNaam || dash }),
+      multiFil ? h('span', { class:'c-fil', text:o.filiaalNaam || dash }) : null,
       h('span', { class:'c-qty', text:nf.format(pcs(o)) }),
       hasStatus ? (o.historic ? h('span', {}) : h('span', {}, h('span', { class:'pill', text:portalStatus(o.status) }))) : null,
       h('span', { class:'ord-tot r', text:o.total == null ? dash : money(o.total) }),
