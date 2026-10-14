@@ -241,11 +241,15 @@ textarea.f-in{resize:vertical;min-height:54px}
 .ostats>div:first-child{border-left:0}
 .ostats small{display:block;font-family:var(--font-ui);font-weight:700;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
 .ostats b{display:block;margin-top:6px;font-family:var(--font-display);font-weight:700;font-size:1.7rem;line-height:1;font-variant-numeric:tabular-nums}
-.ofil{display:inline-flex;margin:0 0 28px;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+.ofil{display:inline-flex;margin:0;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
 .ofil button{padding:8px 18px;border:0;border-left:1px solid var(--line2);background:transparent;color:var(--dim);font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;transition:.15s}
 .ofil button:first-child{border-left:0}
 .ofil button:hover{color:#fff;background:rgba(255,255,255,.05)}
 .ofil button.on{background:var(--red);color:#fff}
+.ofrow{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:0 0 28px}
+.ofrow .ofil{margin:0}
+.osel{height:36px;padding:0 34px 0 14px;border:1px solid var(--line2);border-radius:4px;background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23999' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 13px center;color:var(--text);font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;appearance:none;-webkit-appearance:none;cursor:pointer;max-width:100%}
+.osel:hover{border-color:rgba(255,255,255,.35)}
 .ometa{margin:-4px 0 24px;font-size:.9rem;color:var(--dim)}
 .ometa b{color:var(--text);font-weight:600}
 .otable{border:0;border-top:1px solid var(--line);background:transparent;overflow:visible}
@@ -618,7 +622,7 @@ const TR = {
   'done.title':'Bestelling ontvangen','done.text':'Bedankt! Je bestelling wacht op goedkeuring door BINC. Je ontvangt een ontvangstbevestiging per e-mail.','done.again':'Nieuwe bestelling','done.view':'Bekijk mijn bestellingen',
   'orders.title':'Mijn bestellingen','orders.sub':'Ook van vóór het portaal. Opnieuw bestellen kan met één klik.',
   'orders.empty':'Je hebt nog niets besteld via het portaal.','orders.product':'Product','orders.qty':'Aantal','orders.price':'Prijs','orders.sum':'Totaal',
-  'orders.status':'Ontvangen','orders.all':'Alles','orders.cnt':'Bestellingen','orders.pcs':'Stuks','orders.total':'Totaal besteld','orders.date':'Datum','orders.brand':'Merk','orders.branch':'Filiaal','orders.statusCol':'Status','orders.amount':'Bedrag','orders.earlier':'Eerder besteld','orders.earlierTitle':'Eerdere bestelling','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelwagen',
+  'orders.status':'Ontvangen','orders.all':'Alles','orders.allBranches':'Alle filialen','orders.cnt':'Bestellingen','orders.pcs':'Stuks','orders.total':'Totaal besteld','orders.date':'Datum','orders.brand':'Merk','orders.branch':'Filiaal','orders.statusCol':'Status','orders.amount':'Bedrag','orders.earlier':'Eerder besteld','orders.earlierTitle':'Eerdere bestelling','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelwagen',
   'account.title':'Mijn account','account.empty':'Er zijn nog geen gegevens gevonden voor dit filiaal.','account.id':'Filiaal ID','account.branch':'Filiaal','account.last':'Ingelogd op',
   'err.load':'Laden mislukt:','err.generic':'Er ging iets mis. Probeer het opnieuw.','err.network':'Geen verbinding met de server.','err.retry':'Opnieuw proberen',
   'toast.added':'Toegevoegd',
@@ -643,7 +647,7 @@ const TR = {
   'done.title':'Order received','done.text':'Thank you! Your order is awaiting approval by BINC. You will receive an acknowledgement by email.','done.again':'New order','done.view':'View my orders',
   'orders.title':'My orders','orders.sub':'Including orders from before the portal. Reorder with one click.',
   'orders.empty':'You have not ordered through the portal yet.','orders.product':'Product','orders.qty':'Qty','orders.price':'Price','orders.sum':'Total',
-  'orders.status':'Received','orders.all':'All','orders.cnt':'Orders','orders.pcs':'Items','orders.total':'Total ordered','orders.date':'Date','orders.brand':'Brand','orders.branch':'Branch','orders.statusCol':'Status','orders.amount':'Amount','orders.earlier':'Earlier order','orders.earlierTitle':'Earlier order','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your cart',
+  'orders.status':'Received','orders.all':'All','orders.allBranches':'All branches','orders.cnt':'Orders','orders.pcs':'Items','orders.total':'Total ordered','orders.date':'Date','orders.brand':'Brand','orders.branch':'Branch','orders.statusCol':'Status','orders.amount':'Amount','orders.earlier':'Earlier order','orders.earlierTitle':'Earlier order','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your cart',
   'account.title':'My account','account.empty':'No data has been found for this branch yet.','account.id':'Branch ID','account.branch':'Branch','account.last':'Logged in on',
   'err.load':'Loading failed:','err.generic':'Something went wrong. Please try again.','err.network':'Can’t reach the server.','err.retry':'Try again',
   'toast.added':'Added',
@@ -1017,30 +1021,37 @@ function renderOrders(){
   const pcs = o => o.items.reduce((s, i) => s + i.qty, 0);
   const allBrands = [...new Set(S.orders.flatMap(brandsOf))].sort();
   if (S.ordBrand && !allBrands.includes(S.ordBrand)) S.ordBrand = '';
-  const list = S.orders.filter(o => !S.ordBrand || brandsOf(o).includes(S.ordBrand));
+  const fils = [...new Set(S.orders.map(o => o.filiaalNaam).filter(Boolean))].sort();
+  const multiFil = fils.length > 1;
+  if (S.ordFil && !fils.includes(S.ordFil)) S.ordFil = '';
+  const list = S.orders.filter(o => (!S.ordBrand || brandsOf(o).includes(S.ordBrand)) && (!S.ordFil || o.filiaalNaam === S.ordFil));
   const nf = new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-GB');
   const sumTot = list.reduce((s, o) => s + (o.total || 0), 0), sumPcs = list.reduce((s, o) => s + pcs(o), 0);
   box.append(h('div', { class:'ostats' },
     h('div', {}, h('small', { text:t('orders.cnt') }), h('b', { text:nf.format(list.length) })),
     h('div', {}, h('small', { text:t('orders.pcs') }), h('b', { text:nf.format(sumPcs) })),
     h('div', {}, h('small', { text:t('orders.total') }), h('b', { text:money(sumTot) }))));
-  if (allBrands.length > 1) {
-    box.append(h('div', { class:'ofil' }, [''].concat(allBrands).map(b => h('button', { type:'button', class:b === (S.ordBrand || '') ? 'on' : '', text:b || t('orders.all'), onclick:() => { S.ordBrand = b; renderOrders(); } }))));
+  const frow = h('div', { class:'ofrow' });
+  if (multiFil) {
+    const sel = h('select', { class:'osel', 'aria-label':t('orders.branch'), onchange:e => { S.ordFil = e.target.value; renderOrders(); } },
+      [h('option', { value:'', text:t('orders.allBranches') })].concat(fils.map(f => h('option', { value:f, text:f, selected:f === S.ordFil ? true : null }))));
+    frow.append(sel);
   }
+  if (allBrands.length > 1) {
+    frow.append(h('div', { class:'ofil' }, [''].concat(allBrands).map(b => h('button', { type:'button', class:b === (S.ordBrand || '') ? 'on' : '', text:b || t('orders.all'), onclick:() => { S.ordBrand = b; renderOrders(); } }))));
+  }
+  if (frow.children.length) box.append(frow);
   const hasStatus = list.some(o => !o.historic);
-  const fils = [...new Set(S.orders.map(o => o.filiaalNaam).filter(Boolean))];
-  const multiFil = fils.length > 1;
   if (fils.length === 1) box.insertBefore(h('div', { class:'ometa' }, h('span', { text:t('orders.branch') + ': ' }), h('b', { text:fils[0] })), box.firstChild);
-  const cols = '112px minmax(150px,1.3fr) ' + (multiFil ? 'minmax(170px,1.7fr) ' : '') + '80px ' + (hasStatus ? '190px ' : '') + '120px 16px';
+  const cols = '112px minmax(200px,1fr) 80px ' + (hasStatus ? '190px ' : '') + '120px 16px';
   const table = h('div', { class:'otable', style:'--oc:' + cols });
-  table.append(h('div', { class:'ot-head' }, h('span', { text:t('orders.date') }), h('span', { text:t('orders.brand') }), multiFil ? h('span', { text:t('orders.branch') }) : null, h('span', { text:t('orders.pcs') }),
+  table.append(h('div', { class:'ot-head' }, h('span', { text:t('orders.date') }), h('span', { text:t('orders.brand') }), h('span', { text:t('orders.pcs') }),
     hasStatus ? h('span', { text:t('orders.statusCol') }) : null, h('span', { class:'r', text:t('orders.amount') }), h('span', {})));
   list.forEach(o => {
     const open = S.expanded.has(o.id), brands = brandsOf(o), multi = brands.length > 1;
     const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { S.expanded.clear(); if (!open) S.expanded.add(o.id); renderOrders(); } },
       h('span', { class:'c-date', text:fmtDate(o.createdAt, true) }),
-      h('span', { class:'c-brand' }, brands.join(' · '), o.historic ? null : h('small', { text:o.id })),
-      multiFil ? h('span', { class:'c-fil', text:o.filiaalNaam || dash }) : null,
+      h('span', { class:'c-brand' }, brands.join(' · '), (o.historic && !multiFil) ? null : h('small', { text:[o.historic ? '' : o.id, multiFil ? o.filiaalNaam : ''].filter(Boolean).join(' · ') })),
       h('span', { class:'c-qty', text:nf.format(pcs(o)) }),
       hasStatus ? (o.historic ? h('span', {}) : h('span', {}, h('span', { class:'pill', text:portalStatus(o.status) }))) : null,
       h('span', { class:'ord-tot r', text:o.total == null ? dash : money(o.total) }),
