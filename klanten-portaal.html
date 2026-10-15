@@ -311,6 +311,13 @@ dd{word-break:break-word}
 dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#fff;color:#000;padding:11px 18px;border-radius:4px;font-weight:600;font-size:.9rem;z-index:200;transition:.25s;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.stock-toast{position:fixed;left:50%;top:calc(var(--bar,0px) + 72px);z-index:210;width:max-content;max-width:min(420px,calc(100vw - 32px));display:flex;gap:12px;align-items:flex-start;padding:12px 16px 12px 14px;background:#17171a;color:#f2f2f2;border:1px solid var(--line2);border-radius:10px;box-shadow:0 10px 34px rgba(0,0,0,.55);cursor:pointer;opacity:0;transform:translate(-50%,-14px);pointer-events:none;transition:opacity .22s ease,transform .3s cubic-bezier(.2,.9,.3,1.1)}
+.stock-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.stock-toast i{flex:none;width:8px;height:8px;margin-top:6px;border-radius:50%;background:#e74c3c;box-shadow:0 0 0 4px rgba(231,76,60,.18)}
+.stock-toast.back i{background:#2ecc71;box-shadow:0 0 0 4px rgba(46,204,113,.18)}
+.stock-toast b{display:block;font-size:.88rem;font-weight:600;line-height:1.25}
+.stock-toast span{display:block;margin-top:2px;font-size:.82rem;line-height:1.35;color:#a8a8ad}
+@media(prefers-reduced-motion:reduce){.stock-toast{transition:opacity .01s}}
 .loading{display:grid;place-items:center;min-height:60vh;color:var(--dim)}
 
 /* ── RESPONSIVE ── */
@@ -646,6 +653,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{display:non
 </div>
 
 <div class="toast" id="toast" role="status"></div>
+<div class="stock-toast" id="stockToast" role="status" aria-live="polite"></div>
 
 <script src="portal-session.js"></script>
 <script>
@@ -655,7 +663,7 @@ const TR = {
   'top.tag':'B2B Bestelportaal','top.site':'← Website','nav.logout':'Uitloggen','loading':'Portaal laden…',
   'nav.order':'Bestellen','nav.orders':'Mijn bestellingen','nav.account':'Mijn account','side.help':'Hulp nodig met een bestelling?',
   'order.title':'Nieuwe bestelling','order.sub':'Kies een merk, vul de aantallen in en plaats je bestelling direct bij BINC. Prijzen zijn je B2B-prijzen, exclusief btw.',
-  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.soldout':'Uitverkocht','order.availOnly':'Alleen beschikbaar','stock.removed':'Zojuist uitverkocht en uit je winkelwagen gehaald: {n}','stock.sold':'Zojuist uitverkocht: {n}','stock.back':'Weer beschikbaar: {n}','order.add':'Toevoegen','order.per':'per',
+  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.soldout':'Uitverkocht','order.availOnly':'Alleen beschikbaar','stock.soldT':'Net uitverkocht','stock.backT':'Weer leverbaar','stock.cart':'Uit je winkelwagen gehaald','order.add':'Toevoegen','order.per':'per',
   'cart.title':'Winkelwagen','cart.empty':'Je winkelwagen is leeg. Voeg producten toe om te bestellen.','cart.remove':'Verwijderen',
   'cart.branch':'Filiaal','cart.date':'Gewenste leverdatum','cart.ref':'Eigen referentie','cart.refPh':'bijv. inkoopnummer','cart.notes':'Opmerking','cart.notesPh':'Bijzonderheden voor levering',
   'cart.total':'Totaal','cart.vat':'Alle prijzen excl. btw','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
@@ -680,7 +688,7 @@ const TR = {
   'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
   'nav.order':'Order','nav.orders':'My orders','nav.account':'My account','side.help':'Need help with an order?',
   'order.title':'New order','order.sub':'Pick a brand, enter quantities and place your order directly with BINC. Prices are your B2B prices, excluding VAT.',
-  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.soldout':'Sold out','order.availOnly':'Available only','stock.removed':'Just sold out and removed from your cart: {n}','stock.sold':'Just sold out: {n}','stock.back':'Back in stock: {n}','order.add':'Add','order.per':'per',
+  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.soldout':'Sold out','order.availOnly':'Available only','stock.soldT':'Just sold out','stock.backT':'Back in stock','stock.cart':'Removed from your cart','order.add':'Add','order.per':'per',
   'cart.title':'Cart','cart.empty':'Your cart is empty. Add products to place an order.','cart.remove':'Remove',
   'cart.branch':'Branch','cart.date':'Preferred delivery date','cart.ref':'Your reference','cart.refPh':'e.g. purchase number','cart.notes':'Note','cart.notesPh':'Delivery instructions',
   'cart.total':'Total','cart.vat':'All prices excl. VAT','cart.place':'Place order','cart.placing':'Placing…',
@@ -893,7 +901,15 @@ function syncAvail(){
   b.classList.toggle('hidden', !any); b.classList.toggle('on', S.availOnly); b.setAttribute('aria-pressed', String(S.availOnly));
 }
 /* ═══════════ LIVE UITVERKOCHT (verbinding met de server) ═══════════ */
-function toastLong(msg){ toast(msg); clearTimeout(toastT); toastT = setTimeout(() => $('toast').classList.remove('on'), 6000); }
+let stockT;
+function stockToast(kind, names, cartNote){
+  const el = $('stockToast');
+  const list = names.length > 2 ? names.slice(0, 2).join(', ') + ' +' + (names.length - 2) : names.join(', ');
+  el.replaceChildren(h('i'), h('div', {}, h('b', { text:t(kind === 'back' ? 'stock.backT' : 'stock.soldT') }), h('span', { text:list + (cartNote ? ' · ' + t('stock.cart') : '') })));
+  el.classList.toggle('back', kind === 'back'); el.classList.add('on');
+  clearTimeout(stockT); stockT = setTimeout(() => el.classList.remove('on'), 5500);
+}
+$('stockToast').addEventListener('click', () => $('stockToast').classList.remove('on'));
 function applyStock(ids){
   if (!S.catalog) return;
   const set = new Set(ids), removed = [], sold = [], back = [];
@@ -911,10 +927,9 @@ function applyStock(ids){
   if (!removed.length && !sold.length && !back.length) return;
   if (removed.length) { saveCart(); S.confirm = false; S.error = ''; }
   syncAvail(); renderBrands(); renderChips(); renderProducts(); renderCart(); renderQuick();
-  const list = a => a.length > 3 ? a.slice(0, 3).join(', ') + ' +' + (a.length - 3) : a.join(', ');
-  if (removed.length) toastLong(t('stock.removed', { n:list(removed) }));
-  else if (sold.length) toastLong(t('stock.sold', { n:list(sold) }));
-  else if (back.length) toastLong(t('stock.back', { n:list(back) }));
+  if (removed.length) stockToast('sold', removed.concat(sold), true);
+  else if (sold.length) stockToast('sold', sold, false);
+  else stockToast('back', back, false);
 }
 let liveCtl = null, liveRetry = 0, liveTimer = null, liveBeat = 0;
 async function liveConnect(){
