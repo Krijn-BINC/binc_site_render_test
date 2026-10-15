@@ -508,87 +508,14 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .cl-qi:focus{width:3.2ch;color:#fff;border-color:var(--red);background:rgba(255,255,255,.08);text-align:center}
 @media(max-width:1000px){.brand{margin-right:24px}.cl-qi,.cl-qi:focus{font-size:16px}.top .btn-ghost.site,.top .logout.top-out{height:34px;padding:0 10px;font-size:.66rem}}
 
-/* ── ROUND 7: slim bestellen (voortgang, aanvullen, herbestellen, vertrouwen) ── */
-:root{--ok:#3fb27f}
-.hidden{display:none!important}
-.p-price,.cl-t,.total strong,.cbrand-s,.cb-tot,.ord-tot,.sumrows{font-variant-numeric:tabular-nums}
-.quick{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;margin:-8px 0 20px;background:var(--panel);border:1px solid var(--line2);border-left:3px solid var(--red);border-radius:6px}
-.quick-t{display:flex;flex-direction:column;gap:2px;min-width:0}
-.quick-t strong{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.04em;font-size:1rem}
-.quick-t span{color:var(--dim);font-size:.84rem}
-.quick-b{width:auto;flex:none;padding:9px 18px;font-size:.8rem}
-.cbrand .meter{margin:8px 0 4px}
-.cbrand .meter-t{margin:0 0 2px}
-.cfill{display:block;width:100%;margin-top:8px;padding:8px 10px;border:1px dashed rgba(255,255,255,.28);border-radius:4px;color:#fff;font-size:.8rem;font-weight:600;text-align:center;transition:.15s}
-.cfill:hover{border-color:var(--red);background:rgba(192,57,43,.14)}
-.xsell{padding:14px 0 6px}
-.xsell-h{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
-.xsell-i{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:10px 12px;margin-bottom:6px;border:1px solid var(--line2);border-radius:6px;text-align:left;transition:.15s}
-.xsell-i:hover{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.04)}
-.xsell-t{display:flex;flex-direction:column;min-width:0}
-.xsell-n{font-weight:600;font-size:.92rem}
-.xsell-m{font-size:.76rem;color:var(--faint)}
-.xsell-go{font-size:.78rem;font-weight:600;color:var(--red2);white-space:nowrap}
-.sumrows{display:flex;flex-direction:column;gap:2px;margin:2px 0 4px;font-size:.84rem;color:var(--dim)}
-.sumrows div{display:flex;justify-content:space-between}
-.total{align-items:baseline}
-.total span{font-size:.9rem}
-.cfix{margin:8px 0 0;font-size:.78rem;color:#ff9d92;text-align:center}
-.btn-red:disabled{opacity:.45;cursor:not-allowed}
-.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 14px;margin-top:10px;font-size:.74rem;color:var(--faint)}
-.confirm{display:flex;align-items:flex-start;gap:12px;margin:14px 0 12px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.78rem;line-height:1.5;color:var(--dim);cursor:pointer;transition:color .15s}
-.confirm:has(input:checked){color:var(--text)}
-.confirm:has(input:focus-visible) input{outline:2px solid var(--red2);outline-offset:2px}
-.confirm input{appearance:none;-webkit-appearance:none;flex:none;width:18px;height:18px;margin:1px 0 0;border:1.5px solid rgba(255,255,255,.45);border-radius:3px;background:transparent center/12px no-repeat;cursor:pointer;transition:background-color .15s,border-color .15s}
-.confirm input:hover{border-color:#fff}
-.confirm input:checked{background-color:var(--red);border-color:var(--red);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")}
-.confirm input:focus{outline:none}
-.p-sku.ean{display:flex;flex-wrap:wrap;gap:0 12px;font-variant-numeric:tabular-nums}
-.trust a{color:var(--faint);text-decoration:none}.trust a:hover{color:#fff}
-@media(max-width:700px){.quick{flex-direction:column;align-items:stretch}.quick-b{width:100%}}
-@media(max-width:900px){.prow.nothumb{grid-template-columns:minmax(0,1fr) auto}.prow.nothumb .p-price{grid-column:1}.prow.nothumb .p-act{grid-column:2}}
-.pill-old{background:rgba(255,255,255,.08);color:var(--dim);border-color:var(--line2)}
-.pill-done,.pill-pending{display:inline-flex;align-items:center;gap:8px;padding:0;background:transparent;border:0;border-radius:0;color:var(--dim);font-weight:600;letter-spacing:.1em}
-.pill-done::before,.pill-pending::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(63,178,127,.7)}
-.pill-pending::before{background:rgba(240,173,50,.7)}
-.pill-declined{background:rgba(229,72,77,.14);color:#e5484d;border-color:rgba(229,72,77,.4)}
-.ord-h .c-status{min-width:0}
-
-/* ── ROUND 6: rood wis-kruisje, rustigere geselecteerde rij, winkelwagen krijgt altijd ruimte ── */
-.search input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:block;width:16px;height:16px;margin:0 0 0 8px;cursor:pointer;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e74c3c' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center/16px 16px no-repeat}
-.search input::-webkit-search-cancel-button:hover{filter:brightness(1.25)}
-.prow.in{background:rgba(255,255,255,.028);box-shadow:none;border-bottom-color:transparent}
-.cart{overflow-y:auto;overflow-x:hidden}
-.cart-h{flex:none}
-.cart-body{flex:1 0 auto;min-height:min(300px,42vh)}
-.cart-foot{flex:none}
-.confirm{margin:10px 0;padding:10px 0}
-.trust{margin-top:8px}
-.cart,.cart-body{scrollbar-width:none;-ms-overflow-style:none}
-.cart::-webkit-scrollbar,.cart-body::-webkit-scrollbar{display:none;width:0;height:0}
-html,body,*{scrollbar-width:none;-ms-overflow-style:none}
-html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{display:none;width:0;height:0}
-
-/* ── ROUND 7: merk-tabs passen altijd, badge heeft vaste breedte (99+) ── */
-.brand-b{width:38px;min-width:38px;height:20px;line-height:20px;padding:0;text-align:center;overflow:hidden;white-space:nowrap;margin:0 0 0 8px;flex:none}
-@media(min-width:1001px){
-  .brands{overflow:visible}
-  .brand{flex:1 1 0;width:auto;min-width:0;margin-right:16px}
-  .brand:last-child{margin-right:0}
-}
-
-/* ── ROUND 7: uitverkocht strak: onderaan de groep, compacte rij, rustige badge ── */
-.so-sep{display:flex;align-items:center;gap:10px;padding:16px 10px 4px;font-family:var(--font-ui);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
-.so-sep::after{content:'';flex:1;height:1px;background:var(--line)}
-.prow.soldout{opacity:1;animation:none;background:none;box-shadow:none;padding-top:5px;padding-bottom:5px;border-bottom-color:transparent}
+/* ── ROUND 7: uitverkocht = gewone rij, alleen gedempt, met rustige badge ── */
+.prow.soldout{opacity:1;animation:none;background:none;box-shadow:none}
 .prow.soldout:hover{background:none}
-.prow.soldout .thumb{width:28px;height:28px;justify-self:center;filter:grayscale(1);opacity:.4}
+.prow.soldout .thumb{filter:grayscale(1);opacity:.4}
 .prow.soldout .p-name{text-decoration:none;font-weight:400;color:var(--faint)}
-.prow.soldout .p-sku{display:none}
 .prow.soldout .p-price{color:var(--faint)}
 .prow.soldout .so-badge{display:inline-flex;align-items:center;gap:8px;padding:0;border:0;border-radius:0;background:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--faint)}
 .prow.soldout .so-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(231,76,60,.65);flex:none}
-@media(max-width:560px){.so-sep{padding:14px 10px 2px}}
 </style>
 </head>
 <body>
@@ -912,11 +839,8 @@ function renderProducts(){
   const head = wt => h('div', { class:'phead' + (wt ? '' : ' nothumb') }, wt ? h('span') : null, h('span', { text:t('th.product') }), h('span', { text:t('th.price') }), h('span', { text:t('th.qty') }), h('span', { text:t('th.sub') }));
   groups.forEach((items, key) => {
     const wt = items.some(x => x.img);
-    const avail = items.filter(i => !i.soldOut), gone = items.filter(i => i.soldOut);
-    box.append(h('div', { class:'group-h', text:needle ? key : catLabel(key) }), h('div', { class:'plist' }, head(wt),
-      avail.map(i => makeRow(i, wt)),
-      gone.length ? h('div', { class:'so-sep', text:t('order.soldout') + ' · ' + gone.length }) : null,
-      gone.map(i => makeRow(i, wt))));
+    const sorted = items.filter(i => !i.soldOut).concat(items.filter(i => i.soldOut));
+    box.append(h('div', { class:'group-h', text:needle ? key : catLabel(key) }), h('div', { class:'plist' }, head(wt), sorted.map(i => makeRow(i, wt))));
   });
 }
 $('q').addEventListener('input', e => { S.q = e.target.value; renderProducts(); });
