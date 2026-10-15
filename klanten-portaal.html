@@ -122,6 +122,9 @@ a{color:inherit}
 .prow:last-child{border-bottom:none}
 .prow:hover{background:rgba(255,255,255,.03)}
 .prow.in{background:rgba(214,180,90,.07)}
+.prow.soldout{opacity:.55}.prow.soldout .p-name{text-decoration:line-through;text-decoration-color:rgba(255,255,255,.35)}
+.prow.soldout:hover{background:none}
+.so-badge{display:inline-block;padding:5px 12px;border-radius:99px;border:1px solid var(--line2);font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
 .thumb{width:44px;height:44px;border-radius:6px;background:var(--tone,#2a2a2e);display:grid;place-items:center;overflow:hidden;position:relative;margin-left:2px}
 .thumb img{width:100%;height:100%;object-fit:contain;padding:3px;position:relative;z-index:1}
 .thumb svg{width:22px;height:22px;stroke:rgba(255,255,255,.85);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -648,7 +651,7 @@ const TR = {
   'top.tag':'B2B Bestelportaal','top.site':'← Website','nav.logout':'Uitloggen','loading':'Portaal laden…',
   'nav.order':'Bestellen','nav.orders':'Mijn bestellingen','nav.account':'Mijn account','side.help':'Hulp nodig met een bestelling?',
   'order.title':'Nieuwe bestelling','order.sub':'Kies een merk, vul de aantallen in en plaats je bestelling direct bij BINC. Prijzen zijn je B2B-prijzen, exclusief btw.',
-  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.add':'Toevoegen','order.per':'per',
+  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.soldout':'Uitverkocht','order.add':'Toevoegen','order.per':'per',
   'cart.title':'Winkelwagen','cart.empty':'Je winkelwagen is leeg. Voeg producten toe om te bestellen.','cart.remove':'Verwijderen',
   'cart.branch':'Filiaal','cart.date':'Gewenste leverdatum','cart.ref':'Eigen referentie','cart.refPh':'bijv. inkoopnummer','cart.notes':'Opmerking','cart.notesPh':'Bijzonderheden voor levering',
   'cart.total':'Totaal','cart.vat':'Alle prijzen excl. btw','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
@@ -673,7 +676,7 @@ const TR = {
   'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
   'nav.order':'Order','nav.orders':'My orders','nav.account':'My account','side.help':'Need help with an order?',
   'order.title':'New order','order.sub':'Pick a brand, enter quantities and place your order directly with BINC. Prices are your B2B prices, excluding VAT.',
-  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.add':'Add','order.per':'per',
+  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.soldout':'Sold out','order.add':'Add','order.per':'per',
   'cart.title':'Cart','cart.empty':'Your cart is empty. Add products to place an order.','cart.remove':'Remove',
   'cart.branch':'Branch','cart.date':'Preferred delivery date','cart.ref':'Your reference','cart.refPh':'e.g. purchase number','cart.notes':'Note','cart.notesPh':'Delivery instructions',
   'cart.total':'Total','cart.vat':'All prices excl. VAT','cart.place':'Place order','cart.placing':'Placing…',
@@ -743,7 +746,7 @@ async function api(path, opt){
 const S = { confirm:false, view:'order', catalog:null, items:new Map(), brandId:null, cat:'', q:'', cart:{}, klant:null, orders:null, branch:'', date:'', ref:'', notes:'', placing:false, error:'', done:null, expanded:new Set(), cartOpen:false, dtlOpen:false, fold:new Set() };
 try { S.cart = JSON.parse(PortalSession.get(CART_KEY) || '{}') || {}; } catch(_){}
 const saveCart = () => { try { PortalSession.set(CART_KEY, JSON.stringify(S.cart)); } catch(_){} try { if (window.PortalTrack) PortalTrack.cart(cartCount(), cartTotal()); } catch(_){} };
-const cartLines = () => Object.keys(S.cart).filter(id => S.cart[id] > 0 && S.items.has(id)).map(id => ({ it:S.items.get(id), qty:S.cart[id] }));
+const cartLines = () => Object.keys(S.cart).filter(id => S.cart[id] > 0 && S.items.has(id) && !S.items.get(id).soldOut).map(id => ({ it:S.items.get(id), qty:S.cart[id] }));
 const cartCount = () => cartLines().reduce((s, l) => s + l.qty, 0);
 const brandLines = b => cartLines().filter(l => l.it.brandId === b.id);
 const brandQty = b => brandLines(b).reduce((s, l) => s + l.qty, 0);
@@ -840,6 +843,14 @@ function renderChips(){
   cats.forEach(c => box.append(h('button', { class:'chip' + (S.cat === c ? ' on' : ''), type:'button', text:catLabel(c), onclick:() => { S.cat = c; renderChips(); renderProducts(); } })));
 }
 function makeRow(it, withThumb){
+  if (it.soldOut) {
+    const unitSO = it.unit && it.unit !== 'stuk' ? it.unit : t('unit.stuks').replace(/s$/, '');
+    return h('div', { class:'prow soldout' + (withThumb ? '' : ' nothumb') },
+      withThumb ? makeThumb(it) : null,
+      h('div', { class:'p-main' }, h('div', { class:'p-name', text:it.name }), skuLine(it)),
+      h('div', { class:'p-price' }, money(it.price), h('small', { text:' ' + t('order.price', { u:unitSO }) })),
+      h('div', { class:'p-act' }, h('span', { class:'so-badge', text:t('order.soldout') })), h('div', { class:'p-sum' }));
+  }
   const unit = it.unit && it.unit !== 'stuk' ? it.unit : t('unit.stuks').replace(/s$/, '');
   const input = h('input', { type:'number', min:'0', max:'999', inputmode:'numeric', 'aria-label':it.name });
   const stepper = h('div', { class:'step' },
@@ -875,6 +886,7 @@ $('q').addEventListener('input', e => { S.q = e.target.value; renderProducts(); 
 
 let qtyBusy = false;
 function setQty(id, v){
+  if ((S.items.get(id) || {}).soldOut) return;   // uitverkocht: niet toevoegen
   if (qtyBusy) return;                 // verwijderen van een focus-veld vuurt 'change'/'blur': negeren
   const q = clampQty(v);
   if ((S.cart[id] || 0) === q) { const r = cardRefs.get(id); if (r) r.sync(q); return; }   // niets veranderd (bv. ongeldige invoer)
@@ -905,13 +917,13 @@ function goBrand(id){
   renderBrands(); renderChips(); renderProducts(); closeCart(); show('order');
 }
 function reorder(o){
-  o.items.forEach(i => { if (S.items.has(i.id)) S.cart[i.id] = clampQty((S.cart[i.id] || 0) + i.qty); });
+  o.items.forEach(i => { if (S.items.has(i.id) && !S.items.get(i.id).soldOut) S.cart[i.id] = clampQty((S.cart[i.id] || 0) + i.qty); });
   saveCart(); S.done = null; renderProducts(); renderCart(); show('order'); toast(t('orders.reordered'));
 }
 function renderQuick(){
   const box = $('quick'); if (!box) return;
   const o = S.orders && S.orders[0];
-  const show_ = o && !S.done && !cartCount() && o.items.some(i => S.items.has(i.id));
+  const show_ = o && !S.done && !cartCount() && o.items.some(i => S.items.has(i.id) && !S.items.get(i.id).soldOut);
   box.classList.toggle('hidden', !show_); box.replaceChildren(); if (!show_) return;
   box.append(h('div', { class:'quick-t' }, h('strong', { text:t('quick.title') }),
       h('span', { text:t('quick.sub', { date:fmtDate(o.createdAt, true), n:o.items.reduce((s, i) => s + i.qty, 0), total:o.total == null ? dash : money(o.total) }) })),
@@ -1131,7 +1143,8 @@ function applyLang(){
     S.catalog = cat; S.klant = me.klant;
     cat.brands.forEach(b => b.items.forEach(i => S.items.set(i.id, Object.assign({}, i, { brandId:b.id, brandName:b.name }))));
     S.brandId = cat.brands[0].id;
-    Object.keys(S.cart).forEach(id => { if (!S.items.has(id)) delete S.cart[id]; });
+    Object.keys(S.cart).forEach(id => { if (!S.items.has(id) || S.items.get(id).soldOut) delete S.cart[id]; });
+    saveCart();
     $('boot').classList.add('hidden');
     applyLang(); show('order'); loadOrdersQuiet();
   } catch (e) {
