@@ -655,7 +655,7 @@ const TR = {
   'top.tag':'B2B Bestelportaal','top.site':'← Website','nav.logout':'Uitloggen','loading':'Portaal laden…',
   'nav.order':'Bestellen','nav.orders':'Mijn bestellingen','nav.account':'Mijn account','side.help':'Hulp nodig met een bestelling?',
   'order.title':'Nieuwe bestelling','order.sub':'Kies een merk, vul de aantallen in en plaats je bestelling direct bij BINC. Prijzen zijn je B2B-prijzen, exclusief btw.',
-  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.soldout':'Uitverkocht','order.availOnly':'Alleen beschikbaar','order.add':'Toevoegen','order.per':'per',
+  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.soldout':'Uitverkocht','order.availOnly':'Alleen beschikbaar','stock.removed':'Zojuist uitverkocht en uit je winkelwagen gehaald: {n}','stock.sold':'Zojuist uitverkocht: {n}','stock.back':'Weer beschikbaar: {n}','order.add':'Toevoegen','order.per':'per',
   'cart.title':'Winkelwagen','cart.empty':'Je winkelwagen is leeg. Voeg producten toe om te bestellen.','cart.remove':'Verwijderen',
   'cart.branch':'Filiaal','cart.date':'Gewenste leverdatum','cart.ref':'Eigen referentie','cart.refPh':'bijv. inkoopnummer','cart.notes':'Opmerking','cart.notesPh':'Bijzonderheden voor levering',
   'cart.total':'Totaal','cart.vat':'Alle prijzen excl. btw','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
@@ -680,7 +680,7 @@ const TR = {
   'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
   'nav.order':'Order','nav.orders':'My orders','nav.account':'My account','side.help':'Need help with an order?',
   'order.title':'New order','order.sub':'Pick a brand, enter quantities and place your order directly with BINC. Prices are your B2B prices, excluding VAT.',
-  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.soldout':'Sold out','order.availOnly':'Available only','order.add':'Add','order.per':'per',
+  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.soldout':'Sold out','order.availOnly':'Available only','stock.removed':'Just sold out and removed from your cart: {n}','stock.sold':'Just sold out: {n}','stock.back':'Back in stock: {n}','order.add':'Add','order.per':'per',
   'cart.title':'Cart','cart.empty':'Your cart is empty. Add products to place an order.','cart.remove':'Remove',
   'cart.branch':'Branch','cart.date':'Preferred delivery date','cart.ref':'Your reference','cart.refPh':'e.g. purchase number','cart.notes':'Note','cart.notesPh':'Delivery instructions',
   'cart.total':'Total','cart.vat':'All prices excl. VAT','cart.place':'Place order','cart.placing':'Placing…',
@@ -892,6 +892,59 @@ function syncAvail(){
   const any = S.catalog && S.catalog.brands.some(x => x.items.some(i => i.soldOut));
   b.classList.toggle('hidden', !any); b.classList.toggle('on', S.availOnly); b.setAttribute('aria-pressed', String(S.availOnly));
 }
+/* ═══════════ LIVE UITVERKOCHT (verbinding met de server) ═══════════ */
+function toastLong(msg){ toast(msg); clearTimeout(toastT); toastT = setTimeout(() => $('toast').classList.remove('on'), 6000); }
+function applyStock(ids){
+  if (!S.catalog) return;
+  const set = new Set(ids), removed = [], sold = [], back = [];
+  const flag = it => {
+    const so = set.has(it.id);
+    if (!!it.soldOut === so) return false;
+    it.soldOut = so; return true;
+  };
+  S.catalog.brands.forEach(b => b.items.forEach(flag));
+  S.items.forEach(it => {
+    if (!flag(it)) return;
+    if (it.soldOut) { if (S.cart[it.id]) { removed.push(it.name); delete S.cart[it.id]; } else sold.push(it.name); }
+    else back.push(it.name);
+  });
+  if (!removed.length && !sold.length && !back.length) return;
+  if (removed.length) { saveCart(); S.confirm = false; S.error = ''; }
+  syncAvail(); renderBrands(); renderChips(); renderProducts(); renderCart(); renderQuick();
+  const list = a => a.length > 3 ? a.slice(0, 3).join(', ') + ' +' + (a.length - 3) : a.join(', ');
+  if (removed.length) toastLong(t('stock.removed', { n:list(removed) }));
+  else if (sold.length) toastLong(t('stock.sold', { n:list(sold) }));
+  else if (back.length) toastLong(t('stock.back', { n:list(back) }));
+}
+let liveCtl = null, liveRetry = 0, liveTimer = null, liveBeat = 0;
+async function liveConnect(){
+  if (liveCtl || !token) return;
+  clearTimeout(liveTimer);
+  const ctl = new AbortController(); liveCtl = ctl; liveBeat = Date.now();
+  try {
+    const r = await fetch(API + '/api/klant/stock-stream', { headers:{ Authorization:'Bearer ' + token, Accept:'text/event-stream' }, signal:ctl.signal });
+    if (r.status === 401) { logout(); return; }
+    if (!r.ok || !r.body) throw new Error('stream');
+    liveRetry = 0;
+    const rd = r.body.getReader(), dec = new TextDecoder(); let buf = '';
+    for (;;) {
+      const { done, value } = await rd.read(); if (done) break;
+      liveBeat = Date.now(); buf += dec.decode(value, { stream:true });
+      let i; while ((i = buf.indexOf('\n\n')) >= 0) {
+        const block = buf.slice(0, i); buf = buf.slice(i + 2);
+        const m = /^data: (.*)$/m.exec(block);
+        if (m) { try { applyStock(JSON.parse(m[1]).soldOut || []); } catch(_){} }
+      }
+    }
+  } catch(_){}
+  liveCtl = null;
+  liveTimer = setTimeout(liveConnect, Math.min(15000, 1000 * Math.pow(2, liveRetry++)));
+}
+// Stille verbinding (>60s niets, ook geen hartslag) = dood: opnieuw verbinden
+setInterval(() => { if (liveCtl && Date.now() - liveBeat > 60000) liveCtl.abort(); }, 10000);
+// Terug op de tab (telefoon uit slaapstand): meteen opnieuw verbinden, de server stuurt de volledige stand
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { if (liveCtl && Date.now() - liveBeat > 45000) liveCtl.abort(); else if (!liveCtl) { liveRetry = 0; liveConnect(); } } });
+
 $('availOnly').addEventListener('click', () => { S.availOnly = !S.availOnly; syncAvail(); renderProducts(); });
 
 let qtyBusy = false;
@@ -1156,7 +1209,7 @@ function applyLang(){
     Object.keys(S.cart).forEach(id => { if (!S.items.has(id) || S.items.get(id).soldOut) delete S.cart[id]; });
     saveCart();
     $('boot').classList.add('hidden');
-    applyLang(); show('order'); loadOrdersQuiet();
+    applyLang(); show('order'); loadOrdersQuiet(); liveConnect();
   } catch (e) {
     if (e.message === '401') return;
     $('boot').replaceChildren(h('div', { style:'text-align:center' },
