@@ -311,14 +311,19 @@ dd{word-break:break-word}
 dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#fff;color:#000;padding:11px 18px;border-radius:4px;font-weight:600;font-size:.9rem;z-index:200;transition:.25s;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
-.stock-toast{position:fixed;left:50%;top:calc(var(--bar,0px) + 72px);z-index:210;width:max-content;max-width:min(420px,calc(100vw - 32px));display:flex;gap:11px;align-items:center;padding:11px 16px 11px 13px;background:var(--red,#c0392b);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:6px;box-shadow:0 10px 30px rgba(192,57,43,.38),0 2px 8px rgba(0,0,0,.4);cursor:pointer;opacity:0;transform:translate(-50%,-14px);pointer-events:none;transition:opacity .22s ease,transform .3s cubic-bezier(.2,.9,.3,1.1)}
+.stock-toast{position:fixed;left:50%;bottom:16px;z-index:210;width:max-content;max-width:min(560px,calc(100vw - 24px));display:flex;gap:9px;align-items:center;padding:7px 14px 7px 9px;background:#211416;color:#f2f2f2;border:1px solid rgba(231,76,60,.32);border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,.5);cursor:pointer;opacity:0;transform:translate(-50%,12px);pointer-events:none;transition:opacity .2s ease,transform .28s cubic-bezier(.2,.9,.3,1.1),bottom .2s ease}
 .stock-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
-.stock-toast i{flex:none;width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E") center/10px no-repeat}
-.stock-toast.back{background:#17171a;border-color:var(--line2);box-shadow:0 10px 30px rgba(0,0,0,.55)}
-.stock-toast.back i{background:rgba(46,204,113,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232ecc71' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/10px no-repeat}
-.stock-toast b{display:block;font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
-.stock-toast span{display:block;margin-top:2px;font-size:.84rem;line-height:1.35;color:rgba(255,255,255,.88)}
+.stock-toast i{flex:none;width:16px;height:16px;border-radius:50%;background:rgba(231,76,60,.22) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e74c3c' stroke-width='3.2' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E") center/9px no-repeat}
+.stock-toast.back{background:#161a17;border-color:rgba(46,204,113,.28)}
+.stock-toast.back i{background:rgba(46,204,113,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232ecc71' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/9px no-repeat}
+.stock-toast div{min-width:0;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.stock-toast b{flex:none;font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#ec6a5c}
+.stock-toast.back b{color:#f2f2f2}
+.stock-toast span{min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:.8rem;color:#d6d6d9}
+.stock-toast em{flex:none;font-style:normal;font-size:.76rem;color:#8d8d93}
+.stock-toast em:before{content:'· '}
 .stock-toast.back span{color:#a8a8ad}
+@media(max-width:520px){.stock-toast div{flex-wrap:wrap;white-space:normal;row-gap:1px}.stock-toast span{overflow:visible;text-overflow:clip;flex:0 1 auto}.stock-toast em{flex:0 0 auto;flex-basis:100%}.stock-toast em:before{content:none}}
 @media(prefers-reduced-motion:reduce){.stock-toast{transition:opacity .01s}}
 .loading{display:grid;place-items:center;min-height:60vh;color:var(--dim)}
 
@@ -665,7 +670,7 @@ const TR = {
   'top.tag':'B2B Bestelportaal','top.site':'← Website','nav.logout':'Uitloggen','loading':'Portaal laden…',
   'nav.order':'Bestellen','nav.orders':'Mijn bestellingen','nav.account':'Mijn account','side.help':'Hulp nodig met een bestelling?',
   'order.title':'Nieuwe bestelling','order.sub':'Kies een merk, vul de aantallen in en plaats je bestelling direct bij BINC. Prijzen zijn je B2B-prijzen, exclusief btw.',
-  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.soldout':'Uitverkocht','order.availOnly':'Alleen beschikbaar','stock.soldT':'Net uitverkocht','stock.backT':'Weer leverbaar','stock.cart':'Uit je winkelwagen gehaald','order.add':'Toevoegen','order.per':'per',
+  'order.search':'Zoek een product…','order.all':'Alles','order.none':'Geen producten gevonden.','order.soldout':'Uitverkocht','order.availOnly':'Alleen beschikbaar','stock.soldT':'Net uitverkocht','stock.backT':'Weer leverbaar','stock.cart':'uit winkelwagen gehaald','order.add':'Toevoegen','order.per':'per',
   'cart.title':'Winkelwagen','cart.empty':'Je winkelwagen is leeg. Voeg producten toe om te bestellen.','cart.remove':'Verwijderen',
   'cart.branch':'Filiaal','cart.date':'Gewenste leverdatum','cart.ref':'Eigen referentie','cart.refPh':'bijv. inkoopnummer','cart.notes':'Opmerking','cart.notesPh':'Bijzonderheden voor levering',
   'cart.total':'Totaal','cart.vat':'Alle prijzen excl. btw','cart.place':'Bestelling plaatsen','cart.placing':'Plaatsen…',
@@ -690,7 +695,7 @@ const TR = {
   'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
   'nav.order':'Order','nav.orders':'My orders','nav.account':'My account','side.help':'Need help with an order?',
   'order.title':'New order','order.sub':'Pick a brand, enter quantities and place your order directly with BINC. Prices are your B2B prices, excluding VAT.',
-  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.soldout':'Sold out','order.availOnly':'Available only','stock.soldT':'Just sold out','stock.backT':'Back in stock','stock.cart':'Removed from your cart','order.add':'Add','order.per':'per',
+  'order.search':'Search a product…','order.all':'All','order.none':'No products found.','order.soldout':'Sold out','order.availOnly':'Available only','stock.soldT':'Just sold out','stock.backT':'Back in stock','stock.cart':'removed from cart','order.add':'Add','order.per':'per',
   'cart.title':'Cart','cart.empty':'Your cart is empty. Add products to place an order.','cart.remove':'Remove',
   'cart.branch':'Branch','cart.date':'Preferred delivery date','cart.ref':'Your reference','cart.refPh':'e.g. purchase number','cart.notes':'Note','cart.notesPh':'Delivery instructions',
   'cart.total':'Total','cart.vat':'All prices excl. VAT','cart.place':'Place order','cart.placing':'Placing…',
@@ -907,7 +912,15 @@ let stockT;
 function stockToast(kind, names, cartNote){
   const el = $('stockToast');
   const list = names.length > 2 ? names.slice(0, 2).join(', ') + ' +' + (names.length - 2) : names.join(', ');
-  el.replaceChildren(h('i'), h('div', {}, h('b', { text:t(kind === 'back' ? 'stock.backT' : 'stock.soldT') }), h('span', { text:list + (cartNote ? ' · ' + t('stock.cart') : '') })));
+  el.replaceChildren(h('i'), h('div', {}, h('b', { text:t(kind === 'back' ? 'stock.backT' : 'stock.soldT') }), h('span', { text:list }), cartNote ? h('em', { text:t('stock.cart') }) : null));
+  // Onderaan, maar boven de winkelwagenbalk en het menu (mobiel) uit
+  let lift = 16;
+  [$('cartbar'), document.querySelector('nav.side')].forEach(n => {
+    if (!n) return; const r = n.getBoundingClientRect(), cs = getComputedStyle(n);
+    if (cs.display === 'none' || cs.visibility === 'hidden' || n.classList.contains('zero') || r.height === 0 || r.top < innerHeight / 2) return;
+    lift = Math.max(lift, innerHeight - r.top + 10);
+  });
+  el.style.bottom = lift + 'px';
   el.classList.toggle('back', kind === 'back'); el.classList.add('on');
   clearTimeout(stockT); stockT = setTimeout(() => el.classList.remove('on'), 5500);
 }
