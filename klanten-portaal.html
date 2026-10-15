@@ -576,6 +576,19 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{display:non
   .brand{flex:1 1 0;width:auto;min-width:0;margin-right:16px}
   .brand:last-child{margin-right:0}
 }
+
+/* ── ROUND 7: uitverkocht strak: onderaan de groep, compacte rij, rustige badge ── */
+.so-sep{display:flex;align-items:center;gap:10px;padding:16px 10px 4px;font-family:var(--font-ui);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.so-sep::after{content:'';flex:1;height:1px;background:var(--line)}
+.prow.soldout{opacity:1;animation:none;background:none;box-shadow:none;padding-top:5px;padding-bottom:5px;border-bottom-color:transparent}
+.prow.soldout:hover{background:none}
+.prow.soldout .thumb{width:28px;height:28px;justify-self:center;filter:grayscale(1);opacity:.4}
+.prow.soldout .p-name{text-decoration:none;font-weight:400;color:var(--faint)}
+.prow.soldout .p-sku{display:none}
+.prow.soldout .p-price{color:var(--faint)}
+.prow.soldout .so-badge{display:inline-flex;align-items:center;gap:8px;padding:0;border:0;border-radius:0;background:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--faint)}
+.prow.soldout .so-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(231,76,60,.65);flex:none}
+@media(max-width:560px){.so-sep{padding:14px 10px 2px}}
 </style>
 </head>
 <body>
@@ -898,7 +911,12 @@ function renderProducts(){
   const groups = new Map(); list.forEach(i => { const k = needle ? (S.items.get(i.id) || {}).brandName : i.category; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(i); });
   const head = wt => h('div', { class:'phead' + (wt ? '' : ' nothumb') }, wt ? h('span') : null, h('span', { text:t('th.product') }), h('span', { text:t('th.price') }), h('span', { text:t('th.qty') }), h('span', { text:t('th.sub') }));
   groups.forEach((items, key) => {
-    box.append(h('div', { class:'group-h', text:needle ? key : catLabel(key) }), h('div', { class:'plist' }, head(items.some(i => i.img)), items.map(i => makeRow(i, items.some(x => x.img)))));
+    const wt = items.some(x => x.img);
+    const avail = items.filter(i => !i.soldOut), gone = items.filter(i => i.soldOut);
+    box.append(h('div', { class:'group-h', text:needle ? key : catLabel(key) }), h('div', { class:'plist' }, head(wt),
+      avail.map(i => makeRow(i, wt)),
+      gone.length ? h('div', { class:'so-sep', text:t('order.soldout') + ' · ' + gone.length }) : null,
+      gone.map(i => makeRow(i, wt))));
   });
 }
 $('q').addEventListener('input', e => { S.q = e.target.value; renderProducts(); });
