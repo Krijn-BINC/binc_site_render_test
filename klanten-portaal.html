@@ -124,7 +124,7 @@ a{color:inherit}
 .prow.in{background:rgba(214,180,90,.07)}
 .prow.soldout{opacity:.55;animation:soFade .35s ease both}
 @keyframes soFade{from{opacity:1}to{opacity:.55}}
-.chip.avail{margin-right:2px}.chip.avail.on{background:#fff;color:#000;border-color:#fff}
+
 @media(prefers-reduced-motion:reduce){.prow.soldout{animation:none}}.prow.soldout .p-name{text-decoration:line-through;text-decoration-color:rgba(255,255,255,.35)}
 .prow.soldout:hover{background:none}
 .so-badge{display:inline-block;padding:5px 12px;border-radius:99px;border:1px solid var(--line2);font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
@@ -646,6 +646,16 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .prow.soldout .p-price{color:var(--faint)}
 .prow.soldout .so-badge{display:inline-flex;align-items:center;gap:8px;padding:0;border:0;border-radius:0;background:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--faint)}
 .prow.soldout .so-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(231,76,60,.65);flex:none}
+
+/* filters: geselecteerd = licht rood */
+.chip.on{background:rgba(192,57,43,.18);color:#fff;border-color:var(--red)}
+.chip.on:hover{border-color:var(--red2)}
+/* merk-tabs: gelijke breedte en gelijke tussenruimte, badge altijd zichtbaar */
+.brands{display:flex;gap:24px;margin-right:0}
+.brands .brand{flex:1 1 0;width:auto;min-width:max-content;margin:0;padding:10px 2px}
+.brands .brand-n{overflow:visible;text-overflow:clip}
+.brands .brand-b{flex:none;width:auto;min-width:22px;padding:0 6px;margin:0 0 0 10px}
+@media(max-width:1000px){.brands{gap:16px}.brands .brand{width:auto;margin:0}.brands .brand-b{width:auto;min-width:22px}}
 </style>
 </head>
 <body>
@@ -698,7 +708,6 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
               <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
               <input type="search" id="q" data-i18n-ph="order.search" placeholder="Zoek een product…" autocomplete="off"/>
             </div>
-            <button class="chip avail hidden" id="availOnly" type="button" aria-pressed="false" data-i18n="order.availOnly">Alleen beschikbaar</button>
             <div class="chips" id="chips"></div>
           </div>
           <div id="products"></div>
@@ -1052,7 +1061,7 @@ setInterval(() => { if (liveCtl && Date.now() - liveBeat > 60000) liveCtl.abort(
 // Terug op de tab (telefoon uit slaapstand): meteen opnieuw verbinden, de server stuurt de volledige stand
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { if (liveCtl && Date.now() - liveBeat > 45000) liveCtl.abort(); else if (!liveCtl) { liveRetry = 0; liveConnect(); } } });
 
-$('availOnly').addEventListener('click', () => { S.availOnly = !S.availOnly; syncAvail(); renderProducts(); });
+
 
 let qtyBusy = false;
 function setQty(id, v){
