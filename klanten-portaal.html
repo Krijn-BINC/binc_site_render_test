@@ -553,6 +553,8 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .confirm span{font-size:.8rem;line-height:1.5;color:var(--dim);transition:color .15s}
 .confirm:has(input:checked){border-color:rgba(192,57,43,.65);background:rgba(192,57,43,.08)}
 .confirm:has(input:checked) span{color:var(--text)}
+.confirm a{display:inline-block;margin-top:2px;color:var(--text);text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px;transition:text-decoration-color .15s}
+.confirm a:hover{text-decoration-color:var(--red2)}
 .trust{margin-top:14px;text-align:center;font-size:.78rem}
 .trust a{display:inline-flex;align-items:center;gap:7px;color:var(--faint);text-decoration:none;transition:color .15s}
 .trust a::before{content:"";flex:none;width:13px;height:13px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E") center/contain no-repeat}
@@ -728,7 +730,7 @@ const TR = {
   'cart.itemsN':'{n} stuks',
   'cart.fill':'Vul aan tot minimum (+{n})','cart.xsell':'Nog niet in je bestelling','cart.xsellGo':'Bekijk','cart.subtotal':'Producten','cart.exVat':'excl. btw',
   'quick.title':'Laatste bestelling','quick.sub':'{date} · {n} stuks · {total}','quick.btn':'Opnieuw bestellen',
-  'trust.help':'Vragen? Bel 013 203 2643','cart.confirm':'Hierbij verklaar ik dat deze bestelling juist is geplaatst en dat ik de producten en aantallen heb gecontroleerd.'
+  'trust.help':'Vragen? Bel 013 203 2643','cart.terms':'Lees de bestelvoorwaarden','cart.confirm':'Hierbij verklaar ik dat deze bestelling juist is geplaatst en dat ik de producten en aantallen heb gecontroleerd.'
  },
  en:{
   'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
@@ -753,7 +755,7 @@ const TR = {
   'cart.itemsN':'{n} items',
   'cart.fill':'Fill to minimum (+{n})','cart.xsell':'Not in your order yet','cart.xsellGo':'View','cart.subtotal':'Products','cart.exVat':'excl. VAT',
   'quick.title':'Last order','quick.sub':'{date} · {n} items · {total}','quick.btn':'Reorder',
-  'trust.help':'Questions? Call 013 203 2643','cart.confirm':'I hereby declare that this order has been placed correctly and that I have checked the products and quantities.'
+  'trust.help':'Questions? Call 013 203 2643','cart.terms':'Read the order terms','cart.confirm':'I hereby declare that this order has been placed correctly and that I have checked the products and quantities.'
  }
 };
 let lang = 'nl'; try { lang = localStorage.getItem('binc_lang') || 'nl'; } catch(_){}
@@ -1155,7 +1157,7 @@ function renderCart(){
     h('div', { class:'total' }, h('span', { text:t('cart.total') + ' ' + t('cart.exVat') }), h('strong', { text:money(total) })),
     h('label', { class:'confirm' },
       h('input', { type:'checkbox', id:'fConfirm', checked:S.confirm, onchange:e => { S.confirm = e.target.checked; const b = $('placeBtn'); if (b) b.disabled = S.placing || warnings.length > 0 || !S.confirm; } }),
-      h('span', { text:t('cart.confirm') })),
+      h('span', {}, t('cart.confirm') + ' ', h('a', { href:'bestelvoorwaarden.html', target:'_blank', rel:'noopener', text:t('cart.terms') }))),
     h('button', { class:'btn-red', id:'placeBtn', type:'button', disabled:S.placing || warnings.length > 0 || !S.confirm, text:S.placing ? t('cart.placing') : t('cart.place'), onclick:placeOrder }),
     warnings.length ? h('div', { class:'cfix', text:t('cart.fixMin') }) : null,
     h('div', { class:'trust' }, h('a', { href:'tel:+31132032643', text:t('trust.help') })),
