@@ -831,9 +831,9 @@ const EANS = {
   'fsg:watermelon': { ce:'8719327068625', he:'8719327524404' },
   // Gold Dry (EAN per tray)
   'gd:op9u': { he:'8720938023002' }, 'gd:kg3w': { he:'8719327554371' }, 'gd:79Ki': { he:'8720892070302' },
-  'gd:qA18': { he:'8720938023071' }, 'gd:7eP6': { he:'8720938023095' },
+  'gd:qA18': { he:'8720938023071' }, 'gd:7eP6': { he:'8720938023095' }, 'gd:e9iU': { he:'8720938023378' },
   'gd:2yGP': { he:'8720938023026' }, 'gd:woFY': { he:'8720938023040' }, 'gd:iZPh': { he:'8720938023057' },
-  'gd:a4mQ': { he:'8720938023200' }, 'gd:1ecL': { he:'8720938023323' }
+  'gd:a4mQ': { he:'8720938023200' }, 'gd:1ecL': { he:'8720938023323' }, 'gd:b9jk': { he:'8720938023385' }
 };
 const skuLine = it => {
   const e = EANS[it.id];
@@ -844,31 +844,6 @@ const skuLine = it => {
 const CAT_LABELS = { 'frisdrank':'Sportwater', 'energy drink':'Party Punch', 'energydrink':'Party Punch', 'energy drinks':'Party Punch' };
 const catLabel = c => CAT_LABELS[String(c || '').trim().toLowerCase()] || c;
 const unitLabel = b => b.minQtyUnit === 'trays' ? t('unit.trays') : t('unit.stuks');
-
-// productfoto's Gold Dry (golddry.nl); gekoppeld op merk + smaak + soort (soda / premix / fles)
-const GD = 'https://golddry.nl/wp-content/uploads/';
-const GOLD_DRY_IMG = {
-  'soda:sky':      GD + '2024/07/Gold-Dry-250ml-Premium-Soda-Sky-12x-Hero-800px_New-745x745.png',
-  'soda:original': GD + '2024/01/Gold-Dry-250ml-Premium-Soda-Original-12x-Hero-800px-745x745.png',
-  'soda:eclipse':  GD + '2025/06/Gold-Dry-250ml-Premium-Soda-Eclipse-12x-Hero-800px-745x745.png',
-  'soda:dream':    GD + '2024/01/Gold-Dry-250ml-Premium-Soda-Dream-12x-Hero-800px-745x745.png',
-  'soda:unite':    GD + '2025/12/Gold-Dry-250ml-Premium-Soda-Unite-12x-Hero-800px-745x745.png',
-  'premix:unite':    GD + '2025/12/Gold-Dry-250ml-Premix-Unite-12x-Hero-800px.png',
-  'premix:original': GD + '2025/06/Gold-Dry-250ml-Premix-Original-12x-Hero-800px-745x745.png',
-  'premix:eclipse':  GD + '2025/06/Gold-Dry-250ml-Premix-Eclipse-12x-Hero-800px-745x745.png',
-  'premix:sky':      GD + '2025/06/Gold-Dry-250ml-Premix-Sky-12x-Hero-800px-745x745.png',
-  'premix:mindset':  GD + '2024/08/Gold-Dry-250ml-Premix-Mindset-12x-Hero-800px-745x745.png',
-  'fles:gin':   GD + '2024/09/Gold-Dry-Fles-Gin-70cl-Hero-800px.png',
-  'fles:vodka': GD + '2024/09/Gold-Dry-Fles-Vodka-300cl-Hero-800px-745x745.png'
-};
-function goldDryImg(it, brand){
-  const txt = [brand && brand.name, it.name, it.category].join(' ').toLowerCase();
-  if (!/gold\s*dry/.test(txt)) return '';
-  const flavor = (txt.match(/\b(sky|original|eclipse|dream|unite|mindset)\b/) || [])[1];
-  if (/\b(gin|vodka)\b/.test(txt)) return GOLD_DRY_IMG['fles:' + txt.match(/\b(gin|vodka)\b/)[1]] || '';
-  if (!flavor) return '';
-  return GOLD_DRY_IMG[(/premix|pre-mix/.test(txt) ? 'premix:' : 'soda:') + flavor] || '';
-}
 
 // kleur voor producten zonder eigen foto/kleur
 const TONES = [[/lemon|citroen/i,'#d9b92a'],[/blueberry|blue|blauw/i,'#3f5fd0'],[/water ?mel/i,'#e0506a'],[/orange/i,'#e8801a'],[/mango/i,'#e6a91f'],[/punch/i,'#d22f46'],
@@ -1352,7 +1327,7 @@ function applyLang(){
   try {
     const [cat, me] = await Promise.all([api('/api/klant/catalog'), api('/api/klant/me')]);
     S.catalog = cat; S.klant = me.klant;
-    cat.brands.forEach(b => b.items.forEach(i => { const g = goldDryImg(i, b); if (g) i.img = g; S.items.set(i.id, Object.assign({}, i, { brandId:b.id, brandName:b.name })); }));
+    cat.brands.forEach(b => b.items.forEach(i => S.items.set(i.id, Object.assign({}, i, { brandId:b.id, brandName:b.name }))));
     S.brandId = cat.brands[0].id;
     Object.keys(S.cart).forEach(id => { if (!S.items.has(id) || S.items.get(id).soldOut) delete S.cart[id]; });
     saveCart();
