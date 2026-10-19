@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bestelvoorwaarden — BINC International</title>
+<meta name="robots" content="noindex"/>
+<link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/FAICON_BINC.png?v=1765981771"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0b;--panel:#121214;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--red:#c0392b;--red2:#e74c3c;--gold:#d6b45a;
+  --text:#f4f4f5;--dim:rgba(255,255,255,.66);--faint:rgba(255,255,255,.42);
+  --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;--font-ui:'Rajdhani',sans-serif}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+::selection{background:var(--red);color:#fff}
+a{color:inherit}
+
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 max(20px,4vw);background:rgba(10,10,11,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top img{height:26px;display:block}
+.top-r{display:flex;align-items:center;gap:14px}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--dim);transition:color .15s}
+.back:hover{color:#fff}
+.back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lang{display:flex;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+.lang button{font-family:var(--font-ui);font-weight:700;font-size:.7rem;letter-spacing:.16em;padding:6px 11px;color:var(--faint);background:transparent;border:0;cursor:pointer;transition:.15s}
+.lang button:hover{color:#fff}
+.lang button.on{background:var(--red);color:#fff}
+
+main{max-width:760px;margin:0 auto;padding:56px 20px 80px}
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red2)}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--red)}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,6vw,3.2rem);line-height:1.02;letter-spacing:.005em;text-transform:uppercase;margin:14px 0 14px}
+.lead{color:var(--dim);font-size:1.02rem;max-width:60ch}
+
+.decl{margin:34px 0 8px;padding:20px 22px;border:1px solid rgba(192,57,43,.55);border-radius:8px;background:rgba(192,57,43,.07)}
+.decl small{display:block;font-family:var(--font-ui);font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red2);margin-bottom:8px}
+.decl p{font-size:1.02rem;font-weight:500;line-height:1.55}
+
+ol{list-style:none;counter-reset:s;margin-top:34px}
+li{counter-increment:s;position:relative;padding:26px 0 26px 56px;border-top:1px solid var(--line)}
+li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:27px;font-family:var(--font-display);font-weight:700;font-size:1.25rem;letter-spacing:.04em;color:var(--red2)}
+h2{font-family:var(--font-display);font-weight:700;font-size:1.28rem;letter-spacing:.03em;text-transform:uppercase;margin-bottom:8px}
+li p{color:var(--dim);font-size:.96rem}
+li p+p{margin-top:8px}
+li ul{margin:10px 0 0;padding:0;list-style:none}
+li ul li{counter-increment:none;border:0;padding:3px 0 3px 18px;color:var(--dim);font-size:.96rem}
+li ul li::before{content:"";counter-increment:none;left:0;top:.82em;width:6px;height:6px;border-radius:50%;background:var(--red)}
+li a{color:var(--text);text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px}
+li a:hover{text-decoration-color:var(--red2)}
+
+.contact{margin-top:10px;padding:22px;border:1px solid var(--line);border-radius:8px;background:var(--panel);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px 28px}
+.contact b{display:block;font-family:var(--font-ui);font-weight:700;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
+.contact span,.contact a{font-size:.94rem;color:var(--text);text-decoration:none}
+.contact a:hover{color:var(--red2)}
+.upd{margin-top:22px;font-size:.78rem;color:var(--faint)}
+
+html[data-lang="nl"] [lang="en"],html[data-lang="en"] [lang="nl"]{display:none!important}
+@media(max-width:560px){li{padding-left:44px}main{padding-top:40px}.back span{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="klanten-portaal.html" class="top-logo" aria-label="BINC International"><img src="https://cdn.shopify.com/s/files/1/0948/5235/0296/files/tesffahsdbjasfja.svg?v=1779455041" alt="BINC International"/></a>
+  <div class="top-r">
+    <a class="back" href="klanten-portaal.html"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><span lang="nl">Terug naar bestellen</span><span lang="en">Back to ordering</span></a>
+    <div class="lang" role="group" aria-label="Taal / Language"><button type="button" data-lang="nl">NL</button><button type="button" data-lang="en">EN</button></div>
+  </div>
+</header>
+
+<main>
+  <!-- NL -->
+  <div lang="nl">
+    <p class="eyebrow">Klantenportaal</p>
+    <h1>Bestelvoorwaarden</h1>
+    <p class="lead">Wat je bevestigt wanneer je een bestelling plaatst via het BINC-klantenportaal, kort en duidelijk op een rij.</p>
+    <div class="decl"><small>Je verklaart</small><p>Hierbij verklaar ik dat deze bestelling juist is geplaatst en dat ik de producten en aantallen heb gecontroleerd.</p></div>
+    <ol>
+      <li><h2>Wat je bevestigt</h2>
+        <p>Door het vakje bij je bestelling aan te vinken, bevestig je dat:</p>
+        <ul><li>de producten, aantallen en het filiaal in je bestelling kloppen;</li><li>de leverdatum, referentie en opmerking die je invult juist zijn;</li><li>je bevoegd bent om namens het gekozen filiaal te bestellen.</li></ul></li>
+      <li><h2>Je bestelling plaatsen</h2>
+        <p>Je bestelt via je eigen account. Na het plaatsen ontvang je een ontvangstbevestiging per e-mail. Je bestelling is pas definitief nadat BINC deze heeft goedgekeurd; tot die tijd heeft ze de status “wacht op goedkeuring”.</p></li>
+      <li><h2>Prijzen en kosten</h2>
+        <p>Alle prijzen zijn je B2B-prijzen en zijn exclusief btw. Bij sommige merken komt er statiegeld per tray bij; dat zie je terug in je winkelmandje en op je bestelling.</p>
+        <p>Per merk kan een minimale bestelling gelden, in aantallen of in orderwaarde. Dat staat bij het merk vermeld. Zolang je daar niet aan voldoet, kun je niet bestellen.</p></li>
+      <li><h2>Voorraad en levering</h2>
+        <p>Een product dat op het moment van bestellen is uitverkocht, kun je niet bestellen. De leverdatum die je opgeeft is een wens en geen garantie; BINC laat het je weten als dit niet haalbaar is.</p></li>
+      <li><h2>Wijzigen of annuleren</h2>
+        <p>Klopt er iets niet, of wil je je bestelling wijzigen of annuleren? Neem dan zo snel mogelijk contact met ons op, bij voorkeur voordat de bestelling is goedgekeurd.</p></li>
+      <li><h2>Vragen</h2>
+        <p>We helpen je graag verder.</p>
+        <div class="contact" style="margin-top:14px">
+          <div><b>Telefoon</b><a href="tel:+31132032643">013 203 2643</a></div>
+          <div><b>E-mail</b><a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a></div>
+          <div><b>Adres</b><span>BINC International<br>De Hemeltjes 3, 5051 JR Goirle</span></div>
+          <div><b>KvK</b><span>98970887</span></div>
+        </div></li>
+    </ol>
+  </div>
+
+  <!-- EN -->
+  <div lang="en">
+    <p class="eyebrow">Customer portal</p>
+    <h1>Order terms</h1>
+    <p class="lead">What you confirm when you place an order through the BINC customer portal, in short and plain terms.</p>
+    <div class="decl"><small>You declare</small><p>I hereby declare that this order has been placed correctly and that I have checked the products and quantities.</p></div>
+    <ol>
+      <li><h2>What you confirm</h2>
+        <p>By ticking the box on your order, you confirm that:</p>
+        <ul><li>the products, quantities and branch in your order are correct;</li><li>the delivery date, reference and note you enter are accurate;</li><li>you are authorised to order on behalf of the selected branch.</li></ul></li>
+      <li><h2>Placing your order</h2>
+        <p>You order through your own account. After placing it, you receive an order confirmation by e-mail. Your order only becomes final once BINC has approved it; until then it has the status “awaiting approval”.</p></li>
+      <li><h2>Prices and costs</h2>
+        <p>All prices are your B2B prices and exclude VAT. For some brands a deposit per tray is added; you can see it in your cart and on your order.</p>
+        <p>A minimum order may apply per brand, in quantity or in order value. This is shown with the brand. You cannot place an order until you meet it.</p></li>
+      <li><h2>Stock and delivery</h2>
+        <p>A product that is sold out at the time of ordering cannot be ordered. The delivery date you enter is a request, not a guarantee; BINC will let you know if it cannot be met.</p></li>
+      <li><h2>Changing or cancelling</h2>
+        <p>Is something not right, or do you want to change or cancel your order? Please contact us as soon as possible, preferably before the order has been approved.</p></li>
+      <li><h2>Questions</h2>
+        <p>We are happy to help.</p>
+        <div class="contact" style="margin-top:14px">
+          <div><b>Phone</b><a href="tel:+31132032643">013 203 2643</a></div>
+          <div><b>E-mail</b><a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a></div>
+          <div><b>Address</b><span>BINC International<br>De Hemeltjes 3, 5051 JR Goirle</span></div>
+          <div><b>CoC</b><span>98970887</span></div>
+        </div></li>
+    </ol>
+  </div>
+</main>
+
+<script>
+(function(){
+  var lang='nl'; try{ lang=localStorage.getItem('binc_lang')||'nl'; }catch(e){}
+  if(lang!=='en') lang='nl';
+  var root=document.documentElement;
+  function set(l){
+    root.setAttribute('data-lang',l); root.lang=l;
+    document.title=l==='en'?'Order terms — BINC International':'Bestelvoorwaarden — BINC International';
+    document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.lang===l);});
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click',function(){ lang=b.dataset.lang; try{localStorage.setItem('binc_lang',lang);}catch(e){} set(lang); });
+  });
+  set(lang);
+})();
+</script>
+</body>
+</html>
