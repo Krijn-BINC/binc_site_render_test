@@ -559,6 +559,20 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .trust a{display:inline-flex;align-items:center;gap:7px;color:var(--faint);text-decoration:none;transition:color .15s}
 .trust a::before{content:"";flex:none;width:13px;height:13px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E") center/contain no-repeat}
 .trust a:hover{color:#fff}
+/* winkelwagen-voet: compacter en strakker */
+#cartFoot .dtl summary span{max-width:60%;margin-left:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#cartFoot .sumrows{display:grid;gap:4px;margin:0;padding-top:12px;border-top:1px solid var(--line)}
+#cartFoot .sumrows>div{display:flex;justify-content:space-between;align-items:baseline;font-size:.84rem;color:var(--dim)}
+#cartFoot .sumrows>div span:last-child{color:var(--text);font-variant-numeric:tabular-nums}
+#cartFoot .total{margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line2)}
+#cartFoot .total span{font-weight:700;font-size:.95rem}
+#cartFoot .total small{margin-left:6px;font-weight:400;font-size:.74rem;color:var(--faint)}
+#cartFoot .confirm{gap:10px;margin:12px 0 10px;padding:9px 12px;align-items:center}
+#cartFoot .confirm input{width:16px;height:16px;margin:0}
+#cartFoot .confirm input::after{width:8px;height:4px}
+#cartFoot .confirm span{font-size:.76rem;line-height:1.4}
+#cartFoot .confirm a{margin-top:0}
+#cartFoot .trust{margin-top:10px}
 .cart-foot{padding:12px 20px 16px}
 .dtl{margin-bottom:10px}
 .dtl summary{padding:8px 12px;font-size:.84rem}
@@ -730,7 +744,7 @@ const TR = {
   'cart.itemsN':'{n} stuks',
   'cart.fill':'Vul aan tot minimum (+{n})','cart.xsell':'Nog niet in je bestelling','cart.xsellGo':'Bekijk','cart.subtotal':'Producten','cart.exVat':'excl. btw',
   'quick.title':'Laatste bestelling','quick.sub':'{date} · {n} stuks · {total}','quick.btn':'Opnieuw bestellen',
-  'trust.help':'Vragen? Bel 013 203 2643','cart.terms':'Lees de bestelvoorwaarden','cart.confirm':'Hierbij verklaar ik dat deze bestelling juist is geplaatst en dat ik de producten en aantallen heb gecontroleerd.'
+  'trust.help':'Vragen? Bel 013 203 2643','cart.terms':'voorwaarden','cart.confirm':'Ik heb de producten en aantallen gecontroleerd en ga akkoord met de'
  },
  en:{
   'top.tag':'B2B Ordering Portal','top.site':'← Website','nav.logout':'Log out','loading':'Loading portal…',
@@ -755,7 +769,7 @@ const TR = {
   'cart.itemsN':'{n} items',
   'cart.fill':'Fill to minimum (+{n})','cart.xsell':'Not in your order yet','cart.xsellGo':'View','cart.subtotal':'Products','cart.exVat':'excl. VAT',
   'quick.title':'Last order','quick.sub':'{date} · {n} items · {total}','quick.btn':'Reorder',
-  'trust.help':'Questions? Call 013 203 2643','cart.terms':'Read the order terms','cart.confirm':'I hereby declare that this order has been placed correctly and that I have checked the products and quantities.'
+  'trust.help':'Questions? Call 013 203 2643','cart.terms':'terms','cart.confirm':'I have checked the products and quantities and agree to the'
  }
 };
 let lang = 'nl'; try { lang = localStorage.getItem('binc_lang') || 'nl'; } catch(_){}
@@ -1081,6 +1095,7 @@ function renderCart(){
   if (S.catalog) renderBrands();   // aantal-badges op de merk-tegels
   renderQuick();
 
+  const sig = JSON.stringify(S.cart); if (S.cartSig !== undefined && S.cartSig !== sig) S.dtlOpen = false; S.cartSig = sig;   // winkelwagen gewijzigd: 'Levering & opmerking' klapt in
   const body = $('cartBody'), foot = $('cartFoot'); body.replaceChildren(); foot.replaceChildren();
 
   if (S.done) {
@@ -1140,8 +1155,9 @@ function renderCart(){
   const sel = h('select', { class:'f-in', id:'fBranch', onchange:e => { S.branch = e.target.value; } },
     branches.map(b => h('option', { value:b.id, selected:b.id === S.branch, text:(b.name ? b.name + ' · ' : '') + b.id })));
   if (branches.length > 1) foot.append(h('div', { class:'f-full' }, h('label', { class:'f-lab', for:'fBranch', text:t('cart.branch') }), sel));
-  const dtl = h('details', { class:'dtl', open:S.dtlOpen || !!(S.date || S.ref || S.notes) },
-    h('summary', {}, h('div', {}, t('cart.delivery'))),
+  const dtlHint = [S.date ? new Date(S.date + 'T12:00').toLocaleDateString(lang === 'en' ? 'en-GB' : 'nl-NL', { day:'numeric', month:'short' }) : '', S.ref, S.notes ? '…' : ''].filter(Boolean).join(' · ');
+  const dtl = h('details', { class:'dtl', open:!!S.dtlOpen },
+    h('summary', {}, h('div', {}, t('cart.delivery')), dtlHint ? h('span', { text:dtlHint }) : null),
     h('div', { class:'dtl-b' },
       h('div', { class:'f-grid' },
         h('div', {}, h('label', { class:'f-lab', for:'fDate', text:t('cart.date') }), h('input', { class:'f-in', id:'fDate', type:'date', min:minDate, value:S.date, onchange:e => { S.date = e.target.value; } })),
@@ -1154,10 +1170,10 @@ function renderCart(){
     h('div', { class:'sumrows' },
       h('div', {}, h('span', { text:t('cart.subtotal') }), h('span', { text:money(S.catalog.brands.reduce((a, b) => a + brandSub(b), 0)) })),
       S.catalog.brands.some(b => brandDep(b) > 0) ? h('div', {}, h('span', { text:t('cart.deposit') }), h('span', { text:money(S.catalog.brands.reduce((a, b) => a + brandDep(b), 0)) })) : null),
-    h('div', { class:'total' }, h('span', { text:t('cart.total') + ' ' + t('cart.exVat') }), h('strong', { text:money(total) })),
+    h('div', { class:'total' }, h('span', {}, t('cart.total'), h('small', { text:t('cart.exVat') })), h('strong', { text:money(total) })),
     h('label', { class:'confirm' },
       h('input', { type:'checkbox', id:'fConfirm', checked:S.confirm, onchange:e => { S.confirm = e.target.checked; const b = $('placeBtn'); if (b) b.disabled = S.placing || warnings.length > 0 || !S.confirm; } }),
-      h('span', {}, t('cart.confirm') + ' ', h('a', { href:'bestelvoorwaarden.html', target:'_blank', rel:'noopener', text:t('cart.terms') }))),
+      h('span', {}, t('cart.confirm') + ' ', h('a', { href:'bestelvoorwaarden.html', target:'_blank', rel:'noopener', text:t('cart.terms') }), '.')),
     h('button', { class:'btn-red', id:'placeBtn', type:'button', disabled:S.placing || warnings.length > 0 || !S.confirm, text:S.placing ? t('cart.placing') : t('cart.place'), onclick:placeOrder }),
     warnings.length ? h('div', { class:'cfix', text:t('cart.fixMin') }) : null,
     h('div', { class:'trust' }, h('a', { href:'tel:+31132032643', text:t('trust.help') })),
