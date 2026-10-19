@@ -121,7 +121,6 @@ a{color:inherit}
 .prow{padding-top:9px;padding-bottom:9px;border-bottom:1px solid var(--line);transition:background .15s}
 .prow:last-child{border-bottom:none}
 .prow:hover{background:rgba(255,255,255,.03)}
-.prow.in{background:rgba(214,180,90,.07)}
 .prow.soldout{opacity:.55;animation:soFade .35s ease both}
 @keyframes soFade{from{opacity:1}to{opacity:.55}}
 
@@ -482,7 +481,6 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .phead,.prow{grid-template-columns:44px minmax(0,1fr) 110px 142px 110px}
 .thumb{width:36px;height:36px;border-radius:4px}
 .prow{padding-top:6px;padding-bottom:6px}
-.prow.in{background:rgba(255,255,255,.04);box-shadow:inset 2px 0 0 var(--gold)}
 .step,.step button:first-child{border-radius:var(--r)}
 .step{border-color:var(--line2)}
 .add,.btn-red,.btn-line,.f-in,.warn,.dtl{border-radius:var(--r)}
@@ -529,8 +527,6 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .thumb img{padding:0}
 .phead.nothumb,.prow.nothumb{grid-template-columns:minmax(0,1fr) 110px 142px 110px;padding-left:14px}
 .prow{border-radius:6px;border-bottom-color:var(--line)}
-.prow.in{background:#1a1a1e;box-shadow:inset 0 0 0 1px rgba(214,180,90,.38);border-bottom-color:transparent}
-.prow.in + .prow{border-top:none}
 .brand{padding-left:2px}
 
 /* winkelwagen */
@@ -601,8 +597,6 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 
 /* ── ROUND 4 ── */
 .prow{border-radius:8px;border-bottom:1px solid var(--line);padding-top:7px;padding-bottom:7px}
-.prow.in{background:#1d1d22;box-shadow:none;border-bottom-color:transparent}
-.prow.in + .prow,.prow:has(+ .prow.in){border-bottom-color:transparent}
 .plist{border-bottom:none;display:flex;flex-direction:column;gap:2px}
 .phead{margin-bottom:2px}
 .brand-info{padding:8px 0 10px;font-size:.8rem;color:var(--faint)}
