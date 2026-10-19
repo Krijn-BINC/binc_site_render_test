@@ -14,7 +14,8 @@
 :root{--bg:#0a0a0b;--panel:#121214;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--red:#c0392b;--red2:#e74c3c;--gold:#d6b45a;
   --text:#f4f4f5;--dim:rgba(255,255,255,.66);--faint:rgba(255,255,255,.42);
   --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;--font-ui:'Rajdhani',sans-serif}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
 ::selection{background:var(--red);color:#fff}
 a{color:inherit}
@@ -34,6 +35,9 @@ main{max-width:760px;margin:0 auto;padding:56px 20px 80px}
 .eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red2)}
 .eyebrow::before{content:"";width:22px;height:2px;background:var(--red)}
 h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,6vw,3.2rem);line-height:1.02;letter-spacing:.005em;text-transform:uppercase;margin:14px 0 14px}
+.dot{color:var(--red2)}
+.stamp{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-family:var(--font-ui);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.stamp::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red2)}
 .lead{color:var(--dim);font-size:1.02rem;max-width:60ch}
 
 .decl{margin:34px 0 8px;padding:20px 22px;border:1px solid rgba(192,57,43,.55);border-radius:8px;background:rgba(192,57,43,.07)}
@@ -54,10 +58,8 @@ li a:hover{text-decoration-color:var(--red2)}
 
 .contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;margin-top:10px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--line)}
 .contact>div{display:flex;align-items:flex-start;gap:14px;padding:20px 22px;background:var(--panel);min-width:0}
-.contact .ic{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--red2)}
-.contact .ic svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .contact .tx{min-width:0}
-.contact b{display:block;font-family:var(--font-ui);font-weight:700;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+.contact b{display:block;font-family:var(--font-ui);font-weight:700;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red2);margin-bottom:5px}
 .contact span,.contact a{display:block;font-size:.96rem;line-height:1.5;color:var(--text);text-decoration:none;overflow-wrap:anywhere}
 .contact a{transition:color .15s}
 .contact a:hover{color:var(--red2)}
@@ -82,8 +84,9 @@ html[data-lang="nl"] [lang="en"],html[data-lang="en"] [lang="nl"]{display:none!i
   <!-- NL -->
   <div lang="nl">
     <p class="eyebrow">Klantenportaal</p>
-    <h1>Voorwaarden</h1>
+    <h1>Voorwaarden<span class="dot">.</span></h1>
     <p class="lead">Algemene voorwaarden en bestelvoorwaarden van BINC International voor bestellingen via het klantenportaal.</p>
+    <p class="stamp">Laatst bijgewerkt: 19 oktober 2026, 13:08 uur</p>
     <div class="decl"><small>Je verklaart</small><p>Hierbij verklaar ik dat deze bestelling juist is geplaatst en dat ik de producten en aantallen heb gecontroleerd.</p></div>
     <ol>
       <li><h2>Wat je bevestigt</h2>
@@ -152,19 +155,20 @@ html[data-lang="nl"] [lang="en"],html[data-lang="en"] [lang="nl"]{display:none!i
     </ol>
     <h2 class="ch">Contact en bedrijfsgegevens</h2>
     <div class="contact">
-      <div><i class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></i><div class="tx"><b>Telefoon</b><a href="tel:+31132032643">013 203 2643</a></div></div>
-      <div><i class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 7 8.5-7"/></svg></i><div class="tx"><b>E-mail</b><a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a></div></div>
-      <div><i class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><div class="tx"><b>Adres</b><span>BINC International<br>De Hemeltjes 3, 5051 JR Goirle</span></div></div>
-      <div><i class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5l8-2v18M12 8h8v13M4 21h16M8 9h.01M8 13h.01M8 17h.01M16 12h.01M16 16h.01"/></svg></i><div class="tx"><b>KvK</b><span>98970887</span></div></div>
+      <div><div class="tx"><b>Telefoon</b><a href="tel:+31132032643">013 203 2643</a></div></div>
+      <div><div class="tx"><b>E-mail</b><a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a></div></div>
+      <div><div class="tx"><b>Adres</b><span>BINC International<br>De Hemeltjes 3, 5051 JR Goirle</span></div></div>
+      <div><div class="tx"><b>KvK</b><span>98970887</span></div></div>
     </div>
-    <p class="upd">Laatst bijgewerkt: 19 oktober 2026, 12:20 uur</p>
+    <p class="upd">Laatst bijgewerkt: 19 oktober 2026, 13:08 uur</p>
   </div>
 
   <!-- EN -->
   <div lang="en">
     <p class="eyebrow">Customer portal</p>
-    <h1>Terms</h1>
+    <h1>Terms<span class="dot">.</span></h1>
     <p class="lead">General terms and order terms of BINC International for orders placed through the customer portal.</p>
+    <p class="stamp">Last updated: 19 October 2026, 13:08 (CET/CEST)</p>
     <div class="decl"><small>You declare</small><p>I hereby declare that this order has been placed correctly and that I have checked the products and quantities.</p></div>
     <ol>
       <li><h2>What you confirm</h2>
@@ -233,12 +237,12 @@ html[data-lang="nl"] [lang="en"],html[data-lang="en"] [lang="nl"]{display:none!i
     </ol>
     <h2 class="ch">Contact and company details</h2>
     <div class="contact">
-      <div><i class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></i><div class="tx"><b>Phone</b><a href="tel:+31132032643">013 203 2643</a></div></div>
-      <div><i class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 7 8.5-7"/></svg></i><div class="tx"><b>E-mail</b><a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a></div></div>
-      <div><i class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><div class="tx"><b>Address</b><span>BINC International<br>De Hemeltjes 3, 5051 JR Goirle</span></div></div>
-      <div><i class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5l8-2v18M12 8h8v13M4 21h16M8 9h.01M8 13h.01M8 17h.01M16 12h.01M16 16h.01"/></svg></i><div class="tx"><b>CoC</b><span>98970887</span></div></div>
+      <div><div class="tx"><b>Phone</b><a href="tel:+31132032643">013 203 2643</a></div></div>
+      <div><div class="tx"><b>E-mail</b><a href="mailto:info@bincinternational.nl">info@bincinternational.nl</a></div></div>
+      <div><div class="tx"><b>Address</b><span>BINC International<br>De Hemeltjes 3, 5051 JR Goirle</span></div></div>
+      <div><div class="tx"><b>CoC</b><span>98970887</span></div></div>
     </div>
-    <p class="upd">Last updated: 19 October 2026, 12:20 (CET/CEST)</p>
+    <p class="upd">Last updated: 19 October 2026, 13:08 (CET/CEST)</p>
   </div>
 </main>
 
