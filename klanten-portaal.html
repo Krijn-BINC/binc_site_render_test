@@ -893,6 +893,7 @@ const EANS = {
 const skuLine = it => {
   const e = EANS[it.id];
   if (e) return h('div', { class:'p-sku ean', text:'EAN: ' + e.he });
+  if (it.ean) return h('div', { class:'p-sku ean', text:'EAN: ' + it.ean });
   if (String(it.id).startsWith('fsg:')) return null;
   return it.sku ? h('div', { class:'p-sku', text:it.sku }) : null;
 };
@@ -977,7 +978,7 @@ function renderProducts(){
   const box = $('products'); box.replaceChildren(); cardRefs.clear();
   const needle = S.q.trim().toLowerCase();
   const pool = needle ? S.catalog.brands.flatMap(b => b.items) : brand().items;
-  const list = pool.filter(i => (!S.availOnly || !i.soldOut) && (!S.cat || needle || i.category === S.cat) && (!needle || (i.name + ' ' + i.category + ' ' + catLabel(i.category) + ' ' + (EANS[i.id] ? EANS[i.id].he : (String(i.id).startsWith('fsg:') ? '' : (i.sku || '')))).toLowerCase().includes(needle)));
+  const list = pool.filter(i => (!S.availOnly || !i.soldOut) && (!S.cat || needle || i.category === S.cat) && (!needle || (i.name + ' ' + i.category + ' ' + catLabel(i.category) + ' ' + (EANS[i.id] ? EANS[i.id].he : (i.ean || (String(i.id).startsWith('fsg:') ? '' : (i.sku || ''))))).toLowerCase().includes(needle)));
   if (!list.length) { box.append(h('div', { class:'empty', text:t('order.none') })); return; }
   const groups = new Map(); list.forEach(i => { const k = needle ? (S.items.get(i.id) || {}).brandName : i.category; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(i); });
   const head = wt => h('div', { class:'phead' + (wt ? '' : ' nothumb') }, wt ? h('span') : null, h('span', { text:t('th.product') }), h('span', { text:t('th.price') }), h('span', { text:t('th.qty') }), h('span', { text:t('th.sub') }));
