@@ -301,6 +301,82 @@ textarea.f-in{resize:vertical;min-height:54px}
   .ord-h .ord-chev{grid-column:3;grid-row:1 / span 3}
   .ord-d{padding:4px 14px 14px}
 }
+/* ── BESTELKAARTEN + POPUP ── */
+.oc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:18px}
+.oc{display:flex;flex-direction:column;gap:14px;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:18px;cursor:pointer;text-align:left;transition:border-color .15s,background .15s,transform .15s}
+.oc:hover{border-color:var(--line2);background:var(--panel2);transform:translateY(-1px)}
+.oc:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.oc-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.oth{position:relative;display:grid;place-items:center;aspect-ratio:1;border-radius:12px;background:#efeff1;overflow:hidden}
+.oth img{width:86%;height:86%;object-fit:contain}
+.oth.noimg{background:linear-gradient(145deg,color-mix(in srgb,var(--tone,#666) 40%,#1b1b1e),#1b1b1e)}
+.oth.noimg b{padding:6px;max-height:100%;overflow:hidden;text-align:center;font-family:var(--font-display);font-weight:700;font-size:clamp(.5rem,2.2vw,.66rem);line-height:1.1;letter-spacing:0;text-transform:uppercase;color:rgba(255,255,255,.88);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow-wrap:break-word}
+.om-img .oth.noimg b{font-size:.5rem;padding:3px}
+.oth.more b{opacity:.2}
+.oth.more::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.58)}
+.oth.more em{position:absolute;inset:0;z-index:1;display:grid;place-items:center;font-style:normal;font-family:var(--font-display);font-weight:800;font-size:1.6rem;color:#fff}
+.oc-st{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:1.55rem;line-height:1.1}
+.oc-st::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.oc-st.os-done::before{background:var(--ok)}
+.oc-st.os-declined::before{background:var(--red2)}
+.oc-row{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.oc-info{min-width:0;flex:1 1 200px}
+.oc-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;color:var(--dim);font-size:.92rem;font-variant-numeric:tabular-nums}
+.oc-date{padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.06);font-size:.8rem}
+.oc-fil{margin-top:5px;color:var(--faint);font-size:.9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.oc-btn{flex:none;padding:11px 18px;border:1px solid var(--line2);border-radius:99px;color:var(--gold);font-family:var(--font-ui);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;transition:.15s}
+.oc-btn:hover{background:var(--gold);border-color:var(--gold);color:#111}
+.om{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:24px}
+.om-back{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(3px);animation:omf .18s ease-out}
+.om-box{position:relative;width:min(600px,100%);max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line2);border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;animation:omu .22s ease-out}
+.om-h{display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.om-x{flex:none;width:36px;height:36px;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;font-size:1.3rem;line-height:1;color:var(--dim);transition:.15s}
+.om-x:hover{color:#fff;background:rgba(255,255,255,.08)}
+.om-ht{flex:1;min-width:0}
+.om-ht h2{font-family:var(--font-display);font-weight:800;font-size:1.5rem;line-height:1.1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.om-ht p{margin-top:2px;color:var(--faint);font-size:.82rem}
+.om-body{overflow-y:auto;overscroll-behavior:contain;padding:14px 14px 22px;display:flex;flex-direction:column;gap:12px}
+.om-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.om-sum{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.om-sum b{font-family:var(--font-display);font-weight:800;font-size:1.6rem;line-height:1.1}
+.om-sum span{color:var(--dim);font-size:.86rem}
+.om-card h3{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:1.3rem;line-height:1.1}
+.om-card h3::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.om-card h3.os-done::before{background:var(--ok)}
+.om-card h3.os-declined::before{background:var(--red2)}
+.om-card p.sd{margin-top:6px;color:var(--dim);font-size:.9rem}
+.om-card p.sdt{margin-top:3px;color:var(--faint);font-size:.78rem}
+.om-line{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:14px;align-items:center;padding:10px 0}
+.om-line+.om-line{border-top:1px solid var(--line)}
+.om-line:first-child{padding-top:0}
+.om-img{position:relative;display:block}
+.om-img .oth{border-radius:10px}
+.om-qty{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 6px;border:2px solid var(--panel);border-radius:99px;background:#fff;color:#000;font-style:normal;font-weight:700;font-size:.72rem;display:grid;place-items:center}
+.om-ln b{display:block;font-weight:500;font-size:.95rem}
+.om-ln small{display:block;margin-top:2px;color:var(--faint);font-size:.8rem}
+.om-lt{font-variant-numeric:tabular-nums;font-size:.95rem;white-space:nowrap}
+.om-tot{margin-top:6px;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:8px}
+.om-tot div{display:flex;justify-content:space-between;gap:12px;color:var(--dim);font-size:.92rem;font-variant-numeric:tabular-nums}
+.om-tot .g{margin-top:4px;color:var(--text);font-family:var(--font-display);font-weight:800;font-size:1.3rem}
+.om-re2{display:none;width:100%;margin-top:2px;padding:14px;text-align:center}
+.om-r{display:grid;grid-template-columns:130px minmax(0,1fr);gap:14px;padding:13px 0;border-top:1px solid var(--line);font-size:.93rem}
+.om-r:first-child{border-top:0;padding-top:0}
+.om-r:last-child{padding-bottom:0}
+.om-r span{color:var(--faint)}
+.om-r b{font-weight:400;word-break:break-word}
+@keyframes omf{from{opacity:0}to{opacity:1}}
+@keyframes omu{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+@media(max-width:600px){
+  .om{padding:0;place-items:end stretch}
+  .om-box{width:100%;max-height:94vh;max-height:94dvh;border-radius:20px 20px 0 0;border-bottom:0}
+  .oc-thumbs{gap:8px}.oc-st{font-size:1.35rem}
+  .oc .oc-btn{width:100%;text-align:center}
+  .om-h .oc-btn{display:none}
+  .om-ht h2{font-size:1.3rem}
+  .om-re2{display:block}
+  .om-r{grid-template-columns:100px minmax(0,1fr)}
+}
+@media(prefers-reduced-motion:reduce){.om-back,.om-box{animation:none}.oc{transition:none}}
 .acc-card{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--red);border-radius:6px;padding:22px 24px;margin-bottom:14px}
 .acc-card h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.6rem;line-height:1.05}
 .acc-card .sub{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red2);margin:4px 0 14px}
@@ -618,7 +694,7 @@ const TR = {
   'done.title':'Bestelling ontvangen','done.text':'Bedankt! Je bestelling wacht op goedkeuring door BINC. Je ontvangt een ontvangstbevestiging per e-mail.','done.again':'Nieuwe bestelling','done.view':'Bekijk mijn bestellingen',
   'orders.title':'Mijn bestellingen','orders.sub':'Hier zie je je eerdere bestellingen. Bestel gemakkelijk opnieuw met één klik.',
   'orders.empty':'Je hebt nog niets besteld via het portaal.','orders.product':'Product','orders.qty':'Aantal','orders.price':'Prijs','orders.sum':'Totaal',
-  'orders.status':'Ontvangen','orders.all':'Alles','orders.allBranches':'Alle filialen','orders.cnt':'Bestellingen','orders.pcs':'Stuks','orders.total':'Totaal besteld','orders.date':'Datum','orders.brand':'Merk','orders.branch':'Filiaal','orders.statusCol':'Status','orders.st.done':'Voltooid','orders.st.pending':'In behandeling','orders.st.declined':'Afgewezen','orders.amount':'Bedrag','orders.earlier':'Eerder besteld','orders.earlierTitle':'Eerdere bestelling','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelwagen',
+  'orders.status':'Ontvangen','orders.all':'Alles','orders.allBranches':'Alle filialen','orders.cnt':'Bestellingen','orders.pcs':'Stuks','orders.total':'Totaal besteld','orders.date':'Datum','orders.brand':'Merk','orders.branch':'Filiaal','orders.statusCol':'Status','orders.st.done':'Voltooid','orders.st.pending':'In behandeling','orders.st.declined':'Afgewezen','orders.amount':'Bedrag','orders.earlier':'Eerder besteld','orders.earlierTitle':'Eerdere bestelling','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelwagen','orders.open':'Bekijk bestelling','om.title':'Bestelling','om.placed':'Geplaatst: {date}','om.close':'Sluiten','om.arts':'{n} artikelen · excl. btw','om.sd.pending':'Je bestelling wacht op goedkeuring door BINC.','om.sd.done':'Deze bestelling is verwerkt.','om.sd.declined':'Deze bestelling is niet doorgezet. Neem contact met ons op voor vragen.','om.sub':'Subtotaal · {n} artikelen','om.deposit':'Statiegeld','om.total':'Totaal (excl. btw)','om.contact':'Contactpersoon','om.branch':'Filiaal',
   'account.title':'Mijn account','account.empty':'Er zijn nog geen gegevens gevonden voor dit filiaal.','account.id':'Filiaal ID','account.branch':'Filiaal','account.last':'Ingelogd op',
   'err.load':'Laden mislukt:','err.generic':'Er ging iets mis. Probeer het opnieuw.','err.network':'Geen verbinding met de server.','err.retry':'Opnieuw proberen',
   'toast.added':'Toegevoegd',
@@ -643,7 +719,7 @@ const TR = {
   'done.title':'Order received','done.text':'Thank you! Your order is awaiting approval by BINC. You will receive an acknowledgement by email.','done.again':'New order','done.view':'View my orders',
   'orders.title':'My orders','orders.sub':'Here you can see your previous orders. Reorder easily with one click.',
   'orders.empty':'You have not ordered through the portal yet.','orders.product':'Product','orders.qty':'Qty','orders.price':'Price','orders.sum':'Total',
-  'orders.status':'Received','orders.all':'All','orders.allBranches':'All branches','orders.cnt':'Orders','orders.pcs':'Items','orders.total':'Total ordered','orders.date':'Date','orders.brand':'Brand','orders.branch':'Branch','orders.statusCol':'Status','orders.st.done':'Completed','orders.st.pending':'In progress','orders.st.declined':'Declined','orders.amount':'Amount','orders.earlier':'Earlier order','orders.earlierTitle':'Earlier order','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your cart',
+  'orders.status':'Received','orders.all':'All','orders.allBranches':'All branches','orders.cnt':'Orders','orders.pcs':'Items','orders.total':'Total ordered','orders.date':'Date','orders.brand':'Brand','orders.branch':'Branch','orders.statusCol':'Status','orders.st.done':'Completed','orders.st.pending':'In progress','orders.st.declined':'Declined','orders.amount':'Amount','orders.earlier':'Earlier order','orders.earlierTitle':'Earlier order','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your cart','orders.open':'View order','om.title':'Order','om.placed':'Placed: {date}','om.close':'Close','om.arts':'{n} items · excl. VAT','om.sd.pending':'Your order is awaiting approval by BINC.','om.sd.done':'This order has been processed.','om.sd.declined':'This order was not processed. Please contact us if you have questions.','om.sub':'Subtotal · {n} items','om.deposit':'Deposit','om.total':'Total (excl. VAT)','om.contact':'Contact','om.branch':'Branch',
   'account.title':'My account','account.empty':'No data has been found for this branch yet.','account.id':'Branch ID','account.branch':'Branch','account.last':'Logged in on',
   'err.load':'Loading failed:','err.generic':'Something went wrong. Please try again.','err.network':'Can’t reach the server.','err.retry':'Try again',
   'toast.added':'Added',
@@ -1100,47 +1176,104 @@ function portalStatusKey(status){
   return 'done';
 }
 function portalStatus(status){ return t('orders.st.' + portalStatusKey(status)); }
+const oid = o => '#' + String(o.id).replace(/^#/, '');
+const itemLabel = i => { const n = String(i.name || i.brandName || '?'), b = String(i.brandName || ''); return b && n.toLowerCase().startsWith(b.toLowerCase()) && n.length > b.length ? n.slice(b.length).replace(/^[\s—–-]+/, '') : n; };
+function itemThumb(i){
+  const c = S.items.get(i.id) || {}, img = i.img || c.img || '', tone = i.tone || c.tone || '';
+  const box = h('span', { class:'oth' });
+  if (tone) box.style.setProperty('--tone', tone);
+  const fallback = () => { box.classList.add('noimg'); box.append(h('b', { text:itemLabel(i) })); };
+  if (img) { const im = h('img', { src:img, alt:'', loading:'lazy' }); im.addEventListener('error', () => { im.remove(); fallback(); }); box.append(im); }
+  else fallback();
+  return box;
+}
+function orderCard(o){
+  const items = (o.items || []).filter(i => !i.deposit), key = portalStatusKey(o.status);
+  const thumbs = h('div', { class:'oc-thumbs' });
+  items.slice(0, 4).forEach((i, n) => {
+    const th = itemThumb(i);
+    if (items.length > 4 && n === 3) { th.classList.add('more'); th.append(h('em', { text:'+' + (items.length - 4) })); }
+    thumbs.append(th);
+  });
+  const card = h('div', { class:'oc', role:'button', tabindex:'0', 'aria-label':t('orders.open') + ' ' + oid(o), onclick:() => openOrder(o) },
+    thumbs,
+    h('div', { class:'oc-st os-' + key, text:portalStatus(o.status) }),
+    h('div', { class:'oc-row' },
+      h('div', { class:'oc-info' },
+        h('p', { class:'oc-meta' }, oid(o) + ' · ' + (o.total == null ? dash : money(o.total)), h('span', { class:'oc-date', text:fmtDate(o.createdAt, true) })),
+        h('p', { class:'oc-fil', text:o.filiaalNaam || branchName(o.filiaalId) || dash })),
+      h('button', { class:'oc-btn', type:'button', text:t('orders.reorder'), onclick:e => { e.stopPropagation(); reorder(o); } })));
+  card.addEventListener('keydown', e => { if (e.target === card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openOrder(o); } });
+  return card;
+}
+let omLast = null;
+function omKey(e){
+  if (e.key === 'Escape') { closeOrder(); return; }
+  if (e.key !== 'Tab') return;
+  const m = $('orderModal'); if (!m) return;
+  const f = [...m.querySelectorAll('button')]; if (!f.length) return;
+  const a = document.activeElement, first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && (a === first || !m.contains(a))) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && (a === last || !m.contains(a))) { e.preventDefault(); first.focus(); }
+}
+function closeOrder(silent){
+  const m = $('orderModal'); if (!m) return;
+  m.remove(); document.body.style.overflow = ''; document.removeEventListener('keydown', omKey);
+  if (!silent && omLast && omLast.isConnected) omLast.focus();
+}
+function openOrder(o){
+  closeOrder(true); omLast = document.activeElement;
+  const nf = new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-GB');
+  const lines = o.items || [], prod = lines.filter(i => !i.deposit), dep = lines.filter(i => i.deposit), key = portalStatusKey(o.status);
+  const priced = lines.some(i => i.price != null || i.lineTotal != null);
+  const n = prod.reduce((s, i) => s + (i.qty || 0), 0);
+  const sub = prod.reduce((s, i) => s + (i.lineTotal || 0), 0), depT = dep.reduce((s, i) => s + (i.lineTotal || 0), 0);
+  const nm = i => i.name.toLowerCase().startsWith(String(i.brandName || '').toLowerCase()) ? i.name : i.brandName + ' — ' + i.name;
+  const unit = i => i.unit || (lang === 'nl' ? 'st' : 'pc');
+
+  const close = h('button', { class:'om-x', type:'button', 'aria-label':t('om.close'), text:'×', onclick:() => closeOrder() });
+  const head = h('div', { class:'om-h' }, close,
+    h('div', { class:'om-ht' }, h('h2', { id:'omTitle', text:t('om.title') + ' ' + oid(o) }), h('p', { text:t('om.placed', { date:fmtDate(o.createdAt) }) })),
+    h('button', { class:'oc-btn', type:'button', text:t('orders.reorder'), onclick:() => { reorder(o); closeOrder(true); } }));
+
+  const body = h('div', { class:'om-body' },
+    h('div', { class:'om-card om-sum' }, o.total == null ? h('b', { text:nf.format(n) + ' ' + (lang === 'nl' ? 'artikelen' : 'items') }) : [h('b', { text:money(o.total) }), h('span', { text:t('om.arts', { n:nf.format(n) }) })]),
+    h('div', { class:'om-card' }, h('h3', { class:'os-' + key, text:portalStatus(o.status) }), h('p', { class:'sd', text:t('om.sd.' + key) }), h('p', { class:'sdt', text:fmtDate(o.createdAt) })));
+
+  const list = h('div', { class:'om-card' }, prod.map(i => h('div', { class:'om-line' },
+    h('span', { class:'om-img' }, itemThumb(i), h('i', { class:'om-qty', text:nf.format(i.qty) })),
+    h('div', { class:'om-ln' }, h('b', { text:nm(i) }), i.price == null ? null : h('small', { text:money(i.price) + ' / ' + unit(i) })),
+    i.lineTotal == null ? null : h('span', { class:'om-lt', text:money(i.lineTotal) }))));
+  const tot = h('div', { class:'om-tot' });
+  if (priced) tot.append(h('div', {}, h('span', { text:t('om.sub', { n:nf.format(n) }) }), h('span', { text:money(sub) })));
+  if (dep.length) tot.append(h('div', {}, h('span', { text:t('om.deposit') }), h('span', { text:money(depT) })));
+  if (o.total != null) tot.append(h('div', { class:'g' }, h('span', { text:t('om.total') }), h('span', { text:money(o.total) })));
+  if (tot.children.length) list.append(tot);
+  body.append(list);
+
+  const rows = [['om.contact', o.email], ['om.branch', o.filiaalNaam || branchName(o.filiaalId)], ['orders.delivery', o.deliveryDate ? fmtDate(o.deliveryDate, true) : ''], ['orders.ref', o.reference], ['orders.notes', o.notes]].filter(r => r[1]);
+  if (rows.length) body.append(h('div', { class:'om-card' }, rows.map(([k, v]) => h('div', { class:'om-r' }, h('span', { text:t(k) }), h('b', { text:v })))));
+
+  body.append(h('button', { class:'oc-btn om-re2', type:'button', text:t('orders.reorder'), onclick:() => { reorder(o); closeOrder(true); } }));
+  const back = h('div', { class:'om-back', onclick:() => closeOrder() });
+  const box = h('div', { class:'om-box', role:'dialog', 'aria-modal':'true', 'aria-labelledby':'omTitle' }, head, body);
+  const m = h('div', { class:'om', id:'orderModal' }, back, box);
+  document.body.append(m); document.body.style.overflow = 'hidden';
+  document.addEventListener('keydown', omKey); close.focus();
+}
 function renderOrders(){
   const box = $('ordersList'); box.replaceChildren();
   if (!S.orders || !S.orders.length) { box.append(h('div', { class:'empty', text:t('orders.empty') })); return; }
   const brandsOf = o => [...new Set(o.items.map(i => i.brandName))];
-  const pcs = o => o.items.reduce((s, i) => s + i.qty, 0);
   const allBrands = [...new Set(S.orders.flatMap(brandsOf))].sort();
   if (S.ordBrand && !allBrands.includes(S.ordBrand)) S.ordBrand = '';
   const list = S.orders.filter(o => (!S.ordBrand || brandsOf(o).includes(S.ordBrand)));
-  const nf = new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-GB');
   const frow = h('div', { class:'ofrow' });
   if (allBrands.length > 1) {
     frow.append(h('div', { class:'ofil' }, [''].concat(allBrands).map(b => h('button', { type:'button', class:b === (S.ordBrand || '') ? 'on' : '', text:b || t('orders.all'), onclick:() => { S.ordBrand = b; renderOrders(); } }))));
   }
   if (frow.children.length) box.append(frow);
-  const cols = '120px minmax(200px,1fr) 150px 90px 130px 16px';
-  const table = h('div', { class:'otable', style:'--oc:' + cols });
-  table.append(h('div', { class:'ot-head' }, h('span', { text:t('orders.date') }), h('span', { text:t('orders.brand') }), h('span', { text:t('orders.statusCol') }), h('span', { text:t('orders.pcs') }),
-    h('span', { class:'r', text:t('orders.amount') }), h('span', {})));
-  list.forEach(o => {
-    const open = S.expanded.has(o.id), brands = brandsOf(o), multi = brands.length > 1;
-    const head = h('button', { class:'ord-h', type:'button', 'aria-expanded':String(open), onclick:() => { S.expanded.clear(); if (!open) S.expanded.add(o.id); renderOrders(); } },
-      h('span', { class:'c-date', text:fmtDate(o.createdAt, true) }),
-      h('span', { class:'c-brand' }, brands.join(' · ')),
-      h('span', { class:'c-status' }, h('span', { class:'pill pill-' + portalStatusKey(o.status), text:portalStatus(o.status) })),
-      h('span', { class:'c-qty', text:nf.format(pcs(o)) }),
-      h('span', { class:'ord-tot r', text:o.total == null ? dash : money(o.total) }),
-      h('span', { class:'ord-chev' }));
-    const card = h('div', { class:'ord' + (open ? ' open' : '') }, head);
-    if (open) {
-      const priced = o.items.some(i => i.price != null || i.lineTotal != null);
-      const nm = i => i.name.toLowerCase().startsWith(i.brandName.toLowerCase()) ? i.name : i.brandName + ' — ' + i.name;
-      const det = h('div', { class:'ord-d' }, h('div', { class:'oi-list' + (priced ? ' priced' : '') },
-        o.items.map(i => h('div', { class:'oi' }, h('span', { class:'n', text:nf.format(i.qty) + '×' }), h('span', { class:'p', text:nm(i) }),
-          priced ? [h('span', { class:'pr', text:i.price == null ? dash : money(i.price) }), h('span', { class:'lt', text:i.lineTotal == null ? dash : money(i.lineTotal) })] : null))));
-      [['orders.delivery', o.deliveryDate], ['orders.ref', o.reference], ['orders.notes', o.notes]].forEach(([k, v]) => { if (v) det.append(h('p', { class:'ord-note' }, h('strong', { text:t(k) + ': ' }), v)); });
-      det.append(h('div', { class:'ord-foot' }, h('div', { class:'ord-act' }, h('button', { class:'btn-red', type:'button', text:t('orders.reorder'), onclick:() => reorder(o) }))));
-      card.append(det);
-    }
-    table.append(card);
-  });
-  box.append(table);
+  box.append(h('div', { class:'oc-grid' }, list.map(orderCard)));
 }
 
 /* ═══════════ ACCOUNT ═══════════ */
@@ -1164,6 +1297,7 @@ function renderAccount(){
 
 /* ═══════════ TAAL + OPSTART ═══════════ */
 function applyLang(){
+  if (typeof closeOrder === 'function') closeOrder(true);
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
