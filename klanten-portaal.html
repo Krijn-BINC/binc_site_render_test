@@ -388,6 +388,22 @@ textarea.f-in{resize:vertical;min-height:54px}
 }
 @media(prefers-reduced-motion:reduce){.om-back,.om-box{animation:none}.oc,.oc-btn,.oc-btn svg,.oc-btn::before{transition:none}.oc-btn:hover{transform:none}.oc-btn:hover svg{transform:none}}
 .acc-card{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--red);border-radius:6px;padding:22px 24px;margin-bottom:14px}
+/* ── MIJN ACCOUNT (profiel) ── */
+.acc-hero{display:flex;align-items:center;gap:18px;padding:22px 24px;margin-bottom:14px;background:linear-gradient(135deg,rgba(192,57,43,.16),var(--panel) 62%);border:1px solid var(--line);border-radius:6px}
+.acc-av{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;font-family:var(--font-display);font-weight:800;font-size:1.7rem;letter-spacing:.02em;box-shadow:0 0 0 4px rgba(192,57,43,.2)}
+.acc-hero h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.7rem;line-height:1.05;overflow-wrap:anywhere}
+.acc-hero p{color:var(--dim);font-size:.9rem;margin-top:4px;overflow-wrap:anywhere}
+.acc-hero .acc-last{color:var(--faint);font-size:.8rem;margin-top:2px}
+.acc-sec{margin-top:20px}
+.acc-sec:first-of-type{margin-top:0}
+.acc-sec h3{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red2);margin-bottom:2px}
+.acc-card dd.empty{color:var(--faint)}
+.acc-card dd.mail{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.acc-tag{font-family:var(--font-ui);font-weight:700;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.06);color:var(--dim);border:1px solid var(--line2)}
+.acc-note{display:flex;gap:10px;align-items:flex-start;margin-top:6px;padding:14px 16px;border:1px dashed var(--line2);border-radius:6px;color:var(--dim);font-size:.86rem}
+.acc-note .acc-ic{flex:none;display:flex}.acc-note svg{width:18px;height:18px;margin-top:1px;fill:none;stroke:var(--faint);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.acc-note a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.acc-hero{padding:18px;gap:14px}.acc-av{width:52px;height:52px;font-size:1.4rem}.acc-hero h2{font-size:1.4rem}.acc-card dl{grid-template-columns:1fr}.acc-card dt{padding-bottom:0;border-bottom:0}.acc-card dd{border-top:0;padding-top:2px;padding-bottom:12px}.acc-card dl>:nth-child(2){padding-top:2px}}
 .acc-card h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.6rem;line-height:1.05}
 .acc-card .sub{font-family:var(--font-ui);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red2);margin:4px 0 14px}
 dl{display:grid;grid-template-columns:minmax(120px,220px) 1fr}
@@ -760,6 +776,7 @@ const TR = {
   'orders.empty':'Je hebt nog niets besteld via het portaal.','orders.product':'Product','orders.qty':'Aantal','orders.price':'Prijs','orders.sum':'Totaal',
   'orders.status':'Ontvangen','orders.all':'Alles','orders.allBranches':'Alle filialen','orders.cnt':'Bestellingen','orders.pcs':'Stuks','orders.total':'Totaal besteld','orders.date':'Datum','orders.brand':'Merk','orders.branch':'Filiaal','orders.statusCol':'Status','orders.st.done':'Voltooid','orders.st.pending':'In behandeling','orders.st.declined':'Afgewezen','orders.amount':'Bedrag','orders.earlier':'Eerder besteld','orders.earlierTitle':'Eerdere bestelling','orders.reorder':'Opnieuw bestellen','orders.delivery':'Gewenste leverdatum','orders.ref':'Referentie','orders.notes':'Opmerking','orders.reordered':'Producten toegevoegd aan je winkelwagen','orders.open':'Bekijk bestelling','om.title':'Bestelling','om.placed':'Geplaatst: {date}','om.close':'Sluiten','om.arts':'{n} artikelen · excl. btw','om.sd.pending':'Je bestelling wacht op goedkeuring door BINC.','om.sd.done':'Deze bestelling is verwerkt.','om.sd.declined':'Deze bestelling is niet doorgezet. Neem contact met ons op voor vragen.','om.sub':'Subtotaal · {n} artikelen','om.deposit':'Statiegeld','om.total':'Totaal (excl. btw)','om.contact':'Contactpersoon','om.branch':'Filiaal',
   'account.title':'Mijn account','account.empty':'Er zijn nog geen gegevens gevonden voor dit filiaal.','account.id':'Filiaal ID','account.branch':'Filiaal','account.last':'Ingelogd op',
+  'account.sub':'Je gegevens zoals BINC ze van je heeft vastgelegd.','account.sec.company':'Bedrijf','account.sec.address':'Adres','account.sec.contact':'Contactpersoon','account.f.company':'Naam bedrijf','account.f.street':'Straat en huisnummer','account.f.zip':'Postcode','account.f.city':'Plaats','account.f.province':'Provincie','account.f.first':'Voornaam','account.f.last':'Achternaam','account.f.phone':'Telefoonnummer','account.f.email':'E-mailadres','account.loginTag':'Inlogadres','account.note':'Klopt er iets niet of is er iets veranderd? Mail ons op {mail} of bel {tel}, dan passen wij je gegevens aan.',
   'err.load':'Laden mislukt:','err.generic':'Er ging iets mis. Probeer het opnieuw.','err.network':'Geen verbinding met de server.','err.retry':'Opnieuw proberen',
   'toast.added':'Toegevoegd',
   'brand.min':'Min. {n} {unit}','brand.deposit':'Statiegeld {amt} per tray komt er automatisch bij','brand.minInfo':'Minimale bestelling: {n} {unit}','brand.minVal':'Minimale orderwaarde: {amt}','brand.inCart':'{n} in wagen',
@@ -785,6 +802,7 @@ const TR = {
   'orders.empty':'You have not ordered through the portal yet.','orders.product':'Product','orders.qty':'Qty','orders.price':'Price','orders.sum':'Total',
   'orders.status':'Received','orders.all':'All','orders.allBranches':'All branches','orders.cnt':'Orders','orders.pcs':'Items','orders.total':'Total ordered','orders.date':'Date','orders.brand':'Brand','orders.branch':'Branch','orders.statusCol':'Status','orders.st.done':'Completed','orders.st.pending':'In progress','orders.st.declined':'Declined','orders.amount':'Amount','orders.earlier':'Earlier order','orders.earlierTitle':'Earlier order','orders.reorder':'Reorder','orders.delivery':'Preferred delivery date','orders.ref':'Reference','orders.notes':'Note','orders.reordered':'Products added to your cart','orders.open':'View order','om.title':'Order','om.placed':'Placed: {date}','om.close':'Close','om.arts':'{n} items · excl. VAT','om.sd.pending':'Your order is awaiting approval by BINC.','om.sd.done':'This order has been processed.','om.sd.declined':'This order was not processed. Please contact us if you have questions.','om.sub':'Subtotal · {n} items','om.deposit':'Deposit','om.total':'Total (excl. VAT)','om.contact':'Contact','om.branch':'Branch',
   'account.title':'My account','account.empty':'No data has been found for this branch yet.','account.id':'Branch ID','account.branch':'Branch','account.last':'Logged in on',
+  'account.sub':'Your details as BINC has them on file.','account.sec.company':'Company','account.sec.address':'Address','account.sec.contact':'Contact person','account.f.company':'Company name','account.f.street':'Street and house number','account.f.zip':'Postal code','account.f.city':'City','account.f.province':'Province','account.f.first':'First name','account.f.last':'Last name','account.f.phone':'Phone number','account.f.email':'Email address','account.loginTag':'Login','account.note':'Something wrong or changed? Email us at {mail} or call {tel} and we will update your details.',
   'err.load':'Loading failed:','err.generic':'Something went wrong. Please try again.','err.network':'Can’t reach the server.','err.retry':'Try again',
   'toast.added':'Added',
   'brand.min':'Min. {n} {unit}','brand.deposit':'Deposit {amt} per tray is added automatically','brand.minInfo':'Minimum order: {n} {unit}','brand.minVal':'Minimum order value: {amt}','brand.inCart':'{n} in cart',
@@ -1368,19 +1386,93 @@ function renderOrders(){
 function renderAccount(){
   const k = S.klant; if (!k) return;
   let cached = {}; try { cached = JSON.parse(PortalSession.get('klantData') || '{}'); } catch(_){}
-  $('accSub').textContent = k.email + (cached.laatstIngelogd ? ' · ' + t('account.last') + ' ' + cached.laatstIngelogd : '');
   $('who').textContent = k.email;
+  $('accSub').textContent = t('account.sub');
   const box = $('accList'); box.replaceChildren();
-  (k.filialen || []).forEach(f => {
-    if (!f.gevonden) { box.append(h('div', { class:'acc-card' }, h('h2', { text:t('account.branch') + ' ' + f.filiaalId }), h('p', { style:'color:var(--dim);margin-top:8px', text:t('account.empty') }))); return; }
-    f.bronnen.forEach(b => {
-      const naam = (b.velden.find(v => /^(naam|filiaal ?naam|bedrijfsnaam|winkel)/i.test(v.label)) || {}).waarde;
-      box.append(h('div', { class:'acc-card' },
-        h('h2', { text:naam || (t('account.branch') + ' ' + f.filiaalId) }),
-        h('div', { class:'sub', text:t('account.id') + ' ' + f.filiaalId }),
-        h('dl', {}, b.velden.flatMap(v => [h('dt', { text:v.label }), h('dd', { text:v.waarde })]))));   // textContent: nooit HTML uit de sheet uitvoeren
-    });
+
+  /* Alleen deze velden worden getoond; al het andere uit de sheet blijft buiten beeld. */
+  const RX = {
+    first:/^(voor ?naam|first ?name|given)/i,
+    last:/^(achter ?naam|last ?name|sur ?name|family)/i,
+    zip:/post ?code|postal|zip/i,
+    province:/provincie|province|state/i,
+    city:/^(plaats|woonplaats|stad|city|town|vestigingsplaats)/i,
+    phone:/tel|phone|mobiel|gsm/i,
+    nr:/^(huis ?(nr|nummer)|nr\.?|number|house ?(no|number))/i,
+    street:/straat|street|^adres|^address/i,
+    company:/^(naam ?bedrijf|bedrijf|company|filiaal ?naam|winkel|klant ?naam|organisatie|naam$|name$)/i
+  };
+  const clean = v => (v == null ? '' : String(v).trim());
+  function collect(f){
+    const velden = (f.bronnen || []).flatMap(b => b.velden || []);
+    const used = new Set();
+    const pick = (rx, skip) => {
+      const v = velden.find(x => !used.has(x) && rx.test(clean(x.label)) && !(skip && skip.test(clean(x.label))) && clean(x.waarde));
+      if (v) used.add(v); return v ? clean(v.waarde) : '';
+    };
+    const o = {};
+    o.first = pick(RX.first); o.last = pick(RX.last);
+    o.zip = pick(RX.zip); o.province = pick(RX.province); o.city = pick(RX.city);
+    o.phone = pick(RX.phone);
+    const nr = pick(RX.nr);
+    let street = pick(RX.street, RX.nr);
+    if (street && nr && !new RegExp('(^|\\s)' + nr.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$').test(street)) street += ' ' + nr;
+    o.street = street || nr;
+    o.company = pick(RX.company);
+    return o;
+  }
+
+  const rows = (f, d) => ({
+    company:[['company', d.company]],
+    address:[['street', d.street], ['zip', d.zip], ['city', d.city], ['province', d.province]],
+    contact:[['first', d.first], ['last', d.last], ['phone', d.phone]]
   });
+  const dl = list => h('dl', {}, list.flatMap(([key, val]) => [
+    h('dt', { text:t('account.f.' + key) }),
+    h('dd', { class:val ? '' : 'empty', text:val || '—' })
+  ]));
+  const sec = (title, list) => h('div', { class:'acc-sec' }, h('h3', { text:t('account.sec.' + title) }), dl(list));
+
+  const filialen = (k.filialen || []).filter(f => f.gevonden);
+  const data = filialen.map(f => ({ f, d:collect(f) }));
+  const first = data[0] ? data[0].d : {};
+
+  /* Kop: avatar met initialen, bedrijfsnaam en het inlogadres */
+  const title = first.company || [first.first, first.last].filter(Boolean).join(' ') || k.email;
+  const ini = (first.company || [first.first, first.last].filter(Boolean).join(' ') || k.email).split(/[\s@._-]+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('') || '?';
+  box.append(h('div', { class:'acc-hero' },
+    h('div', { class:'acc-av', 'aria-hidden':'true', text:ini }),
+    h('div', {},
+      h('h2', { text:title }),
+      h('p', { text:k.email }),
+      cached.laatstIngelogd ? h('p', { class:'acc-last', text:t('account.last') + ' ' + cached.laatstIngelogd }) : null)));
+
+  if (!data.length) {
+    box.append(h('div', { class:'acc-card' }, h('p', { style:'color:var(--dim)', text:t('account.empty') })));
+  }
+  data.forEach(({ f, d }, i) => {
+    const r = rows(f, d);
+    box.append(h('div', { class:'acc-card' },
+      data.length > 1 ? h('div', { class:'sub', text:t('account.id') + ' ' + f.filiaalId }) : null,
+      sec('company', r.company),
+      sec('address', r.address),
+      h('div', { class:'acc-sec' }, h('h3', { text:t('account.sec.contact') }),
+        h('dl', {}, r.contact.flatMap(([key, val]) => [
+          h('dt', { text:t('account.f.' + key) }),
+          h('dd', { class:val ? '' : 'empty', text:val || '—' })
+        ]).concat([
+          h('dt', { text:t('account.f.email') }),
+          h('dd', { class:'mail' }, h('span', { text:k.email }), h('span', { class:'acc-tag', text:t('account.loginTag') }))
+        ])))));
+  });
+
+  const note = t('account.note', { mail:'info@bincinternational.nl', tel:'013 203 2643' });
+  const [pre, rest] = note.split('info@bincinternational.nl');
+  const [mid, post] = (rest || '').split('013 203 2643');
+  box.append(h('div', { class:'acc-note' },
+    h('span', { class:'acc-ic' }),
+    h('p', {}, pre, h('a', { href:'mailto:info@bincinternational.nl', text:'info@bincinternational.nl' }), mid, h('a', { href:'tel:+31132032643', text:'013 203 2643' }), post)));
+  box.querySelector('.acc-ic').innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>';
 }
 
 /* ═══════════ TAAL + OPSTART ═══════════ */
