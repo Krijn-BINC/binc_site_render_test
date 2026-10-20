@@ -119,7 +119,6 @@ main{flex:1;display:flex;align-items:center;justify-content:center;position:rela
 /* aanmeldformulier (toegang aanvragen) */
 .apply-form{gap:18px}
 .apply-form .field-label{margin-bottom:8px;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.field-opt{font-weight:600;letter-spacing:.12em;color:rgba(255,255,255,.34)}
 .apply-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .apply-form .field-input.is-invalid{border-color:var(--red2);box-shadow:0 0 0 3px rgba(192,57,43,.18)}
 .apply-form .btn-red{margin-top:6px}
@@ -301,8 +300,8 @@ main{padding-top:110px!important;padding-bottom:50px!important}
               <input class="field-input" type="email" id="ap-email" autocomplete="email" maxlength="200" placeholder="naam@bedrijf.nl" data-i18n-ph="login.emailPh" required />
             </div>
             <div>
-              <label class="field-label" for="ap-tel"><span data-i18n="apply.phone">Telefoon</span> <span class="field-opt" data-i18n="apply.optional">optioneel</span></label>
-              <input class="field-input" type="tel" id="ap-tel" autocomplete="tel" maxlength="40" placeholder="+31 6 ..." />
+              <label class="field-label" for="ap-tel" data-i18n="apply.phone">Telefoonnummer</label>
+              <input class="field-input" type="tel" id="ap-tel" autocomplete="tel" maxlength="40" placeholder="+31 6 ..." required />
             </div>
           </div>
           <!-- Honeypot tegen spam-bots: laat dit veld leeg -->
@@ -372,15 +371,15 @@ const TRANSLATIONS = {
     'apply.name':     'Contactpersoon',
     'apply.namePh':   'Voor- en achternaam',
     'apply.email':    'E-mailadres',
-    'apply.phone':    'Telefoon',
-    'apply.optional': 'optioneel',
+    'apply.phone':    'Telefoonnummer',
     'apply.submit':   'Aanvraag versturen',
     'apply.sending':  'Versturen\u2026',
     'apply.doneTitle':'Aanvraag ontvangen<span class="acc">.</span>',
     'apply.doneText': 'Bedankt! We hebben je aanmelding ontvangen en nemen zo snel mogelijk contact met je op.',
     'apply.toLogin':  'Naar inloggen',
     'apply.foot':     'Al toegang? <a href="#inloggen">Inloggen</a>',
-    'apply.errRequired':'Vul je bedrijfsnaam, naam en e-mailadres in.',
+    'apply.errRequired':'Vul je bedrijfsnaam, naam, e-mailadres en telefoonnummer in.',
+    'apply.errPhone':'Vul een geldig telefoonnummer in.',
     'apply.errGeneric':'Versturen mislukt. Probeer het later opnieuw of mail naar info@bincinternational.nl.',
     'err.email':      'Vul je e-mailadres in.',
     'err.digits':     'Vul alle 6 cijfers in.',
@@ -431,15 +430,15 @@ const TRANSLATIONS = {
     'apply.name':     'Contact person',
     'apply.namePh':   'First and last name',
     'apply.email':    'Email address',
-    'apply.phone':    'Phone',
-    'apply.optional': 'optional',
+    'apply.phone':    'Phone number',
     'apply.submit':   'Send request',
     'apply.sending':  'Sending\u2026',
     'apply.doneTitle':'Request received<span class="acc">.</span>',
     'apply.doneText': 'Thank you! We\u2019ve received your request and will get in touch with you as soon as possible.',
     'apply.toLogin':  'Go to log in',
     'apply.foot':     'Already have access? <a href="#inloggen">Log in</a>',
-    'apply.errRequired':'Please enter your company name, name and email address.',
+    'apply.errRequired':'Please enter your company name, name, email address and phone number.',
+    'apply.errPhone':'Please enter a valid phone number.',
     'apply.errGeneric':'Sending failed. Please try again later or email info@bincinternational.nl.',
     'err.email':      'Please enter your email address.',
     'err.digits':     'Please enter all 6 digits.',
@@ -685,8 +684,10 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
     if (!payload.bedrijf) bad.push('ap-bedrijf');
     if (!payload.naam) bad.push('ap-naam');
     if (!payload.email) bad.push('ap-email');
+    if (!payload.telefoon) bad.push('ap-tel');
     if (bad.length) { markInvalid(bad); return showErr(t('apply.errRequired')); }
     if (!EMAIL_RE.test(payload.email)) { markInvalid(['ap-email']); return showErr(t('err.invalid')); }
+    if (payload.telefoon.replace(/\D/g, '').length < 8) { markInvalid(['ap-tel']); return showErr(t('apply.errPhone')); }
 
     sending = true;
     btn.disabled = true; btn.setAttribute('data-i18n', 'apply.sending'); btn.textContent = t('apply.sending');
