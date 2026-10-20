@@ -705,12 +705,16 @@ select.acc-in option{background:#18181b;color:#fff}
 
 /* ── info-puntje bij merken (inhoud per tray) ── */
 .ip{position:relative;display:inline-flex;align-items:center}
-.ip-btn{display:inline-grid;place-items:center;width:22px;height:22px;margin:-3px 0;border-radius:50%;color:var(--faint);transition:color .15s,background .15s}
+.ip-btn{display:inline-grid;place-items:center;width:22px;height:22px;margin:-3px 0;border-radius:50%;color:var(--red2);transition:color .15s,background .15s}
 .ip-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.ip-btn:hover,.ip.open .ip-btn{color:#fff;background:rgba(255,255,255,.09)}
+.ip-btn:hover,.ip.open .ip-btn{color:#fff;background:var(--red)}
+.ip-btn svg{stroke-width:2.1}
 .ip-pop{position:absolute;left:50%;top:calc(100% + 8px);transform:translate(-50%,-4px);z-index:30;width:max-content;max-width:min(260px,calc(100vw - 32px));padding:9px 12px;border:1px solid var(--line2);border-radius:6px;background:#1d1d21;color:var(--text);font-size:.82rem;line-height:1.35;font-weight:500;letter-spacing:0;box-shadow:0 10px 28px rgba(0,0,0,.5);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s,transform .15s,visibility .15s}
 .ip:hover .ip-pop,.ip.open .ip-pop,.ip:focus-within .ip-pop{opacity:1;visibility:visible;transform:translate(-50%,0)}
 @media(max-width:600px){.ip-pop{left:-8px;right:auto;transform:translateY(-4px)}.ip:hover .ip-pop,.ip.open .ip-pop,.ip:focus-within .ip-pop{transform:none}}
+
+.cinfo{margin:8px 0 2px;padding:8px 10px;border-radius:5px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--dim);font-size:.8rem;line-height:1.35}
+.cinfo.on{background:rgba(63,178,127,.1);border-color:rgba(63,178,127,.4);color:#d6f3e6}
 </style>
 </head>
 <body>
@@ -817,7 +821,7 @@ const TR = {
   'err.load':'Laden mislukt:','err.generic':'Er ging iets mis. Probeer het opnieuw.','err.network':'Geen verbinding met de server.','err.retry':'Opnieuw proberen',
   'toast.added':'Toegevoegd',
   'brand.min':'Min. {n} {unit}','brand.deposit':'Statiegeld {amt} per tray komt er automatisch bij','brand.minInfo':'Minimale bestelling: {n} {unit}','brand.minVal':'Minimale orderwaarde: {amt}','brand.inCart':'{n} in wagen',
-  'pack.tip':'Eén tray bevat {n} {what}.','pack.what.golddry':'blikken','pack.what.feelsogood':'flesjes','pack.what.beatbox':'pakjes','pack.info':'Meer informatie','unit.trays':'trays','unit.stuks':'stuks','th.product':'Product','th.price':'Prijs','th.qty':'Aantal','th.sub':'Subtotaal','brand.minAmt':'Min. {amt}','brand.depShort':'Statiegeld {amt} per tray extra','cart.fixMin':'Haal per merk eerst het minimum om te kunnen bestellen.','order.price':'per {u}',
+  'gd.staffel':'Staffelprijs vanaf {n} trays','gd.staffelLeft':'Nog {n} tray(s) tot de staffelprijs: dan gelden de lagere prijzen voor je hele Gold Dry-bestelling.','gd.staffelOn':'Staffelprijs actief: lagere prijzen op je hele Gold Dry-bestelling.','pack.tip':'Eén tray bevat {n} {what}.','pack.what.golddry':'blikken','pack.what.feelsogood':'flesjes','pack.what.beatbox':'pakjes','pack.info':'Meer informatie','unit.trays':'trays','unit.stuks':'stuks','th.product':'Product','th.price':'Prijs','th.qty':'Aantal','th.sub':'Subtotaal','brand.minAmt':'Min. {amt}','brand.depShort':'Statiegeld {amt} per tray extra','cart.fixMin':'Haal per merk eerst het minimum om te kunnen bestellen.','order.price':'per {u}',
   'cart.sub':'Subtotaal','cart.deposit':'Statiegeld','cart.delivery':'Levering & opmerking','cart.optional':'',
   'cart.minQty':'{brand}: nog {left} {unit} nodig (min. {min})','cart.minOk':'Minimum gehaald','cart.minVal':'{brand}: nog {left} nodig (min. {min})','cart.emptyHint':'Kies een merk en vul aantallen in. Je bestelling verschijnt hier.',
   'cart.itemsN':'{n} stuks',
@@ -843,7 +847,7 @@ const TR = {
   'err.load':'Loading failed:','err.generic':'Something went wrong. Please try again.','err.network':'Can’t reach the server.','err.retry':'Try again',
   'toast.added':'Added',
   'brand.min':'Min. {n} {unit}','brand.deposit':'Deposit {amt} per tray is added automatically','brand.minInfo':'Minimum order: {n} {unit}','brand.minVal':'Minimum order value: {amt}','brand.inCart':'{n} in cart',
-  'pack.tip':'One tray contains {n} {what}.','pack.what.golddry':'cans','pack.what.feelsogood':'bottles','pack.what.beatbox':'packs','pack.info':'More information','unit.trays':'trays','unit.stuks':'items','th.product':'Product','th.price':'Price','th.qty':'Quantity','th.sub':'Subtotal','brand.minAmt':'Min. {amt}','brand.depShort':'Deposit {amt} per tray extra','cart.fixMin':'Reach the minimum for each brand to place your order.','order.price':'per {u}',
+  'gd.staffel':'Volume pricing from {n} trays','gd.staffelLeft':'{n} more tray(s) for volume pricing: lower prices apply to your entire Gold Dry order.','gd.staffelOn':'Volume pricing active: lower prices on your entire Gold Dry order.','pack.tip':'One tray contains {n} {what}.','pack.what.golddry':'cans','pack.what.feelsogood':'bottles','pack.what.beatbox':'packs','pack.info':'More information','unit.trays':'trays','unit.stuks':'items','th.product':'Product','th.price':'Price','th.qty':'Quantity','th.sub':'Subtotal','brand.minAmt':'Min. {amt}','brand.depShort':'Deposit {amt} per tray extra','cart.fixMin':'Reach the minimum for each brand to place your order.','order.price':'per {u}',
   'cart.sub':'Subtotal','cart.deposit':'Deposit','cart.delivery':'Delivery & note','cart.optional':'optional',
   'cart.minQty':'{brand}: {left} more {unit} needed (min. {min})','cart.minOk':'Minimum reached','cart.minVal':'{brand}: {left} more needed (min. {min})','cart.emptyHint':'Pick a brand and enter quantities. Your order shows up here.',
   'cart.itemsN':'{n} items',
@@ -904,8 +908,15 @@ const cartLines = () => Object.keys(S.cart).filter(id => S.cart[id] > 0 && S.ite
 const cartCount = () => cartLines().reduce((s, l) => s + l.qty, 0);
 const brandLines = b => cartLines().filter(l => l.it.brandId === b.id);
 const brandQty = b => brandLines(b).reduce((s, l) => s + l.qty, 0);
-const brandSub = b => round2(brandLines(b).reduce((s, l) => s + l.it.price * l.qty, 0));
-const brandDep = b => round2((b.deposit || 0) * brandQty(b));
+/* Gold Dry: prijs hangt af van het type filiaal (supermarkt/overig) en, bij overig, van de staffel (aantal trays). De server rekent altijd opnieuw na. */
+const curType = () => { const fs = (S.klant && S.klant.filialen) || []; const f = fs.find(x => x.filiaalId === S.branch) || fs[0]; return (f && f.prijsType) || 'overig'; };
+const TRAY_KINDS = ['soda', 'premix'];
+const brandTrays = b => brandLines(b).reduce((s, l) => s + (TRAY_KINDS.includes(l.it.kind) ? l.qty : 0), 0);
+const priceTier = b => (!b.staffelTrays || curType() === 'supermarkt' || brandTrays(b) >= b.staffelTrays) ? 'supermarkt' : 'overig';
+const unitPrice = it0 => { const it = S.items.get(it0.id) || it0; if (!it.tiers) return it.price; const b = S.catalog.brands.find(x => x.id === it.brandId); return it.tiers[b ? priceTier(b) : 'overig']; };
+const brandSub = b => round2(brandLines(b).reduce((s, l) => s + unitPrice(l.it) * l.qty, 0));
+const brandDepQty = b => b.depositKinds ? brandLines(b).reduce((s, l) => s + (b.depositKinds.includes(l.it.kind) ? l.qty : 0), 0) : brandQty(b);
+const brandDep = b => round2((b.deposit || 0) * brandDepQty(b));
 const cartTotal = () => S.catalog ? round2(S.catalog.brands.reduce((s, b) => s + brandSub(b) + brandDep(b), 0)) : 0;
 const brandProg = b => {
   const qty = brandQty(b), sub = brandSub(b);
@@ -994,6 +1005,7 @@ function renderBrandInfo(){
   if (b.minQty) parts.push(t('brand.min', { n:b.minQty, unit:unitLabel(b) }));
   if (b.minOrder) parts.push(t('brand.minAmt', { amt:money(b.minOrder).replace(/,00$/, '') }));
   if (b.deposit > 0) parts.push(t('brand.depShort', { amt:money(b.deposit) }));
+  if (b.staffelTrays && curType() !== 'supermarkt') parts.push(t('gd.staffel', { n:b.staffelTrays }));
   box.append(h('span', { text:parts.join('  ·  ') }));
   const n = PACK[b.id];
   if (n) {
@@ -1022,7 +1034,7 @@ function makeRow(it, withThumb){
     return h('div', { class:'prow soldout' + (withThumb ? '' : ' nothumb') },
       withThumb ? makeThumb(it) : null,
       h('div', { class:'p-main' }, h('div', { class:'p-name', text:it.name }), skuLine(it)),
-      h('div', { class:'p-price' }, money(it.price), h('small', { text:' ' + t('order.price', { u:unitSO }) })),
+      h('div', { class:'p-price' }, money(unitPrice(it)), h('small', { text:' ' + t('order.price', { u:unitSO }) })),
       h('div', { class:'p-act' }, h('span', { class:'so-badge', text:t('order.soldout') })), h('div', { class:'p-sum' }));
   }
   const unit = it.unit && it.unit !== 'stuk' ? it.unit : t('unit.stuks').replace(/s$/, '');
@@ -1035,12 +1047,13 @@ function makeRow(it, withThumb){
   input.addEventListener('change', () => setQty(it.id, input.value));
   input.addEventListener('keydown', e => { if (e.key === 'Enter') input.blur(); });
   const sum = h('div', { class:'p-sum' });
+  const pTxt = h('span'), pEl = h('div', { class:'p-price' }, pTxt, h('small', { text:' ' + t('order.price', { u:unit }) }));
   const row = h('div', { class:'prow' + (withThumb ? '' : ' nothumb') },
     withThumb ? makeThumb(it) : null,
     h('div', { class:'p-main' }, h('div', { class:'p-name', text:it.name }), skuLine(it)),
-    h('div', { class:'p-price' }, money(it.price), h('small', { text:' ' + t('order.price', { u:unit }) })),
+    pEl,
     h('div', { class:'p-act' }, stepper), sum);
-  const sync = qty => { row.classList.toggle('in', qty > 0); input.value = qty; sum.textContent = money(round2(it.price * qty)); };
+  const sync = qty => { row.classList.toggle('in', qty > 0); input.value = qty; pTxt.textContent = money(unitPrice(it)); sum.textContent = money(round2(unitPrice(it) * qty)); };
   cardRefs.set(it.id, { sync }); sync(S.cart[it.id] || 0);
   return row;
 }
@@ -1145,6 +1158,7 @@ function setQty(id, v, inCart){
     if (q > 0) S.cart[id] = q; else delete S.cart[id];
     saveCart(); S.done = null; S.error = ''; S.confirm = false;
     const ref = cardRefs.get(id); if (ref) ref.sync(q);
+    if ((S.items.get(id) || {}).tiers) cardRefs.forEach((r, k) => r.sync(S.cart[k] || 0));   // staffel kan van prijsniveau wisselen
     renderCart(inCart ? false : id);   // toegevoegd via de productlijst: mand scrolt naar onder
   } finally { qtyBusy = false; }
 }
@@ -1246,9 +1260,13 @@ function renderCartInner(){
         return inp;
       })(), '×'),
       h('span', { class:'cl-n', text:l.it.name.replace(new RegExp('^' + b.name + '\\s+', 'i'), '') }),
-      h('span', { class:'cl-t', text:money(round2(l.it.price * l.qty)) }),
+      h('span', { class:'cl-t', text:money(round2(unitPrice(l.it) * l.qty)) }),
       h('button', { class:'cl-x', type:'button', title:t('cart.remove'), 'aria-label':t('cart.remove'), text:'×', onclick:() => setQty(l.it.id, 0, true) }))));
     if (dep > 0 && !folded) wrap.append(h('div', { class:'cl dep' }, h('span'), h('span', { class:'cl-n', text:t('cart.deposit') }), h('span', { class:'cl-t', text:money(dep) }), h('span')));
+    if (b.staffelTrays && curType() !== 'supermarkt' && !folded) {
+      const tr = brandTrays(b);
+      wrap.append(h('div', { class:'cinfo' + (tr >= b.staffelTrays ? ' on' : ''), text:tr >= b.staffelTrays ? t('gd.staffelOn') : t('gd.staffelLeft', { n:b.staffelTrays - tr }) }));
+    }
     const pg = brandProg(b);
     if (pg.kind && !folded) {
       if (!pg.ok) wrap.append(h('div', { class:'cneed', text:need }));
@@ -1260,7 +1278,7 @@ function renderCartInner(){
   const branches = branchOptions();
   if (!S.branch || !branches.some(b => b.id === S.branch)) S.branch = (branches[0] || {}).id || '';
   const tomorrow = new Date(Date.now() + 864e5); const minDate = tomorrow.getFullYear() + '-' + String(tomorrow.getMonth() + 1).padStart(2, '0') + '-' + String(tomorrow.getDate()).padStart(2, '0');
-  const sel = h('select', { class:'f-in', id:'fBranch', onchange:e => { S.branch = e.target.value; } },
+  const sel = h('select', { class:'f-in', id:'fBranch', onchange:e => { S.branch = e.target.value; renderBrandInfo(); cardRefs.forEach((r, k) => r.sync(S.cart[k] || 0)); renderCart(false); } },
     branches.map(b => h('option', { value:b.id, selected:b.id === S.branch, text:(b.name ? b.name + ' · ' : '') + b.id })));
   if (branches.length > 1) foot.append(h('div', { class:'f-full' }, h('label', { class:'f-lab', for:'fBranch', text:t('cart.branch') }), sel));
   const dtlHint = [S.date ? new Date(S.date + 'T12:00').toLocaleDateString(lang === 'en' ? 'en-GB' : 'nl-NL', { day:'numeric', month:'short' }) : '', S.ref, S.notes ? '…' : ''].filter(Boolean).join(' · ');
