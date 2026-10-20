@@ -116,6 +116,16 @@ main{flex:1;display:flex;align-items:center;justify-content:center;position:rela
 .auth-foot a{color:#fff;text-decoration:none;border-bottom:1px solid var(--red);padding-bottom:1px}
 .auth-foot a:hover{color:var(--red)}
 
+/* aanmeldformulier (toegang aanvragen) */
+select.field-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:44px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ffffff' stroke-opacity='.6' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+select.field-input option{background:#111;color:#fff}
+.field-opt{color:rgba(255,255,255,.38);letter-spacing:.14em;font-weight:600}
+.hp-field{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden;opacity:0}
+.apply-done{text-align:center;padding:10px 0 4px}
+.apply-done-title{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,6vw,2.8rem);line-height:1;text-transform:uppercase;margin-bottom:14px}
+.apply-done-title .acc{color:var(--red)}
+.apply-done .auth-sub{margin-bottom:24px}
+
 /* portaal */
 main.portal-main{align-items:flex-start}
 .portal-wrap{position:relative;z-index:5;width:100%;max-width:920px;opacity:0;animation:riseUp .9s .1s forwards}
@@ -215,6 +225,8 @@ main{padding-top:110px!important;padding-bottom:50px!important}
   <div class="orb"></div>
   <div class="auth-wrap">
 
+    <!-- ══ WEERGAVE 1: INLOGGEN ══ -->
+    <div id="loginView">
     <div id="head1">
       <h1 class="auth-title" data-i18n="login.title">Inloggen<span class="acc">.</span></h1>
       <p class="auth-sub" data-i18n="login.sub">Vul je e-mailadres in. Je ontvangt een 6-cijferige code om in te loggen.</p>
@@ -254,7 +266,65 @@ main{padding-top:110px!important;padding-bottom:50px!important}
       </form>
     </div>
 
-    <p class="auth-foot" data-i18n="login.help">Nog geen toegang? <a href="index.html#lead">Neem contact op</a></p>
+    <p class="auth-foot" data-i18n="login.help">Nog geen toegang? <a href="#aanmelden">Vraag toegang aan</a></p>
+    </div>
+
+    <!-- ══ WEERGAVE 2: B2B-AANMELDING (toegang aanvragen) ══ -->
+    <div id="applyView" class="hidden">
+      <div id="head3">
+        <h1 class="auth-title" data-i18n="apply.title">Toegang aanvragen<span class="acc">.</span></h1>
+        <p class="auth-sub" data-i18n="apply.sub">Laat je gegevens achter. Wij nemen contact met je op om je toegang tot het B2B-portaal te regelen.</p>
+      </div>
+
+      <div class="auth-card">
+        <div id="applyMsg" class="msg-box msg-error hidden" role="alert"></div>
+
+        <form id="applyForm" class="auth-form" novalidate>
+          <div>
+            <label class="field-label" for="ap-bedrijf" data-i18n="apply.company">Bedrijfsnaam *</label>
+            <input class="field-input" type="text" id="ap-bedrijf" autocomplete="organization" maxlength="150" placeholder="Jouw Bedrijf BV" data-i18n-ph="apply.companyPh" required />
+          </div>
+          <div>
+            <label class="field-label" for="ap-naam" data-i18n="apply.name">Contactpersoon *</label>
+            <input class="field-input" type="text" id="ap-naam" autocomplete="name" maxlength="120" placeholder="Voor- en achternaam" data-i18n-ph="apply.namePh" required />
+          </div>
+          <div>
+            <label class="field-label" for="ap-email" data-i18n="apply.email">E-mailadres *</label>
+            <input class="field-input" type="email" id="ap-email" autocomplete="email" maxlength="200" placeholder="naam@bedrijf.nl" data-i18n-ph="login.emailPh" required />
+          </div>
+          <div>
+            <label class="field-label" for="ap-tel" data-i18n="apply.phone">Telefoonnummer</label>
+            <input class="field-input" type="tel" id="ap-tel" autocomplete="tel" maxlength="40" placeholder="+31 6 ..." />
+          </div>
+          <div>
+            <label class="field-label" for="ap-soort" data-i18n="apply.type">Soort bedrijf</label>
+            <select class="field-input" id="ap-soort">
+              <option value="" selected data-i18n="apply.typeSelect">Selecteer (optioneel)</option>
+              <option value="Retail" data-i18n="apply.type1">Retail / winkel</option>
+              <option value="Horeca" data-i18n="apply.type2">Horeca</option>
+              <option value="Evenementen" data-i18n="apply.type3">Evenementen</option>
+              <option value="Groothandel" data-i18n="apply.type4">Groothandel</option>
+              <option value="Anders" data-i18n="apply.type5">Anders</option>
+            </select>
+          </div>
+          <!-- Honeypot tegen spam-bots: laat dit veld leeg -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="ap-website">Website</label>
+            <input type="text" id="ap-website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <button type="submit" class="btn-red" id="applyBtn" data-i18n="apply.submit">Aanvraag versturen</button>
+        </form>
+
+        <div id="applyDone" class="apply-done hidden">
+          <h2 class="apply-done-title" data-i18n="apply.doneTitle">Aanvraag ontvangen<span class="acc">.</span></h2>
+          <p class="auth-sub" data-i18n="apply.doneText">Bedankt! We hebben je aanmelding ontvangen en nemen zo snel mogelijk contact met je op.</p>
+          <a href="#inloggen" class="btn-outline" data-i18n="apply.toLogin">Naar inloggen</a>
+        </div>
+      </div>
+
+      <p class="auth-foot" data-i18n="apply.foot">Al toegang? <a href="#inloggen">Inloggen</a></p>
+    </div>
+
   </div>
 </main>
 
@@ -295,7 +365,30 @@ const TRANSLATIONS = {
     'login.resend':   'Nieuwe code',
     'login.resendWait':'Nieuwe code ({s}s)',
     'login.resent':   'Er is een nieuwe code verstuurd.',
-    'login.help':     'Nog geen toegang? <a href="index.html#lead">Neem contact op</a>',
+    'login.help':     'Nog geen toegang? <a href="#aanmelden">Vraag toegang aan</a>',
+    'apply.title':    'Toegang aanvragen<span class="acc">.</span>',
+    'apply.sub':      'Laat je gegevens achter. Wij nemen contact met je op om je toegang tot het B2B-portaal te regelen.',
+    'apply.company':  'Bedrijfsnaam *',
+    'apply.companyPh':'Jouw Bedrijf BV',
+    'apply.name':     'Contactpersoon *',
+    'apply.namePh':   'Voor- en achternaam',
+    'apply.email':    'E-mailadres *',
+    'apply.phone':    'Telefoonnummer',
+    'apply.type':     'Soort bedrijf',
+    'apply.typeSelect':'Selecteer (optioneel)',
+    'apply.type1':    'Retail / winkel',
+    'apply.type2':    'Horeca',
+    'apply.type3':    'Evenementen',
+    'apply.type4':    'Groothandel',
+    'apply.type5':    'Anders',
+    'apply.submit':   'Aanvraag versturen',
+    'apply.sending':  'Versturen\u2026',
+    'apply.doneTitle':'Aanvraag ontvangen<span class="acc">.</span>',
+    'apply.doneText': 'Bedankt! We hebben je aanmelding ontvangen en nemen zo snel mogelijk contact met je op.',
+    'apply.toLogin':  'Naar inloggen',
+    'apply.foot':     'Al toegang? <a href="#inloggen">Inloggen</a>',
+    'apply.errRequired':'Vul je bedrijfsnaam, naam en e-mailadres in.',
+    'apply.errGeneric':'Versturen mislukt. Probeer het later opnieuw of mail naar info@bincinternational.nl.',
     'err.email':      'Vul je e-mailadres in.',
     'err.digits':     'Vul alle 6 cijfers in.',
     'err.network':    'Geen verbinding met de server. Probeer het opnieuw.',
@@ -337,7 +430,30 @@ const TRANSLATIONS = {
     'login.resend':   'New code',
     'login.resendWait':'New code ({s}s)',
     'login.resent':   'A new code has been sent.',
-    'login.help':     'No access yet? <a href="index.html#lead">Get in touch</a>',
+    'login.help':     'No access yet? <a href="#aanmelden">Request access</a>',
+    'apply.title':    'Request access<span class="acc">.</span>',
+    'apply.sub':      'Leave your details and we\u2019ll get in touch to set up your access to the B2B portal.',
+    'apply.company':  'Company name *',
+    'apply.companyPh':'Your Company Ltd',
+    'apply.name':     'Contact person *',
+    'apply.namePh':   'First and last name',
+    'apply.email':    'Email address *',
+    'apply.phone':    'Phone number',
+    'apply.type':     'Type of business',
+    'apply.typeSelect':'Select (optional)',
+    'apply.type1':    'Retail / store',
+    'apply.type2':    'Horeca',
+    'apply.type3':    'Events',
+    'apply.type4':    'Wholesale',
+    'apply.type5':    'Other',
+    'apply.submit':   'Send request',
+    'apply.sending':  'Sending\u2026',
+    'apply.doneTitle':'Request received<span class="acc">.</span>',
+    'apply.doneText': 'Thank you! We\u2019ve received your request and will get in touch with you as soon as possible.',
+    'apply.toLogin':  'Go to log in',
+    'apply.foot':     'Already have access? <a href="#inloggen">Log in</a>',
+    'apply.errRequired':'Please enter your company name, name and email address.',
+    'apply.errGeneric':'Sending failed. Please try again later or email info@bincinternational.nl.',
     'err.email':      'Please enter your email address.',
     'err.digits':     'Please enter all 6 digits.',
     'err.network':    'Can\u2019t reach the server. Please try again.',
@@ -532,6 +648,70 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.st
       showMsg(t('err.network'));
     } finally {
       verifying = false; setBtn(btn, 'login.verify', false);
+    }
+  });
+})();
+
+/* ══════════════ B2B-AANMELDING (toegang aanvragen) ══════════════ */
+(function () {
+  const API_BASE = 'https://server-medewerker-kpi.onrender.com';
+  const $ = id => document.getElementById(id);
+  const loginView = $('loginView'), applyView = $('applyView');
+  const form = $('applyForm'), done = $('applyDone'), msg = $('applyMsg'), btn = $('applyBtn');
+  let sending = false;
+
+  // #aanmelden = aanmeldformulier, al het andere = inloggen (zo kun je ook linken naar inloggen.html#aanmelden)
+  function route() {
+    const apply = location.hash === '#aanmelden';
+    loginView.classList.toggle('hidden', apply);
+    applyView.classList.toggle('hidden', !apply);
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  function showErr(text) { msg.textContent = text; msg.classList.remove('hidden'); }
+  function hideErr() { msg.classList.add('hidden'); }
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (sending) return;
+    hideErr();
+    const v = id => $(id).value.trim();
+    const payload = {
+      bedrijf:  v('ap-bedrijf'),
+      naam:     v('ap-naam'),
+      email:    v('ap-email').toLowerCase(),
+      telefoon: v('ap-tel'),
+      soort:    $('ap-soort').value,
+      website:  v('ap-website'),   // honeypot
+      taal:     currentLang
+    };
+    if (!payload.bedrijf || !payload.naam || !payload.email) return showErr(t('apply.errRequired'));
+    if (!EMAIL_RE.test(payload.email)) return showErr(t('err.invalid'));
+
+    sending = true;
+    btn.disabled = true; btn.setAttribute('data-i18n', 'apply.sending'); btn.textContent = t('apply.sending');
+    try {
+      const res = await fetch(API_BASE + '/api/b2b-aanmelding', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      let data = {}; try { data = await res.json(); } catch (_) {}
+      if (res.ok && data.success) {
+        form.classList.add('hidden');
+        $('head3').classList.add('hidden');
+        done.classList.remove('hidden');
+        return;
+      }
+      showErr(res.status === 429 ? t('err.toomany') : t('apply.errGeneric'));
+    } catch (_) {
+      showErr(t('err.network'));
+    } finally {
+      sending = false;
+      btn.disabled = false; btn.setAttribute('data-i18n', 'apply.submit'); btn.textContent = t('apply.submit');
     }
   });
 })();
