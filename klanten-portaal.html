@@ -702,6 +702,15 @@ select.acc-in option{background:#18181b;color:#fff}
 .acc-actions .btn-line{width:auto;padding:10px 18px;margin:0}
 .acc-err{color:var(--red2);font-size:.88rem;flex-basis:100%}
 @media(max-width:600px){.acc-in{max-width:none}.acc-card dl.editing dt{padding-top:10px}}
+
+/* ── info-puntje bij merken (inhoud per tray) ── */
+.ip{position:relative;display:inline-flex;align-items:center}
+.ip-btn{display:inline-grid;place-items:center;width:22px;height:22px;margin:-3px 0;border-radius:50%;color:var(--faint);transition:color .15s,background .15s}
+.ip-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ip-btn:hover,.ip.open .ip-btn{color:#fff;background:rgba(255,255,255,.09)}
+.ip-pop{position:absolute;left:50%;top:calc(100% + 8px);transform:translate(-50%,-4px);z-index:30;width:max-content;max-width:min(260px,calc(100vw - 32px));padding:9px 12px;border:1px solid var(--line2);border-radius:6px;background:#1d1d21;color:var(--text);font-size:.82rem;line-height:1.35;font-weight:500;letter-spacing:0;box-shadow:0 10px 28px rgba(0,0,0,.5);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s,transform .15s,visibility .15s}
+.ip:hover .ip-pop,.ip.open .ip-pop,.ip:focus-within .ip-pop{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media(max-width:600px){.ip-pop{left:-8px;right:auto;transform:translateY(-4px)}.ip:hover .ip-pop,.ip.open .ip-pop,.ip:focus-within .ip-pop{transform:none}}
 </style>
 </head>
 <body>
@@ -808,7 +817,7 @@ const TR = {
   'err.load':'Laden mislukt:','err.generic':'Er ging iets mis. Probeer het opnieuw.','err.network':'Geen verbinding met de server.','err.retry':'Opnieuw proberen',
   'toast.added':'Toegevoegd',
   'brand.min':'Min. {n} {unit}','brand.deposit':'Statiegeld {amt} per tray komt er automatisch bij','brand.minInfo':'Minimale bestelling: {n} {unit}','brand.minVal':'Minimale orderwaarde: {amt}','brand.inCart':'{n} in wagen',
-  'unit.trays':'trays','unit.stuks':'stuks','th.product':'Product','th.price':'Prijs','th.qty':'Aantal','th.sub':'Subtotaal','brand.minAmt':'Min. {amt}','brand.depShort':'Statiegeld {amt} per tray extra','cart.fixMin':'Haal per merk eerst het minimum om te kunnen bestellen.','order.price':'per {u}',
+  'pack.tip':'Eén tray bevat {n} {what}.','pack.what.golddry':'blikken','pack.what.feelsogood':'flesjes','pack.what.beatbox':'pakjes','pack.info':'Meer informatie','unit.trays':'trays','unit.stuks':'stuks','th.product':'Product','th.price':'Prijs','th.qty':'Aantal','th.sub':'Subtotaal','brand.minAmt':'Min. {amt}','brand.depShort':'Statiegeld {amt} per tray extra','cart.fixMin':'Haal per merk eerst het minimum om te kunnen bestellen.','order.price':'per {u}',
   'cart.sub':'Subtotaal','cart.deposit':'Statiegeld','cart.delivery':'Levering & opmerking','cart.optional':'',
   'cart.minQty':'{brand}: nog {left} {unit} nodig (min. {min})','cart.minOk':'Minimum gehaald','cart.minVal':'{brand}: nog {left} nodig (min. {min})','cart.emptyHint':'Kies een merk en vul aantallen in. Je bestelling verschijnt hier.',
   'cart.itemsN':'{n} stuks',
@@ -834,7 +843,7 @@ const TR = {
   'err.load':'Loading failed:','err.generic':'Something went wrong. Please try again.','err.network':'Can’t reach the server.','err.retry':'Try again',
   'toast.added':'Added',
   'brand.min':'Min. {n} {unit}','brand.deposit':'Deposit {amt} per tray is added automatically','brand.minInfo':'Minimum order: {n} {unit}','brand.minVal':'Minimum order value: {amt}','brand.inCart':'{n} in cart',
-  'unit.trays':'trays','unit.stuks':'items','th.product':'Product','th.price':'Price','th.qty':'Quantity','th.sub':'Subtotal','brand.minAmt':'Min. {amt}','brand.depShort':'Deposit {amt} per tray extra','cart.fixMin':'Reach the minimum for each brand to place your order.','order.price':'per {u}',
+  'pack.tip':'One tray contains {n} {what}.','pack.what.golddry':'cans','pack.what.feelsogood':'bottles','pack.what.beatbox':'packs','pack.info':'More information','unit.trays':'trays','unit.stuks':'items','th.product':'Product','th.price':'Price','th.qty':'Quantity','th.sub':'Subtotal','brand.minAmt':'Min. {amt}','brand.depShort':'Deposit {amt} per tray extra','cart.fixMin':'Reach the minimum for each brand to place your order.','order.price':'per {u}',
   'cart.sub':'Subtotal','cart.deposit':'Deposit','cart.delivery':'Delivery & note','cart.optional':'optional',
   'cart.minQty':'{brand}: {left} more {unit} needed (min. {min})','cart.minOk':'Minimum reached','cart.minVal':'{brand}: {left} more needed (min. {min})','cart.emptyHint':'Pick a brand and enter quantities. Your order shows up here.',
   'cart.itemsN':'{n} items',
@@ -978,13 +987,27 @@ function renderBrands(){
   });
   renderBrandInfo();
 }
+const PACK = { golddry:12, feelsogood:12, beatbox:15 };   // stuks per tray
 function renderBrandInfo(){
   const box = $('brandInfo'); box.replaceChildren(); const b = brand(); if (!b) return;
   const parts = [];
   if (b.minQty) parts.push(t('brand.min', { n:b.minQty, unit:unitLabel(b) }));
   if (b.minOrder) parts.push(t('brand.minAmt', { amt:money(b.minOrder).replace(/,00$/, '') }));
   if (b.deposit > 0) parts.push(t('brand.depShort', { amt:money(b.deposit) }));
-  box.textContent = parts.join('  ·  ');
+  box.append(h('span', { text:parts.join('  ·  ') }));
+  const n = PACK[b.id];
+  if (n) {
+    const tip = t('pack.tip', { n, what:t('pack.what.' + b.id) });
+    const pop = h('span', { class:'ip-pop', role:'tooltip', id:'ipPop', text:tip });
+    const btn = h('button', { type:'button', class:'ip-btn', 'aria-label':t('pack.info') + ': ' + tip, 'aria-describedby':'ipPop', 'aria-expanded':'false' });
+    btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.2M12 7.8h.01"/></svg>';
+    const wrap = h('span', { class:'ip' }, btn, pop);
+    const set = on => { wrap.classList.toggle('open', on); btn.setAttribute('aria-expanded', on ? 'true' : 'false'); };
+    btn.addEventListener('click', e => { e.stopPropagation(); set(!wrap.classList.contains('open')); });
+    wrap.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+    document.addEventListener('click', function off(e){ if (!wrap.isConnected) { document.removeEventListener('click', off); return; } if (!wrap.contains(e.target)) set(false); });
+    box.append(wrap);
+  }
 }
 function renderChips(){
   const box = $('chips'); box.replaceChildren();
