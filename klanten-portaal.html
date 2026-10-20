@@ -323,7 +323,6 @@ textarea.f-in{resize:vertical;min-height:54px}
 .oc-info{min-width:0;flex:1 1 200px}
 .oc-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;color:var(--dim);font-size:.92rem;font-variant-numeric:tabular-nums}
 .oc-date{padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.06);font-size:.8rem}
-.oc-fil{margin-top:5px;color:var(--faint);font-size:.9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .oc-btn{position:relative;overflow:hidden;isolation:isolate;flex:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 20px;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:linear-gradient(135deg,var(--red2),var(--red) 55%,#a32d21);color:#fff;font-family:var(--font-ui);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 2px 0 rgba(0,0,0,.25);transition:transform .18s ease,box-shadow .25s ease,border-color .25s ease}
 .oc-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);transform:translateX(-120%);transition:transform .65s ease}
 .oc-btn svg{flex:none;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.4,.2,.2,1)}
@@ -654,6 +653,10 @@ dl>:nth-child(1),dl>:nth-child(2){border-top:none}
 .brands .brand-n{overflow:visible;text-overflow:clip}
 .brands .brand-b{flex:none;width:auto;min-width:22px;padding:0 6px;margin:0 0 0 10px}
 @media(max-width:1000px){.brands{gap:16px}.brands .brand{width:auto;margin:0}.brands .brand-b{width:auto;min-width:22px}}
+
+/* ── ROUND 8: geen zichtbare scrollbars (scrollen blijft gewoon werken) ── */
+html{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar,.brands::-webkit-scrollbar{display:none;width:0;height:0}
 </style>
 </head>
 <body>
@@ -1063,7 +1066,7 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
 
 
 let qtyBusy = false;
-function setQty(id, v){
+function setQty(id, v, inCart){
   if ((S.items.get(id) || {}).soldOut) return;   // uitverkocht: niet toevoegen
   if (qtyBusy) return;                 // verwijderen van een focus-veld vuurt 'change'/'blur': negeren
   const q = clampQty(v);
@@ -1073,7 +1076,7 @@ function setQty(id, v){
     if (q > 0) S.cart[id] = q; else delete S.cart[id];
     saveCart(); S.done = null; S.error = ''; S.confirm = false;
     const ref = cardRefs.get(id); if (ref) ref.sync(q);
-    renderCart();
+    renderCart(inCart ? false : id);   // toegevoegd via de productlijst: mand scrolt naar onder
   } finally { qtyBusy = false; }
 }
 
@@ -1096,7 +1099,7 @@ function goBrand(id){
 }
 function reorder(o){
   o.items.forEach(i => { if (S.items.has(i.id) && !S.items.get(i.id).soldOut) S.cart[i.id] = clampQty((S.cart[i.id] || 0) + i.qty); });
-  saveCart(); S.done = null; renderProducts(); renderCart(); show('order'); toast(t('orders.reordered'));
+  saveCart(); S.done = null; renderProducts(); renderCart(true); show('order'); toast(t('orders.reordered'));
 }
 function renderQuick(){
   const box = $('quick'); if (!box) return;
@@ -1108,7 +1111,20 @@ function renderQuick(){
     h('button', { class:'btn-red quick-b', type:'button', text:t('quick.btn'), onclick:() => reorder(o) }));
 }
 async function loadOrdersQuiet(){ try { S.orders = (await api('/api/klant/orders')).orders; renderQuick(); } catch(_){} }
-function renderCart(){
+/* Winkelmand opnieuw opbouwen. scroll = true/id: naar onderen scrollen zodat je ziet wat er is toegevoegd
+   (bij een id blijft die regel in beeld). Zonder scroll blijft de scrollpositie staan. */
+function renderCart(scroll){
+  const body = $('cartBody'), prev = body.scrollTop;
+  renderCartInner();
+  if (scroll) {
+    body.scrollTop = body.scrollHeight;
+    if (typeof scroll === 'string') {
+      const el = body.querySelector('[data-id="' + CSS.escape(scroll) + '"]');
+      if (el) { const d = el.getBoundingClientRect().top - body.getBoundingClientRect().top; if (d < 0) body.scrollTop += d - 8; }
+    }
+  } else body.scrollTop = prev;
+}
+function renderCartInner(){
   const lines = cartLines(), count = cartCount(), total = cartTotal();
   const nb = $('navBadge'); nb.textContent = count > 99 ? '99+' : count; nb.classList.toggle('hidden', !count);
   $('cartbar').classList.toggle('zero', !count);
@@ -1152,17 +1168,17 @@ function renderCart(){
     const folded = S.fold.has(b.id);
     wrap.append(h('button', { class:'cbrand-h' + (folded ? ' folded' : ''), type:'button', 'aria-expanded':String(!folded), onclick:() => { folded ? S.fold.delete(b.id) : S.fold.add(b.id); renderCart(); } },
       svgIcon('M6 9l6 6 6-6'), h('span', { class:'cbrand-n', text:b.name }), h('span', { class:'cbrand-s', text:money(round2(sub + dep)) })));
-    if (!folded) ls.forEach(l => wrap.append(h('div', { class:'cl' },
+    if (!folded) ls.forEach(l => wrap.append(h('div', { class:'cl', 'data-id':l.it.id },
       h('span', { class:'cl-q' }, (() => {
         const inp = h('input', { class:'cl-qi', type:'number', min:'0', max:'999', inputmode:'numeric', value:l.qty, title:'Aantal aanpassen', 'aria-label':l.it.name });
         inp.addEventListener('focus', () => inp.select());
-        inp.addEventListener('change', () => setQty(l.it.id, inp.value));
+        inp.addEventListener('change', () => setQty(l.it.id, inp.value, true));
         inp.addEventListener('keydown', e => { if (e.key === 'Enter') inp.blur(); });
         return inp;
       })(), '×'),
       h('span', { class:'cl-n', text:l.it.name.replace(new RegExp('^' + b.name + '\\s+', 'i'), '') }),
       h('span', { class:'cl-t', text:money(round2(l.it.price * l.qty)) }),
-      h('button', { class:'cl-x', type:'button', title:t('cart.remove'), 'aria-label':t('cart.remove'), text:'×', onclick:() => setQty(l.it.id, 0) }))));
+      h('button', { class:'cl-x', type:'button', title:t('cart.remove'), 'aria-label':t('cart.remove'), text:'×', onclick:() => setQty(l.it.id, 0, true) }))));
     if (dep > 0 && !folded) wrap.append(h('div', { class:'cl dep' }, h('span'), h('span', { class:'cl-n', text:t('cart.deposit') }), h('span', { class:'cl-t', text:money(dep) }), h('span')));
     const pg = brandProg(b);
     if (pg.kind && !folded) {
@@ -1269,8 +1285,7 @@ function orderCard(o){
     h('div', { class:'oc-st os-' + key, text:portalStatus(o.status) }),
     h('div', { class:'oc-row' },
       h('div', { class:'oc-info' },
-        h('p', { class:'oc-meta' }, oid(o) + ' · ' + (o.total == null ? dash : money(o.total)), h('span', { class:'oc-date', text:fmtDate(o.createdAt, true) })),
-        h('p', { class:'oc-fil', text:o.filiaalNaam || branchName(o.filiaalId) || dash })),
+        h('p', { class:'oc-meta' }, oid(o) + ' · ' + (o.total == null ? dash : money(o.total)), h('span', { class:'oc-date', text:fmtDate(o.createdAt, true) }))),
       reorderBtn('', e => { e.stopPropagation(); reorder(o); })));
   card.addEventListener('keydown', e => { if (e.target === card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openOrder(o); } });
   return card;
